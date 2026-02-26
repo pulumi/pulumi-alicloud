@@ -52,6 +52,7 @@ class MigrationJobArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MigrationJob resource.
+
         :param pulumi.Input[_builtins.bool] data_initialization: Whether to execute DTS supports schema migration.
         :param pulumi.Input[_builtins.bool] data_synchronization: Whether to perform incremental data migration.
         :param pulumi.Input[_builtins.str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
@@ -547,6 +548,7 @@ class _MigrationJobState:
                  structure_initialization: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering MigrationJob resources.
+
         :param pulumi.Input[_builtins.str] checkpoint: Start time in Unix timestamp format.
         :param pulumi.Input[_builtins.bool] data_initialization: Whether to execute DTS supports schema migration.
         :param pulumi.Input[_builtins.bool] data_synchronization: Whether to perform incremental data migration.
@@ -1189,6 +1191,7 @@ class MigrationJob(pulumi.CustomResource):
         $ pulumi import alicloud:dts/migrationJob:MigrationJob example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] checkpoint: Start time in Unix timestamp format.
@@ -1364,6 +1367,7 @@ class MigrationJob(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dts/migrationJob:MigrationJob example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MigrationJobArgs args: The arguments to use to populate this resource's properties.

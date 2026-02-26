@@ -26,6 +26,7 @@ class TunnelQuotaTimerArgs:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TunnelQuotaTimer resource.
+
         :param pulumi.Input[_builtins.str] nickname: The nickname of the exclusive Resource Group (Tunnel Quota) for the level - 1 data transmission service.
         :param pulumi.Input[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]] quota_timers: Time-Sharing configuration
                
@@ -89,6 +90,7 @@ class _TunnelQuotaTimerState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TunnelQuotaTimer resources.
+
         :param pulumi.Input[_builtins.str] nickname: The nickname of the exclusive Resource Group (Tunnel Quota) for the level - 1 data transmission service.
         :param pulumi.Input[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]] quota_timers: Time-Sharing configuration
                
@@ -221,6 +223,7 @@ class TunnelQuotaTimer(pulumi.CustomResource):
         $ pulumi import alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] nickname: The nickname of the exclusive Resource Group (Tunnel Quota) for the level - 1 data transmission service.
@@ -302,6 +305,7 @@ class TunnelQuotaTimer(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TunnelQuotaTimerArgs args: The arguments to use to populate this resource's properties.

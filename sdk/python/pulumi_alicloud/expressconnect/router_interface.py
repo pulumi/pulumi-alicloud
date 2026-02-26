@@ -48,6 +48,7 @@ class RouterInterfaceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RouterInterface resource.
+
         :param pulumi.Input[_builtins.str] opposite_region_id: Region of the connection peer
         :param pulumi.Input[_builtins.str] role: The role of the router interface. Valid values:
                - InitiatingSide : the initiator of the connection.
@@ -607,6 +608,7 @@ class _RouterInterfaceState:
                  vpc_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterInterface resources.
+
         :param pulumi.Input[_builtins.str] access_point_id: Access point ID
         :param pulumi.Input[_builtins.bool] auto_pay: . Field 'name' has been deprecated from provider version 1.263.0.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal. Value:
@@ -1495,6 +1497,7 @@ class RouterInterface(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/routerInterface:RouterInterface example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_point_id: Access point ID
@@ -1649,6 +1652,7 @@ class RouterInterface(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/routerInterface:RouterInterface example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterInterfaceArgs args: The arguments to use to populate this resource's properties.

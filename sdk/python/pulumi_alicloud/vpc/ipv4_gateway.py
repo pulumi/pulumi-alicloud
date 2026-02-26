@@ -29,6 +29,7 @@ class Ipv4GatewayArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Ipv4Gateway resource.
+
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
         :param pulumi.Input[_builtins.bool] enabled: Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
@@ -168,6 +169,7 @@ class _Ipv4GatewayState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ipv4Gateway resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
         :param pulumi.Input[_builtins.bool] enabled: Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
@@ -408,6 +410,7 @@ class Ipv4Gateway(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
@@ -466,6 +469,7 @@ class Ipv4Gateway(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param Ipv4GatewayArgs args: The arguments to use to populate this resource's properties.

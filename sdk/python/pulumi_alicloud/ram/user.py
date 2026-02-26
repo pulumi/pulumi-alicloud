@@ -27,6 +27,7 @@ class UserArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] comments: Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
         :param pulumi.Input[_builtins.str] display_name: Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
         :param pulumi.Input[_builtins.str] email: Email of the RAM user.
@@ -131,6 +132,7 @@ class _UserState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.str] comments: Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
         :param pulumi.Input[_builtins.str] display_name: Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
         :param pulumi.Input[_builtins.str] email: Email of the RAM user.
@@ -277,6 +279,7 @@ class User(pulumi.CustomResource):
         $ pulumi import alicloud:ram/user:User example 123456789xxx
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comments: Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
@@ -331,6 +334,7 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ram/user:User example 123456789xxx
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

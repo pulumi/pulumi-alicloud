@@ -35,6 +35,7 @@ class TableArgs:
                  sse_role_arn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Table resource.
+
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[_builtins.int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
         :param pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
@@ -230,6 +231,7 @@ class _TableState:
                  time_to_live: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Table resources.
+
         :param pulumi.Input[_builtins.bool] allow_update: Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
         :param pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[_builtins.str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
@@ -509,6 +511,7 @@ class Table(pulumi.CustomResource):
         $ pulumi import alicloud:ots/table:Table table my-ots:ots_table
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_update: Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
@@ -606,6 +609,7 @@ class Table(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ots/table:Table table my-ots:ots_table
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TableArgs args: The arguments to use to populate this resource's properties.

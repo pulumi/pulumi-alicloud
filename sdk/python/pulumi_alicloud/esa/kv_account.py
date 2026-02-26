@@ -31,6 +31,7 @@ class _KvAccountState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KvAccount resources.
+
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         """
         if status is not None:
@@ -88,6 +89,7 @@ class KvAccount(pulumi.CustomResource):
         $ terraform import alicloud_esa_kv_account.example 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -128,6 +130,7 @@ class KvAccount(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_esa_kv_account.example 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KvAccountArgs args: The arguments to use to populate this resource's properties.

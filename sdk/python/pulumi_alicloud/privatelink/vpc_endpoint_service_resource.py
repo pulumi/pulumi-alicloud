@@ -26,6 +26,7 @@ class VpcEndpointServiceResourceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcEndpointServiceResource resource.
+
         :param pulumi.Input[_builtins.str] resource_id: The service resource ID.
         :param pulumi.Input[_builtins.str] resource_type: Service resource type, value:
         :param pulumi.Input[_builtins.str] service_id: The endpoint service ID.
@@ -112,6 +113,7 @@ class _VpcEndpointServiceResourceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointServiceResource resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.235.0) The ID of the region where the service resource is deployed.
         :param pulumi.Input[_builtins.str] resource_id: The service resource ID.
@@ -280,6 +282,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
         $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example <service_id>:<resource_id>:<zone_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -356,6 +359,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example <service_id>:<resource_id>:<zone_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcEndpointServiceResourceArgs args: The arguments to use to populate this resource's properties.

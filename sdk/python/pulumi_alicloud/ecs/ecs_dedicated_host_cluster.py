@@ -26,6 +26,7 @@ class EcsDedicatedHostClusterArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EcsDedicatedHostCluster resource.
+
         :param pulumi.Input[_builtins.str] zone_id: The ID of the zone in which to create the dedicated host cluster.
         :param pulumi.Input[_builtins.str] dedicated_host_cluster_name: The name of the dedicated host cluster. The name must be `2` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot contain `http://` or `https://`.
         :param pulumi.Input[_builtins.str] description: The description of the dedicated host cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
@@ -113,6 +114,7 @@ class _EcsDedicatedHostClusterState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsDedicatedHostCluster resources.
+
         :param pulumi.Input[_builtins.str] dedicated_host_cluster_name: The name of the dedicated host cluster. The name must be `2` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot contain `http://` or `https://`.
         :param pulumi.Input[_builtins.str] description: The description of the dedicated host cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
@@ -239,6 +241,7 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dedicated_host_cluster_name: The name of the dedicated host cluster. The name must be `2` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot contain `http://` or `https://`.
@@ -288,6 +291,7 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsDedicatedHostClusterArgs args: The arguments to use to populate this resource's properties.

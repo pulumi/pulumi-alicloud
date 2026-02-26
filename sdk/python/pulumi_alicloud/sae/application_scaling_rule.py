@@ -31,6 +31,7 @@ class ApplicationScalingRuleArgs:
                  scaling_rule_timer: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']] = None):
         """
         The set of arguments for constructing a ApplicationScalingRule resource.
+
         :param pulumi.Input[_builtins.str] app_id: Application ID.
         :param pulumi.Input[_builtins.str] scaling_rule_name: The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
         :param pulumi.Input[_builtins.str] scaling_rule_type: Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
@@ -164,6 +165,7 @@ class _ApplicationScalingRuleState:
                  scaling_rule_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationScalingRule resources.
+
         :param pulumi.Input[_builtins.str] app_id: Application ID.
         :param pulumi.Input[_builtins.int] min_ready_instance_ratio: The min ready instance ratio.
         :param pulumi.Input[_builtins.int] min_ready_instances: The min ready instances.
@@ -416,6 +418,7 @@ class ApplicationScalingRule(pulumi.CustomResource):
         $ pulumi import alicloud:sae/applicationScalingRule:ApplicationScalingRule example <app_id>:<scaling_rule_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: Application ID.
@@ -546,6 +549,7 @@ class ApplicationScalingRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sae/applicationScalingRule:ApplicationScalingRule example <app_id>:<scaling_rule_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationScalingRuleArgs args: The arguments to use to populate this resource's properties.

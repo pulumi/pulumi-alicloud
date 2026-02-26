@@ -25,6 +25,7 @@ class DbInstanceEndpointAddressArgs:
                  port: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DbInstanceEndpointAddress resource.
+
         :param pulumi.Input[_builtins.str] connection_string_prefix: The prefix of the public endpoint.
         :param pulumi.Input[_builtins.str] db_instance_endpoint_id: The Endpoint ID of the instance.
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
@@ -96,6 +97,7 @@ class _DbInstanceEndpointAddressState:
                  port: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbInstanceEndpointAddress resources.
+
         :param pulumi.Input[_builtins.str] connection_string: The endpoint of the instance.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The prefix of the public endpoint.
         :param pulumi.Input[_builtins.str] db_instance_endpoint_id: The Endpoint ID of the instance.
@@ -299,6 +301,7 @@ class DbInstanceEndpointAddress(pulumi.CustomResource):
         $ pulumi import alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress example <db_instance_id>:<db_instance_endpoint_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The prefix of the public endpoint.
@@ -395,6 +398,7 @@ class DbInstanceEndpointAddress(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress example <db_instance_id>:<db_instance_endpoint_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DbInstanceEndpointAddressArgs args: The arguments to use to populate this resource's properties.

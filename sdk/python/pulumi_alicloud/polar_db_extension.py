@@ -26,6 +26,7 @@ class PolarDbExtensionArgs:
                  installed_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PolarDbExtension resource.
+
         :param pulumi.Input[_builtins.str] account_name: The database account name of the associated PolarDB cluster. Only support `Super` account.
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of the cluster.
         :param pulumi.Input[_builtins.str] db_name: PolarDB cluster database name.
@@ -111,6 +112,7 @@ class _PolarDbExtensionState:
                  installed_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolarDbExtension resources.
+
         :param pulumi.Input[_builtins.str] account_name: The database account name of the associated PolarDB cluster. Only support `Super` account.
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of the cluster.
         :param pulumi.Input[_builtins.str] db_name: PolarDB cluster database name.
@@ -284,6 +286,7 @@ class PolarDbExtension(pulumi.CustomResource):
         $ pulumi import alicloud:index/polarDbExtension:PolarDbExtension example <db_cluster_id>:<account_name>:<db_name>:<extension_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: The database account name of the associated PolarDB cluster. Only support `Super` account.
@@ -365,6 +368,7 @@ class PolarDbExtension(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:index/polarDbExtension:PolarDbExtension example <db_cluster_id>:<account_name>:<db_name>:<extension_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolarDbExtensionArgs args: The arguments to use to populate this resource's properties.

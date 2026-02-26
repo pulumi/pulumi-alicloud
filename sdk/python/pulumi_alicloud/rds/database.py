@@ -26,6 +26,7 @@ class DatabaseArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         :param pulumi.Input[_builtins.str] character_set: Character set. The value range is limited to the following:
                - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
@@ -150,6 +151,7 @@ class _DatabaseState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
+
         :param pulumi.Input[_builtins.str] character_set: Character set. The value range is limited to the following:
                - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
                - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -354,6 +356,7 @@ class Database(pulumi.CustomResource):
         $ pulumi import alicloud:rds/database:Database example <instance_id>:<data_base_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] character_set: Character set. The value range is limited to the following:
@@ -446,6 +449,7 @@ class Database(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/database:Database example <instance_id>:<data_base_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.

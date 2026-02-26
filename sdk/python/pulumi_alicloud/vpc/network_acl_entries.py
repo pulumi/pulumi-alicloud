@@ -26,6 +26,7 @@ class NetworkAclEntriesArgs:
                  ingresses: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]]] = None):
         """
         The set of arguments for constructing a NetworkAclEntries resource.
+
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
@@ -81,6 +82,7 @@ class _NetworkAclEntriesState:
                  network_acl_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkAclEntries resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
@@ -202,6 +204,7 @@ class NetworkAclEntries(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
@@ -276,6 +279,7 @@ class NetworkAclEntries(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param NetworkAclEntriesArgs args: The arguments to use to populate this resource's properties.

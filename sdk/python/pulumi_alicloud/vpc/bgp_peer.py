@@ -26,6 +26,7 @@ class BgpPeerArgs:
                  peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BgpPeer resource.
+
         :param pulumi.Input[_builtins.str] bgp_group_id: The ID of the BGP group.
         :param pulumi.Input[_builtins.int] bfd_multi_hop: The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
         :param pulumi.Input[_builtins.bool] enable_bfd: Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
@@ -115,6 +116,7 @@ class _BgpPeerState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpPeer resources.
+
         :param pulumi.Input[_builtins.int] bfd_multi_hop: The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
         :param pulumi.Input[_builtins.str] bgp_group_id: The ID of the BGP group.
         :param pulumi.Input[_builtins.str] bgp_peer_name: The name of the BGP neighbor.
@@ -294,6 +296,7 @@ class BgpPeer(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bfd_multi_hop: The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
@@ -366,6 +369,7 @@ class BgpPeer(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BgpPeerArgs args: The arguments to use to populate this resource's properties.

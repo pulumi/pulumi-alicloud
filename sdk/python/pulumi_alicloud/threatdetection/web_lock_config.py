@@ -30,6 +30,7 @@ class WebLockConfigArgs:
                  inclusive_file_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WebLockConfig resource.
+
         :param pulumi.Input[_builtins.str] defence_mode: Protection mode. Value:-**block**: Intercept-**audit**: Alarm
         :param pulumi.Input[_builtins.str] dir: Specify the protection directory.
         :param pulumi.Input[_builtins.str] local_backup_dir: The local backup path is used to protect the safe backup of the Directory.
@@ -177,6 +178,7 @@ class _WebLockConfigState:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebLockConfig resources.
+
         :param pulumi.Input[_builtins.str] defence_mode: Protection mode. Value:-**block**: Intercept-**audit**: Alarm
         :param pulumi.Input[_builtins.str] dir: Specify the protection directory.
         :param pulumi.Input[_builtins.str] exclusive_dir: Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
@@ -366,6 +368,7 @@ class WebLockConfig(pulumi.CustomResource):
         $terraform import alicloud_threat_detection_web_lock_config.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] defence_mode: Protection mode. Value:-**block**: Intercept-**audit**: Alarm
@@ -418,6 +421,7 @@ class WebLockConfig(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_threat_detection_web_lock_config.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WebLockConfigArgs args: The arguments to use to populate this resource's properties.

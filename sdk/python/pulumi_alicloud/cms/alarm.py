@@ -43,6 +43,7 @@ class AlarmArgs:
                  webhook: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Alarm resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
         :param pulumi.Input[_builtins.str] metric: The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[_builtins.str] project: The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
@@ -383,6 +384,7 @@ class _AlarmState:
                  webhook: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Alarm resources.
+
         :param pulumi.Input['AlarmCompositeExpressionArgs'] composite_expression: The trigger conditions for multiple metrics. See `composite_expression` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
@@ -818,6 +820,7 @@ class Alarm(pulumi.CustomResource):
         $ pulumi import alicloud:cms/alarm:Alarm example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']] composite_expression: The trigger conditions for multiple metrics. See `composite_expression` below.
@@ -923,6 +926,7 @@ class Alarm(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/alarm:Alarm example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlarmArgs args: The arguments to use to populate this resource's properties.

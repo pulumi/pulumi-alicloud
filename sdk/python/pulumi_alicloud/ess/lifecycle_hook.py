@@ -28,6 +28,7 @@ class LifecycleHookArgs:
                  notification_metadata: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LifecycleHook resource.
+
         :param pulumi.Input[_builtins.str] lifecycle_transition: Type of Scaling activity attached to lifecycle hook. Supported value: SCALE_OUT, SCALE_IN.
         :param pulumi.Input[_builtins.str] scaling_group_id: The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
         :param pulumi.Input[_builtins.str] default_result: Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
@@ -146,6 +147,7 @@ class _LifecycleHookState:
                  scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LifecycleHook resources.
+
         :param pulumi.Input[_builtins.str] default_result: Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
         :param pulumi.Input[_builtins.int] heartbeat_timeout: Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
         :param pulumi.Input[_builtins.str] lifecycle_transition: Type of Scaling activity attached to lifecycle hook. Supported value: SCALE_OUT, SCALE_IN.
@@ -342,6 +344,7 @@ class LifecycleHook(pulumi.CustomResource):
         $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_result: Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
@@ -431,6 +434,7 @@ class LifecycleHook(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LifecycleHookArgs args: The arguments to use to populate this resource's properties.

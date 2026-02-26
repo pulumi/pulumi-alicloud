@@ -28,6 +28,7 @@ class RouteTableArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RouteTable resource.
+
         :param pulumi.Input[_builtins.str] vpc_id: The ID of VPC.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -162,6 +163,7 @@ class _RouteTableState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouteTable resources.
+
         :param pulumi.Input[_builtins.str] associate_type: The type of cloud resource that is bound to the routing table. Value:
                - `VSwitch`: switch.
                - `Gateway`:IPv4 Gateway.
@@ -380,6 +382,7 @@ class RouteTable(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/routeTable:RouteTable example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] associate_type: The type of cloud resource that is bound to the routing table. Value:
@@ -438,6 +441,7 @@ class RouteTable(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/routeTable:RouteTable example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouteTableArgs args: The arguments to use to populate this resource's properties.

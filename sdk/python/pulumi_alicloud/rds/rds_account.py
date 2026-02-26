@@ -36,6 +36,7 @@ class RdsAccountArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RdsAccount resource.
+
         :param pulumi.Input[_builtins.str] account_description: The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
                
                > **NOTE:** The name cannot start with http:// or https://.
@@ -352,6 +353,7 @@ class _RdsAccountState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RdsAccount resources.
+
         :param pulumi.Input[_builtins.str] account_description: The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
                
                > **NOTE:** The name cannot start with http:// or https://.
@@ -735,6 +737,7 @@ class RdsAccount(pulumi.CustomResource):
         $ pulumi import alicloud:rds/rdsAccount:RdsAccount example <db_instance_id>:<account_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_description: The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
@@ -847,6 +850,7 @@ class RdsAccount(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/rdsAccount:RdsAccount example <db_instance_id>:<account_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RdsAccountArgs args: The arguments to use to populate this resource's properties.

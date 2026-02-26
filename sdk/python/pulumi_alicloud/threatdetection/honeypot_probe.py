@@ -34,6 +34,7 @@ class HoneypotProbeArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HoneypotProbe resource.
+
         :param pulumi.Input[_builtins.str] control_node_id: The ID of the management node.
         :param pulumi.Input[_builtins.str] display_name: Probe display name.
         :param pulumi.Input[_builtins.str] probe_type: Probe type, support `host_probe` and `vpc_black_hole_probe`.
@@ -217,6 +218,7 @@ class _HoneypotProbeState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HoneypotProbe resources.
+
         :param pulumi.Input[_builtins.bool] arp: ARP spoofing detection.**true**: Enable **false**: Disabled
         :param pulumi.Input[_builtins.str] control_node_id: The ID of the management node.
         :param pulumi.Input[_builtins.str] display_name: Probe display name.
@@ -474,6 +476,7 @@ class HoneypotProbe(pulumi.CustomResource):
         $terraform import alicloud_threat_detection_honeypot_probe.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] arp: ARP spoofing detection.**true**: Enable **false**: Disabled
@@ -534,6 +537,7 @@ class HoneypotProbe(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_threat_detection_honeypot_probe.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HoneypotProbeArgs args: The arguments to use to populate this resource's properties.

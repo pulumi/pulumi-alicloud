@@ -84,6 +84,7 @@ class RdsCloneDbInstanceArgs:
                  zone_id_slave_b: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RdsCloneDbInstance resource.
+
         :param pulumi.Input[_builtins.str] db_instance_storage_type: The type of storage media that is used for the new instance. Valid values:
                * **local_ssd**: local SSDs
                * **cloud_ssd**: standard SSDs
@@ -1206,6 +1207,7 @@ class _RdsCloneDbInstanceState:
                  zone_id_slave_b: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RdsCloneDbInstance resources.
+
         :param pulumi.Input[_builtins.str] acl: This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
         :param pulumi.Input[_builtins.str] auto_upgrade_minor_version: How to upgrade the minor version of the instance. Valid values:
                * **Auto**: automatically upgrade the minor version.
@@ -2410,6 +2412,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         $ pulumi import alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
@@ -2612,6 +2615,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RdsCloneDbInstanceArgs args: The arguments to use to populate this resource's properties.

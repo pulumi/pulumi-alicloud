@@ -43,6 +43,7 @@ class NetworkInterfaceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a NetworkInterface resource.
+
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitch to create the ENI in.
         :param pulumi.Input[_builtins.str] description: Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[_builtins.str] name: Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -372,6 +373,7 @@ class _NetworkInterfaceState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkInterface resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[_builtins.str] mac: (Available in 1.54.0+) The MAC address of an ENI.
         :param pulumi.Input[_builtins.str] name: Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -777,6 +779,7 @@ class NetworkInterface(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -843,6 +846,7 @@ class NetworkInterface(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkInterfaceArgs args: The arguments to use to populate this resource's properties.

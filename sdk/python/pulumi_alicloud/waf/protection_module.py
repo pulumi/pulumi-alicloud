@@ -26,6 +26,7 @@ class ProtectionModuleArgs:
                  status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProtectionModule resource.
+
         :param pulumi.Input[_builtins.str] defense_type: The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
         :param pulumi.Input[_builtins.str] domain: The domain name that is added to WAF.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the WAF instance.
@@ -120,6 +121,7 @@ class _ProtectionModuleState:
                  status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProtectionModule resources.
+
         :param pulumi.Input[_builtins.str] defense_type: The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
         :param pulumi.Input[_builtins.str] domain: The domain name that is added to WAF.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the WAF instance.
@@ -270,6 +272,7 @@ class ProtectionModule(pulumi.CustomResource):
         $ pulumi import alicloud:waf/protectionModule:ProtectionModule example <instance_id>:<domain>:<defense_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] defense_type: The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
@@ -338,6 +341,7 @@ class ProtectionModule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:waf/protectionModule:ProtectionModule example <instance_id>:<domain>:<defense_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProtectionModuleArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class IndustrialPidOrganizationArgs:
                  parent_pid_organization_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IndustrialPidOrganization resource.
+
         :param pulumi.Input[_builtins.str] pid_organization_name: The name of pid organization.
         :param pulumi.Input[_builtins.str] parent_pid_organization_id: The ID of parent pid organization.
         """
@@ -62,6 +63,7 @@ class _IndustrialPidOrganizationState:
                  pid_organization_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IndustrialPidOrganization resources.
+
         :param pulumi.Input[_builtins.str] parent_pid_organization_id: The ID of parent pid organization.
         :param pulumi.Input[_builtins.str] pid_organization_name: The name of pid organization.
         """
@@ -132,6 +134,7 @@ class IndustrialPidOrganization(pulumi.CustomResource):
         $ pulumi import alicloud:brain/industrialPidOrganization:IndustrialPidOrganization example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] parent_pid_organization_id: The ID of parent pid organization.
@@ -170,6 +173,7 @@ class IndustrialPidOrganization(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:brain/industrialPidOrganization:IndustrialPidOrganization example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IndustrialPidOrganizationArgs args: The arguments to use to populate this resource's properties.

@@ -47,6 +47,7 @@ class DbClusterArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbCluster resource.
+
         :param pulumi.Input[_builtins.str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
         :param pulumi.Input[_builtins.str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
@@ -440,6 +441,7 @@ class _DbClusterState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbCluster resources.
+
         :param pulumi.Input[_builtins.bool] allocate_public_connection: Whether to enable public connection. Value options: `true`, `false`.
         :param pulumi.Input[_builtins.str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
         :param pulumi.Input[_builtins.str] cold_storage: Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
@@ -941,6 +943,7 @@ class DbCluster(pulumi.CustomResource):
         $ pulumi import alicloud:clickhouse/dbCluster:DbCluster example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allocate_public_connection: Whether to enable public connection. Value options: `true`, `false`.
@@ -1032,6 +1035,7 @@ class DbCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:clickhouse/dbCluster:DbCluster example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DbClusterArgs args: The arguments to use to populate this resource's properties.

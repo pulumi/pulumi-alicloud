@@ -42,6 +42,7 @@ class LoadBalancerArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
+
         :param pulumi.Input[_builtins.str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
         :param pulumi.Input[_builtins.str] address_ip_version: The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to "ipv4". Now, only internet instance support ipv6 address.
         :param pulumi.Input[_builtins.str] address_type: The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
@@ -426,6 +427,7 @@ class _LoadBalancerState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
+
         :param pulumi.Input[_builtins.str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
         :param pulumi.Input[_builtins.str] address_ip_version: The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to "ipv4". Now, only internet instance support ipv6 address.
         :param pulumi.Input[_builtins.str] address_type: The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
@@ -876,6 +878,7 @@ class LoadBalancer(pulumi.CustomResource):
         $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
@@ -980,6 +983,7 @@ class LoadBalancer(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerArgs args: The arguments to use to populate this resource's properties.

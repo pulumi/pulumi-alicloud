@@ -40,6 +40,7 @@ class AdConnectorOfficeSiteArgs:
                  verify_code: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AdConnectorOfficeSite resource.
+
         :param pulumi.Input[_builtins.str] ad_connector_office_site_name: The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
@@ -354,6 +355,7 @@ class _AdConnectorOfficeSiteState:
                  verify_code: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AdConnectorOfficeSite resources.
+
         :param pulumi.Input[_builtins.str] ad_connector_office_site_name: The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] ad_hostname: The ad hostname.
         :param pulumi.Input[_builtins.int] bandwidth: The maximum public bandwidth value. Valid values: 0 to 200. If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
@@ -738,6 +740,7 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
         $ pulumi import alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ad_connector_office_site_name: The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
@@ -817,6 +820,7 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AdConnectorOfficeSiteArgs args: The arguments to use to populate this resource's properties.

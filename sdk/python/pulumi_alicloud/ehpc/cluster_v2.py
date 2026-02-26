@@ -36,6 +36,7 @@ class ClusterV2Args:
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClusterV2 resource.
+
         :param pulumi.Input['ClusterV2ClusterCredentialsArgs'] cluster_credentials: Security credentials for the cluster. See `cluster_credentials` below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]] shared_storages: List of cluster shared storage configurations. See `shared_storages` below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2AddonArgs']]] addons: The cluster custom service component configuration. Only one component is supported. See `addons` below.
@@ -275,6 +276,7 @@ class _ClusterV2State:
                  shared_storages: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]]] = None):
         """
         Input properties used for looking up and filtering ClusterV2 resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2AddonArgs']]] addons: The cluster custom service component configuration. Only one component is supported. See `addons` below.
         :param pulumi.Input[_builtins.str] client_version: Specifies whether to enable auto scale-out for the cluster. Valid values:
                
@@ -668,6 +670,7 @@ class ClusterV2(pulumi.CustomResource):
         $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example <cluster_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]] addons: The cluster custom service component configuration. Only one component is supported. See `addons` below.
@@ -837,6 +840,7 @@ class ClusterV2(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example <cluster_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterV2Args args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class UserAlarmConfigArgs:
                  use_default_contact: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserAlarmConfig resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['UserAlarmConfigAlarmConfigArgs']]] alarm_configs: The alarm configuration. More details see `alarm_config` below.
         :param pulumi.Input[_builtins.str] alarm_lang: The alarm language. Possible values are `zh`, `en`.
         :param pulumi.Input[Sequence[pulumi.Input['UserAlarmConfigContactConfigArgs']]] contact_configs: Conflict with `notify_config`. The contact configuration. More details see `contact_config` below.
@@ -140,6 +141,7 @@ class _UserAlarmConfigState:
                  use_default_contact: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserAlarmConfig resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['UserAlarmConfigAlarmConfigArgs']]] alarm_configs: The alarm configuration. More details see `alarm_config` below.
         :param pulumi.Input[_builtins.str] alarm_lang: The alarm language. Possible values are `zh`, `en`.
         :param pulumi.Input[Sequence[pulumi.Input['UserAlarmConfigContactConfigArgs']]] contact_configs: Conflict with `notify_config`. The contact configuration. More details see `contact_config` below.
@@ -303,6 +305,7 @@ class UserAlarmConfig(pulumi.CustomResource):
         $ terraform import alicloud_cloud_firewall_user_alarm_config.example <Alibaba Cloud Account ID>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict']]]] alarm_configs: The alarm configuration. More details see `alarm_config` below.
@@ -370,6 +373,7 @@ class UserAlarmConfig(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_cloud_firewall_user_alarm_config.example <Alibaba Cloud Account ID>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserAlarmConfigArgs args: The arguments to use to populate this resource's properties.

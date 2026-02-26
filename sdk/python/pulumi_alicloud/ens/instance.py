@@ -62,6 +62,7 @@ class InstanceArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] instance_type: The specification of the instance. Example value: ens.sn1.small
         :param pulumi.Input[_builtins.str] payment_type: Instance payment method. Since v1.230.0, you can modify payment_type. Optional values:
                - Subscription: prepaid, annual and monthly
@@ -769,6 +770,7 @@ class _InstanceState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.int] amount: The number of instances created, with a minimum of 1 and a maximum of 100
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the pay-as-you-go instance. According to the [ISO 8601] standard, UTC +0 time is used. The format is: 'yyyy-MM-ddTHH:mm:ssZ '.
                - If the second ('ss') value is not '00', it is automatically taken as the start of the current minute ('mm').
@@ -1555,6 +1557,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:ens/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] amount: The number of instances created, with a minimum of 1 and a maximum of 100
@@ -1715,6 +1718,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

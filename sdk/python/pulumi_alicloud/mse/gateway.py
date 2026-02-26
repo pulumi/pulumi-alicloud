@@ -33,6 +33,7 @@ class GatewayArgs:
                  slb_spec: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
+
         :param pulumi.Input[_builtins.int] replica: Number of Gateway Nodes.
         :param pulumi.Input[_builtins.str] spec: Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc.
@@ -199,6 +200,7 @@ class _GatewayState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
+
         :param pulumi.Input[_builtins.str] backup_vswitch_id: The backup vswitch id.
         :param pulumi.Input[_builtins.bool] delete_slb: Whether to delete the SLB purchased on behalf of the gateway at the same time.
         :param pulumi.Input[_builtins.bool] enterprise_security_group: Whether the enterprise security group type.
@@ -447,6 +449,7 @@ class Gateway(pulumi.CustomResource):
         $ pulumi import alicloud:mse/gateway:Gateway example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_vswitch_id: The backup vswitch id.
@@ -513,6 +516,7 @@ class Gateway(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mse/gateway:Gateway example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayArgs args: The arguments to use to populate this resource's properties.

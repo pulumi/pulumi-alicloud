@@ -23,6 +23,7 @@ class UserGroupAttachmentArgs:
                  user_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a UserGroupAttachment resource.
+
         :param pulumi.Input[_builtins.str] group_name: The name of group.
         :param pulumi.Input[_builtins.str] user_name: The name of user.
         """
@@ -61,6 +62,7 @@ class _UserGroupAttachmentState:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserGroupAttachment resources.
+
         :param pulumi.Input[_builtins.str] group_name: The name of group.
         :param pulumi.Input[_builtins.str] user_name: The name of user.
         """
@@ -145,6 +147,7 @@ class UserGroupAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ram/userGroupAttachment:UserGroupAttachment example <group_name>:<user_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_name: The name of group.
@@ -197,6 +200,7 @@ class UserGroupAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ram/userGroupAttachment:UserGroupAttachment example <group_name>:<user_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserGroupAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class PublicIpAddressPoolArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PublicIpAddressPool resource.
+
         :param pulumi.Input[_builtins.str] biz_type: The name of the VPC Public IP address pool.
         :param pulumi.Input[_builtins.str] description: Description.
         :param pulumi.Input[_builtins.str] isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
@@ -158,6 +159,7 @@ class _PublicIpAddressPoolState:
                  used_ip_num: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering PublicIpAddressPool resources.
+
         :param pulumi.Input[_builtins.str] biz_type: The name of the VPC Public IP address pool.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] description: Description.
@@ -411,6 +413,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] biz_type: The name of the VPC Public IP address pool.
@@ -465,6 +468,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PublicIpAddressPoolArgs args: The arguments to use to populate this resource's properties.

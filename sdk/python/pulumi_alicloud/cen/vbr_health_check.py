@@ -29,6 +29,7 @@ class VbrHealthCheckArgs:
                  vbr_instance_owner_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a VbrHealthCheck resource.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] health_check_target_ip: The destination IP address of health checks.
         :param pulumi.Input[_builtins.str] vbr_instance_id: The ID of the VBR.
@@ -165,6 +166,7 @@ class _VbrHealthCheckState:
                  vbr_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VbrHealthCheck resources.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.int] health_check_interval: Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
         :param pulumi.Input[_builtins.str] health_check_source_ip: The source IP address of health checks.
@@ -371,6 +373,7 @@ class VbrHealthCheck(pulumi.CustomResource):
         $ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
@@ -453,6 +456,7 @@ class VbrHealthCheck(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VbrHealthCheckArgs args: The arguments to use to populate this resource's properties.

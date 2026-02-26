@@ -26,6 +26,7 @@ class ExpressSyncArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExpressSync resource.
+
         :param pulumi.Input[_builtins.str] bucket_name: The name of the OSS Bucket.
         :param pulumi.Input[_builtins.str] bucket_region: The region of the OSS Bucket.
         :param pulumi.Input[_builtins.str] express_sync_name: The name of the ExpressSync. The length of the name is limited to `1` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, English periods (.), underscores (_), or hyphens (-), and must start with  letters.
@@ -111,6 +112,7 @@ class _ExpressSyncState:
                  express_sync_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExpressSync resources.
+
         :param pulumi.Input[_builtins.str] bucket_name: The name of the OSS Bucket.
         :param pulumi.Input[_builtins.str] bucket_prefix: The prefix of the OSS Bucket.
         :param pulumi.Input[_builtins.str] bucket_region: The region of the OSS Bucket.
@@ -295,6 +297,7 @@ class ExpressSync(pulumi.CustomResource):
         $ pulumi import alicloud:cloudstoragegateway/expressSync:ExpressSync example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_name: The name of the OSS Bucket.
@@ -402,6 +405,7 @@ class ExpressSync(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudstoragegateway/expressSync:ExpressSync example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ExpressSyncArgs args: The arguments to use to populate this resource's properties.

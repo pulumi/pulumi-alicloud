@@ -41,6 +41,7 @@ class ClusterArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[_builtins.str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
                - Professional Edition
                - `MSE_SC_1_2_60_c`: 1C2G
@@ -402,6 +403,7 @@ class _ClusterState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         :param pulumi.Input[_builtins.str] app_version: (Available since v1.205.0) The application version.
         :param pulumi.Input[_builtins.str] cluster_alias_name: The alias of MSE Cluster.
@@ -865,6 +867,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import alicloud:mse/cluster:Cluster example mse-cn-0d9xxxx
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
@@ -963,6 +966,7 @@ class Cluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mse/cluster:Cluster example mse-cn-0d9xxxx
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

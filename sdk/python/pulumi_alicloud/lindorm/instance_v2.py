@@ -44,6 +44,7 @@ class InstanceV2Args:
                  white_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]] = None):
         """
         The set of arguments for constructing a InstanceV2 resource.
+
         :param pulumi.Input[_builtins.str] arch_version: Deployment Scenario
                
                Enumeration value:
@@ -440,6 +441,7 @@ class _InstanceV2State:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceV2 resources.
+
         :param pulumi.Input[_builtins.str] arbiter_vswitch_id: Coordination Zone VswitchId
         :param pulumi.Input[_builtins.str] arbiter_zone_id: Coordination Zone ZoneId
         :param pulumi.Input[_builtins.str] arch_version: Deployment Scenario
@@ -929,6 +931,7 @@ class InstanceV2(pulumi.CustomResource):
         $ pulumi import alicloud:lindorm/instanceV2:InstanceV2 example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] arbiter_vswitch_id: Coordination Zone VswitchId
@@ -1057,6 +1060,7 @@ class InstanceV2(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:lindorm/instanceV2:InstanceV2 example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceV2Args args: The arguments to use to populate this resource's properties.

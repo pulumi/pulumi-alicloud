@@ -25,6 +25,7 @@ class ResourceArgs:
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Resource resource.
+
         :param pulumi.Input[_builtins.str] product: The product Code represents the product to be operated. Currently supported products and resources can be queried at the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
         :param pulumi.Input[_builtins.str] resource_code: Resource Code, if there is a parent resource, split with `::`, such as VPC::VSwitch. The supported resource Code can be obtained from the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
         :param pulumi.Input[_builtins.str] desire_attributes: Resource attributes specified when a user creates or updates a resource.
@@ -96,6 +97,7 @@ class _ResourceState:
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Resource resources.
+
         :param pulumi.Input[_builtins.str] desire_attributes: Resource attributes specified when a user creates or updates a resource.
         :param pulumi.Input[_builtins.str] product: The product Code represents the product to be operated. Currently supported products and resources can be queried at the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
         :param pulumi.Input[_builtins.str] resource_attributes: The collection of properties for the resource.
@@ -232,6 +234,7 @@ class Resource(pulumi.CustomResource):
         $ pulumi import alicloud:cloudcontrol/resource:Resource example <provider>:<product>:<resource_code>:<resource_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] desire_attributes: Resource attributes specified when a user creates or updates a resource.
@@ -291,6 +294,7 @@ class Resource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudcontrol/resource:Resource example <provider>:<product>:<resource_code>:<resource_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceArgs args: The arguments to use to populate this resource's properties.

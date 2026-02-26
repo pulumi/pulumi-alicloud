@@ -30,6 +30,7 @@ class HttpResponseHeaderModificationRuleArgs:
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HttpResponseHeaderModificationRule resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs']]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
         :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -153,6 +154,7 @@ class _HttpResponseHeaderModificationRuleState:
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HttpResponseHeaderModificationRule resources.
+
         :param pulumi.Input[_builtins.int] config_id: Config Id
         :param pulumi.Input[Sequence[pulumi.Input['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs']]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -364,6 +366,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
         $ pulumi import alicloud:esa/httpResponseHeaderModificationRule:HttpResponseHeaderModificationRule example <site_id>:<config_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict']]]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
@@ -451,6 +454,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/httpResponseHeaderModificationRule:HttpResponseHeaderModificationRule example <site_id>:<config_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HttpResponseHeaderModificationRuleArgs args: The arguments to use to populate this resource's properties.

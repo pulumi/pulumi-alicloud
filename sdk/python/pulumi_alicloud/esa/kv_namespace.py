@@ -23,6 +23,7 @@ class KvNamespaceArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KvNamespace resource.
+
         :param pulumi.Input[_builtins.str] kv_namespace: The name of the namespace.
         :param pulumi.Input[_builtins.str] description: The description of the namespace.
         """
@@ -63,6 +64,7 @@ class _KvNamespaceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KvNamespace resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the namespace.
         :param pulumi.Input[_builtins.str] kv_namespace: The name of the namespace.
         :param pulumi.Input[_builtins.str] status: The status of the namespace.
@@ -150,6 +152,7 @@ class KvNamespace(pulumi.CustomResource):
         $ pulumi import alicloud:esa/kvNamespace:KvNamespace example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the namespace.
@@ -190,6 +193,7 @@ class KvNamespace(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/kvNamespace:KvNamespace example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KvNamespaceArgs args: The arguments to use to populate this resource's properties.

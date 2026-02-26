@@ -48,6 +48,7 @@ class OssExportArgs:
                  suffix: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OssExport resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the oss bucket.
         :param pulumi.Input[_builtins.int] buffer_interval: How often is it delivered every interval.
         :param pulumi.Input[_builtins.int] buffer_size: Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
@@ -449,6 +450,7 @@ class _OssExportState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OssExport resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the oss bucket.
         :param pulumi.Input[_builtins.int] buffer_interval: How often is it delivered every interval.
         :param pulumi.Input[_builtins.int] buffer_size: Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
@@ -925,6 +927,7 @@ class OssExport(pulumi.CustomResource):
         $ pulumi import alicloud:log/ossExport:OssExport example tf-log-project:tf-log-logstore:tf-log-export
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the oss bucket.
@@ -1023,6 +1026,7 @@ class OssExport(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/ossExport:OssExport example tf-log-project:tf-log-logstore:tf-log-export
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OssExportArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class InstanceAttachmentArgs:
                  instance_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a InstanceAttachment resource.
+
         :param pulumi.Input[_builtins.str] ecs_id: The ID of the ECS instance.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Database File System.
         """
@@ -62,6 +63,7 @@ class _InstanceAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceAttachment resources.
+
         :param pulumi.Input[_builtins.str] ecs_id: The ID of the ECS instance.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Database File System.
         :param pulumi.Input[_builtins.str] status: The status of Instance Attachment.
@@ -177,6 +179,7 @@ class InstanceAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example <instance_id>:<ecs_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ecs_id: The ID of the ECS instance.
@@ -245,6 +248,7 @@ class InstanceAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example <instance_id>:<ecs_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceAttachmentArgs args: The arguments to use to populate this resource's properties.

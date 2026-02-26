@@ -29,6 +29,7 @@ class PeerConnectionAccepterArgs:
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PeerConnectionAccepter resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the VPC peering connection whose name or description you want to modify.
         :param pulumi.Input[_builtins.int] bandwidth: The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
         :param pulumi.Input[_builtins.str] description: The new description of the VPC peering connection.
@@ -179,6 +180,7 @@ class _PeerConnectionAccepterState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PeerConnectionAccepter resources.
+
         :param pulumi.Input[_builtins.int] accepting_owner_uid: The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.-to-peer connection to the VPC account.-account VPC peer-to-peer connection.
         :param pulumi.Input[_builtins.str] accepting_region_id: The region ID of the recipient of the VPC peering connection to be created.-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
         :param pulumi.Input[_builtins.str] accepting_vpc_id: The VPC ID of the receiving end of the VPC peer connection.
@@ -484,6 +486,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bandwidth: The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
@@ -558,6 +561,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PeerConnectionAccepterArgs args: The arguments to use to populate this resource's properties.

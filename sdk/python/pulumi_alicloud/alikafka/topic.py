@@ -29,6 +29,7 @@ class TopicArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Topic resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] remark: The description of the topic.
         :param pulumi.Input[_builtins.str] topic: The topic name.
@@ -173,6 +174,7 @@ class _TopicState:
                  topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
+
         :param pulumi.Input[_builtins.bool] compact_topic: The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
                - false: The delete cleanup policy is used.
                - true: The compact cleanup policy is used.
@@ -440,6 +442,7 @@ class Topic(pulumi.CustomResource):
         $ pulumi import alicloud:alikafka/topic:Topic example <instance_id>:<topic>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] compact_topic: The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
@@ -536,6 +539,7 @@ class Topic(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alikafka/topic:Topic example <instance_id>:<topic>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TopicArgs args: The arguments to use to populate this resource's properties.

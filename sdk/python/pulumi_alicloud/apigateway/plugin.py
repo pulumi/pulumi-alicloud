@@ -26,6 +26,7 @@ class PluginArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Plugin resource.
+
         :param pulumi.Input[_builtins.str] plugin_data: The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
         :param pulumi.Input[_builtins.str] plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
         :param pulumi.Input[_builtins.str] plugin_type: The type of the plug-in. Valid values:
@@ -140,6 +141,7 @@ class _PluginState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Plugin resources.
+
         :param pulumi.Input[_builtins.str] create_time: Create time.
         :param pulumi.Input[_builtins.str] description: The description of the plug-in, which cannot exceed 200 characters.
         :param pulumi.Input[_builtins.str] plugin_data: The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
@@ -343,6 +345,7 @@ class Plugin(pulumi.CustomResource):
         $ pulumi import alicloud:apigateway/plugin:Plugin example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the plug-in, which cannot exceed 200 characters.
@@ -440,6 +443,7 @@ class Plugin(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:apigateway/plugin:Plugin example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PluginArgs args: The arguments to use to populate this resource's properties.

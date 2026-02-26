@@ -73,6 +73,7 @@ class ShardingInstanceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ShardingInstance resource.
+
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]] mongo_lists: The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]] shard_lists: The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
@@ -908,6 +909,7 @@ class _ShardingInstanceState:
                  zone_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceZoneInfoArgs']]]] = None):
         """
         Input properties used for looking up and filtering ShardingInstance resources.
+
         :param pulumi.Input[_builtins.str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`.
@@ -1878,6 +1880,7 @@ class ShardingInstance(pulumi.CustomResource):
         $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
@@ -2023,6 +2026,7 @@ class ShardingInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ShardingInstanceArgs args: The arguments to use to populate this resource's properties.

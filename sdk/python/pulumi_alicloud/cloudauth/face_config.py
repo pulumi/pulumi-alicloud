@@ -23,6 +23,7 @@ class FaceConfigArgs:
                  biz_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a FaceConfig resource.
+
         :param pulumi.Input[_builtins.str] biz_name: Scene name.
         :param pulumi.Input[_builtins.str] biz_type: Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
         """
@@ -62,6 +63,7 @@ class _FaceConfigState:
                  gmt_modified: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FaceConfig resources.
+
         :param pulumi.Input[_builtins.str] biz_name: Scene name.
         :param pulumi.Input[_builtins.str] biz_type: Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
         :param pulumi.Input[_builtins.str] gmt_modified: Last Modified Date.
@@ -162,6 +164,7 @@ class FaceConfig(pulumi.CustomResource):
         $ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example <lang>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] biz_name: Scene name.
@@ -215,6 +218,7 @@ class FaceConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example <lang>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FaceConfigArgs args: The arguments to use to populate this resource's properties.

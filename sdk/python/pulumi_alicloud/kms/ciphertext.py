@@ -24,6 +24,7 @@ class CiphertextArgs:
                  encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Ciphertext resource.
+
         :param pulumi.Input[_builtins.str] key_id: The globally unique ID of the CMK.
         :param pulumi.Input[_builtins.str] plaintext: The plaintext to be encrypted which must be encoded in Base64.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] encryption_context: The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
@@ -79,6 +80,7 @@ class _CiphertextState:
                  plaintext: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ciphertext resources.
+
         :param pulumi.Input[_builtins.str] ciphertext_blob: The ciphertext of the data key encrypted with the primary CMK version.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] encryption_context: The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         :param pulumi.Input[_builtins.str] key_id: The globally unique ID of the CMK.
@@ -176,6 +178,7 @@ class Ciphertext(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] encryption_context: The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
@@ -211,6 +214,7 @@ class Ciphertext(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param CiphertextArgs args: The arguments to use to populate this resource's properties.

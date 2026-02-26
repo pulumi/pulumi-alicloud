@@ -28,6 +28,7 @@ class ServerGroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
+
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the Server Load Balancer (SLB) instance.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
         :param pulumi.Input[_builtins.str] name: The name of the vServer group. Default value: `tf-server-group`.
@@ -121,6 +122,7 @@ class _ServerGroupState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ServerGroup resources.
+
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the Server Load Balancer (SLB) instance.
         :param pulumi.Input[_builtins.str] name: The name of the vServer group. Default value: `tf-server-group`.
@@ -274,6 +276,7 @@ class ServerGroup(pulumi.CustomResource):
         $ pulumi import alicloud:slb/serverGroup:ServerGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
@@ -345,6 +348,7 @@ class ServerGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/serverGroup:ServerGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServerGroupArgs args: The arguments to use to populate this resource's properties.

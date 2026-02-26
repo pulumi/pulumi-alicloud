@@ -33,6 +33,7 @@ class DirectoryArgs:
                  user_provisioning_configuration: Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']] = None):
         """
         The set of arguments for constructing a Directory resource.
+
         :param pulumi.Input[_builtins.str] directory_global_access_status: Directory Global Acceleration activation status
         :param pulumi.Input[_builtins.str] directory_name: DirectoryName
         :param pulumi.Input['DirectoryLoginPreferenceArgs'] login_preference: Login preferences See `login_preference` below.
@@ -202,6 +203,7 @@ class _DirectoryState:
                  user_provisioning_configuration: Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']] = None):
         """
         Input properties used for looking up and filtering Directory resources.
+
         :param pulumi.Input[_builtins.str] create_time: CreateTime
         :param pulumi.Input[_builtins.str] directory_global_access_status: Directory Global Acceleration activation status
         :param pulumi.Input[_builtins.str] directory_name: DirectoryName
@@ -419,6 +421,7 @@ class Directory(pulumi.CustomResource):
         $ pulumi import alicloud:cloudsso/directory:Directory example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] directory_global_access_status: Directory Global Acceleration activation status
@@ -469,6 +472,7 @@ class Directory(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudsso/directory:Directory example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DirectoryArgs args: The arguments to use to populate this resource's properties.

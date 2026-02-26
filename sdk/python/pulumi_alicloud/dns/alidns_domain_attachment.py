@@ -23,6 +23,7 @@ class AlidnsDomainAttachmentArgs:
                  instance_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AlidnsDomainAttachment resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: The domain names bound to the DNS instance.
         :param pulumi.Input[_builtins.str] instance_id: The id of the DNS instance.
         """
@@ -61,6 +62,7 @@ class _AlidnsDomainAttachmentState:
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AlidnsDomainAttachment resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: The domain names bound to the DNS instance.
         :param pulumi.Input[_builtins.str] instance_id: The id of the DNS instance.
         """
@@ -143,6 +145,7 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment example dns-cn-v0h1ldjhxxx
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: The domain names bound to the DNS instance.
@@ -193,6 +196,7 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment example dns-cn-v0h1ldjhxxx
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlidnsDomainAttachmentArgs args: The arguments to use to populate this resource's properties.

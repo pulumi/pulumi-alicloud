@@ -26,6 +26,7 @@ class QuotaScheduleArgs:
                  schedule_lists: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]]] = None):
         """
         The set of arguments for constructing a QuotaSchedule resource.
+
         :param pulumi.Input[_builtins.str] nickname: The nickname of level-1 compute quota.
         :param pulumi.Input[_builtins.str] timezone: Time zone, reference value: UTC +8
         :param pulumi.Input[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]] schedule_lists: schedule list See `schedule_list` below.
@@ -80,6 +81,7 @@ class _QuotaScheduleState:
                  timezone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QuotaSchedule resources.
+
         :param pulumi.Input[_builtins.str] nickname: The nickname of level-1 compute quota.
         :param pulumi.Input[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]] schedule_lists: schedule list See `schedule_list` below.
         :param pulumi.Input[_builtins.str] timezone: Time zone, reference value: UTC +8
@@ -267,6 +269,7 @@ class QuotaSchedule(pulumi.CustomResource):
         $ pulumi import alicloud:maxcompute/quotaSchedule:QuotaSchedule example <nickname>:<timezone>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] nickname: The nickname of level-1 compute quota.
@@ -407,6 +410,7 @@ class QuotaSchedule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:maxcompute/quotaSchedule:QuotaSchedule example <nickname>:<timezone>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QuotaScheduleArgs args: The arguments to use to populate this resource's properties.

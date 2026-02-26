@@ -28,6 +28,7 @@ class MaliciousFileWhitelistConfigArgs:
                  target_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MaliciousFileWhitelistConfig resource.
+
         :param pulumi.Input[_builtins.str] event_name: The name of the security alert associated with the representative rule.
         :param pulumi.Input[_builtins.str] field: Represents the alarm associated with the resource and the white field.
         :param pulumi.Input[_builtins.str] field_value: Represents the whiteout target value in effect for the resource.
@@ -151,6 +152,7 @@ class _MaliciousFileWhitelistConfigState:
                  target_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MaliciousFileWhitelistConfig resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] event_name: The name of the security alert associated with the representative rule.
         :param pulumi.Input[_builtins.str] field: Represents the alarm associated with the resource and the white field.
@@ -329,6 +331,7 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] event_name: The name of the security alert associated with the representative rule.
@@ -384,6 +387,7 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MaliciousFileWhitelistConfigArgs args: The arguments to use to populate this resource's properties.

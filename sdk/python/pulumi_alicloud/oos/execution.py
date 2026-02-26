@@ -30,6 +30,7 @@ class ExecutionArgs:
                  template_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Execution resource.
+
         :param pulumi.Input[_builtins.str] template_name: The name of execution template.
         :param pulumi.Input[_builtins.str] description: The description of OOS Execution.
         :param pulumi.Input[_builtins.str] loop_mode: The loop mode of OOS Execution.
@@ -193,6 +194,7 @@ class _ExecutionState:
                  update_date: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Execution resources.
+
         :param pulumi.Input[_builtins.str] counters: The counters of OOS Execution.
         :param pulumi.Input[_builtins.str] create_date: The time when the execution was created.
         :param pulumi.Input[_builtins.str] description: The description of OOS Execution.
@@ -588,6 +590,7 @@ class Execution(pulumi.CustomResource):
         $ pulumi import alicloud:oos/execution:Execution example exec-ef6xxxx
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of OOS Execution.
@@ -666,6 +669,7 @@ class Execution(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oos/execution:Execution example exec-ef6xxxx
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ExecutionArgs args: The arguments to use to populate this resource's properties.

@@ -34,6 +34,7 @@ class ServiceArgs:
                  vpc_config: Optional[pulumi.Input['ServiceVpcConfigArgs']] = None):
         """
         The set of arguments for constructing a Service resource.
+
         :param pulumi.Input[_builtins.str] description: The Function Compute Service description.
         :param pulumi.Input[_builtins.bool] internet_access: Whether to allow the Service to access Internet. Default to "true".
         :param pulumi.Input['ServiceLogConfigArgs'] log_config: Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.). See `log_config` below.
@@ -221,6 +222,7 @@ class _ServiceState:
                  vpc_config: Optional[pulumi.Input['ServiceVpcConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Service resources.
+
         :param pulumi.Input[_builtins.str] description: The Function Compute Service description.
         :param pulumi.Input[_builtins.bool] internet_access: Whether to allow the Service to access Internet. Default to "true".
         :param pulumi.Input[_builtins.str] last_modified: The date this resource was last modified.
@@ -477,6 +479,7 @@ class Service(pulumi.CustomResource):
         $ pulumi import alicloud:fc/service:Service foo my-fc-service
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The Function Compute Service description.
@@ -521,6 +524,7 @@ class Service(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/service:Service foo my-fc-service
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.

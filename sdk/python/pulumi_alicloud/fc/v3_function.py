@@ -53,6 +53,7 @@ class V3FunctionArgs:
                  vpc_config: Optional[pulumi.Input['V3FunctionVpcConfigArgs']] = None):
         """
         The set of arguments for constructing a V3Function resource.
+
         :param pulumi.Input[_builtins.str] handler: Function Handler: the call entry for the function compute system to run your function.
         :param pulumi.Input[_builtins.str] runtime: Function runtime type
         :param pulumi.Input['V3FunctionCodeArgs'] code: Function code ZIP package. code and customContainerConfig. See `code` below.
@@ -555,6 +556,7 @@ class _V3FunctionState:
                  vpc_config: Optional[pulumi.Input['V3FunctionVpcConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V3Function resources.
+
         :param pulumi.Input['V3FunctionCodeArgs'] code: Function code ZIP package. code and customContainerConfig. See `code` below.
                
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -1323,6 +1325,7 @@ class V3Function(pulumi.CustomResource):
         $ pulumi import alicloud:fc/v3Function:V3Function example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']] code: Function code ZIP package. code and customContainerConfig. See `code` below.
@@ -1457,6 +1460,7 @@ class V3Function(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/v3Function:V3Function example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V3FunctionArgs args: The arguments to use to populate this resource's properties.

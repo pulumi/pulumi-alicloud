@@ -25,6 +25,7 @@ class BucketLoggingInitArgs:
                  target_prefix: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketLogging resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[_builtins.str] target_bucket: The bucket that stores access logs.
         :param pulumi.Input[_builtins.str] logging_role: Authorization role used for bucket logging
@@ -95,6 +96,7 @@ class _BucketLoggingState:
                  target_prefix: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketLogging resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[_builtins.str] logging_role: Authorization role used for bucket logging
         :param pulumi.Input[_builtins.str] target_bucket: The bucket that stores access logs.
@@ -213,6 +215,7 @@ class BucketLogging(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketLogging:BucketLogging example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
@@ -269,6 +272,7 @@ class BucketLogging(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketLogging:BucketLogging example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketLoggingInitArgs args: The arguments to use to populate this resource's properties.

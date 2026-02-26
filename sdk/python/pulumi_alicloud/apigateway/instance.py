@@ -43,6 +43,7 @@ class InstanceArgs:
                  zone_vswitch_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] https_policy: Https policy.
         :param pulumi.Input[_builtins.str] instance_name: Instance name.
         :param pulumi.Input[_builtins.str] instance_spec: Instance spec.
@@ -383,6 +384,7 @@ class _InstanceState:
                  zone_vswitch_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] connect_cidr_blocks: (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
         :param pulumi.Input[_builtins.str] delete_vpc_ip_block: Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
@@ -871,6 +873,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:apigateway/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] delete_vpc_ip_block: Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
@@ -991,6 +994,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:apigateway/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

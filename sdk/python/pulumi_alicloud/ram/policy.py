@@ -33,6 +33,7 @@ class PolicyArgs:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Policy resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the policy. It can be 1 to 1024 characters in length.
         :param pulumi.Input[_builtins.str] document: Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the Policy. Default value: `false`. Valid values:
@@ -226,6 +227,7 @@ class _PolicyState:
                  version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
+
         :param pulumi.Input[_builtins.int] attachment_count: Number of attachments of the policy.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.246.0) The create time of the policy.
         :param pulumi.Input[_builtins.str] default_version: The default version ID of the policy.
@@ -549,6 +551,7 @@ class Policy(pulumi.CustomResource):
         $ pulumi import alicloud:ram/policy:Policy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the policy. It can be 1 to 1024 characters in length.
@@ -627,6 +630,7 @@ class Policy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ram/policy:Policy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

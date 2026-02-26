@@ -29,6 +29,7 @@ class ExchangeArgs:
                  x_delayed_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Exchange resource.
+
         :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether to automatically delete the exchange. Valid values:
         :param pulumi.Input[_builtins.str] exchange_name: The name of the exchange that you want to create. The exchange name must meet the following conventions:
                
@@ -178,6 +179,7 @@ class _ExchangeState:
                  x_delayed_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Exchange resources.
+
         :param pulumi.Input[_builtins.str] alternate_exchange: The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
         :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether to automatically delete the exchange. Valid values:
         :param pulumi.Input[_builtins.int] create_time: CreateTime
@@ -409,6 +411,7 @@ class Exchange(pulumi.CustomResource):
         $ pulumi import alicloud:amqp/exchange:Exchange example <instance_id>:<virtual_host_name>:<exchange_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alternate_exchange: The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
@@ -494,6 +497,7 @@ class Exchange(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:amqp/exchange:Exchange example <instance_id>:<virtual_host_name>:<exchange_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ExchangeArgs args: The arguments to use to populate this resource's properties.

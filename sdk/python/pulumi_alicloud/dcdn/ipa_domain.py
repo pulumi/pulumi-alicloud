@@ -28,6 +28,7 @@ class IpaDomainArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IpaDomain resource.
+
         :param pulumi.Input[_builtins.str] domain_name: The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
         :param pulumi.Input[Sequence[pulumi.Input['IpaDomainSourceArgs']]] sources: Sources. See `sources` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. If you do not set this parameter, the system automatically assigns the ID of the default resource group.
@@ -114,6 +115,7 @@ class _IpaDomainState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IpaDomain resources.
+
         :param pulumi.Input[_builtins.str] domain_name: The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. If you do not set this parameter, the system automatically assigns the ID of the default resource group.
         :param pulumi.Input[_builtins.str] scope: The accelerated region. Valid values: `domestic`, `global`, `overseas`.
@@ -248,6 +250,7 @@ class IpaDomain(pulumi.CustomResource):
         $ pulumi import alicloud:dcdn/ipaDomain:IpaDomain example <domain_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_name: The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
@@ -305,6 +308,7 @@ class IpaDomain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dcdn/ipaDomain:IpaDomain example <domain_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IpaDomainArgs args: The arguments to use to populate this resource's properties.

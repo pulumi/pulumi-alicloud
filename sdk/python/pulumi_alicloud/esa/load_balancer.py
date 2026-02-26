@@ -38,6 +38,7 @@ class LoadBalancerArgs:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] default_pools: List of default pool IDs.
         :param pulumi.Input[_builtins.int] fallback_pool: The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
@@ -282,6 +283,7 @@ class _LoadBalancerState:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
+
         :param pulumi.Input['LoadBalancerAdaptiveRoutingArgs'] adaptive_routing: Cross-pool origin configuration. See `adaptive_routing` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] default_pools: List of default pool IDs.
         :param pulumi.Input[_builtins.str] description: The detailed description of the load balancer for easy management and identification.
@@ -630,6 +632,7 @@ class LoadBalancer(pulumi.CustomResource):
         $ pulumi import alicloud:esa/loadBalancer:LoadBalancer example <site_id>:<load_balancer_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']] adaptive_routing: Cross-pool origin configuration. See `adaptive_routing` below.
@@ -721,6 +724,7 @@ class LoadBalancer(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/loadBalancer:LoadBalancer example <site_id>:<load_balancer_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerArgs args: The arguments to use to populate this resource's properties.

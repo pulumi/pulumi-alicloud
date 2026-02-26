@@ -34,6 +34,7 @@ class VvpInstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a VvpInstance resource.
+
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input['VvpInstanceStorageArgs'] storage: Store information. See `storage` below.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the user.
@@ -215,6 +216,7 @@ class _VvpInstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VvpInstance resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.int] duration: The number of subscription periods. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
@@ -507,6 +509,7 @@ class VvpInstance(pulumi.CustomResource):
         $ pulumi import alicloud:realtimecompute/vvpInstance:VvpInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] duration: The number of subscription periods. If the payment type is PRE, this parameter is required.
@@ -587,6 +590,7 @@ class VvpInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:realtimecompute/vvpInstance:VvpInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VvpInstanceArgs args: The arguments to use to populate this resource's properties.

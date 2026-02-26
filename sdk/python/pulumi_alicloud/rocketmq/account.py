@@ -25,6 +25,7 @@ class AccountArgs:
                  account_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] password: The password of the account.
         :param pulumi.Input[_builtins.str] username: The username of the account.
@@ -94,6 +95,7 @@ class _AccountState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[_builtins.str] account_status: The status of the account. Valid values: `DISABLE`, `ENABLE`.
         :param pulumi.Input[_builtins.str] instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] password: The password of the account.
@@ -252,6 +254,7 @@ class Account(pulumi.CustomResource):
         $ pulumi import alicloud:rocketmq/account:Account example <instance_id>:<username>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_status: The status of the account. Valid values: `DISABLE`, `ENABLE`.
@@ -348,6 +351,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rocketmq/account:Account example <instance_id>:<username>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

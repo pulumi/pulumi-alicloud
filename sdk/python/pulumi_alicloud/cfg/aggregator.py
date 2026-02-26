@@ -28,6 +28,7 @@ class AggregatorArgs:
                  folder_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Aggregator resource.
+
         :param pulumi.Input[_builtins.str] aggregator_name: The name of the account group.
         :param pulumi.Input[_builtins.str] description: The description of the account group.
         :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The member accounts of the account group. See `aggregator_accounts` below.
@@ -124,6 +125,7 @@ class _AggregatorState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Aggregator resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The member accounts of the account group. See `aggregator_accounts` below.
                > **NOTE:** If `aggregator_type` is set to `CUSTOM`, `aggregator_accounts` is required.
         :param pulumi.Input[_builtins.str] aggregator_name: The name of the account group.
@@ -294,6 +296,7 @@ class Aggregator(pulumi.CustomResource):
         $ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]] aggregator_accounts: The member accounts of the account group. See `aggregator_accounts` below.
@@ -353,6 +356,7 @@ class Aggregator(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AggregatorArgs args: The arguments to use to populate this resource's properties.

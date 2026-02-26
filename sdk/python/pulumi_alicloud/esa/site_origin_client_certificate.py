@@ -25,6 +25,7 @@ class SiteOriginClientCertificateArgs:
                  site_origin_client_certificate_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SiteOriginClientCertificate resource.
+
         :param pulumi.Input[_builtins.str] certificate: The certificate content.
         :param pulumi.Input[_builtins.str] private_key: The private key of the certificate.
         :param pulumi.Input[_builtins.str] site_id: Site ID.
@@ -97,6 +98,7 @@ class _SiteOriginClientCertificateState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SiteOriginClientCertificate resources.
+
         :param pulumi.Input[_builtins.str] certificate: The certificate content.
         :param pulumi.Input[_builtins.str] create_time: The time when the certificate was created.
         :param pulumi.Input[_builtins.str] private_key: The private key of the certificate.
@@ -288,6 +290,7 @@ class SiteOriginClientCertificate(pulumi.CustomResource):
         $ pulumi import alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate example <site_id>:<site_origin_client_certificate_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate: The certificate content.
@@ -372,6 +375,7 @@ class SiteOriginClientCertificate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate example <site_id>:<site_origin_client_certificate_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SiteOriginClientCertificateArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class RuleArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Rule resource.
+
         :param pulumi.Input[_builtins.str] endpoint_id: The ID of the Endpoint.
         :param pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]] forward_ips: Forwarding target. See `forward_ips` below.
         :param pulumi.Input[_builtins.str] rule_name: The name of the resource.
@@ -112,6 +113,7 @@ class _RuleState:
                  zone_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
+
         :param pulumi.Input[_builtins.str] endpoint_id: The ID of the Endpoint.
         :param pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]] forward_ips: Forwarding target. See `forward_ips` below.
         :param pulumi.Input[_builtins.str] rule_name: The name of the resource.
@@ -280,6 +282,7 @@ class Rule(pulumi.CustomResource):
         $ pulumi import alicloud:pvtz/rule:Rule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint_id: The ID of the Endpoint.
@@ -371,6 +374,7 @@ class Rule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pvtz/rule:Rule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleArgs args: The arguments to use to populate this resource's properties.

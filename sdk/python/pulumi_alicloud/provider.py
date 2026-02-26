@@ -49,6 +49,7 @@ class ProviderArgs:
                  source_ip: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
+
         :param pulumi.Input[_builtins.str] access_key: The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         :param pulumi.Input[_builtins.str] account_id: The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
         :param pulumi.Input[_builtins.int] client_connect_timeout: The maximum timeout of the client connection server.
@@ -475,6 +476,7 @@ class Provider(pulumi.ProviderResource):
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_key: The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
@@ -505,6 +507,7 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
 
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.

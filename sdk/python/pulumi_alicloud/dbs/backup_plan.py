@@ -59,6 +59,7 @@ class BackupPlanArgs:
                  used_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a BackupPlan resource.
+
         :param pulumi.Input[_builtins.str] backup_method: Backup method. Valid values: `duplication`, `logical`, `physical`.
         :param pulumi.Input[_builtins.str] backup_plan_name: The name of the resource.
         :param pulumi.Input[_builtins.str] database_type: Database type. Valid values: `DRDS`, `FIle`, `MSSQL`, `MariaDB`, `MongoDB`, `MySQL`, `Oracle`, `PPAS`, `PostgreSQL`, `Redis`.
@@ -670,6 +671,7 @@ class _BackupPlanState:
                  used_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering BackupPlan resources.
+
         :param pulumi.Input[_builtins.str] backup_gateway_id: The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
         :param pulumi.Input[_builtins.int] backup_log_interval_seconds: The backup log interval seconds.
         :param pulumi.Input[_builtins.str] backup_method: Backup method. Valid values: `duplication`, `logical`, `physical`.
@@ -1379,6 +1381,7 @@ class BackupPlan(pulumi.CustomResource):
         $ pulumi import alicloud:dbs/backupPlan:BackupPlan example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_gateway_id: The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
@@ -1516,6 +1519,7 @@ class BackupPlan(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dbs/backupPlan:BackupPlan example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPlanArgs args: The arguments to use to populate this resource's properties.

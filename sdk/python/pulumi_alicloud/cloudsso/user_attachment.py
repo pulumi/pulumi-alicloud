@@ -24,6 +24,7 @@ class UserAttachmentArgs:
                  user_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a UserAttachment resource.
+
         :param pulumi.Input[_builtins.str] directory_id: The ID of the directory.
         :param pulumi.Input[_builtins.str] group_id: The ID of the group.
         :param pulumi.Input[_builtins.str] user_id: The ID of the user.
@@ -77,6 +78,7 @@ class _UserAttachmentState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserAttachment resources.
+
         :param pulumi.Input[_builtins.str] directory_id: The ID of the directory.
         :param pulumi.Input[_builtins.str] group_id: The ID of the group.
         :param pulumi.Input[_builtins.str] user_id: The ID of the user.
@@ -195,6 +197,7 @@ class UserAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example <directory_id>:<group_id>:<user_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] directory_id: The ID of the directory.
@@ -266,6 +269,7 @@ class UserAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example <directory_id>:<group_id>:<user_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserAttachmentArgs args: The arguments to use to populate this resource's properties.

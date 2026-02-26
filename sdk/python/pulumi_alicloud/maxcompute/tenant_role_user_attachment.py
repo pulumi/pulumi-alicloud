@@ -23,6 +23,7 @@ class TenantRoleUserAttachmentArgs:
                  tenant_role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TenantRoleUserAttachment resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account UID
                
                1. If the user is a primary account, the AccountId format is UID.
@@ -81,6 +82,7 @@ class _TenantRoleUserAttachmentState:
                  tenant_role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TenantRoleUserAttachment resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account UID
                
                1. If the user is a primary account, the AccountId format is UID.
@@ -175,6 +177,7 @@ class TenantRoleUserAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment example <account_id>:<tenant_role>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account UID
@@ -228,6 +231,7 @@ class TenantRoleUserAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment example <account_id>:<tenant_role>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TenantRoleUserAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -38,6 +38,7 @@ class KeyArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Key resource.
+
         :param pulumi.Input[_builtins.str] automatic_rotation: Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
         :param pulumi.Input[_builtins.str] deletion_protection: Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
         :param pulumi.Input[_builtins.str] deletion_protection_description: The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
@@ -354,6 +355,7 @@ class _KeyState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Key resources.
+
         :param pulumi.Input[_builtins.str] arn: The ARN of the key.
         :param pulumi.Input[_builtins.str] automatic_rotation: Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
         :param pulumi.Input[_builtins.str] creation_date: The time when the CMK was created.
@@ -815,6 +817,7 @@ class Key(pulumi.CustomResource):
         $ pulumi import alicloud:kms/key:Key example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] automatic_rotation: Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
@@ -879,6 +882,7 @@ class Key(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:kms/key:Key example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeyArgs args: The arguments to use to populate this resource's properties.

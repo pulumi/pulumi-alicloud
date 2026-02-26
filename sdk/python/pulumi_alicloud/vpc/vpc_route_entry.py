@@ -31,6 +31,7 @@ class VPCRouteEntryArgs:
                  route_publish_targets: Optional[pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryRoutePublishTargetArgs']]]] = None):
         """
         The set of arguments for constructing a VPCRouteEntry resource.
+
         :param pulumi.Input[_builtins.str] destination_cidr_block: The destination network segment of the routing entry.
         :param pulumi.Input[_builtins.str] route_table_id: Routing table ID
         :param pulumi.Input[_builtins.str] description: Description of the route entry.
@@ -192,6 +193,7 @@ class _VPCRouteEntryState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VPCRouteEntry resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the route entry.
         :param pulumi.Input[_builtins.str] destination_cidr_block: The destination network segment of the routing entry.
         :param pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryNextHopArgs']]] next_hops: Next jump See `next_hops` below.
@@ -437,6 +439,7 @@ class VPCRouteEntry(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/vPCRouteEntry:VPCRouteEntry example <route_table_id>:<destination_cidr_block>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the route entry.
@@ -532,6 +535,7 @@ class VPCRouteEntry(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/vPCRouteEntry:VPCRouteEntry example <route_table_id>:<destination_cidr_block>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VPCRouteEntryArgs args: The arguments to use to populate this resource's properties.

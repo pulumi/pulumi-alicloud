@@ -23,6 +23,7 @@ class BucketRequestPaymentArgs:
                  payer: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketRequestPayment resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] payer: The payer of the request and traffic fees.Valid values: BucketOwner: request and traffic fees are paid by the bucket owner. Requester: request and traffic fees are paid by the requester.
         """
@@ -62,6 +63,7 @@ class _BucketRequestPaymentState:
                  payer: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketRequestPayment resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] payer: The payer of the request and traffic fees.Valid values: BucketOwner: request and traffic fees are paid by the bucket owner. Requester: request and traffic fees are paid by the requester.
         """
@@ -149,6 +151,7 @@ class BucketRequestPayment(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketRequestPayment:BucketRequestPayment example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
@@ -204,6 +207,7 @@ class BucketRequestPayment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketRequestPayment:BucketRequestPayment example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketRequestPaymentArgs args: The arguments to use to populate this resource's properties.

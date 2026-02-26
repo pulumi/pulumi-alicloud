@@ -68,6 +68,7 @@ class ManagedKubernetesArgs:
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ManagedKubernetes resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input['ManagedKubernetesAuditLogConfigArgs'] audit_log_config: Audit log configuration. See `audit_log_config` below.
@@ -875,6 +876,7 @@ class _ManagedKubernetesState:
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ManagedKubernetes resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input['ManagedKubernetesAuditLogConfigArgs'] audit_log_config: Audit log configuration. See `audit_log_config` below.
@@ -2120,6 +2122,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes main cluster_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
@@ -2504,6 +2507,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes main cluster_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ManagedKubernetesArgs args: The arguments to use to populate this resource's properties.

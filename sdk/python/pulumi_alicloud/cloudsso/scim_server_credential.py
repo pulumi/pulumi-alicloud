@@ -24,6 +24,7 @@ class ScimServerCredentialArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ScimServerCredential resource.
+
         :param pulumi.Input[_builtins.str] directory_id: The ID of the Directory.
         :param pulumi.Input[_builtins.str] credential_secret_file: The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
         :param pulumi.Input[_builtins.str] status: The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
@@ -83,6 +84,7 @@ class _ScimServerCredentialState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScimServerCredential resources.
+
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.245.0) The time when the SCIM credential was created.
         :param pulumi.Input[_builtins.str] credential_id: The ID of the SCIM credential.
         :param pulumi.Input[_builtins.str] credential_secret_file: The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
@@ -238,6 +240,7 @@ class ScimServerCredential(pulumi.CustomResource):
         $ pulumi import alicloud:cloudsso/scimServerCredential:ScimServerCredential example <directory_id>:<credential_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] credential_secret_file: The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
@@ -286,6 +289,7 @@ class ScimServerCredential(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudsso/scimServerCredential:ScimServerCredential example <directory_id>:<credential_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScimServerCredentialArgs args: The arguments to use to populate this resource's properties.

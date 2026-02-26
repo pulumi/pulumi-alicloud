@@ -23,6 +23,7 @@ class KeyPairArgs:
                  public_key_body: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeyPair resource.
+
         :param pulumi.Input[_builtins.str] key_pair_name: ADB key pair name.
         :param pulumi.Input[_builtins.str] public_key_body: The public key of the key pair.
         """
@@ -62,6 +63,7 @@ class _KeyPairState:
                  public_key_body: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyPair resources.
+
         :param pulumi.Input[_builtins.str] key_pair_name: ADB key pair name.
         :param pulumi.Input[_builtins.str] public_key_body: The public key of the key pair.
         """
@@ -157,6 +159,7 @@ class KeyPair(pulumi.CustomResource):
         $ pulumi import alicloud:cloudphone/keyPair:KeyPair example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key_pair_name: ADB key pair name.
@@ -220,6 +223,7 @@ class KeyPair(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudphone/keyPair:KeyPair example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeyPairArgs args: The arguments to use to populate this resource's properties.

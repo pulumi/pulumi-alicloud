@@ -27,6 +27,7 @@ class AccessGroupArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessGroup resource.
+
         :param pulumi.Input[_builtins.str] access_group_name: The name of the permission group.
         :param pulumi.Input[_builtins.str] access_group_type: Permission group types, including Vpc.
         :param pulumi.Input[_builtins.str] description: Permission group description information.
@@ -155,6 +156,7 @@ class _AccessGroupState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessGroup resources.
+
         :param pulumi.Input[_builtins.str] access_group_name: The name of the permission group.
         :param pulumi.Input[_builtins.str] access_group_type: Permission group types, including Vpc.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.218.0) Creation time.
@@ -351,6 +353,7 @@ class AccessGroup(pulumi.CustomResource):
         $ pulumi import alicloud:nas/accessGroup:AccessGroup example <access_group_name>:<file_system_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_group_name: The name of the permission group.
@@ -410,6 +413,7 @@ class AccessGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nas/accessGroup:AccessGroup example <access_group_name>:<file_system_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessGroupArgs args: The arguments to use to populate this resource's properties.

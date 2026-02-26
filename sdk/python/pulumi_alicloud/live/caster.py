@@ -43,6 +43,7 @@ class CasterArgs:
                  urgent_material_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Caster resource.
+
         :param pulumi.Input[_builtins.int] norm_type: Guide station specification type. Value:
                - 0: Broadcast single type.
                - 1: General purpose.
@@ -434,6 +435,7 @@ class _CasterState:
                  urgent_material_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Caster resources.
+
         :param pulumi.Input[_builtins.str] auto_switch_urgent_config: Automatic standby broadcast configuration. eofThres: indicates that the broadcast is automatically cut and prepared after the flow interruption time, in seconds.
         :param pulumi.Input[_builtins.bool] auto_switch_urgent_on: Turn on the cut-off automatic switch for broadcast preparation.
                
@@ -880,6 +882,7 @@ class Caster(pulumi.CustomResource):
         $ pulumi import alicloud:live/caster:Caster example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auto_switch_urgent_config: Automatic standby broadcast configuration. eofThres: indicates that the broadcast is automatically cut and prepared after the flow interruption time, in seconds.
@@ -963,6 +966,7 @@ class Caster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:live/caster:Caster example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CasterArgs args: The arguments to use to populate this resource's properties.

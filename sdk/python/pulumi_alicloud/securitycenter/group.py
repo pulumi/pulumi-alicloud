@@ -23,6 +23,7 @@ class GroupArgs:
                  group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] group_id: GroupId.
         :param pulumi.Input[_builtins.str] group_name: GroupName.
         """
@@ -63,6 +64,7 @@ class _GroupState:
                  group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[_builtins.str] group_id: GroupId.
         :param pulumi.Input[_builtins.str] group_name: GroupName.
         """
@@ -137,6 +139,7 @@ class Group(pulumi.CustomResource):
         $ pulumi import alicloud:securitycenter/group:Group example <group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: GroupId.
@@ -179,6 +182,7 @@ class Group(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:securitycenter/group:Group example <group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

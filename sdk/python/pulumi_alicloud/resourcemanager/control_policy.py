@@ -26,6 +26,7 @@ class ControlPolicyArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ControlPolicy resource.
+
         :param pulumi.Input[_builtins.str] control_policy_name: The new name of the access control policy.
                The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
         :param pulumi.Input[_builtins.str] effect_scope: The effective scope of the access control policy. Valid values:
@@ -130,6 +131,7 @@ class _ControlPolicyState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ControlPolicy resources.
+
         :param pulumi.Input[_builtins.str] control_policy_name: The new name of the access control policy.
                The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
         :param pulumi.Input[_builtins.str] create_time: The time when the access control policy was created.
@@ -304,6 +306,7 @@ class ControlPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/controlPolicy:ControlPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] control_policy_name: The new name of the access control policy.
@@ -377,6 +380,7 @@ class ControlPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/controlPolicy:ControlPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ControlPolicyArgs args: The arguments to use to populate this resource's properties.

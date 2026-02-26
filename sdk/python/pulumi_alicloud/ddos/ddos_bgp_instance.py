@@ -32,6 +32,7 @@ class DdosBgpInstanceArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DdosBgpInstance resource.
+
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the package configuration.
         :param pulumi.Input[_builtins.int] ip_count: The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
         :param pulumi.Input[_builtins.str] ip_type: The protection IP address type of the protection package. Valid values:
@@ -221,6 +222,7 @@ class _DdosBgpInstanceState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DdosBgpInstance resources.
+
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the package configuration.
         :param pulumi.Input[_builtins.int] base_bandwidth: The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
         :param pulumi.Input[_builtins.str] instance_name: The name of the instance.
@@ -473,6 +475,7 @@ class DdosBgpInstance(pulumi.CustomResource):
         $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the package configuration.
@@ -537,6 +540,7 @@ class DdosBgpInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DdosBgpInstanceArgs args: The arguments to use to populate this resource's properties.

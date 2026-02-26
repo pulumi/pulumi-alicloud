@@ -25,6 +25,7 @@ class WorkspaceWorkspaceArgs:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceWorkspace resource.
+
         :param pulumi.Input[_builtins.str] description: Workspace description, no more than 80 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] env_types: Environments contained in the workspace:
                - Simple mode only production environment (prod).
@@ -106,6 +107,7 @@ class _WorkspaceWorkspaceState:
                  workspace_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceWorkspace resources.
+
         :param pulumi.Input[_builtins.str] create_time: The UTC time when the workspace is created. The time format is ISO8601.
         :param pulumi.Input[_builtins.str] description: Workspace description, no more than 80 characters.
         :param pulumi.Input[_builtins.str] display_name: It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
@@ -256,6 +258,7 @@ class WorkspaceWorkspace(pulumi.CustomResource):
         $ pulumi import alicloud:pai/workspaceWorkspace:WorkspaceWorkspace example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Workspace description, no more than 80 characters.
@@ -309,6 +312,7 @@ class WorkspaceWorkspace(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pai/workspaceWorkspace:WorkspaceWorkspace example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceWorkspaceArgs args: The arguments to use to populate this resource's properties.

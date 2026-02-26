@@ -34,6 +34,7 @@ class ScheduledTaskArgs:
                  task_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ScheduledTask resource.
+
         :param pulumi.Input[_builtins.str] description: Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
         :param pulumi.Input[_builtins.int] desired_capacity: The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
         :param pulumi.Input[_builtins.int] launch_expiration_time: The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
@@ -274,6 +275,7 @@ class _ScheduledTaskState:
                  task_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ScheduledTask resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
         :param pulumi.Input[_builtins.int] desired_capacity: The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
         :param pulumi.Input[_builtins.int] launch_expiration_time: The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
@@ -531,6 +533,7 @@ class ScheduledTask(pulumi.CustomResource):
         $ pulumi import alicloud:ess/scheduledTask:ScheduledTask example abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
@@ -579,6 +582,7 @@ class ScheduledTask(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ess/scheduledTask:ScheduledTask example abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScheduledTaskArgs args: The arguments to use to populate this resource's properties.

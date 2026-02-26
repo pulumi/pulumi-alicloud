@@ -33,6 +33,7 @@ class IngressArgs:
                  load_balance_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ingress resource.
+
         :param pulumi.Input[_builtins.int] listener_port: SLB listening port.
         :param pulumi.Input[_builtins.str] namespace_id: The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
         :param pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
@@ -197,6 +198,7 @@ class _IngressState:
                  slb_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ingress resources.
+
         :param pulumi.Input[_builtins.str] cert_id: The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
         :param pulumi.Input[_builtins.str] cert_ids: The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
         :param pulumi.Input['IngressDefaultRuleArgs'] default_rule: Default Rule. See `default_rule` below.
@@ -451,6 +453,7 @@ class Ingress(pulumi.CustomResource):
         $ pulumi import alicloud:sae/ingress:Ingress example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cert_id: The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
@@ -553,6 +556,7 @@ class Ingress(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sae/ingress:Ingress example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IngressArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class HoneypotNodeArgs:
                  security_group_probe_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a HoneypotNode resource.
+
         :param pulumi.Input[_builtins.int] available_probe_num: Number of probes available.
         :param pulumi.Input[_builtins.str] node_name: Management node name.
         :param pulumi.Input[_builtins.bool] allow_honeypot_access_internet: Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
@@ -97,6 +98,7 @@ class _HoneypotNodeState:
                  status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HoneypotNode resources.
+
         :param pulumi.Input[_builtins.bool] allow_honeypot_access_internet: Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
         :param pulumi.Input[_builtins.int] available_probe_num: Number of probes available.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
@@ -236,6 +238,7 @@ class HoneypotNode(pulumi.CustomResource):
         $terraform import alicloud_threat_detection_honeypot_node.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_honeypot_access_internet: Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
@@ -283,6 +286,7 @@ class HoneypotNode(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_threat_detection_honeypot_node.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HoneypotNodeArgs args: The arguments to use to populate this resource's properties.

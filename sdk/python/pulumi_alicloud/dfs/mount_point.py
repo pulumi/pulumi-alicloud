@@ -29,6 +29,7 @@ class MountPointArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MountPoint resource.
+
         :param pulumi.Input[_builtins.str] access_group_id: The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
         :param pulumi.Input[_builtins.str] file_system_id: Unique file system identifier, used to retrieve specified file system resources.
         :param pulumi.Input[_builtins.str] network_type: The network type of the Mount point.  Only VPC (VPC) is supported.
@@ -163,6 +164,7 @@ class _MountPointState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MountPoint resources.
+
         :param pulumi.Input[_builtins.str] access_group_id: The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
         :param pulumi.Input[_builtins.str] alias_prefix: The mount point alias prefix, which specifies the mount point alias prefix.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the Mount point resource.
@@ -405,6 +407,7 @@ class MountPoint(pulumi.CustomResource):
         $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_group_id: The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
@@ -480,6 +483,7 @@ class MountPoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MountPointArgs args: The arguments to use to populate this resource's properties.

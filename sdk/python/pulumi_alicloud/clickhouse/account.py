@@ -32,6 +32,7 @@ class AccountArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] account_name: Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
         :param pulumi.Input[_builtins.str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
         :param pulumi.Input[_builtins.str] db_cluster_id: The db cluster id.
@@ -222,6 +223,7 @@ class _AccountState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[_builtins.str] account_description: In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
         :param pulumi.Input[_builtins.str] account_name: Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
         :param pulumi.Input[_builtins.str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
@@ -491,6 +493,7 @@ class Account(pulumi.CustomResource):
         $ pulumi import alicloud:clickhouse/account:Account example <db_cluster_id>:<account_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_description: In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
@@ -570,6 +573,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:clickhouse/account:Account example <db_cluster_id>:<account_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

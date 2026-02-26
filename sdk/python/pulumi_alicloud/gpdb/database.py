@@ -28,6 +28,7 @@ class DatabaseArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
+
         :param pulumi.Input[_builtins.str] database_name: Database Name
         :param pulumi.Input[_builtins.str] db_instance_id: Instance ID
         :param pulumi.Input[_builtins.str] owner: Data Sheet owner
@@ -145,6 +146,7 @@ class _DatabaseState:
                  owner: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
+
         :param pulumi.Input[_builtins.str] character_set_name: Character set, default value is UTF8
         :param pulumi.Input[_builtins.str] collate: Database locale parameters, specifying string comparison/collation
         :param pulumi.Input[_builtins.str] ctype: Database locale parameters, specifying character classification/case conversion rules
@@ -327,6 +329,7 @@ class Database(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/database:Database example <db_instance_id>:<database_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] character_set_name: Character set, default value is UTF8
@@ -402,6 +405,7 @@ class Database(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/database:Database example <db_instance_id>:<database_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.

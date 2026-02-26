@@ -24,6 +24,7 @@ class HybridMonitorFcTaskArgs:
                  target_user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HybridMonitorFcTask resource.
+
         :param pulumi.Input[_builtins.str] namespace: The index warehouse where the host belongs.
         :param pulumi.Input[_builtins.str] yarm_config: The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
         :param pulumi.Input[_builtins.str] target_user_id: The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
@@ -79,6 +80,7 @@ class _HybridMonitorFcTaskState:
                  yarm_config: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HybridMonitorFcTask resources.
+
         :param pulumi.Input[_builtins.str] hybrid_monitor_fc_task_id: The ID of the monitoring task.
         :param pulumi.Input[_builtins.str] namespace: The index warehouse where the host belongs.
         :param pulumi.Input[_builtins.str] target_user_id: The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
@@ -210,6 +212,7 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         $ pulumi import alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask example <hybrid_monitor_fc_task_id>:<namespace>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] namespace: The index warehouse where the host belongs.
@@ -279,6 +282,7 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask example <hybrid_monitor_fc_task_id>:<namespace>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HybridMonitorFcTaskArgs args: The arguments to use to populate this resource's properties.

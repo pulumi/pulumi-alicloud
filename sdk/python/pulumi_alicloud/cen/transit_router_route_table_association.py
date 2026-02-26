@@ -24,6 +24,7 @@ class TransitRouterRouteTableAssociationArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a TransitRouterRouteTableAssociation resource.
+
         :param pulumi.Input[_builtins.str] transit_router_attachment_id: TransitRouterAttachmentId
         :param pulumi.Input[_builtins.str] transit_router_route_table_id: TransitRouterRouteTableId
         :param pulumi.Input[_builtins.bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
@@ -79,6 +80,7 @@ class _TransitRouterRouteTableAssociationState:
                  transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterRouteTableAssociation resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[_builtins.str] transit_router_attachment_id: TransitRouterAttachmentId
@@ -227,6 +229,7 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example <transit_router_attachment_id>:<transit_router_route_table_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
@@ -313,6 +316,7 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example <transit_router_attachment_id>:<transit_router_route_table_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterRouteTableAssociationArgs args: The arguments to use to populate this resource's properties.

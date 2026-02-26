@@ -24,6 +24,7 @@ class AssetSelectionConfigArgs:
                  platform: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AssetSelectionConfig resource.
+
         :param pulumi.Input[_builtins.str] business_type: The first ID of the resource
         :param pulumi.Input[_builtins.str] target_type: Target object type.
         :param pulumi.Input[_builtins.str] platform: The operating system type.
@@ -78,6 +79,7 @@ class _AssetSelectionConfigState:
                  target_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AssetSelectionConfig resources.
+
         :param pulumi.Input[_builtins.str] business_type: The first ID of the resource
         :param pulumi.Input[_builtins.str] platform: The operating system type.
         :param pulumi.Input[_builtins.str] target_type: Target object type.
@@ -177,6 +179,7 @@ class AssetSelectionConfig(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] business_type: The first ID of the resource
@@ -229,6 +232,7 @@ class AssetSelectionConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AssetSelectionConfigArgs args: The arguments to use to populate this resource's properties.

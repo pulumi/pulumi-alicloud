@@ -48,6 +48,7 @@ class DiskArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Disk resource.
+
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to create the disk in.
         :param pulumi.Input[_builtins.str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
         :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
@@ -455,6 +456,7 @@ class _DiskState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Disk resources.
+
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to create the disk in.
         :param pulumi.Input[_builtins.str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
         :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
@@ -935,6 +937,7 @@ class Disk(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/disk:Disk example d-abc12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to create the disk in.
@@ -998,6 +1001,7 @@ class Disk(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/disk:Disk example d-abc12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiskArgs args: The arguments to use to populate this resource's properties.

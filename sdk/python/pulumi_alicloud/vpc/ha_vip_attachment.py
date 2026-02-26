@@ -26,6 +26,7 @@ class HAVipAttachmentArgs:
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HAVipAttachment resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the ECS instance bound to the HaVip instance.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the snapshot.
         :param pulumi.Input[_builtins.str] ha_vip_id: The ID of the HaVip instance.
@@ -118,6 +119,7 @@ class _HAVipAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HAVipAttachment resources.
+
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the snapshot.
         :param pulumi.Input[_builtins.str] ha_vip_id: The ID of the HaVip instance.
         :param pulumi.Input[_builtins.str] havip_id: . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
@@ -295,6 +297,7 @@ class HAVipAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment example <ha_vip_id>:<instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the snapshot.
@@ -376,6 +379,7 @@ class HAVipAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment example <ha_vip_id>:<instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HAVipAttachmentArgs args: The arguments to use to populate this resource's properties.

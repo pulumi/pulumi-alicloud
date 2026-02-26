@@ -30,6 +30,7 @@ class DiskArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Disk resource.
+
         :param pulumi.Input[_builtins.str] category: The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
         :param pulumi.Input[_builtins.str] ens_region_id: The ID of the edge node.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Valid values: `PayAsYouGo`.
@@ -189,6 +190,7 @@ class _DiskState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Disk resources.
+
         :param pulumi.Input[_builtins.str] category: The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
         :param pulumi.Input[_builtins.str] create_time: The time when the disk was created.
         :param pulumi.Input[_builtins.str] disk_name: The name of the disk.
@@ -419,6 +421,7 @@ class Disk(pulumi.CustomResource):
         $ pulumi import alicloud:ens/disk:Disk example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] category: The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
@@ -478,6 +481,7 @@ class Disk(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/disk:Disk example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiskArgs args: The arguments to use to populate this resource's properties.

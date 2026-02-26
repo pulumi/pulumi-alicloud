@@ -27,6 +27,7 @@ class ComputingGroupArgs:
                  computing_group_description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComputingGroup resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: ClickHouse Enterprise Edition instance ID
         :param pulumi.Input[_builtins.bool] is_readonly: Computing group read-only
         :param pulumi.Input[_builtins.int] node_count: Number of computing group nodes
@@ -131,6 +132,7 @@ class _ComputingGroupState:
                  node_scale_min: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ComputingGroup resources.
+
         :param pulumi.Input[_builtins.str] computing_group_description: Computing group name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] computing_group_endpoint_names: A list of computing group endpoint names.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] computing_group_endpoints: List of computing group endpoints.
@@ -388,6 +390,7 @@ class ComputingGroup(pulumi.CustomResource):
         $ pulumi import alicloud:clickhouseenterprisedbcluster/computingGroup:ComputingGroup example <db_instance_id>:<computing_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] computing_group_description: Computing group name
@@ -478,6 +481,7 @@ class ComputingGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:clickhouseenterprisedbcluster/computingGroup:ComputingGroup example <db_instance_id>:<computing_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ComputingGroupArgs args: The arguments to use to populate this resource's properties.

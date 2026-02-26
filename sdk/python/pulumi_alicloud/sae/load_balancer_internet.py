@@ -26,6 +26,7 @@ class LoadBalancerInternetArgs:
                  internet_slb_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancerInternet resource.
+
         :param pulumi.Input[_builtins.str] app_id: The target application ID that needs to be bound to the SLB.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]] internets: The bound private network SLB. See `internet` below.
         :param pulumi.Input[_builtins.str] internet_slb_id: The internet SLB ID.
@@ -81,6 +82,7 @@ class _LoadBalancerInternetState:
                  internets: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerInternet resources.
+
         :param pulumi.Input[_builtins.str] app_id: The target application ID that needs to be bound to the SLB.
         :param pulumi.Input[_builtins.str] internet_ip: Use designated public network SLBs that have been purchased to support non-shared instances.
         :param pulumi.Input[_builtins.str] internet_slb_id: The internet SLB ID.
@@ -233,6 +235,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
         $ pulumi import alicloud:sae/loadBalancerInternet:LoadBalancerInternet example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The target application ID that needs to be bound to the SLB.
@@ -323,6 +326,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sae/loadBalancerInternet:LoadBalancerInternet example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerInternetArgs args: The arguments to use to populate this resource's properties.

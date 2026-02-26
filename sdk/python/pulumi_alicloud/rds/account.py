@@ -36,6 +36,7 @@ class AccountArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
@@ -280,6 +281,7 @@ class _AccountState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
@@ -576,6 +578,7 @@ class Account(pulumi.CustomResource):
         $ pulumi import alicloud:rds/account:Account example "rm-12345:tf_account"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
@@ -645,6 +648,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/account:Account example "rm-12345:tf_account"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

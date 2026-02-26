@@ -35,6 +35,7 @@ class AutoGroupingRuleArgs:
                  rule_desc: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AutoGroupingRule resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['AutoGroupingRuleRuleContentArgs']]] rule_contents: The content records of the rule. See `rule_contents` below.
         :param pulumi.Input[_builtins.str] rule_name: The name of the rule.
         :param pulumi.Input[_builtins.str] rule_type: The type of the rule. Valid values:
@@ -232,6 +233,7 @@ class _AutoGroupingRuleState:
                  rule_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AutoGroupingRule resources.
+
         :param pulumi.Input[_builtins.str] exclude_region_ids_scope: The IDs of regions to be excluded. Separate multiple IDs with commas (,).
         :param pulumi.Input[_builtins.str] exclude_resource_group_ids_scope: The IDs of resource groups to be excluded. Separate multiple IDs with commas (,).
         :param pulumi.Input[_builtins.str] exclude_resource_ids_scope: The IDs of resources to be excluded. Separate multiple IDs with commas (,).
@@ -501,6 +503,7 @@ class AutoGroupingRule(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/autoGroupingRule:AutoGroupingRule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] exclude_region_ids_scope: The IDs of regions to be excluded. Separate multiple IDs with commas (,).
@@ -588,6 +591,7 @@ class AutoGroupingRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/autoGroupingRule:AutoGroupingRule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AutoGroupingRuleArgs args: The arguments to use to populate this resource's properties.

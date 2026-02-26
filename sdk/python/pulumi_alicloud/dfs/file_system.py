@@ -33,6 +33,7 @@ class FileSystemArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FileSystem resource.
+
         :param pulumi.Input[_builtins.str] file_system_name: The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         :param pulumi.Input[_builtins.str] protocol_type: The protocol type. Value: `HDFS`, `PANGU`.
         :param pulumi.Input[_builtins.int] space_capacity: File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
@@ -235,6 +236,7 @@ class _FileSystemState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FileSystem resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the file system instance.
         :param pulumi.Input[_builtins.str] data_redundancy_type: Redundancy mode of the file system. Value:
                - LRS (default): Local redundancy.
@@ -511,6 +513,7 @@ class FileSystem(pulumi.CustomResource):
         $ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_redundancy_type: Redundancy mode of the file system. Value:
@@ -573,6 +576,7 @@ class FileSystem(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FileSystemArgs args: The arguments to use to populate this resource's properties.

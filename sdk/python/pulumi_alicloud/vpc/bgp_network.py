@@ -24,6 +24,7 @@ class BgpNetworkArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BgpNetwork resource.
+
         :param pulumi.Input[_builtins.str] dst_cidr_block: The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
         :param pulumi.Input[_builtins.str] router_id: The region ID of the virtual border router (VBR) group.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
@@ -79,6 +80,7 @@ class _BgpNetworkState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpNetwork resources.
+
         :param pulumi.Input[_builtins.str] dst_cidr_block: The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
         :param pulumi.Input[_builtins.str] router_id: The region ID of the virtual border router (VBR) group.
         :param pulumi.Input[_builtins.str] status: The state of the advertised BGP network.
@@ -201,6 +203,7 @@ class BgpNetwork(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dst_cidr_block: The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
@@ -261,6 +264,7 @@ class BgpNetwork(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BgpNetworkArgs args: The arguments to use to populate this resource's properties.

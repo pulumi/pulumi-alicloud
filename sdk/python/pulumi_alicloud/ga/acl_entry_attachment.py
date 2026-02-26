@@ -24,6 +24,7 @@ class AclEntryAttachmentArgs:
                  entry_description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AclEntryAttachment resource.
+
         :param pulumi.Input[_builtins.str] acl_id: The ID of the Acl.
         :param pulumi.Input[_builtins.str] entry: The entry (IP address or CIDR block) that you want to add.
         :param pulumi.Input[_builtins.str] entry_description: The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
@@ -79,6 +80,7 @@ class _AclEntryAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclEntryAttachment resources.
+
         :param pulumi.Input[_builtins.str] acl_id: The ID of the Acl.
         :param pulumi.Input[_builtins.str] entry: The entry (IP address or CIDR block) that you want to add.
         :param pulumi.Input[_builtins.str] entry_description: The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
@@ -190,6 +192,7 @@ class AclEntryAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_id: The ID of the Acl.
@@ -239,6 +242,7 @@ class AclEntryAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclEntryAttachmentArgs args: The arguments to use to populate this resource's properties.

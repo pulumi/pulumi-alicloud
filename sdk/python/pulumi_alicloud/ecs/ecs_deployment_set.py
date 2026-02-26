@@ -27,6 +27,7 @@ class EcsDeploymentSetArgs:
                  strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsDeploymentSet resource.
+
         :param pulumi.Input[_builtins.str] deployment_set_name: The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] description: The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] domain: Field `domain` has been deprecated from provider version 1.243.0.
@@ -143,6 +144,7 @@ class _EcsDeploymentSetState:
                  strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsDeploymentSet resources.
+
         :param pulumi.Input[_builtins.str] deployment_set_name: The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] description: The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] domain: Field `domain` has been deprecated from provider version 1.243.0.
@@ -296,6 +298,7 @@ class EcsDeploymentSet(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deployment_set_name: The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
@@ -347,6 +350,7 @@ class EcsDeploymentSet(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsDeploymentSetArgs args: The arguments to use to populate this resource's properties.

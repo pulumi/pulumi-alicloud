@@ -35,6 +35,7 @@ class GatewayArgs:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input['GatewayZoneArgs']]]] = None):
         """
         The set of arguments for constructing a Gateway resource.
+
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
         :param pulumi.Input['GatewayZoneConfigArgs'] zone_config: Availability Zone Configuration See `zone_config` below.
         :param pulumi.Input[_builtins.str] gateway_name: The name of the resource
@@ -239,6 +240,7 @@ class _GatewayState:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input['GatewayZoneArgs']]]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
+
         :param pulumi.Input[_builtins.int] create_time: The creation timestamp. Unit: milliseconds.
         :param pulumi.Input[_builtins.str] gateway_name: The name of the resource
         :param pulumi.Input[_builtins.str] gateway_type: Describes the gateway type, which is categorized into the following two types:
@@ -537,6 +539,7 @@ class Gateway(pulumi.CustomResource):
         $ pulumi import alicloud:apig/gateway:Gateway example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] gateway_name: The name of the resource
@@ -621,6 +624,7 @@ class Gateway(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:apig/gateway:Gateway example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayArgs args: The arguments to use to populate this resource's properties.

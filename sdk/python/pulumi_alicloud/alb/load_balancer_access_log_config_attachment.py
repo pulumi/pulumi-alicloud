@@ -24,6 +24,7 @@ class LoadBalancerAccessLogConfigAttachmentArgs:
                  log_store: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a LoadBalancerAccessLogConfigAttachment resource.
+
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the load balancing instance.
         :param pulumi.Input[_builtins.str] log_project: The log items shipped by the access log.
         :param pulumi.Input[_builtins.str] log_store: Logstore for log delivery.
@@ -78,6 +79,7 @@ class _LoadBalancerAccessLogConfigAttachmentState:
                  log_store: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerAccessLogConfigAttachment resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the load balancing instance.
         :param pulumi.Input[_builtins.str] log_project: The log items shipped by the access log.
@@ -238,6 +240,7 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:alb/loadBalancerAccessLogConfigAttachment:LoadBalancerAccessLogConfigAttachment example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the load balancing instance.
@@ -336,6 +339,7 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/loadBalancerAccessLogConfigAttachment:LoadBalancerAccessLogConfigAttachment example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerAccessLogConfigAttachmentArgs args: The arguments to use to populate this resource's properties.

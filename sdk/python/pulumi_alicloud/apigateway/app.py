@@ -24,6 +24,7 @@ class AppArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a App resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the app. Defaults to null.
         :param pulumi.Input[_builtins.str] name: The name of the app.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -80,6 +81,7 @@ class _AppState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering App resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the app. Defaults to null.
         :param pulumi.Input[_builtins.str] name: The name of the app.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -170,6 +172,7 @@ class App(pulumi.CustomResource):
         $ pulumi import alicloud:apigateway/app:App example "7379660"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the app. Defaults to null.
@@ -213,6 +216,7 @@ class App(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:apigateway/app:App example "7379660"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppArgs args: The arguments to use to populate this resource's properties.

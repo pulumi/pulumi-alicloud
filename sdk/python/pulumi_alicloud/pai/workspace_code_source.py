@@ -31,6 +31,7 @@ class WorkspaceCodeSourceArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceCodeSource resource.
+
         :param pulumi.Input[_builtins.str] accessibility: Visibility of the code configuration, possible values:
                - PRIVATE: In this workspace, it is only visible to you and the administrator.
                - PUBLIC: In this workspace, it is visible to everyone.
@@ -199,6 +200,7 @@ class _WorkspaceCodeSourceState:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceCodeSource resources.
+
         :param pulumi.Input[_builtins.str] accessibility: Visibility of the code configuration, possible values:
                - PRIVATE: In this workspace, it is only visible to you and the administrator.
                - PUBLIC: In this workspace, it is visible to everyone.
@@ -434,6 +436,7 @@ class WorkspaceCodeSource(pulumi.CustomResource):
         $ pulumi import alicloud:pai/workspaceCodeSource:WorkspaceCodeSource example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accessibility: Visibility of the code configuration, possible values:
@@ -500,6 +503,7 @@ class WorkspaceCodeSource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pai/workspaceCodeSource:WorkspaceCodeSource example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceCodeSourceArgs args: The arguments to use to populate this resource's properties.

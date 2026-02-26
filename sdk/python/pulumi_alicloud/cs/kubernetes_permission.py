@@ -25,6 +25,7 @@ class KubernetesPermissionArgs:
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]] = None):
         """
         The set of arguments for constructing a KubernetesPermission resource.
+
         :param pulumi.Input[_builtins.str] uid: The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]] permissions: A list of user permission. See `permissions` below.
         """
@@ -64,6 +65,7 @@ class _KubernetesPermissionState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KubernetesPermission resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]] permissions: A list of user permission. See `permissions` below.
         :param pulumi.Input[_builtins.str] uid: The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         """
@@ -201,6 +203,7 @@ class KubernetesPermission(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]] permissions: A list of user permission. See `permissions` below.
@@ -306,6 +309,7 @@ class KubernetesPermission(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param KubernetesPermissionArgs args: The arguments to use to populate this resource's properties.

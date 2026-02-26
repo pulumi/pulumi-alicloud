@@ -34,6 +34,7 @@ class SiteMonitorArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SiteMonitor resource.
+
         :param pulumi.Input[_builtins.str] address: The URL or IP address monitored by the site monitoring task.
         :param pulumi.Input[_builtins.str] task_name: The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
         :param pulumi.Input[_builtins.str] task_type: The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
@@ -226,6 +227,7 @@ class _SiteMonitorState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SiteMonitor resources.
+
         :param pulumi.Input[_builtins.str] address: The URL or IP address monitored by the site monitoring task.
         :param pulumi.Input[_builtins.str] agent_group: The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_ids: Field `alert_ids` has been deprecated from provider version 1.262.0.
@@ -553,6 +555,7 @@ class SiteMonitor(pulumi.CustomResource):
         $ pulumi import alicloud:cms/siteMonitor:SiteMonitor example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The URL or IP address monitored by the site monitoring task.
@@ -648,6 +651,7 @@ class SiteMonitor(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/siteMonitor:SiteMonitor example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SiteMonitorArgs args: The arguments to use to populate this resource's properties.

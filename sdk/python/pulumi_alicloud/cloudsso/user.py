@@ -32,6 +32,7 @@ class UserArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] directory_id: The ID of the directory.
         :param pulumi.Input[_builtins.str] user_name: The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
         :param pulumi.Input[_builtins.str] description: The description of the user. The description can be up to 1,024 characters in length.
@@ -216,6 +217,7 @@ class _UserState:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.262.1) The time when the user was created.
         :param pulumi.Input[_builtins.str] description: The description of the user. The description can be up to 1,024 characters in length.
         :param pulumi.Input[_builtins.str] directory_id: The ID of the directory.
@@ -482,6 +484,7 @@ class User(pulumi.CustomResource):
         $ pulumi import alicloud:cloudsso/user:User example <directory_id>:<user_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the user. The description can be up to 1,024 characters in length.
@@ -551,6 +554,7 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudsso/user:User example <directory_id>:<user_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

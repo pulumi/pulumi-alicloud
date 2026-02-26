@@ -31,6 +31,7 @@ class ProtocolMountTargetArgs:
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ProtocolMountTarget resource.
+
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] protocol_service_id: Protocol Service ID
         :param pulumi.Input[_builtins.str] access_group_name: The permission group name.
@@ -248,6 +249,7 @@ class _ProtocolMountTargetState:
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ProtocolMountTarget resources.
+
         :param pulumi.Input[_builtins.str] access_group_name: The permission group name.
                Default value: DEFAULT_VPC_GROUP_NAME
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
@@ -582,6 +584,7 @@ class ProtocolMountTarget(pulumi.CustomResource):
         $ pulumi import alicloud:nas/protocolMountTarget:ProtocolMountTarget example <file_system_id>:<protocol_service_id>:<export_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_group_name: The permission group name.
@@ -695,6 +698,7 @@ class ProtocolMountTarget(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nas/protocolMountTarget:ProtocolMountTarget example <file_system_id>:<protocol_service_id>:<export_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProtocolMountTargetArgs args: The arguments to use to populate this resource's properties.

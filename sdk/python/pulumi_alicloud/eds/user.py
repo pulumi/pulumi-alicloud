@@ -26,6 +26,7 @@ class UserArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] email: The email of the user email.
         :param pulumi.Input[_builtins.str] end_user_id: The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
         :param pulumi.Input[_builtins.str] password: The password of the user password.
@@ -112,6 +113,7 @@ class _UserState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.str] email: The email of the user email.
         :param pulumi.Input[_builtins.str] end_user_id: The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
         :param pulumi.Input[_builtins.str] password: The password of the user password.
@@ -234,6 +236,7 @@ class User(pulumi.CustomResource):
         $ pulumi import alicloud:eds/user:User example <end_user_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: The email of the user email.
@@ -279,6 +282,7 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/user:User example <end_user_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

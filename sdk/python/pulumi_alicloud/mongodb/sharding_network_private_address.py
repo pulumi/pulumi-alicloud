@@ -28,6 +28,7 @@ class ShardingNetworkPrivateAddressArgs:
                  account_password: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ShardingNetworkPrivateAddress resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the sharded cluster instance.
         :param pulumi.Input[_builtins.str] node_id: The ID of the Shard node or ConfigServer node.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance.
@@ -124,6 +125,7 @@ class _ShardingNetworkPrivateAddressState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ShardingNetworkPrivateAddress resources.
+
         :param pulumi.Input[_builtins.str] account_name: The username of the account.
                - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
                - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
@@ -309,6 +311,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         $ pulumi import alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress example <db_instance_id>:<node_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: The username of the account.
@@ -397,6 +400,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress example <db_instance_id>:<node_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ShardingNetworkPrivateAddressArgs args: The arguments to use to populate this resource's properties.

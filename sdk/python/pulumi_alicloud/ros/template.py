@@ -26,6 +26,7 @@ class TemplateArgs:
                  template_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Template resource.
+
         :param pulumi.Input[_builtins.str] template_name: The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
         :param pulumi.Input[_builtins.str] description: The description of the template. The description can be up to 256 characters in length.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -113,6 +114,7 @@ class _TemplateState:
                  template_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Template resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the template. The description can be up to 256 characters in length.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
@@ -236,6 +238,7 @@ class Template(pulumi.CustomResource):
         $ pulumi import alicloud:ros/template:Template example <template_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the template. The description can be up to 256 characters in length.
@@ -282,6 +285,7 @@ class Template(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ros/template:Template example <template_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TemplateArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class KeyPairArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a KeyPair resource.
+
         :param pulumi.Input[_builtins.str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         :param pulumi.Input[_builtins.str] key_name: The key pair's name. It is the only in one Alicloud account.
         :param pulumi.Input[_builtins.str] key_name_prefix: The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
@@ -152,6 +153,7 @@ class _KeyPairState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering KeyPair resources.
+
         :param pulumi.Input[_builtins.str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         :param pulumi.Input[_builtins.str] key_name: The key pair's name. It is the only in one Alicloud account.
         :param pulumi.Input[_builtins.str] key_name_prefix: The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
@@ -330,6 +332,7 @@ class KeyPair(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
@@ -377,6 +380,7 @@ class KeyPair(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeyPairArgs args: The arguments to use to populate this resource's properties.

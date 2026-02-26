@@ -36,6 +36,7 @@ class PolicyBindingArgs:
                  speed_limit: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PolicyBinding resource.
+
         :param pulumi.Input['PolicyBindingAdvancedOptionsArgs'] advanced_options: Backup Advanced Options See `advanced_options` below.
         :param pulumi.Input[_builtins.str] cross_account_role_name: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
         :param pulumi.Input[_builtins.str] cross_account_type: Cross-account type, supported
@@ -269,6 +270,7 @@ class _PolicyBindingState:
                  speed_limit: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyBinding resources.
+
         :param pulumi.Input['PolicyBindingAdvancedOptionsArgs'] advanced_options: Backup Advanced Options See `advanced_options` below.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] cross_account_role_name: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
@@ -579,6 +581,7 @@ class PolicyBinding(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/policyBinding:PolicyBinding example <policy_id>:<source_type>:<data_source_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']] advanced_options: Backup Advanced Options See `advanced_options` below.
@@ -669,6 +672,7 @@ class PolicyBinding(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/policyBinding:PolicyBinding example <policy_id>:<source_type>:<data_source_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyBindingArgs args: The arguments to use to populate this resource's properties.

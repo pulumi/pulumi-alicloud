@@ -24,6 +24,7 @@ class BucketUserDefinedLogFieldsArgs:
                  param_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a BucketUserDefinedLogFields resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] header_sets: Container for custom request header configuration information.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] param_sets: Container for custom request parameters configuration information.
@@ -79,6 +80,7 @@ class _BucketUserDefinedLogFieldsState:
                  param_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering BucketUserDefinedLogFields resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] header_sets: Container for custom request header configuration information.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] param_sets: Container for custom request parameters configuration information.
@@ -186,6 +188,7 @@ class BucketUserDefinedLogFields(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
@@ -246,6 +249,7 @@ class BucketUserDefinedLogFields(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketUserDefinedLogFieldsArgs args: The arguments to use to populate this resource's properties.

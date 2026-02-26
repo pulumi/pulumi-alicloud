@@ -23,6 +23,7 @@ class ProjectArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.str] comment: Comment of the datahub project. It cannot be longer than 255 characters.
         :param pulumi.Input[_builtins.str] name: The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         """
@@ -65,6 +66,7 @@ class _ProjectState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.str] comment: Comment of the datahub project. It cannot be longer than 255 characters.
         :param pulumi.Input[_builtins.str] create_time: Create time of the datahub project. It is a human-readable string rather than 64-bits UTC.
         :param pulumi.Input[_builtins.str] last_modify_time: Last modify time of the datahub project. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
@@ -171,6 +173,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import alicloud:datahub/project:Project example tf_datahub_project
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Comment of the datahub project. It cannot be longer than 255 characters.
@@ -215,6 +218,7 @@ class Project(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:datahub/project:Project example tf_datahub_project
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

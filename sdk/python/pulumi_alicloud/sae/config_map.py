@@ -25,6 +25,7 @@ class ConfigMapArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConfigMap resource.
+
         :param pulumi.Input[_builtins.str] data: ConfigMap instance data.
         :param pulumi.Input[_builtins.str] namespace_id: The NamespaceId of ConfigMap.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         :param pulumi.Input[_builtins.str] description: The Description of ConfigMap.
@@ -95,6 +96,7 @@ class _ConfigMapState:
                  namespace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConfigMap resources.
+
         :param pulumi.Input[_builtins.str] data: ConfigMap instance data.
         :param pulumi.Input[_builtins.str] description: The Description of ConfigMap.
         :param pulumi.Input[_builtins.str] name: ConfigMap instance name.
@@ -218,6 +220,7 @@ class ConfigMap(pulumi.CustomResource):
         $ pulumi import alicloud:sae/configMap:ConfigMap example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data: ConfigMap instance data.
@@ -279,6 +282,7 @@ class ConfigMap(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sae/configMap:ConfigMap example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConfigMapArgs args: The arguments to use to populate this resource's properties.

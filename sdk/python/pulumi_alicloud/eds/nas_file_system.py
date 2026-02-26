@@ -27,6 +27,7 @@ class NasFileSystemArgs:
                  reset: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a NasFileSystem resource.
+
         :param pulumi.Input[_builtins.str] office_site_id: The ID of office site.
         :param pulumi.Input[_builtins.str] description: The description of nas file system.
         :param pulumi.Input[_builtins.str] file_system_id: The filesystem id of nas file system.
@@ -131,6 +132,7 @@ class _NasFileSystemState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NasFileSystem resources.
+
         :param pulumi.Input[_builtins.str] description: The description of nas file system.
         :param pulumi.Input[_builtins.str] file_system_id: The filesystem id of nas file system.
         :param pulumi.Input[_builtins.str] mount_target_domain: The domain of mount target.
@@ -296,6 +298,7 @@ class NasFileSystem(pulumi.CustomResource):
         $ pulumi import alicloud:eds/nasFileSystem:NasFileSystem example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of nas file system.
@@ -354,6 +357,7 @@ class NasFileSystem(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/nasFileSystem:NasFileSystem example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NasFileSystemArgs args: The arguments to use to populate this resource's properties.

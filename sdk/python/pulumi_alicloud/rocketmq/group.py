@@ -28,6 +28,7 @@ class GroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] instance_id: ID of the ONS Instance that owns the groups.
         :param pulumi.Input[_builtins.str] group_id: Replaced by `group_name` after version 1.98.0.
         :param pulumi.Input[_builtins.str] group_name: Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
@@ -155,6 +156,7 @@ class _GroupState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[_builtins.str] group_id: Replaced by `group_name` after version 1.98.0.
         :param pulumi.Input[_builtins.str] group_name: Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
         :param pulumi.Input[_builtins.str] group_type: Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
@@ -328,6 +330,7 @@ class Group(pulumi.CustomResource):
         $ pulumi import alicloud:rocketmq/group:Group group MQ_INST_1234567890_Baso1234567:GID-onsGroupDemo
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: Replaced by `group_name` after version 1.98.0.
@@ -388,6 +391,7 @@ class Group(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rocketmq/group:Group group MQ_INST_1234567890_Baso1234567:GID-onsGroupDemo
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

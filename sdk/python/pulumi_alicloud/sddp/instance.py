@@ -35,6 +35,7 @@ class InstanceArgs:
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[_builtins.int] period: The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
         :param pulumi.Input[_builtins.str] sd_cbool: Whether to use the database. Valid values:`yes`,`no`.
@@ -267,6 +268,7 @@ class _InstanceState:
                  udc: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.bool] authed: Whether the required RAM authorization is configured.
         :param pulumi.Input[_builtins.str] dataphin: The dataphin. Valid values: `yes`,`no`.
         :param pulumi.Input[_builtins.str] dataphin_count: The dataphin count. Valid values: 1 to 20.
@@ -644,6 +646,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:sddp/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dataphin: The dataphin. Valid values: `yes`,`no`.
@@ -704,6 +707,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sddp/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class BackendServerArgs:
                  delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BackendServer resource.
+
         :param pulumi.Input[_builtins.str] load_balancer_id: ID of the load balancer.
         :param pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
@@ -81,6 +82,7 @@ class _BackendServerState:
                  load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackendServer resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[_builtins.str] load_balancer_id: ID of the load balancer.
@@ -152,6 +154,7 @@ class BackendServer(pulumi.CustomResource):
         $ pulumi import alicloud:slb/backendServer:BackendServer example <load_balancer_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict']]]] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
@@ -176,6 +179,7 @@ class BackendServer(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/backendServer:BackendServer example <load_balancer_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackendServerArgs args: The arguments to use to populate this resource's properties.

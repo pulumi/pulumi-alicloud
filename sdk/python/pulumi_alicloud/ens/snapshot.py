@@ -25,6 +25,7 @@ class SnapshotArgs:
                  snapshot_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
+
         :param pulumi.Input[_builtins.str] disk_id: Cloud Disk ID.
         :param pulumi.Input[_builtins.str] ens_region_id: The node ID of ENS.
         :param pulumi.Input[_builtins.str] description: Snapshot Description Information.
@@ -97,6 +98,7 @@ class _SnapshotState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
+
         :param pulumi.Input[_builtins.str] create_time: Instance creation timeIt is expressed in accordance with the ISO8601 standard and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.Example value: 2020-08-20 T14:52:28Z.
         :param pulumi.Input[_builtins.str] description: Snapshot Description Information.
         :param pulumi.Input[_builtins.str] disk_id: Cloud Disk ID.
@@ -242,6 +244,7 @@ class Snapshot(pulumi.CustomResource):
         $ pulumi import alicloud:ens/snapshot:Snapshot example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Snapshot Description Information.
@@ -295,6 +298,7 @@ class Snapshot(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/snapshot:Snapshot example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SnapshotArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class DeployGroupArgs:
                  group_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DeployGroup resource.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of the application that you want to deploy.
         :param pulumi.Input[_builtins.str] group_name: The name of the instance group that you want to create.
         """
@@ -62,6 +63,7 @@ class _DeployGroupState:
                  group_type: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DeployGroup resources.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of the application that you want to deploy.
         :param pulumi.Input[_builtins.str] group_name: The name of the instance group that you want to create.
         :param pulumi.Input[_builtins.int] group_type: The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
@@ -169,6 +171,7 @@ class DeployGroup(pulumi.CustomResource):
         $ pulumi import alicloud:edas/deployGroup:DeployGroup group app_id:group_name:group_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID of the application that you want to deploy.
@@ -229,6 +232,7 @@ class DeployGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:edas/deployGroup:DeployGroup group app_id:group_name:group_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeployGroupArgs args: The arguments to use to populate this resource's properties.

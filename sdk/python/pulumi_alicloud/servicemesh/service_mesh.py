@@ -36,6 +36,7 @@ class ServiceMeshArgs:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceMesh resource.
+
         :param pulumi.Input['ServiceMeshNetworkArgs'] network: Service grid network configuration information See `network` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cluster_ids: List of clusters.
         :param pulumi.Input[_builtins.str] cluster_spec: Cluster specification
@@ -270,6 +271,7 @@ class _ServiceMeshState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceMesh resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cluster_ids: List of clusters.
         :param pulumi.Input[_builtins.str] cluster_spec: Cluster specification
         :param pulumi.Input[_builtins.str] create_time: Service grid creation time
@@ -564,6 +566,7 @@ class ServiceMesh(pulumi.CustomResource):
         $ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cluster_ids: List of clusters.
@@ -608,6 +611,7 @@ class ServiceMesh(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceMeshArgs args: The arguments to use to populate this resource's properties.

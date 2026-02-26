@@ -28,6 +28,7 @@ class DatabaseArgs:
                  db_description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
+
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of cluster.
         :param pulumi.Input[_builtins.str] db_name: The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         :param pulumi.Input[_builtins.str] account_name: The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
@@ -155,6 +156,7 @@ class _DatabaseState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
+
         :param pulumi.Input[_builtins.str] account_name: The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         :param pulumi.Input[_builtins.str] character_set_name: The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
         :param pulumi.Input[_builtins.str] collate: The language that defines the collation rules in the database.
@@ -351,6 +353,7 @@ class Database(pulumi.CustomResource):
         $ pulumi import alicloud:polardb/database:Database example <db_cluster_id>:<db_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
@@ -421,6 +424,7 @@ class Database(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:polardb/database:Database example <db_cluster_id>:<db_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.

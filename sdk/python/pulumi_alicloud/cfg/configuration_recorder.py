@@ -23,6 +23,7 @@ class ConfigurationRecorderArgs:
                  resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ConfigurationRecorder resource.
+
         :param pulumi.Input[_builtins.bool] enterprise_edition: Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_types: A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
                * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
@@ -70,6 +71,7 @@ class _ConfigurationRecorderState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConfigurationRecorder resources.
+
         :param pulumi.Input[_builtins.bool] enterprise_edition: Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
         :param pulumi.Input[_builtins.str] organization_enable_status: Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
         :param pulumi.Input[_builtins.int] organization_master_id: The ID of the Enterprise management account.
@@ -191,6 +193,7 @@ class ConfigurationRecorder(pulumi.CustomResource):
         $ pulumi import alicloud:cfg/configurationRecorder:ConfigurationRecorder example 122378463********
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enterprise_edition: Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
@@ -233,6 +236,7 @@ class ConfigurationRecorder(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cfg/configurationRecorder:ConfigurationRecorder example 122378463********
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConfigurationRecorderArgs args: The arguments to use to populate this resource's properties.

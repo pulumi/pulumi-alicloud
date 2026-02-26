@@ -26,6 +26,7 @@ class RealTimeLogDeliveryArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RealTimeLogDelivery resource.
+
         :param pulumi.Input[_builtins.str] domain: The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
         :param pulumi.Input[_builtins.str] logstore: The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
                
@@ -122,6 +123,7 @@ class _RealTimeLogDeliveryState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RealTimeLogDelivery resources.
+
         :param pulumi.Input[_builtins.str] domain: The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
         :param pulumi.Input[_builtins.str] logstore: The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
                
@@ -284,6 +286,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
@@ -363,6 +366,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RealTimeLogDeliveryArgs args: The arguments to use to populate this resource's properties.

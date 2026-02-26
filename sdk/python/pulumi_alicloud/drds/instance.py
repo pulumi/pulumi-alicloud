@@ -29,6 +29,7 @@ class InstanceArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         :param pulumi.Input[_builtins.str] instance_series: The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
                - `drds.sn2.4c16g` Starter Edition.
@@ -184,6 +185,7 @@ class _InstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] connection_string: (Available since v1.196.0) The connection string of the DRDS instance.
         :param pulumi.Input[_builtins.str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
@@ -419,6 +421,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:drds/instance:Instance example drds-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
@@ -491,6 +494,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:drds/instance:Instance example drds-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

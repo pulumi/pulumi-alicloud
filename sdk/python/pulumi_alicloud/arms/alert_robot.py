@@ -26,6 +26,7 @@ class AlertRobotArgs:
                  daily_noc_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AlertRobot resource.
+
         :param pulumi.Input[_builtins.str] alert_robot_name: The name of the resource.
         :param pulumi.Input[_builtins.str] robot_addr: The webhook url of the robot.
         :param pulumi.Input[_builtins.str] robot_type: The type of the robot, Valid values: `wechat`, `dingding`, `feishu`.
@@ -111,6 +112,7 @@ class _AlertRobotState:
                  robot_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AlertRobot resources.
+
         :param pulumi.Input[_builtins.str] alert_robot_name: The name of the resource.
         :param pulumi.Input[_builtins.bool] daily_noc: Specifies whether the alert robot receives daily notifications. Valid values: `true`: receives daily notifications. `false`: does not receive daily notifications, default to `false`.
         :param pulumi.Input[_builtins.str] daily_noc_time: The time of the daily notification.
@@ -246,6 +248,7 @@ class AlertRobot(pulumi.CustomResource):
         $ pulumi import alicloud:arms/alertRobot:AlertRobot example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alert_robot_name: The name of the resource.
@@ -304,6 +307,7 @@ class AlertRobot(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/alertRobot:AlertRobot example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlertRobotArgs args: The arguments to use to populate this resource's properties.

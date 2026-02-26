@@ -24,6 +24,7 @@ class VpcFirewallAclEngineModeArgs:
                  member_uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcFirewallAclEngineMode resource.
+
         :param pulumi.Input[_builtins.int] strict_mode: The mode of the ACL engine. Possible values are `0`, `1`.
         :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the VPC firewall.
         :param pulumi.Input[_builtins.str] member_uid: The ID of member account.
@@ -78,6 +79,7 @@ class _VpcFirewallAclEngineModeState:
                  vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcFirewallAclEngineMode resources.
+
         :param pulumi.Input[_builtins.str] member_uid: The ID of member account.
         :param pulumi.Input[_builtins.int] strict_mode: The mode of the ACL engine. Possible values are `0`, `1`.
         :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the VPC firewall.
@@ -209,6 +211,7 @@ class VpcFirewallAclEngineMode(pulumi.CustomResource):
         $ pulumi import alicloud:cloudfirewall/vpcFirewallAclEngineMode:VpcFirewallAclEngineMode example <vpc_firewall_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] member_uid: The ID of member account.
@@ -293,6 +296,7 @@ class VpcFirewallAclEngineMode(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudfirewall/vpcFirewallAclEngineMode:VpcFirewallAclEngineMode example <vpc_firewall_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcFirewallAclEngineModeArgs args: The arguments to use to populate this resource's properties.

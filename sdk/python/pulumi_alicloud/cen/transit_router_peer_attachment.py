@@ -38,6 +38,7 @@ class TransitRouterPeerAttachmentArgs:
                  transit_router_peer_attachment_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterPeerAttachment resource.
+
         :param pulumi.Input[_builtins.str] peer_transit_router_id: The ID of the peer transit router.
         :param pulumi.Input[_builtins.bool] auto_publish_route_enabled: Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth value of the inter-region connection. Unit: Mbit/s.
@@ -361,6 +362,7 @@ class _TransitRouterPeerAttachmentState:
                  transit_router_peer_attachment_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterPeerAttachment resources.
+
         :param pulumi.Input[_builtins.bool] auto_publish_route_enabled: Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth value of the inter-region connection. Unit: Mbit/s.
                
@@ -802,6 +804,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <cen_id>:<transit_router_attachment_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_publish_route_enabled: Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
@@ -900,6 +903,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <cen_id>:<transit_router_attachment_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterPeerAttachmentArgs args: The arguments to use to populate this resource's properties.

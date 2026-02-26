@@ -25,6 +25,7 @@ class AutoSnapShotPolicyArgs:
                  time_points: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a AutoSnapShotPolicy resource.
+
         :param pulumi.Input[_builtins.str] policy_name: Automatic snapshot policy name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repeat_weekdays: A collection of automatic snapshots performed on several days of the week. Value range: 1~7, for example, `1` means Monday.
         :param pulumi.Input[_builtins.int] retention_days: Automatic snapshot retention days.
@@ -99,6 +100,7 @@ class _AutoSnapShotPolicyState:
                  time_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AutoSnapShotPolicy resources.
+
         :param pulumi.Input[_builtins.int] applied_dbfs_number: The number of database file systems set by the automatic snapshot policy.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] last_modified: Last modification time of automatic snapshot policy
@@ -295,6 +297,7 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] policy_name: Automatic snapshot policy name
@@ -339,6 +342,7 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AutoSnapShotPolicyArgs args: The arguments to use to populate this resource's properties.

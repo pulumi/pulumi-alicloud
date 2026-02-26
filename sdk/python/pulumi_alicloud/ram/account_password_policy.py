@@ -30,6 +30,7 @@ class AccountPasswordPolicyArgs:
                  require_uppercase_characters: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AccountPasswordPolicy resource.
+
         :param pulumi.Input[_builtins.bool] hard_expiry: Specifies if a password can expire in a hard way. Default to false.
         :param pulumi.Input[_builtins.int] max_login_attempts: Maximum logon attempts with an incorrect password within an hour. Valid value range: [0-32]. Default to 5.
         :param pulumi.Input[_builtins.int] max_password_age: The number of days after which password expires. A value of 0 indicates that the password never expires. Valid value range: [0-1095]. Default to 0.
@@ -182,6 +183,7 @@ class _AccountPasswordPolicyState:
                  require_uppercase_characters: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AccountPasswordPolicy resources.
+
         :param pulumi.Input[_builtins.bool] hard_expiry: Specifies if a password can expire in a hard way. Default to false.
         :param pulumi.Input[_builtins.int] max_login_attempts: Maximum logon attempts with an incorrect password within an hour. Valid value range: [0-32]. Default to 5.
         :param pulumi.Input[_builtins.int] max_password_age: The number of days after which password expires. A value of 0 indicates that the password never expires. Valid value range: [0-1095]. Default to 0.
@@ -377,6 +379,11 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
         RAM account password policy can be imported using the `id`, e.g.
 
+        ```sh
+        $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] hard_expiry: Specifies if a password can expire in a hard way. Default to false.
@@ -435,6 +442,11 @@ class AccountPasswordPolicy(pulumi.CustomResource):
         ## Import
 
         RAM account password policy can be imported using the `id`, e.g.
+
+        ```sh
+        $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountPasswordPolicyArgs args: The arguments to use to populate this resource's properties.

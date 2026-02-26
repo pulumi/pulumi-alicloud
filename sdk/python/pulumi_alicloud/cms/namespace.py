@@ -24,6 +24,7 @@ class NamespaceArgs:
                  specification: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
+
         :param pulumi.Input[_builtins.str] namespace: The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
         :param pulumi.Input[_builtins.str] description: The description of the namespace.
         :param pulumi.Input[_builtins.str] specification: The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
@@ -91,6 +92,7 @@ class _NamespaceState:
                  specification: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the namespace.
         :param pulumi.Input[_builtins.str] namespace: The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
         :param pulumi.Input[_builtins.str] specification: The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
@@ -191,6 +193,7 @@ class Namespace(pulumi.CustomResource):
         $ pulumi import alicloud:cms/namespace:Namespace example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the namespace.
@@ -238,6 +241,7 @@ class Namespace(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/namespace:Namespace example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NamespaceArgs args: The arguments to use to populate this resource's properties.

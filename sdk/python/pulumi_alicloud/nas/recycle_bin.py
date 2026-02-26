@@ -23,6 +23,7 @@ class RecycleBinArgs:
                  reserved_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a RecycleBin resource.
+
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system for which you want to enable the recycle bin feature.
         :param pulumi.Input[_builtins.int] reserved_days: The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
         """
@@ -63,6 +64,7 @@ class _RecycleBinState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RecycleBin resources.
+
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system for which you want to enable the recycle bin feature.
         :param pulumi.Input[_builtins.int] reserved_days: The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
         :param pulumi.Input[_builtins.str] status: The status of the recycle bin.
@@ -157,6 +159,7 @@ class RecycleBin(pulumi.CustomResource):
         $ pulumi import alicloud:nas/recycleBin:RecycleBin example <file_system_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system for which you want to enable the recycle bin feature.
@@ -204,6 +207,7 @@ class RecycleBin(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nas/recycleBin:RecycleBin example <file_system_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RecycleBinArgs args: The arguments to use to populate this resource's properties.

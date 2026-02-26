@@ -24,6 +24,7 @@ class DbNodeArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DbNode resource.
+
         :param pulumi.Input[_builtins.str] class_code: The specification information of the node.
         :param pulumi.Input[_builtins.str] db_instance_id: The Id of instance that can run database.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the node.
@@ -80,6 +81,7 @@ class _DbNodeState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbNode resources.
+
         :param pulumi.Input[_builtins.str] class_code: The specification information of the node.
         :param pulumi.Input[_builtins.str] db_instance_id: The Id of instance that can run database.
         :param pulumi.Input[_builtins.str] node_id: The ID of the node.
@@ -249,6 +251,7 @@ class DbNode(pulumi.CustomResource):
         $ pulumi import alicloud:rds/dbNode:DbNode example <db_instance_id>:<node_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] class_code: The specification information of the node.
@@ -326,6 +329,7 @@ class DbNode(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/dbNode:DbNode example <db_instance_id>:<node_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DbNodeArgs args: The arguments to use to populate this resource's properties.

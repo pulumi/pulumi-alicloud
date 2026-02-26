@@ -40,6 +40,7 @@ class BaseInstanceArgs:
                  upgrade_spec_native: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BaseInstance resource.
+
         :param pulumi.Input[_builtins.int] disk_size: The size of the storage space, in GB.
                
                The limits of storage space vary according to the cluster specifications, as follows:
@@ -469,6 +470,7 @@ class _BaseInstanceState:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering BaseInstance resources.
+
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew.
                
                It takes effect when the parameter ChargeType is PrePaid. Value range:
@@ -1008,6 +1010,7 @@ class BaseInstance(pulumi.CustomResource):
         $ pulumi import alicloud:ocean/baseInstance:BaseInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew.
@@ -1141,6 +1144,7 @@ class BaseInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ocean/baseInstance:BaseInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BaseInstanceArgs args: The arguments to use to populate this resource's properties.

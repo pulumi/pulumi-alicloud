@@ -28,6 +28,7 @@ class DnatEntryArgs:
                  external_ip: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DnatEntry resource.
+
         :param pulumi.Input[_builtins.str] external_port: The public port.Value range: 1 to 65535 or "any".
         :param pulumi.Input[_builtins.str] internal_ip: The destination private IP address.
         :param pulumi.Input[_builtins.str] internal_port: The destination private port.Value range: 1 to 65535 or "any".
@@ -142,6 +143,7 @@ class _DnatEntryState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnatEntry resources.
+
         :param pulumi.Input[_builtins.str] external_ip: The external public IP address.when "type" is "Internet",automatically identify the external ip.
         :param pulumi.Input[_builtins.str] external_port: The public port.Value range: 1 to 65535 or "any".
         :param pulumi.Input[_builtins.str] internal_ip: The destination private IP address.
@@ -310,6 +312,7 @@ class DnatEntry(pulumi.CustomResource):
         $ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] external_ip: The external public IP address.when "type" is "Internet",automatically identify the external ip.
@@ -366,6 +369,7 @@ class DnatEntry(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DnatEntryArgs args: The arguments to use to populate this resource's properties.

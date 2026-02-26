@@ -32,6 +32,7 @@ class CheckConfigArgs:
                  vendors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CheckConfig resource.
+
         :param pulumi.Input[_builtins.str] configure: The configuration of the check item. Valid value:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] cycle_days: Cycle detection time.
         :param pulumi.Input[_builtins.bool] enable_add_check: Whether to check by default when there are new check items in the selected regulation. Values available:
@@ -204,6 +205,7 @@ class _CheckConfigState:
                  vendors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CheckConfig resources.
+
         :param pulumi.Input[_builtins.str] configure: The configuration of the check item. Valid value:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] cycle_days: Cycle detection time.
         :param pulumi.Input[_builtins.bool] enable_add_check: Whether to check by default when there are new check items in the selected regulation. Values available:
@@ -426,6 +428,7 @@ class CheckConfig(pulumi.CustomResource):
         $ terraform import alicloud_threat_detection_check_config.example 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] configure: The configuration of the check item. Valid value:
@@ -501,6 +504,7 @@ class CheckConfig(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_threat_detection_check_config.example 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CheckConfigArgs args: The arguments to use to populate this resource's properties.

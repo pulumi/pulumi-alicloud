@@ -23,6 +23,7 @@ class LoadbalancerCommonBandwidthPackageAttachmentArgs:
                  load_balancer_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a LoadbalancerCommonBandwidthPackageAttachment resource.
+
         :param pulumi.Input[_builtins.str] bandwidth_package_id: Specifies whether only to precheck the request. Valid values:
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the EIP bandwidth plan.
         """
@@ -62,6 +63,7 @@ class _LoadbalancerCommonBandwidthPackageAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadbalancerCommonBandwidthPackageAttachment resources.
+
         :param pulumi.Input[_builtins.str] bandwidth_package_id: Specifies whether only to precheck the request. Valid values:
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the EIP bandwidth plan.
         :param pulumi.Input[_builtins.str] status: Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
@@ -199,6 +201,7 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment example <load_balancer_id>:<bandwidth_package_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: Specifies whether only to precheck the request. Valid values:
@@ -289,6 +292,7 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment example <load_balancer_id>:<bandwidth_package_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadbalancerCommonBandwidthPackageAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -88,6 +88,7 @@ class DdrInstanceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DdrInstance resource.
+
         :param pulumi.Input[_builtins.str] engine: Database type. Value options: MySQL, SQLServer.
                
                > **NOTE:** When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
@@ -1339,6 +1340,7 @@ class _DdrInstanceState:
                  zone_id_slave_b: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DdrInstance resources.
+
         :param pulumi.Input[_builtins.str] acl: The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - cert
                - perfer
@@ -2687,6 +2689,7 @@ class DdrInstance(pulumi.CustomResource):
         $ pulumi import alicloud:rds/ddrInstance:DdrInstance example rm-abc12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -2881,6 +2884,7 @@ class DdrInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/ddrInstance:DdrInstance example rm-abc12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DdrInstanceArgs args: The arguments to use to populate this resource's properties.

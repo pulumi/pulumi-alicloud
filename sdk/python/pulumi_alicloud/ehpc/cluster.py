@@ -81,6 +81,7 @@ class ClusterArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[_builtins.str] cluster_name: The name of the cluster. The name must be `2` to `64` characters in length.
         :param pulumi.Input[_builtins.int] compute_count: The number of the compute nodes. Valid values: `1` to `99`.
         :param pulumi.Input[_builtins.str] compute_instance_type: The instance type of the compute nodes.
@@ -1051,6 +1052,7 @@ class _ClusterState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[_builtins.str] account_type: The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
         :param pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]] additional_volumes: The additional volumes. See `additional_volumes` below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]] applications: The application. See `application` below.
@@ -2116,6 +2118,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import alicloud:ehpc/cluster:Cluster example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_type: The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
@@ -2274,6 +2277,7 @@ class Cluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ehpc/cluster:Cluster example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

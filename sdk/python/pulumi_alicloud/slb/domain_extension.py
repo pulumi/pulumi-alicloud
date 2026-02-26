@@ -26,6 +26,7 @@ class DomainExtensionArgs:
                  delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DomainExtension resource.
+
         :param pulumi.Input[_builtins.str] domain: The domain name.
         :param pulumi.Input[_builtins.int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the SLB instance.
@@ -110,6 +111,7 @@ class _DomainExtensionState:
                  server_certificate_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DomainExtension resources.
+
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[_builtins.str] domain: The domain name.
         :param pulumi.Input[_builtins.int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
@@ -316,6 +318,7 @@ class DomainExtension(pulumi.CustomResource):
         $ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
@@ -445,6 +448,7 @@ class DomainExtension(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainExtensionArgs args: The arguments to use to populate this resource's properties.

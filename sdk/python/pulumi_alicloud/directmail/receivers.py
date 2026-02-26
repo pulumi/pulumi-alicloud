@@ -24,6 +24,7 @@ class ReceiversArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Receivers resource.
+
         :param pulumi.Input[_builtins.str] receivers_alias: The alias of receivers. Must email address and less than 30 characters in length.
         :param pulumi.Input[_builtins.str] receivers_name: The name of the resource. The length that cannot be repeated is 1-30 characters.
         :param pulumi.Input[_builtins.str] description: The description of receivers and 1-50 characters in length.
@@ -79,6 +80,7 @@ class _ReceiversState:
                  status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Receivers resources.
+
         :param pulumi.Input[_builtins.str] description: The description of receivers and 1-50 characters in length.
         :param pulumi.Input[_builtins.str] receivers_alias: The alias of receivers. Must email address and less than 30 characters in length.
         :param pulumi.Input[_builtins.str] receivers_name: The name of the resource. The length that cannot be repeated is 1-30 characters.
@@ -189,6 +191,7 @@ class Receivers(pulumi.CustomResource):
         $ pulumi import alicloud:directmail/receivers:Receivers example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of receivers and 1-50 characters in length.
@@ -237,6 +240,7 @@ class Receivers(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:directmail/receivers:Receivers example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReceiversArgs args: The arguments to use to populate this resource's properties.

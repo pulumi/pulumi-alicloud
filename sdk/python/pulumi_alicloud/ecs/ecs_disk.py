@@ -48,6 +48,7 @@ class EcsDiskArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsDisk resource.
+
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
         :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
@@ -531,6 +532,7 @@ class _EcsDiskState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsDisk resources.
+
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
         :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
@@ -1108,6 +1110,7 @@ class EcsDisk(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsDisk:EcsDisk example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
@@ -1211,6 +1214,7 @@ class EcsDisk(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsDisk:EcsDisk example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsDiskArgs args: The arguments to use to populate this resource's properties.

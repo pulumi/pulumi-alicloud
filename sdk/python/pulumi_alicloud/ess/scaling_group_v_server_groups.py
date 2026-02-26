@@ -26,6 +26,7 @@ class ScalingGroupVServerGroupsArgs:
                  force: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ScalingGroupVServerGroups resource.
+
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]] vserver_groups: A list of vserver groups attached on scaling group. See `vserver_groups` below.
         :param pulumi.Input[_builtins.bool] force: If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
@@ -80,6 +81,7 @@ class _ScalingGroupVServerGroupsState:
                  vserver_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]]] = None):
         """
         Input properties used for looking up and filtering ScalingGroupVServerGroups resources.
+
         :param pulumi.Input[_builtins.bool] force: If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]] vserver_groups: A list of vserver groups attached on scaling group. See `vserver_groups` below.
@@ -167,6 +169,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         $ pulumi import alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups example abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force: If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
@@ -207,6 +210,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups example abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScalingGroupVServerGroupsArgs args: The arguments to use to populate this resource's properties.

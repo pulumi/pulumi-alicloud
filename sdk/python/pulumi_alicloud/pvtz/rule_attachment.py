@@ -25,6 +25,7 @@ class RuleAttachmentArgs:
                  vpcs: pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]):
         """
         The set of arguments for constructing a RuleAttachment resource.
+
         :param pulumi.Input[_builtins.str] rule_id: The ID of the rule.
         :param pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]] vpcs: The List of the VPC. See `vpcs` below.
         """
@@ -63,6 +64,7 @@ class _RuleAttachmentState:
                  vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]] = None):
         """
         Input properties used for looking up and filtering RuleAttachment resources.
+
         :param pulumi.Input[_builtins.str] rule_id: The ID of the rule.
         :param pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]] vpcs: The List of the VPC. See `vpcs` below.
         """
@@ -197,6 +199,7 @@ class RuleAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:pvtz/ruleAttachment:RuleAttachment example <rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] rule_id: The ID of the rule.
@@ -299,6 +302,7 @@ class RuleAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pvtz/ruleAttachment:RuleAttachment example <rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleAttachmentArgs args: The arguments to use to populate this resource's properties.

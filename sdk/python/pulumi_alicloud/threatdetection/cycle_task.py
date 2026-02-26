@@ -31,6 +31,7 @@ class CycleTaskArgs:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CycleTask resource.
+
         :param pulumi.Input[_builtins.int] enable: Whether to enable. Value:
         :param pulumi.Input[_builtins.int] first_date_str: First execution time.
         :param pulumi.Input[_builtins.int] interval_period: Interval period.
@@ -203,6 +204,7 @@ class _CycleTaskState:
                  task_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CycleTask resources.
+
         :param pulumi.Input[_builtins.int] enable: Whether to enable. Value:
         :param pulumi.Input[_builtins.int] first_date_str: First execution time.
         :param pulumi.Input[_builtins.int] interval_period: Interval period.
@@ -443,6 +445,7 @@ class CycleTask(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/cycleTask:CycleTask example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] enable: Whether to enable. Value:
@@ -525,6 +528,7 @@ class CycleTask(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/cycleTask:CycleTask example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CycleTaskArgs args: The arguments to use to populate this resource's properties.

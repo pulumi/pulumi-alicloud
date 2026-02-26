@@ -31,6 +31,7 @@ class BgpGroupArgs:
                  route_limit: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a BgpGroup resource.
+
         :param pulumi.Input[_builtins.int] peer_asn: The ASN of the gateway device in the data center.
         :param pulumi.Input[_builtins.str] router_id: The ID of the virtual border router (VBR) that is associated with the BGP group.
         :param pulumi.Input[_builtins.str] auth_key: The authentication key of the BGP group.
@@ -207,6 +208,7 @@ class _BgpGroupState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpGroup resources.
+
         :param pulumi.Input[_builtins.str] auth_key: The authentication key of the BGP group.
         :param pulumi.Input[_builtins.str] bgp_group_name: The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[_builtins.bool] clear_auth_key: Specifies whether to clear the secret key. Valid values: `true`, `false`.
@@ -468,6 +470,7 @@ class BgpGroup(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/bgpGroup:BgpGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_key: The authentication key of the BGP group.
@@ -543,6 +546,7 @@ class BgpGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/bgpGroup:BgpGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BgpGroupArgs args: The arguments to use to populate this resource's properties.

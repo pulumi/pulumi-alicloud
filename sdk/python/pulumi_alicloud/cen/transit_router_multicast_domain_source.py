@@ -25,6 +25,7 @@ class TransitRouterMulticastDomainSourceArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterMulticastDomainSource resource.
+
         :param pulumi.Input[_builtins.str] group_ip_address: The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
         :param pulumi.Input[_builtins.str] network_interface_id: ENI ID of the multicast source.
         :param pulumi.Input[_builtins.str] transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast source belongs.
@@ -95,6 +96,7 @@ class _TransitRouterMulticastDomainSourceState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterMulticastDomainSource resources.
+
         :param pulumi.Input[_builtins.str] group_ip_address: The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
         :param pulumi.Input[_builtins.str] network_interface_id: ENI ID of the multicast source.
         :param pulumi.Input[_builtins.str] status: The status of the resource
@@ -281,6 +283,7 @@ class TransitRouterMulticastDomainSource(pulumi.CustomResource):
         $terraform import alicloud_cen_transit_router_multicast_domain_source.example <transit_router_multicast_domain_id>:<group_ip_address>:<network_interface_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_ip_address: The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
@@ -390,6 +393,7 @@ class TransitRouterMulticastDomainSource(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_cen_transit_router_multicast_domain_source.example <transit_router_multicast_domain_id>:<group_ip_address>:<network_interface_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterMulticastDomainSourceArgs args: The arguments to use to populate this resource's properties.

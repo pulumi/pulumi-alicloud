@@ -29,6 +29,7 @@ class FirewallVpcFirewallArgs:
                  member_uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallVpcFirewall resource.
+
         :param pulumi.Input['FirewallVpcFirewallLocalVpcArgs'] local_vpc: The details of the local VPC. See `local_vpc` below.
         :param pulumi.Input['FirewallVpcFirewallPeerVpcArgs'] peer_vpc: The details of the peer VPC. See `peer_vpc` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values:
@@ -133,6 +134,7 @@ class _FirewallVpcFirewallState:
                  vpc_firewall_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallVpcFirewall resources.
+
         :param pulumi.Input[_builtins.int] bandwidth: Bandwidth specifications for high-speed channels. Unit: Mbps.
         :param pulumi.Input[_builtins.str] connect_type: The communication type of the VPC firewall.
         :param pulumi.Input[_builtins.str] lang: The language type of the requested and received messages. Valid values:
@@ -353,6 +355,7 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         $terraform import alicloud_cloud_firewall_vpc_firewall.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] lang: The language type of the requested and received messages. Valid values:
@@ -421,6 +424,7 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_cloud_firewall_vpc_firewall.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallVpcFirewallArgs args: The arguments to use to populate this resource's properties.

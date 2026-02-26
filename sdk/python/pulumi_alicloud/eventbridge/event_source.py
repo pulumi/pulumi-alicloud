@@ -27,6 +27,7 @@ class EventSourceArgs:
                  linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EventSource resource.
+
         :param pulumi.Input[_builtins.str] event_bus_name: The name of the event bus to which the event source is attached.
         :param pulumi.Input[_builtins.str] event_source_name: The name of the event source.
         :param pulumi.Input[_builtins.str] description: The description of the event source.
@@ -155,6 +156,7 @@ class _EventSourceState:
                  linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering EventSource resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the event source.
         :param pulumi.Input[_builtins.str] event_bus_name: The name of the event bus to which the event source is attached.
         :param pulumi.Input[_builtins.str] event_source_name: The name of the event source.
@@ -337,6 +339,7 @@ class EventSource(pulumi.CustomResource):
         $ pulumi import alicloud:eventbridge/eventSource:EventSource example <event_source_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the event source.
@@ -414,6 +417,7 @@ class EventSource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eventbridge/eventSource:EventSource example <event_source_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EventSourceArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class VswitchArgs:
                  vswitch_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Vswitch resource.
+
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block of the vSwitch.
         :param pulumi.Input[_builtins.str] ens_region_id: ENS Region ID.
         :param pulumi.Input[_builtins.str] description: The description of the vSwitch.
@@ -114,6 +115,7 @@ class _VswitchState:
                  vswitch_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vswitch resources.
+
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block of the vSwitch.
         :param pulumi.Input[_builtins.str] create_time: The time when the VPC was created.
         :param pulumi.Input[_builtins.str] description: The description of the vSwitch.
@@ -276,6 +278,7 @@ class Vswitch(pulumi.CustomResource):
         $ pulumi import alicloud:ens/vswitch:Vswitch example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block of the vSwitch.
@@ -331,6 +334,7 @@ class Vswitch(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/vswitch:Vswitch example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VswitchArgs args: The arguments to use to populate this resource's properties.

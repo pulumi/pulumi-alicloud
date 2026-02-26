@@ -47,6 +47,7 @@ class InstanceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] core_instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[_builtins.str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
         :param pulumi.Input[_builtins.str] master_instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
@@ -446,6 +447,7 @@ class _InstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] account: The account of the cluster web ui. Size [0-128].
         :param pulumi.Input[_builtins.bool] auto_renew: Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
         :param pulumi.Input[_builtins.int] cold_storage_size: 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
@@ -968,6 +970,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:hbase/instance:Instance example hb-wz96815u13k659fvd
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account: The account of the cluster web ui. Size [0-128].
@@ -1061,6 +1064,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbase/instance:Instance example hb-wz96815u13k659fvd
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

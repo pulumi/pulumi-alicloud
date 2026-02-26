@@ -33,6 +33,7 @@ class GatewayArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
+
         :param pulumi.Input[_builtins.str] gateway_name: The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[_builtins.str] location: The location of the gateway. Valid values: `Cloud`, `On_Premise`.
         :param pulumi.Input[_builtins.str] storage_bundle_id: The ID of the gateway cluster.
@@ -230,6 +231,7 @@ class _GatewayState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the gateway.
         :param pulumi.Input[_builtins.str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
         :param pulumi.Input[_builtins.str] gateway_name: The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
@@ -502,6 +504,7 @@ class Gateway(pulumi.CustomResource):
         $ pulumi import alicloud:cloudstoragegateway/gateway:Gateway example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the gateway.
@@ -577,6 +580,7 @@ class Gateway(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudstoragegateway/gateway:Gateway example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayArgs args: The arguments to use to populate this resource's properties.

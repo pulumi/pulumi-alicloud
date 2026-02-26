@@ -42,6 +42,7 @@ class DomainResourceArgs:
                  white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DomainResource resource.
+
         :param pulumi.Input[_builtins.str] domain: The domain name for which you want to configure the Static Page Caching policy.
                
                > **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
@@ -424,6 +425,7 @@ class _DomainResourceState:
                  white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DomainResource resources.
+
         :param pulumi.Input[_builtins.str] ai_mode: the mode of the Intelligent Protection policy.
                - watch: the Warning mode
                - defense: the Defense mode
@@ -885,6 +887,7 @@ class DomainResource(pulumi.CustomResource):
         $ pulumi import alicloud:ddos/domainResource:DomainResource example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ai_mode: the mode of the Intelligent Protection policy.
@@ -1007,6 +1010,7 @@ class DomainResource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ddos/domainResource:DomainResource example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainResourceArgs args: The arguments to use to populate this resource's properties.

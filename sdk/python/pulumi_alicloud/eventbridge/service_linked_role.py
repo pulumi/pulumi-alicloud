@@ -22,6 +22,7 @@ class ServiceLinkedRoleArgs:
                  product_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ServiceLinkedRole resource.
+
         :param pulumi.Input[_builtins.str] product_name: The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         pulumi.set(__self__, "product_name", product_name)
@@ -45,6 +46,7 @@ class _ServiceLinkedRoleState:
                  product_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceLinkedRole resources.
+
         :param pulumi.Input[_builtins.str] product_name: The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         if product_name is not None:
@@ -101,6 +103,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         $ pulumi import alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole example <product_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] product_name: The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
@@ -140,6 +143,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole example <product_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceLinkedRoleArgs args: The arguments to use to populate this resource's properties.

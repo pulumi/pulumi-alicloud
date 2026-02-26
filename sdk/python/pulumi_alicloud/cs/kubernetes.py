@@ -75,6 +75,7 @@ class KubernetesArgs:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Kubernetes resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] master_instance_types: The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] master_vswitch_ids: The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
@@ -964,6 +965,7 @@ class _KubernetesState:
                  worker_ram_role_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Kubernetes resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input['KubernetesCertificateAuthorityArgs'] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
@@ -2182,6 +2184,7 @@ class Kubernetes(pulumi.CustomResource):
         $ pulumi import alicloud:cs/kubernetes:Kubernetes main cluster-id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAddonArgs', 'KubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
@@ -2448,6 +2451,7 @@ class Kubernetes(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cs/kubernetes:Kubernetes main cluster-id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KubernetesArgs args: The arguments to use to populate this resource's properties.

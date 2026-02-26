@@ -28,6 +28,7 @@ class EcsKeyPairArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EcsKeyPair resource.
+
         :param pulumi.Input[_builtins.str] key_file: The key file.
         :param pulumi.Input[_builtins.str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
                
@@ -158,6 +159,7 @@ class _EcsKeyPairState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering EcsKeyPair resources.
+
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.237.0) The time when the key pair was created.
         :param pulumi.Input[_builtins.str] finger_print: The fingerprint of the key pair.
         :param pulumi.Input[_builtins.str] key_file: The key file.
@@ -352,6 +354,7 @@ class EcsKeyPair(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key_file: The key file.
@@ -403,6 +406,7 @@ class EcsKeyPair(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsKeyPairArgs args: The arguments to use to populate this resource's properties.

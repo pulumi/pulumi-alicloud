@@ -33,6 +33,7 @@ class AdConnectorDirectoryArgs:
                  sub_domain_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AdConnectorDirectory resource.
+
         :param pulumi.Input[_builtins.str] directory_name: The name of the directory. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_addresses: The DNS address list.
         :param pulumi.Input[_builtins.str] domain_name: The name of the domain.
@@ -228,6 +229,7 @@ class _AdConnectorDirectoryState:
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AdConnectorDirectory resources.
+
         :param pulumi.Input[_builtins.str] desktop_access_type: The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
         :param pulumi.Input[_builtins.str] directory_name: The name of the directory. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_addresses: The DNS address list.
@@ -502,6 +504,7 @@ class AdConnectorDirectory(pulumi.CustomResource):
         $ pulumi import alicloud:eds/adConnectorDirectory:AdConnectorDirectory example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] desktop_access_type: The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
@@ -579,6 +582,7 @@ class AdConnectorDirectory(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/adConnectorDirectory:AdConnectorDirectory example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AdConnectorDirectoryArgs args: The arguments to use to populate this resource's properties.

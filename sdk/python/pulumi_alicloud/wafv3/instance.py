@@ -33,6 +33,7 @@ class _InstanceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] instance_id: The first ID of the resource
         :param pulumi.Input[_builtins.str] status: The status of the resource
@@ -116,6 +117,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:wafv3/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -152,6 +154,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:wafv3/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

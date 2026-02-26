@@ -32,6 +32,7 @@ class PatchBaselineArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PatchBaseline resource.
+
         :param pulumi.Input[_builtins.str] approval_rules: Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         :param pulumi.Input[_builtins.str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
         :param pulumi.Input[_builtins.str] patch_baseline_name: The name of the patch baseline.
@@ -214,6 +215,7 @@ class _PatchBaselineState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering PatchBaseline resources.
+
         :param pulumi.Input[_builtins.str] approval_rules: Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] approved_patches: Approved Patch.
         :param pulumi.Input[_builtins.bool] approved_patches_enable_non_security: ApprovedPatchesEnableNonSecurity.
@@ -450,6 +452,7 @@ class PatchBaseline(pulumi.CustomResource):
         $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] approval_rules: Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
@@ -504,6 +507,7 @@ class PatchBaseline(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PatchBaselineArgs args: The arguments to use to populate this resource's properties.

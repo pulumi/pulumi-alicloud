@@ -29,6 +29,7 @@ class ScanRuleArgs:
                  repo_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ScanRule resource.
+
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
         :param pulumi.Input[_builtins.str] repo_tag_filter_pattern: Regular expression for matching tags that trigger a scan
         :param pulumi.Input[_builtins.str] rule_name: Event rule name
@@ -177,6 +178,7 @@ class _ScanRuleState:
                  trigger_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScanRule resources.
+
         :param pulumi.Input[_builtins.int] create_time: Creation time
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] namespaces: Set of namespaces:  
@@ -415,6 +417,7 @@ class ScanRule(pulumi.CustomResource):
         $ pulumi import alicloud:cr/scanRule:ScanRule example <instance_id>:<scan_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
@@ -493,6 +496,7 @@ class ScanRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cr/scanRule:ScanRule example <instance_id>:<scan_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScanRuleArgs args: The arguments to use to populate this resource's properties.

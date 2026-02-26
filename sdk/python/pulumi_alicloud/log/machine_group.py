@@ -26,6 +26,7 @@ class MachineGroupArgs:
                  topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MachineGroup resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] identify_lists: The specific machine identification, which can be an IP address or user-defined identity.
         :param pulumi.Input[_builtins.str] project: The project name to the machine group belongs.
         :param pulumi.Input[_builtins.str] identify_type: The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
@@ -112,6 +113,7 @@ class _MachineGroupState:
                  topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MachineGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] identify_lists: The specific machine identification, which can be an IP address or user-defined identity.
         :param pulumi.Input[_builtins.str] identify_type: The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
         :param pulumi.Input[_builtins.str] name: The machine group name, which is unique in the same project.
@@ -247,6 +249,7 @@ class MachineGroup(pulumi.CustomResource):
         $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] identify_lists: The specific machine identification, which can be an IP address or user-defined identity.
@@ -305,6 +308,7 @@ class MachineGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MachineGroupArgs args: The arguments to use to populate this resource's properties.

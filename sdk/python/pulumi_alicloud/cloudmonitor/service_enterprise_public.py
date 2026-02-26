@@ -31,6 +31,7 @@ class _ServiceEnterprisePublicState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceEnterprisePublic resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         """
         if create_time is not None:
@@ -88,6 +89,7 @@ class ServiceEnterprisePublic(pulumi.CustomResource):
         $ pulumi import alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -128,6 +130,7 @@ class ServiceEnterprisePublic(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceEnterprisePublicArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class NetworkArgs:
                  network_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Network resource.
+
         :param pulumi.Input[_builtins.str] cidr_block: The network segment of the network. You can use the following network segments or a subset of them as the network segment: `10.0.0.0/8` (default), `172.16.0.0/12`, `192.168.0.0/16`.
         :param pulumi.Input[_builtins.str] ens_region_id: Ens node IDExample value: cn-beijing-telecom.
         :param pulumi.Input[_builtins.str] description: Description information.Rules:It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`. Example value: this is my first network.
@@ -97,6 +98,7 @@ class _NetworkState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Network resources.
+
         :param pulumi.Input[_builtins.str] cidr_block: The network segment of the network. You can use the following network segments or a subset of them as the network segment: `10.0.0.0/8` (default), `172.16.0.0/12`, `192.168.0.0/16`.
         :param pulumi.Input[_builtins.str] create_time: Creation time, timestamp (MS).
         :param pulumi.Input[_builtins.str] description: Description information.Rules:It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`. Example value: this is my first network.
@@ -237,6 +239,7 @@ class Network(pulumi.CustomResource):
         $ pulumi import alicloud:ens/network:Network example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr_block: The network segment of the network. You can use the following network segments or a subset of them as the network segment: `10.0.0.0/8` (default), `172.16.0.0/12`, `192.168.0.0/16`.
@@ -285,6 +288,7 @@ class Network(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/network:Network example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkArgs args: The arguments to use to populate this resource's properties.

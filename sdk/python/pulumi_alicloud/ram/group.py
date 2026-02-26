@@ -25,6 +25,7 @@ class GroupArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] comments: The Group comment information. The maximum length is 128 characters.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the Group. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] group_name: The group name. You must specify at least one of the `group_name` and `name`.
@@ -108,6 +109,7 @@ class _GroupState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[_builtins.str] comments: The Group comment information. The maximum length is 128 characters.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.245.0) The create time of the group.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the Group. Default value: `false`. Valid values:
@@ -244,6 +246,7 @@ class Group(pulumi.CustomResource):
         $ pulumi import alicloud:ram/group:Group example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comments: The Group comment information. The maximum length is 128 characters.
@@ -296,6 +299,7 @@ class Group(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ram/group:Group example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

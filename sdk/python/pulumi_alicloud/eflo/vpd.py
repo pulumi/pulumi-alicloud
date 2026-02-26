@@ -26,6 +26,7 @@ class VpdArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Vpd resource.
+
         :param pulumi.Input[_builtins.str] cidr: The CIDR block of the VPD.
         :param pulumi.Input[_builtins.str] vpd_name: The name of the VPD instance.
         :param pulumi.Input[_builtins.str] resource_group_id: The Resource group ID. **NOTE:** From version 1.263.0, `resource_group_id` can be modified.
@@ -116,6 +117,7 @@ class _VpdState:
                  vpd_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vpd resources.
+
         :param pulumi.Input[_builtins.str] cidr: The CIDR block of the VPD.
         :param pulumi.Input[_builtins.str] create_time: The time when the activation code was created.
         :param pulumi.Input[_builtins.str] gmt_modified: The time when the O&M task was modified.
@@ -304,6 +306,7 @@ class Vpd(pulumi.CustomResource):
         $ pulumi import alicloud:eflo/vpd:Vpd example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr: The CIDR block of the VPD.
@@ -355,6 +358,7 @@ class Vpd(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eflo/vpd:Vpd example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpdArgs args: The arguments to use to populate this resource's properties.

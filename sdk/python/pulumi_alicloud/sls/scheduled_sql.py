@@ -30,6 +30,7 @@ class ScheduledSqlArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ScheduledSql resource.
+
         :param pulumi.Input[_builtins.str] display_name: Task display name.
         :param pulumi.Input[_builtins.str] project: A short description of struct.
         :param pulumi.Input['ScheduledSqlScheduleArgs'] schedule: Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
@@ -153,6 +154,7 @@ class _ScheduledSqlState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScheduledSql resources.
+
         :param pulumi.Input[_builtins.str] description: Job description.
         :param pulumi.Input[_builtins.str] display_name: Task display name.
         :param pulumi.Input[_builtins.str] project: A short description of struct.
@@ -358,6 +360,7 @@ class ScheduledSql(pulumi.CustomResource):
         $ pulumi import alicloud:sls/scheduledSql:ScheduledSql example <project>:<scheduled_sql_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Job description.
@@ -452,6 +455,7 @@ class ScheduledSql(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sls/scheduledSql:ScheduledSql example <project>:<scheduled_sql_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScheduledSqlArgs args: The arguments to use to populate this resource's properties.

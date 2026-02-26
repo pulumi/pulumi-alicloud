@@ -31,6 +31,7 @@ class AccountArgs:
                  payer_account_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] baseline_id: The baseline ID.
                
                If it is left blank, the system default baseline is used by default.
@@ -191,6 +192,7 @@ class _AccountState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[_builtins.int] account_id: The ID of the enrolled account.
                - If you are creating a new resource account, this parameter is not required.
                - If you are enrolling a existing account to account factory, this parameter is required.
@@ -418,6 +420,7 @@ class Account(pulumi.CustomResource):
         $ pulumi import alicloud:governance/account:Account example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] account_id: The ID of the enrolled account.
@@ -496,6 +499,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:governance/account:Account example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

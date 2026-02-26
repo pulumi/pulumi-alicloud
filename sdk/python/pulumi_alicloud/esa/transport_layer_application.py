@@ -29,6 +29,7 @@ class TransportLayerApplicationArgs:
                  ipv6: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransportLayerApplication resource.
+
         :param pulumi.Input[_builtins.str] record_name: Domain name of the transport layer application
         :param pulumi.Input[Sequence[pulumi.Input['TransportLayerApplicationRuleArgs']]] rules: The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
         :param pulumi.Input[_builtins.str] site_id: Site ID.
@@ -132,6 +133,7 @@ class _TransportLayerApplicationState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransportLayerApplication resources.
+
         :param pulumi.Input[_builtins.int] application_id: Layer 4 application ID.
         :param pulumi.Input[_builtins.str] cross_border_optimization: Whether to enable China mainland network access optimization, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] ip_access_rule: IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
@@ -324,6 +326,7 @@ class TransportLayerApplication(pulumi.CustomResource):
         $ pulumi import alicloud:esa/transportLayerApplication:TransportLayerApplication example <site_id>:<application_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cross_border_optimization: Whether to enable China mainland network access optimization, default is disabled. Value range:
@@ -394,6 +397,7 @@ class TransportLayerApplication(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/transportLayerApplication:TransportLayerApplication example <site_id>:<application_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransportLayerApplicationArgs args: The arguments to use to populate this resource's properties.

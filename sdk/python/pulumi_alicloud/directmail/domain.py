@@ -22,6 +22,7 @@ class DomainArgs:
                  domain_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Domain resource.
+
         :param pulumi.Input[_builtins.str] domain_name: Domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
         """
         pulumi.set(__self__, "domain_name", domain_name)
@@ -46,6 +47,7 @@ class _DomainState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+
         :param pulumi.Input[_builtins.str] domain_name: Domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
         :param pulumi.Input[_builtins.str] status: The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
         """
@@ -119,6 +121,7 @@ class Domain(pulumi.CustomResource):
         $ pulumi import alicloud:directmail/domain:Domain example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_name: Domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
@@ -160,6 +163,7 @@ class Domain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:directmail/domain:Domain example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class UserVpcAuthorizationArgs:
                  auth_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserVpcAuthorization resource.
+
         :param pulumi.Input[_builtins.str] authorized_user_id: The primary account ID of the user who authorizes the resource.
         :param pulumi.Input[_builtins.str] auth_channel: The auth channel. Valid values: `RESOURCE_DIRECTORY`.
         :param pulumi.Input[_builtins.str] auth_type: The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
@@ -79,6 +80,7 @@ class _UserVpcAuthorizationState:
                  authorized_user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserVpcAuthorization resources.
+
         :param pulumi.Input[_builtins.str] auth_channel: The auth channel. Valid values: `RESOURCE_DIRECTORY`.
         :param pulumi.Input[_builtins.str] auth_type: The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
         :param pulumi.Input[_builtins.str] authorized_user_id: The primary account ID of the user who authorizes the resource.
@@ -169,6 +171,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
         $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_channel: The auth channel. Valid values: `RESOURCE_DIRECTORY`.
@@ -212,6 +215,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserVpcAuthorizationArgs args: The arguments to use to populate this resource's properties.

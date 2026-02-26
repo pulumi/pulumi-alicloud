@@ -28,6 +28,7 @@ class VswitchCidrReservationArgs:
                  vswitch_cidr_reservation_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VswitchCidrReservation resource.
+
         :param pulumi.Input[_builtins.str] vswitch_id: The Id of the switch instance.
         :param pulumi.Input[_builtins.str] cidr_reservation_cidr: Reserved network segment CIdrBlock.
         :param pulumi.Input[_builtins.str] cidr_reservation_description: The description of the reserved CIDR block.
@@ -151,6 +152,7 @@ class _VswitchCidrReservationState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VswitchCidrReservation resources.
+
         :param pulumi.Input[_builtins.str] cidr_reservation_cidr: Reserved network segment CIdrBlock.
         :param pulumi.Input[_builtins.str] cidr_reservation_description: The description of the reserved CIDR block.
         :param pulumi.Input[_builtins.str] cidr_reservation_mask: Reserved segment mask.
@@ -380,6 +382,7 @@ class VswitchCidrReservation(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation example <vswitch_id>:<vswitch_cidr_reservation_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr_reservation_cidr: Reserved network segment CIdrBlock.
@@ -442,6 +445,7 @@ class VswitchCidrReservation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation example <vswitch_id>:<vswitch_cidr_reservation_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VswitchCidrReservationArgs args: The arguments to use to populate this resource's properties.

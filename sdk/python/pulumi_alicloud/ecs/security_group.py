@@ -30,6 +30,7 @@ class SecurityGroupArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityGroup resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] inner_access: Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
         :param pulumi.Input[_builtins.str] inner_access_policy: The internal access control policy of the security group. Valid values:
@@ -195,6 +196,7 @@ class _SecurityGroupState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityGroup resources.
+
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.239.0) The time when the security group was created.
         :param pulumi.Input[_builtins.str] description: The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] inner_access: Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
@@ -427,6 +429,7 @@ class SecurityGroup(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
@@ -497,6 +500,7 @@ class SecurityGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityGroupArgs args: The arguments to use to populate this resource's properties.

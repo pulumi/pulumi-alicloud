@@ -40,6 +40,7 @@ class GatewayArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
+
         :param pulumi.Input[_builtins.int] bandwidth: The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the VPN gateway belongs.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Default value: `true`. Valid values:
@@ -368,6 +369,7 @@ class _GatewayState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
+
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Default value: `true`. Valid values:
         :param pulumi.Input[_builtins.bool] auto_propagate: Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
         :param pulumi.Input[_builtins.int] bandwidth: The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
@@ -848,6 +850,7 @@ class Gateway(pulumi.CustomResource):
         $ pulumi import alicloud:vpn/gateway:Gateway example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Default value: `true`. Valid values:
@@ -941,6 +944,7 @@ class Gateway(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpn/gateway:Gateway example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayArgs args: The arguments to use to populate this resource's properties.

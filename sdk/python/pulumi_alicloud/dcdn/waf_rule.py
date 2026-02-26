@@ -38,6 +38,7 @@ class WafRuleArgs:
                  waf_group_ids: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WafRule resource.
+
         :param pulumi.Input[_builtins.str] policy_id: The protection policy ID.
         :param pulumi.Input[_builtins.str] rule_name: The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
         :param pulumi.Input[_builtins.str] action: Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
@@ -286,6 +287,7 @@ class _WafRuleState:
                  waf_group_ids: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WafRule resources.
+
         :param pulumi.Input[_builtins.str] action: Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
         :param pulumi.Input[_builtins.str] cc_status: Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
         :param pulumi.Input[_builtins.str] cn_region_list: The blocked regions in the Chinese mainland, separated by commas (,).
@@ -634,6 +636,7 @@ class WafRule(pulumi.CustomResource):
         $ pulumi import alicloud:dcdn/wafRule:WafRule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
@@ -725,6 +728,7 @@ class WafRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dcdn/wafRule:WafRule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WafRuleArgs args: The arguments to use to populate this resource's properties.

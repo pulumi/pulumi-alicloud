@@ -25,6 +25,7 @@ class PolicyArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Policy resource.
+
         :param pulumi.Input[_builtins.str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[_builtins.str] default_version: The version of the policy. Default to v1.
@@ -100,6 +101,7 @@ class _PolicyState:
                  policy_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
+
         :param pulumi.Input[_builtins.str] default_version: The version of the policy. Default to v1.
         :param pulumi.Input[_builtins.str] description: The description of the policy. The description must be 1 to 1,024 characters in length.
         :param pulumi.Input[_builtins.str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
@@ -234,6 +236,7 @@ class Policy(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/policy:Policy example abc12345
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_version: The version of the policy. Default to v1.
@@ -287,6 +290,7 @@ class Policy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/policy:Policy example abc12345
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

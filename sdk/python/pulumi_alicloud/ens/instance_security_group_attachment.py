@@ -23,6 +23,7 @@ class InstanceSecurityGroupAttachmentArgs:
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceSecurityGroupAttachment resource.
+
         :param pulumi.Input[_builtins.str] security_group_id: Security group ID.
         :param pulumi.Input[_builtins.str] instance_id: Instance ID.
         """
@@ -62,6 +63,7 @@ class _InstanceSecurityGroupAttachmentState:
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceSecurityGroupAttachment resources.
+
         :param pulumi.Input[_builtins.str] instance_id: Instance ID.
         :param pulumi.Input[_builtins.str] security_group_id: Security group ID.
         """
@@ -158,6 +160,7 @@ class InstanceSecurityGroupAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment example <instance_id>:<security_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: Instance ID.
@@ -222,6 +225,7 @@ class InstanceSecurityGroupAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment example <instance_id>:<security_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceSecurityGroupAttachmentArgs args: The arguments to use to populate this resource's properties.

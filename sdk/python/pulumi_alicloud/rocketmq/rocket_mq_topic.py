@@ -26,6 +26,7 @@ class RocketMQTopicArgs:
                  remark: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RocketMQTopic resource.
+
         :param pulumi.Input[_builtins.str] instance_id: Instance ID.
         :param pulumi.Input[_builtins.str] topic_name: Topic name and identification.
         :param pulumi.Input[_builtins.int] max_send_tps: The maximum TPS for message sending.
@@ -115,6 +116,7 @@ class _RocketMQTopicState:
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RocketMQTopic resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] instance_id: Instance ID.
         :param pulumi.Input[_builtins.int] max_send_tps: The maximum TPS for message sending.
@@ -334,6 +336,7 @@ class RocketMQTopic(pulumi.CustomResource):
         $ pulumi import alicloud:rocketmq/rocketMQTopic:RocketMQTopic example <instance_id>:<topic_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: Instance ID.
@@ -431,6 +434,7 @@ class RocketMQTopic(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rocketmq/rocketMQTopic:RocketMQTopic example <instance_id>:<topic_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RocketMQTopicArgs args: The arguments to use to populate this resource's properties.

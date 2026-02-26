@@ -37,6 +37,7 @@ class StackGroupArgs:
                  template_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StackGroup resource.
+
         :param pulumi.Input[_builtins.str] stack_group_name: StackGroupName
         :param pulumi.Input[_builtins.str] administration_role_name: The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
         :param pulumi.Input['StackGroupAutoDeploymentArgs'] auto_deployment: Automatic deployment setting information. Description
@@ -276,6 +277,7 @@ class _StackGroupState:
                  template_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StackGroup resources.
+
         :param pulumi.Input[_builtins.str] administration_role_name: The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
         :param pulumi.Input['StackGroupAutoDeploymentArgs'] auto_deployment: Automatic deployment setting information. Description
                This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
@@ -581,6 +583,7 @@ class StackGroup(pulumi.CustomResource):
         $ pulumi import alicloud:ros/stackGroup:StackGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] administration_role_name: The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
@@ -641,6 +644,7 @@ class StackGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ros/stackGroup:StackGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StackGroupArgs args: The arguments to use to populate this resource's properties.

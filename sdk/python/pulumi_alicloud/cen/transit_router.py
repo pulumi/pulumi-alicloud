@@ -27,6 +27,7 @@ class TransitRouterArgs:
                  transit_router_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouter resource.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
         :param pulumi.Input[_builtins.bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
@@ -139,6 +140,7 @@ class _TransitRouterState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouter resources.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.247.0) The time when the transit router was created.
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
@@ -361,6 +363,7 @@ class TransitRouter(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouter:TransitRouter example <cen_id>:<transit_router_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
@@ -414,6 +417,7 @@ class TransitRouter(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouter:TransitRouter example <cen_id>:<transit_router_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterArgs args: The arguments to use to populate this resource's properties.

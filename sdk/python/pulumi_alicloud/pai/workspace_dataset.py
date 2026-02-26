@@ -36,6 +36,7 @@ class WorkspaceDatasetArgs:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceDataset resource.
+
         :param pulumi.Input[_builtins.str] data_source_type: The data source type. The following values are supported:
                - OSS: Alibaba Cloud Object Storage (OSS).
                - NAS: Alibaba cloud file storage (NAS).
@@ -316,6 +317,7 @@ class _WorkspaceDatasetState:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceDataset resources.
+
         :param pulumi.Input[_builtins.str] accessibility: Workspace visibility. The following values are supported:
                - PRIVATE (default): indicates that the workspace is visible to itself and the administrator.
                - PUBLIC: The workspace is visible to all users.
@@ -669,6 +671,7 @@ class WorkspaceDataset(pulumi.CustomResource):
         $ pulumi import alicloud:pai/workspaceDataset:WorkspaceDataset example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accessibility: Workspace visibility. The following values are supported:
@@ -776,6 +779,7 @@ class WorkspaceDataset(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pai/workspaceDataset:WorkspaceDataset example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceDatasetArgs args: The arguments to use to populate this resource's properties.

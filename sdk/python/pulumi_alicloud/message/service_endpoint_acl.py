@@ -24,6 +24,7 @@ class ServiceEndpointAclArgs:
                  endpoint_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ServiceEndpointAcl resource.
+
         :param pulumi.Input[_builtins.str] acl_strategy: The ACL policy. Valid value:
                - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
         :param pulumi.Input[_builtins.str] cidr: The CIDR block.
@@ -83,6 +84,7 @@ class _ServiceEndpointAclState:
                  endpoint_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceEndpointAcl resources.
+
         :param pulumi.Input[_builtins.str] acl_strategy: The ACL policy. Valid value:
                - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
         :param pulumi.Input[_builtins.str] cidr: The CIDR block.
@@ -181,6 +183,7 @@ class ServiceEndpointAcl(pulumi.CustomResource):
         $ pulumi import alicloud:message/serviceEndpointAcl:ServiceEndpointAcl example <endpoint_type>:<acl_strategy>:<cidr>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_strategy: The ACL policy. Valid value:
@@ -229,6 +232,7 @@ class ServiceEndpointAcl(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:message/serviceEndpointAcl:ServiceEndpointAcl example <endpoint_type>:<acl_strategy>:<cidr>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceEndpointAclArgs args: The arguments to use to populate this resource's properties.

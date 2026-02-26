@@ -66,6 +66,7 @@ class SynchronizationJobArgs:
                  synchronization_direction: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SynchronizationJob resource.
+
         :param pulumi.Input[_builtins.bool] data_initialization: Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] data_synchronization: Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
@@ -804,6 +805,7 @@ class _SynchronizationJobState:
                  synchronization_direction: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SynchronizationJob resources.
+
         :param pulumi.Input[_builtins.str] checkpoint: The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
         :param pulumi.Input[_builtins.str] data_check_configure: The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
         :param pulumi.Input[_builtins.bool] data_initialization: Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
@@ -1697,6 +1699,7 @@ class SynchronizationJob(pulumi.CustomResource):
         $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] checkpoint: The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
@@ -1903,6 +1906,7 @@ class SynchronizationJob(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SynchronizationJobArgs args: The arguments to use to populate this resource's properties.

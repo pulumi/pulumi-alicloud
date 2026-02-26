@@ -24,6 +24,7 @@ class UserAttachmentArgs:
                  user_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a UserAttachment resource.
+
         :param pulumi.Input[_builtins.str] instance_id: Specifies the user group to add the user's bastion host ID of.
         :param pulumi.Input[_builtins.str] user_group_id: Specifies the user group to which you want to add the user ID.
         :param pulumi.Input[_builtins.str] user_id: Specify that you want to add to the policy attached to the user group ID. This includes response parameters in a Json-formatted string supports up to set up 100 USER ID.
@@ -77,6 +78,7 @@ class _UserAttachmentState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserAttachment resources.
+
         :param pulumi.Input[_builtins.str] instance_id: Specifies the user group to add the user's bastion host ID of.
         :param pulumi.Input[_builtins.str] user_group_id: Specifies the user group to which you want to add the user ID.
         :param pulumi.Input[_builtins.str] user_id: Specify that you want to add to the policy attached to the user group ID. This includes response parameters in a Json-formatted string supports up to set up 100 USER ID.
@@ -194,6 +196,7 @@ class UserAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:bastionhost/userAttachment:UserAttachment example <instance_id>:<user_group_id>:<user_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the user group to add the user's bastion host ID of.
@@ -264,6 +267,7 @@ class UserAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:bastionhost/userAttachment:UserAttachment example <instance_id>:<user_group_id>:<user_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserAttachmentArgs args: The arguments to use to populate this resource's properties.

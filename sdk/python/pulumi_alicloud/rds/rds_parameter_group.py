@@ -28,6 +28,7 @@ class RdsParameterGroupArgs:
                  parameter_group_desc: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RdsParameterGroup resource.
+
         :param pulumi.Input[_builtins.str] engine: The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         :param pulumi.Input[_builtins.str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
         :param pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]] param_details: Parameter list. See `param_detail` below.
@@ -112,6 +113,7 @@ class _RdsParameterGroupState:
                  parameter_group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RdsParameterGroup resources.
+
         :param pulumi.Input[_builtins.str] engine: The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         :param pulumi.Input[_builtins.str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
         :param pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]] param_details: Parameter list. See `param_detail` below.
@@ -248,6 +250,7 @@ class RdsParameterGroup(pulumi.CustomResource):
         $ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] engine: The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
@@ -307,6 +310,7 @@ class RdsParameterGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RdsParameterGroupArgs args: The arguments to use to populate this resource's properties.

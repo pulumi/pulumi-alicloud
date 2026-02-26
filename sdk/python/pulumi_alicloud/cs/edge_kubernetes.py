@@ -63,6 +63,7 @@ class EdgeKubernetesArgs:
                  worker_instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EdgeKubernetes resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_instance_types: The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
         :param pulumi.Input[_builtins.int] worker_number: The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_vswitch_ids: The vswitches used by workers.
@@ -762,6 +763,7 @@ class _EdgeKubernetesState:
                  worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering EdgeKubernetes resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below.
         :param pulumi.Input[_builtins.str] availability_zone: The ID of availability zone.
         :param pulumi.Input['EdgeKubernetesCertificateAuthorityArgs'] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
@@ -1707,6 +1709,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes main cluster-id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesAddonArgs', 'EdgeKubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` below.
@@ -1893,6 +1896,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes main cluster-id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EdgeKubernetesArgs args: The arguments to use to populate this resource's properties.

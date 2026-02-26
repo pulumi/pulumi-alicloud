@@ -26,6 +26,7 @@ class IpamIpamArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a IpamIpam resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] operating_region_lists: List of IPAM effective regions.
         :param pulumi.Input[_builtins.str] ipam_description: The description of IPAM.
                It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
@@ -119,6 +120,7 @@ class _IpamIpamState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IpamIpam resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] ipam_description: The description of IPAM.
                It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
@@ -309,6 +311,7 @@ class IpamIpam(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ipam_description: The description of IPAM.
@@ -361,6 +364,7 @@ class IpamIpam(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IpamIpamArgs args: The arguments to use to populate this resource's properties.

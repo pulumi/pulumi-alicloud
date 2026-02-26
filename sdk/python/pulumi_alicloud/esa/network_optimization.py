@@ -32,6 +32,7 @@ class NetworkOptimizationArgs:
                  websocket: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkOptimization resource.
+
         :param pulumi.Input[_builtins.str] site_id: Site ID.
         :param pulumi.Input[_builtins.str] grpc: Whether to enable GRPC, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] http2_origin: Whether to enable HTTP2 origin, default is disabled. Value range:
@@ -220,6 +221,7 @@ class _NetworkOptimizationState:
                  websocket: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkOptimization resources.
+
         :param pulumi.Input[_builtins.int] config_id: ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
         :param pulumi.Input[_builtins.str] grpc: Whether to enable GRPC, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] http2_origin: Whether to enable HTTP2 origin, default is disabled. Value range:
@@ -473,6 +475,7 @@ class NetworkOptimization(pulumi.CustomResource):
         $ pulumi import alicloud:esa/networkOptimization:NetworkOptimization example <site_id>:<config_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] grpc: Whether to enable GRPC, default is disabled. Value range:
@@ -542,6 +545,7 @@ class NetworkOptimization(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/networkOptimization:NetworkOptimization example <site_id>:<config_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkOptimizationArgs args: The arguments to use to populate this resource's properties.

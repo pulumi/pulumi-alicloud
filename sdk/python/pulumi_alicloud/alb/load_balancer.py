@@ -40,6 +40,7 @@ class LoadBalancerArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
+
         :param pulumi.Input[_builtins.str] address_type: The type of IP address that the SLB instance uses to provide services.
         :param pulumi.Input['LoadBalancerLoadBalancerBillingConfigArgs'] load_balancer_billing_config: The configuration of the billing method. See `load_balancer_billing_config` below.
         :param pulumi.Input[_builtins.str] load_balancer_edition: The edition of the ALB instance.
@@ -323,6 +324,7 @@ class _LoadBalancerState:
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
+
         :param pulumi.Input['LoadBalancerAccessLogConfigArgs'] access_log_config: The configuration of the access log. See `access_log_config` below.
         :param pulumi.Input[_builtins.str] address_allocated_mode: The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
         :param pulumi.Input[_builtins.str] address_ip_version: The protocol version. Value:
@@ -743,6 +745,7 @@ class LoadBalancer(pulumi.CustomResource):
         $ pulumi import alicloud:alb/loadBalancer:LoadBalancer example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['LoadBalancerAccessLogConfigArgs', 'LoadBalancerAccessLogConfigArgsDict']] access_log_config: The configuration of the access log. See `access_log_config` below.
@@ -844,6 +847,7 @@ class LoadBalancer(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/loadBalancer:LoadBalancer example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerArgs args: The arguments to use to populate this resource's properties.

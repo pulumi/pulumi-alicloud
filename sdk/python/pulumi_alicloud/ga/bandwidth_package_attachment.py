@@ -23,6 +23,7 @@ class BandwidthPackageAttachmentArgs:
                  bandwidth_package_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a BandwidthPackageAttachment resource.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Global Accelerator instance.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         """
@@ -63,6 +64,7 @@ class _BandwidthPackageAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BandwidthPackageAttachment resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Global Accelerator instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] accelerators: Accelerators bound with current Bandwidth Package.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
@@ -176,6 +178,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example <accelerator_id>:<bandwidth_package_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Global Accelerator instance.
@@ -227,6 +230,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example <accelerator_id>:<bandwidth_package_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BandwidthPackageAttachmentArgs args: The arguments to use to populate this resource's properties.

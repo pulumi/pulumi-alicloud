@@ -24,6 +24,7 @@ class BandwidthLimitArgs:
                  region_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a BandwidthLimit resource.
+
         :param pulumi.Input[_builtins.int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
                
                ->**NOTE:** The `cen.BandwidthLimit` resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
@@ -81,6 +82,7 @@ class _BandwidthLimitState:
                  region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering BandwidthLimit resources.
+
         :param pulumi.Input[_builtins.int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
                
                ->**NOTE:** The `cen.BandwidthLimit` resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
@@ -215,6 +217,7 @@ class BandwidthLimit(pulumi.CustomResource):
 
         ->**NOTE:** The sequence of the region_id_1 and region_id_2 makes no difference when import. But the in the id of the resource, they are sorted lexicographically.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
@@ -300,6 +303,7 @@ class BandwidthLimit(pulumi.CustomResource):
         ```
 
         ->**NOTE:** The sequence of the region_id_1 and region_id_2 makes no difference when import. But the in the id of the resource, they are sorted lexicographically.
+
 
         :param str resource_name: The name of the resource.
         :param BandwidthLimitArgs args: The arguments to use to populate this resource's properties.

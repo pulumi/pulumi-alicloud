@@ -26,6 +26,7 @@ class AuditCallbackArgs:
                  url: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AuditCallback resource.
+
         :param pulumi.Input[_builtins.str] audit_callback_name: The AuditCallback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callback_suggestions: List of audit results supported by message notification. Value: block: confirmed violation, review: Suspected violation, review: normal.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callback_types: A list of Callback types. Value: machineScan: Machine audit result notification, selfAudit: self-service audit notification.
@@ -109,6 +110,7 @@ class _AuditCallbackState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuditCallback resources.
+
         :param pulumi.Input[_builtins.str] audit_callback_name: The AuditCallback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callback_suggestions: List of audit results supported by message notification. Value: block: confirmed violation, review: Suspected violation, review: normal.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callback_types: A list of Callback types. Value: machineScan: Machine audit result notification, selfAudit: self-service audit notification.
@@ -246,6 +248,7 @@ class AuditCallback(pulumi.CustomResource):
         $ pulumi import alicloud:aligreen/auditCallback:AuditCallback example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] audit_callback_name: The AuditCallback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
@@ -306,6 +309,7 @@ class AuditCallback(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:aligreen/auditCallback:AuditCallback example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuditCallbackArgs args: The arguments to use to populate this resource's properties.

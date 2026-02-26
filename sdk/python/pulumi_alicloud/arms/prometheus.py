@@ -31,6 +31,7 @@ class PrometheusArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Prometheus resource.
+
         :param pulumi.Input[_builtins.str] cluster_type: The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
         :param pulumi.Input[_builtins.str] grafana_instance_id: The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
@@ -197,6 +198,7 @@ class _PrometheusState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Prometheus resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
         :param pulumi.Input[_builtins.str] cluster_name: The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
         :param pulumi.Input[_builtins.str] cluster_type: The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
@@ -423,6 +425,7 @@ class Prometheus(pulumi.CustomResource):
         $ pulumi import alicloud:arms/prometheus:Prometheus example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
@@ -497,6 +500,7 @@ class Prometheus(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/prometheus:Prometheus example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PrometheusArgs args: The arguments to use to populate this resource's properties.

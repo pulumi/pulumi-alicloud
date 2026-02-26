@@ -24,6 +24,7 @@ class FolderArgs:
                  project_identifier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Folder resource.
+
         :param pulumi.Input[_builtins.str] folder_path: Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
         """
@@ -76,6 +77,7 @@ class _FolderState:
                  project_identifier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Folder resources.
+
         :param pulumi.Input[_builtins.str] folder_path: Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
         """
@@ -171,6 +173,7 @@ class Folder(pulumi.CustomResource):
         $ pulumi import alicloud:dataworks/folder:Folder example <folder_id>:<$.ProjectId>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] folder_path: Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
@@ -211,6 +214,7 @@ class Folder(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dataworks/folder:Folder example <folder_id>:<$.ProjectId>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FolderArgs args: The arguments to use to populate this resource's properties.

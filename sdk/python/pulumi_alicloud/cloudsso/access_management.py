@@ -28,6 +28,7 @@ class AccessManagementArgs:
                  deprovision_strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessManagement resource.
+
         :param pulumi.Input[_builtins.str] access_configuration_id: The ID of the access configuration.
         :param pulumi.Input[_builtins.str] directory_id: The ID of the Directory.
         :param pulumi.Input[_builtins.str] principal_id: The ID of the CloudSSO identity.
@@ -143,6 +144,7 @@ class _AccessManagementState:
                  target_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessManagement resources.
+
         :param pulumi.Input[_builtins.str] access_configuration_id: The ID of the access configuration.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.254.0) The time when the access permissions were assigned.
         :param pulumi.Input[_builtins.str] deprovision_strategy: Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
@@ -346,6 +348,7 @@ class AccessManagement(pulumi.CustomResource):
         $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example <directory_id>:<access_configuration_id>:<target_type>:<target_id>:<principal_type>:<principal_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_configuration_id: The ID of the access configuration.
@@ -427,6 +430,7 @@ class AccessManagement(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example <directory_id>:<access_configuration_id>:<target_type>:<target_id>:<principal_type>:<principal_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessManagementArgs args: The arguments to use to populate this resource's properties.

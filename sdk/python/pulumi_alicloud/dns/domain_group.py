@@ -24,6 +24,7 @@ class DomainGroupArgs:
                  lang: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DomainGroup resource.
+
         :param pulumi.Input[_builtins.str] domain_group_name: The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
         :param pulumi.Input[_builtins.str] group_name: The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         :param pulumi.Input[_builtins.str] lang: User language.
@@ -84,6 +85,7 @@ class _DomainGroupState:
                  lang: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DomainGroup resources.
+
         :param pulumi.Input[_builtins.str] domain_group_name: The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
         :param pulumi.Input[_builtins.str] group_name: The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         :param pulumi.Input[_builtins.str] lang: User language.
@@ -170,6 +172,7 @@ class DomainGroup(pulumi.CustomResource):
         $ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_group_name: The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
@@ -205,6 +208,7 @@ class DomainGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainGroupArgs args: The arguments to use to populate this resource's properties.

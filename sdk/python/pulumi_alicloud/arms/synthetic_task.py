@@ -35,6 +35,7 @@ class SyntheticTaskArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SyntheticTask resource.
+
         :param pulumi.Input[_builtins.str] frequency: Frequency.
         :param pulumi.Input[_builtins.int] monitor_category: Classification of selected monitors.
         :param pulumi.Input['SyntheticTaskMonitorConfArgs'] monitor_conf: Monitoring configuration. See `monitor_conf` below.
@@ -229,6 +230,7 @@ class _SyntheticTaskState:
                  task_type: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering SyntheticTask resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['SyntheticTaskAvailableAssertionArgs']]] available_assertions: Assertion List. See `available_assertions` below.
         :param pulumi.Input['SyntheticTaskCommonSettingArgs'] common_setting: Common settings. See `common_setting` below.
         :param pulumi.Input['SyntheticTaskCustomPeriodArgs'] custom_period: Custom Cycle. See `custom_period` below.
@@ -632,6 +634,7 @@ class SyntheticTask(pulumi.CustomResource):
         $ pulumi import alicloud:arms/syntheticTask:SyntheticTask example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskAvailableAssertionArgs', 'SyntheticTaskAvailableAssertionArgsDict']]]] available_assertions: Assertion List. See `available_assertions` below.
@@ -853,6 +856,7 @@ class SyntheticTask(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/syntheticTask:SyntheticTask example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SyntheticTaskArgs args: The arguments to use to populate this resource's properties.

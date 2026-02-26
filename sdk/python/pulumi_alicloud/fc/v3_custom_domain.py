@@ -31,6 +31,7 @@ class V3CustomDomainArgs:
                  waf_config: Optional[pulumi.Input['V3CustomDomainWafConfigArgs']] = None):
         """
         The set of arguments for constructing a V3CustomDomain resource.
+
         :param pulumi.Input['V3CustomDomainAuthConfigArgs'] auth_config: Permission authentication configuration See `auth_config` below.
         :param pulumi.Input['V3CustomDomainCertConfigArgs'] cert_config: HTTPS certificate information See `cert_config` below.
         :param pulumi.Input['V3CustomDomainCorsConfigArgs'] cors_config: Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
@@ -172,6 +173,7 @@ class _V3CustomDomainState:
                  waf_config: Optional[pulumi.Input['V3CustomDomainWafConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V3CustomDomain resources.
+
         :param pulumi.Input[_builtins.str] account_id: The ID of your Alibaba Cloud account (primary account).
         :param pulumi.Input[_builtins.str] api_version: API version of Function Compute.
         :param pulumi.Input['V3CustomDomainAuthConfigArgs'] auth_config: Permission authentication configuration See `auth_config` below.
@@ -583,6 +585,7 @@ class V3CustomDomain(pulumi.CustomResource):
         $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example <custom_domain_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']] auth_config: Permission authentication configuration See `auth_config` below.
@@ -797,6 +800,7 @@ class V3CustomDomain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example <custom_domain_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V3CustomDomainArgs args: The arguments to use to populate this resource's properties.

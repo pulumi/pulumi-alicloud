@@ -23,6 +23,7 @@ class ImageSharePermissionArgs:
                  image_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ImageSharePermission resource.
+
         :param pulumi.Input[_builtins.str] account_id: Alibaba Cloud Account ID. It is used to share images.
         :param pulumi.Input[_builtins.str] image_id: The source image ID.
         """
@@ -61,6 +62,7 @@ class _ImageSharePermissionState:
                  image_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageSharePermission resources.
+
         :param pulumi.Input[_builtins.str] account_id: Alibaba Cloud Account ID. It is used to share images.
         :param pulumi.Input[_builtins.str] image_id: The source image ID.
         """
@@ -176,6 +178,7 @@ class ImageSharePermission(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/imageSharePermission:ImageSharePermission default m-uf66yg1q:123456789
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Alibaba Cloud Account ID. It is used to share images.
@@ -259,6 +262,7 @@ class ImageSharePermission(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/imageSharePermission:ImageSharePermission default m-uf66yg1q:123456789
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageSharePermissionArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class V3VpcBindingArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V3VpcBinding resource.
+
         :param pulumi.Input[_builtins.str] function_name: Function Name
         :param pulumi.Input[_builtins.str] vpc_id: VPC instance ID
         """
@@ -62,6 +63,7 @@ class _V3VpcBindingState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V3VpcBinding resources.
+
         :param pulumi.Input[_builtins.str] function_name: Function Name
         :param pulumi.Input[_builtins.str] vpc_id: VPC instance ID
         """
@@ -154,6 +156,7 @@ class V3VpcBinding(pulumi.CustomResource):
         $ pulumi import alicloud:fc/v3VpcBinding:V3VpcBinding example <function_name>:<vpc_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] function_name: Function Name
@@ -214,6 +217,7 @@ class V3VpcBinding(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/v3VpcBinding:V3VpcBinding example <function_name>:<vpc_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V3VpcBindingArgs args: The arguments to use to populate this resource's properties.

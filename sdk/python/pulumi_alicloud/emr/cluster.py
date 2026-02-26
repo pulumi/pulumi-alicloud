@@ -50,6 +50,7 @@ class ClusterArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[_builtins.str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
         :param pulumi.Input[_builtins.str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[_builtins.str] zone_id: Zone ID, e.g. cn-huhehaote-a
@@ -487,6 +488,7 @@ class _ClusterState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]] bootstrap_actions: Boot action parameters.
         :param pulumi.Input[_builtins.str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         :param pulumi.Input[_builtins.str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
@@ -1395,6 +1397,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import alicloud:emr/cluster:Cluster default C-B47FB8FE96C67XXXX
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict']]]] bootstrap_actions: Boot action parameters.
@@ -1896,6 +1899,7 @@ class Cluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:emr/cluster:Cluster default C-B47FB8FE96C67XXXX
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

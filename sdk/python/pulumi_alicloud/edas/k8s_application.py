@@ -52,6 +52,7 @@ class K8sApplicationArgs:
                  web_container: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a K8sApplication resource.
+
         :param pulumi.Input[_builtins.str] application_name: The name of the application you want to create. Must start with character,supports numbers, letters and dashes (-), supports up to 36 characters
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the alicloud container service kubernetes cluster that you want to import to. You can call the ListCluster operation to query.
         :param pulumi.Input[_builtins.str] application_descriotion: The description of the application
@@ -574,6 +575,7 @@ class _K8sApplicationState:
                  web_container: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering K8sApplication resources.
+
         :param pulumi.Input[_builtins.str] application_descriotion: The description of the application
         :param pulumi.Input[_builtins.str] application_name: The name of the application you want to create. Must start with character,supports numbers, letters and dashes (-), supports up to 36 characters
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the alicloud container service kubernetes cluster that you want to import to. You can call the ListCluster operation to query.
@@ -1177,6 +1179,7 @@ class K8sApplication(pulumi.CustomResource):
         $ pulumi import alicloud:edas/k8sApplication:K8sApplication new_k8s_application application_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_descriotion: The description of the application
@@ -1295,6 +1298,7 @@ class K8sApplication(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:edas/k8sApplication:K8sApplication new_k8s_application application_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param K8sApplicationArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class TunnelArgs:
                  tunnel_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Tunnel resource.
+
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[_builtins.str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[_builtins.str] tunnel_name: The name of the OTS tunnel. If changed, a new tunnel would be created.
@@ -101,6 +102,7 @@ class _TunnelState:
                  tunnel_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tunnel resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['TunnelChannelArgs']]] channels: The channels of OTS tunnel. Each element contains the following attributes:
         :param pulumi.Input[_builtins.int] create_time: The creation time of the Tunnel.
         :param pulumi.Input[_builtins.bool] expired: Whether the tunnel has expired.
@@ -332,6 +334,7 @@ class Tunnel(pulumi.CustomResource):
         $ pulumi import alicloud:ots/tunnel:Tunnel foo <instance_name>:<table_name>:<tunnel_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
@@ -411,6 +414,7 @@ class Tunnel(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ots/tunnel:Tunnel foo <instance_name>:<table_name>:<tunnel_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TunnelArgs args: The arguments to use to populate this resource's properties.

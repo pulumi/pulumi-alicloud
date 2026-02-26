@@ -25,6 +25,7 @@ class ApplicationScaleArgs:
                  force_status: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ApplicationScale resource.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of the application that you want to deploy.
         :param pulumi.Input[_builtins.str] deploy_group: The ID of the instance group to which you want to add ECS instances to scale out the application.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ecu_infos: The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
@@ -95,6 +96,7 @@ class _ApplicationScaleState:
                  force_status: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ApplicationScale resources.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of the application that you want to deploy.
         :param pulumi.Input[_builtins.str] deploy_group: The ID of the instance group to which you want to add ECS instances to scale out the application.
         :param pulumi.Input[_builtins.str] ecc_info: The ecc information of the resource supplied above. The value is formulated as `<ecc1,ecc2>`.
@@ -257,6 +259,7 @@ class ApplicationScale(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID of the application that you want to deploy.
@@ -342,6 +345,7 @@ class ApplicationScale(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationScaleArgs args: The arguments to use to populate this resource's properties.

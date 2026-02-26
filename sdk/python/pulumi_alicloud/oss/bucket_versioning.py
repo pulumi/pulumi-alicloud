@@ -23,6 +23,7 @@ class BucketVersioningInitArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketVersioning resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] status: A bucket can be in one of the following versioning states: disabled, enabled, or suspended. By default, versioning is disabled for a bucket. Updating the value from Enabled or Suspended to Disabled will result in errors, because OSS does not support returning buckets to an unversioned state. .
         """
@@ -62,6 +63,7 @@ class _BucketVersioningState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketVersioning resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] status: A bucket can be in one of the following versioning states: disabled, enabled, or suspended. By default, versioning is disabled for a bucket. Updating the value from Enabled or Suspended to Disabled will result in errors, because OSS does not support returning buckets to an unversioned state. .
         """
@@ -149,6 +151,7 @@ class BucketVersioning(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketVersioning:BucketVersioning example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
@@ -204,6 +207,7 @@ class BucketVersioning(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketVersioning:BucketVersioning example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketVersioningInitArgs args: The arguments to use to populate this resource's properties.

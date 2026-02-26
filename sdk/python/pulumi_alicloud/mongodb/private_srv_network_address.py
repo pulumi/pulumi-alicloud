@@ -22,6 +22,7 @@ class PrivateSrvNetworkAddressArgs:
                  db_instance_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PrivateSrvNetworkAddress resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
         """
         pulumi.set(__self__, "db_instance_id", db_instance_id)
@@ -46,6 +47,7 @@ class _PrivateSrvNetworkAddressState:
                  private_srv_connection_string_uri: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrivateSrvNetworkAddress resources.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] private_srv_connection_string_uri: Private network SRV highly available connection address
         """
@@ -144,6 +146,7 @@ class PrivateSrvNetworkAddress(pulumi.CustomResource):
         $ pulumi import alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
@@ -210,6 +213,7 @@ class PrivateSrvNetworkAddress(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PrivateSrvNetworkAddressArgs args: The arguments to use to populate this resource's properties.

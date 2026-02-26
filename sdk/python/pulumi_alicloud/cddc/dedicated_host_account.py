@@ -25,6 +25,7 @@ class DedicatedHostAccountArgs:
                  account_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DedicatedHostAccount resource.
+
         :param pulumi.Input[_builtins.str] account_name: The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
         :param pulumi.Input[_builtins.str] account_password: The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of Dedicated the host.
@@ -94,6 +95,7 @@ class _DedicatedHostAccountState:
                  dedicated_host_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DedicatedHostAccount resources.
+
         :param pulumi.Input[_builtins.str] account_name: The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
         :param pulumi.Input[_builtins.str] account_password: The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
         :param pulumi.Input[_builtins.str] account_type: The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
@@ -241,6 +243,7 @@ class DedicatedHostAccount(pulumi.CustomResource):
         $ pulumi import alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount example <dedicated_host_id>:<account_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
@@ -326,6 +329,7 @@ class DedicatedHostAccount(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount example <dedicated_host_id>:<account_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DedicatedHostAccountArgs args: The arguments to use to populate this resource's properties.

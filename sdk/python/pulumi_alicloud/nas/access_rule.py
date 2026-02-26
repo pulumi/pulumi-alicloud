@@ -28,6 +28,7 @@ class AccessRuleArgs:
                  user_access_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessRule resource.
+
         :param pulumi.Input[_builtins.str] access_group_name: AccessGroupName.
         :param pulumi.Input[_builtins.str] file_system_type: filesystem type. include standard, extreme.
         :param pulumi.Input[_builtins.str] ipv6_source_cidr_ip: Ipv6SourceCidrIp.
@@ -149,6 +150,7 @@ class _AccessRuleState:
                  user_access_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessRule resources.
+
         :param pulumi.Input[_builtins.str] access_group_name: AccessGroupName.
         :param pulumi.Input[_builtins.str] access_rule_id: The first ID of the resource.
         :param pulumi.Input[_builtins.str] file_system_type: filesystem type. include standard, extreme.
@@ -348,6 +350,7 @@ class AccessRule(pulumi.CustomResource):
         $ pulumi import alicloud:nas/accessRule:AccessRule example <access_group_name>:<file_system_type>:<access_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_group_name: AccessGroupName.
@@ -410,6 +413,7 @@ class AccessRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nas/accessRule:AccessRule example <access_group_name>:<file_system_type>:<access_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessRuleArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class TransitRouterCidrArgs:
                  transit_router_cidr_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterCidr resource.
+
         :param pulumi.Input[_builtins.str] cidr: The new CIDR block of the transit router.
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[_builtins.str] description: The new description of the transit router CIDR block.
@@ -117,6 +118,7 @@ class _TransitRouterCidrState:
                  transit_router_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterCidr resources.
+
         :param pulumi.Input[_builtins.str] cidr: The new CIDR block of the transit router.
         :param pulumi.Input[_builtins.str] description: The new description of the transit router CIDR block.
                The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
@@ -267,6 +269,7 @@ class TransitRouterCidr(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr example <transit_router_id>:<transit_router_cidr_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr: The new CIDR block of the transit router.
@@ -323,6 +326,7 @@ class TransitRouterCidr(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr example <transit_router_id>:<transit_router_cidr_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterCidrArgs args: The arguments to use to populate this resource's properties.

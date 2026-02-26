@@ -23,6 +23,7 @@ class ListenerAdditionalCertificateAttachmentArgs:
                  listener_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ListenerAdditionalCertificateAttachment resource.
+
         :param pulumi.Input[_builtins.str] certificate_id: The Certificate ID.
         :param pulumi.Input[_builtins.str] listener_id: The ID of the ALB listener.
         """
@@ -63,6 +64,7 @@ class _ListenerAdditionalCertificateAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ListenerAdditionalCertificateAttachment resources.
+
         :param pulumi.Input[_builtins.str] certificate_id: The Certificate ID.
         :param pulumi.Input[_builtins.str] certificate_type: The type of the certificate.
         :param pulumi.Input[_builtins.str] listener_id: The ID of the ALB listener.
@@ -309,6 +311,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_id: The Certificate ID.
@@ -493,6 +496,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ListenerAdditionalCertificateAttachmentArgs args: The arguments to use to populate this resource's properties.

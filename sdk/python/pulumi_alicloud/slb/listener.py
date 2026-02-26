@@ -66,6 +66,7 @@ class ListenerArgs:
                  x_forwarded_for: Optional[pulumi.Input['ListenerXForwardedForArgs']] = None):
         """
         The set of arguments for constructing a Listener resource.
+
         :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For".
         """
         pulumi.set(__self__, "frontend_port", frontend_port)
@@ -599,6 +600,7 @@ class _ListenerState:
                  x_forwarded_for: Optional[pulumi.Input['ListenerXForwardedForArgs']] = None):
         """
         Input properties used for looking up and filtering Listener resources.
+
         :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For".
         """
         if acl_id is not None:
@@ -1229,6 +1231,7 @@ class Listener(pulumi.CustomResource):
         $ pulumi import alicloud:slb/listener:Listener example <load_balancer_id>:<frontend_port>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For".
@@ -1330,6 +1333,7 @@ class Listener(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/listener:Listener example <load_balancer_id>:<frontend_port>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ListenerArgs args: The arguments to use to populate this resource's properties.

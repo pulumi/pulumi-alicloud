@@ -27,6 +27,7 @@ class PolicyArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Policy resource.
+
         :param pulumi.Input[_builtins.str] access_control_rules: Network Rules in JSON struct.
         :param pulumi.Input[_builtins.str] kms_instance_id: KMS instance .
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: Allowed permissions (RBAC)Optional values:"RbacPermission/Template/CryptoServiceKeyUser" and "RbacPermission/Template/CryptoServiceSecretUser".
@@ -126,6 +127,7 @@ class _PolicyState:
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
+
         :param pulumi.Input[_builtins.str] access_control_rules: Network Rules in JSON struct.
         :param pulumi.Input[_builtins.str] description: Description.
         :param pulumi.Input[_builtins.str] kms_instance_id: KMS instance .
@@ -297,6 +299,7 @@ class Policy(pulumi.CustomResource):
         $ pulumi import alicloud:kms/policy:Policy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_control_rules: Network Rules in JSON struct.
@@ -376,6 +379,7 @@ class Policy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:kms/policy:Policy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

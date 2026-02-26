@@ -26,6 +26,7 @@ class DbInstanceIpArrayArgs:
                  modify_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbInstanceIpArray resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
                
                > **NOTE:**  You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
@@ -133,6 +134,7 @@ class _DbInstanceIpArrayState:
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DbInstanceIpArray resources.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
                
                > **NOTE:**  You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
@@ -310,6 +312,7 @@ class DbInstanceIpArray(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray example <db_instance_id>:<db_instance_ip_array_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
@@ -399,6 +402,7 @@ class DbInstanceIpArray(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray example <db_instance_id>:<db_instance_ip_array_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DbInstanceIpArrayArgs args: The arguments to use to populate this resource's properties.

@@ -33,6 +33,7 @@ class BucketReplicationArgs:
                  sync_role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketReplication resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input['BucketReplicationDestinationArgs'] destination: Specifies the destination for the rule. See `destination` below.
         :param pulumi.Input[_builtins.str] action: The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
@@ -201,6 +202,7 @@ class _BucketReplicationState:
                  sync_role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketReplication resources.
+
         :param pulumi.Input[_builtins.str] action: The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input['BucketReplicationDestinationArgs'] destination: Specifies the destination for the rule. See `destination` below.
@@ -503,6 +505,7 @@ class BucketReplication(pulumi.CustomResource):
         $ terraform import alicloud_oss_bucket_replication.example
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
@@ -623,6 +626,7 @@ class BucketReplication(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_oss_bucket_replication.example
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketReplicationArgs args: The arguments to use to populate this resource's properties.

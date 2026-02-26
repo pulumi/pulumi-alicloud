@@ -27,6 +27,7 @@ class AddonReleaseArgs:
                  values: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AddonRelease resource.
+
         :param pulumi.Input[_builtins.str] addon_name: Addon Name.
         :param pulumi.Input[_builtins.str] addon_version: Version number of Addon. Addon information can be obtained through ListAddons.
         :param pulumi.Input[_builtins.str] environment_id: Environment id.
@@ -129,6 +130,7 @@ class _AddonReleaseState:
                  values: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddonRelease resources.
+
         :param pulumi.Input[_builtins.str] addon_name: Addon Name.
         :param pulumi.Input[_builtins.str] addon_release_name: The name of the resource.
         :param pulumi.Input[_builtins.str] addon_version: Version number of Addon. Addon information can be obtained through ListAddons.
@@ -354,6 +356,7 @@ class AddonRelease(pulumi.CustomResource):
         $ pulumi import alicloud:arms/addonRelease:AddonRelease example <environment_id>:<addon_release_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] addon_name: Addon Name.
@@ -472,6 +475,7 @@ class AddonRelease(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/addonRelease:AddonRelease example <environment_id>:<addon_release_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AddonReleaseArgs args: The arguments to use to populate this resource's properties.

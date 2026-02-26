@@ -23,6 +23,7 @@ class StorageBundleArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StorageBundle resource.
+
         :param pulumi.Input[_builtins.str] storage_bundle_name: The name of storage bundle.
         :param pulumi.Input[_builtins.str] description: The description of storage bundle.
         """
@@ -62,6 +63,7 @@ class _StorageBundleState:
                  storage_bundle_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageBundle resources.
+
         :param pulumi.Input[_builtins.str] description: The description of storage bundle.
         :param pulumi.Input[_builtins.str] storage_bundle_name: The name of storage bundle.
         """
@@ -132,6 +134,7 @@ class StorageBundle(pulumi.CustomResource):
         $ pulumi import alicloud:cloudstoragegateway/storageBundle:StorageBundle example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of storage bundle.
@@ -170,6 +173,7 @@ class StorageBundle(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudstoragegateway/storageBundle:StorageBundle example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StorageBundleArgs args: The arguments to use to populate this resource's properties.

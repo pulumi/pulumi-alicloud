@@ -29,6 +29,7 @@ class WafRuleArgs:
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a WafRule resource.
+
         :param pulumi.Input[_builtins.str] phase: The phase in which the WAF processes this rule.
         :param pulumi.Input[_builtins.str] site_id: The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input['WafRuleConfigArgs'] config: The specific configuration of the WAF rule. See `config` below.
@@ -140,6 +141,7 @@ class _WafRuleState:
                  waf_rule_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering WafRule resources.
+
         :param pulumi.Input['WafRuleConfigArgs'] config: The specific configuration of the WAF rule. See `config` below.
         :param pulumi.Input[_builtins.str] phase: The phase in which the WAF processes this rule.
         :param pulumi.Input[_builtins.int] ruleset_id: The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
@@ -320,6 +322,7 @@ class WafRule(pulumi.CustomResource):
         $ pulumi import alicloud:esa/wafRule:WafRule example <site_id>:<waf_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WafRuleConfigArgs', 'WafRuleConfigArgsDict']] config: The specific configuration of the WAF rule. See `config` below.
@@ -389,6 +392,7 @@ class WafRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/wafRule:WafRule example <site_id>:<waf_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WafRuleArgs args: The arguments to use to populate this resource's properties.

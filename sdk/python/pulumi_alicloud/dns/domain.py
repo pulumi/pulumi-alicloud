@@ -24,6 +24,7 @@ class DomainArgs:
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Domain resource.
+
         :param pulumi.Input[_builtins.str] group_id: Id of the group in which the domain will add. If not supplied, then use default group.
         :param pulumi.Input[_builtins.str] name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the dns belongs.
@@ -82,6 +83,7 @@ class _DomainState:
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: A list of the dns server name.
         :param pulumi.Input[_builtins.str] domain_id: The domain ID.
         :param pulumi.Input[_builtins.str] group_id: Id of the group in which the domain will add. If not supplied, then use default group.
@@ -204,6 +206,7 @@ class Domain(pulumi.CustomResource):
         $ pulumi import alicloud:dns/domain:Domain example "aliyun.com"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: Id of the group in which the domain will add. If not supplied, then use default group.
@@ -244,6 +247,7 @@ class Domain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dns/domain:Domain example "aliyun.com"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

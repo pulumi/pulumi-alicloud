@@ -27,6 +27,7 @@ class ExperimentPlanArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ExperimentPlan resource.
+
         :param pulumi.Input[_builtins.int] resource_id: The ID of the resource.
         :param pulumi.Input[_builtins.int] template_id: The ID of the template.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] external_params: Additional operating parameters. You can include information about the specified node.
@@ -130,6 +131,7 @@ class _ExperimentPlanState:
                  template_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ExperimentPlan resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] external_params: Additional operating parameters. You can include information about the specified node.
         :param pulumi.Input[_builtins.str] plan_name: Indicates the name of the experiment plan, which is used to distinguish different experiment plans.
@@ -333,6 +335,7 @@ class ExperimentPlan(pulumi.CustomResource):
         $ pulumi import alicloud:eflo/experimentPlan:ExperimentPlan example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] external_params: Additional operating parameters. You can include information about the specified node.
@@ -429,6 +432,7 @@ class ExperimentPlan(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eflo/experimentPlan:ExperimentPlan example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ExperimentPlanArgs args: The arguments to use to populate this resource's properties.

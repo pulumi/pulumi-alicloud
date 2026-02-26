@@ -26,6 +26,7 @@ class ImageLibArgs:
                  enable: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ImageLib resource.
+
         :param pulumi.Input[_builtins.str] category: The category of the image library. Valid values: BLACK: a blacklist, WHITE: a whitelist, REVIEW: a review list
         :param pulumi.Input[_builtins.str] image_lib_name: The name of the image library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
         :param pulumi.Input[_builtins.str] scene: The moderation scenario to which the custom image library applies. Valid values: PORN: pornography detection, AD: ad detection, ILLEGAL: terrorist content detection
@@ -111,6 +112,7 @@ class _ImageLibState:
                  scene: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageLib resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] biz_types: List of business scenarios. For example: ["bizTypeA", "bizTypeB", "bizTypeC"]
         :param pulumi.Input[_builtins.str] category: The category of the image library. Valid values: BLACK: a blacklist, WHITE: a whitelist, REVIEW: a review list
         :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable the image library. Valid values: true: Enable the image library. This is the default value. false: Disable the image library.
@@ -241,6 +243,7 @@ class ImageLib(pulumi.CustomResource):
         $ pulumi import alicloud:aligreen/imageLib:ImageLib example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] biz_types: List of business scenarios. For example: ["bizTypeA", "bizTypeB", "bizTypeC"]
@@ -294,6 +297,7 @@ class ImageLib(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:aligreen/imageLib:ImageLib example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageLibArgs args: The arguments to use to populate this resource's properties.

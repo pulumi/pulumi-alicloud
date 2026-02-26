@@ -32,6 +32,7 @@ class PasswordPolicyArgs:
                  require_uppercase_characters: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a PasswordPolicy resource.
+
         :param pulumi.Input[_builtins.bool] hard_expiry: Whether to restrict logon after the password expires. Value:
                - true: After the password expires, you cannot log in to the console. You must reset the password of the RAM user through the main account or a RAM user with administrator permissions to log on normally.
                - false (default): After the password expires, the RAM user can change the password and log on normally.
@@ -258,6 +259,7 @@ class _PasswordPolicyState:
                  require_uppercase_characters: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering PasswordPolicy resources.
+
         :param pulumi.Input[_builtins.bool] hard_expiry: Whether to restrict logon after the password expires. Value:
                - true: After the password expires, you cannot log in to the console. You must reset the password of the RAM user through the main account or a RAM user with administrator permissions to log on normally.
                - false (default): After the password expires, the RAM user can change the password and log on normally.
@@ -535,6 +537,7 @@ class PasswordPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:ram/passwordPolicy:PasswordPolicy example <id>.
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] hard_expiry: Whether to restrict logon after the password expires. Value:
@@ -624,6 +627,7 @@ class PasswordPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ram/passwordPolicy:PasswordPolicy example <id>.
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PasswordPolicyArgs args: The arguments to use to populate this resource's properties.

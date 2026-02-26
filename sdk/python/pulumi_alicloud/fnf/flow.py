@@ -26,6 +26,7 @@ class FlowArgs:
                  role_arn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Flow resource.
+
         :param pulumi.Input[_builtins.str] definition: The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
         :param pulumi.Input[_builtins.str] description: The description of the flow.
         :param pulumi.Input[_builtins.str] type: The type of the flow. Valid values are `FDL` or `DEFAULT`.
@@ -113,6 +114,7 @@ class _FlowState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Flow resources.
+
         :param pulumi.Input[_builtins.str] definition: The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
         :param pulumi.Input[_builtins.str] description: The description of the flow.
         :param pulumi.Input[_builtins.str] flow_id: The unique ID of the flow.
@@ -288,6 +290,7 @@ class Flow(pulumi.CustomResource):
         $ pulumi import alicloud:fnf/flow:Flow example <name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] definition: The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
@@ -356,6 +359,7 @@ class Flow(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fnf/flow:Flow example <name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlowArgs args: The arguments to use to populate this resource's properties.

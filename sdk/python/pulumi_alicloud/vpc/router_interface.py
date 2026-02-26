@@ -33,6 +33,7 @@ class RouterInterfaceArgs:
                  specification: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterInterface resource.
+
         :param pulumi.Input[_builtins.str] opposite_region: The Region of peer side.
         :param pulumi.Input[_builtins.str] role: The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
         :param pulumi.Input[_builtins.str] router_id: The Router ID.
@@ -242,6 +243,7 @@ class _RouterInterfaceState:
                  specification: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterInterface resources.
+
         :param pulumi.Input[_builtins.str] access_point_id: It has been deprecated from version 1.11.0.
         :param pulumi.Input[_builtins.str] description: Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
         :param pulumi.Input[_builtins.str] health_check_source_ip: Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
@@ -585,6 +587,7 @@ class RouterInterface(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/routerInterface:RouterInterface interface ri-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
@@ -645,6 +648,7 @@ class RouterInterface(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/routerInterface:RouterInterface interface ri-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterInterfaceArgs args: The arguments to use to populate this resource's properties.

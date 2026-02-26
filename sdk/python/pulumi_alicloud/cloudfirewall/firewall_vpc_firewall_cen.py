@@ -30,6 +30,7 @@ class FirewallVpcFirewallCenArgs:
                  member_uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallVpcFirewallCen resource.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input['FirewallVpcFirewallCenLocalVpcArgs'] local_vpc: The details of the VPC. See `local_vpc` below.
         :param pulumi.Input[_builtins.str] status: Firewall switch status.
@@ -147,6 +148,7 @@ class _FirewallVpcFirewallCenState:
                  vpc_region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallVpcFirewallCen resources.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] connect_type: Intercommunication type, value: expressconnect: Express Channel cen: Cloud Enterprise Network
         :param pulumi.Input[_builtins.str] lang: The language type of the requested and received messages. Valid values:
@@ -336,6 +338,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
         $terraform import alicloud_cloud_firewall_vpc_firewall_cen.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
@@ -388,6 +391,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_cloud_firewall_vpc_firewall_cen.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallVpcFirewallCenArgs args: The arguments to use to populate this resource's properties.

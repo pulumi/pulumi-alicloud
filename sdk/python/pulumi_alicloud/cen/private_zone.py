@@ -25,6 +25,7 @@ class PrivateZoneArgs:
                  host_vpc_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PrivateZone resource.
+
         :param pulumi.Input[_builtins.str] access_region_id: The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] host_region_id: The ID of the region where PrivateZone is deployed.
@@ -98,6 +99,7 @@ class _PrivateZoneState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrivateZone resources.
+
         :param pulumi.Input[_builtins.str] access_region_id: The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] host_region_id: The ID of the region where PrivateZone is deployed.
@@ -239,6 +241,7 @@ class PrivateZone(pulumi.CustomResource):
         $ pulumi import alicloud:cen/privateZone:PrivateZone example <cen_id>:<access_region_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_region_id: The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
@@ -301,6 +304,7 @@ class PrivateZone(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/privateZone:PrivateZone example <cen_id>:<access_region_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PrivateZoneArgs args: The arguments to use to populate this resource's properties.

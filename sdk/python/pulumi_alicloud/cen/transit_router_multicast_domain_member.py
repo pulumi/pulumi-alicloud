@@ -26,6 +26,7 @@ class TransitRouterMulticastDomainMemberArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterMulticastDomainMember resource.
+
         :param pulumi.Input[_builtins.str] group_ip_address: The IP address of the multicast group to which the multicast member belongs. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the ENI.
         :param pulumi.Input[_builtins.str] transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
@@ -112,6 +113,7 @@ class _TransitRouterMulticastDomainMemberState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterMulticastDomainMember resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether only to precheck the request.
         :param pulumi.Input[_builtins.str] group_ip_address: The IP address of the multicast group to which the multicast member belongs. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the ENI.
@@ -293,6 +295,7 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
         $terraform import alicloud_cen_transit_router_multicast_domain_member.example <transit_router_multicast_domain_id>:<group_ip_address>:<network_interface_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether only to precheck the request.
@@ -382,6 +385,7 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_cen_transit_router_multicast_domain_member.example <transit_router_multicast_domain_id>:<group_ip_address>:<network_interface_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterMulticastDomainMemberArgs args: The arguments to use to populate this resource's properties.

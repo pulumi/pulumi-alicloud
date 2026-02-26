@@ -26,6 +26,7 @@ class ProjectMemberArgs:
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectMemberRoleArgs']]]] = None):
         """
         The set of arguments for constructing a ProjectMember resource.
+
         :param pulumi.Input[_builtins.int] project_id: Project ID
         :param pulumi.Input[_builtins.str] user_id: The user ID of the member.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectMemberRoleArgs']]] roles: List of roles owned by members. See `roles` below.
@@ -81,6 +82,7 @@ class _ProjectMemberState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectMember resources.
+
         :param pulumi.Input[_builtins.int] project_id: Project ID
         :param pulumi.Input[Sequence[pulumi.Input['ProjectMemberRoleArgs']]] roles: List of roles owned by members. See `roles` below.
         :param pulumi.Input[_builtins.str] status: The status of the user in project
@@ -211,6 +213,7 @@ class ProjectMember(pulumi.CustomResource):
         $ pulumi import alicloud:dataworks/projectMember:ProjectMember example <project_id>:<user_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] project_id: Project ID
@@ -279,6 +282,7 @@ class ProjectMember(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dataworks/projectMember:ProjectMember example <project_id>:<user_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectMemberArgs args: The arguments to use to populate this resource's properties.

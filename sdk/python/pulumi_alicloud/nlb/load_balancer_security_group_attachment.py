@@ -24,6 +24,7 @@ class LoadBalancerSecurityGroupAttachmentArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a LoadBalancerSecurityGroupAttachment resource.
+
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the NLB instance to be associated with the security group.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to be disassociated.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
@@ -78,6 +79,7 @@ class _LoadBalancerSecurityGroupAttachmentState:
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerSecurityGroupAttachment resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the NLB instance to be associated with the security group.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to be disassociated.
@@ -211,6 +213,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <load_balancer_id>:<security_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
@@ -297,6 +300,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <load_balancer_id>:<security_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerSecurityGroupAttachmentArgs args: The arguments to use to populate this resource's properties.

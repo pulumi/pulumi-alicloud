@@ -25,6 +25,7 @@ class DefenseResourceGroupArgs:
                  resource_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DefenseResourceGroup resource.
+
         :param pulumi.Input[_builtins.str] group_name: The name of the protected object group. The name must be 1 to 255 characters long and can contain Chinese characters, letters, digits, underscores (_), periods (.), and hyphens (-)
         :param pulumi.Input[_builtins.str] instance_id: The ID of the WAF instance.
         :param pulumi.Input[_builtins.str] description: The description of the protected object group.
@@ -95,6 +96,7 @@ class _DefenseResourceGroupState:
                  resource_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DefenseResourceGroup resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the protected object group.
         :param pulumi.Input[_builtins.str] group_name: The name of the protected object group. The name must be 1 to 255 characters long and can contain Chinese characters, letters, digits, underscores (_), periods (.), and hyphens (-)
         :param pulumi.Input[_builtins.str] instance_id: The ID of the WAF instance.
@@ -242,6 +244,7 @@ class DefenseResourceGroup(pulumi.CustomResource):
         $ pulumi import alicloud:wafv3/defenseResourceGroup:DefenseResourceGroup example <instance_id>:<group_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the protected object group.
@@ -327,6 +330,7 @@ class DefenseResourceGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:wafv3/defenseResourceGroup:DefenseResourceGroup example <instance_id>:<group_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DefenseResourceGroupArgs args: The arguments to use to populate this resource's properties.

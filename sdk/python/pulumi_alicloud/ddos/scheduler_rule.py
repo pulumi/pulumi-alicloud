@@ -28,6 +28,7 @@ class SchedulerRuleArgs:
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SchedulerRule resource.
+
         :param pulumi.Input[_builtins.str] rule_name: The name of the rule.
         :param pulumi.Input[_builtins.int] rule_type: The rule type. Valid values:
                `2`: tiered protection.
@@ -120,6 +121,7 @@ class _SchedulerRuleState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering SchedulerRule resources.
+
         :param pulumi.Input[_builtins.str] cname: The cname is the traffic scheduler corresponding to rules.
         :param pulumi.Input[_builtins.str] param: The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
@@ -279,6 +281,7 @@ class SchedulerRule(pulumi.CustomResource):
         $ pulumi import alicloud:ddos/schedulerRule:SchedulerRule example fbb20dc77e8fc******
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] param: The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
@@ -343,6 +346,7 @@ class SchedulerRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ddos/schedulerRule:SchedulerRule example fbb20dc77e8fc******
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SchedulerRuleArgs args: The arguments to use to populate this resource's properties.

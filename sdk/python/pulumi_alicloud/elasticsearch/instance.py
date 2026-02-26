@@ -73,6 +73,7 @@ class InstanceArgs:
                  zone_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] version: Instance version
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.int] auto_renew_duration: Renewal Period
@@ -998,6 +999,7 @@ class _InstanceState:
                  zone_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] arch_type: Schema Type:.
         :param pulumi.Input[_builtins.int] auto_renew_duration: Renewal Period
         :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
@@ -2109,6 +2111,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:elasticsearch/instance:Instance example <instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auto_renew_duration: Renewal Period
@@ -2244,6 +2247,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:elasticsearch/instance:Instance example <instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

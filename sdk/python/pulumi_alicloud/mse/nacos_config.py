@@ -32,6 +32,7 @@ class NacosConfigArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NacosConfig resource.
+
         :param pulumi.Input[_builtins.str] content: The content of the configuration.
         :param pulumi.Input[_builtins.str] data_id: The ID of the data.
         :param pulumi.Input[_builtins.str] group: The ID of the group.
@@ -213,6 +214,7 @@ class _NacosConfigState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NacosConfig resources.
+
         :param pulumi.Input[_builtins.str] accept_language: The language type of the returned information. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] app_name: The name of the application.
         :param pulumi.Input[_builtins.str] beta_ips: The list of IP addresses where the beta release of the configuration is performed.
@@ -476,6 +478,7 @@ class NacosConfig(pulumi.CustomResource):
         $ pulumi import alicloud:mse/nacosConfig:NacosConfig example <instance_id>:<namespace_id>:<data_id>:<group>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accept_language: The language type of the returned information. Valid values: `zh`, `en`.
@@ -557,6 +560,7 @@ class NacosConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mse/nacosConfig:NacosConfig example <instance_id>:<namespace_id>:<data_id>:<group>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NacosConfigArgs args: The arguments to use to populate this resource's properties.

@@ -34,6 +34,7 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] instance_type: EAIS instance type
         :param pulumi.Input[_builtins.str] security_group_id: Security group ID
         :param pulumi.Input[_builtins.str] vswitch_id: Switch ID.
@@ -221,6 +222,7 @@ class _InstanceState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] category: EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]] environment_vars: Setting environment variables in eais instance on Initialization See `environment_var` below.
@@ -497,6 +499,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:eais/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] category: EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
@@ -572,6 +575,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eais/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

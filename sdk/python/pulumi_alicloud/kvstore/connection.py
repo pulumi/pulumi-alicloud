@@ -24,6 +24,7 @@ class ConnectionArgs:
                  port: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Connection resource.
+
         :param pulumi.Input[_builtins.str] connection_string_prefix: The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] port: The service port number of the instance.
@@ -78,6 +79,7 @@ class _ConnectionState:
                  port: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+
         :param pulumi.Input[_builtins.str] connection_string: The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
@@ -211,6 +213,7 @@ class Connection(pulumi.CustomResource):
         $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
@@ -282,6 +285,7 @@ class Connection(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionArgs args: The arguments to use to populate this resource's properties.

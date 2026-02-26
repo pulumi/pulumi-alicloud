@@ -26,6 +26,7 @@ class ServiceSettingArgs:
                  delivery_sls_project_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceSetting resource.
+
         :param pulumi.Input[_builtins.str] delivery_oss_bucket_name: The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
         :param pulumi.Input[_builtins.bool] delivery_oss_enabled: Is the recording function for the OSS delivery template enabled.
         :param pulumi.Input[_builtins.str] delivery_oss_key_prefix: The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
@@ -114,6 +115,7 @@ class _ServiceSettingState:
                  delivery_sls_project_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceSetting resources.
+
         :param pulumi.Input[_builtins.str] delivery_oss_bucket_name: The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
         :param pulumi.Input[_builtins.bool] delivery_oss_enabled: Is the recording function for the OSS delivery template enabled.
         :param pulumi.Input[_builtins.str] delivery_oss_key_prefix: The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
@@ -246,6 +248,7 @@ class ServiceSetting(pulumi.CustomResource):
         $ pulumi import alicloud:oos/serviceSetting:ServiceSetting example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] delivery_oss_bucket_name: The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
@@ -301,6 +304,7 @@ class ServiceSetting(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oos/serviceSetting:ServiceSetting example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceSettingArgs args: The arguments to use to populate this resource's properties.

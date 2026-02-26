@@ -26,6 +26,7 @@ class ResourceArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Resource resource.
+
         :param pulumi.Input[_builtins.str] schema: The meta store's schema info, which is json string format, used to define table's fields.
         :param pulumi.Input[_builtins.str] type: The meta store's type, userdefine e.g.
         :param pulumi.Input[_builtins.str] description: The meta store's description.
@@ -112,6 +113,7 @@ class _ResourceState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Resource resources.
+
         :param pulumi.Input[_builtins.str] description: The meta store's description.
         :param pulumi.Input[_builtins.str] ext_info: The ext info of meta store.
         :param pulumi.Input[_builtins.str] name: The meta store's name, can be used as table name.
@@ -254,6 +256,7 @@ class Resource(pulumi.CustomResource):
         $ pulumi import alicloud:log/resource:Resource example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The meta store's description.
@@ -319,6 +322,7 @@ class Resource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/resource:Resource example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceArgs args: The arguments to use to populate this resource's properties.

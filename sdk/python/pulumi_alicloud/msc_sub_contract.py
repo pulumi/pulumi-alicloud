@@ -25,6 +25,7 @@ class MscSubContractArgs:
                  position: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a MscSubContract resource.
+
         :param pulumi.Input[_builtins.str] contact_name: The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
         :param pulumi.Input[_builtins.str] email: The User's Contact Email Address.
         :param pulumi.Input[_builtins.str] mobile: The User's Telephone.
@@ -97,6 +98,7 @@ class _MscSubContractState:
                  position: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MscSubContract resources.
+
         :param pulumi.Input[_builtins.str] contact_name: The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
         :param pulumi.Input[_builtins.str] email: The User's Contact Email Address.
         :param pulumi.Input[_builtins.str] mobile: The User's Telephone.
@@ -209,6 +211,7 @@ class MscSubContract(pulumi.CustomResource):
         $ pulumi import alicloud:index/mscSubContract:MscSubContract example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] contact_name: The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
@@ -257,6 +260,7 @@ class MscSubContract(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:index/mscSubContract:MscSubContract example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MscSubContractArgs args: The arguments to use to populate this resource's properties.

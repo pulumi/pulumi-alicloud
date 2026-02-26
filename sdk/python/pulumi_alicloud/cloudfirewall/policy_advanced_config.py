@@ -22,6 +22,7 @@ class PolicyAdvancedConfigArgs:
                  internet_switch: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PolicyAdvancedConfig resource.
+
         :param pulumi.Input[_builtins.str] internet_switch: Access control policy strict mode of on-state. Valid values:
         """
         pulumi.set(__self__, "internet_switch", internet_switch)
@@ -45,6 +46,7 @@ class _PolicyAdvancedConfigState:
                  internet_switch: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyAdvancedConfig resources.
+
         :param pulumi.Input[_builtins.str] internet_switch: Access control policy strict mode of on-state. Valid values:
         """
         if internet_switch is not None:
@@ -109,6 +111,7 @@ class PolicyAdvancedConfig(pulumi.CustomResource):
         $ terraform import alicloud_cloud_firewall_policy_advanced_config.example 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] internet_switch: Access control policy strict mode of on-state. Valid values:
@@ -156,6 +159,7 @@ class PolicyAdvancedConfig(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_cloud_firewall_policy_advanced_config.example 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyAdvancedConfigArgs args: The arguments to use to populate this resource's properties.

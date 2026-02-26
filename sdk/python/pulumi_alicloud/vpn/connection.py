@@ -41,6 +41,7 @@ class ConnectionArgs:
                  vpn_connection_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Connection resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[_builtins.str] vpn_gateway_id: The ID of the VPN gateway.
@@ -349,6 +350,7 @@ class _ConnectionState:
                  vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+
         :param pulumi.Input[_builtins.bool] auto_config_route: Whether to configure routing automatically. Value:
                - **true**: Automatically configure routes.
                - **false**: does not automatically configure routes.
@@ -843,6 +845,7 @@ class Connection(pulumi.CustomResource):
         $ pulumi import alicloud:vpn/connection:Connection example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_config_route: Whether to configure routing automatically. Value:
@@ -1012,6 +1015,7 @@ class Connection(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpn/connection:Connection example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionArgs args: The arguments to use to populate this resource's properties.

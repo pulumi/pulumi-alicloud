@@ -24,6 +24,7 @@ class GatewaySmbUserArgs:
                  username: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GatewaySmbUser resource.
+
         :param pulumi.Input[_builtins.str] gateway_id: The Gateway ID of the Gateway SMB User.
         :param pulumi.Input[_builtins.str] password: The password of the Gateway SMB User.
         :param pulumi.Input[_builtins.str] username: The username of the Gateway SMB User.
@@ -77,6 +78,7 @@ class _GatewaySmbUserState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewaySmbUser resources.
+
         :param pulumi.Input[_builtins.str] gateway_id: The Gateway ID of the Gateway SMB User.
         :param pulumi.Input[_builtins.str] password: The password of the Gateway SMB User.
         :param pulumi.Input[_builtins.str] username: The username of the Gateway SMB User.
@@ -198,6 +200,7 @@ class GatewaySmbUser(pulumi.CustomResource):
         $ pulumi import alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser example <gateway_id>:<username>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] gateway_id: The Gateway ID of the Gateway SMB User.
@@ -272,6 +275,7 @@ class GatewaySmbUser(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser example <gateway_id>:<username>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewaySmbUserArgs args: The arguments to use to populate this resource's properties.

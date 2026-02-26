@@ -28,6 +28,7 @@ class EipArgs:
                  isp: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Eip resource.
+
         :param pulumi.Input[_builtins.str] ens_region_id: Ens node ID.
         :param pulumi.Input[_builtins.str] internet_charge_type: The metering method of the EIP. Valid value: `95BandwidthByMonth`.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the EIP. Valid value: `PayAsYouGo`.
@@ -147,6 +148,7 @@ class _EipState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Eip resources.
+
         :param pulumi.Input[_builtins.int] bandwidth: The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the EIP instance.
         :param pulumi.Input[_builtins.str] description: The description of the EIP.
@@ -340,6 +342,7 @@ class Eip(pulumi.CustomResource):
         $ pulumi import alicloud:ens/eip:Eip example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bandwidth: The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
@@ -396,6 +399,7 @@ class Eip(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/eip:Eip example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EipArgs args: The arguments to use to populate this resource's properties.

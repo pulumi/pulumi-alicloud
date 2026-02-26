@@ -26,6 +26,7 @@ class TransitRouterGrantAttachmentArgs:
                  order_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterGrantAttachment resource.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
         :param pulumi.Input[_builtins.str] cen_owner_id: The ID of the Alibaba Cloud account to which the CEN instance belongs.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the network instance.
@@ -110,6 +111,7 @@ class _TransitRouterGrantAttachmentState:
                  order_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterGrantAttachment resources.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
         :param pulumi.Input[_builtins.str] cen_owner_id: The ID of the Alibaba Cloud account to which the CEN instance belongs.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the network instance.
@@ -240,6 +242,7 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment example <instance_type>:<instance_id>:<cen_owner_id>:<cen_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
@@ -293,6 +296,7 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment example <instance_type>:<instance_id>:<cen_owner_id>:<cen_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterGrantAttachmentArgs args: The arguments to use to populate this resource's properties.

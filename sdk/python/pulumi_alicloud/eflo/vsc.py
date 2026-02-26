@@ -26,6 +26,7 @@ class VscArgs:
                  vsc_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Vsc resource.
+
         :param pulumi.Input[_builtins.str] node_id: The ID of the Node.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
@@ -114,6 +115,7 @@ class _VscState:
                  vsc_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vsc resources.
+
         :param pulumi.Input[_builtins.str] node_id: The ID of the Node.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] status: The status of the Vsc.
@@ -256,6 +258,7 @@ class Vsc(pulumi.CustomResource):
         $ pulumi import alicloud:eflo/vsc:Vsc example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] node_id: The ID of the Node.
@@ -306,6 +309,7 @@ class Vsc(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eflo/vsc:Vsc example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VscArgs args: The arguments to use to populate this resource's properties.

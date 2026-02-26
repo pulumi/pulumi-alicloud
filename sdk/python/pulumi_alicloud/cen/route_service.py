@@ -27,6 +27,7 @@ class RouteServiceArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouteService resource.
+
         :param pulumi.Input[_builtins.str] access_region_id: The region of the network instances that access the cloud services.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] host: The domain name or IP address of the cloud service.
@@ -131,6 +132,7 @@ class _RouteServiceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouteService resources.
+
         :param pulumi.Input[_builtins.str] access_region_id: The region of the network instances that access the cloud services.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] description: The description of the cloud service.
@@ -303,6 +305,7 @@ class RouteService(pulumi.CustomResource):
         $ pulumi import alicloud:cen/routeService:RouteService example cen-ahixm0efqh********:cn-shanghai:100.118.28.52/32:cn-shanghai
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_region_id: The region of the network instances that access the cloud services.
@@ -366,6 +369,7 @@ class RouteService(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/routeService:RouteService example cen-ahixm0efqh********:cn-shanghai:100.118.28.52/32:cn-shanghai
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouteServiceArgs args: The arguments to use to populate this resource's properties.

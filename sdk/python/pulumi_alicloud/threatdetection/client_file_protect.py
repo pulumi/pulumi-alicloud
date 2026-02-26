@@ -29,6 +29,7 @@ class ClientFileProtectArgs:
                  switch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientFileProtect resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] file_ops: file operation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] file_paths: file path.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] proc_paths: process path.
@@ -160,6 +161,7 @@ class _ClientFileProtectState:
                  switch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientFileProtect resources.
+
         :param pulumi.Input[_builtins.int] alert_level: 0 no alert 1 info 2 suspicious 3 critical.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] file_ops: file operation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] file_paths: file path.
@@ -338,6 +340,7 @@ class ClientFileProtect(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/clientFileProtect:ClientFileProtect example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] alert_level: 0 no alert 1 info 2 suspicious 3 critical.
@@ -394,6 +397,7 @@ class ClientFileProtect(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/clientFileProtect:ClientFileProtect example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClientFileProtectArgs args: The arguments to use to populate this resource's properties.

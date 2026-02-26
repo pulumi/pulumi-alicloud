@@ -24,6 +24,7 @@ class AccessGroupArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessGroup resource.
+
         :param pulumi.Input[_builtins.str] access_group_name: The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         :param pulumi.Input[_builtins.str] network_type: The permission group type. Only VPC (VPC) is supported.
         :param pulumi.Input[_builtins.str] description: The permission group description.  No more than 32 characters in length.
@@ -79,6 +80,7 @@ class _AccessGroupState:
                  network_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessGroup resources.
+
         :param pulumi.Input[_builtins.str] access_group_name: The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         :param pulumi.Input[_builtins.str] create_time: The creation time of the permission group resource.
         :param pulumi.Input[_builtins.str] description: The permission group description.  No more than 32 characters in length.
@@ -186,6 +188,7 @@ class AccessGroup(pulumi.CustomResource):
         $ pulumi import alicloud:dfs/accessGroup:AccessGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_group_name: The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
@@ -231,6 +234,7 @@ class AccessGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dfs/accessGroup:AccessGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessGroupArgs args: The arguments to use to populate this resource's properties.

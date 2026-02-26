@@ -26,6 +26,7 @@ class ErArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Er resource.
+
         :param pulumi.Input[_builtins.str] er_name: Lingjun HUB name
         :param pulumi.Input[_builtins.str] master_zone_id: Primary zone
         :param pulumi.Input[_builtins.str] description: Description.
@@ -115,6 +116,7 @@ class _ErState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Er resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] description: Description.
         :param pulumi.Input[_builtins.str] er_name: Lingjun HUB name
@@ -286,6 +288,7 @@ class Er(pulumi.CustomResource):
         $ pulumi import alicloud:eflo/er:Er example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description.
@@ -335,6 +338,7 @@ class Er(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eflo/er:Er example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ErArgs args: The arguments to use to populate this resource's properties.

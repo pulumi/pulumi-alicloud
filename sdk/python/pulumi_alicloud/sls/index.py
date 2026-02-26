@@ -31,6 +31,7 @@ class IndexArgs:
                  max_text_len: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Index resource.
+
         :param pulumi.Input[_builtins.str] logstore_name: Logstore name
         :param pulumi.Input[_builtins.str] project_name: Project name
         :param pulumi.Input[_builtins.str] keys: Field index
@@ -165,6 +166,7 @@ class _IndexState:
                  project_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Index resources.
+
         :param pulumi.Input[_builtins.str] keys: Field index
         :param pulumi.Input['IndexLineArgs'] line: Full-text index See `line` below.
         :param pulumi.Input[_builtins.bool] log_reduce: Whether log clustering is enabled
@@ -389,6 +391,7 @@ class Index(pulumi.CustomResource):
         $ pulumi import alicloud:sls/index:Index example <project_name>:<logstore_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] keys: Field index
@@ -491,6 +494,7 @@ class Index(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sls/index:Index example <project_name>:<logstore_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IndexArgs args: The arguments to use to populate this resource's properties.

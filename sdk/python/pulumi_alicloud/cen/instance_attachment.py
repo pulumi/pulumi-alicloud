@@ -27,6 +27,7 @@ class InstanceAttachmentArgs:
                  child_instance_owner_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a InstanceAttachment resource.
+
         :param pulumi.Input[_builtins.str] child_instance_id: The ID of the child instance to attach.
         :param pulumi.Input[_builtins.str] child_instance_region_id: The region ID of the child instance to attach.
         :param pulumi.Input[_builtins.str] child_instance_type: The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
@@ -132,6 +133,7 @@ class _InstanceAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceAttachment resources.
+
         :param pulumi.Input[_builtins.int] cen_owner_id: The account ID to which the CEN instance belongs.
                
                ->**NOTE:** Ensure that the child instance is not used in Express Connect.
@@ -294,6 +296,7 @@ class InstanceAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:cen/instanceAttachment:InstanceAttachment example cen-m7i7pjmkon********:vpc-2ze2w07mcy9nz********:VPC:cn-beijing
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] cen_owner_id: The account ID to which the CEN instance belongs.
@@ -347,6 +350,7 @@ class InstanceAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/instanceAttachment:InstanceAttachment example cen-m7i7pjmkon********:vpc-2ze2w07mcy9nz********:VPC:cn-beijing
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceAttachmentArgs args: The arguments to use to populate this resource's properties.

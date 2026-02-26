@@ -24,6 +24,7 @@ class LoadBalancerZoneShiftedAttachmentArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a LoadBalancerZoneShiftedAttachment resource.
+
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the load balancing instance.
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitch corresponding to the zone. By default, each zone uses one VSwitch and one subnet.
         :param pulumi.Input[_builtins.str] zone_id: The ID of the zone.
@@ -78,6 +79,7 @@ class _LoadBalancerZoneShiftedAttachmentState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerZoneShiftedAttachment resources.
+
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the load balancing instance.
         :param pulumi.Input[_builtins.str] status: Availability zone status. Value:
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitch corresponding to the zone. By default, each zone uses one VSwitch and one subnet.
@@ -232,6 +234,7 @@ class LoadBalancerZoneShiftedAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment example <load_balancer_id>:<vswitch_id>:<zone_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the load balancing instance.
@@ -324,6 +327,7 @@ class LoadBalancerZoneShiftedAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment example <load_balancer_id>:<vswitch_id>:<zone_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerZoneShiftedAttachmentArgs args: The arguments to use to populate this resource's properties.

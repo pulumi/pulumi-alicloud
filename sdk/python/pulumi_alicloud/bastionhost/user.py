@@ -32,6 +32,7 @@ class UserArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] instance_id: You Want to Query the User the Bastion Host ID of.
         :param pulumi.Input[_builtins.str] source: Specify the New of the User That Created the Source. Valid Values:
                * Local: Local User
@@ -262,6 +263,7 @@ class _UserState:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.str] comment: Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
         :param pulumi.Input[_builtins.str] display_name: Specify the New Created the User's Display Name. Supports up to 128 Characters.
         :param pulumi.Input[_builtins.str] email: Specify the New User's Mailbox.
@@ -578,6 +580,7 @@ class User(pulumi.CustomResource):
         $ pulumi import alicloud:bastionhost/user:User example <instance_id>:<user_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
@@ -688,6 +691,7 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:bastionhost/user:User example <instance_id>:<user_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

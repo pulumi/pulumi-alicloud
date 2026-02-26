@@ -24,6 +24,7 @@ class AdvancedQueryTemplateArgs:
                  template_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AdvancedQueryTemplate resource.
+
         :param pulumi.Input[_builtins.bool] simple_query: Distinguish whether the current template is a simple query
         :param pulumi.Input[_builtins.str] template_sql: SQL content saved on behalf of the current template
         :param pulumi.Input[_builtins.str] template_name: The name of the resource
@@ -78,6 +79,7 @@ class _AdvancedQueryTemplateState:
                  template_sql: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AdvancedQueryTemplate resources.
+
         :param pulumi.Input[_builtins.bool] simple_query: Distinguish whether the current template is a simple query
         :param pulumi.Input[_builtins.str] template_name: The name of the resource
         :param pulumi.Input[_builtins.str] template_sql: SQL content saved on behalf of the current template
@@ -173,6 +175,7 @@ class AdvancedQueryTemplate(pulumi.CustomResource):
         $ pulumi import alicloud:actiontrail/advancedQueryTemplate:AdvancedQueryTemplate example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] simple_query: Distinguish whether the current template is a simple query
@@ -221,6 +224,7 @@ class AdvancedQueryTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:actiontrail/advancedQueryTemplate:AdvancedQueryTemplate example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AdvancedQueryTemplateArgs args: The arguments to use to populate this resource's properties.

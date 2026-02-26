@@ -26,6 +26,7 @@ class EditingProjectArgs:
                  timeline: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EditingProject resource.
+
         :param pulumi.Input[_builtins.str] title: The title of the online editing project.
         :param pulumi.Input[_builtins.str] cover_url: The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
         :param pulumi.Input[_builtins.str] division: The region where you want to create the online editing project.
@@ -114,6 +115,7 @@ class _EditingProjectState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EditingProject resources.
+
         :param pulumi.Input[_builtins.str] cover_url: The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
         :param pulumi.Input[_builtins.str] division: The region where you want to create the online editing project.
         :param pulumi.Input[_builtins.str] editing_project_name: The description of the online editing project.
@@ -269,6 +271,7 @@ class EditingProject(pulumi.CustomResource):
         $ pulumi import alicloud:vod/editingProject:EditingProject example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cover_url: The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
@@ -332,6 +335,7 @@ class EditingProject(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vod/editingProject:EditingProject example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EditingProjectArgs args: The arguments to use to populate this resource's properties.

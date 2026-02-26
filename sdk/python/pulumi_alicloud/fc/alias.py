@@ -28,6 +28,7 @@ class AliasArgs:
                  routing_config: Optional[pulumi.Input['AliasRoutingConfigArgs']] = None):
         """
         The set of arguments for constructing a Alias resource.
+
         :param pulumi.Input[_builtins.str] alias_name: Name for the alias you are creating.
         :param pulumi.Input[_builtins.str] service_name: The Function Compute service name.
         :param pulumi.Input[_builtins.str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
@@ -113,6 +114,7 @@ class _AliasState:
                  service_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Alias resources.
+
         :param pulumi.Input[_builtins.str] alias_name: Name for the alias you are creating.
         :param pulumi.Input[_builtins.str] description: Description of the alias.
         :param pulumi.Input['AliasRoutingConfigArgs'] routing_config: The Function Compute alias' route configuration settings. See `routing_config` below.
@@ -242,6 +244,7 @@ class Alias(pulumi.CustomResource):
         $ pulumi import alicloud:fc/alias:Alias example my_alias_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alias_name: Name for the alias you are creating.
@@ -294,6 +297,7 @@ class Alias(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/alias:Alias example my_alias_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AliasArgs args: The arguments to use to populate this resource's properties.

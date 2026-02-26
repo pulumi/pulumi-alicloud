@@ -27,6 +27,7 @@ class OidcProviderArgs:
                  issuance_limit_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a OidcProvider resource.
+
         :param pulumi.Input[_builtins.str] issuer_url: The issuer URL of the OIDC identity provider.
         :param pulumi.Input[_builtins.str] oidc_provider_name: The name of the OIDC identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_ids: Client ID.
@@ -133,6 +134,7 @@ class _OidcProviderState:
                  oidc_provider_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OidcProvider resources.
+
         :param pulumi.Input[_builtins.str] arn: ARN of OIDC identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_ids: Client ID.
         :param pulumi.Input[_builtins.str] create_time: Creation Time (UTC time).
@@ -317,6 +319,7 @@ class OidcProvider(pulumi.CustomResource):
         $ pulumi import alicloud:ims/oidcProvider:OidcProvider example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_ids: Client ID.
@@ -378,6 +381,7 @@ class OidcProvider(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ims/oidcProvider:OidcProvider example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OidcProviderArgs args: The arguments to use to populate this resource's properties.

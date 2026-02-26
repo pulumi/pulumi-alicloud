@@ -22,6 +22,7 @@ class TagArgs:
                  tag_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Tag resource.
+
         :param pulumi.Input[_builtins.str] tag_name: The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
         """
         pulumi.set(__self__, "tag_name", tag_name)
@@ -45,6 +46,7 @@ class _TagState:
                  tag_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tag resources.
+
         :param pulumi.Input[_builtins.str] tag_name: The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
         """
         if tag_name is not None:
@@ -103,6 +105,7 @@ class Tag(pulumi.CustomResource):
         $ pulumi import alicloud:directmail/tag:Tag example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] tag_name: The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
@@ -144,6 +147,7 @@ class Tag(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:directmail/tag:Tag example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TagArgs args: The arguments to use to populate this resource's properties.

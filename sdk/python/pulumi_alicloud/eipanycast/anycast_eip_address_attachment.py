@@ -30,6 +30,7 @@ class AnycastEipAddressAttachmentArgs:
                  private_ip_address: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AnycastEipAddressAttachment resource.
+
         :param pulumi.Input[_builtins.str] anycast_id: The ID of the Anycast EIP instance.
         :param pulumi.Input[_builtins.str] bind_instance_id: The ID of the cloud resource instance to be bound.
         :param pulumi.Input[_builtins.str] bind_instance_region_id: The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
@@ -156,6 +157,7 @@ class _AnycastEipAddressAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AnycastEipAddressAttachment resources.
+
         :param pulumi.Input[_builtins.str] anycast_id: The ID of the Anycast EIP instance.
         :param pulumi.Input[_builtins.str] association_mode: Binding mode, value:
                - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
@@ -450,6 +452,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment example <anycast_id>:<bind_instance_id>:<bind_instance_region_id>:<bind_instance_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] anycast_id: The ID of the Anycast EIP instance.
@@ -603,6 +606,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment example <anycast_id>:<bind_instance_id>:<bind_instance_region_id>:<bind_instance_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AnycastEipAddressAttachmentArgs args: The arguments to use to populate this resource's properties.

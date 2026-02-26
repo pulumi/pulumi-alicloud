@@ -24,6 +24,7 @@ class KvArgs:
                  value: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Kv resource.
+
         :param pulumi.Input[_builtins.str] key: The name of the key to Put, the longest 512, cannot contain spaces.
         :param pulumi.Input[_builtins.str] namespace: The name specified when the customer calls PutDcdnKvNamespace.
         :param pulumi.Input[_builtins.str] value: The content of key, up to 2M(2*1000*1000).
@@ -77,6 +78,7 @@ class _KvState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Kv resources.
+
         :param pulumi.Input[_builtins.str] key: The name of the key to Put, the longest 512, cannot contain spaces.
         :param pulumi.Input[_builtins.str] namespace: The name specified when the customer calls PutDcdnKvNamespace.
         :param pulumi.Input[_builtins.str] value: The content of key, up to 2M(2*1000*1000).
@@ -177,6 +179,7 @@ class Kv(pulumi.CustomResource):
         $ pulumi import alicloud:dcdn/kv:Kv example <namespace>:<key>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key: The name of the key to Put, the longest 512, cannot contain spaces.
@@ -230,6 +233,7 @@ class Kv(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dcdn/kv:Kv example <namespace>:<key>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KvArgs args: The arguments to use to populate this resource's properties.

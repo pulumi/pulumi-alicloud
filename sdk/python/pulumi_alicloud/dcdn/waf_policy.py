@@ -25,6 +25,7 @@ class WafPolicyArgs:
                  status: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WafPolicy resource.
+
         :param pulumi.Input[_builtins.str] defense_scene: The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
         :param pulumi.Input[_builtins.str] policy_name: The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
         :param pulumi.Input[_builtins.str] policy_type: The type of the protection policy. Valid values: `default`, `custom`.
@@ -93,6 +94,7 @@ class _WafPolicyState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WafPolicy resources.
+
         :param pulumi.Input[_builtins.str] defense_scene: The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
         :param pulumi.Input[_builtins.str] policy_name: The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
         :param pulumi.Input[_builtins.str] policy_type: The type of the protection policy. Valid values: `default`, `custom`.
@@ -207,6 +209,7 @@ class WafPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:dcdn/wafPolicy:WafPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] defense_scene: The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
@@ -259,6 +262,7 @@ class WafPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dcdn/wafPolicy:WafPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WafPolicyArgs args: The arguments to use to populate this resource's properties.

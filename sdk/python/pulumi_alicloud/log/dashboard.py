@@ -26,6 +26,7 @@ class DashboardArgs:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
+
         :param pulumi.Input[_builtins.str] char_list: Configuration of charts in the dashboard.
                **Note:** From version 1.164.0, `char_list` can set parameter "action".
         :param pulumi.Input[_builtins.str] dashboard_name: The name of the Log Dashboard.
@@ -113,6 +114,7 @@ class _DashboardState:
                  project_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
+
         :param pulumi.Input[_builtins.str] attribute: Dashboard attribute.
         :param pulumi.Input[_builtins.str] char_list: Configuration of charts in the dashboard.
                **Note:** From version 1.164.0, `char_list` can set parameter "action".
@@ -281,6 +283,7 @@ class Dashboard(pulumi.CustomResource):
         $ pulumi import alicloud:log/dashboard:Dashboard example <project_name>:<dashboard_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] attribute: Dashboard attribute.
@@ -371,6 +374,7 @@ class Dashboard(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/dashboard:Dashboard example <project_name>:<dashboard_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DashboardArgs args: The arguments to use to populate this resource's properties.

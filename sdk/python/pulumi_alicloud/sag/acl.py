@@ -22,6 +22,7 @@ class AclArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Acl resource.
+
         :param pulumi.Input[_builtins.str] name: The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
         """
         if name is not None:
@@ -46,6 +47,7 @@ class _AclState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Acl resources.
+
         :param pulumi.Input[_builtins.str] name: The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
         """
         if name is not None:
@@ -102,6 +104,7 @@ class Acl(pulumi.CustomResource):
         $ pulumi import alicloud:sag/acl:Acl example acl-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
@@ -141,6 +144,7 @@ class Acl(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sag/acl:Acl example acl-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class InstanceClusterAttachmentArgs:
                  instance_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a InstanceClusterAttachment resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster that you want to create the application.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The ID of instance. Type: list.
         """
@@ -64,6 +65,7 @@ class _InstanceClusterAttachmentState:
                  status_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering InstanceClusterAttachment resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster that you want to create the application.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] cluster_member_ids: The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ecu_map: The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
@@ -204,6 +206,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster that you want to create the application.
@@ -267,6 +270,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param InstanceClusterAttachmentArgs args: The arguments to use to populate this resource's properties.

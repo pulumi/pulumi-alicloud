@@ -35,6 +35,7 @@ class DbInstanceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbInstance resource.
+
         :param pulumi.Input[_builtins.str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         :param pulumi.Input[_builtins.str] db_instance_network_type: The network type of the db instance. Valid values: `vpc`.
         :param pulumi.Input[_builtins.str] db_instance_storage_type: Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
@@ -231,6 +232,7 @@ class _DbInstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbInstance resources.
+
         :param pulumi.Input[_builtins.str] connection_string: (Available in 1.196.0+)  The connection string of the instance.
         :param pulumi.Input[_builtins.str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         :param pulumi.Input[_builtins.str] db_instance_description: According to the practical example or notes.
@@ -518,6 +520,7 @@ class DbInstance(pulumi.CustomResource):
         $ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
@@ -578,6 +581,7 @@ class DbInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DbInstanceArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class LoadBalancerSecurityGroupAttachmentArgs:
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancerSecurityGroupAttachment resource.
+
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the Application Load Balancer.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group.
@@ -79,6 +80,7 @@ class _LoadBalancerSecurityGroupAttachmentState:
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerSecurityGroupAttachment resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the Application Load Balancer.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group.
@@ -209,6 +211,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <load_balancer_id>:<security_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
@@ -292,6 +295,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <load_balancer_id>:<security_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerSecurityGroupAttachmentArgs args: The arguments to use to populate this resource's properties.

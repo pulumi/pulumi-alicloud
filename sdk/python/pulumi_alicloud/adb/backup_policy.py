@@ -24,6 +24,7 @@ class BackupPolicyArgs:
                  preferred_backup_time: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a BackupPolicy resource.
+
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_backup_periods: ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         :param pulumi.Input[_builtins.str] preferred_backup_time: ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
@@ -78,6 +79,7 @@ class _BackupPolicyState:
                  preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
+
         :param pulumi.Input[_builtins.str] backup_retention_period: Cluster backup retention days, Fixed for 7 days, not modified.
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_backup_periods: ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
@@ -201,6 +203,7 @@ class BackupPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:adb/backupPolicy:BackupPolicy example "am-12345678"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
@@ -262,6 +265,7 @@ class BackupPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:adb/backupPolicy:BackupPolicy example "am-12345678"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPolicyArgs args: The arguments to use to populate this resource's properties.

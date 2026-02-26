@@ -34,6 +34,7 @@ class NasBackupPlanArgs:
                  options: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NasBackupPlan resource.
+
         :param pulumi.Input[_builtins.str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[_builtins.str] file_system_id: The File System ID of Nas.
         :param pulumi.Input[_builtins.str] nas_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -253,6 +254,7 @@ class _NasBackupPlanState:
                  vault_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NasBackupPlan resources.
+
         :param pulumi.Input[_builtins.str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[_builtins.str] create_time: This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         :param pulumi.Input[_builtins.str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
@@ -530,6 +532,7 @@ class NasBackupPlan(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/nasBackupPlan:NasBackupPlan example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_type: Backup type. Valid values: `COMPLETE`.
@@ -603,6 +606,7 @@ class NasBackupPlan(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/nasBackupPlan:NasBackupPlan example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NasBackupPlanArgs args: The arguments to use to populate this resource's properties.

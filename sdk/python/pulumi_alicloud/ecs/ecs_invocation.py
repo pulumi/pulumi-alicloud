@@ -29,6 +29,7 @@ class EcsInvocationArgs:
                  windows_password_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsInvocation resource.
+
         :param pulumi.Input[_builtins.str] command_id: The ID of the command.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of instances to execute the command. You can specify up to 50 instance IDs.
         :param pulumi.Input[_builtins.str] frequency: The schedule on which the recurring execution of the command takes place. Take note of the following items:
@@ -176,6 +177,7 @@ class _EcsInvocationState:
                  windows_password_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsInvocation resources.
+
         :param pulumi.Input[_builtins.str] command_id: The ID of the command.
         :param pulumi.Input[_builtins.str] frequency: The schedule on which the recurring execution of the command takes place. Take note of the following items:
                * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
@@ -420,6 +422,7 @@ class EcsInvocation(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsInvocation:EcsInvocation example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] command_id: The ID of the command.
@@ -521,6 +524,7 @@ class EcsInvocation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsInvocation:EcsInvocation example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsInvocationArgs args: The arguments to use to populate this resource's properties.

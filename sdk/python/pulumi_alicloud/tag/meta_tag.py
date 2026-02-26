@@ -23,6 +23,7 @@ class MetaTagArgs:
                  values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a MetaTag resource.
+
         :param pulumi.Input[_builtins.str] key: The key of the tag meta tag. key must be 1 to 128 characters in length.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: The values of the tag meta tag.
         """
@@ -61,6 +62,7 @@ class _MetaTagState:
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering MetaTag resources.
+
         :param pulumi.Input[_builtins.str] key: The key of the tag meta tag. key must be 1 to 128 characters in length.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: The values of the tag meta tag.
         """
@@ -136,6 +138,7 @@ class MetaTag(pulumi.CustomResource):
         $ pulumi import alicloud:tag/metaTag:MetaTag example <regionId>:<key>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key: The key of the tag meta tag. key must be 1 to 128 characters in length.
@@ -179,6 +182,7 @@ class MetaTag(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:tag/metaTag:MetaTag example <regionId>:<key>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MetaTagArgs args: The arguments to use to populate this resource's properties.

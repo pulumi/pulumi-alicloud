@@ -28,6 +28,7 @@ class ProductVersionArgs:
                  guidance: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProductVersion resource.
+
         :param pulumi.Input[_builtins.str] product_id: Product ID
         :param pulumi.Input[_builtins.str] product_version_name: The name of the resource
         :param pulumi.Input[_builtins.str] template_type: Template Type
@@ -145,6 +146,7 @@ class _ProductVersionState:
                  template_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProductVersion resources.
+
         :param pulumi.Input[_builtins.bool] active: Whether the version is activated
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] description: Version description
@@ -327,6 +329,7 @@ class ProductVersion(pulumi.CustomResource):
         $ pulumi import alicloud:servicecatalog/productVersion:ProductVersion example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Whether the version is activated
@@ -387,6 +390,7 @@ class ProductVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:servicecatalog/productVersion:ProductVersion example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProductVersionArgs args: The arguments to use to populate this resource's properties.

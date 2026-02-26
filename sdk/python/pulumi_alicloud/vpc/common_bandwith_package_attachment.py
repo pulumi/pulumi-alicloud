@@ -26,6 +26,7 @@ class CommonBandwithPackageAttachmentArgs:
                  ip_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CommonBandwithPackageAttachment resource.
+
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the Internet Shared Bandwidth instance.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the EIP that you want to query.
                
@@ -127,6 +128,7 @@ class _CommonBandwithPackageAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CommonBandwithPackageAttachment resources.
+
         :param pulumi.Input[_builtins.str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
                > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the Internet Shared Bandwidth instance.
@@ -294,6 +296,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
@@ -360,6 +363,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CommonBandwithPackageAttachmentArgs args: The arguments to use to populate this resource's properties.

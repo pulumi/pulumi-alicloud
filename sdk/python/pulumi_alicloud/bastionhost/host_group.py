@@ -24,6 +24,7 @@ class HostGroupArgs:
                  comment: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostGroup resource.
+
         :param pulumi.Input[_builtins.str] host_group_name: Specify the New Host Group Name, Supports up to 128 Characters.
         :param pulumi.Input[_builtins.str] instance_id: Specify the New Host Group Where the Bastion Host ID of.
         :param pulumi.Input[_builtins.str] comment: Specify the New Host Group of Notes, Supports up to 500 Characters.
@@ -79,6 +80,7 @@ class _HostGroupState:
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostGroup resources.
+
         :param pulumi.Input[_builtins.str] comment: Specify the New Host Group of Notes, Supports up to 500 Characters.
         :param pulumi.Input[_builtins.str] host_group_id: Host Group ID.
         :param pulumi.Input[_builtins.str] host_group_name: Specify the New Host Group Name, Supports up to 128 Characters.
@@ -202,6 +204,7 @@ class HostGroup(pulumi.CustomResource):
         $ pulumi import alicloud:bastionhost/hostGroup:HostGroup example <instance_id>:<host_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Specify the New Host Group of Notes, Supports up to 500 Characters.
@@ -263,6 +266,7 @@ class HostGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:bastionhost/hostGroup:HostGroup example <instance_id>:<host_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostGroupArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class RemediationArgs:
                  remediation_source_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Remediation resource.
+
         :param pulumi.Input[_builtins.str] config_rule_id: Rule ID.
         :param pulumi.Input[_builtins.str] invoke_type: Execution type, valid values: `Manual`, `Automatic`.
         :param pulumi.Input[_builtins.str] params: Remediation parameter.
@@ -131,6 +132,7 @@ class _RemediationState:
                  remediation_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Remediation resources.
+
         :param pulumi.Input[_builtins.str] config_rule_id: Rule ID.
         :param pulumi.Input[_builtins.str] invoke_type: Execution type, valid values: `Manual`, `Automatic`.
         :param pulumi.Input[_builtins.str] params: Remediation parameter.
@@ -318,6 +320,7 @@ class Remediation(pulumi.CustomResource):
         $ pulumi import alicloud:cfg/remediation:Remediation example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_rule_id: Rule ID.
@@ -396,6 +399,7 @@ class Remediation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cfg/remediation:Remediation example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RemediationArgs args: The arguments to use to populate this resource's properties.

@@ -45,6 +45,7 @@ class ControlPolicyArgs:
                  start_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ControlPolicy resource.
+
         :param pulumi.Input[_builtins.str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         :param pulumi.Input[_builtins.str] description: The description of the access control policy.
         :param pulumi.Input[_builtins.str] destination: The destination address in the access control policy.
@@ -461,6 +462,7 @@ class _ControlPolicyState:
                  start_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ControlPolicy resources.
+
         :param pulumi.Input[_builtins.str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         :param pulumi.Input[_builtins.str] acl_uuid: (Available since v1.148.0) The unique ID of the access control policy.
         :param pulumi.Input[_builtins.str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
@@ -956,6 +958,7 @@ class ControlPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:cloudfirewall/controlPolicy:ControlPolicy example <acl_uuid>:<direction>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
@@ -1044,6 +1047,7 @@ class ControlPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudfirewall/controlPolicy:ControlPolicy example <acl_uuid>:<direction>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ControlPolicyArgs args: The arguments to use to populate this resource's properties.

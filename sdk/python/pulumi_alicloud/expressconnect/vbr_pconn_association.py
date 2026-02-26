@@ -31,6 +31,7 @@ class VbrPconnAssociationArgs:
                  peering_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VbrPconnAssociation resource.
+
         :param pulumi.Input[_builtins.str] physical_connection_id: The ID of the leased line instance.
         :param pulumi.Input[_builtins.str] vbr_id: The ID of the VBR instance.
         :param pulumi.Input[_builtins.int] vlan_id: VLAN ID of the VBR. Valid values: **0 to 2999**.
@@ -214,6 +215,7 @@ class _VbrPconnAssociationState:
                  vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering VbrPconnAssociation resources.
+
         :param pulumi.Input[_builtins.str] circuit_code: (Optional, ForceNew, Computed) The circuit code provided by the operator for the physical connection.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether IPv6 is enabled. Value:
         :param pulumi.Input[_builtins.str] local_gateway_ip: The Alibaba cloud IP address of the VBR instance.
@@ -489,6 +491,7 @@ class VbrPconnAssociation(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example <vbr_id>:<physical_connection_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether IPv6 is enabled. Value:
@@ -574,6 +577,7 @@ class VbrPconnAssociation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example <vbr_id>:<physical_connection_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VbrPconnAssociationArgs args: The arguments to use to populate this resource's properties.

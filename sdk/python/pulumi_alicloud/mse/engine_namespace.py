@@ -27,6 +27,7 @@ class EngineNamespaceArgs:
                  namespace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EngineNamespace resource.
+
         :param pulumi.Input[_builtins.str] namespace_show_name: The name of the Engine Namespace.
         :param pulumi.Input[_builtins.str] accept_language: The language type of the returned information. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] cluster_id: The id of the cluster.It is formatted to `mse-xxxxxxxx`.
@@ -134,6 +135,7 @@ class _EngineNamespaceState:
                  namespace_show_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EngineNamespace resources.
+
         :param pulumi.Input[_builtins.str] accept_language: The language type of the returned information. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] cluster_id: The id of the cluster.It is formatted to `mse-xxxxxxxx`.
         :param pulumi.Input[_builtins.str] instance_id: The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
@@ -297,6 +299,7 @@ class EngineNamespace(pulumi.CustomResource):
         $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <instance_id>:<namespace_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accept_language: The language type of the returned information. Valid values: `zh`, `en`.
@@ -366,6 +369,7 @@ class EngineNamespace(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <instance_id>:<namespace_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EngineNamespaceArgs args: The arguments to use to populate this resource's properties.

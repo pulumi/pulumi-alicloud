@@ -23,6 +23,7 @@ class GroupMembershipArgs:
                  user_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a GroupMembership resource.
+
         :param pulumi.Input[_builtins.str] group_name: Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_names: Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
@@ -61,6 +62,7 @@ class _GroupMembershipState:
                  user_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering GroupMembership resources.
+
         :param pulumi.Input[_builtins.str] group_name: Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_names: Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
@@ -159,6 +161,7 @@ class GroupMembership(pulumi.CustomResource):
         $ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_name: Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -225,6 +228,7 @@ class GroupMembership(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupMembershipArgs args: The arguments to use to populate this resource's properties.

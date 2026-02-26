@@ -25,6 +25,7 @@ class HanaBackupClientArgs:
                  use_https: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a HanaBackupClient resource.
+
         :param pulumi.Input[_builtins.str] vault_id: The ID of the backup vault.
         :param pulumi.Input[_builtins.str] alert_setting: The alert settings. Valid value: `INHERITED`.
         :param pulumi.Input[_builtins.str] client_info: The installation information of the HBR clients.
@@ -100,6 +101,7 @@ class _HanaBackupClientState:
                  vault_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HanaBackupClient resources.
+
         :param pulumi.Input[_builtins.str] alert_setting: The alert settings. Valid value: `INHERITED`.
         :param pulumi.Input[_builtins.str] client_id: The ID of the backup client.
         :param pulumi.Input[_builtins.str] client_info: The installation information of the HBR clients.
@@ -309,6 +311,7 @@ class HanaBackupClient(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/hanaBackupClient:HanaBackupClient example <vault_id>:<client_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alert_setting: The alert settings. Valid value: `INHERITED`.
@@ -396,6 +399,7 @@ class HanaBackupClient(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/hanaBackupClient:HanaBackupClient example <vault_id>:<client_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HanaBackupClientArgs args: The arguments to use to populate this resource's properties.

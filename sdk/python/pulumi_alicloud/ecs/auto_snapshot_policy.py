@@ -34,6 +34,7 @@ class AutoSnapshotPolicyArgs:
                  target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AutoSnapshotPolicy resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repeat_weekdays: The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
         :param pulumi.Input[_builtins.int] retention_days: The retention period of the automatic snapshots. Unit: days. Valid values:
                - `-1`: Automatic snapshots are retained until they are deleted.
@@ -238,6 +239,7 @@ class _AutoSnapshotPolicyState:
                  time_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AutoSnapshotPolicy resources.
+
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.int] copied_snapshots_retention_days: The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
                - `-1`: The snapshot copy is retained until it is deleted.
@@ -529,6 +531,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
@@ -596,6 +599,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AutoSnapshotPolicyArgs args: The arguments to use to populate this resource's properties.

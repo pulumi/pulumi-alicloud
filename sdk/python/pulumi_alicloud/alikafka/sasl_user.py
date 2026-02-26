@@ -28,6 +28,7 @@ class SaslUserArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SaslUser resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] username: The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
@@ -152,6 +153,7 @@ class _SaslUserState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SaslUser resources.
+
         :param pulumi.Input[_builtins.str] instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -344,6 +346,7 @@ class SaslUser(pulumi.CustomResource):
         $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The instance ID.
@@ -426,6 +429,7 @@ class SaslUser(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SaslUserArgs args: The arguments to use to populate this resource's properties.

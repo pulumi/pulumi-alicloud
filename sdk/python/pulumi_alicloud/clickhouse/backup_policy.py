@@ -25,6 +25,7 @@ class BackupPolicyArgs:
                  backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
+
         :param pulumi.Input[_builtins.str] db_cluster_id: The id of the DBCluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_backup_periods: DBCluster Backup period. A list of DBCluster Backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         :param pulumi.Input[_builtins.str] preferred_backup_time: DBCluster backup time, in the format of `HH:mmZ-HH:mmZ`. Time setting interval is one hour. China time is 8 hours behind it.
@@ -95,6 +96,7 @@ class _BackupPolicyState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
+
         :param pulumi.Input[_builtins.int] backup_retention_period: Data backup days. Valid values: `7` to `730`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The id of the DBCluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_backup_periods: DBCluster Backup period. A list of DBCluster Backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
@@ -246,6 +248,7 @@ class BackupPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:clickhouse/backupPolicy:BackupPolicy example <db_cluster_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] backup_retention_period: Data backup days. Valid values: `7` to `730`.
@@ -320,6 +323,7 @@ class BackupPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:clickhouse/backupPolicy:BackupPolicy example <db_cluster_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPolicyArgs args: The arguments to use to populate this resource's properties.

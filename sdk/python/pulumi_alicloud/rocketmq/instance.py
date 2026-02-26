@@ -25,6 +25,7 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] instance_name: Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
         :param pulumi.Input[_builtins.str] name: Replaced by `instance_name` after version 1.97.0.
         :param pulumi.Input[_builtins.str] remark: This attribute is a concise description of instance. The length cannot exceed 128.
@@ -109,6 +110,7 @@ class _InstanceState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] instance_name: Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
         :param pulumi.Input[_builtins.int] instance_status: The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
         :param pulumi.Input[_builtins.int] instance_type: The edition of instance. 1 represents the postPaid edition, and 2 represents the platinum edition.
@@ -291,6 +293,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:rocketmq/instance:Instance instance MQ_INST_1234567890_Baso1234567
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_name: Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
@@ -345,6 +348,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rocketmq/instance:Instance instance MQ_INST_1234567890_Baso1234567
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

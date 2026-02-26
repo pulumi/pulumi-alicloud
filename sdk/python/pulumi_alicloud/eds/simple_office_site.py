@@ -32,6 +32,7 @@ class SimpleOfficeSiteArgs:
                  sso_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SimpleOfficeSite resource.
+
         :param pulumi.Input[_builtins.str] cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
         :param pulumi.Input[_builtins.int] bandwidth: The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         :param pulumi.Input[_builtins.str] cen_id: Cloud Enterprise Network Instance ID.
@@ -224,6 +225,7 @@ class _SimpleOfficeSiteState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SimpleOfficeSite resources.
+
         :param pulumi.Input[_builtins.int] bandwidth: The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         :param pulumi.Input[_builtins.str] cen_id: Cloud Enterprise Network Instance ID.
         :param pulumi.Input[_builtins.str] cen_owner_id: The cen owner id.
@@ -469,6 +471,7 @@ class SimpleOfficeSite(pulumi.CustomResource):
         $ pulumi import alicloud:eds/simpleOfficeSite:SimpleOfficeSite example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bandwidth: The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
@@ -524,6 +527,7 @@ class SimpleOfficeSite(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/simpleOfficeSite:SimpleOfficeSite example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SimpleOfficeSiteArgs args: The arguments to use to populate this resource's properties.

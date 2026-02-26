@@ -23,6 +23,7 @@ class EventBusArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EventBus resource.
+
         :param pulumi.Input[_builtins.str] event_bus_name: The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
         :param pulumi.Input[_builtins.str] description: The description of event bus.
         """
@@ -62,6 +63,7 @@ class _EventBusState:
                  event_bus_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EventBus resources.
+
         :param pulumi.Input[_builtins.str] description: The description of event bus.
         :param pulumi.Input[_builtins.str] event_bus_name: The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
         """
@@ -136,6 +138,7 @@ class EventBus(pulumi.CustomResource):
         $ pulumi import alicloud:eventbridge/eventBus:EventBus example <event_bus_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of event bus.
@@ -178,6 +181,7 @@ class EventBus(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eventbridge/eventBus:EventBus example <event_bus_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EventBusArgs args: The arguments to use to populate this resource's properties.

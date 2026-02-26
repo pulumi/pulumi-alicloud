@@ -24,6 +24,7 @@ class VulWhitelistArgs:
                  target_info: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VulWhitelist resource.
+
         :param pulumi.Input[_builtins.str] whitelist: Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         :param pulumi.Input[_builtins.str] reason: Reason for adding whitelist.
         :param pulumi.Input[_builtins.str] target_info: Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
@@ -79,6 +80,7 @@ class _VulWhitelistState:
                  whitelist: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VulWhitelist resources.
+
         :param pulumi.Input[_builtins.str] reason: Reason for adding whitelist.
         :param pulumi.Input[_builtins.str] target_info: Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         :param pulumi.Input[_builtins.str] whitelist: Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
@@ -168,6 +170,7 @@ class VulWhitelist(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/vulWhitelist:VulWhitelist example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] reason: Reason for adding whitelist.
@@ -210,6 +213,7 @@ class VulWhitelist(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/vulWhitelist:VulWhitelist example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VulWhitelistArgs args: The arguments to use to populate this resource's properties.

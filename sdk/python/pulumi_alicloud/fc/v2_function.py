@@ -47,6 +47,7 @@ class V2FunctionArgs:
                  timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a V2Function resource.
+
         :param pulumi.Input[_builtins.str] function_name: function name.
         :param pulumi.Input[_builtins.str] handler: entry point of function.
         :param pulumi.Input[_builtins.str] runtime: runtime of function code.
@@ -449,6 +450,7 @@ class _V2FunctionState:
                  timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering V2Function resources.
+
         :param pulumi.Input[_builtins.int] ca_port: The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
         :param pulumi.Input['V2FunctionCodeArgs'] code: Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
         :param pulumi.Input[_builtins.str] code_checksum: crc64 of function code.
@@ -900,6 +902,7 @@ class V2Function(pulumi.CustomResource):
         $ pulumi import alicloud:fc/v2Function:V2Function example <service_name>:<function_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] ca_port: The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
@@ -953,6 +956,7 @@ class V2Function(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/v2Function:V2Function example <service_name>:<function_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V2FunctionArgs args: The arguments to use to populate this resource's properties.

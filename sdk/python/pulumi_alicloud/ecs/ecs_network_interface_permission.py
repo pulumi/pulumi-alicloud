@@ -25,6 +25,7 @@ class EcsNetworkInterfacePermissionArgs:
                  force: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EcsNetworkInterfacePermission resource.
+
         :param pulumi.Input[_builtins.str] account_id: Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the network interface.
         :param pulumi.Input[_builtins.str] permission: The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
@@ -95,6 +96,7 @@ class _EcsNetworkInterfacePermissionState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsNetworkInterfacePermission resources.
+
         :param pulumi.Input[_builtins.str] account_id: Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
         :param pulumi.Input[_builtins.bool] force: Whether to force deletion of Network Interface Permission. Default value: `true`.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the network interface.
@@ -243,6 +245,7 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
@@ -314,6 +317,7 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsNetworkInterfacePermissionArgs args: The arguments to use to populate this resource's properties.

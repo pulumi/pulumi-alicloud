@@ -42,6 +42,7 @@ class EcdPolicyGroupArgs:
                  watermark_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcdPolicyGroup resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
         :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
         :param pulumi.Input[_builtins.str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
@@ -355,6 +356,7 @@ class _EcdPolicyGroupState:
                  watermark_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcdPolicyGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
         :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
         :param pulumi.Input[_builtins.str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
@@ -730,6 +732,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
         $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict']]]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
@@ -803,6 +806,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcdPolicyGroupArgs args: The arguments to use to populate this resource's properties.

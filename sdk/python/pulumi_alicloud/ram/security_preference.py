@@ -35,6 +35,7 @@ class SecurityPreferenceArgs:
                  verification_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecurityPreference resource.
+
         :param pulumi.Input[_builtins.bool] allow_user_to_change_password: Whether to allow RAM users to manage their own passwords. Value:
                - true (default): Allowed.
                - false: not allowed.
@@ -331,6 +332,7 @@ class _SecurityPreferenceState:
                  verification_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SecurityPreference resources.
+
         :param pulumi.Input[_builtins.bool] allow_user_to_change_password: Whether to allow RAM users to manage their own passwords. Value:
                - true (default): Allowed.
                - false: not allowed.
@@ -663,6 +665,7 @@ class SecurityPreference(pulumi.CustomResource):
         $ terraform import alicloud_ram_security_preference.example 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_user_to_change_password: Whether to allow RAM users to manage their own passwords. Value:
@@ -749,6 +752,7 @@ class SecurityPreference(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_ram_security_preference.example 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityPreferenceArgs args: The arguments to use to populate this resource's properties.

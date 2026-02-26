@@ -23,6 +23,7 @@ class ServiceEndpointArgs:
                  endpoint_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ServiceEndpoint resource.
+
         :param pulumi.Input[_builtins.bool] endpoint_enabled: Specifies whether the endpoint is enabled. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_type: Access point type. Value:
                - public: indicates a public access point. (Currently only public is supported)
@@ -63,6 +64,7 @@ class _ServiceEndpointState:
                  endpoint_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceEndpoint resources.
+
         :param pulumi.Input[_builtins.bool] endpoint_enabled: Specifies whether the endpoint is enabled. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_type: Access point type. Value:
                - public: indicates a public access point. (Currently only public is supported)
@@ -141,6 +143,7 @@ class ServiceEndpoint(pulumi.CustomResource):
         $ pulumi import alicloud:message/serviceEndpoint:ServiceEndpoint example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] endpoint_enabled: Specifies whether the endpoint is enabled. Valid values:
@@ -186,6 +189,7 @@ class ServiceEndpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:message/serviceEndpoint:ServiceEndpoint example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceEndpointArgs args: The arguments to use to populate this resource's properties.

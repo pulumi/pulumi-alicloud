@@ -29,6 +29,7 @@ class BucketCnameArgs:
                  previous_cert_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketCname resource.
+
         :param pulumi.Input[_builtins.str] bucket: The bucket to which the custom domain name belongs
         :param pulumi.Input[_builtins.str] domain: User-defined domain name
         :param pulumi.Input['BucketCnameCertificateArgs'] certificate: The container for the certificate configuration. See `certificate` below.
@@ -132,6 +133,7 @@ class _BucketCnameState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketCname resources.
+
         :param pulumi.Input[_builtins.str] bucket: The bucket to which the custom domain name belongs
         :param pulumi.Input['BucketCnameCertificateArgs'] certificate: The container for the certificate configuration. See `certificate` below.
         :param pulumi.Input[_builtins.bool] delete_certificate: Whether to delete the certificate.
@@ -304,6 +306,7 @@ class BucketCname(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketCname:BucketCname example <bucket>:<domain>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The bucket to which the custom domain name belongs
@@ -369,6 +372,7 @@ class BucketCname(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketCname:BucketCname example <bucket>:<domain>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketCnameArgs args: The arguments to use to populate this resource's properties.

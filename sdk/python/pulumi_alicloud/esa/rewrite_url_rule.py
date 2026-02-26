@@ -31,6 +31,7 @@ class RewriteUrlRuleArgs:
                  uri: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RewriteUrlRule resource.
+
         :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.str] query_string: The desired query string to which you want to rewrite the query string in the original request.
         :param pulumi.Input[_builtins.str] rewrite_query_string_type: Query string rewrite type. Value range:
@@ -203,6 +204,7 @@ class _RewriteUrlRuleState:
                  uri: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RewriteUrlRule resources.
+
         :param pulumi.Input[_builtins.int] config_id: ConfigId
         :param pulumi.Input[_builtins.str] query_string: The desired query string to which you want to rewrite the query string in the original request.
         :param pulumi.Input[_builtins.str] rewrite_query_string_type: Query string rewrite type. Value range:
@@ -450,6 +452,7 @@ class RewriteUrlRule(pulumi.CustomResource):
         $ pulumi import alicloud:esa/rewriteUrlRule:RewriteUrlRule example <site_id>:<config_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] query_string: The desired query string to which you want to rewrite the query string in the original request.
@@ -528,6 +531,7 @@ class RewriteUrlRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/rewriteUrlRule:RewriteUrlRule example <site_id>:<config_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RewriteUrlRuleArgs args: The arguments to use to populate this resource's properties.

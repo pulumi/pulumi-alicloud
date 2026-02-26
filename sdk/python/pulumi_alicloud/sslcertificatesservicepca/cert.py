@@ -44,6 +44,7 @@ class CertArgs:
                  years: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Cert resource.
+
         :param pulumi.Input[_builtins.str] parent_identifier: The unique identifier of the subordinate CA certificate that issued this certificate.
         :param pulumi.Input[_builtins.int] after_time: The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
                
@@ -491,6 +492,7 @@ class _CertState:
                  years: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Cert resources.
+
         :param pulumi.Input[_builtins.int] after_time: The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
                
                > **NOTE:**  The `before_time` and `after_time` parameters must either both be empty or both be specified.
@@ -1008,6 +1010,7 @@ class Cert(pulumi.CustomResource):
         $ pulumi import alicloud:sslcertificatesservicepca/cert:Cert example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] after_time: The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
@@ -1142,6 +1145,7 @@ class Cert(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sslcertificatesservicepca/cert:Cert example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CertArgs args: The arguments to use to populate this resource's properties.

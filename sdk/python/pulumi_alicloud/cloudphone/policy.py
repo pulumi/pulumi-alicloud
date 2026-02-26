@@ -30,6 +30,7 @@ class PolicyArgs:
                  resolution_width: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Policy resource.
+
         :param pulumi.Input[_builtins.str] camera_redirect: Whether to turn on local camera redirection.
         :param pulumi.Input[_builtins.str] clipboard: Clipboard permissions.
         :param pulumi.Input[_builtins.str] lock_resolution: Whether to lock the resolution.
@@ -150,6 +151,7 @@ class _PolicyState:
                  resolution_width: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
+
         :param pulumi.Input[_builtins.str] camera_redirect: Whether to turn on local camera redirection.
         :param pulumi.Input[_builtins.str] clipboard: Clipboard permissions.
         :param pulumi.Input[_builtins.str] lock_resolution: Whether to lock the resolution.
@@ -321,6 +323,7 @@ class Policy(pulumi.CustomResource):
         $ pulumi import alicloud:cloudphone/policy:Policy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] camera_redirect: Whether to turn on local camera redirection.
@@ -385,6 +388,7 @@ class Policy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudphone/policy:Policy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

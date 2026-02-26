@@ -31,6 +31,7 @@ class ProvisionedProductArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ProvisionedProduct resource.
+
         :param pulumi.Input[_builtins.str] product_id: Product ID.
         :param pulumi.Input[_builtins.str] product_version_id: Product version ID.
         :param pulumi.Input[_builtins.str] provisioned_product_name: The name of the instance.The length is 1~128 characters.
@@ -177,6 +178,7 @@ class _ProvisionedProductState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ProvisionedProduct resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the product instance
         :param pulumi.Input[_builtins.str] last_provisioning_task_id: The ID of the last instance operation task
         :param pulumi.Input[_builtins.str] last_successful_provisioning_task_id: The ID of the last successful instance operation task
@@ -569,6 +571,7 @@ class ProvisionedProduct(pulumi.CustomResource):
         $terraform import alicloud_service_catalog_provisioned_product.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict']]]] parameters: Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
@@ -629,6 +632,7 @@ class ProvisionedProduct(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_service_catalog_provisioned_product.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProvisionedProductArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class TransitRouterRouteEntryArgs:
                  transit_router_route_entry_next_hop_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterRouteEntry resource.
+
         :param pulumi.Input[_builtins.str] transit_router_route_entry_destination_cidr_block: The CIDR of the transit router route entry.
         :param pulumi.Input[_builtins.str] transit_router_route_entry_next_hop_type: The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
         :param pulumi.Input[_builtins.str] transit_router_route_table_id: The ID of the transit router route table.
@@ -153,6 +154,7 @@ class _TransitRouterRouteEntryState:
                  transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterRouteEntry resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
                
                > **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
@@ -376,6 +378,7 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry default vtb-*********:rte-*******
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
@@ -459,6 +462,7 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry default vtb-*********:rte-*******
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterRouteEntryArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class KvArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Kv resource.
+
         :param pulumi.Input[_builtins.str] key: kv
         :param pulumi.Input[_builtins.str] namespace: The name specified when calling [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
         :param pulumi.Input[_builtins.int] expiration: The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://www.alibabacloud.com/help/en/doc-detail/2850486.html).
@@ -146,6 +147,7 @@ class _KvState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Kv resources.
+
         :param pulumi.Input[_builtins.int] expiration: The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://www.alibabacloud.com/help/en/doc-detail/2850486.html).
         :param pulumi.Input[_builtins.int] expiration_ttl: The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
         :param pulumi.Input[_builtins.bool] isbase: The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
@@ -305,6 +307,7 @@ class Kv(pulumi.CustomResource):
         $ pulumi import alicloud:esa/kv:Kv example <namespace>:<key>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] expiration: The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://www.alibabacloud.com/help/en/doc-detail/2850486.html).
@@ -357,6 +360,7 @@ class Kv(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/kv:Kv example <namespace>:<key>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KvArgs args: The arguments to use to populate this resource's properties.

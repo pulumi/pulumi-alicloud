@@ -30,6 +30,7 @@ class BundleArgs:
                  user_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Bundle resource.
+
         :param pulumi.Input[_builtins.str] desktop_type: The desktop type. You can call `eds_get_desktop_types` to query desktop type.
         :param pulumi.Input[_builtins.str] image_id: The ID of the image.
         :param pulumi.Input[_builtins.int] root_disk_size_gib: The root disk size gib.
@@ -182,6 +183,7 @@ class _BundleState:
                  user_disk_size_gibs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering Bundle resources.
+
         :param pulumi.Input[_builtins.str] bundle_name: The name of the bundle.
         :param pulumi.Input[_builtins.str] description: The description of the bundle.
         :param pulumi.Input[_builtins.str] desktop_type: The desktop type. You can call `eds_get_desktop_types` to query desktop type.
@@ -386,6 +388,7 @@ class Bundle(pulumi.CustomResource):
         $ pulumi import alicloud:eds/bundle:Bundle example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bundle_name: The name of the bundle.
@@ -451,6 +454,7 @@ class Bundle(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/bundle:Bundle example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BundleArgs args: The arguments to use to populate this resource's properties.

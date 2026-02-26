@@ -35,6 +35,7 @@ class WorkspaceModelArgs:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceModel resource.
+
         :param pulumi.Input[_builtins.str] model_name: The name of the model. The name must be 1 to 127 characters in length.
         :param pulumi.Input[_builtins.str] accessibility: The visibility of the model in the workspace. Default value: `PRIVATE`. Valid values:
                - `PRIVATE`: In this workspace, it is only visible to you and the administrator.
@@ -238,6 +239,7 @@ class _WorkspaceModelState:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceModel resources.
+
         :param pulumi.Input[_builtins.str] accessibility: The visibility of the model in the workspace. Default value: `PRIVATE`. Valid values:
                - `PRIVATE`: In this workspace, it is only visible to you and the administrator.
                - `PUBLIC`: In this workspace, it is visible to everyone.
@@ -502,6 +504,7 @@ class WorkspaceModel(pulumi.CustomResource):
         $ pulumi import alicloud:pai/workspaceModel:WorkspaceModel example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accessibility: The visibility of the model in the workspace. Default value: `PRIVATE`. Valid values:
@@ -582,6 +585,7 @@ class WorkspaceModel(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pai/workspaceModel:WorkspaceModel example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceModelArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class DbResourceGroupArgs:
                  role_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DbResourceGroup resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.> You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
         :param pulumi.Input[_builtins.str] resource_group_config: Resource group configuration.
         :param pulumi.Input[_builtins.str] resource_group_name: Resource group name.
@@ -94,6 +95,7 @@ class _DbResourceGroupState:
                  role_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DbResourceGroup resources.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.> You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
         :param pulumi.Input[_builtins.str] resource_group_config: Resource group configuration.
         :param pulumi.Input[_builtins.str] resource_group_name: Resource group name.
@@ -233,6 +235,7 @@ class DbResourceGroup(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/dbResourceGroup:DbResourceGroup example <db_instance_id>:<resource_group_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.> You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
@@ -310,6 +313,7 @@ class DbResourceGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/dbResourceGroup:DbResourceGroup example <db_instance_id>:<resource_group_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DbResourceGroupArgs args: The arguments to use to populate this resource's properties.

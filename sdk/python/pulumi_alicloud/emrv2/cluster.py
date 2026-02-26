@@ -39,6 +39,7 @@ class ClusterArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
         :param pulumi.Input[_builtins.str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[_builtins.str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
@@ -297,6 +298,7 @@ class _ClusterState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
@@ -706,6 +708,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import alicloud:emrv2/cluster:Cluster default <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
@@ -873,6 +876,7 @@ class Cluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:emrv2/cluster:Cluster default <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

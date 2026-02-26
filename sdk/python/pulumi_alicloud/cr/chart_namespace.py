@@ -25,6 +25,7 @@ class ChartNamespaceArgs:
                  default_repo_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ChartNamespace resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry instance.
         :param pulumi.Input[_builtins.str] namespace_name: The name of the namespace that you want to create.
         :param pulumi.Input[_builtins.bool] auto_create_repo: Specifies whether to automatically create repositories in the namespace. Valid values:
@@ -95,6 +96,7 @@ class _ChartNamespaceState:
                  namespace_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ChartNamespace resources.
+
         :param pulumi.Input[_builtins.bool] auto_create_repo: Specifies whether to automatically create repositories in the namespace. Valid values:
         :param pulumi.Input[_builtins.str] default_repo_type: DefaultRepoType. Valid values: `PRIVATE`, `PUBLIC`.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry instance.
@@ -214,6 +216,7 @@ class ChartNamespace(pulumi.CustomResource):
         $ pulumi import alicloud:cr/chartNamespace:ChartNamespace example <instance_id>:<namespace_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_create_repo: Specifies whether to automatically create repositories in the namespace. Valid values:
@@ -271,6 +274,7 @@ class ChartNamespace(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cr/chartNamespace:ChartNamespace example <instance_id>:<namespace_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ChartNamespaceArgs args: The arguments to use to populate this resource's properties.

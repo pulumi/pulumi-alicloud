@@ -26,6 +26,7 @@ class AccountArgs:
                  character_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] account_name: Account Name
         :param pulumi.Input[_builtins.str] account_password: Account Password
         :param pulumi.Input[_builtins.str] instance_id: Instance Id
@@ -118,6 +119,7 @@ class _AccountState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[_builtins.str] account_description: Set the comment information of the account.
                - Cannot start with http:// or https.
                - Start with Chinese and English letters.
@@ -294,6 +296,7 @@ class Account(pulumi.CustomResource):
         $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_description: Set the comment information of the account.
@@ -375,6 +378,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

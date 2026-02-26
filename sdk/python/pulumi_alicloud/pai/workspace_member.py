@@ -24,6 +24,7 @@ class WorkspaceMemberArgs:
                  workspace_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WorkspaceMember resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: The list of roles. see [how to use it](https://www.alibabacloud.com/help/en/pai/developer-reference/api-aiworkspace-2021-02-04-createmember).
         :param pulumi.Input[_builtins.str] user_id: The ID of the User.
         :param pulumi.Input[_builtins.str] workspace_id: The ID of the Workspace.
@@ -79,6 +80,7 @@ class _WorkspaceMemberState:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceMember resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the workspace is created, in UTC. The time follows the ISO 8601 standard.
         :param pulumi.Input[_builtins.str] member_id: The member ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: The list of roles. see [how to use it](https://www.alibabacloud.com/help/en/pai/developer-reference/api-aiworkspace-2021-02-04-createmember).
@@ -216,6 +218,7 @@ class WorkspaceMember(pulumi.CustomResource):
         $ pulumi import alicloud:pai/workspaceMember:WorkspaceMember example <workspace_id>:<member_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: The list of roles. see [how to use it](https://www.alibabacloud.com/help/en/pai/developer-reference/api-aiworkspace-2021-02-04-createmember).
@@ -276,6 +279,7 @@ class WorkspaceMember(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pai/workspaceMember:WorkspaceMember example <workspace_id>:<member_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceMemberArgs args: The arguments to use to populate this resource's properties.

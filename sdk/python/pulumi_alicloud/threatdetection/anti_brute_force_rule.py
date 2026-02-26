@@ -30,6 +30,7 @@ class AntiBruteForceRuleArgs:
                  protocol_type: Optional[pulumi.Input['AntiBruteForceRuleProtocolTypeArgs']] = None):
         """
         The set of arguments for constructing a AntiBruteForceRule resource.
+
         :param pulumi.Input[_builtins.str] anti_brute_force_rule_name: The name of the defense rule.
         :param pulumi.Input[_builtins.int] fail_count: FailCount
         :param pulumi.Input[_builtins.int] forbidden_time: The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
@@ -145,6 +146,7 @@ class _AntiBruteForceRuleState:
                  uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AntiBruteForceRule resources.
+
         :param pulumi.Input[_builtins.str] anti_brute_force_rule_name: The name of the defense rule.
         :param pulumi.Input[_builtins.bool] default_rule: Specifies whether to set the defense rule as the default rule. Valid values:
         :param pulumi.Input[_builtins.int] fail_count: FailCount
@@ -302,6 +304,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] anti_brute_force_rule_name: The name of the defense rule.
@@ -352,6 +355,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AntiBruteForceRuleArgs args: The arguments to use to populate this resource's properties.

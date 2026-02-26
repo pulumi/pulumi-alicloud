@@ -33,6 +33,7 @@ class DomainNewArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DomainNew resource.
+
         :param pulumi.Input[_builtins.str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
@@ -199,6 +200,7 @@ class _DomainNewState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DomainNew resources.
+
         :param pulumi.Input[_builtins.str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
         :param pulumi.Input['DomainNewCertificateConfigArgs'] certificate_config: Certificate configuration See `certificate_config` below.
         :param pulumi.Input[_builtins.str] check_url: Health test URL.
@@ -428,6 +430,7 @@ class DomainNew(pulumi.CustomResource):
         $ pulumi import alicloud:cdn/domainNew:DomainNew example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
@@ -490,6 +493,7 @@ class DomainNew(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cdn/domainNew:DomainNew example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainNewArgs args: The arguments to use to populate this resource's properties.

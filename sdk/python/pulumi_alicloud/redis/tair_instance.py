@@ -64,6 +64,7 @@ class TairInstanceArgs:
                  vpc_auth_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TairInstance resource.
+
         :param pulumi.Input[_builtins.str] instance_class: The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
         :param pulumi.Input[_builtins.str] instance_type: The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC).
@@ -823,6 +824,7 @@ class _TairInstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TairInstance resources.
+
         :param pulumi.Input[_builtins.str] architecture_type: The architecture of the instance.  cluster, standard, rwsplit.
         :param pulumi.Input[_builtins.str] auto_renew: Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         :param pulumi.Input[_builtins.str] auto_renew_period: The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
@@ -1757,6 +1759,7 @@ class TairInstance(pulumi.CustomResource):
         $ pulumi import alicloud:redis/tairInstance:TairInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auto_renew: Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
@@ -1894,6 +1897,7 @@ class TairInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:redis/tairInstance:TairInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TairInstanceArgs args: The arguments to use to populate this resource's properties.

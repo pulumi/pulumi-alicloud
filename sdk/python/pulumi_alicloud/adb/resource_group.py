@@ -34,6 +34,7 @@ class ResourceGroupArgs:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ResourceGroup resource.
+
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of the DBCluster.
         :param pulumi.Input[_builtins.str] group_name: The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
         :param pulumi.Input[_builtins.str] cluster_mode: The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
@@ -254,6 +255,7 @@ class _ResourceGroupState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ResourceGroup resources.
+
         :param pulumi.Input[_builtins.str] cluster_mode: The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
         :param pulumi.Input[_builtins.str] cluster_size_resource: The resource specifications of a single compute cluster. Unit: ACU.
         :param pulumi.Input[_builtins.str] connection_string: (Available since v1.261.0) The endpoint of the resource group.
@@ -631,6 +633,7 @@ class ResourceGroup(pulumi.CustomResource):
         $ pulumi import alicloud:adb/resourceGroup:ResourceGroup example <db_cluster_id>:<group_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_mode: The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
@@ -721,6 +724,7 @@ class ResourceGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:adb/resourceGroup:ResourceGroup example <db_cluster_id>:<group_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceGroupArgs args: The arguments to use to populate this resource's properties.

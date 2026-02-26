@@ -39,6 +39,7 @@ class BandwidthPackageArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a BandwidthPackage resource.
+
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[_builtins.str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Valid values:
@@ -342,6 +343,7 @@ class _BandwidthPackageState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BandwidthPackage resources.
+
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Valid values:
         :param pulumi.Input[_builtins.int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Whether use vouchers. Default value: `false`. Valid values:
@@ -698,6 +700,7 @@ class BandwidthPackage(pulumi.CustomResource):
         $ pulumi import alicloud:ga/bandwidthPackage:BandwidthPackage example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Valid values:
@@ -763,6 +766,7 @@ class BandwidthPackage(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/bandwidthPackage:BandwidthPackage example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BandwidthPackageArgs args: The arguments to use to populate this resource's properties.

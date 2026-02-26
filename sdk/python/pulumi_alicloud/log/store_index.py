@@ -31,6 +31,7 @@ class StoreIndexArgs:
                  max_text_len: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a StoreIndex resource.
+
         :param pulumi.Input[_builtins.str] logstore: The log store name to the query index belongs.
         :param pulumi.Input[_builtins.str] project: The project name to the log store belongs.
         :param pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]] field_searches: List configurations of field search index. See `field_search` below.
@@ -169,6 +170,7 @@ class _StoreIndexState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StoreIndex resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]] field_searches: List configurations of field search index. See `field_search` below.
                
                > **Note:** At least one of the "full_text" and "field_search" should be specified.
@@ -371,6 +373,7 @@ class StoreIndex(pulumi.CustomResource):
         $ pulumi import alicloud:log/storeIndex:StoreIndex example tf-log:tf-log-store
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]] field_searches: List configurations of field search index. See `field_search` below.
@@ -449,6 +452,7 @@ class StoreIndex(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/storeIndex:StoreIndex example tf-log:tf-log-store
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StoreIndexArgs args: The arguments to use to populate this resource's properties.

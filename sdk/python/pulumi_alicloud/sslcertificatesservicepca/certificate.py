@@ -38,6 +38,7 @@ class CertificateArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Certificate resource.
+
         :param pulumi.Input[_builtins.str] common_name: The common name or abbreviation of the organization. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.str] locality: Name of the city where the organization is located. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.str] organization: The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
@@ -341,6 +342,7 @@ class _CertificateState:
                  years: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
+
         :param pulumi.Input[_builtins.str] algorithm: The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
                - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
                - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
@@ -702,6 +704,7 @@ class Certificate(pulumi.CustomResource):
         $ pulumi import alicloud:sslcertificatesservicepca/certificate:Certificate example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] algorithm: The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
@@ -777,6 +780,7 @@ class Certificate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sslcertificatesservicepca/certificate:Certificate example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.

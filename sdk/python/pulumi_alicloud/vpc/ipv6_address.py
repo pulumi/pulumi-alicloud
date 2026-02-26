@@ -28,6 +28,7 @@ class Ipv6AddressArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Ipv6Address resource.
+
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitchId of the IPv6 address.
         :param pulumi.Input[_builtins.str] address_type: The type of the IPv6 address. Value:
                - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
@@ -153,6 +154,7 @@ class _Ipv6AddressState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ipv6Address resources.
+
         :param pulumi.Input[_builtins.str] address_type: The type of the IPv6 address. Value:
                - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
                - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
@@ -358,6 +360,7 @@ class Ipv6Address(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/ipv6Address:Ipv6Address example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_type: The type of the IPv6 address. Value:
@@ -424,6 +427,7 @@ class Ipv6Address(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/ipv6Address:Ipv6Address example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param Ipv6AddressArgs args: The arguments to use to populate this resource's properties.

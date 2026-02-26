@@ -26,6 +26,7 @@ class RouteEntryArgs:
                  weight: pulumi.Input[_builtins.int]):
         """
         The set of arguments for constructing a RouteEntry resource.
+
         :param pulumi.Input[_builtins.str] next_hop: The next hop of the destination route.
         :param pulumi.Input[_builtins.bool] publish_vpc: Whether to issue the destination route to the VPC.
         :param pulumi.Input[_builtins.str] route_dest: The destination network segment of the destination route.
@@ -111,6 +112,7 @@ class _RouteEntryState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RouteEntry resources.
+
         :param pulumi.Input[_builtins.str] next_hop: The next hop of the destination route.
         :param pulumi.Input[_builtins.bool] publish_vpc: Whether to issue the destination route to the VPC.
         :param pulumi.Input[_builtins.str] route_dest: The destination network segment of the destination route.
@@ -348,6 +350,7 @@ class RouteEntry(pulumi.CustomResource):
         $ pulumi import alicloud:vpn/routeEntry:RouteEntry example vpn-abc123456:vco-abc123456:10.0.0.10/24
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] next_hop: The next hop of the destination route.
@@ -478,6 +481,7 @@ class RouteEntry(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpn/routeEntry:RouteEntry example vpn-abc123456:vco-abc123456:10.0.0.10/24
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouteEntryArgs args: The arguments to use to populate this resource's properties.

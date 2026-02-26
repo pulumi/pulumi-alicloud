@@ -25,6 +25,7 @@ class ListArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a List resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the custom list.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] items: The items in the custom list, which are displayed as an array.
         :param pulumi.Input[_builtins.str] kind: The type of the custom list.
@@ -97,6 +98,7 @@ class _ListState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering List resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the custom list.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] items: The items in the custom list, which are displayed as an array.
         :param pulumi.Input[_builtins.str] kind: The type of the custom list.
@@ -211,6 +213,7 @@ class List(pulumi.CustomResource):
         $ pulumi import alicloud:esa/list:List example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the custom list.
@@ -263,6 +266,7 @@ class List(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/list:List example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ListArgs args: The arguments to use to populate this resource's properties.

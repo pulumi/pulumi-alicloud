@@ -25,6 +25,7 @@ class DataSourceSharedRuleArgs:
                  shared_user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataSourceSharedRule resource.
+
         :param pulumi.Input[_builtins.int] data_source_id: The ID of the data source, that is, the unique identifier of the data source.
         :param pulumi.Input[_builtins.str] env_type: The environment type of the data source shared to the target project, such as Dev (Development Environment) and Prod (production environment).
         :param pulumi.Input[_builtins.int] target_project_id: The ID of the project to which the data source is shared.
@@ -96,6 +97,7 @@ class _DataSourceSharedRuleState:
                  target_project_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DataSourceSharedRule resources.
+
         :param pulumi.Input[_builtins.int] create_time: The creation time of the data source sharing rule.
         :param pulumi.Input[_builtins.int] data_source_id: The ID of the data source, that is, the unique identifier of the data source.
         :param pulumi.Input[_builtins.str] data_source_shared_rule_id: The data source sharing rule ID, that is, the unique identifier of the data source sharing rule.
@@ -277,6 +279,7 @@ class DataSourceSharedRule(pulumi.CustomResource):
         $ pulumi import alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule example <data_source_id>:<data_source_shared_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] data_source_id: The ID of the data source, that is, the unique identifier of the data source.
@@ -366,6 +369,7 @@ class DataSourceSharedRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule example <data_source_id>:<data_source_shared_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataSourceSharedRuleArgs args: The arguments to use to populate this resource's properties.

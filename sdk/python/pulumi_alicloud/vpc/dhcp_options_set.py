@@ -33,6 +33,7 @@ class DhcpOptionsSetArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DhcpOptionsSet resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]] associate_vpcs: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         :param pulumi.Input[_builtins.str] dhcp_options_set_description: The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] dhcp_options_set_name: The name of the DHCP options set.
@@ -221,6 +222,7 @@ class _DhcpOptionsSetState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DhcpOptionsSet resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]] associate_vpcs: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         :param pulumi.Input[_builtins.str] dhcp_options_set_description: The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] dhcp_options_set_name: The name of the DHCP options set.
@@ -480,6 +482,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionsSetAssociateVpcArgs', 'DhcpOptionsSetAssociateVpcArgsDict']]]] associate_vpcs: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
@@ -546,6 +549,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DhcpOptionsSetArgs args: The arguments to use to populate this resource's properties.

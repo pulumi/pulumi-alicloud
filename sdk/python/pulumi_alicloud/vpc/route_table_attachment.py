@@ -23,6 +23,7 @@ class RouteTableAttachmentArgs:
                  vswitch_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a RouteTableAttachment resource.
+
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table to be bound to the switch.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the switch to bind the route table.
         """
@@ -62,6 +63,7 @@ class _RouteTableAttachmentState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouteTableAttachment resources.
+
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table to be bound to the switch.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the switch to bind the route table.
@@ -166,6 +168,7 @@ class RouteTableAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example <route_table_id>:<vswitch_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table to be bound to the switch.
@@ -223,6 +226,7 @@ class RouteTableAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example <route_table_id>:<vswitch_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouteTableAttachmentArgs args: The arguments to use to populate this resource's properties.

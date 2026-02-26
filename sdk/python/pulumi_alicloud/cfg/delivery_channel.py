@@ -28,6 +28,7 @@ class DeliveryChannelArgs:
                  status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DeliveryChannel resource.
+
         :param pulumi.Input[_builtins.str] delivery_channel_assume_role_arn: The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
         :param pulumi.Input[_builtins.str] delivery_channel_target_arn: The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
                - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
@@ -151,6 +152,7 @@ class _DeliveryChannelState:
                  status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DeliveryChannel resources.
+
         :param pulumi.Input[_builtins.str] delivery_channel_assume_role_arn: The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
         :param pulumi.Input[_builtins.str] delivery_channel_condition: The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
         :param pulumi.Input[_builtins.str] delivery_channel_name: The name of the delivery channel.
@@ -331,6 +333,7 @@ class DeliveryChannel(pulumi.CustomResource):
         $ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] delivery_channel_assume_role_arn: The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
@@ -401,6 +404,7 @@ class DeliveryChannel(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeliveryChannelArgs args: The arguments to use to populate this resource's properties.

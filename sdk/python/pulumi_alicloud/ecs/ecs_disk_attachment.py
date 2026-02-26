@@ -27,6 +27,7 @@ class EcsDiskAttachmentArgs:
                  password: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsDiskAttachment resource.
+
         :param pulumi.Input[_builtins.str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[_builtins.str] instance_id: ID of the Instance to attach to.
         :param pulumi.Input[_builtins.bool] bootable: Whether to mount as a system disk. Default to: `false`.
@@ -130,6 +131,7 @@ class _EcsDiskAttachmentState:
                  password: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsDiskAttachment resources.
+
         :param pulumi.Input[_builtins.bool] bootable: Whether to mount as a system disk. Default to: `false`.
         :param pulumi.Input[_builtins.bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default to: `false`.
         :param pulumi.Input[_builtins.str] device: The name of the cloud disk device.
@@ -324,6 +326,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment example d-abc12345678:i-abc12355
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] bootable: Whether to mount as a system disk. Default to: `false`.
@@ -411,6 +414,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment example d-abc12345678:i-abc12355
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsDiskAttachmentArgs args: The arguments to use to populate this resource's properties.

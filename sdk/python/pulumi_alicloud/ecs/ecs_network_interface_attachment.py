@@ -26,6 +26,7 @@ class EcsNetworkInterfaceAttachmentArgs:
                  wait_for_network_configuration_ready: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EcsNetworkInterfaceAttachment resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the ECS instance.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the network interface.
         :param pulumi.Input[_builtins.int] network_card_index: The index of the network card.
@@ -112,6 +113,7 @@ class _EcsNetworkInterfaceAttachmentState:
                  wait_for_network_configuration_ready: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering EcsNetworkInterfaceAttachment resources.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the ECS instance.
         :param pulumi.Input[_builtins.int] network_card_index: The index of the network card.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the network interface.
@@ -274,6 +276,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example <network_interface_id>:<instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the ECS instance.
@@ -359,6 +362,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example <network_interface_id>:<instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsNetworkInterfaceAttachmentArgs args: The arguments to use to populate this resource's properties.

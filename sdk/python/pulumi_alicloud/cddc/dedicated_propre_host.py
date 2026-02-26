@@ -49,6 +49,7 @@ class DedicatedPropreHostArgs:
                  user_data_encoded: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DedicatedPropreHost resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]] ecs_class_lists: ECS specifications. See `ecs_class_list` below.
         :param pulumi.Input[_builtins.str] ecs_zone_id: The ID of the zone.
         :param pulumi.Input[_builtins.str] engine: Database type, value:
@@ -501,6 +502,7 @@ class _DedicatedPropreHostState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DedicatedPropreHost resources.
+
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically when the host is created.
         :param pulumi.Input[_builtins.str] auto_renew: Whether to enable automatic renewal. Valid values:
                - **true**: On
@@ -1113,6 +1115,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         $ pulumi import alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost example <dedicated_host_group_id>:<ecs_instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically when the host is created.
@@ -1301,6 +1304,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost example <dedicated_host_group_id>:<ecs_instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DedicatedPropreHostArgs args: The arguments to use to populate this resource's properties.

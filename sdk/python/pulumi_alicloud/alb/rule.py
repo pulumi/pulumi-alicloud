@@ -30,6 +30,7 @@ class RuleArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Rule resource.
+
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener to which the forwarding rule belongs.
         :param pulumi.Input[_builtins.int] priority: The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
         :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]] rule_actions: The actions of the forwarding rules. See `rule_actions` below.
@@ -150,6 +151,7 @@ class _RuleState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
+
         :param pulumi.Input[_builtins.str] direction: The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
                - `Request`: The forwarding rule is applied to the client requests received by ALB.
                - `Response`: The forwarding rule is applied to the responses returned by backend servers.
@@ -411,6 +413,7 @@ class Rule(pulumi.CustomResource):
         $ pulumi import alicloud:alb/rule:Rule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] direction: The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
@@ -548,6 +551,7 @@ class Rule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/rule:Rule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleArgs args: The arguments to use to populate this resource's properties.

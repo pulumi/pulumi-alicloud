@@ -25,6 +25,7 @@ class BasicIpSetArgs:
                  isp_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BasicIpSet resource.
+
         :param pulumi.Input[_builtins.str] accelerate_region_id: The ID of the acceleration region.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the basic GA instance.
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the acceleration region. Unit: Mbit/s.
@@ -96,6 +97,7 @@ class _BasicIpSetState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BasicIpSet resources.
+
         :param pulumi.Input[_builtins.str] accelerate_region_id: The ID of the acceleration region.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the basic GA instance.
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the acceleration region. Unit: Mbit/s.
@@ -229,6 +231,7 @@ class BasicIpSet(pulumi.CustomResource):
         $ pulumi import alicloud:ga/basicIpSet:BasicIpSet example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerate_region_id: The ID of the acceleration region.
@@ -285,6 +288,7 @@ class BasicIpSet(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/basicIpSet:BasicIpSet example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BasicIpSetArgs args: The arguments to use to populate this resource's properties.

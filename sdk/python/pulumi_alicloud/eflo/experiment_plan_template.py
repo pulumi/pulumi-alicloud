@@ -27,6 +27,7 @@ class ExperimentPlanTemplateArgs:
                  template_description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExperimentPlanTemplate resource.
+
         :param pulumi.Input[_builtins.str] privacy_level: Used to indicate the privacy level of the content or information. It can have the following optional parameters:
                - private: Indicates that the content is private and restricted to specific users or permission groups. Private content is usually not publicly displayed, and only authorized users can view or edit it.
                - public: Indicates that the content is public and can be accessed by anyone. Public content is usually viewable by all users and is suitable for sharing information or resources
@@ -102,6 +103,7 @@ class _ExperimentPlanTemplateState:
                  template_pipelines: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentPlanTemplateTemplatePipelineArgs']]]] = None):
         """
         Input properties used for looking up and filtering ExperimentPlanTemplate resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] privacy_level: Used to indicate the privacy level of the content or information. It can have the following optional parameters:
                - private: Indicates that the content is private and restricted to specific users or permission groups. Private content is usually not publicly displayed, and only authorized users can view or edit it.
@@ -262,6 +264,7 @@ class ExperimentPlanTemplate(pulumi.CustomResource):
         $ pulumi import alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] privacy_level: Used to indicate the privacy level of the content or information. It can have the following optional parameters:
@@ -328,6 +331,7 @@ class ExperimentPlanTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ExperimentPlanTemplateArgs args: The arguments to use to populate this resource's properties.

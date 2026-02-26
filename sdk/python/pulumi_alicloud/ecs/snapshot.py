@@ -32,6 +32,7 @@ class SnapshotArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
+
         :param pulumi.Input[_builtins.str] disk_id: The source disk ID.
         :param pulumi.Input[_builtins.str] description: Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[_builtins.str] name: The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
@@ -208,6 +209,7 @@ class _SnapshotState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[_builtins.str] disk_id: The source disk ID.
         :param pulumi.Input[_builtins.str] name: The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
@@ -451,6 +453,7 @@ class Snapshot(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/snapshot:Snapshot snapshot s-abc1234567890000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -499,6 +502,7 @@ class Snapshot(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/snapshot:Snapshot snapshot s-abc1234567890000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SnapshotArgs args: The arguments to use to populate this resource's properties.

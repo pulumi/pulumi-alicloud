@@ -24,6 +24,7 @@ class PolicyAttachmentArgs:
                  target_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] policy_id: The ID of the tag policy.
         :param pulumi.Input[_builtins.str] target_id: The ID of the object.
         :param pulumi.Input[_builtins.str] target_type: The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
@@ -77,6 +78,7 @@ class _PolicyAttachmentState:
                  target_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] policy_id: The ID of the tag policy.
         :param pulumi.Input[_builtins.str] target_id: The ID of the object.
         :param pulumi.Input[_builtins.str] target_type: The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
@@ -176,6 +178,7 @@ class PolicyAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:tag/policyAttachment:PolicyAttachment example <policy_id>:<target_id>:<target_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the tag policy.
@@ -228,6 +231,7 @@ class PolicyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:tag/policyAttachment:PolicyAttachment example <policy_id>:<target_id>:<target_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

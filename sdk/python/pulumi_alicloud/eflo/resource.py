@@ -28,6 +28,7 @@ class ResourceArgs:
                  cluster_desc: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Resource resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: Used to uniquely identify a computing cluster.
         :param pulumi.Input[_builtins.str] cluster_name: Represents the name of the compute cluster, usually including the model number.
         :param pulumi.Input['ResourceMachineTypesArgs'] machine_types: Generally refers to the type or instance type of a computing resource. See `machine_types` below.
@@ -113,6 +114,7 @@ class _ResourceState:
                  user_access_param: Optional[pulumi.Input['ResourceUserAccessParamArgs']] = None):
         """
         Input properties used for looking up and filtering Resource resources.
+
         :param pulumi.Input[_builtins.str] cluster_desc: Used to provide a description or comment on the compute cluster.
         :param pulumi.Input[_builtins.str] cluster_id: Used to uniquely identify a computing cluster.
         :param pulumi.Input[_builtins.str] cluster_name: Represents the name of the compute cluster, usually including the model number.
@@ -279,6 +281,7 @@ class Resource(pulumi.CustomResource):
         $ pulumi import alicloud:eflo/resource:Resource example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_desc: Used to provide a description or comment on the compute cluster.
@@ -353,6 +356,7 @@ class Resource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eflo/resource:Resource example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceArgs args: The arguments to use to populate this resource's properties.

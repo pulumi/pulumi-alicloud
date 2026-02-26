@@ -26,6 +26,7 @@ class SlsGroupArgs:
                  sls_group_description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SlsGroup resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         :param pulumi.Input[_builtins.str] sls_group_name: The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
         :param pulumi.Input[_builtins.str] sls_group_description: The Description of the Sls Group.
@@ -80,6 +81,7 @@ class _SlsGroupState:
                  sls_group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SlsGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         :param pulumi.Input[_builtins.str] sls_group_description: The Description of the Sls Group.
         :param pulumi.Input[_builtins.str] sls_group_name: The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
@@ -195,6 +197,7 @@ class SlsGroup(pulumi.CustomResource):
         $ pulumi import alicloud:cms/slsGroup:SlsGroup example <sls_group_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SlsGroupSlsGroupConfigArgs', 'SlsGroupSlsGroupConfigArgsDict']]]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
@@ -263,6 +266,7 @@ class SlsGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/slsGroup:SlsGroup example <sls_group_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SlsGroupArgs args: The arguments to use to populate this resource's properties.

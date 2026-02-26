@@ -26,6 +26,7 @@ class CooWebCcRuleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CooWebCcRule resource.
+
         :param pulumi.Input[_builtins.str] domain: The domain name of the website service.  
                
                > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
@@ -84,6 +85,7 @@ class _CooWebCcRuleState:
                  rule_detail: Optional[pulumi.Input['CooWebCcRuleRuleDetailArgs']] = None):
         """
         Input properties used for looking up and filtering CooWebCcRule resources.
+
         :param pulumi.Input[_builtins.str] domain: The domain name of the website service.  
                
                > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
@@ -235,6 +237,7 @@ class CooWebCcRule(pulumi.CustomResource):
         $ pulumi import alicloud:ddos/cooWebCcRule:CooWebCcRule example <domain>:<name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The domain name of the website service.  
@@ -337,6 +340,7 @@ class CooWebCcRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ddos/cooWebCcRule:CooWebCcRule example <domain>:<name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CooWebCcRuleArgs args: The arguments to use to populate this resource's properties.

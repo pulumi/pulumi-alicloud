@@ -25,6 +25,7 @@ class TrafficQosArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TrafficQos resource.
+
         :param pulumi.Input[_builtins.str] qos_description: The description of the QoS policy.
                The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[_builtins.str] qos_name: The name of the QoS policy.
@@ -102,6 +103,7 @@ class _TrafficQosState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering TrafficQos resources.
+
         :param pulumi.Input[_builtins.str] qos_description: The description of the QoS policy.
                The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[_builtins.str] qos_name: The name of the QoS policy.
@@ -231,6 +233,7 @@ class TrafficQos(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/trafficQos:TrafficQos example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] qos_description: The description of the QoS policy.
@@ -281,6 +284,7 @@ class TrafficQos(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/trafficQos:TrafficQos example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TrafficQosArgs args: The arguments to use to populate this resource's properties.

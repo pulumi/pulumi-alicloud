@@ -24,6 +24,7 @@ class GroupArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] directory_id: The ID of the Directory.
         :param pulumi.Input[_builtins.str] group_name: The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] description: The Description of the group. The description can be up to `1024` characters long.
@@ -79,6 +80,7 @@ class _GroupState:
                  group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[_builtins.str] description: The Description of the group. The description can be up to `1024` characters long.
         :param pulumi.Input[_builtins.str] directory_id: The ID of the Directory.
         :param pulumi.Input[_builtins.str] group_id: The GroupId of the group.
@@ -199,6 +201,7 @@ class Group(pulumi.CustomResource):
         $ pulumi import alicloud:cloudsso/group:Group example <directory_id>:<group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The Description of the group. The description can be up to `1024` characters long.
@@ -257,6 +260,7 @@ class Group(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudsso/group:Group example <directory_id>:<group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

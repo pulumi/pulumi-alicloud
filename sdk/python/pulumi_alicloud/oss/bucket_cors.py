@@ -26,6 +26,7 @@ class BucketCorsArgs:
                  response_vary: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BucketCors resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the Bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorsCorsRuleArgs']]] cors_rules: The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
         :param pulumi.Input[_builtins.bool] response_vary: Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
@@ -80,6 +81,7 @@ class _BucketCorsState:
                  response_vary: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering BucketCors resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the Bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorsCorsRuleArgs']]] cors_rules: The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
         :param pulumi.Input[_builtins.bool] response_vary: Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
@@ -187,6 +189,7 @@ class BucketCors(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketCors:BucketCors example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the Bucket.
@@ -247,6 +250,7 @@ class BucketCors(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketCors:BucketCors example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketCorsArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class GroupPolicyAttachmentArgs:
                  policy_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GroupPolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] group_name: The name of the group.
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy.
         :param pulumi.Input[_builtins.str] policy_type: Policy type.
@@ -81,6 +82,7 @@ class _GroupPolicyAttachmentState:
                  policy_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupPolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] group_name: The name of the group.
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy.
         :param pulumi.Input[_builtins.str] policy_type: Policy type.
@@ -202,6 +204,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:<policy_name>:<policy_type>:<group_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_name: The name of the group.
@@ -274,6 +277,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:<policy_name>:<policy_type>:<group_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

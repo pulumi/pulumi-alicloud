@@ -24,6 +24,7 @@ class ServiceLinkedRoleArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceLinkedRole resource.
+
         :param pulumi.Input[_builtins.str] service_name: The service name. For more information about the service name, see [Cloud services that support service linked roles](https://www.alibabacloud.com/help/en/doc-detail/160674.htm)
         :param pulumi.Input[_builtins.str] custom_suffix: The suffix of the role name. Only a few service linked roles support custom suffixes. The role name (including its suffix) must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-). For example, if the suffix is Example, the role name is ServiceLinkedRoleName_Example.
         :param pulumi.Input[_builtins.str] description: The description of the service linked role.  This parameter must be specified for only the service linked roles that support custom suffixes. Otherwise, the preset value is used and cannot be modified. The description must be 1 to 1,024 characters in length.
@@ -82,6 +83,7 @@ class _ServiceLinkedRoleState:
                  service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceLinkedRole resources.
+
         :param pulumi.Input[_builtins.str] arn: The Alibaba Cloud Resource Name (ARN) of the role.
         :param pulumi.Input[_builtins.str] custom_suffix: The suffix of the role name. Only a few service linked roles support custom suffixes. The role name (including its suffix) must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-). For example, if the suffix is Example, the role name is ServiceLinkedRoleName_Example.
         :param pulumi.Input[_builtins.str] description: The description of the service linked role.  This parameter must be specified for only the service linked roles that support custom suffixes. Otherwise, the preset value is used and cannot be modified. The description must be 1 to 1,024 characters in length.
@@ -213,6 +215,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole default <service_name>:<role_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_suffix: The suffix of the role name. Only a few service linked roles support custom suffixes. The role name (including its suffix) must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-). For example, if the suffix is Example, the role name is ServiceLinkedRoleName_Example.
@@ -252,6 +255,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole default <service_name>:<role_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceLinkedRoleArgs args: The arguments to use to populate this resource's properties.

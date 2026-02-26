@@ -22,6 +22,7 @@ class DefaultPatchBaselineArgs:
                  patch_baseline_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DefaultPatchBaseline resource.
+
         :param pulumi.Input[_builtins.str] patch_baseline_name: The name of the patch baseline.
         """
         pulumi.set(__self__, "patch_baseline_name", patch_baseline_name)
@@ -46,6 +47,7 @@ class _DefaultPatchBaselineState:
                  patch_baseline_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DefaultPatchBaseline resources.
+
         :param pulumi.Input[_builtins.str] patch_baseline_id: The ID of the patch baseline.
         :param pulumi.Input[_builtins.str] patch_baseline_name: The name of the patch baseline.
         """
@@ -120,6 +122,7 @@ class DefaultPatchBaseline(pulumi.CustomResource):
         $ pulumi import alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] patch_baseline_name: The name of the patch baseline.
@@ -162,6 +165,7 @@ class DefaultPatchBaseline(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DefaultPatchBaselineArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class GlobalSecurityIpGroupArgs:
                  global_ip_list: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GlobalSecurityIpGroup resource.
+
         :param pulumi.Input[_builtins.str] global_ip_group_name: The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
                
                - The name can contain lowercase letters, digits, and underscores (\\_).
@@ -74,6 +75,7 @@ class _GlobalSecurityIpGroupState:
                  region_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalSecurityIpGroup resources.
+
         :param pulumi.Input[_builtins.str] global_ip_group_name: The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
                
                - The name can contain lowercase letters, digits, and underscores (\\_).
@@ -179,6 +181,7 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
         $ pulumi import alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] global_ip_group_name: The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
@@ -231,6 +234,7 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GlobalSecurityIpGroupArgs args: The arguments to use to populate this resource's properties.

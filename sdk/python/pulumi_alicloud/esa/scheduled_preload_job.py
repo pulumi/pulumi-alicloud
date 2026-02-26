@@ -26,6 +26,7 @@ class ScheduledPreloadJobArgs:
                  url_list: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ScheduledPreloadJob resource.
+
         :param pulumi.Input[_builtins.str] insert_way: The method to submit the URLs to be prefetched.
         :param pulumi.Input[_builtins.str] scheduled_preload_job_name: The task name.
         :param pulumi.Input[_builtins.str] site_id: The site ID.
@@ -121,6 +122,7 @@ class _ScheduledPreloadJobState:
                  url_list: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScheduledPreloadJob resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the task was created.
         :param pulumi.Input[_builtins.str] insert_way: The method to submit the URLs to be prefetched.
         :param pulumi.Input[_builtins.str] oss_url: Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
@@ -287,6 +289,7 @@ class ScheduledPreloadJob(pulumi.CustomResource):
         $ pulumi import alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob example <site_id>:<scheduled_preload_job_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] insert_way: The method to submit the URLs to be prefetched.
@@ -342,6 +345,7 @@ class ScheduledPreloadJob(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob example <site_id>:<scheduled_preload_job_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScheduledPreloadJobArgs args: The arguments to use to populate this resource's properties.

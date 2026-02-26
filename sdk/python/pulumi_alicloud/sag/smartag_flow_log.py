@@ -33,6 +33,7 @@ class SmartagFlowLogArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SmartagFlowLog resource.
+
         :param pulumi.Input[_builtins.str] output_type: The location where the flow log is stored. Valid values:
         :param pulumi.Input[_builtins.int] active_aging: The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
         :param pulumi.Input[_builtins.str] description: The description of the flow log.
@@ -232,6 +233,7 @@ class _SmartagFlowLogState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SmartagFlowLog resources.
+
         :param pulumi.Input[_builtins.int] active_aging: The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
         :param pulumi.Input[_builtins.str] description: The description of the flow log.
         :param pulumi.Input[_builtins.str] flow_log_name: The name of the flow log.
@@ -466,6 +468,7 @@ class SmartagFlowLog(pulumi.CustomResource):
         $ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] active_aging: The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
@@ -518,6 +521,7 @@ class SmartagFlowLog(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SmartagFlowLogArgs args: The arguments to use to populate this resource's properties.

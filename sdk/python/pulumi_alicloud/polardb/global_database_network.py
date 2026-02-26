@@ -23,6 +23,7 @@ class GlobalDatabaseNetworkArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlobalDatabaseNetwork resource.
+
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of the primary cluster.
         :param pulumi.Input[_builtins.str] description: The description of the Global Database Network.
         """
@@ -63,6 +64,7 @@ class _GlobalDatabaseNetworkState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalDatabaseNetwork resources.
+
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of the primary cluster.
         :param pulumi.Input[_builtins.str] description: The description of the Global Database Network.
         :param pulumi.Input[_builtins.str] status: The status of the Global Database Network.
@@ -169,6 +171,7 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
         $ pulumi import alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of the primary cluster.
@@ -228,6 +231,7 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GlobalDatabaseNetworkArgs args: The arguments to use to populate this resource's properties.

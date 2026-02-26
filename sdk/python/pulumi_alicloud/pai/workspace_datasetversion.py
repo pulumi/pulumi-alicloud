@@ -34,6 +34,7 @@ class WorkspaceDatasetversionArgs:
                  source_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceDatasetversion resource.
+
         :param pulumi.Input[_builtins.str] data_source_type: The data source type. The following values are supported:
                - OSS: Alibaba Cloud Object Storage (OSS).
                - NAS: Alibaba cloud file storage (NAS).
@@ -248,6 +249,7 @@ class _WorkspaceDatasetversionState:
                  version_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceDatasetversion resources.
+
         :param pulumi.Input[_builtins.str] create_time: Update time.
         :param pulumi.Input[_builtins.int] data_count: Data count.
         :param pulumi.Input[_builtins.int] data_size: Data size.
@@ -566,6 +568,7 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
         $ pulumi import alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion example <dataset_id>:<version_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] data_count: Data count.
@@ -671,6 +674,7 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion example <dataset_id>:<version_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceDatasetversionArgs args: The arguments to use to populate this resource's properties.

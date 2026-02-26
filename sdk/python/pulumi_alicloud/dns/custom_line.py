@@ -27,6 +27,7 @@ class CustomLineArgs:
                  lang: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomLine resource.
+
         :param pulumi.Input[_builtins.str] custom_line_name: The name of the Custom Line.
         :param pulumi.Input[_builtins.str] domain_name: The Domain name.
         :param pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
@@ -96,6 +97,7 @@ class _CustomLineState:
                  lang: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomLine resources.
+
         :param pulumi.Input[_builtins.str] custom_line_name: The name of the Custom Line.
         :param pulumi.Input[_builtins.str] domain_name: The Domain name.
         :param pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
@@ -204,6 +206,7 @@ class CustomLine(pulumi.CustomResource):
         $ pulumi import alicloud:dns/customLine:CustomLine example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_line_name: The name of the Custom Line.
@@ -250,6 +253,7 @@ class CustomLine(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dns/customLine:CustomLine example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomLineArgs args: The arguments to use to populate this resource's properties.

@@ -78,6 +78,7 @@ class ScalingConfigurationArgs:
                  user_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ScalingConfiguration resource.
+
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group of a scaling configuration.
         :param pulumi.Input[_builtins.bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
@@ -1005,6 +1006,7 @@ class _ScalingConfigurationState:
                  user_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScalingConfiguration resources.
+
         :param pulumi.Input[_builtins.bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]] custom_priorities: You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
@@ -2018,6 +2020,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         $ pulumi import alicloud:ess/scalingConfiguration:ScalingConfiguration example asg-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
@@ -2180,6 +2183,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ess/scalingConfiguration:ScalingConfiguration example asg-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScalingConfigurationArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class NamespaceArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
+
         :param pulumi.Input[_builtins.str] namespace_logical_id: The ID of the namespace.
                - The ID of a custom namespace is in the `region ID:namespace identifier` format. An example is `cn-beijing:tdy218`.
                - The ID of the default namespace is in the `region ID` format. An example is cn-beijing.
@@ -99,6 +100,7 @@ class _NamespaceState:
                  namespace_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
+
         :param pulumi.Input[_builtins.bool] debug_enable: Specifies whether to enable remote debugging.
         :param pulumi.Input[_builtins.str] description: The description of the namespace, The description can be up to `128` characters in length.
         :param pulumi.Input[_builtins.str] namespace_logical_id: The ID of the namespace.
@@ -216,6 +218,7 @@ class Namespace(pulumi.CustomResource):
         $ pulumi import alicloud:edas/namespace:Namespace example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] debug_enable: Specifies whether to enable remote debugging.
@@ -269,6 +272,7 @@ class Namespace(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:edas/namespace:Namespace example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NamespaceArgs args: The arguments to use to populate this resource's properties.

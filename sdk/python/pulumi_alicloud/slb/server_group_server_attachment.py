@@ -27,6 +27,7 @@ class ServerGroupServerAttachmentArgs:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ServerGroupServerAttachment resource.
+
         :param pulumi.Input[_builtins.int] port: The port that is used by the backend server. Valid values: `1` to `65535`.
         :param pulumi.Input[_builtins.str] server_group_id: The ID of the server group.
         :param pulumi.Input[_builtins.str] server_id: The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
@@ -128,6 +129,7 @@ class _ServerGroupServerAttachmentState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ServerGroupServerAttachment resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the backend server.
         :param pulumi.Input[_builtins.int] port: The port that is used by the backend server. Valid values: `1` to `65535`.
         :param pulumi.Input[_builtins.str] server_group_id: The ID of the server group.
@@ -309,6 +311,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<port>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the backend server.
@@ -398,6 +401,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<port>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServerGroupServerAttachmentArgs args: The arguments to use to populate this resource's properties.

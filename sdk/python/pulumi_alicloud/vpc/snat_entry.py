@@ -27,6 +27,7 @@ class SnatEntryArgs:
                  source_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SnatEntry resource.
+
         :param pulumi.Input[_builtins.str] snat_ip: The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
         :param pulumi.Input[_builtins.str] snat_table_id: The ID of the SNAT table.
         :param pulumi.Input[_builtins.int] eip_affinity: Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
@@ -131,6 +132,7 @@ class _SnatEntryState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SnatEntry resources.
+
         :param pulumi.Input[_builtins.int] eip_affinity: Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
         :param pulumi.Input[_builtins.str] snat_entry_id: The id of the snat entry on the server.
         :param pulumi.Input[_builtins.str] snat_entry_name: The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
@@ -327,6 +329,7 @@ class SnatEntry(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/snatEntry:SnatEntry example <snat_entry_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] eip_affinity: Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
@@ -401,6 +404,7 @@ class SnatEntry(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/snatEntry:SnatEntry example <snat_entry_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SnatEntryArgs args: The arguments to use to populate this resource's properties.

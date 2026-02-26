@@ -26,6 +26,7 @@ class AlertContactArgs:
                  system_noc: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AlertContact resource.
+
         :param pulumi.Input[_builtins.str] alert_contact_name: The name of the alert contact.
         :param pulumi.Input[_builtins.str] ding_robot_webhook_url: The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[_builtins.str] email: The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
@@ -114,6 +115,7 @@ class _AlertContactState:
                  system_noc: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AlertContact resources.
+
         :param pulumi.Input[_builtins.str] alert_contact_name: The name of the alert contact.
         :param pulumi.Input[_builtins.str] ding_robot_webhook_url: The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[_builtins.str] email: The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
@@ -236,6 +238,7 @@ class AlertContact(pulumi.CustomResource):
         $ pulumi import alicloud:arms/alertContact:AlertContact example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alert_contact_name: The name of the alert contact.
@@ -281,6 +284,7 @@ class AlertContact(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/alertContact:AlertContact example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlertContactArgs args: The arguments to use to populate this resource's properties.

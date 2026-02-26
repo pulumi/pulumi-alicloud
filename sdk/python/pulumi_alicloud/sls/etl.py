@@ -28,6 +28,7 @@ class EtlArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Etl resource.
+
         :param pulumi.Input['EtlConfigurationArgs'] configuration: Detailed configuration of the data processing task.   See `configuration` below.
         :param pulumi.Input[_builtins.str] display_name: The display name of the data processing task.
         :param pulumi.Input[_builtins.str] job_name: The job name. Naming rules are as follows:
@@ -122,6 +123,7 @@ class _EtlState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Etl resources.
+
         :param pulumi.Input['EtlConfigurationArgs'] configuration: Detailed configuration of the data processing task.   See `configuration` below.
         :param pulumi.Input[_builtins.int] create_time: The time when the task was created.
         :param pulumi.Input[_builtins.str] description: Description of the data processing task.
@@ -311,6 +313,7 @@ class Etl(pulumi.CustomResource):
         $ pulumi import alicloud:sls/etl:Etl example <project>:<job_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict']] configuration: Detailed configuration of the data processing task.   See `configuration` below.
@@ -389,6 +392,7 @@ class Etl(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sls/etl:Etl example <project>:<job_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EtlArgs args: The arguments to use to populate this resource's properties.

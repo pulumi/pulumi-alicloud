@@ -40,6 +40,7 @@ class WaitingRoomArgs:
                  queue_all_enable: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WaitingRoom resource.
+
         :param pulumi.Input[_builtins.str] cookie_name: Custom Cookie name.
         :param pulumi.Input[Sequence[pulumi.Input['WaitingRoomHostNameAndPathArgs']]] host_name_and_paths: Host name and path. See `host_name_and_path` below.
         :param pulumi.Input[_builtins.str] new_users_per_minute: Number of new users per minute.
@@ -314,6 +315,7 @@ class _WaitingRoomState:
                  waiting_room_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoom resources.
+
         :param pulumi.Input[_builtins.str] cookie_name: Custom Cookie name.
         :param pulumi.Input[_builtins.str] custom_page_html: User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         :param pulumi.Input[_builtins.str] description: Waiting room description.
@@ -682,6 +684,7 @@ class WaitingRoom(pulumi.CustomResource):
         $ pulumi import alicloud:esa/waitingRoom:WaitingRoom example <site_id>:<waiting_room_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cookie_name: Custom Cookie name.
@@ -776,6 +779,7 @@ class WaitingRoom(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/waitingRoom:WaitingRoom example <site_id>:<waiting_room_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WaitingRoomArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class BackupPolicyArgs:
                  policy_region_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
+
         :param pulumi.Input[_builtins.str] backup_policy_name: Protection of the Name of the Policy.
         :param pulumi.Input[_builtins.str] policy: The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
         :param pulumi.Input[_builtins.str] policy_version: Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
@@ -111,6 +112,7 @@ class _BackupPolicyState:
                  uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
+
         :param pulumi.Input[_builtins.str] backup_policy_name: Protection of the Name of the Policy.
         :param pulumi.Input[_builtins.str] policy: The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
         :param pulumi.Input[_builtins.str] policy_region_id: The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
@@ -249,6 +251,7 @@ class BackupPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/backupPolicy:BackupPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_policy_name: Protection of the Name of the Policy.
@@ -295,6 +298,7 @@ class BackupPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/backupPolicy:BackupPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPolicyArgs args: The arguments to use to populate this resource's properties.

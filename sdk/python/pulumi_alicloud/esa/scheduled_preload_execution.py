@@ -26,6 +26,7 @@ class ScheduledPreloadExecutionArgs:
                  start_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ScheduledPreloadExecution resource.
+
         :param pulumi.Input[_builtins.int] interval: The time interval between each batch execution. Unit: seconds.
         :param pulumi.Input[_builtins.str] scheduled_preload_job_id: The ID of the prefetch task.
         :param pulumi.Input[_builtins.int] slice_len: The number of URLs prefetched in each batch.
@@ -113,6 +114,7 @@ class _ScheduledPreloadExecutionState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScheduledPreloadExecution resources.
+
         :param pulumi.Input[_builtins.str] end_time: The end time of the prefetch plan.
         :param pulumi.Input[_builtins.int] interval: The time interval between each batch execution. Unit: seconds.
         :param pulumi.Input[_builtins.str] scheduled_preload_execution_id: The ID of the prefetch plan.
@@ -277,6 +279,7 @@ class ScheduledPreloadExecution(pulumi.CustomResource):
         $ pulumi import alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution example <scheduled_preload_job_id>:<scheduled_preload_execution_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] end_time: The end time of the prefetch plan.
@@ -334,6 +337,7 @@ class ScheduledPreloadExecution(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution example <scheduled_preload_job_id>:<scheduled_preload_execution_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScheduledPreloadExecutionArgs args: The arguments to use to populate this resource's properties.

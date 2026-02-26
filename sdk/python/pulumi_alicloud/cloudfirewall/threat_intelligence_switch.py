@@ -24,6 +24,7 @@ class ThreatIntelligenceSwitchArgs:
                  enable_status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ThreatIntelligenceSwitch resource.
+
         :param pulumi.Input[_builtins.str] action: Rule action. Value:
         :param pulumi.Input[_builtins.str] category_id: The threat intelligence classification ID.
         :param pulumi.Input[_builtins.int] enable_status: Switch status. Value:
@@ -80,6 +81,7 @@ class _ThreatIntelligenceSwitchState:
                  enable_status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ThreatIntelligenceSwitch resources.
+
         :param pulumi.Input[_builtins.str] action: Rule action. Value:
         :param pulumi.Input[_builtins.str] category_id: The threat intelligence classification ID.
         :param pulumi.Input[_builtins.int] enable_status: Switch status. Value:
@@ -179,6 +181,7 @@ class ThreatIntelligenceSwitch(pulumi.CustomResource):
         $ pulumi import alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: Rule action. Value:
@@ -231,6 +234,7 @@ class ThreatIntelligenceSwitch(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ThreatIntelligenceSwitchArgs args: The arguments to use to populate this resource's properties.

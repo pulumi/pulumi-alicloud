@@ -24,6 +24,7 @@ class ListenerAclAttachmentArgs:
                  listener_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ListenerAclAttachment resource.
+
         :param pulumi.Input[_builtins.str] acl_id: The ID list of the access policy group bound by the listener.
         :param pulumi.Input[_builtins.str] acl_type: Access control type:
                - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
@@ -82,6 +83,7 @@ class _ListenerAclAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ListenerAclAttachment resources.
+
         :param pulumi.Input[_builtins.str] acl_id: The ID list of the access policy group bound by the listener.
         :param pulumi.Input[_builtins.str] acl_type: Access control type:
                - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
@@ -270,6 +272,7 @@ class ListenerAclAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:alb/listenerAclAttachment:ListenerAclAttachment example <listener_id>:<acl_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_id: The ID list of the access policy group bound by the listener.
@@ -394,6 +397,7 @@ class ListenerAclAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/listenerAclAttachment:ListenerAclAttachment example <listener_id>:<acl_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ListenerAclAttachmentArgs args: The arguments to use to populate this resource's properties.

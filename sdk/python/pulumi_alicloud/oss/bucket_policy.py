@@ -23,6 +23,7 @@ class BucketPolicyArgs:
                  policy: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a BucketPolicy resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the Bucket.
         :param pulumi.Input[_builtins.str] policy: Json-formatted authorization policies for buckets.
         """
@@ -61,6 +62,7 @@ class _BucketPolicyState:
                  policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketPolicy resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the Bucket.
         :param pulumi.Input[_builtins.str] policy: Json-formatted authorization policies for buckets.
         """
@@ -156,6 +158,7 @@ class BucketPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketPolicy:BucketPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the Bucket.
@@ -219,6 +222,7 @@ class BucketPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketPolicy:BucketPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketPolicyArgs args: The arguments to use to populate this resource's properties.

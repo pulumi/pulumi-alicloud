@@ -32,6 +32,7 @@ class InstanceV2Args:
                  sdl: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a InstanceV2 resource.
+
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[_builtins.str] product_code: The product code. Valid values: `cfw`.
         :param pulumi.Input[_builtins.str] product_type: The product type. Valid values: `cfw_elasticity_public_cn`, `cfw_elasticity_public_intl`, `cfw_sub_public_cn`, `cfw_sub_public_intl`.
@@ -227,6 +228,7 @@ class _InstanceV2State:
                  user_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceV2 resources.
+
         :param pulumi.Input[_builtins.bool] cfw_log: Whether to use log audit. Valid values:
         :param pulumi.Input[_builtins.str] create_time: The creation time.
         :param pulumi.Input[_builtins.str] end_time: The end time.
@@ -532,6 +534,7 @@ class InstanceV2(pulumi.CustomResource):
         $ pulumi import alicloud:cloudfirewall/instanceV2:InstanceV2 example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] cfw_log: Whether to use log audit. Valid values:
@@ -590,6 +593,7 @@ class InstanceV2(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudfirewall/instanceV2:InstanceV2 example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceV2Args args: The arguments to use to populate this resource's properties.

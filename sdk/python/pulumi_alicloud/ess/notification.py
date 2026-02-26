@@ -25,6 +25,7 @@ class NotificationArgs:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Notification resource.
+
         :param pulumi.Input[_builtins.str] notification_arn: The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
                * region: the region ID of the scaling group. For more information, see `Regions and zones`
                * account-id: the ID of your account.
@@ -100,6 +101,7 @@ class _NotificationState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Notification resources.
+
         :param pulumi.Input[_builtins.str] notification_arn: The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
                * region: the region ID of the scaling group. For more information, see `Regions and zones`
                * account-id: the ID of your account.
@@ -241,6 +243,7 @@ class Notification(pulumi.CustomResource):
         $ pulumi import alicloud:ess/notification:Notification example 'scaling_group_id:notification_arn'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] notification_arn: The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
@@ -317,6 +320,7 @@ class Notification(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ess/notification:Notification example 'scaling_group_id:notification_arn'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NotificationArgs args: The arguments to use to populate this resource's properties.

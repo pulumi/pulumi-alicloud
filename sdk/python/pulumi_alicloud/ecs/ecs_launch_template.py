@@ -77,6 +77,7 @@ class EcsLaunchTemplateArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsLaunchTemplate resource.
+
         :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
@@ -998,6 +999,7 @@ class _EcsLaunchTemplateState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsLaunchTemplate resources.
+
         :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
@@ -2039,6 +2041,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
@@ -2217,6 +2220,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsLaunchTemplateArgs args: The arguments to use to populate this resource's properties.

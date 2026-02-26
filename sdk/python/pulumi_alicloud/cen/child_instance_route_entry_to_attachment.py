@@ -26,6 +26,7 @@ class ChildInstanceRouteEntryToAttachmentArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ChildInstanceRouteEntryToAttachment resource.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] child_instance_route_table_id: The first ID of the resource
         :param pulumi.Input[_builtins.str] destination_cidr_block: DestinationCidrBlock
@@ -112,6 +113,7 @@ class _ChildInstanceRouteEntryToAttachmentState:
                  transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ChildInstanceRouteEntryToAttachment resources.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] child_instance_route_table_id: The first ID of the resource
         :param pulumi.Input[_builtins.str] destination_cidr_block: DestinationCidrBlock
@@ -310,6 +312,7 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
         $terraform import alicloud_cen_child_instance_route_entry_to_attachment.example <cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
@@ -401,6 +404,7 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_cen_child_instance_route_entry_to_attachment.example <cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ChildInstanceRouteEntryToAttachmentArgs args: The arguments to use to populate this resource's properties.

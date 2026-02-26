@@ -25,6 +25,7 @@ class StorageDomainRoutingRuleArgs:
                  routes: pulumi.Input[Sequence[pulumi.Input['StorageDomainRoutingRuleRouteArgs']]]):
         """
         The set of arguments for constructing a StorageDomainRoutingRule resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry Instance.
         :param pulumi.Input[Sequence[pulumi.Input['StorageDomainRoutingRuleRouteArgs']]] routes: Domain name routing entry See `routes` below.
         """
@@ -65,6 +66,7 @@ class _StorageDomainRoutingRuleState:
                  rule_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageDomainRoutingRule resources.
+
         :param pulumi.Input[_builtins.int] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry Instance.
         :param pulumi.Input[Sequence[pulumi.Input['StorageDomainRoutingRuleRouteArgs']]] routes: Domain name routing entry See `routes` below.
@@ -184,6 +186,7 @@ class StorageDomainRoutingRule(pulumi.CustomResource):
         $ pulumi import alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule example <instance_id>:<rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry Instance.
@@ -241,6 +244,7 @@ class StorageDomainRoutingRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule example <instance_id>:<rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StorageDomainRoutingRuleArgs args: The arguments to use to populate this resource's properties.

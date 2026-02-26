@@ -35,6 +35,7 @@ class DiJobArgs:
                  transformation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DiJobTransformationRuleArgs']]]] = None):
         """
         The set of arguments for constructing a DiJob resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['DiJobDestinationDataSourceSettingArgs']]] destination_data_source_settings: Destination data source See `destination_data_source_settings` below.
         :param pulumi.Input[_builtins.str] destination_data_source_type: The type of the target data source. Enumerated values: Hologres and Hive.
         :param pulumi.Input[_builtins.str] job_name: Task Name.
@@ -248,6 +249,7 @@ class _DiJobState:
                  transformation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DiJobTransformationRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering DiJob resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the integration task
         :param pulumi.Input[Sequence[pulumi.Input['DiJobDestinationDataSourceSettingArgs']]] destination_data_source_settings: Destination data source See `destination_data_source_settings` below.
         :param pulumi.Input[_builtins.str] destination_data_source_type: The type of the target data source. Enumerated values: Hologres and Hive.
@@ -606,6 +608,7 @@ class DiJob(pulumi.CustomResource):
         $ pulumi import alicloud:dataworks/diJob:DiJob example <project_id>:<di_job_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the integration task
@@ -757,6 +760,7 @@ class DiJob(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dataworks/diJob:DiJob example <project_id>:<di_job_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiJobArgs args: The arguments to use to populate this resource's properties.

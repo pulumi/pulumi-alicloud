@@ -367,6 +367,7 @@ class Schedule(pulumi.CustomResource):
         """
         > **NOTE:** This resource has been deprecated from v1.45.0. New resource `ess.ScheduledTask` will replace.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -378,6 +379,7 @@ class Schedule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         > **NOTE:** This resource has been deprecated from v1.45.0. New resource `ess.ScheduledTask` will replace.
+
 
         :param str resource_name: The name of the resource.
         :param ScheduleArgs args: The arguments to use to populate this resource's properties.

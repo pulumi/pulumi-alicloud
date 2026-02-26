@@ -23,6 +23,7 @@ class V3ConcurrencyConfigArgs:
                  reserved_concurrency: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a V3ConcurrencyConfig resource.
+
         :param pulumi.Input[_builtins.str] function_name: Function Name
         :param pulumi.Input[_builtins.int] reserved_concurrency: Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
         """
@@ -63,6 +64,7 @@ class _V3ConcurrencyConfigState:
                  reserved_concurrency: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering V3ConcurrencyConfig resources.
+
         :param pulumi.Input[_builtins.str] function_arn: (Available since v1.234.0) Resource identity of the function
         :param pulumi.Input[_builtins.str] function_name: Function Name
         :param pulumi.Input[_builtins.int] reserved_concurrency: Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
@@ -169,6 +171,7 @@ class V3ConcurrencyConfig(pulumi.CustomResource):
         $ pulumi import alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] function_name: Function Name
@@ -228,6 +231,7 @@ class V3ConcurrencyConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V3ConcurrencyConfigArgs args: The arguments to use to populate this resource's properties.

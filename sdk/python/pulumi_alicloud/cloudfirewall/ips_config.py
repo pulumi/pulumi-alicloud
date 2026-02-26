@@ -28,6 +28,7 @@ class IpsConfigArgs:
                  run_mode: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a IpsConfig resource.
+
         :param pulumi.Input[_builtins.int] basic_rules: Basic rule switch. Value:
                - 1: Open.
                - 0: Closed (Default).
@@ -170,6 +171,7 @@ class _IpsConfigState:
                  run_mode: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering IpsConfig resources.
+
         :param pulumi.Input[_builtins.int] basic_rules: Basic rule switch. Value:
                - 1: Open.
                - 0: Closed (Default).
@@ -361,6 +363,7 @@ class IpsConfig(pulumi.CustomResource):
         $ terraform import alicloud_cloud_firewall_ips_config.example 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] basic_rules: Basic rule switch. Value:
@@ -434,6 +437,7 @@ class IpsConfig(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_cloud_firewall_ips_config.example 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IpsConfigArgs args: The arguments to use to populate this resource's properties.

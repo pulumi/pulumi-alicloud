@@ -32,6 +32,7 @@ class DwResourceGroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DwResourceGroup resource.
+
         :param pulumi.Input[_builtins.str] default_vpc_id: The VPC ID of the default network resource.
         :param pulumi.Input[_builtins.str] default_vswitch_id: The ID of the vswitch bound to the network resource by default.
         :param pulumi.Input[_builtins.str] remark: Resource Group Comments
@@ -215,6 +216,7 @@ class _DwResourceGroupState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DwResourceGroup resources.
+
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew. The default value is false.
         :param pulumi.Input[_builtins.int] create_time: Resource group creation time
         :param pulumi.Input[_builtins.str] default_vpc_id: The VPC ID of the default network resource.
@@ -489,6 +491,7 @@ class DwResourceGroup(pulumi.CustomResource):
         $ pulumi import alicloud:dataworks/dwResourceGroup:DwResourceGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew. The default value is false.
@@ -566,6 +569,7 @@ class DwResourceGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dataworks/dwResourceGroup:DwResourceGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DwResourceGroupArgs args: The arguments to use to populate this resource's properties.

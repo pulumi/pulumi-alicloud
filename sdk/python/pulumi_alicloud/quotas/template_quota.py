@@ -32,6 +32,7 @@ class TemplateQuotaArgs:
                  quota_category: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TemplateQuota resource.
+
         :param pulumi.Input[_builtins.float] desire_value: Quota application value.
         :param pulumi.Input[_builtins.str] product_code: The abbreviation of the cloud service name.
         :param pulumi.Input[_builtins.str] quota_action_code: The quota ID.
@@ -195,6 +196,7 @@ class _TemplateQuotaState:
                  quota_category: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TemplateQuota resources.
+
         :param pulumi.Input[_builtins.float] desire_value: Quota application value.
         :param pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]] dimensions: The Quota Dimensions. See `dimensions` below.
         :param pulumi.Input[_builtins.str] effective_time: The UTC time when the quota takes effect.
@@ -405,6 +407,7 @@ class TemplateQuota(pulumi.CustomResource):
         $ pulumi import alicloud:quotas/templateQuota:TemplateQuota example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.float] desire_value: Quota application value.
@@ -471,6 +474,7 @@ class TemplateQuota(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:quotas/templateQuota:TemplateQuota example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TemplateQuotaArgs args: The arguments to use to populate this resource's properties.

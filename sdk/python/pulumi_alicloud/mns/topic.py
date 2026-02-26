@@ -24,6 +24,7 @@ class TopicArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Topic resource.
+
         :param pulumi.Input[_builtins.bool] logging_enabled: Is logging enabled? true or false. Default value to false.
         :param pulumi.Input[_builtins.int] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         :param pulumi.Input[_builtins.str] name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
@@ -80,6 +81,7 @@ class _TopicState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
+
         :param pulumi.Input[_builtins.bool] logging_enabled: Is logging enabled? true or false. Default value to false.
         :param pulumi.Input[_builtins.int] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         :param pulumi.Input[_builtins.str] name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
@@ -169,6 +171,7 @@ class Topic(pulumi.CustomResource):
         $ pulumi import alicloud:mns/topic:Topic topic topicName
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] logging_enabled: Is logging enabled? true or false. Default value to false.
@@ -211,6 +214,7 @@ class Topic(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mns/topic:Topic topic topicName
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TopicArgs args: The arguments to use to populate this resource's properties.

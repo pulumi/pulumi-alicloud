@@ -31,6 +31,7 @@ class InstanceArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] image_id: The ID of the image.  You can use the `simpleapplicationserver_get_images` to query the available images in the specified region. The value must be an integral multiple of 20.
         :param pulumi.Input[_builtins.int] period: The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
         :param pulumi.Input[_builtins.str] plan_id: The ID of the plan. You can use the `simpleapplicationserver_get_server_plans`  to query all the plans provided by Simple Application Server in the specified region.
@@ -196,6 +197,7 @@ class _InstanceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
         :param pulumi.Input[_builtins.int] auto_renew_period: The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
         :param pulumi.Input[_builtins.int] data_disk_size: The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
@@ -412,6 +414,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:simpleapplicationserver/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
@@ -476,6 +479,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:simpleapplicationserver/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

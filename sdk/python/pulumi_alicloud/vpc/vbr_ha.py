@@ -26,6 +26,7 @@ class VbrHaArgs:
                  vbr_ha_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VbrHa resource.
+
         :param pulumi.Input[_builtins.str] peer_vbr_id: The instance ID of another VBR in The VBR switching group.
         :param pulumi.Input[_builtins.str] vbr_id: The VBR instance ID.
         :param pulumi.Input[_builtins.str] description: The description of the VBR switching group.
@@ -121,6 +122,7 @@ class _VbrHaState:
                  vbr_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VbrHa resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the VBR.
         :param pulumi.Input[_builtins.str] description: The description of the VBR switching group.
                It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
@@ -331,6 +333,7 @@ class VbrHa(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the VBR switching group.
@@ -416,6 +419,7 @@ class VbrHa(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VbrHaArgs args: The arguments to use to populate this resource's properties.

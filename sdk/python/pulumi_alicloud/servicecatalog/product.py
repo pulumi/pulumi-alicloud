@@ -25,6 +25,7 @@ class ProductArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Product resource.
+
         :param pulumi.Input[_builtins.str] product_name: The name of the product
         :param pulumi.Input[_builtins.str] product_type: The type of the product
         :param pulumi.Input[_builtins.str] provider_name: The provider name of the product
@@ -95,6 +96,7 @@ class _ProductState:
                  provider_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Product resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the product
         :param pulumi.Input[_builtins.str] description: The description of the product
         :param pulumi.Input[_builtins.str] product_name: The name of the product
@@ -222,6 +224,7 @@ class Product(pulumi.CustomResource):
         $ pulumi import alicloud:servicecatalog/product:Product example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the product
@@ -272,6 +275,7 @@ class Product(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:servicecatalog/product:Product example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProductArgs args: The arguments to use to populate this resource's properties.

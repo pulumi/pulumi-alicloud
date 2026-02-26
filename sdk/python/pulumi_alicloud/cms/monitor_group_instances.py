@@ -25,6 +25,7 @@ class MonitorGroupInstancesArgs:
                  instances: pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]):
         """
         The set of arguments for constructing a MonitorGroupInstances resource.
+
         :param pulumi.Input[_builtins.str] group_id: The id of Cms Group.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]] instances: Instance information added to the Cms Group. See `instances` below.
         """
@@ -63,6 +64,7 @@ class _MonitorGroupInstancesState:
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]] = None):
         """
         Input properties used for looking up and filtering MonitorGroupInstances resources.
+
         :param pulumi.Input[_builtins.str] group_id: The id of Cms Group.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]] instances: Instance information added to the Cms Group. See `instances` below.
         """
@@ -149,6 +151,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
         $ pulumi import alicloud:cms/monitorGroupInstances:MonitorGroupInstances example <group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: The id of Cms Group.
@@ -203,6 +206,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/monitorGroupInstances:MonitorGroupInstances example <group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MonitorGroupInstancesArgs args: The arguments to use to populate this resource's properties.

@@ -46,6 +46,7 @@ class DBClusterLakeVersionArgs:
                  storage_resource: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DBClusterLakeVersion resource.
+
         :param pulumi.Input[_builtins.str] db_cluster_version: The version of the cluster. Valid values: `5.0`.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
         :param pulumi.Input[_builtins.str] vpc_id: The vpc ID of the resource.
@@ -474,6 +475,7 @@ class _DBClusterLakeVersionState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DBClusterLakeVersion resources.
+
         :param pulumi.Input[_builtins.str] backup_set_id: The ID of the backup set that you want to use to restore data.
         :param pulumi.Input[_builtins.str] commodity_code: The name of the service.
         :param pulumi.Input[_builtins.str] compute_resource: The computing resources of the cluster.
@@ -1103,6 +1105,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         $ pulumi import alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_set_id: The ID of the backup set that you want to use to restore data.
@@ -1183,6 +1186,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DBClusterLakeVersionArgs args: The arguments to use to populate this resource's properties.

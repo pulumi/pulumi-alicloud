@@ -26,6 +26,7 @@ class LifecyclePolicyArgs:
                  storage_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a LifecyclePolicy resource.
+
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] lifecycle_policy_name: The name of the lifecycle management policy.
         :param pulumi.Input[_builtins.str] lifecycle_rule_name: The rules in the lifecycle management policy. Valid values: `DEFAULT_ATIME_14`, `DEFAULT_ATIME_30`, `DEFAULT_ATIME_60`, `DEFAULT_ATIME_90`.
@@ -109,6 +110,7 @@ class _LifecyclePolicyState:
                  storage_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LifecyclePolicy resources.
+
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] lifecycle_policy_name: The name of the lifecycle management policy.
         :param pulumi.Input[_builtins.str] lifecycle_rule_name: The rules in the lifecycle management policy. Valid values: `DEFAULT_ATIME_14`, `DEFAULT_ATIME_30`, `DEFAULT_ATIME_60`, `DEFAULT_ATIME_90`.
@@ -235,6 +237,7 @@ class LifecyclePolicy(pulumi.CustomResource):
         $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example <file_system_id>:<lifecycle_policy_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
@@ -284,6 +287,7 @@ class LifecyclePolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example <file_system_id>:<lifecycle_policy_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LifecyclePolicyArgs args: The arguments to use to populate this resource's properties.

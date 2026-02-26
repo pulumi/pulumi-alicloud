@@ -30,6 +30,7 @@ class AccountArgs:
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] account_name: The account name. Must meet the following requirements:
                - Start with a lowercase letter and end with a letter or number.
                - Consists of lowercase letters, numbers, or underscores.
@@ -199,6 +200,7 @@ class _AccountState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[_builtins.str] account_description: The description of the database account.
         :param pulumi.Input[_builtins.str] account_lock_state: The lock status of the account. Valid values:
                - `UnLock`: The account is not locked.
@@ -437,6 +439,7 @@ class Account(pulumi.CustomResource):
         $ pulumi import alicloud:polardb/account:Account example <db_cluster_id>:<account_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_description: The description of the database account.
@@ -514,6 +517,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:polardb/account:Account example <db_cluster_id>:<account_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

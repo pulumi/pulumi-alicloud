@@ -30,6 +30,7 @@ class V3ProvisionConfigArgs:
                  target_tracking_policies: Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]] = None):
         """
         The set of arguments for constructing a V3ProvisionConfig resource.
+
         :param pulumi.Input[_builtins.str] function_name: The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
         :param pulumi.Input[_builtins.bool] always_allocate_cpu: Whether the CPU is always allocated. The default value is true.
         :param pulumi.Input[_builtins.bool] always_allocate_gpu: Whether to always assign GPU to function instance
@@ -152,6 +153,7 @@ class _V3ProvisionConfigState:
                  target_tracking_policies: Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]] = None):
         """
         Input properties used for looking up and filtering V3ProvisionConfig resources.
+
         :param pulumi.Input[_builtins.bool] always_allocate_cpu: Whether the CPU is always allocated. The default value is true.
         :param pulumi.Input[_builtins.bool] always_allocate_gpu: Whether to always assign GPU to function instance
         :param pulumi.Input[_builtins.int] current: (Available since v1.234.0) Number of actual resources
@@ -447,6 +449,7 @@ class V3ProvisionConfig(pulumi.CustomResource):
         $ pulumi import alicloud:fc/v3ProvisionConfig:V3ProvisionConfig example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] always_allocate_cpu: Whether the CPU is always allocated. The default value is true.
@@ -590,6 +593,7 @@ class V3ProvisionConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/v3ProvisionConfig:V3ProvisionConfig example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V3ProvisionConfigArgs args: The arguments to use to populate this resource's properties.

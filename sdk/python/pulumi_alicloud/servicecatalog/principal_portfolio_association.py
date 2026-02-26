@@ -24,6 +24,7 @@ class PrincipalPortfolioAssociationArgs:
                  principal_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PrincipalPortfolioAssociation resource.
+
         :param pulumi.Input[_builtins.str] portfolio_id: Product Portfolio ID
         :param pulumi.Input[_builtins.str] principal_id: RAM entity ID
         :param pulumi.Input[_builtins.str] principal_type: RAM entity type
@@ -77,6 +78,7 @@ class _PrincipalPortfolioAssociationState:
                  principal_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrincipalPortfolioAssociation resources.
+
         :param pulumi.Input[_builtins.str] portfolio_id: Product Portfolio ID
         :param pulumi.Input[_builtins.str] principal_id: RAM entity ID
         :param pulumi.Input[_builtins.str] principal_type: RAM entity type
@@ -196,6 +198,7 @@ class PrincipalPortfolioAssociation(pulumi.CustomResource):
         $ pulumi import alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation example <principal_id>:<principal_type>:<portfolio_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] portfolio_id: Product Portfolio ID
@@ -268,6 +271,7 @@ class PrincipalPortfolioAssociation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation example <principal_id>:<principal_type>:<portfolio_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PrincipalPortfolioAssociationArgs args: The arguments to use to populate this resource's properties.

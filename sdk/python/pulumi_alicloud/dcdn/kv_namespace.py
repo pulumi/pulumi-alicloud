@@ -23,6 +23,7 @@ class KvNamespaceArgs:
                  namespace: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a KvNamespace resource.
+
         :param pulumi.Input[_builtins.str] description: Namespace description information
         :param pulumi.Input[_builtins.str] namespace: Namespace name. The name can contain letters, digits, hyphens (-), and underscores (_).
         """
@@ -62,6 +63,7 @@ class _KvNamespaceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KvNamespace resources.
+
         :param pulumi.Input[_builtins.str] description: Namespace description information
         :param pulumi.Input[_builtins.str] namespace: Namespace name. The name can contain letters, digits, hyphens (-), and underscores (_).
         :param pulumi.Input[_builtins.str] status: The status of the resource
@@ -157,6 +159,7 @@ class KvNamespace(pulumi.CustomResource):
         $ terraform import alicloud_dcdn_kv_namespace.example 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Namespace description information
@@ -205,6 +208,7 @@ class KvNamespace(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_dcdn_kv_namespace.example 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KvNamespaceArgs args: The arguments to use to populate this resource's properties.

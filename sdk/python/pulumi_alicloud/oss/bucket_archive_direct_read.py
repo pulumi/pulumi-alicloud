@@ -23,6 +23,7 @@ class BucketArchiveDirectReadArgs:
                  enabled: pulumi.Input[_builtins.bool]):
         """
         The set of arguments for constructing a BucketArchiveDirectRead resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable real-time access of Archive objects for a bucket. Valid values: true and false.
         """
@@ -61,6 +62,7 @@ class _BucketArchiveDirectReadState:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering BucketArchiveDirectRead resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable real-time access of Archive objects for a bucket. Valid values: true and false.
         """
@@ -144,6 +146,7 @@ class BucketArchiveDirectRead(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketArchiveDirectRead:BucketArchiveDirectRead example <bucket>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
@@ -195,6 +198,7 @@ class BucketArchiveDirectRead(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketArchiveDirectRead:BucketArchiveDirectRead example <bucket>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketArchiveDirectReadArgs args: The arguments to use to populate this resource's properties.

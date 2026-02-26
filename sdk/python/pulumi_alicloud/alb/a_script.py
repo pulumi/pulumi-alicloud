@@ -31,6 +31,7 @@ class AScriptArgs:
                  ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]] = None):
         """
         The set of arguments for constructing a AScript resource.
+
         :param pulumi.Input[_builtins.str] ascript_name: AScript name.
         :param pulumi.Input[_builtins.str] listener_id: Listener ID of script attribution
         :param pulumi.Input[_builtins.str] position: Script execution location.
@@ -164,6 +165,7 @@ class _AScriptState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AScript resources.
+
         :param pulumi.Input[_builtins.str] ascript_name: AScript name.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request
         :param pulumi.Input[_builtins.bool] enabled: Whether AScript is enabled.
@@ -419,6 +421,7 @@ class AScript(pulumi.CustomResource):
         $ pulumi import alicloud:alb/aScript:AScript example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ascript_name: AScript name.
@@ -537,6 +540,7 @@ class AScript(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/aScript:AScript example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AScriptArgs args: The arguments to use to populate this resource's properties.

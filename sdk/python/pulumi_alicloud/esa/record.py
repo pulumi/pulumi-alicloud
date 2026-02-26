@@ -34,6 +34,7 @@ class RecordArgs:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Record resource.
+
         :param pulumi.Input['RecordDataArgs'] data: The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
         :param pulumi.Input[_builtins.str] record_name: The record name. This parameter specifies a filter condition for the query.
         :param pulumi.Input[_builtins.str] record_type: The type of the DNS record, such as A/AAAA, CNAME, and TXT.
@@ -227,6 +228,7 @@ class _RecordState:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Record resources.
+
         :param pulumi.Input['RecordAuthConfArgs'] auth_conf: The origin authentication information of the CNAME record. See `auth_conf` below.
         :param pulumi.Input[_builtins.str] biz_name: The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
         :param pulumi.Input[_builtins.str] comment: The comment of the record. The maximum length is 100 characters.
@@ -496,6 +498,7 @@ class Record(pulumi.CustomResource):
         $ pulumi import alicloud:esa/record:Record example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']] auth_conf: The origin authentication information of the CNAME record. See `auth_conf` below.
@@ -577,6 +580,7 @@ class Record(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/record:Record example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RecordArgs args: The arguments to use to populate this resource's properties.

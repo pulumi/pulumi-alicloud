@@ -23,6 +23,7 @@ class BucketCnameTokenArgs:
                  domain: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a BucketCnameToken resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[_builtins.str] domain: The custom domain
         """
@@ -62,6 +63,7 @@ class _BucketCnameTokenState:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketCnameToken resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[_builtins.str] domain: The custom domain
         :param pulumi.Input[_builtins.str] token: Token used to verify domain ownership
@@ -162,6 +164,7 @@ class BucketCnameToken(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketCnameToken:BucketCnameToken example <bucket>:<domain>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
@@ -215,6 +218,7 @@ class BucketCnameToken(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketCnameToken:BucketCnameToken example <bucket>:<domain>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketCnameTokenArgs args: The arguments to use to populate this resource's properties.

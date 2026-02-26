@@ -22,6 +22,7 @@ class AccountAliasArgs:
                  account_alias: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AccountAlias resource.
+
         :param pulumi.Input[_builtins.str] account_alias: The alias of the account.
                It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
         """
@@ -47,6 +48,7 @@ class _AccountAliasState:
                  account_alias: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountAlias resources.
+
         :param pulumi.Input[_builtins.str] account_alias: The alias of the account.
                It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
         """
@@ -111,6 +113,7 @@ class AccountAlias(pulumi.CustomResource):
         $ pulumi import alicloud:ram/accountAlias:AccountAlias example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_alias: The alias of the account.
@@ -157,6 +160,7 @@ class AccountAlias(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ram/accountAlias:AccountAlias example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountAliasArgs args: The arguments to use to populate this resource's properties.

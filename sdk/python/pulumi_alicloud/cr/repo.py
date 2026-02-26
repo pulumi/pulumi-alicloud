@@ -28,6 +28,7 @@ class RepoArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Repo resource.
+
         :param pulumi.Input[_builtins.str] namespace: Name of container registry namespace where repository is located.
         :param pulumi.Input[_builtins.str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
         :param pulumi.Input[_builtins.str] summary: The repository general information. It can contain 1 to 80 characters.
@@ -114,6 +115,7 @@ class _RepoState:
                  summary: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Repo resources.
+
         :param pulumi.Input[_builtins.str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
         :param pulumi.Input['RepoDomainListArgs'] domain_list: (Optional) The repository domain list.
         :param pulumi.Input[_builtins.str] name: Name of container registry repository.
@@ -260,6 +262,7 @@ class Repo(pulumi.CustomResource):
         $ pulumi import alicloud:cr/repo:Repo default `my-namespace/my-repo`
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
@@ -314,6 +317,7 @@ class Repo(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cr/repo:Repo default `my-namespace/my-repo`
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RepoArgs args: The arguments to use to populate this resource's properties.

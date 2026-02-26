@@ -43,6 +43,7 @@ class DedicatedHostArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DedicatedHost resource.
+
         :param pulumi.Input[_builtins.str] dedicated_host_type: The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
         :param pulumi.Input[_builtins.str] action_on_maintenance: The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.
         :param pulumi.Input[_builtins.str] auto_placement: Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.
@@ -371,6 +372,7 @@ class _DedicatedHostState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DedicatedHost resources.
+
         :param pulumi.Input[_builtins.str] action_on_maintenance: The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.
         :param pulumi.Input[_builtins.str] auto_placement: Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
@@ -774,6 +776,7 @@ class DedicatedHost(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/dedicatedHost:DedicatedHost default dh-2zedmxxxx
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action_on_maintenance: The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.
@@ -860,6 +863,7 @@ class DedicatedHost(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/dedicatedHost:DedicatedHost default dh-2zedmxxxx
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DedicatedHostArgs args: The arguments to use to populate this resource's properties.

@@ -34,6 +34,7 @@ class BucketObjectArgs:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketObject resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to put the file in.
         :param pulumi.Input[_builtins.str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[_builtins.str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
@@ -257,6 +258,7 @@ class _BucketObjectState:
                  version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketObject resources.
+
         :param pulumi.Input[_builtins.str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to put the file in.
         :param pulumi.Input[_builtins.str] cache_control: Specifies caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
@@ -573,6 +575,7 @@ class BucketObject(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
@@ -644,6 +647,7 @@ class BucketObject(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param BucketObjectArgs args: The arguments to use to populate this resource's properties.

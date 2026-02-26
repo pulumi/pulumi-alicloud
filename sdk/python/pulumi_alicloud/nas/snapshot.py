@@ -25,6 +25,7 @@ class SnapshotArgs:
                  snapshot_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
+
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] description: The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
         :param pulumi.Input[_builtins.int] retention_days: The retention period of the snapshot. Unit: days. Valid values:
@@ -99,6 +100,7 @@ class _SnapshotState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.int] retention_days: The retention period of the snapshot. Unit: days. Valid values:
@@ -235,6 +237,7 @@ class Snapshot(pulumi.CustomResource):
         $ pulumi import alicloud:nas/snapshot:Snapshot example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
@@ -293,6 +296,7 @@ class Snapshot(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nas/snapshot:Snapshot example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SnapshotArgs args: The arguments to use to populate this resource's properties.

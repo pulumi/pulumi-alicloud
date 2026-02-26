@@ -24,6 +24,7 @@ class InstanceGrantArgs:
                  child_instance_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a InstanceGrant resource.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN.
         :param pulumi.Input[_builtins.str] cen_owner_id: The owner UID of the  CEN which the child instance granted to.
         :param pulumi.Input[_builtins.str] child_instance_id: The ID of the child instance to grant.
@@ -77,6 +78,7 @@ class _InstanceGrantState:
                  child_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceGrant resources.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN.
         :param pulumi.Input[_builtins.str] cen_owner_id: The owner UID of the  CEN which the child instance granted to.
         :param pulumi.Input[_builtins.str] child_instance_id: The ID of the child instance to grant.
@@ -181,6 +183,7 @@ class InstanceGrant(pulumi.CustomResource):
         $ pulumi import alicloud:cen/instanceGrant:InstanceGrant example cen-abc123456:vpc-abc123456:uid123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN.
@@ -238,6 +241,7 @@ class InstanceGrant(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/instanceGrant:InstanceGrant example cen-abc123456:vpc-abc123456:uid123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceGrantArgs args: The arguments to use to populate this resource's properties.

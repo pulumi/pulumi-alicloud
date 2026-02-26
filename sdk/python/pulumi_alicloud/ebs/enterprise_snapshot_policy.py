@@ -34,6 +34,7 @@ class EnterpriseSnapshotPolicyArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EnterpriseSnapshotPolicy resource.
+
         :param pulumi.Input[_builtins.str] enterprise_snapshot_policy_name: The name of the resource.
         :param pulumi.Input['EnterpriseSnapshotPolicyRetainRuleArgs'] retain_rule: Snapshot retention policy representing resources. See `retain_rule` below.
         :param pulumi.Input['EnterpriseSnapshotPolicyScheduleArgs'] schedule: The scheduling plan that represents the resource. See `schedule` below.
@@ -215,6 +216,7 @@ class _EnterpriseSnapshotPolicyState:
                  target_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseSnapshotPolicy resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs'] cross_region_copy_info: Snapshot replication information. See `cross_region_copy_info` below.
         :param pulumi.Input[_builtins.str] desc: Description information representing the resource.
@@ -466,6 +468,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict']] cross_region_copy_info: Snapshot replication information. See `cross_region_copy_info` below.
@@ -535,6 +538,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnterpriseSnapshotPolicyArgs args: The arguments to use to populate this resource's properties.

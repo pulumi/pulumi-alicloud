@@ -41,6 +41,7 @@ class InstanceArgs:
                  used_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to automatically renew the fee when it expires. Valid values:
                - **false**: No, the default value.
                - **true**: Yes.
@@ -515,6 +516,7 @@ class _InstanceState:
                  used_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to automatically renew the fee when it expires. Valid values:
                - **false**: No, the default value.
                - **true**: Yes.
@@ -1085,6 +1087,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:dts/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to automatically renew the fee when it expires. Valid values:
@@ -1222,6 +1225,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dts/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

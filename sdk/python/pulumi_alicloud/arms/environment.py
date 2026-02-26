@@ -30,6 +30,7 @@ class EnvironmentArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Environment resource.
+
         :param pulumi.Input[_builtins.str] environment_sub_type: Subtype of environment:
                - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
                - Type of ECS: currently supports ECS.
@@ -193,6 +194,7 @@ class _EnvironmentState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
+
         :param pulumi.Input[_builtins.str] aliyun_lang: The locale. The default is Chinese zh | en.
         :param pulumi.Input[_builtins.str] bind_resource_id: The id or vpcId of the bound container instance.
         :param pulumi.Input[_builtins.str] drop_metrics: List of abandoned indicators.
@@ -466,6 +468,7 @@ class Environment(pulumi.CustomResource):
         $ pulumi import alicloud:arms/environment:Environment example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aliyun_lang: The locale. The default is Chinese zh | en.
@@ -581,6 +584,7 @@ class Environment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/environment:Environment example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvironmentArgs args: The arguments to use to populate this resource's properties.

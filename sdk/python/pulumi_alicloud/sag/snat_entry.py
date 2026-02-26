@@ -24,6 +24,7 @@ class SnatEntryArgs:
                  snat_ip: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SnatEntry resource.
+
         :param pulumi.Input[_builtins.str] cidr_block: The destination CIDR block.
         :param pulumi.Input[_builtins.str] sag_id: The ID of the SAG instance.
         :param pulumi.Input[_builtins.str] snat_ip: The public IP address.
@@ -77,6 +78,7 @@ class _SnatEntryState:
                  snat_ip: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SnatEntry resources.
+
         :param pulumi.Input[_builtins.str] cidr_block: The destination CIDR block.
         :param pulumi.Input[_builtins.str] sag_id: The ID of the SAG instance.
         :param pulumi.Input[_builtins.str] snat_ip: The public IP address.
@@ -172,6 +174,7 @@ class SnatEntry(pulumi.CustomResource):
         $ pulumi import alicloud:sag/snatEntry:SnatEntry example sag-abc123456:snat-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr_block: The destination CIDR block.
@@ -220,6 +223,7 @@ class SnatEntry(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sag/snatEntry:SnatEntry example sag-abc123456:snat-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SnatEntryArgs args: The arguments to use to populate this resource's properties.

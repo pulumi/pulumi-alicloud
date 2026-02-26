@@ -31,6 +31,7 @@ class _IpamServiceState:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering IpamService resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the IPAM service has been activated.
         """
         if enabled is not None:
@@ -94,6 +95,7 @@ class IpamService(pulumi.CustomResource):
         $ terraform import alicloud_vpc_ipam_service.example 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -140,6 +142,7 @@ class IpamService(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_vpc_ipam_service.example 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IpamServiceArgs args: The arguments to use to populate this resource's properties.

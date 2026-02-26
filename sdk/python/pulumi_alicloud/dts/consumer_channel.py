@@ -25,6 +25,7 @@ class ConsumerChannelArgs:
                  dts_instance_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ConsumerChannel resource.
+
         :param pulumi.Input[_builtins.str] consumer_group_name: The name of the consumer group.
         :param pulumi.Input[_builtins.str] consumer_group_password: The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
         :param pulumi.Input[_builtins.str] consumer_group_user_name: The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
@@ -94,6 +95,7 @@ class _ConsumerChannelState:
                  dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConsumerChannel resources.
+
         :param pulumi.Input[_builtins.str] consumer_group_id: The ID of the consumer group.
         :param pulumi.Input[_builtins.str] consumer_group_name: The name of the consumer group.
         :param pulumi.Input[_builtins.str] consumer_group_password: The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
@@ -284,6 +286,7 @@ class ConsumerChannel(pulumi.CustomResource):
         $ pulumi import alicloud:dts/consumerChannel:ConsumerChannel example <dts_instance_id>:<consumer_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] consumer_group_name: The name of the consumer group.
@@ -397,6 +400,7 @@ class ConsumerChannel(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dts/consumerChannel:ConsumerChannel example <dts_instance_id>:<consumer_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConsumerChannelArgs args: The arguments to use to populate this resource's properties.

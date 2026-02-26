@@ -54,6 +54,7 @@ class GatewayFileShareArgs:
                  windows_acl: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GatewayFileShare resource.
+
         :param pulumi.Input[_builtins.str] gateway_file_share_name: The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the gateway.
         :param pulumi.Input[_builtins.str] local_path: The cache disk inside the device name.
@@ -585,6 +586,7 @@ class _GatewayFileShareState:
                  windows_acl: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GatewayFileShare resources.
+
         :param pulumi.Input[_builtins.bool] access_based_enumeration: Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
         :param pulumi.Input[_builtins.int] backend_limit: The Max upload speed of the gateway file share. Unit: `MB/s`, 0 means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
         :param pulumi.Input[_builtins.bool] browsable: The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
@@ -1220,6 +1222,7 @@ class GatewayFileShare(pulumi.CustomResource):
         $ pulumi import alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare example <gateway_id>:<index_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] access_based_enumeration: Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
@@ -1343,6 +1346,7 @@ class GatewayFileShare(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare example <gateway_id>:<index_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayFileShareArgs args: The arguments to use to populate this resource's properties.

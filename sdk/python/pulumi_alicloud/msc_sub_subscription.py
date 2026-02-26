@@ -29,6 +29,7 @@ class MscSubSubscriptionArgs:
                  webhook_status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a MscSubSubscription resource.
+
         :param pulumi.Input[_builtins.str] item_name: The name of the Subscription. **NOTE:**  You should use the `get_msc_sub_subscriptions` to query the available subscription item name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_ids: The ids of subscribed contacts.
                **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
@@ -172,6 +173,7 @@ class _MscSubSubscriptionState:
                  webhook_status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering MscSubSubscription resources.
+
         :param pulumi.Input[_builtins.str] channel: The channel the Subscription.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_ids: The ids of subscribed contacts.
                **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
@@ -378,6 +380,7 @@ class MscSubSubscription(pulumi.CustomResource):
         $ pulumi import alicloud:index/mscSubSubscription:MscSubSubscription example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_ids: The ids of subscribed contacts.
@@ -429,6 +432,7 @@ class MscSubSubscription(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:index/mscSubSubscription:MscSubSubscription example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MscSubSubscriptionArgs args: The arguments to use to populate this resource's properties.

@@ -35,6 +35,7 @@ class DataCenterArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataCenter resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: Cassandra cluster id of dataCenter-2 belongs to.
         :param pulumi.Input[_builtins.str] instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
         :param pulumi.Input[_builtins.int] node_count: The node count of Cassandra dataCenter-2, default to 2.
@@ -261,6 +262,7 @@ class _DataCenterState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataCenter resources.
+
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
         :param pulumi.Input[_builtins.int] auto_renew_period: Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         :param pulumi.Input[_builtins.str] cluster_id: Cassandra cluster id of dataCenter-2 belongs to.
@@ -587,6 +589,7 @@ class DataCenter(pulumi.CustomResource):
         $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
@@ -673,6 +676,7 @@ class DataCenter(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataCenterArgs args: The arguments to use to populate this resource's properties.

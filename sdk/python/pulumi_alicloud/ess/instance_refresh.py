@@ -35,6 +35,7 @@ class InstanceRefreshArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceRefresh resource.
+
         :param pulumi.Input[_builtins.str] scaling_group_id: The ID of the scaling group.
         :param pulumi.Input[_builtins.int] checkpoint_pause_time: The duration of the pause when the task reaches a checkpoint. Unit: minutes.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceRefreshCheckpointArgs']]] checkpoints: The checkpoints for the refresh task. The task automatically pauses for the duration specified by CheckpointPauseTime when the percentage of new instances reaches a specified value. See `checkpoints` below for details.
@@ -256,6 +257,7 @@ class _InstanceRefreshState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceRefresh resources.
+
         :param pulumi.Input[_builtins.int] checkpoint_pause_time: The duration of the pause when the task reaches a checkpoint. Unit: minutes.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceRefreshCheckpointArgs']]] checkpoints: The checkpoints for the refresh task. The task automatically pauses for the duration specified by CheckpointPauseTime when the percentage of new instances reaches a specified value. See `checkpoints` below for details.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerArgs']]] desired_configuration_containers: The list of containers in the instance. See `desired_configuration_containers` below for details.
@@ -569,6 +571,7 @@ class InstanceRefresh(pulumi.CustomResource):
         $ pulumi import alicloud:ess/instanceRefresh:InstanceRefresh example ir-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] checkpoint_pause_time: The duration of the pause when the task reaches a checkpoint. Unit: minutes.
@@ -689,6 +692,7 @@ class InstanceRefresh(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ess/instanceRefresh:InstanceRefresh example ir-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceRefreshArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class KubernetesAddonInitArgs:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KubernetesAddon resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[_builtins.bool] cleanup_cloud_resources: Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
         :param pulumi.Input[_builtins.str] config: The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `cs_get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs_get_kubernetes_addons`.
@@ -116,6 +117,7 @@ class _KubernetesAddonState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KubernetesAddon resources.
+
         :param pulumi.Input[_builtins.bool] can_upgrade: Is the addon ready for upgrade.
         :param pulumi.Input[_builtins.bool] cleanup_cloud_resources: Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
@@ -326,6 +328,7 @@ class KubernetesAddon(pulumi.CustomResource):
         $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon <cluster_id>:<addon_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] cleanup_cloud_resources: Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
@@ -414,6 +417,7 @@ class KubernetesAddon(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon <cluster_id>:<addon_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KubernetesAddonInitArgs args: The arguments to use to populate this resource's properties.

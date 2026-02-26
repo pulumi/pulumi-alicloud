@@ -24,6 +24,7 @@ class SavedQueryArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SavedQuery resource.
+
         :param pulumi.Input[_builtins.str] expression: Query Expression.
         :param pulumi.Input[_builtins.str] saved_query_name: The name of the resource.
         :param pulumi.Input[_builtins.str] description: Query Description.
@@ -79,6 +80,7 @@ class _SavedQueryState:
                  saved_query_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SavedQuery resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] description: Query Description.
         :param pulumi.Input[_builtins.str] expression: Query Expression.
@@ -187,6 +189,7 @@ class SavedQuery(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Query Description.
@@ -233,6 +236,7 @@ class SavedQuery(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SavedQueryArgs args: The arguments to use to populate this resource's properties.

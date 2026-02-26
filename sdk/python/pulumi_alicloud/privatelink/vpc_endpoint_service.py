@@ -32,6 +32,7 @@ class VpcEndpointServiceArgs:
                  zone_affinity_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VpcEndpointService resource.
+
         :param pulumi.Input[_builtins.str] address_ip_version: The IP address version.
         :param pulumi.Input[_builtins.bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
         :param pulumi.Input[_builtins.int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
@@ -226,6 +227,7 @@ class _VpcEndpointServiceState:
                  zone_affinity_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointService resources.
+
         :param pulumi.Input[_builtins.str] address_ip_version: The IP address version.
         :param pulumi.Input[_builtins.bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
         :param pulumi.Input[_builtins.int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
@@ -541,6 +543,7 @@ class VpcEndpointService(pulumi.CustomResource):
         $ pulumi import alicloud:privatelink/vpcEndpointService:VpcEndpointService example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_ip_version: The IP address version.
@@ -597,6 +600,7 @@ class VpcEndpointService(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:privatelink/vpcEndpointService:VpcEndpointService example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcEndpointServiceArgs args: The arguments to use to populate this resource's properties.

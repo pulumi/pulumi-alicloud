@@ -23,6 +23,7 @@ class SuspendProcessArgs:
                  scaling_group_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SuspendProcess resource.
+
         :param pulumi.Input[_builtins.str] process: Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group.
         """
@@ -61,6 +62,7 @@ class _SuspendProcessState:
                  scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SuspendProcess resources.
+
         :param pulumi.Input[_builtins.str] process: Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group.
         """
@@ -174,6 +176,7 @@ class SuspendProcess(pulumi.CustomResource):
         $ pulumi import alicloud:ess/suspendProcess:SuspendProcess example asg-xxx:sgp-xxx:5000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] process: Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
@@ -255,6 +258,7 @@ class SuspendProcess(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ess/suspendProcess:SuspendProcess example asg-xxx:sgp-xxx:5000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SuspendProcessArgs args: The arguments to use to populate this resource's properties.

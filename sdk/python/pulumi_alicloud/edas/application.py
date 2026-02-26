@@ -32,6 +32,7 @@ class ApplicationArgs:
                  war_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Application resource.
+
         :param pulumi.Input[_builtins.str] application_name: Name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
         :param pulumi.Input[_builtins.str] package_type: The type of the package for the deployment of the application that you want to create. The valid values are: WAR and JAR. We strongly recommend you to set this parameter when creating the application.
@@ -213,6 +214,7 @@ class _ApplicationState:
                  war_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Application resources.
+
         :param pulumi.Input[_builtins.str] application_name: Name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
         :param pulumi.Input[_builtins.int] build_pack_id: The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the "Pack ID" column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
@@ -446,6 +448,7 @@ class Application(pulumi.CustomResource):
         $ pulumi import alicloud:edas/application:Application app app_Id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_name: Name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
@@ -512,6 +515,7 @@ class Application(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:edas/application:Application app app_Id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationArgs args: The arguments to use to populate this resource's properties.

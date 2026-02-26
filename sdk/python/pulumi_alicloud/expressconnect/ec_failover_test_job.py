@@ -28,6 +28,7 @@ class EcFailoverTestJobArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcFailoverTestJob resource.
+
         :param pulumi.Input[_builtins.int] job_duration: Job duration.
         :param pulumi.Input[_builtins.str] job_type: Job type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_ids: Resource id list.
@@ -144,6 +145,7 @@ class _EcFailoverTestJobState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcFailoverTestJob resources.
+
         :param pulumi.Input[_builtins.str] description: Job description.
         :param pulumi.Input[_builtins.str] ec_failover_test_job_name: Job name.
         :param pulumi.Input[_builtins.int] job_duration: Job duration.
@@ -308,6 +310,7 @@ class EcFailoverTestJob(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Job description.
@@ -365,6 +368,7 @@ class EcFailoverTestJob(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcFailoverTestJobArgs args: The arguments to use to populate this resource's properties.

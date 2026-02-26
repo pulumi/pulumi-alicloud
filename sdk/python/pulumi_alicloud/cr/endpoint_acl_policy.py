@@ -26,6 +26,7 @@ class EndpointAclPolicyArgs:
                  module_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EndpointAclPolicy resource.
+
         :param pulumi.Input[_builtins.str] endpoint_type: The type of endpoint. Valid values: `internet`.
         :param pulumi.Input[_builtins.str] entry: The IP segment that allowed to access.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the CR Instance.
@@ -111,6 +112,7 @@ class _EndpointAclPolicyState:
                  module_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EndpointAclPolicy resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the entry.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of endpoint. Valid values: `internet`.
         :param pulumi.Input[_builtins.str] entry: The IP segment that allowed to access.
@@ -252,6 +254,7 @@ class EndpointAclPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example <instance_id>:<endpoint_type>:<entry>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the entry.
@@ -316,6 +319,7 @@ class EndpointAclPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example <instance_id>:<endpoint_type>:<entry>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EndpointAclPolicyArgs args: The arguments to use to populate this resource's properties.

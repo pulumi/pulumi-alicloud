@@ -34,6 +34,7 @@ class SecurityGroupRuleArgs:
                  source_security_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityGroupRule resource.
+
         :param pulumi.Input[_builtins.str] ip_protocol: The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ip_protocol` can be set to `icmpv6`.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the Security Group.
         :param pulumi.Input[_builtins.str] type: The type of the Security Group Rule. Valid values:
@@ -254,6 +255,7 @@ class _SecurityGroupRuleState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityGroupRule resources.
+
         :param pulumi.Input[_builtins.str] cidr_ip: The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
         :param pulumi.Input[_builtins.str] description: The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
                
@@ -541,6 +543,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/securityGroupRule:SecurityGroupRule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr_ip: The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
@@ -613,6 +616,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/securityGroupRule:SecurityGroupRule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityGroupRuleArgs args: The arguments to use to populate this resource's properties.

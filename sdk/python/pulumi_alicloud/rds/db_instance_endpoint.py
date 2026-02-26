@@ -30,6 +30,7 @@ class DbInstanceEndpointArgs:
                  db_instance_endpoint_description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbInstanceEndpoint resource.
+
         :param pulumi.Input[_builtins.str] connection_string_prefix: The IP address of the internal endpoint.
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
         :param pulumi.Input[Sequence[pulumi.Input['DbInstanceEndpointNodeItemArgs']]] node_items: The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
@@ -149,6 +150,7 @@ class _DbInstanceEndpointState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbInstanceEndpoint resources.
+
         :param pulumi.Input[_builtins.str] connection_string: The internal endpoint.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The IP address of the internal endpoint.
         :param pulumi.Input[_builtins.str] db_instance_endpoint_description: The user-defined description of the endpoint.
@@ -423,6 +425,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
         $ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example <db_instance_id>:<db_instance_endpoint_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The IP address of the internal endpoint.
@@ -515,6 +518,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example <db_instance_id>:<db_instance_endpoint_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DbInstanceEndpointArgs args: The arguments to use to populate this resource's properties.

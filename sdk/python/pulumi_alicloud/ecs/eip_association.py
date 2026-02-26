@@ -28,6 +28,7 @@ class EipAssociationArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EipAssociation resource.
+
         :param pulumi.Input[_builtins.str] allocation_id: The ID of the EIP instance.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance with which you want to associate the EIP. You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
@@ -188,6 +189,7 @@ class _EipAssociationState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EipAssociation resources.
+
         :param pulumi.Input[_builtins.str] allocation_id: The ID of the EIP instance.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance with which you want to associate the EIP. You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
@@ -422,6 +424,7 @@ class EipAssociation(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example <allocation_id>:<instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] allocation_id: The ID of the EIP instance.
@@ -528,6 +531,7 @@ class EipAssociation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example <allocation_id>:<instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EipAssociationArgs args: The arguments to use to populate this resource's properties.

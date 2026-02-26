@@ -25,6 +25,7 @@ class HoneyPotArgs:
                  node_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a HoneyPot resource.
+
         :param pulumi.Input[_builtins.str] honeypot_image_id: The image ID of the honeypot.
         :param pulumi.Input[_builtins.str] honeypot_image_name: Honeypot mirror name.
         :param pulumi.Input[_builtins.str] honeypot_name: Honeypot custom name.
@@ -97,6 +98,7 @@ class _HoneyPotState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HoneyPot resources.
+
         :param pulumi.Input[_builtins.str] honeypot_id: Honeypot ID.
         :param pulumi.Input[_builtins.str] honeypot_image_id: The image ID of the honeypot.
         :param pulumi.Input[_builtins.str] honeypot_image_name: Honeypot mirror name.
@@ -272,6 +274,7 @@ class HoneyPot(pulumi.CustomResource):
         $terraform import alicloud_threat_detection_honey_pot.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] honeypot_image_id: The image ID of the honeypot.
@@ -325,6 +328,7 @@ class HoneyPot(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_threat_detection_honey_pot.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HoneyPotArgs args: The arguments to use to populate this resource's properties.

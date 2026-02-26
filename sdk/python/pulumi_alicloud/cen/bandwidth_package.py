@@ -32,6 +32,7 @@ class BandwidthPackageArgs:
                  period: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a BandwidthPackage resource.
+
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the bandwidth package. Only applicable when `payment_type` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
                
@@ -239,6 +240,7 @@ class _BandwidthPackageState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BandwidthPackage resources.
+
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the bandwidth package. Only applicable when `payment_type` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -515,6 +517,7 @@ class BandwidthPackage(pulumi.CustomResource):
         $ pulumi import alicloud:cen/bandwidthPackage:BandwidthPackage example cenbwp-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the bandwidth package. Only applicable when `payment_type` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
@@ -577,6 +580,7 @@ class BandwidthPackage(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/bandwidthPackage:BandwidthPackage example cenbwp-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BandwidthPackageArgs args: The arguments to use to populate this resource's properties.

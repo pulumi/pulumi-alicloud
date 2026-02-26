@@ -29,6 +29,7 @@ class AccountArgs:
                  dml_auth_setting: Optional[pulumi.Input['AccountDmlAuthSettingArgs']] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] account: The name of the database account.
         :param pulumi.Input[_builtins.str] account_type: The type of the database account. Valid values:
                - `NormalAccount`: Normal account number.
@@ -139,6 +140,7 @@ class _AccountState:
                  password: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[_builtins.str] account: The name of the database account.
         :param pulumi.Input[_builtins.str] account_type: The type of the database account. Valid values:
                - `NormalAccount`: Normal account number.
@@ -323,6 +325,7 @@ class Account(pulumi.CustomResource):
         $ pulumi import alicloud:clickhouseenterprisedbcluster/account:Account example <db_instance_id>:<account>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account: The name of the database account.
@@ -410,6 +413,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:clickhouseenterprisedbcluster/account:Account example <db_instance_id>:<account>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

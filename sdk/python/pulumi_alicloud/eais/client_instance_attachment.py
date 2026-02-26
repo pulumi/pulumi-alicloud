@@ -26,6 +26,7 @@ class ClientInstanceAttachmentArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientInstanceAttachment resource.
+
         :param pulumi.Input[_builtins.str] client_instance_id: The ID of the ECS or ECI instance bound to the EAIS instance.
         :param pulumi.Input[_builtins.str] instance_id: The EAIS instance ID.
         :param pulumi.Input[_builtins.str] category: EAIS instance category, valid values: `eais`, `ei`, default is `eais`.
@@ -114,6 +115,7 @@ class _ClientInstanceAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientInstanceAttachment resources.
+
         :param pulumi.Input[_builtins.str] category: EAIS instance category, valid values: `eais`, `ei`, default is `eais`.
         :param pulumi.Input[_builtins.str] client_instance_id: The ID of the ECS or ECI instance bound to the EAIS instance.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
@@ -329,6 +331,7 @@ class ClientInstanceAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:eais/clientInstanceAttachment:ClientInstanceAttachment example <instance_id>:<client_instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] category: EAIS instance category, valid values: `eais`, `ei`, default is `eais`.
@@ -437,6 +440,7 @@ class ClientInstanceAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eais/clientInstanceAttachment:ClientInstanceAttachment example <instance_id>:<client_instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClientInstanceAttachmentArgs args: The arguments to use to populate this resource's properties.

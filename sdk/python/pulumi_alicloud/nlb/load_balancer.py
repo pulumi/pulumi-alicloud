@@ -43,6 +43,7 @@ class LoadBalancerArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
+
         :param pulumi.Input[_builtins.str] address_type: The type of IPv4 address used by the NLB instance. Valid values:
                - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
                - `Intranet`: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
@@ -403,6 +404,7 @@ class _LoadBalancerState:
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
+
         :param pulumi.Input[_builtins.str] address_ip_version: The protocol version. Valid values:
                
                - **ipv4:** IPv4. This is the default value.
@@ -963,6 +965,7 @@ class LoadBalancer(pulumi.CustomResource):
         $ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_ip_version: The protocol version. Valid values:
@@ -1131,6 +1134,7 @@ class LoadBalancer(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerArgs args: The arguments to use to populate this resource's properties.

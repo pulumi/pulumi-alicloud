@@ -24,6 +24,7 @@ class VersionArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Version resource.
+
         :param pulumi.Input[_builtins.int] origin_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.str] description: The Site version's description.
@@ -81,6 +82,7 @@ class _VersionState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Version resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
         :param pulumi.Input[_builtins.str] description: The Site version's description.
         :param pulumi.Input[_builtins.int] origin_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -226,6 +228,7 @@ class Version(pulumi.CustomResource):
         $ pulumi import alicloud:esa/version:Version example <site_id>:<site_version>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The Site version's description.
@@ -279,6 +282,7 @@ class Version(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/version:Version example <site_id>:<site_version>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VersionArgs args: The arguments to use to populate this resource's properties.

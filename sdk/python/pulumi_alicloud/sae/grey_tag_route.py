@@ -28,6 +28,7 @@ class GreyTagRouteArgs:
                  sc_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]] = None):
         """
         The set of arguments for constructing a GreyTagRoute resource.
+
         :param pulumi.Input[_builtins.str] app_id: The ID  of the SAE Application.
         :param pulumi.Input[_builtins.str] grey_tag_route_name: The name of GreyTagRoute.
         :param pulumi.Input[_builtins.str] description: The description of GreyTagRoute.
@@ -114,6 +115,7 @@ class _GreyTagRouteState:
                  sc_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering GreyTagRoute resources.
+
         :param pulumi.Input[_builtins.str] app_id: The ID  of the SAE Application.
         :param pulumi.Input[_builtins.str] description: The description of GreyTagRoute.
         :param pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]] dubbo_rules: The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
@@ -297,6 +299,7 @@ class GreyTagRoute(pulumi.CustomResource):
         $ pulumi import alicloud:sae/greyTagRoute:GreyTagRoute example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID  of the SAE Application.
@@ -403,6 +406,7 @@ class GreyTagRoute(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sae/greyTagRoute:GreyTagRoute example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GreyTagRouteArgs args: The arguments to use to populate this resource's properties.

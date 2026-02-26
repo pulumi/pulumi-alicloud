@@ -31,6 +31,7 @@ class InstanceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] instance_class: The specification of the instance. 
                - Following enumerative value for TSDB for InfluxDB️ standart edition:
                - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
@@ -240,6 +241,7 @@ class _InstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] app_key: The app key.
         :param pulumi.Input[_builtins.str] disk_category: The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
         :param pulumi.Input[_builtins.str] duration: The duration.
@@ -513,6 +515,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:tsdb/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_key: The app key.
@@ -597,6 +600,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:tsdb/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

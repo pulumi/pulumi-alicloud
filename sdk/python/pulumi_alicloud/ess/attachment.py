@@ -27,6 +27,7 @@ class AttachmentArgs:
                  load_balancer_weights: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         The set of arguments for constructing a Attachment resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group of a scaling configuration.
         :param pulumi.Input[_builtins.bool] entrusted: Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
@@ -149,6 +150,7 @@ class _AttachmentState:
                  scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Attachment resources.
+
         :param pulumi.Input[_builtins.bool] entrusted: Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
         :param pulumi.Input[_builtins.bool] force: Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
@@ -372,6 +374,7 @@ class Attachment(pulumi.CustomResource):
         $ pulumi import alicloud:ess/attachment:Attachment example asg-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] entrusted: Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
@@ -493,6 +496,7 @@ class Attachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ess/attachment:Attachment example asg-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AttachmentArgs args: The arguments to use to populate this resource's properties.

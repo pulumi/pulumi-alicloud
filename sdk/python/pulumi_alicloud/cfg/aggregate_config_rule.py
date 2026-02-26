@@ -37,6 +37,7 @@ class AggregateConfigRuleArgs:
                  tag_value_scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AggregateConfigRule resource.
+
         :param pulumi.Input[_builtins.str] aggregate_config_rule_name: The name of the rule.
         :param pulumi.Input[_builtins.str] aggregator_id: The Aggregator Id.
         :param pulumi.Input[_builtins.str] config_rule_trigger_types: The trigger type of the rule. Valid values:
@@ -301,6 +302,7 @@ class _AggregateConfigRuleState:
                  tag_value_scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AggregateConfigRule resources.
+
         :param pulumi.Input[_builtins.str] aggregate_config_rule_name: The name of the rule.
         :param pulumi.Input[_builtins.str] aggregator_id: The Aggregator Id.
         :param pulumi.Input[_builtins.str] config_rule_id: (Available since v1.141.0) The rule ID of Aggregate Config Rule.
@@ -642,6 +644,7 @@ class AggregateConfigRule(pulumi.CustomResource):
         $ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example "<aggregator_id>:<config_rule_id>"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aggregate_config_rule_name: The name of the rule.
@@ -723,6 +726,7 @@ class AggregateConfigRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example "<aggregator_id>:<config_rule_id>"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AggregateConfigRuleArgs args: The arguments to use to populate this resource's properties.

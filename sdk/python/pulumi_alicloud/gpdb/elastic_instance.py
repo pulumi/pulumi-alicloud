@@ -39,6 +39,7 @@ class ElasticInstanceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ElasticInstance resource.
+
         :param pulumi.Input[_builtins.str] engine: Database engine: `gpdb`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Valid value is `6.0`.
         :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes. 
@@ -339,6 +340,7 @@ class _ElasticInstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ElasticInstance resources.
+
         :param pulumi.Input[_builtins.str] connection_string: ADB PG instance connection string.
         :param pulumi.Input[_builtins.str] db_instance_category: The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
         :param pulumi.Input[_builtins.str] db_instance_description: The description of ADB PG instance. It is a string of 2 to 256 characters.
@@ -738,6 +740,7 @@ class ElasticInstance(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/elasticInstance:ElasticInstance adb_pg_instance gp-bpxxxxxxxxxxxxxx
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_instance_category: The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
@@ -816,6 +819,7 @@ class ElasticInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/elasticInstance:ElasticInstance adb_pg_instance gp-bpxxxxxxxxxxxxxx
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ElasticInstanceArgs args: The arguments to use to populate this resource's properties.

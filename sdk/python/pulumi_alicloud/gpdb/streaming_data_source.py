@@ -27,6 +27,7 @@ class StreamingDataSourceArgs:
                  data_source_description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamingDataSource resource.
+
         :param pulumi.Input[_builtins.str] data_source_config: The configurations of the data source.
         :param pulumi.Input[_builtins.str] data_source_name: Data Source Name
         :param pulumi.Input[_builtins.str] data_source_type: Data Source Type
@@ -133,6 +134,7 @@ class _StreamingDataSourceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamingDataSource resources.
+
         :param pulumi.Input[_builtins.str] create_time: Creation time
         :param pulumi.Input[_builtins.str] data_source_config: The configurations of the data source.
         :param pulumi.Input[_builtins.str] data_source_description: The description of the data source.
@@ -374,6 +376,7 @@ class StreamingDataSource(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/streamingDataSource:StreamingDataSource example <db_instance_id>:<data_source_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_source_config: The configurations of the data source.
@@ -476,6 +479,7 @@ class StreamingDataSource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/streamingDataSource:StreamingDataSource example <db_instance_id>:<data_source_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StreamingDataSourceArgs args: The arguments to use to populate this resource's properties.

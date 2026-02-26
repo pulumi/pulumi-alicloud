@@ -23,6 +23,7 @@ class BucketAclArgs:
                  bucket: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a BucketAcl resource.
+
         :param pulumi.Input[_builtins.str] acl: Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which the current ACL configuration belongs.
         """
@@ -61,6 +62,7 @@ class _BucketAclState:
                  bucket: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketAcl resources.
+
         :param pulumi.Input[_builtins.str] acl: Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which the current ACL configuration belongs.
         """
@@ -148,6 +150,7 @@ class BucketAcl(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketAcl:BucketAcl example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
@@ -203,6 +206,7 @@ class BucketAcl(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketAcl:BucketAcl example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketAclArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class AclAttachmentArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AclAttachment resource.
+
         :param pulumi.Input[_builtins.str] acl_id: The ID of an ACL.
         :param pulumi.Input[_builtins.str] acl_type: The type of the ACL. Valid values:
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener.
@@ -95,6 +96,7 @@ class _AclAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclAttachment resources.
+
         :param pulumi.Input[_builtins.str] acl_id: The ID of an ACL.
         :param pulumi.Input[_builtins.str] acl_type: The type of the ACL. Valid values:
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
@@ -242,6 +244,7 @@ class AclAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_id: The ID of an ACL.
@@ -312,6 +315,7 @@ class AclAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -42,6 +42,7 @@ class ClusterArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[_builtins.str] instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
         :param pulumi.Input[_builtins.str] major_version: Cassandra major version. Now only support version `3.11`.
         :param pulumi.Input[_builtins.int] node_count: The node count of Cassandra dataCenter-1 default to 2.
@@ -375,6 +376,7 @@ class _ClusterState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
         :param pulumi.Input[_builtins.int] auto_renew_period: Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         :param pulumi.Input[_builtins.str] cluster_name: Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
@@ -785,6 +787,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
@@ -864,6 +867,7 @@ class Cluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

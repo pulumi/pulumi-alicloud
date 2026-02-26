@@ -23,6 +23,7 @@ class CloudPhoneInstanceArgs:
                  android_instance_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CloudPhoneInstance resource.
+
         :param pulumi.Input[_builtins.str] android_instance_group_id: The ID of the instance group to which the instance belongs
         :param pulumi.Input[_builtins.str] android_instance_name: The instance name
         """
@@ -63,6 +64,7 @@ class _CloudPhoneInstanceState:
                  android_instance_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CloudPhoneInstance resources.
+
         :param pulumi.Input[_builtins.str] android_instance_group_id: The ID of the instance group to which the instance belongs
         :param pulumi.Input[_builtins.str] android_instance_name: The instance name
         """
@@ -159,6 +161,7 @@ class CloudPhoneInstance(pulumi.CustomResource):
         $ pulumi import alicloud:cloudphoneinstance/cloudPhoneInstance:CloudPhoneInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] android_instance_group_id: The ID of the instance group to which the instance belongs
@@ -223,6 +226,7 @@ class CloudPhoneInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudphoneinstance/cloudPhoneInstance:CloudPhoneInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CloudPhoneInstanceArgs args: The arguments to use to populate this resource's properties.

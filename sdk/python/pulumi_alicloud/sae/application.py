@@ -92,6 +92,7 @@ class ApplicationArgs:
                  web_container: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Application resource.
+
         :param pulumi.Input[_builtins.str] app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
         :param pulumi.Input[_builtins.str] package_type: Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
         :param pulumi.Input[_builtins.int] replicas: Initial number of instances.
@@ -1273,6 +1274,7 @@ class _ApplicationState:
                  web_container: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Application resources.
+
         :param pulumi.Input[_builtins.str] acr_assume_role_arn: The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
         :param pulumi.Input[_builtins.str] acr_instance_id: The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
         :param pulumi.Input[_builtins.str] app_description: Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
@@ -2526,6 +2528,7 @@ class Application(pulumi.CustomResource):
         $ pulumi import alicloud:sae/application:Application example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acr_assume_role_arn: The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
@@ -2686,6 +2689,7 @@ class Application(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sae/application:Application example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationArgs args: The arguments to use to populate this resource's properties.

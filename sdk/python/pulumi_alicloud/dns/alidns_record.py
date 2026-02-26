@@ -32,6 +32,7 @@ class AlidnsRecordArgs:
                  user_client_ip: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AlidnsRecord resource.
+
         :param pulumi.Input[_builtins.str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[_builtins.str] rr: Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
         :param pulumi.Input[_builtins.str] type: The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
@@ -212,6 +213,7 @@ class _AlidnsRecordState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AlidnsRecord resources.
+
         :param pulumi.Input[_builtins.str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[_builtins.str] lang: User language.
         :param pulumi.Input[_builtins.str] line: The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using dns_get_resolution_lines in data source to get the value.
@@ -438,6 +440,7 @@ class AlidnsRecord(pulumi.CustomResource):
         $ pulumi import alicloud:dns/alidnsRecord:AlidnsRecord example abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -497,6 +500,7 @@ class AlidnsRecord(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dns/alidnsRecord:AlidnsRecord example abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlidnsRecordArgs args: The arguments to use to populate this resource's properties.

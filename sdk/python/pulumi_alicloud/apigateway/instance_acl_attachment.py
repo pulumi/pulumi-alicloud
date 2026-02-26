@@ -24,6 +24,7 @@ class InstanceAclAttachmentArgs:
                  instance_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a InstanceAclAttachment resource.
+
         :param pulumi.Input[_builtins.str] acl_id: The ID of the ACL to attach.
         :param pulumi.Input[_builtins.str] acl_type: The type of the ACL. Valid values: `white`, `black`.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the API Gateway instance that the ACL will be attached to.
@@ -77,6 +78,7 @@ class _InstanceAclAttachmentState:
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceAclAttachment resources.
+
         :param pulumi.Input[_builtins.str] acl_id: The ID of the ACL to attach.
         :param pulumi.Input[_builtins.str] acl_type: The type of the ACL. Valid values: `white`, `black`.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the API Gateway instance that the ACL will be attached to.
@@ -182,6 +184,7 @@ class InstanceAclAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:apigateway/instanceAclAttachment:InstanceAclAttachment example <instance_id>:<acl_id>:<acl_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_id: The ID of the ACL to attach.
@@ -240,6 +243,7 @@ class InstanceAclAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:apigateway/instanceAclAttachment:InstanceAclAttachment example <instance_id>:<acl_id>:<acl_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceAclAttachmentArgs args: The arguments to use to populate this resource's properties.

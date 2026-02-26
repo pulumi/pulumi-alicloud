@@ -36,6 +36,7 @@ class EcsImagePipelineArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsImagePipeline resource.
+
         :param pulumi.Input[_builtins.str] base_image: The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
         :param pulumi.Input[_builtins.str] base_image_type: The type of the source image. Valid values: `IMAGE`, `IMAGE_FAMILY`.
                - IMAGE: custom image.
@@ -286,6 +287,7 @@ class _EcsImagePipelineState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsImagePipeline resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] add_accounts: The ID of Alibaba Cloud account to which to share the created image.
         :param pulumi.Input[_builtins.str] base_image: The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
         :param pulumi.Input[_builtins.str] base_image_type: The type of the source image. Valid values: `IMAGE`, `IMAGE_FAMILY`.
@@ -604,6 +606,7 @@ class EcsImagePipeline(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] add_accounts: The ID of Alibaba Cloud account to which to share the created image.
@@ -693,6 +696,7 @@ class EcsImagePipeline(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsImagePipelineArgs args: The arguments to use to populate this resource's properties.

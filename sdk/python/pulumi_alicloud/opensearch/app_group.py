@@ -32,6 +32,7 @@ class AppGroupArgs:
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]]] = None):
         """
         The set of arguments for constructing a AppGroup resource.
+
         :param pulumi.Input[_builtins.str] app_group_name: Application Group Name.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
         :param pulumi.Input['AppGroupQuotaArgs'] quota: Quota information.  The details see Block quota.
@@ -182,6 +183,7 @@ class _AppGroupState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppGroup resources.
+
         :param pulumi.Input[_builtins.str] app_group_name: Application Group Name.
         :param pulumi.Input[_builtins.str] charge_way: Billing model. Valid values:`compute_resource` and `qps`.
         :param pulumi.Input[_builtins.str] current_version: The version of Application Group Name.
@@ -406,6 +408,7 @@ class AppGroup(pulumi.CustomResource):
         $ pulumi import alicloud:opensearch/appGroup:AppGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_group_name: Application Group Name.
@@ -463,6 +466,7 @@ class AppGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:opensearch/appGroup:AppGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppGroupArgs args: The arguments to use to populate this resource's properties.

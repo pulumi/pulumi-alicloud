@@ -29,6 +29,7 @@ class CompliancePackArgs:
                  config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]] = None):
         """
         The set of arguments for constructing a CompliancePack resource.
+
         :param pulumi.Input[_builtins.str] compliance_pack_name: The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         :param pulumi.Input[_builtins.str] description: The Description of compliance pack.
         :param pulumi.Input[_builtins.int] risk_level: The Risk Level. Valid values:
@@ -135,6 +136,7 @@ class _CompliancePackState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CompliancePack resources.
+
         :param pulumi.Input[_builtins.str] compliance_pack_name: The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         :param pulumi.Input[_builtins.str] compliance_pack_template_id: Compliance Package Template Id.
         :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
@@ -329,6 +331,7 @@ class CompliancePack(pulumi.CustomResource):
         $ pulumi import alicloud:cfg/compliancePack:CompliancePack example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] compliance_pack_name: The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
@@ -412,6 +415,7 @@ class CompliancePack(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cfg/compliancePack:CompliancePack example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CompliancePackArgs args: The arguments to use to populate this resource's properties.

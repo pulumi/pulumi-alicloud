@@ -31,6 +31,7 @@ class JobArgs:
                  stop_strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Job resource.
+
         :param pulumi.Input[_builtins.str] namespace: namespace
         :param pulumi.Input[_builtins.str] resource_id: workspace
         :param pulumi.Input[_builtins.str] deployment_id: deploymentId
@@ -174,6 +175,7 @@ class _JobState:
                  stop_strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
+
         :param pulumi.Input[_builtins.str] deployment_id: deploymentId
         :param pulumi.Input[_builtins.str] job_id: The first ID of the resource
         :param pulumi.Input[Sequence[pulumi.Input['JobLocalVariableArgs']]] local_variables: Local variables See `local_variables` below.
@@ -425,6 +427,7 @@ class Job(pulumi.CustomResource):
         $ pulumi import alicloud:realtimecompute/job:Job example <resource_id>:<namespace>:<job_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deployment_id: deploymentId
@@ -535,6 +538,7 @@ class Job(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:realtimecompute/job:Job example <resource_id>:<namespace>:<job_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.

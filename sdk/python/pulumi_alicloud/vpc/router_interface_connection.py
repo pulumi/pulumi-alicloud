@@ -26,6 +26,7 @@ class RouterInterfaceConnectionArgs:
                  opposite_router_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterInterfaceConnection resource.
+
         :param pulumi.Input[_builtins.str] interface_id: One side router interface ID.
         :param pulumi.Input[_builtins.str] opposite_interface_id: Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
         :param pulumi.Input[_builtins.str] opposite_interface_owner_id: Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
@@ -116,6 +117,7 @@ class _RouterInterfaceConnectionState:
                  opposite_router_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterInterfaceConnection resources.
+
         :param pulumi.Input[_builtins.str] interface_id: One side router interface ID.
         :param pulumi.Input[_builtins.str] opposite_interface_id: Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
         :param pulumi.Input[_builtins.str] opposite_interface_owner_id: Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
@@ -280,6 +282,7 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection foo ri-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] interface_id: One side router interface ID.
@@ -365,6 +368,7 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection foo ri-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterInterfaceConnectionArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class AlarmContactGroupArgs:
                  enable_subscribed: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AlarmContactGroup resource.
+
         :param pulumi.Input[_builtins.str] alarm_contact_group_name: The name of the alarm group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contacts: The name of the alert contact.
         :param pulumi.Input[_builtins.str] describe: The description of the alert group.
@@ -96,6 +97,7 @@ class _AlarmContactGroupState:
                  enable_subscribed: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AlarmContactGroup resources.
+
         :param pulumi.Input[_builtins.str] alarm_contact_group_name: The name of the alarm group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contacts: The name of the alert contact.
         :param pulumi.Input[_builtins.str] describe: The description of the alert group.
@@ -198,6 +200,7 @@ class AlarmContactGroup(pulumi.CustomResource):
         $ pulumi import alicloud:cms/alarmContactGroup:AlarmContactGroup example tf-testacc123
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alarm_contact_group_name: The name of the alarm group.
@@ -238,6 +241,7 @@ class AlarmContactGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/alarmContactGroup:AlarmContactGroup example tf-testacc123
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlarmContactGroupArgs args: The arguments to use to populate this resource's properties.

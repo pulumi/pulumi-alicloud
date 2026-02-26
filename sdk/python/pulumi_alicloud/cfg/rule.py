@@ -41,6 +41,7 @@ class RuleArgs:
                  tag_value_scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Rule resource.
+
         :param pulumi.Input[_builtins.int] risk_level: The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
         :param pulumi.Input[_builtins.str] rule_name: The name of the rule.
         :param pulumi.Input[_builtins.str] source_identifier: The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
@@ -357,6 +358,7 @@ class _RuleState:
                  tag_value_scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
+
         :param pulumi.Input[_builtins.int] account_id: The ID of Alicloud account.
         :param pulumi.Input['RuleComplianceArgs'] compliance: compliance information.
         :param pulumi.Input[_builtins.str] compliance_pack_id: Compliance Package ID.
@@ -836,6 +838,7 @@ class Rule(pulumi.CustomResource):
         $ pulumi import alicloud:cfg/rule:Rule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_rule_trigger_types: The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
@@ -909,6 +912,7 @@ class Rule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cfg/rule:Rule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleArgs args: The arguments to use to populate this resource's properties.

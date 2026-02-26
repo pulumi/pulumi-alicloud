@@ -42,6 +42,7 @@ class BucketArgs:
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
         """
         The set of arguments for constructing a Bucket resource.
+
         :param pulumi.Input['BucketAccessMonitorArgs'] access_monitor: A access monitor status of a bucket. See `access_monitor` below.
         :param pulumi.Input[_builtins.str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket. If omitted, Terraform will assign a random and unique name.
@@ -367,6 +368,7 @@ class _BucketState:
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
         """
         Input properties used for looking up and filtering Bucket resources.
+
         :param pulumi.Input['BucketAccessMonitorArgs'] access_monitor: A access monitor status of a bucket. See `access_monitor` below.
         :param pulumi.Input[_builtins.str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket. If omitted, Terraform will assign a random and unique name.
@@ -1182,6 +1184,7 @@ class Bucket(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucket:Bucket bucket bucket-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['BucketAccessMonitorArgs', 'BucketAccessMonitorArgsDict']] access_monitor: A access monitor status of a bucket. See `access_monitor` below.
@@ -1627,6 +1630,7 @@ class Bucket(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucket:Bucket bucket bucket-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class ReadWriteSplittingConnectionArgs:
                  weight: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ReadWriteSplittingConnection resource.
+
         :param pulumi.Input[_builtins.str] distribution_type: Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[_builtins.str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
@@ -130,6 +131,7 @@ class _ReadWriteSplittingConnectionState:
                  weight: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ReadWriteSplittingConnection resources.
+
         :param pulumi.Input[_builtins.str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
         :param pulumi.Input[_builtins.str] connection_string: Connection instance string.
         :param pulumi.Input[_builtins.str] distribution_type: Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
@@ -325,6 +327,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         $ pulumi import alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection example abc12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
@@ -413,6 +416,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection example abc12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReadWriteSplittingConnectionArgs args: The arguments to use to populate this resource's properties.

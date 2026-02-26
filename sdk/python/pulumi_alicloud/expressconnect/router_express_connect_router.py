@@ -29,6 +29,7 @@ class RouterExpressConnectRouterArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RouterExpressConnectRouter resource.
+
         :param pulumi.Input[_builtins.int] alibaba_side_asn: ASN representing resources.
         :param pulumi.Input[_builtins.str] description: Represents the description of the leased line gateway.
         :param pulumi.Input[_builtins.str] ecr_name: Name of the Gateway representing the leased line.
@@ -136,6 +137,7 @@ class _RouterExpressConnectRouterState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering RouterExpressConnectRouter resources.
+
         :param pulumi.Input[_builtins.int] alibaba_side_asn: ASN representing resources.
         :param pulumi.Input[_builtins.str] create_time: Represents the creation time of the resource.
         :param pulumi.Input[_builtins.str] description: Represents the description of the leased line gateway.
@@ -312,6 +314,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] alibaba_side_asn: ASN representing resources.
@@ -365,6 +368,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterExpressConnectRouterArgs args: The arguments to use to populate this resource's properties.

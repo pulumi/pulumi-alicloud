@@ -33,6 +33,7 @@ class HadoopDataSourceArgs:
                  yarn_conf: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HadoopDataSource resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] data_source_description: Data Source Description
         :param pulumi.Input[_builtins.str] data_source_name: Data Source Name
@@ -251,6 +252,7 @@ class _HadoopDataSourceState:
                  yarn_conf: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HadoopDataSource resources.
+
         :param pulumi.Input[_builtins.str] create_time: Creation time
         :param pulumi.Input[_builtins.str] data_source_description: Data Source Description
         :param pulumi.Input[_builtins.int] data_source_id: The data source ID.
@@ -685,6 +687,7 @@ class HadoopDataSource(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/hadoopDataSource:HadoopDataSource example <db_instance_id>:<data_source_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_source_description: Data Source Description
@@ -884,6 +887,7 @@ class HadoopDataSource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/hadoopDataSource:HadoopDataSource example <db_instance_id>:<data_source_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HadoopDataSourceArgs args: The arguments to use to populate this resource's properties.

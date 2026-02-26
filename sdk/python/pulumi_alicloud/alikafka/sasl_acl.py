@@ -30,6 +30,7 @@ class SaslAclArgs:
                  host: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SaslAcl resource.
+
         :param pulumi.Input[_builtins.str] acl_operation_type: Operation type. Valid values:
                - `Write`: write
                - `Read`: read
@@ -226,6 +227,7 @@ class _SaslAclState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SaslAcl resources.
+
         :param pulumi.Input[_builtins.str] acl_operation_type: Operation type. Valid values:
                - `Write`: write
                - `Read`: read
@@ -504,6 +506,7 @@ class SaslAcl(pulumi.CustomResource):
         $ pulumi import alicloud:alikafka/saslAcl:SaslAcl example <instance_id>:<username>:<acl_resource_type>:<acl_resource_name>:<acl_resource_pattern_type>:<acl_operation_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_operation_type: Operation type. Valid values:
@@ -620,6 +623,7 @@ class SaslAcl(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alikafka/saslAcl:SaslAcl example <instance_id>:<username>:<acl_resource_type>:<acl_resource_name>:<acl_resource_pattern_type>:<acl_operation_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SaslAclArgs args: The arguments to use to populate this resource's properties.

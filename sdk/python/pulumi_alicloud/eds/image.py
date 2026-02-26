@@ -24,6 +24,7 @@ class ImageArgs:
                  image_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Image resource.
+
         :param pulumi.Input[_builtins.str] desktop_id: The desktop id of the desktop.
         :param pulumi.Input[_builtins.str] description: The description of the image.
         :param pulumi.Input[_builtins.str] image_name: The name of the image.
@@ -80,6 +81,7 @@ class _ImageState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Image resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the image.
         :param pulumi.Input[_builtins.str] desktop_id: The desktop id of the desktop.
         :param pulumi.Input[_builtins.str] image_name: The name of the image.
@@ -222,6 +224,7 @@ class Image(pulumi.CustomResource):
         $ pulumi import alicloud:eds/image:Image example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the image.
@@ -302,6 +305,7 @@ class Image(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/image:Image example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageArgs args: The arguments to use to populate this resource's properties.

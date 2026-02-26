@@ -40,6 +40,7 @@ class DomainArgs:
                  write_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Domain resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the WAF instance.
         :param pulumi.Input[_builtins.str] is_access_product: Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
         :param pulumi.Input[_builtins.str] cluster_type: The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
@@ -329,6 +330,7 @@ class _DomainState:
                  write_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+
         :param pulumi.Input[_builtins.str] cluster_type: The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
         :param pulumi.Input[_builtins.str] cname: The CNAME record assigned by the WAF instance to the specified domain.
         :param pulumi.Input[_builtins.int] connection_time: The connection timeout for WAF exclusive clusters. Unit: seconds.
@@ -679,6 +681,7 @@ class Domain(pulumi.CustomResource):
         $ pulumi import alicloud:waf/domain:Domain domain waf-132435:www.domain.com
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_type: The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
@@ -750,6 +753,7 @@ class Domain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:waf/domain:Domain domain waf-132435:www.domain.com
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

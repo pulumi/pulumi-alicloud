@@ -28,6 +28,7 @@ class MultiAccountDeliveryChannelArgs:
                  resource_snapshot_delivery: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']] = None):
         """
         The set of arguments for constructing a MultiAccountDeliveryChannel resource.
+
         :param pulumi.Input[_builtins.str] delivery_channel_description: The description of the delivery channel.
         :param pulumi.Input['MultiAccountDeliveryChannelDeliveryChannelFilterArgs'] delivery_channel_filter: The effective scope of the delivery channel. See `delivery_channel_filter` below.
         :param pulumi.Input[_builtins.str] multi_account_delivery_channel_name: The name of the delivery channel.
@@ -113,6 +114,7 @@ class _MultiAccountDeliveryChannelState:
                  resource_snapshot_delivery: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']] = None):
         """
         Input properties used for looking up and filtering MultiAccountDeliveryChannel resources.
+
         :param pulumi.Input[_builtins.str] delivery_channel_description: The description of the delivery channel.
         :param pulumi.Input['MultiAccountDeliveryChannelDeliveryChannelFilterArgs'] delivery_channel_filter: The effective scope of the delivery channel. See `delivery_channel_filter` below.
         :param pulumi.Input[_builtins.str] multi_account_delivery_channel_name: The name of the delivery channel.
@@ -271,6 +273,7 @@ class MultiAccountDeliveryChannel(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] delivery_channel_description: The description of the delivery channel.
@@ -352,6 +355,7 @@ class MultiAccountDeliveryChannel(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MultiAccountDeliveryChannelArgs args: The arguments to use to populate this resource's properties.

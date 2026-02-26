@@ -24,6 +24,7 @@ class AclEntryAttachmentArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AclEntryAttachment resource.
+
         :param pulumi.Input[_builtins.str] acl_id: The ID of the Acl.
         :param pulumi.Input[_builtins.str] entry: The CIDR blocks.
         :param pulumi.Input[_builtins.str] description: The description of the entry.
@@ -79,6 +80,7 @@ class _AclEntryAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclEntryAttachment resources.
+
         :param pulumi.Input[_builtins.str] acl_id: The ID of the Acl.
         :param pulumi.Input[_builtins.str] description: The description of the entry.
         :param pulumi.Input[_builtins.str] entry: The CIDR blocks.
@@ -187,6 +189,7 @@ class AclEntryAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_id: The ID of the Acl.
@@ -233,6 +236,7 @@ class AclEntryAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclEntryAttachmentArgs args: The arguments to use to populate this resource's properties.

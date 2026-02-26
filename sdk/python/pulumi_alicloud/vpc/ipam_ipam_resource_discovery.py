@@ -26,6 +26,7 @@ class IpamIpamResourceDiscoveryArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a IpamIpamResourceDiscovery resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] operating_region_lists: The list of operating regions for resource discovery.
         :param pulumi.Input[_builtins.str] ipam_resource_discovery_description: The description of resource discovery.
         :param pulumi.Input[_builtins.str] ipam_resource_discovery_name: The name of the resource
@@ -116,6 +117,7 @@ class _IpamIpamResourceDiscoveryState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IpamIpamResourceDiscovery resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the resource discovery was created.
         :param pulumi.Input[_builtins.str] ipam_resource_discovery_description: The description of resource discovery.
         :param pulumi.Input[_builtins.str] ipam_resource_discovery_name: The name of the resource
@@ -289,6 +291,7 @@ class IpamIpamResourceDiscovery(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ipam_resource_discovery_description: The description of resource discovery.
@@ -340,6 +343,7 @@ class IpamIpamResourceDiscovery(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IpamIpamResourceDiscoveryArgs args: The arguments to use to populate this resource's properties.

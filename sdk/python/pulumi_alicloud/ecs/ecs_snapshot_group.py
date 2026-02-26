@@ -30,6 +30,7 @@ class EcsSnapshotGroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EcsSnapshotGroup resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disk_ids: The ID of disk for which to create snapshots. You can specify multiple disk IDs across instances with the same zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_disk_ids: The ID of disk N for which you do not need to create snapshots. After this parameter is specified, the created snapshot-consistent group does not contain snapshots of the disk.
@@ -183,6 +184,7 @@ class _EcsSnapshotGroupState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering EcsSnapshotGroup resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disk_ids: The ID of disk for which to create snapshots. You can specify multiple disk IDs across instances with the same zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_disk_ids: The ID of disk N for which you do not need to create snapshots. After this parameter is specified, the created snapshot-consistent group does not contain snapshots of the disk.
@@ -425,6 +427,7 @@ class EcsSnapshotGroup(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -515,6 +518,7 @@ class EcsSnapshotGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsSnapshotGroupArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class CustomRoutingEndpointArgs:
                  traffic_to_endpoint_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomRoutingEndpoint resource.
+
         :param pulumi.Input[_builtins.str] endpoint: The ID of the endpoint (vSwitch).
         :param pulumi.Input[_builtins.str] endpoint_group_id: The ID of the endpoint group in which to create endpoints.
         :param pulumi.Input[_builtins.str] type: The backend service type of the endpoint. Valid values: `PrivateSubNet`.
@@ -104,6 +105,7 @@ class _CustomRoutingEndpointState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomRoutingEndpoint resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the GA instance with which the endpoint is associated.
         :param pulumi.Input[_builtins.str] custom_routing_endpoint_id: The ID of the Custom Routing Endpoint.
         :param pulumi.Input[_builtins.str] endpoint: The ID of the endpoint (vSwitch).
@@ -316,6 +318,7 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
         $ pulumi import alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint example <endpoint_group_id>:<custom_routing_endpoint_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint: The ID of the endpoint (vSwitch).
@@ -403,6 +406,7 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint example <endpoint_group_id>:<custom_routing_endpoint_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomRoutingEndpointArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class PrometheusMonitoringArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrometheusMonitoring resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the prometheus instance.
         :param pulumi.Input[_builtins.str] config_yaml: Yaml configuration for monitoring.
         :param pulumi.Input[_builtins.str] type: Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
@@ -95,6 +96,7 @@ class _PrometheusMonitoringState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrometheusMonitoring resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the prometheus instance.
         :param pulumi.Input[_builtins.str] config_yaml: Yaml configuration for monitoring.
         :param pulumi.Input[_builtins.str] monitoring_name: The name of the resource.
@@ -296,6 +298,7 @@ class PrometheusMonitoring(pulumi.CustomResource):
         $ pulumi import alicloud:arms/prometheusMonitoring:PrometheusMonitoring example <cluster_id>:<monitoring_name>:<type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the prometheus instance.
@@ -420,6 +423,7 @@ class PrometheusMonitoring(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/prometheusMonitoring:PrometheusMonitoring example <cluster_id>:<monitoring_name>:<type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PrometheusMonitoringArgs args: The arguments to use to populate this resource's properties.

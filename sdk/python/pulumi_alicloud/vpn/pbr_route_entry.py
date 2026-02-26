@@ -27,6 +27,7 @@ class PbrRouteEntryArgs:
                  weight: pulumi.Input[_builtins.int]):
         """
         The set of arguments for constructing a PbrRouteEntry resource.
+
         :param pulumi.Input[_builtins.str] next_hop: The next hop of the policy-based route.
         :param pulumi.Input[_builtins.bool] publish_vpc: Whether to issue the destination route to the VPC.
         :param pulumi.Input[_builtins.str] route_dest: The destination CIDR block of the policy-based route.
@@ -126,6 +127,7 @@ class _PbrRouteEntryState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering PbrRouteEntry resources.
+
         :param pulumi.Input[_builtins.str] next_hop: The next hop of the policy-based route.
         :param pulumi.Input[_builtins.bool] publish_vpc: Whether to issue the destination route to the VPC.
         :param pulumi.Input[_builtins.str] route_dest: The destination CIDR block of the policy-based route.
@@ -363,6 +365,7 @@ class PbrRouteEntry(pulumi.CustomResource):
         $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example <vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] next_hop: The next hop of the policy-based route.
@@ -493,6 +496,7 @@ class PbrRouteEntry(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example <vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PbrRouteEntryArgs args: The arguments to use to populate this resource's properties.

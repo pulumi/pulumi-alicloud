@@ -24,6 +24,7 @@ class ApplicationAccessPointArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationAccessPoint resource.
+
         :param pulumi.Input[_builtins.str] application_access_point_name: Application Access Point Name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policies: The policies that have bound to the Application Access Point (AAP).
         :param pulumi.Input[_builtins.str] description: Description .
@@ -78,6 +79,7 @@ class _ApplicationAccessPointState:
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ApplicationAccessPoint resources.
+
         :param pulumi.Input[_builtins.str] application_access_point_name: Application Access Point Name.
         :param pulumi.Input[_builtins.str] description: Description .
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policies: The policies that have bound to the Application Access Point (AAP).
@@ -175,6 +177,7 @@ class ApplicationAccessPoint(pulumi.CustomResource):
         $ pulumi import alicloud:kms/applicationAccessPoint:ApplicationAccessPoint example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_access_point_name: Application Access Point Name.
@@ -225,6 +228,7 @@ class ApplicationAccessPoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:kms/applicationAccessPoint:ApplicationAccessPoint example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationAccessPointArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class AttackPathSensitiveAssetConfigArgs:
                  attack_path_asset_lists: pulumi.Input[Sequence[pulumi.Input['AttackPathSensitiveAssetConfigAttackPathAssetListArgs']]]):
         """
         The set of arguments for constructing a AttackPathSensitiveAssetConfig resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['AttackPathSensitiveAssetConfigAttackPathAssetListArgs']]] attack_path_asset_lists: The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
         """
         pulumi.set(__self__, "attack_path_asset_lists", attack_path_asset_lists)
@@ -47,6 +48,7 @@ class _AttackPathSensitiveAssetConfigState:
                  attack_path_asset_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AttackPathSensitiveAssetConfigAttackPathAssetListArgs']]]] = None):
         """
         Input properties used for looking up and filtering AttackPathSensitiveAssetConfig resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['AttackPathSensitiveAssetConfigAttackPathAssetListArgs']]] attack_path_asset_lists: The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
         """
         if attack_path_asset_lists is not None:
@@ -110,6 +112,7 @@ class AttackPathSensitiveAssetConfig(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict']]]] attack_path_asset_lists: The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
@@ -156,6 +159,7 @@ class AttackPathSensitiveAssetConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AttackPathSensitiveAssetConfigArgs args: The arguments to use to populate this resource's properties.

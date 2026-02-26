@@ -39,6 +39,7 @@ class RegistryEnterpriseInstanceArgs:
                  vpc_quota: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseInstance resource.
+
         :param pulumi.Input[_builtins.str] instance_name: InstanceName
         :param pulumi.Input[_builtins.str] instance_type: The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
                - `Basic`: Basic instance
@@ -370,6 +371,7 @@ class _RegistryEnterpriseInstanceState:
                  vpc_quota: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseInstance resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] created_time: . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
         :param pulumi.Input[_builtins.str] custom_oss_bucket: Custom OSS Bucket name
@@ -838,6 +840,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_oss_bucket: Custom OSS Bucket name
@@ -938,6 +941,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegistryEnterpriseInstanceArgs args: The arguments to use to populate this resource's properties.

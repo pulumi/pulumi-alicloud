@@ -26,6 +26,7 @@ class CustomRoutingEndpointGroupArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomRoutingEndpointGroup resource.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the GA instance.
         :param pulumi.Input[_builtins.str] endpoint_group_region: The ID of the region in which to create the endpoint group.
         :param pulumi.Input[_builtins.str] listener_id: The ID of the custom routing listener.
@@ -112,6 +113,7 @@ class _CustomRoutingEndpointGroupState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomRoutingEndpointGroup resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the GA instance.
         :param pulumi.Input[_builtins.str] custom_routing_endpoint_group_name: The name of the endpoint group.
         :param pulumi.Input[_builtins.str] description: The description of the endpoint group.
@@ -275,6 +277,7 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
         $ pulumi import alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the GA instance.
@@ -346,6 +349,7 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomRoutingEndpointGroupArgs args: The arguments to use to populate this resource's properties.

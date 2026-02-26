@@ -24,6 +24,7 @@ class EdgeContainerAppRecordArgs:
                  site_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EdgeContainerAppRecord resource.
+
         :param pulumi.Input[_builtins.str] app_id: The application ID
         :param pulumi.Input[_builtins.str] record_name: The associated domain name.
         :param pulumi.Input[_builtins.str] site_id: The website ID.
@@ -79,6 +80,7 @@ class _EdgeContainerAppRecordState:
                  site_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EdgeContainerAppRecord resources.
+
         :param pulumi.Input[_builtins.str] app_id: The application ID
         :param pulumi.Input[_builtins.str] create_time: The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] record_name: The associated domain name.
@@ -212,6 +214,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
         $ pulumi import alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord example <site_id>:<app_id>:<record_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The application ID
@@ -283,6 +286,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord example <site_id>:<app_id>:<record_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EdgeContainerAppRecordArgs args: The arguments to use to populate this resource's properties.

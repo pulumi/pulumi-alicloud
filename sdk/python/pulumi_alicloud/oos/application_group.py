@@ -27,6 +27,7 @@ class ApplicationGroupArgs:
                  import_tag_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationGroup resource.
+
         :param pulumi.Input[_builtins.str] application_group_name: The name of the Application group.
         :param pulumi.Input[_builtins.str] application_name: The name of the Application.
         :param pulumi.Input[_builtins.str] deploy_region_id: The region ID of the deployment.
@@ -130,6 +131,7 @@ class _ApplicationGroupState:
                  import_tag_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationGroup resources.
+
         :param pulumi.Input[_builtins.str] application_group_name: The name of the Application group.
         :param pulumi.Input[_builtins.str] application_name: The name of the Application.
         :param pulumi.Input[_builtins.str] deploy_region_id: The region ID of the deployment.
@@ -289,6 +291,7 @@ class ApplicationGroup(pulumi.CustomResource):
         $ pulumi import alicloud:oos/applicationGroup:ApplicationGroup example <application_name>:<application_group_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_group_name: The name of the Application group.
@@ -355,6 +358,7 @@ class ApplicationGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oos/applicationGroup:ApplicationGroup example <application_name>:<application_group_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationGroupArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class GatewayRouteTableAttachmentArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GatewayRouteTableAttachment resource.
+
         :param pulumi.Input[_builtins.str] ipv4_gateway_id: The ID of the IPv4 Gateway instance.
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the Gateway route table to be bound.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
@@ -80,6 +81,7 @@ class _GatewayRouteTableAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewayRouteTableAttachment resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
         :param pulumi.Input[_builtins.str] ipv4_gateway_id: The ID of the IPv4 Gateway instance.
@@ -222,6 +224,7 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment example <route_table_id>:<ipv4_gateway_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
@@ -275,6 +278,7 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment example <route_table_id>:<ipv4_gateway_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayRouteTableAttachmentArgs args: The arguments to use to populate this resource's properties.

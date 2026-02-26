@@ -33,6 +33,7 @@ class VideoProcessingArgs:
                  video_seek_enable: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VideoProcessing resource.
+
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.str] flv_seek_end: Custom FLV end parameters.
         :param pulumi.Input[_builtins.str] flv_seek_start: Custom FLV start parameters.
@@ -237,6 +238,7 @@ class _VideoProcessingState:
                  video_seek_enable: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VideoProcessing resources.
+
         :param pulumi.Input[_builtins.int] config_id: Config Id
         :param pulumi.Input[_builtins.str] flv_seek_end: Custom FLV end parameters.
         :param pulumi.Input[_builtins.str] flv_seek_start: Custom FLV start parameters.
@@ -508,6 +510,7 @@ class VideoProcessing(pulumi.CustomResource):
         $ pulumi import alicloud:esa/videoProcessing:VideoProcessing example <site_id>:<config_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] flv_seek_end: Custom FLV end parameters.
@@ -580,6 +583,7 @@ class VideoProcessing(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/videoProcessing:VideoProcessing example <site_id>:<config_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VideoProcessingArgs args: The arguments to use to populate this resource's properties.

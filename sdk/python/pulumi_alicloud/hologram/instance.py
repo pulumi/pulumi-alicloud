@@ -42,6 +42,7 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] instance_name: The name of the resource.
         :param pulumi.Input[_builtins.str] instance_type: The instance type. Value:
                - Standard: Universal.
@@ -398,6 +399,7 @@ class _InstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. The default value is true. Value:
                - true: automatic payment
                - false: only generate orders, not pay
@@ -850,6 +852,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:hologram/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. The default value is true. Value:
@@ -962,6 +965,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hologram/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

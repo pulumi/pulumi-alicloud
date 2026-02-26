@@ -24,6 +24,7 @@ class PublicIpAddressPoolCidrBlockArgs:
                  cidr_mask: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a PublicIpAddressPoolCidrBlock resource.
+
         :param pulumi.Input[_builtins.str] public_ip_address_pool_id: The ID of the VPC Public IP address pool.
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block.
         :param pulumi.Input[_builtins.int] cidr_mask: IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
@@ -83,6 +84,7 @@ class _PublicIpAddressPoolCidrBlockState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicIpAddressPoolCidrBlock resources.
+
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block.
         :param pulumi.Input[_builtins.int] cidr_mask: IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
                > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
@@ -214,6 +216,7 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock example <public_ip_address_pool_id>:<cidr_block>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block.
@@ -267,6 +270,7 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock example <public_ip_address_pool_id>:<cidr_block>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PublicIpAddressPoolCidrBlockArgs args: The arguments to use to populate this resource's properties.

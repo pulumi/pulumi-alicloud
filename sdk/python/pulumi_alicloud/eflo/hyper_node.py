@@ -42,6 +42,7 @@ class HyperNodeArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HyperNode resource.
+
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
         :param pulumi.Input[Sequence[pulumi.Input['HyperNodeDataDiskArgs']]] data_disks: List of disk information of attaching to each sub computing node.  See `data_disk` below.
@@ -368,6 +369,7 @@ class _HyperNodeState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HyperNode resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[Sequence[pulumi.Input['HyperNodeDataDiskArgs']]] data_disks: List of disk information of attaching to each sub computing node.  See `data_disk` below.
@@ -786,6 +788,7 @@ class HyperNode(pulumi.CustomResource):
         $ pulumi import alicloud:eflo/hyperNode:HyperNode example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
@@ -866,6 +869,7 @@ class HyperNode(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eflo/hyperNode:HyperNode example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HyperNodeArgs args: The arguments to use to populate this resource's properties.

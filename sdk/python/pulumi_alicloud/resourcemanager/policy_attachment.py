@@ -26,6 +26,7 @@ class PolicyAttachmentArgs:
                  resource_group_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[_builtins.str] policy_type: The type of the policy. Valid values: `Custom`, `System`.
         :param pulumi.Input[_builtins.str] principal_name: The name of the object to which you want to attach the policy.
@@ -109,6 +110,7 @@ class _PolicyAttachmentState:
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[_builtins.str] policy_type: The type of the policy. Valid values: `Custom`, `System`.
         :param pulumi.Input[_builtins.str] principal_name: The name of the object to which you want to attach the policy.
@@ -256,6 +258,7 @@ class PolicyAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
@@ -326,6 +329,7 @@ class PolicyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

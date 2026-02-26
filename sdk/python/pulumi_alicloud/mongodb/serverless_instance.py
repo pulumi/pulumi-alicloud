@@ -41,6 +41,7 @@ class ServerlessInstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServerlessInstance resource.
+
         :param pulumi.Input[_builtins.str] account_password: The password of the database logon account.
                * The password length is `8` to `32` bits.
                * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
@@ -335,6 +336,7 @@ class _ServerlessInstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerlessInstance resources.
+
         :param pulumi.Input[_builtins.str] account_password: The password of the database logon account.
                * The password length is `8` to `32` bits.
                * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
@@ -709,6 +711,7 @@ class ServerlessInstance(pulumi.CustomResource):
         $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_password: The password of the database logon account.
@@ -794,6 +797,7 @@ class ServerlessInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServerlessInstanceArgs args: The arguments to use to populate this resource's properties.

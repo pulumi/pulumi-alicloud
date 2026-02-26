@@ -27,6 +27,7 @@ class DataSourceArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataSource resource.
+
         :param pulumi.Input[_builtins.str] connection_properties: Data source connection configuration information, including the connection address, access identity, and environment information. The data source environment EnvType information is a member property of this object, including DEV (Development Environment) and PROD (production environment). The value of EnvType is not case-sensitive.
         :param pulumi.Input[_builtins.str] connection_properties_mode: The configuration mode of the data source. Different types of data sources have different configuration modes. For example, MySQL data sources support UrlMode and InstanceMode.
         :param pulumi.Input[_builtins.str] data_source_name: The data source name. The name of a data source in a specific environment (development environment or production environment) is unique in a project.
@@ -132,6 +133,7 @@ class _DataSourceState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataSource resources.
+
         :param pulumi.Input[_builtins.str] connection_properties: Data source connection configuration information, including the connection address, access identity, and environment information. The data source environment EnvType information is a member property of this object, including DEV (Development Environment) and PROD (production environment). The value of EnvType is not case-sensitive.
         :param pulumi.Input[_builtins.str] connection_properties_mode: The configuration mode of the data source. Different types of data sources have different configuration modes. For example, MySQL data sources support UrlMode and InstanceMode.
         :param pulumi.Input[_builtins.int] create_time: The creation time of the resource
@@ -396,6 +398,7 @@ class DataSource(pulumi.CustomResource):
         $ pulumi import alicloud:dataworks/dataSource:DataSource example <project_id>:<data_source_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_properties: Data source connection configuration information, including the connection address, access identity, and environment information. The data source environment EnvType information is a member property of this object, including DEV (Development Environment) and PROD (production environment). The value of EnvType is not case-sensitive.
@@ -478,6 +481,7 @@ class DataSource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dataworks/dataSource:DataSource example <project_id>:<data_source_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataSourceArgs args: The arguments to use to populate this resource's properties.

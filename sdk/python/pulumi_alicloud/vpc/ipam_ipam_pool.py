@@ -34,6 +34,7 @@ class IpamIpamPoolArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a IpamIpamPool resource.
+
         :param pulumi.Input[_builtins.str] ipam_scope_id: Ipam scope id.
         :param pulumi.Input[_builtins.int] allocation_default_cidr_mask: The default network mask assigned by the IPAM address pool.
                IPv4 network mask value range: **0 to 32** bits.
@@ -264,6 +265,7 @@ class _IpamIpamPoolState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IpamIpamPool resources.
+
         :param pulumi.Input[_builtins.int] allocation_default_cidr_mask: The default network mask assigned by the IPAM address pool.
                IPv4 network mask value range: **0 to 32** bits.
         :param pulumi.Input[_builtins.int] allocation_max_cidr_mask: The maximum network mask assigned by the IPAM address pool.
@@ -585,6 +587,7 @@ class IpamIpamPool(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/ipamIpamPool:IpamIpamPool example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] allocation_default_cidr_mask: The default network mask assigned by the IPAM address pool.
@@ -658,6 +661,7 @@ class IpamIpamPool(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/ipamIpamPool:IpamIpamPool example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IpamIpamPoolArgs args: The arguments to use to populate this resource's properties.

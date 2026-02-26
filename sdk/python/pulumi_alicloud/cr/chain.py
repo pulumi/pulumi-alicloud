@@ -29,6 +29,7 @@ class ChainArgs:
                  repo_namespace_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Chain resource.
+
         :param pulumi.Input[_builtins.str] chain_name: The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
         :param pulumi.Input[_builtins.str] instance_id: The ID of CR Enterprise Edition instance.
         :param pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
@@ -132,6 +133,7 @@ class _ChainState:
                  repo_namespace_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Chain resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         :param pulumi.Input[_builtins.str] chain_id: Delivery chain ID.
         :param pulumi.Input[_builtins.str] chain_name: The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
@@ -421,6 +423,7 @@ class Chain(pulumi.CustomResource):
         $ pulumi import alicloud:cr/chain:Chain example <instance_id>:<chain_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
@@ -603,6 +606,7 @@ class Chain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cr/chain:Chain example <instance_id>:<chain_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ChainArgs args: The arguments to use to populate this resource's properties.

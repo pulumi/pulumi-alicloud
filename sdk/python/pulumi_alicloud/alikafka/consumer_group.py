@@ -26,6 +26,7 @@ class ConsumerGroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ConsumerGroup resource.
+
         :param pulumi.Input[_builtins.str] consumer_id: ID of the consumer group.
         :param pulumi.Input[_builtins.str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[_builtins.str] description: Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
@@ -118,6 +119,7 @@ class _ConsumerGroupState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ConsumerGroup resources.
+
         :param pulumi.Input[_builtins.str] consumer_id: ID of the consumer group.
         :param pulumi.Input[_builtins.int] create_time: (Available since v1.268.0) The timestamp of when the group was created.
         :param pulumi.Input[_builtins.str] description: Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
@@ -279,6 +281,7 @@ class ConsumerGroup(pulumi.CustomResource):
         $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup example <instance_id>:<consumer_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] consumer_id: ID of the consumer group.
@@ -329,6 +332,7 @@ class ConsumerGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup example <instance_id>:<consumer_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConsumerGroupArgs args: The arguments to use to populate this resource's properties.

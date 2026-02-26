@@ -26,6 +26,7 @@ class SnapshotArgs:
                  snapshot_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Database File System.
         :param pulumi.Input[_builtins.str] description: The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the snapshot. Valid values:
@@ -114,6 +115,7 @@ class _SnapshotState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the snapshot. Valid values:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Database File System.
@@ -256,6 +258,7 @@ class Snapshot(pulumi.CustomResource):
         $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
@@ -306,6 +309,7 @@ class Snapshot(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SnapshotArgs args: The arguments to use to populate this resource's properties.

@@ -41,6 +41,7 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
                If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
                If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
@@ -362,6 +363,7 @@ class _InstanceState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
         :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
                If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
@@ -805,6 +807,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:bastionhost/instance:Instance example bastionhost-exampe123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAdAuthServerArgs', 'InstanceAdAuthServerArgsDict']]]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
@@ -960,6 +963,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:bastionhost/instance:Instance example bastionhost-exampe123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

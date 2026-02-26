@@ -31,6 +31,7 @@ class AccountArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] display_name: Member name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] abandon_able_check_ids: . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] abandonable_check_ids: The ID of the check item that can choose to abandon and continue to perform member deletion.
@@ -227,6 +228,7 @@ class _AccountState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] abandon_able_check_ids: . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] abandonable_check_ids: The ID of the check item that can choose to abandon and continue to perform member deletion.
                The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
@@ -538,6 +540,7 @@ class Account(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/account:Account example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] abandon_able_check_ids: . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
@@ -608,6 +611,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/account:Account example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

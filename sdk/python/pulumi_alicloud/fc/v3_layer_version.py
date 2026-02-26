@@ -30,6 +30,7 @@ class V3LayerVersionArgs:
                  public: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V3LayerVersion resource.
+
         :param pulumi.Input[_builtins.str] layer_name: Name of the layer
         :param pulumi.Input[_builtins.str] acl: The access permission of the layer, 1: public, 0: private, default is private
         :param pulumi.Input['V3LayerVersionCodeArgs'] code: Layer code configuration See `code` below.
@@ -153,6 +154,7 @@ class _V3LayerVersionState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V3LayerVersion resources.
+
         :param pulumi.Input[_builtins.str] acl: The access permission of the layer, 1: public, 0: private, default is private
         :param pulumi.Input['V3LayerVersionCodeArgs'] code: Layer code configuration See `code` below.
         :param pulumi.Input[_builtins.str] code_size: (Available since v1.234.0) The code package size of the layer, in bytes.
@@ -376,6 +378,7 @@ class V3LayerVersion(pulumi.CustomResource):
         $ pulumi import alicloud:fc/v3LayerVersion:V3LayerVersion example <layer_name>:<version>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: The access permission of the layer, 1: public, 0: private, default is private
@@ -432,6 +435,7 @@ class V3LayerVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/v3LayerVersion:V3LayerVersion example <layer_name>:<version>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V3LayerVersionArgs args: The arguments to use to populate this resource's properties.

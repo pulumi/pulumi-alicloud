@@ -26,6 +26,7 @@ class WafRulesetArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WafRuleset resource.
+
         :param pulumi.Input[_builtins.str] phase: The WAF phase
         :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.str] name: The ruleset name.
@@ -117,6 +118,7 @@ class _WafRulesetState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WafRuleset resources.
+
         :param pulumi.Input[_builtins.str] name: The ruleset name.
         :param pulumi.Input[_builtins.str] phase: The WAF phase
         :param pulumi.Input[_builtins.int] ruleset_id: waf rule set id
@@ -265,6 +267,7 @@ class WafRuleset(pulumi.CustomResource):
         $ pulumi import alicloud:esa/wafRuleset:WafRuleset example <ruleset_id>:<site_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The ruleset name.
@@ -319,6 +322,7 @@ class WafRuleset(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/wafRuleset:WafRuleset example <ruleset_id>:<site_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WafRulesetArgs args: The arguments to use to populate this resource's properties.

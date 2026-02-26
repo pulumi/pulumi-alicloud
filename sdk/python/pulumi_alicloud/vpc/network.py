@@ -45,6 +45,7 @@ class NetworkArgs:
                  vpc_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Network resource.
+
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block of the VPC.
                
                - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
@@ -466,6 +467,7 @@ class _NetworkState:
                  vpc_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Network resources.
+
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block of the VPC.
                
                - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
@@ -1037,6 +1039,7 @@ class Network(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/network:Network example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block of the VPC.
@@ -1134,6 +1137,7 @@ class Network(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/network:Network example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkArgs args: The arguments to use to populate this resource's properties.

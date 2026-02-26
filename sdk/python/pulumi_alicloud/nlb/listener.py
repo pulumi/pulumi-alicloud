@@ -44,6 +44,7 @@ class ListenerArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Listener resource.
+
         :param pulumi.Input[_builtins.int] listener_port: The listener port. Valid values: `0` to `65535`.
                If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
         :param pulumi.Input[_builtins.str] listener_protocol: The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
@@ -433,6 +434,7 @@ class _ListenerState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Listener resources.
+
         :param pulumi.Input[_builtins.bool] alpn_enabled: Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
         :param pulumi.Input[_builtins.str] alpn_policy: The ALPN policy. Valid values:
                - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
@@ -953,6 +955,7 @@ class Listener(pulumi.CustomResource):
         $ pulumi import alicloud:nlb/listener:Listener example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] alpn_enabled: Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
@@ -1115,6 +1118,7 @@ class Listener(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nlb/listener:Listener example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ListenerArgs args: The arguments to use to populate this resource's properties.

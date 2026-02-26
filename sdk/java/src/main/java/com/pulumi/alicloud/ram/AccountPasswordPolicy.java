@@ -100,6 +100,10 @@ import javax.annotation.Nullable;
  * 
  * RAM account password policy can be imported using the `id`, e.g.
  * 
+ * ```sh
+ * $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
+ * ```
+ * 
  */
 @ResourceType(type="alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy")
 public class AccountPasswordPolicy extends com.pulumi.resources.CustomResource {

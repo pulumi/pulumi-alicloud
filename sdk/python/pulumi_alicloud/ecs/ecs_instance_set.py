@@ -67,6 +67,7 @@ class EcsInstanceSetArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsInstanceSet resource.
+
         :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance.
         :param pulumi.Input[_builtins.str] instance_type: The type of instance to start.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: A list of security group ids to associate with.
@@ -801,6 +802,7 @@ class _EcsInstanceSetState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsInstanceSet resources.
+
         :param pulumi.Input[_builtins.int] amount: The number of instances that you want to create. Valid values: `1` to `100`.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the instance. **Note:** `auto_renew` is valid only when `instance_charge_type` is set to `PrePaid`.
@@ -1612,6 +1614,7 @@ class EcsInstanceSet(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] amount: The number of instances that you want to create. Valid values: `1` to `100`.
@@ -1734,6 +1737,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param EcsInstanceSetArgs args: The arguments to use to populate this resource's properties.

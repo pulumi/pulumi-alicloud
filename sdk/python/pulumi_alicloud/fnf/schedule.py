@@ -27,6 +27,7 @@ class ScheduleArgs:
                  payload: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Schedule resource.
+
         :param pulumi.Input[_builtins.str] cron_expression: The CRON expression of the time-based schedule to be created.
         :param pulumi.Input[_builtins.str] flow_name: The name of the flow bound to the time-based schedule you want to create.
         :param pulumi.Input[_builtins.str] schedule_name: The name of the time-based schedule to be created.
@@ -130,6 +131,7 @@ class _ScheduleState:
                  schedule_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Schedule resources.
+
         :param pulumi.Input[_builtins.str] cron_expression: The CRON expression of the time-based schedule to be created.
         :param pulumi.Input[_builtins.str] description: The description of the time-based schedule to be created.
         :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
@@ -310,6 +312,7 @@ class Schedule(pulumi.CustomResource):
         $ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cron_expression: The CRON expression of the time-based schedule to be created.
@@ -368,6 +371,7 @@ class Schedule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScheduleArgs args: The arguments to use to populate this resource's properties.

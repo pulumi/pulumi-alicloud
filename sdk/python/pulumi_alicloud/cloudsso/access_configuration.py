@@ -30,6 +30,7 @@ class AccessConfigurationArgs:
                  session_duration: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a AccessConfiguration resource.
+
         :param pulumi.Input[_builtins.str] access_configuration_name: The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[_builtins.str] directory_id: The ID of the Directory.
         :param pulumi.Input[_builtins.str] description: The description of the access configuration. The description can be up to `1024` characters in length.
@@ -153,6 +154,7 @@ class _AccessConfigurationState:
                  session_duration: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AccessConfiguration resources.
+
         :param pulumi.Input[_builtins.str] access_configuration_id: The ID of the Access Configuration.
         :param pulumi.Input[_builtins.str] access_configuration_name: The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[_builtins.str] description: The description of the access configuration. The description can be up to `1024` characters in length.
@@ -346,6 +348,7 @@ class AccessConfiguration(pulumi.CustomResource):
         $ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example <directory_id>:<access_configuration_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_configuration_name: The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
@@ -415,6 +418,7 @@ class AccessConfiguration(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example <directory_id>:<access_configuration_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessConfigurationArgs args: The arguments to use to populate this resource's properties.

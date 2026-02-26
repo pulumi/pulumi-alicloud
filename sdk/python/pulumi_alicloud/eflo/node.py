@@ -52,6 +52,7 @@ class NodeArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Node resource.
+
         :param pulumi.Input[_builtins.str] billing_cycle: Billing cycle
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -576,6 +577,7 @@ class _NodeState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Node resources.
+
         :param pulumi.Input[_builtins.str] billing_cycle: Billing cycle
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -1245,6 +1247,7 @@ class Node(pulumi.CustomResource):
         $ pulumi import alicloud:eflo/node:Node example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_cycle: Billing cycle
@@ -1420,6 +1423,7 @@ class Node(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eflo/node:Node example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodeArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class ClientUserArgs:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientUser resource.
+
         :param pulumi.Input[_builtins.int] bandwidth: The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
         :param pulumi.Input[_builtins.str] sag_id: The ID of the SAG instance created for the SAG APP.
         :param pulumi.Input[_builtins.str] user_mail: The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
@@ -162,6 +163,7 @@ class _ClientUserState:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientUser resources.
+
         :param pulumi.Input[_builtins.int] bandwidth: The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
         :param pulumi.Input[_builtins.str] client_ip: The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: The password of the KMS Encryption.
@@ -343,6 +345,7 @@ class ClientUser(pulumi.CustomResource):
         $ pulumi import alicloud:sag/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bandwidth: The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
@@ -402,6 +405,7 @@ class ClientUser(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sag/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClientUserArgs args: The arguments to use to populate this resource's properties.

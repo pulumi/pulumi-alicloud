@@ -28,6 +28,7 @@ class ServiceGroupMonitoringAgentProcessArgs:
                  match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]] = None):
         """
         The set of arguments for constructing a ServiceGroupMonitoringAgentProcess resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]] alert_configs: The alert rule configurations. See `alert_config` below.
         :param pulumi.Input[_builtins.str] group_id: The ID of the application group.
         :param pulumi.Input[_builtins.str] process_name: The name of the process.
@@ -114,6 +115,7 @@ class _ServiceGroupMonitoringAgentProcessState:
                  process_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceGroupMonitoringAgentProcess resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]] alert_configs: The alert rule configurations. See `alert_config` below.
         :param pulumi.Input[_builtins.str] group_id: The ID of the application group.
         :param pulumi.Input[_builtins.str] group_monitoring_agent_process_id: The ID of the Group Monitoring Agent Process.
@@ -285,6 +287,7 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
         $ pulumi import alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess example <group_id>:<group_monitoring_agent_process_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]] alert_configs: The alert rule configurations. See `alert_config` below.
@@ -364,6 +367,7 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess example <group_id>:<group_monitoring_agent_process_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceGroupMonitoringAgentProcessArgs args: The arguments to use to populate this resource's properties.

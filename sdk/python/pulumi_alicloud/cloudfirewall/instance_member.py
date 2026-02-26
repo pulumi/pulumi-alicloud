@@ -23,6 +23,7 @@ class InstanceMemberArgs:
                  member_desc: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceMember resource.
+
         :param pulumi.Input[_builtins.str] member_uid: The UID of the cloud firewall member account.
         :param pulumi.Input[_builtins.str] member_desc: Remarks of cloud firewall member accounts.
         """
@@ -66,6 +67,7 @@ class _InstanceMemberState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceMember resources.
+
         :param pulumi.Input[_builtins.int] create_time: When the cloud firewall member account was added.> use second-level timestamp format.
         :param pulumi.Input[_builtins.str] member_desc: Remarks of cloud firewall member accounts.
         :param pulumi.Input[_builtins.str] member_display_name: The name of the cloud firewall member account.
@@ -207,6 +209,7 @@ class InstanceMember(pulumi.CustomResource):
         $terraform import alicloud_cloud_firewall_instance_member.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] member_desc: Remarks of cloud firewall member accounts.
@@ -256,6 +259,7 @@ class InstanceMember(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_cloud_firewall_instance_member.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceMemberArgs args: The arguments to use to populate this resource's properties.

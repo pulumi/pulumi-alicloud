@@ -28,6 +28,7 @@ class JdbcDataSourceArgs:
                  jdbc_password: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a JdbcDataSource resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] jdbc_user_name: The name of the database account.
         :param pulumi.Input[_builtins.str] data_source_description: Data Source Description
@@ -149,6 +150,7 @@ class _JdbcDataSourceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering JdbcDataSource resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] data_source_description: Data Source Description
         :param pulumi.Input[_builtins.str] data_source_id: The data source ID.
@@ -387,6 +389,7 @@ class JdbcDataSource(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/jdbcDataSource:JdbcDataSource example <db_instance_id>:<data_source_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_source_description: Data Source Description
@@ -473,6 +476,7 @@ class JdbcDataSource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/jdbcDataSource:JdbcDataSource example <db_instance_id>:<data_source_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param JdbcDataSourceArgs args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class HanaBackupPlanArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HanaBackupPlan resource.
+
         :param pulumi.Input[_builtins.str] backup_type: The backup type. Valid values:
                - `COMPLETE`: full backup.
                - `INCREMENTAL`: incremental backup.
@@ -183,6 +184,7 @@ class _HanaBackupPlanState:
                  vault_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HanaBackupPlan resources.
+
         :param pulumi.Input[_builtins.str] backup_prefix: The backup prefix.
         :param pulumi.Input[_builtins.str] backup_type: The backup type. Valid values:
                - `COMPLETE`: full backup.
@@ -412,6 +414,7 @@ class HanaBackupPlan(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/hanaBackupPlan:HanaBackupPlan example <plan_id>:<vault_id>:<cluster_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_prefix: The backup prefix.
@@ -486,6 +489,7 @@ class HanaBackupPlan(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/hanaBackupPlan:HanaBackupPlan example <plan_id>:<vault_id>:<cluster_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HanaBackupPlanArgs args: The arguments to use to populate this resource's properties.

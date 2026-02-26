@@ -24,6 +24,7 @@ class TlsCipherPolicyArgs:
                  tls_versions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a TlsCipherPolicy resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: The encryption algorithms supported. It depends on the value of `tls_versions`.
         :param pulumi.Input[_builtins.str] tls_cipher_policy_name: TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls_versions: The version of TLS protocol. You can find the corresponding value description in the document center [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
@@ -78,6 +79,7 @@ class _TlsCipherPolicyState:
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering TlsCipherPolicy resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: The encryption algorithms supported. It depends on the value of `tls_versions`.
         :param pulumi.Input[_builtins.str] status: TLS policy instance state.
         :param pulumi.Input[_builtins.str] tls_cipher_policy_name: TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
@@ -185,6 +187,7 @@ class TlsCipherPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: The encryption algorithms supported. It depends on the value of `tls_versions`.
@@ -230,6 +233,7 @@ class TlsCipherPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TlsCipherPolicyArgs args: The arguments to use to populate this resource's properties.

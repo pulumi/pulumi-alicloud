@@ -22,6 +22,7 @@ class HistoryDeliveryJobArgs:
                  trail_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a HistoryDeliveryJob resource.
+
         :param pulumi.Input[_builtins.str] trail_name: The Track Name.
         """
         pulumi.set(__self__, "trail_name", trail_name)
@@ -47,6 +48,7 @@ class _HistoryDeliveryJobState:
                  trail_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HistoryDeliveryJob resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.int] status: The status of the resource
         :param pulumi.Input[_builtins.str] trail_name: The Track Name.
@@ -162,6 +164,7 @@ class HistoryDeliveryJob(pulumi.CustomResource):
         $ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] trail_name: The Track Name.
@@ -230,6 +233,7 @@ class HistoryDeliveryJob(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HistoryDeliveryJobArgs args: The arguments to use to populate this resource's properties.

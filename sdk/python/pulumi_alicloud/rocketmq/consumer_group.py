@@ -29,6 +29,7 @@ class ConsumerGroupArgs:
                  remark: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConsumerGroup resource.
+
         :param pulumi.Input['ConsumerGroupConsumeRetryPolicyArgs'] consume_retry_policy: Consumption retry strategy. See `consume_retry_policy` below.
         :param pulumi.Input[_builtins.str] consumer_group_id: The first ID of the resource.
         :param pulumi.Input[_builtins.str] instance_id: Instance ID.
@@ -133,6 +134,7 @@ class _ConsumerGroupState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConsumerGroup resources.
+
         :param pulumi.Input['ConsumerGroupConsumeRetryPolicyArgs'] consume_retry_policy: Consumption retry strategy. See `consume_retry_policy` below.
         :param pulumi.Input[_builtins.str] consumer_group_id: The first ID of the resource.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
@@ -372,6 +374,7 @@ class ConsumerGroup(pulumi.CustomResource):
         $ pulumi import alicloud:rocketmq/consumerGroup:ConsumerGroup example <instance_id>:<consumer_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']] consume_retry_policy: Consumption retry strategy. See `consume_retry_policy` below.
@@ -474,6 +477,7 @@ class ConsumerGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rocketmq/consumerGroup:ConsumerGroup example <instance_id>:<consumer_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConsumerGroupArgs args: The arguments to use to populate this resource's properties.

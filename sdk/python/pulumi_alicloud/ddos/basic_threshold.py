@@ -26,6 +26,7 @@ class BasicThresholdArgs:
                  pps: pulumi.Input[_builtins.int]):
         """
         The set of arguments for constructing a BasicThreshold resource.
+
         :param pulumi.Input[_builtins.int] bps: Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] instance_type: The type of the Instance. Valid values: `ecs`,`slb`,`eip`.
@@ -111,6 +112,7 @@ class _BasicThresholdState:
                  pps: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering BasicThreshold resources.
+
         :param pulumi.Input[_builtins.int] bps: Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] instance_type: The type of the Instance. Valid values: `ecs`,`slb`,`eip`.
@@ -297,6 +299,7 @@ class BasicThreshold(pulumi.CustomResource):
         $ pulumi import alicloud:ddos/basicThreshold:BasicThreshold example <instance_type>:<instance_id>:<internet_ip>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bps: Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
@@ -376,6 +379,7 @@ class BasicThreshold(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ddos/basicThreshold:BasicThreshold example <instance_type>:<instance_id>:<internet_ip>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BasicThresholdArgs args: The arguments to use to populate this resource's properties.

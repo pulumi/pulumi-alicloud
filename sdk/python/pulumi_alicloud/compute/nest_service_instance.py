@@ -36,6 +36,7 @@ class NestServiceInstanceArgs:
                  template_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NestServiceInstance resource.
+
         :param pulumi.Input[_builtins.str] service_id: The ID of the service.
         :param pulumi.Input[_builtins.str] service_version: The version of the service.
         :param pulumi.Input['NestServiceInstanceCommodityArgs'] commodity: The order information of cloud market. See `commodity` below.
@@ -251,6 +252,7 @@ class _NestServiceInstanceState:
                  template_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NestServiceInstance resources.
+
         :param pulumi.Input['NestServiceInstanceCommodityArgs'] commodity: The order information of cloud market. See `commodity` below.
         :param pulumi.Input[_builtins.bool] enable_instance_ops: Whether the service instance has the O&M function. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] enable_user_prometheus: Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
@@ -565,6 +567,7 @@ class NestServiceInstance(pulumi.CustomResource):
         $ pulumi import alicloud:compute/nestServiceInstance:NestServiceInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']] commodity: The order information of cloud market. See `commodity` below.
@@ -667,6 +670,7 @@ class NestServiceInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:compute/nestServiceInstance:NestServiceInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NestServiceInstanceArgs args: The arguments to use to populate this resource's properties.

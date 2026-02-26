@@ -30,6 +30,7 @@ class LoadBalancerArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
+
         :param pulumi.Input[_builtins.str] vpc_id: The virtual private cloud (VPC) ID.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
         :param pulumi.Input[_builtins.str] address_ip_version: The IP version. Valid values:
@@ -158,6 +159,7 @@ class _LoadBalancerState:
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
+
         :param pulumi.Input[_builtins.str] address_ip_version: The IP version. Valid values:
                
                - `Ipv4`: IPv4 (default)
@@ -383,6 +385,7 @@ class LoadBalancer(pulumi.CustomResource):
         $ pulumi import alicloud:gwlb/loadBalancer:LoadBalancer example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_ip_version: The IP version. Valid values:
@@ -467,6 +470,7 @@ class LoadBalancer(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gwlb/loadBalancer:LoadBalancer example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerArgs args: The arguments to use to populate this resource's properties.

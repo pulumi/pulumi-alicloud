@@ -29,6 +29,7 @@ class DataFlowArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataFlow resource.
+
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] fset_id: The ID of the Fileset.
         :param pulumi.Input[_builtins.str] source_storage: The access path of the source store. Format: `<storage type>://<path>`. Among them:
@@ -172,6 +173,7 @@ class _DataFlowState:
                  throughput: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DataFlow resources.
+
         :param pulumi.Input[_builtins.str] data_flow_id: The ID of the Data flow.
         :param pulumi.Input[_builtins.str] description: The Description of the data flow. Restrictions:
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
@@ -409,6 +411,7 @@ class DataFlow(pulumi.CustomResource):
         $ pulumi import alicloud:nas/dataFlow:DataFlow example <file_system_id>:<data_flow_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The Description of the data flow. Restrictions:
@@ -504,6 +507,7 @@ class DataFlow(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nas/dataFlow:DataFlow example <file_system_id>:<data_flow_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataFlowArgs args: The arguments to use to populate this resource's properties.

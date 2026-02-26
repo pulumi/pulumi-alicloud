@@ -25,6 +25,7 @@ class VpcEndpointServiceConnectionArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VpcEndpointServiceConnection resource.
+
         :param pulumi.Input[_builtins.str] endpoint_id: The endpoint ID.
         :param pulumi.Input[_builtins.str] service_id: The endpoint service ID.
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the endpoint connection. Valid values: 1024 to 10240. Unit: Mbit/s.
@@ -100,6 +101,7 @@ class _VpcEndpointServiceConnectionState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointServiceConnection resources.
+
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the endpoint connection. Valid values: 1024 to 10240. Unit: Mbit/s.
                
                Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
@@ -260,6 +262,7 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
         $ pulumi import alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection example <service_id>:<endpoint_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the endpoint connection. Valid values: 1024 to 10240. Unit: Mbit/s.
@@ -341,6 +344,7 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection example <service_id>:<endpoint_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcEndpointServiceConnectionArgs args: The arguments to use to populate this resource's properties.

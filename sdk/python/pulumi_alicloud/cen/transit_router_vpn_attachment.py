@@ -33,6 +33,7 @@ class TransitRouterVpnAttachmentArgs:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]] = None):
         """
         The set of arguments for constructing a TransitRouterVpnAttachment resource.
+
         :param pulumi.Input[_builtins.str] vpn_id: The ID of the IPsec-VPN attachment.
         :param pulumi.Input[_builtins.bool] auto_publish_route_enabled: Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
@@ -219,6 +220,7 @@ class _TransitRouterVpnAttachmentState:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]] = None):
         """
         Input properties used for looking up and filtering TransitRouterVpnAttachment resources.
+
         :param pulumi.Input[_builtins.bool] auto_publish_route_enabled: Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
         :param pulumi.Input[_builtins.str] charge_type: The billing method.
@@ -634,6 +636,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_publish_route_enabled: Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
@@ -844,6 +847,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterVpnAttachmentArgs args: The arguments to use to populate this resource's properties.

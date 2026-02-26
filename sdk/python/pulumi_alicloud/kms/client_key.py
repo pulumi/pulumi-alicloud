@@ -26,6 +26,7 @@ class ClientKeyArgs:
                  private_key_data_file: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientKey resource.
+
         :param pulumi.Input[_builtins.str] aap_name: ClientKey's parent Application Access Point name.
         :param pulumi.Input[_builtins.str] password: To enhance security, set a password for the downloaded Client Key,When an application accesses KMS, you must use the ClientKey content and this password to initialize the SDK client.
         :param pulumi.Input[_builtins.str] not_after: The ClientKey expiration time. Example: "2027-08-10 T08:03:30Z".
@@ -113,6 +114,7 @@ class _ClientKeyState:
                  private_key_data_file: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientKey resources.
+
         :param pulumi.Input[_builtins.str] aap_name: ClientKey's parent Application Access Point name.
         :param pulumi.Input[_builtins.str] create_time: Create timestamp, e.g. "2022-08-10T08:03:30Z".
         :param pulumi.Input[_builtins.str] not_after: The ClientKey expiration time. Example: "2027-08-10 T08:03:30Z".
@@ -261,6 +263,7 @@ class ClientKey(pulumi.CustomResource):
 
         Resource attributes such as `password`, `private_key_data_file` are not available for imported resources as this information cannot be read from the KMS API.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aap_name: ClientKey's parent Application Access Point name.
@@ -317,6 +320,7 @@ class ClientKey(pulumi.CustomResource):
         ```
 
         Resource attributes such as `password`, `private_key_data_file` are not available for imported resources as this information cannot be read from the KMS API.
+
 
         :param str resource_name: The name of the resource.
         :param ClientKeyArgs args: The arguments to use to populate this resource's properties.

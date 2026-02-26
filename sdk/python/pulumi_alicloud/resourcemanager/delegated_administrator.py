@@ -23,6 +23,7 @@ class DelegatedAdministratorArgs:
                  service_principal: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DelegatedAdministrator resource.
+
         :param pulumi.Input[_builtins.str] account_id: The Alibaba Cloud account ID of the member in the resource directory.
         :param pulumi.Input[_builtins.str] service_principal: The identifier of the trusted service.
         """
@@ -61,6 +62,7 @@ class _DelegatedAdministratorState:
                  service_principal: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DelegatedAdministrator resources.
+
         :param pulumi.Input[_builtins.str] account_id: The Alibaba Cloud account ID of the member in the resource directory.
         :param pulumi.Input[_builtins.str] service_principal: The identifier of the trusted service.
         """
@@ -134,6 +136,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator example <account_id>:<service_principal>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Alibaba Cloud account ID of the member in the resource directory.
@@ -175,6 +178,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator example <account_id>:<service_principal>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DelegatedAdministratorArgs args: The arguments to use to populate this resource's properties.

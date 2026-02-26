@@ -26,6 +26,7 @@ class WaitingRoomRuleArgs:
                  waiting_room_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WaitingRoomRule resource.
+
         :param pulumi.Input[_builtins.str] rule: The content of the rule, the implemented policy or conditional expression.
         :param pulumi.Input[_builtins.str] rule_name: Rule name, optional, used to query by waiting room bypass rule name.
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
@@ -114,6 +115,7 @@ class _WaitingRoomRuleState:
                  waiting_room_rule_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering WaitingRoomRule resources.
+
         :param pulumi.Input[_builtins.str] rule: The content of the rule, the implemented policy or conditional expression.
         :param pulumi.Input[_builtins.str] rule_name: Rule name, optional, used to query by waiting room bypass rule name.
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
@@ -284,6 +286,7 @@ class WaitingRoomRule(pulumi.CustomResource):
         $ pulumi import alicloud:esa/waitingRoomRule:WaitingRoomRule example <site_id>:<waiting_room_id>:<waiting_room_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] rule: The content of the rule, the implemented policy or conditional expression.
@@ -360,6 +363,7 @@ class WaitingRoomRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/waitingRoomRule:WaitingRoomRule example <site_id>:<waiting_room_id>:<waiting_room_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WaitingRoomRuleArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class EcsAutoSnapshotPolicyAttachmentArgs:
                  disk_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a EcsAutoSnapshotPolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The ID of the automatic snapshot policy that is applied to the cloud disk.
         :param pulumi.Input[_builtins.str] disk_id: The ID of the disk.
         """
@@ -62,6 +63,7 @@ class _EcsAutoSnapshotPolicyAttachmentState:
                  region_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsAutoSnapshotPolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The ID of the automatic snapshot policy that is applied to the cloud disk.
         :param pulumi.Input[_builtins.str] disk_id: The ID of the disk.
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
@@ -172,6 +174,7 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example <auto_snapshot_policy_id>:<disk_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The ID of the automatic snapshot policy that is applied to the cloud disk.
@@ -235,6 +238,7 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example <auto_snapshot_policy_id>:<disk_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsAutoSnapshotPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

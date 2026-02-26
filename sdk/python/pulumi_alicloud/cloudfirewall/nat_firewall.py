@@ -35,6 +35,7 @@ class NatFirewallArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatFirewall resource.
+
         :param pulumi.Input[_builtins.str] nat_gateway_id: NAT gateway ID.
         :param pulumi.Input[Sequence[pulumi.Input['NatFirewallNatRouteEntryListArgs']]] nat_route_entry_lists: The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
         :param pulumi.Input[_builtins.str] proxy_name: NAT firewall name.
@@ -230,6 +231,7 @@ class _NatFirewallState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NatFirewall resources.
+
         :param pulumi.Input[_builtins.str] firewall_switch: Safety protection switch. Value:-**open**: open-**close**: close.
         :param pulumi.Input[_builtins.str] lang: Lang.
         :param pulumi.Input[_builtins.str] nat_gateway_id: NAT gateway ID.
@@ -508,6 +510,7 @@ class NatFirewall(pulumi.CustomResource):
         $ pulumi import alicloud:cloudfirewall/natFirewall:NatFirewall example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] firewall_switch: Safety protection switch. Value:-**open**: open-**close**: close.
@@ -604,6 +607,7 @@ class NatFirewall(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudfirewall/natFirewall:NatFirewall example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NatFirewallArgs args: The arguments to use to populate this resource's properties.

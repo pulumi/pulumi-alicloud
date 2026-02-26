@@ -47,6 +47,7 @@ class EtlArgs:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Etl resource.
+
         :param pulumi.Input[_builtins.str] display_name: Log service etl job alias.
         :param pulumi.Input[_builtins.str] etl_name: The name of the log etl job.
         :param pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]] etl_sinks: Target logstore configuration for delivery after data processing. See `etl_sinks` below.
@@ -433,6 +434,7 @@ class _EtlState:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Etl resources.
+
         :param pulumi.Input[_builtins.str] access_key_id: Source logstore access key id.
         :param pulumi.Input[_builtins.str] access_key_secret: Source logstore access key secret.
         :param pulumi.Input[_builtins.int] create_time: The etl job create time.
@@ -915,6 +917,7 @@ class Etl(pulumi.CustomResource):
         $ pulumi import alicloud:log/etl:Etl example tf-log-project:tf-log-etl-name
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_key_id: Source logstore access key id.
@@ -1035,6 +1038,7 @@ class Etl(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/etl:Etl example tf-log-project:tf-log-etl-name
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EtlArgs args: The arguments to use to populate this resource's properties.

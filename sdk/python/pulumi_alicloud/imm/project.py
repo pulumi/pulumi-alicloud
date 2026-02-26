@@ -23,6 +23,7 @@ class ProjectArgs:
                  service_role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.str] project: The name of Project.
         :param pulumi.Input[_builtins.str] service_role: The service role authorized to the Intelligent Media Management service to access other cloud resources. Default value: `AliyunIMMDefaultRole`. You can also create authorization  roles through the `ram.Role`.
         """
@@ -62,6 +63,7 @@ class _ProjectState:
                  service_role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.str] project: The name of Project.
         :param pulumi.Input[_builtins.str] service_role: The service role authorized to the Intelligent Media Management service to access other cloud resources. Default value: `AliyunIMMDefaultRole`. You can also create authorization  roles through the `ram.Role`.
         """
@@ -157,6 +159,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import alicloud:imm/project:Project example <project>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: The name of Project.
@@ -220,6 +223,7 @@ class Project(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:imm/project:Project example <project>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

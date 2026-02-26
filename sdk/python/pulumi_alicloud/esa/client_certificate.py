@@ -26,6 +26,7 @@ class ClientCertificateArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientCertificate resource.
+
         :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] validity_days: Certificate validity period.
                
@@ -126,6 +127,7 @@ class _ClientCertificateState:
                  validity_days: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientCertificate resources.
+
         :param pulumi.Input[_builtins.str] client_cert_id: ClientCertificate Id
         :param pulumi.Input[_builtins.str] create_time: The time when the certificate was created.
         :param pulumi.Input[_builtins.str] csr: Certificate signing request content.
@@ -291,6 +293,7 @@ class ClientCertificate(pulumi.CustomResource):
         $ pulumi import alicloud:esa/clientCertificate:ClientCertificate example <site_id>:<client_cert_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] csr: Certificate signing request content.
@@ -343,6 +346,7 @@ class ClientCertificate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/clientCertificate:ClientCertificate example <site_id>:<client_cert_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClientCertificateArgs args: The arguments to use to populate this resource's properties.

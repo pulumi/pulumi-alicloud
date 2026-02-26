@@ -33,6 +33,7 @@ class VirtualNodeArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VirtualNode resource.
+
         :param pulumi.Input[_builtins.str] kube_config: The kube config for the k8s cluster. It needs to be connected after Base64 encoding.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
         :param pulumi.Input[_builtins.str] vswitch_id: The vswitch id.
@@ -199,6 +200,7 @@ class _VirtualNodeState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VirtualNode resources.
+
         :param pulumi.Input[_builtins.str] eip_instance_id: The Id of eip.
         :param pulumi.Input[_builtins.bool] enable_public_network: Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
         :param pulumi.Input[_builtins.str] kube_config: The kube config for the k8s cluster. It needs to be connected after Base64 encoding.
@@ -451,6 +453,7 @@ class VirtualNode(pulumi.CustomResource):
         $ pulumi import alicloud:eci/virtualNode:VirtualNode example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] eip_instance_id: The Id of eip.
@@ -536,6 +539,7 @@ class VirtualNode(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eci/virtualNode:VirtualNode example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VirtualNodeArgs args: The arguments to use to populate this resource's properties.

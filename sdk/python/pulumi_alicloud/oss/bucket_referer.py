@@ -27,6 +27,7 @@ class BucketRefererArgs:
                  truncate_path: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BucketReferer resource.
+
         :param pulumi.Input[_builtins.bool] allow_empty_referer: Whether to allow empty Referer request headers.
         :param pulumi.Input[_builtins.str] bucket: Name of the Bucket.
         :param pulumi.Input[_builtins.bool] allow_truncate_query_string: Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
@@ -129,6 +130,7 @@ class _BucketRefererState:
                  truncate_path: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering BucketReferer resources.
+
         :param pulumi.Input[_builtins.bool] allow_empty_referer: Whether to allow empty Referer request headers.
         :param pulumi.Input[_builtins.bool] allow_truncate_query_string: Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
         :param pulumi.Input[_builtins.str] bucket: Name of the Bucket.
@@ -283,6 +285,7 @@ class BucketReferer(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketReferer:BucketReferer example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_empty_referer: Whether to allow empty Referer request headers.
@@ -345,6 +348,7 @@ class BucketReferer(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketReferer:BucketReferer example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketRefererArgs args: The arguments to use to populate this resource's properties.

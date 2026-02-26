@@ -25,6 +25,7 @@ class LoginProfileArgs:
                  password_reset_required: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a LoginProfile resource.
+
         :param pulumi.Input[_builtins.str] password: The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
         :param pulumi.Input[_builtins.str] user_name: The user name.
         :param pulumi.Input[_builtins.bool] mfa_bind_required: Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
@@ -104,6 +105,7 @@ class _LoginProfileState:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoginProfile resources.
+
         :param pulumi.Input[_builtins.str] create_time: Creation time.
         :param pulumi.Input[_builtins.bool] mfa_bind_required: Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
                - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
@@ -238,6 +240,7 @@ class LoginProfile(pulumi.CustomResource):
         $ pulumi import alicloud:ram/loginProfile:LoginProfile example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] mfa_bind_required: Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
@@ -291,6 +294,7 @@ class LoginProfile(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ram/loginProfile:LoginProfile example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoginProfileArgs args: The arguments to use to populate this resource's properties.

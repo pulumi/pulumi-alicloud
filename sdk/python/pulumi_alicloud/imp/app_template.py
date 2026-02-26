@@ -28,6 +28,7 @@ class AppTemplateArgs:
                  scene: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppTemplate resource.
+
         :param pulumi.Input[_builtins.str] app_template_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] component_lists: List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
         :param pulumi.Input[Sequence[pulumi.Input['AppTemplateConfigListArgs']]] config_lists: Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
@@ -119,6 +120,7 @@ class _AppTemplateState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppTemplate resources.
+
         :param pulumi.Input[_builtins.str] app_template_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] component_lists: List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
         :param pulumi.Input[Sequence[pulumi.Input['AppTemplateConfigListArgs']]] config_lists: Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
@@ -263,6 +265,7 @@ class AppTemplate(pulumi.CustomResource):
         $ pulumi import alicloud:imp/appTemplate:AppTemplate example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_template_name: The name of the resource.
@@ -313,6 +316,7 @@ class AppTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:imp/appTemplate:AppTemplate example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppTemplateArgs args: The arguments to use to populate this resource's properties.

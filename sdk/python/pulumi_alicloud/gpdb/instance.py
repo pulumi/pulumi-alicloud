@@ -63,6 +63,7 @@ class InstanceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
         :param pulumi.Input[_builtins.str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
         :param pulumi.Input[_builtins.str] engine_version: The version of the database engine used by the instance.
@@ -752,6 +753,7 @@ class _InstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         :param pulumi.Input[_builtins.str] connection_string: (Available since v1.196.0) The connection string of the instance.
         :param pulumi.Input[_builtins.bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
@@ -1543,6 +1545,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
@@ -1656,6 +1659,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

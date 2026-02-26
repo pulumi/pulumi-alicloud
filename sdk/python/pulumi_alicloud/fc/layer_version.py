@@ -28,6 +28,7 @@ class LayerVersionArgs:
                  zip_file: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LayerVersion resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatible_runtimes: The list of runtime environments that are supported by the layer. Valid values: `nodejs14`, `nodejs12`, `nodejs10`, `nodejs8`, `nodejs6`, `python3.9`, `python3`, `python2.7`, `java11`, `java8`, `php7.2`, `go1`,`dotnetcore2.1`, `custom`.
         :param pulumi.Input[_builtins.str] layer_name: The name of the layer.
         :param pulumi.Input[_builtins.str] description: The description of the layer version.
@@ -154,6 +155,7 @@ class _LayerVersionState:
                  zip_file: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LayerVersion resources.
+
         :param pulumi.Input[_builtins.str] acl: The access mode of Layer Version.
         :param pulumi.Input[_builtins.str] arn: The arn of Layer Version.
         :param pulumi.Input[_builtins.str] code_check_sum: The checksum of the layer code package.
@@ -388,6 +390,7 @@ class LayerVersion(pulumi.CustomResource):
         $ pulumi import alicloud:fc/layerVersion:LayerVersion example my_function
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatible_runtimes: The list of runtime environments that are supported by the layer. Valid values: `nodejs14`, `nodejs12`, `nodejs10`, `nodejs8`, `nodejs6`, `python3.9`, `python3`, `python2.7`, `java11`, `java8`, `php7.2`, `go1`,`dotnetcore2.1`, `custom`.
@@ -453,6 +456,7 @@ class LayerVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/layerVersion:LayerVersion example my_function
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LayerVersionArgs args: The arguments to use to populate this resource's properties.

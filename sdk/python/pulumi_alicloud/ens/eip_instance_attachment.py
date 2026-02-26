@@ -25,6 +25,7 @@ class EipInstanceAttachmentArgs:
                  standby: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EipInstanceAttachment resource.
+
         :param pulumi.Input[_builtins.str] allocation_id: The first ID of the resource
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
         :param pulumi.Input[_builtins.str] instance_type: The type of the EIP instance. Value:
@@ -108,6 +109,7 @@ class _EipInstanceAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EipInstanceAttachment resources.
+
         :param pulumi.Input[_builtins.str] allocation_id: The first ID of the resource
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
         :param pulumi.Input[_builtins.str] instance_type: The type of the EIP instance. Value:
@@ -275,6 +277,7 @@ class EipInstanceAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ens/eipInstanceAttachment:EipInstanceAttachment example <allocation_id>:<instance_id>:<instance_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] allocation_id: The first ID of the resource
@@ -359,6 +362,7 @@ class EipInstanceAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/eipInstanceAttachment:EipInstanceAttachment example <allocation_id>:<instance_id>:<instance_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EipInstanceAttachmentArgs args: The arguments to use to populate this resource's properties.

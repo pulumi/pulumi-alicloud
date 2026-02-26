@@ -23,6 +23,7 @@ class SnapshotArgs:
                  snapshot_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Snapshot resource.
+
         :param pulumi.Input[_builtins.str] disk_id: The ID of the disk.
         :param pulumi.Input[_builtins.str] snapshot_name: The name of the snapshot. The name must be `2` to `50` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
         """
@@ -62,6 +63,7 @@ class _SnapshotState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
+
         :param pulumi.Input[_builtins.str] disk_id: The ID of the disk.
         :param pulumi.Input[_builtins.str] snapshot_name: The name of the snapshot. The name must be `2` to `50` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
         :param pulumi.Input[_builtins.str] status: The status of the snapshot. Valid values: `Progressing`, `Accomplished` and `Failed`.
@@ -167,6 +169,7 @@ class Snapshot(pulumi.CustomResource):
         $ pulumi import alicloud:simpleapplicationserver/snapshot:Snapshot example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] disk_id: The ID of the disk.
@@ -225,6 +228,7 @@ class Snapshot(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:simpleapplicationserver/snapshot:Snapshot example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SnapshotArgs args: The arguments to use to populate this resource's properties.

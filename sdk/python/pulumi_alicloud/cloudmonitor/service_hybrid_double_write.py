@@ -25,6 +25,7 @@ class ServiceHybridDoubleWriteArgs:
                  user_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ServiceHybridDoubleWrite resource.
+
         :param pulumi.Input[_builtins.str] namespace: Target Namespace.
         :param pulumi.Input[_builtins.str] source_namespace: Source Namespace.
         :param pulumi.Input[_builtins.str] source_user_id: Source UserId.
@@ -93,6 +94,7 @@ class _ServiceHybridDoubleWriteState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceHybridDoubleWrite resources.
+
         :param pulumi.Input[_builtins.str] namespace: Target Namespace.
         :param pulumi.Input[_builtins.str] source_namespace: Source Namespace.
         :param pulumi.Input[_builtins.str] source_user_id: Source UserId.
@@ -206,6 +208,7 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
         $ pulumi import alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite example <source_namespace>:<source_user_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] namespace: Target Namespace.
@@ -257,6 +260,7 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite example <source_namespace>:<source_user_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceHybridDoubleWriteArgs args: The arguments to use to populate this resource's properties.

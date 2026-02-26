@@ -28,6 +28,7 @@ class ZoneAttachmentArgs:
                  vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]] = None):
         """
         The set of arguments for constructing a ZoneAttachment resource.
+
         :param pulumi.Input[_builtins.str] zone_id: The name of the Private Zone Record.
         :param pulumi.Input[_builtins.str] lang: The language of code.
         :param pulumi.Input[_builtins.str] user_client_ip: The user custom IP address.
@@ -115,6 +116,7 @@ class _ZoneAttachmentState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneAttachment resources.
+
         :param pulumi.Input[_builtins.str] lang: The language of code.
         :param pulumi.Input[_builtins.str] user_client_ip: The user custom IP address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpc_ids: The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
@@ -302,6 +304,7 @@ class ZoneAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:pvtz/zoneAttachment:ZoneAttachment example abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] lang: The language of code.
@@ -412,6 +415,7 @@ class ZoneAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pvtz/zoneAttachment:ZoneAttachment example abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZoneAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class RamRoleAttachmentArgs:
                  policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RamRoleAttachment resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] ram_role_name: The name of the instance RAM role.
         :param pulumi.Input[_builtins.str] policy: The additional policy. When you attach an instance RAM role to instances, you can specify an additional policy to further limit the permissions of the role.
@@ -78,6 +79,7 @@ class _RamRoleAttachmentState:
                  ram_role_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RamRoleAttachment resources.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] policy: The additional policy. When you attach an instance RAM role to instances, you can specify an additional policy to further limit the permissions of the role.
         :param pulumi.Input[_builtins.str] ram_role_name: The name of the instance RAM role.
@@ -220,6 +222,7 @@ class RamRoleAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ramRoleAttachment:RamRoleAttachment example <instance_id>:<ram_role_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
@@ -315,6 +318,7 @@ class RamRoleAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ramRoleAttachment:RamRoleAttachment example <instance_id>:<ram_role_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RamRoleAttachmentArgs args: The arguments to use to populate this resource's properties.

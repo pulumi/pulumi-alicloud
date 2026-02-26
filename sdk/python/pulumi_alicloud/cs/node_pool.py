@@ -102,6 +102,7 @@ class NodePoolArgs:
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a NodePool resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input['NodePoolAutoModeArgs'] auto_mode: Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
@@ -1483,6 +1484,7 @@ class _NodePoolState:
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering NodePool resources.
+
         :param pulumi.Input['NodePoolAutoModeArgs'] auto_mode: Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
@@ -3460,6 +3462,7 @@ class NodePool(pulumi.CustomResource):
         $ pulumi import alicloud:cs/nodePool:NodePool example <cluster_id>:<node_pool_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict']] auto_mode: Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
@@ -4156,6 +4159,7 @@ class NodePool(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cs/nodePool:NodePool example <cluster_id>:<node_pool_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodePoolArgs args: The arguments to use to populate this resource's properties.

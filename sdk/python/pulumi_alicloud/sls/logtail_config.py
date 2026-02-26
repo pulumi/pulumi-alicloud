@@ -32,6 +32,7 @@ class LogtailConfigArgs:
                  output_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LogtailConfig resource.
+
         :param pulumi.Input[_builtins.str] project_name: Project name
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] input_detail: The detailed configuration entered by logtail.
@@ -183,6 +184,7 @@ class _LogtailConfigState:
                  project_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogtailConfig resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] input_detail: The detailed configuration entered by logtail.
         :param pulumi.Input[_builtins.str] input_type: Method of log entry
@@ -423,6 +425,7 @@ class LogtailConfig(pulumi.CustomResource):
         $ pulumi import alicloud:sls/logtailConfig:LogtailConfig example <project_name>:<logtail_config_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
@@ -526,6 +529,7 @@ class LogtailConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sls/logtailConfig:LogtailConfig example <project_name>:<logtail_config_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LogtailConfigArgs args: The arguments to use to populate this resource's properties.

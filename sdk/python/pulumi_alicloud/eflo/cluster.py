@@ -35,6 +35,7 @@ class ClusterArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[_builtins.str] cluster_description: cluster description
         :param pulumi.Input[_builtins.str] cluster_name: ClusterName
         :param pulumi.Input[_builtins.str] cluster_type: cluster type
@@ -237,6 +238,7 @@ class _ClusterState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[_builtins.str] cluster_description: cluster description
         :param pulumi.Input[_builtins.str] cluster_name: ClusterName
         :param pulumi.Input[_builtins.str] cluster_type: cluster type
@@ -579,6 +581,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import alicloud:eflo/cluster:Cluster example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_description: cluster description
@@ -709,6 +712,7 @@ class Cluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eflo/cluster:Cluster example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class SmbAclAttachmentArgs:
                  super_admin_sid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SmbAclAttachment resource.
+
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] keytab: The string that is generated after the system encodes the keytab file by using Base64.
         :param pulumi.Input[_builtins.str] keytab_md5: RThe string that is generated after the system encodes the keytab file by using MD5.
@@ -192,6 +193,7 @@ class _SmbAclAttachmentState:
                  super_admin_sid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SmbAclAttachment resources.
+
         :param pulumi.Input[_builtins.str] auth_method: The method that is used to authenticate network identities.
         :param pulumi.Input[_builtins.bool] enable_anonymous_access: Specifies whether to allow anonymous access. Valid values:
                true: The file system allows anonymous access.
@@ -422,6 +424,7 @@ class SmbAclAttachment(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enable_anonymous_access: Specifies whether to allow anonymous access. Valid values:
@@ -482,6 +485,7 @@ class SmbAclAttachment(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param SmbAclAttachmentArgs args: The arguments to use to populate this resource's properties.

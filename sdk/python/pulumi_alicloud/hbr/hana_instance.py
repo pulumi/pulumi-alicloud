@@ -33,6 +33,7 @@ class HanaInstanceArgs:
                  validate_certificate: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a HanaInstance resource.
+
         :param pulumi.Input[_builtins.str] vault_id: The ID of the backup vault.
         :param pulumi.Input[_builtins.str] alert_setting: The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ecs_instance_ids: The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
@@ -234,6 +235,7 @@ class _HanaInstanceState:
                  vault_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HanaInstance resources.
+
         :param pulumi.Input[_builtins.str] alert_setting: The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ecs_instance_ids: The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
         :param pulumi.Input[_builtins.str] hana_instance_id: The id of the Hana Instance.
@@ -513,6 +515,7 @@ class HanaInstance(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/hanaInstance:HanaInstance example <vault_id>:<hana_instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alert_setting: The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
@@ -580,6 +583,7 @@ class HanaInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/hanaInstance:HanaInstance example <vault_id>:<hana_instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HanaInstanceArgs args: The arguments to use to populate this resource's properties.

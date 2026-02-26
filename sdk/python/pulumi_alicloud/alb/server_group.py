@@ -42,6 +42,7 @@ class ServerGroupArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
+
         :param pulumi.Input['ServerGroupHealthCheckConfigArgs'] health_check_config: The configuration of health checks See `health_check_config` below.
         :param pulumi.Input[_builtins.str] server_group_name: The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input['ServerGroupConnectionDrainConfigArgs'] connection_drain_config: Elegant interrupt configuration. See `connection_drain_config` below.
@@ -406,6 +407,7 @@ class _ServerGroupState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerGroup resources.
+
         :param pulumi.Input['ServerGroupConnectionDrainConfigArgs'] connection_drain_config: Elegant interrupt configuration. See `connection_drain_config` below.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.bool] cross_zone_enabled: Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
@@ -898,6 +900,7 @@ class ServerGroup(pulumi.CustomResource):
         $ pulumi import alicloud:alb/serverGroup:ServerGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']] connection_drain_config: Elegant interrupt configuration. See `connection_drain_config` below.
@@ -1047,6 +1050,7 @@ class ServerGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/serverGroup:ServerGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServerGroupArgs args: The arguments to use to populate this resource's properties.

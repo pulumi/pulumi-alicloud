@@ -29,6 +29,7 @@ class ImageEventOperationArgs:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ImageEventOperation resource.
+
         :param pulumi.Input[_builtins.str] conditions: The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
         :param pulumi.Input[_builtins.str] event_type: The alert type.
         :param pulumi.Input[_builtins.str] operation_code: The operation code.
@@ -162,6 +163,7 @@ class _ImageEventOperationState:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageEventOperation resources.
+
         :param pulumi.Input[_builtins.str] conditions: The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
         :param pulumi.Input[_builtins.str] event_key: The keyword of the alert item.
         :param pulumi.Input[_builtins.str] event_name: The name of the alert item.
@@ -351,6 +353,7 @@ class ImageEventOperation(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/imageEventOperation:ImageEventOperation example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] conditions: The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
@@ -418,6 +421,7 @@ class ImageEventOperation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/imageEventOperation:ImageEventOperation example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageEventOperationArgs args: The arguments to use to populate this resource's properties.

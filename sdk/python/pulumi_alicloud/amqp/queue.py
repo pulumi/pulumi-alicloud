@@ -31,6 +31,7 @@ class QueueArgs:
                  message_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Queue resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
         :param pulumi.Input[_builtins.str] queue_name: The name of the queue to create.
         :param pulumi.Input[_builtins.str] virtual_host_name: The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
@@ -196,6 +197,7 @@ class _QueueState:
                  virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Queue resources.
+
         :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether to automatically delete the queue. Valid values:
         :param pulumi.Input[_builtins.str] auto_expire_state: The auto-expiration time for the queue.
         :param pulumi.Input[_builtins.str] dead_letter_exchange: The dead-letter exchange.
@@ -419,6 +421,7 @@ class Queue(pulumi.CustomResource):
         $ pulumi import alicloud:amqp/queue:Queue example <instance_id>:<virtual_host_name>:<queue_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether to automatically delete the queue. Valid values:
@@ -490,6 +493,7 @@ class Queue(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:amqp/queue:Queue example <instance_id>:<virtual_host_name>:<queue_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QueueArgs args: The arguments to use to populate this resource's properties.

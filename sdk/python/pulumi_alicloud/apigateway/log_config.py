@@ -24,6 +24,7 @@ class LogConfigArgs:
                  sls_project: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a LogConfig resource.
+
         :param pulumi.Input[_builtins.str] log_type: The type the of log. Valid values: `PROVIDER`.
         :param pulumi.Input[_builtins.str] sls_log_store: The name of the Log Store.
         :param pulumi.Input[_builtins.str] sls_project: The name of the Project.
@@ -77,6 +78,7 @@ class _LogConfigState:
                  sls_project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogConfig resources.
+
         :param pulumi.Input[_builtins.str] log_type: The type the of log. Valid values: `PROVIDER`.
         :param pulumi.Input[_builtins.str] sls_log_store: The name of the Log Store.
         :param pulumi.Input[_builtins.str] sls_project: The name of the Project.
@@ -184,6 +186,7 @@ class LogConfig(pulumi.CustomResource):
         $ pulumi import alicloud:apigateway/logConfig:LogConfig example <log_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] log_type: The type the of log. Valid values: `PROVIDER`.
@@ -244,6 +247,7 @@ class LogConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:apigateway/logConfig:LogConfig example <log_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LogConfigArgs args: The arguments to use to populate this resource's properties.

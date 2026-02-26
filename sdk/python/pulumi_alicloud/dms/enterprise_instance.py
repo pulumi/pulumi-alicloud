@@ -47,6 +47,7 @@ class EnterpriseInstanceArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnterpriseInstance resource.
+
         :param pulumi.Input[_builtins.str] database_password: Database access password.
         :param pulumi.Input[_builtins.str] database_user: Database access account.
         :param pulumi.Input[_builtins.int] dba_uid: The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
@@ -466,6 +467,7 @@ class _EnterpriseInstanceState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseInstance resources.
+
         :param pulumi.Input[_builtins.str] data_link_name: Cross-database query datalink name.
         :param pulumi.Input[_builtins.str] database_password: Database access password.
         :param pulumi.Input[_builtins.str] database_user: Database access account.
@@ -1037,6 +1039,7 @@ class EnterpriseInstance(pulumi.CustomResource):
         $ pulumi import alicloud:dms/enterpriseInstance:EnterpriseInstance example rm-uf648hgs7874xxxx.mysql.rds.aliyuncs.com:3306
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_link_name: Cross-database query datalink name.
@@ -1163,6 +1166,7 @@ class EnterpriseInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dms/enterpriseInstance:EnterpriseInstance example rm-uf648hgs7874xxxx.mysql.rds.aliyuncs.com:3306
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnterpriseInstanceArgs args: The arguments to use to populate this resource's properties.

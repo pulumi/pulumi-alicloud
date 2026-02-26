@@ -29,6 +29,7 @@ class OrderArgs:
                  quantity: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Order resource.
+
         :param pulumi.Input[_builtins.str] package_version: The package version of the market product.
         :param pulumi.Input[_builtins.str] pricing_cycle: The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
         :param pulumi.Input[_builtins.str] product_code: The product_code of market place product.
@@ -162,6 +163,7 @@ class _OrderState:
                  quantity: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Order resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] components: Service providers customize additional components.
         :param pulumi.Input[_builtins.str] coupon_id: The coupon id of the market product.
         :param pulumi.Input[_builtins.int] duration: The number of purchase cycles.
@@ -335,6 +337,7 @@ class Order(pulumi.CustomResource):
         $ pulumi import alicloud:marketplace/order:Order order your-order-id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] components: Service providers customize additional components.
@@ -386,6 +389,7 @@ class Order(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:marketplace/order:Order order your-order-id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrderArgs args: The arguments to use to populate this resource's properties.

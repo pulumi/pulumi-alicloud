@@ -28,6 +28,7 @@ class VpcFirewallIpsConfigArgs:
                  rule_class: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcFirewallIpsConfig resource.
+
         :param pulumi.Input[_builtins.int] basic_rules: Base rule switch. Value:
         :param pulumi.Input[_builtins.int] enable_all_patch: Virtual patch switch. Value:
         :param pulumi.Input[_builtins.int] run_mode: IPS defense mode. Value:
@@ -156,6 +157,7 @@ class _VpcFirewallIpsConfigState:
                  vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcFirewallIpsConfig resources.
+
         :param pulumi.Input[_builtins.int] basic_rules: Base rule switch. Value:
         :param pulumi.Input[_builtins.int] enable_all_patch: Virtual patch switch. Value:
         :param pulumi.Input[_builtins.str] lang: Language
@@ -335,6 +337,7 @@ class VpcFirewallIpsConfig(pulumi.CustomResource):
         $ pulumi import alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] basic_rules: Base rule switch. Value:
@@ -401,6 +404,7 @@ class VpcFirewallIpsConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcFirewallIpsConfigArgs args: The arguments to use to populate this resource's properties.

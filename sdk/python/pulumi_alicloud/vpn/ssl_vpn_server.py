@@ -29,6 +29,7 @@ class SslVpnServerArgs:
                  protocol: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SslVpnServer resource.
+
         :param pulumi.Input[_builtins.str] client_ip_pool: The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
         :param pulumi.Input[_builtins.str] local_subnet: The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
         :param pulumi.Input[_builtins.str] vpn_gateway_id: The ID of the VPN gateway.
@@ -171,6 +172,7 @@ class _SslVpnServerState:
                  vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SslVpnServer resources.
+
         :param pulumi.Input[_builtins.str] cipher: The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
                * `AES-128-CBC` - the AES-128-CBC algorithm.
                * `AES-192-CBC` - the AES-192-CBC algorithm.
@@ -419,6 +421,7 @@ class SslVpnServer(pulumi.CustomResource):
         $ pulumi import alicloud:vpn/sslVpnServer:SslVpnServer example vss-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cipher: The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
@@ -497,6 +500,7 @@ class SslVpnServer(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpn/sslVpnServer:SslVpnServer example vss-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SslVpnServerArgs args: The arguments to use to populate this resource's properties.

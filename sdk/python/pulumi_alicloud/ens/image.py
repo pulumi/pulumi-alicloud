@@ -25,6 +25,7 @@ class ImageArgs:
                  target_oss_region_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Image resource.
+
         :param pulumi.Input[_builtins.str] image_name: The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] delete_after_image_upload: Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
@@ -98,6 +99,7 @@ class _ImageState:
                  target_oss_region_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Image resources.
+
         :param pulumi.Input[_builtins.str] create_time: The image creation time.
         :param pulumi.Input[_builtins.str] delete_after_image_upload: Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] image_name: The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
@@ -252,6 +254,7 @@ class Image(pulumi.CustomResource):
         $ pulumi import alicloud:ens/image:Image example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] delete_after_image_upload: Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
@@ -314,6 +317,7 @@ class Image(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/image:Image example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageArgs args: The arguments to use to populate this resource's properties.

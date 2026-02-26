@@ -26,6 +26,7 @@ class ServiceTopicArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServiceTopic resource.
+
         :param pulumi.Input[_builtins.str] topic_name: The name of the topic.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -122,6 +123,7 @@ class _ServiceTopicState:
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceTopic resources.
+
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.241.0) The time when the topic was created.
         :param pulumi.Input[_builtins.bool] enable_logging: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] logging_enabled: . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
@@ -270,6 +272,7 @@ class ServiceTopic(pulumi.CustomResource):
         $ pulumi import alicloud:message/serviceTopic:ServiceTopic example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enable_logging: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
@@ -320,6 +323,7 @@ class ServiceTopic(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:message/serviceTopic:ServiceTopic example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceTopicArgs args: The arguments to use to populate this resource's properties.

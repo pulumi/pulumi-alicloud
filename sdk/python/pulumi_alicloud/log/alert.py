@@ -51,6 +51,7 @@ class AlertArgs:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Alert resource.
+
         :param pulumi.Input[_builtins.str] alert_displayname: Alert displayname.
         :param pulumi.Input[_builtins.str] alert_name: Name of logstore for configuring alarm service.
         :param pulumi.Input[_builtins.str] project_name: The project name.
@@ -532,6 +533,7 @@ class _AlertState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Alert resources.
+
         :param pulumi.Input[_builtins.str] alert_description: Alert description.
         :param pulumi.Input[_builtins.str] alert_displayname: Alert displayname.
         :param pulumi.Input[_builtins.str] alert_name: Name of logstore for configuring alarm service.
@@ -1282,6 +1284,7 @@ class Alert(pulumi.CustomResource):
         $ pulumi import alicloud:log/alert:Alert example tf-log:tf-log-alert
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alert_description: Alert description.
@@ -1582,6 +1585,7 @@ class Alert(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/alert:Alert example tf-log:tf-log-alert
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlertArgs args: The arguments to use to populate this resource's properties.

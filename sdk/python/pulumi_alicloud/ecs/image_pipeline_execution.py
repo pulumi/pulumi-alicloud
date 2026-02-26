@@ -23,6 +23,7 @@ class ImagePipelineExecutionArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ImagePipelineExecution resource.
+
         :param pulumi.Input[_builtins.str] image_pipeline_id: The ID of the image template.
         :param pulumi.Input[_builtins.str] status: The status of the image build task. Valid values:
                - CANCELLED: canceled. The build process has been canceled.
@@ -65,6 +66,7 @@ class _ImagePipelineExecutionState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImagePipelineExecution resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the image build task was created.
         :param pulumi.Input[_builtins.str] image_pipeline_id: The ID of the image template.
         :param pulumi.Input[_builtins.str] status: The status of the image build task. Valid values:
@@ -186,6 +188,7 @@ class ImagePipelineExecution(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/imagePipelineExecution:ImagePipelineExecution example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] image_pipeline_id: The ID of the image template.
@@ -259,6 +262,7 @@ class ImagePipelineExecution(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/imagePipelineExecution:ImagePipelineExecution example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImagePipelineExecutionArgs args: The arguments to use to populate this resource's properties.

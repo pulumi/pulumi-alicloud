@@ -30,6 +30,7 @@ class SupabaseProjectArgs:
                  storage_size: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a SupabaseProject resource.
+
         :param pulumi.Input[_builtins.str] account_password: The password for the initial account.
                - Consists of three or more of uppercase letters, lowercase letters, numbers, and special characters.
                - Support for special characters:! @#$%^& *()_+-=
@@ -190,6 +191,7 @@ class _SupabaseProjectState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SupabaseProject resources.
+
         :param pulumi.Input[_builtins.str] account_password: The password for the initial account.
                - Consists of three or more of uppercase letters, lowercase letters, numbers, and special characters.
                - Support for special characters:! @#$%^& *()_+-=
@@ -441,6 +443,7 @@ class SupabaseProject(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/supabaseProject:SupabaseProject example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_password: The password for the initial account.
@@ -504,6 +507,7 @@ class SupabaseProject(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/supabaseProject:SupabaseProject example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SupabaseProjectArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class EnvFeatureArgs:
                  feature_version: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a EnvFeature resource.
+
         :param pulumi.Input[_builtins.str] env_feature_name: The name of the resource.
         :param pulumi.Input[_builtins.str] environment_id: The first ID of the resource.
         :param pulumi.Input[_builtins.str] feature_version: Version information of the Feature. You can query Feature information by using ListEnvironmentFeatures.
@@ -79,6 +80,7 @@ class _EnvFeatureState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvFeature resources.
+
         :param pulumi.Input[_builtins.str] env_feature_name: The name of the resource.
         :param pulumi.Input[_builtins.str] environment_id: The first ID of the resource.
         :param pulumi.Input[_builtins.str] feature_version: Version information of the Feature. You can query Feature information by using ListEnvironmentFeatures.
@@ -263,6 +265,7 @@ class EnvFeature(pulumi.CustomResource):
         $ pulumi import alicloud:arms/envFeature:EnvFeature example <environment_id>:<env_feature_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] env_feature_name: The name of the resource.
@@ -370,6 +373,7 @@ class EnvFeature(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/envFeature:EnvFeature example <environment_id>:<env_feature_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvFeatureArgs args: The arguments to use to populate this resource's properties.

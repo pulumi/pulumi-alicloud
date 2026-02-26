@@ -25,6 +25,7 @@ class SnapshotArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
+
         :param pulumi.Input[_builtins.str] desktop_id: The ID of the Desktop.
         :param pulumi.Input[_builtins.str] snapshot_name: The name of the Snapshot.
         :param pulumi.Input[_builtins.str] source_disk_type: The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
@@ -95,6 +96,7 @@ class _SnapshotState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the Snapshot.
         :param pulumi.Input[_builtins.str] desktop_id: The ID of the Desktop.
         :param pulumi.Input[_builtins.str] snapshot_name: The name of the Snapshot.
@@ -254,6 +256,7 @@ class Snapshot(pulumi.CustomResource):
         $ pulumi import alicloud:eds/snapshot:Snapshot example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the Snapshot.
@@ -336,6 +339,7 @@ class Snapshot(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/snapshot:Snapshot example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SnapshotArgs args: The arguments to use to populate this resource's properties.

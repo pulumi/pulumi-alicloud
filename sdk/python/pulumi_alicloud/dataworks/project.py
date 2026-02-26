@@ -30,6 +30,7 @@ class ProjectArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.str] display_name: Workspace Display Name
         :param pulumi.Input[_builtins.bool] pai_task_enabled: Create PAI Workspace Together
         :param pulumi.Input[_builtins.str] project_name: Workspace Name
@@ -179,6 +180,7 @@ class _ProjectState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.str] description: Workspace Description
         :param pulumi.Input[_builtins.bool] dev_environment_enabled: Is Development Environment Enabled
         :param pulumi.Input[_builtins.bool] dev_role_disabled: Is Development Role Disabled
@@ -378,6 +380,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import alicloud:dataworks/project:Project example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Workspace Description
@@ -440,6 +443,7 @@ class Project(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dataworks/project:Project example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

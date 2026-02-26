@@ -26,6 +26,7 @@ class RamDirectoryArgs:
                  enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RamDirectory resource.
+
         :param pulumi.Input[_builtins.str] ram_directory_name: The name of the directory. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: List of VSwitch IDs in the directory.
         :param pulumi.Input[_builtins.str] desktop_access_type: The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
@@ -113,6 +114,7 @@ class _RamDirectoryState:
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering RamDirectory resources.
+
         :param pulumi.Input[_builtins.str] desktop_access_type: The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
         :param pulumi.Input[_builtins.bool] enable_admin_access: Whether to enable public network access.
         :param pulumi.Input[_builtins.bool] enable_internet_access: Whether to grant local administrator rights to users who use cloud desktops.
@@ -265,6 +267,7 @@ class RamDirectory(pulumi.CustomResource):
         $ pulumi import alicloud:eds/ramDirectory:RamDirectory example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] desktop_access_type: The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
@@ -325,6 +328,7 @@ class RamDirectory(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/ramDirectory:RamDirectory example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RamDirectoryArgs args: The arguments to use to populate this resource's properties.
