@@ -7189,6 +7189,9 @@
             "alicloud_live_caster": {
                 "current": "alicloud:live/caster:Caster"
             },
+            "alicloud_live_domain": {
+                "current": "alicloud:live/domain:Domain"
+            },
             "alicloud_log_alert": {
                 "current": "alicloud:log/alert:Alert",
                 "fields": {
