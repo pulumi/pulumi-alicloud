@@ -33,6 +33,10 @@ import javax.annotation.Nullable;
  * For more details supported regions, see [Service endpoints](https://www.alibabacloud.com/help/doc-detail/52984.htm)
  * 
  * &gt; **NOTE:** Available since v1.93.0.
+ * 
+ * &gt; **NOTE:** FCV3 is the latest version of Alibaba Cloud Function Compute service. It provides enhanced performance, more features, and better scalability compared to previous versions (FC and FCV2). We strongly recommend using FCV3 for all new function compute deployments.
+ * 
+ * &gt; **DEPRECATED:** This resource has been deprecated and will be removed in a future version. We recommend migrating to FCV3, where you can create functions directly using `alicloud.fc.V3Function` without the need for a separate service resource.
  * ## Module Support
  * 
  * You can use to the existing fc module to create a service and a function quickly and then set several triggers for it.

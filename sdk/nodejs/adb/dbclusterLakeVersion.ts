@@ -146,7 +146,7 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lockReason: pulumi.Output<string>;
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
      */
     declare public readonly paymentType: pulumi.Output<string>;
     /**
@@ -410,7 +410,7 @@ export interface DBClusterLakeVersionState {
      */
     lockReason?: pulumi.Input<string>;
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -531,7 +531,7 @@ export interface DBClusterLakeVersionArgs {
      */
     kmsId?: pulumi.Input<string>;
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
      */
     paymentType: pulumi.Input<string>;
     /**

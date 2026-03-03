@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceMasterConfiguration {
     /**
-     * @return Elasticsearch proprietary master node number of disks
+     * @return Number of nodes.
      * 
      */
     private @Nullable Integer amount;
     /**
-     * @return Elasticsearch proprietary master node disk size
+     * @return Node storage capacity, in GB.
      * 
      */
     private @Nullable Integer disk;
     /**
-     * @return Elasticsearch proprietary master node disk type
+     * @return Node storage type. Only cloudSsd (SSD cloud disk) is supported.
      * 
      */
     private @Nullable String diskType;
     /**
-     * @return Elasticsearch proprietary master node specifications
+     * @return Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     private @Nullable String spec;
 
     private InstanceMasterConfiguration() {}
     /**
-     * @return Elasticsearch proprietary master node number of disks
+     * @return Number of nodes.
      * 
      */
     public Optional<Integer> amount() {
         return Optional.ofNullable(this.amount);
     }
     /**
-     * @return Elasticsearch proprietary master node disk size
+     * @return Node storage capacity, in GB.
      * 
      */
     public Optional<Integer> disk() {
         return Optional.ofNullable(this.disk);
     }
     /**
-     * @return Elasticsearch proprietary master node disk type
+     * @return Node storage type. Only cloudSsd (SSD cloud disk) is supported.
      * 
      */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
     /**
-     * @return Elasticsearch proprietary master node specifications
+     * @return Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     public Optional<String> spec() {

@@ -243,6 +243,8 @@ class CustomDomain(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.98.0.
 
+        > **DEPRECATED:** This resource (alicloud_fc_custom_domain) represents the legacy Function Compute API. For new deployments and advanced features, please use the `fc.V3CustomDomain` resource which provides access to the latest FCV3 capabilities. The legacy FC custom domain supports only basic functionality and does not include newer features available in FCV3.
+
         ## Example Usage
 
         Basic Usage
@@ -362,6 +364,8 @@ class CustomDomain(pulumi.CustomResource):
          For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createcustomdomain).
 
         > **NOTE:** Available since v1.98.0.
+
+        > **DEPRECATED:** This resource (alicloud_fc_custom_domain) represents the legacy Function Compute API. For new deployments and advanced features, please use the `fc.V3CustomDomain` resource which provides access to the latest FCV3 capabilities. The legacy FC custom domain supports only basic functionality and does not include newer features available in FCV3.
 
         ## Example Usage
 

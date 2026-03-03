@@ -13,37 +13,41 @@ namespace Pulumi.AliCloud.ElasticSearch.Inputs
     public sealed class InstanceDataNodeConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Number of data nodes in the Elasticsearch cluster
+        /// Number of data nodes. Valid values: 2 to 50.
         /// </summary>
         [Input("amount")]
         public Input<int>? Amount { get; set; }
 
         /// <summary>
-        /// Elasticsearch data node disk size
+        /// Storage capacity per node, in GB.
         /// </summary>
         [Input("disk")]
         public Input<int>? Disk { get; set; }
 
         /// <summary>
-        /// Whether the Elasticsearch data node disk is encrypted
+        /// Whether to enable cloud disk encryption:
+        /// - true: Enabled
+        /// - false: Disabled.
         /// </summary>
         [Input("diskEncryption")]
         public Input<bool>? DiskEncryption { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster data node disk type
+        /// Node disk type. Supported types:
+        /// - cloud_ssd: SSD cloud disk
+        /// - cloud_efficiency: Ultra cloud disk.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster data node Essd disk level
+        /// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
-        /// Elasticsearch data node specification
+        /// Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         /// </summary>
         [Input("spec", required: true)]
         public Input<string> Spec { get; set; } = null!;

@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * Vpc Ipam Ipam Pool can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:vpc/ipamIpamPool:IpamIpamPool example <id>
+ * $ pulumi import alicloud:vpc/ipamIpamPool:IpamIpamPool example <ipam_pool_id>
  * ```
  */
 export class IpamIpamPool extends pulumi.CustomResource {
@@ -82,17 +82,17 @@ export class IpamIpamPool extends pulumi.CustomResource {
 
     /**
      * The default network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
     declare public readonly allocationDefaultCidrMask: pulumi.Output<number | undefined>;
     /**
      * The maximum network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
     declare public readonly allocationMaxCidrMask: pulumi.Output<number>;
     /**
      * The minimum Network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
     declare public readonly allocationMinCidrMask: pulumi.Output<number | undefined>;
     /**
@@ -108,7 +108,7 @@ export class IpamIpamPool extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The IP protocol version. Currently, only `IPv4` is supported * *.
+     * The IP protocol version. Values: IPv4、IPv6.
      */
     declare public readonly ipVersion: pulumi.Output<string>;
     /**
@@ -121,9 +121,13 @@ export class IpamIpamPool extends pulumi.CustomResource {
      */
     declare public readonly ipamPoolName: pulumi.Output<string>;
     /**
-     * Ipam scope id.
+     * The ID of the IPAM scope.
      */
     declare public readonly ipamScopeId: pulumi.Output<string>;
+    /**
+     * The type of the IPv6 CIDR block of the VPC.
+     */
+    declare public readonly ipv6Isp: pulumi.Output<string>;
     /**
      * The effective region of the IPAM address pool.
      */
@@ -174,6 +178,7 @@ export class IpamIpamPool extends pulumi.CustomResource {
             resourceInputs["ipamPoolDescription"] = state?.ipamPoolDescription;
             resourceInputs["ipamPoolName"] = state?.ipamPoolName;
             resourceInputs["ipamScopeId"] = state?.ipamScopeId;
+            resourceInputs["ipv6Isp"] = state?.ipv6Isp;
             resourceInputs["poolRegionId"] = state?.poolRegionId;
             resourceInputs["regionId"] = state?.regionId;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
@@ -194,6 +199,7 @@ export class IpamIpamPool extends pulumi.CustomResource {
             resourceInputs["ipamPoolDescription"] = args?.ipamPoolDescription;
             resourceInputs["ipamPoolName"] = args?.ipamPoolName;
             resourceInputs["ipamScopeId"] = args?.ipamScopeId;
+            resourceInputs["ipv6Isp"] = args?.ipv6Isp;
             resourceInputs["poolRegionId"] = args?.poolRegionId;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["sourceIpamPoolId"] = args?.sourceIpamPoolId;
@@ -213,17 +219,17 @@ export class IpamIpamPool extends pulumi.CustomResource {
 export interface IpamIpamPoolState {
     /**
      * The default network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
     allocationDefaultCidrMask?: pulumi.Input<number>;
     /**
      * The maximum network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
     allocationMaxCidrMask?: pulumi.Input<number>;
     /**
      * The minimum Network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
     allocationMinCidrMask?: pulumi.Input<number>;
     /**
@@ -239,7 +245,7 @@ export interface IpamIpamPoolState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The IP protocol version. Currently, only `IPv4` is supported * *.
+     * The IP protocol version. Values: IPv4、IPv6.
      */
     ipVersion?: pulumi.Input<string>;
     /**
@@ -252,9 +258,13 @@ export interface IpamIpamPoolState {
      */
     ipamPoolName?: pulumi.Input<string>;
     /**
-     * Ipam scope id.
+     * The ID of the IPAM scope.
      */
     ipamScopeId?: pulumi.Input<string>;
+    /**
+     * The type of the IPv6 CIDR block of the VPC.
+     */
+    ipv6Isp?: pulumi.Input<string>;
     /**
      * The effective region of the IPAM address pool.
      */
@@ -289,17 +299,17 @@ export interface IpamIpamPoolState {
 export interface IpamIpamPoolArgs {
     /**
      * The default network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
     allocationDefaultCidrMask?: pulumi.Input<number>;
     /**
      * The maximum network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
     allocationMaxCidrMask?: pulumi.Input<number>;
     /**
      * The minimum Network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
     allocationMinCidrMask?: pulumi.Input<number>;
     /**
@@ -311,7 +321,7 @@ export interface IpamIpamPoolArgs {
      */
     clearAllocationDefaultCidrMask?: pulumi.Input<boolean>;
     /**
-     * The IP protocol version. Currently, only `IPv4` is supported * *.
+     * The IP protocol version. Values: IPv4、IPv6.
      */
     ipVersion?: pulumi.Input<string>;
     /**
@@ -324,9 +334,13 @@ export interface IpamIpamPoolArgs {
      */
     ipamPoolName?: pulumi.Input<string>;
     /**
-     * Ipam scope id.
+     * The ID of the IPAM scope.
      */
     ipamScopeId: pulumi.Input<string>;
+    /**
+     * The type of the IPv6 CIDR block of the VPC.
+     */
+    ipv6Isp?: pulumi.Input<string>;
     /**
      * The effective region of the IPAM address pool.
      */

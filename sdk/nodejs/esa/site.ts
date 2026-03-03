@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * ESA Site can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:esa/site:Site example <id>
+ * $ pulumi import alicloud:esa/site:Site example <site_id>
  * ```
  */
 export class Site extends pulumi.CustomResource {
@@ -98,6 +98,14 @@ export class Site extends pulumi.CustomResource {
      */
     declare public readonly addRealClientIpHeader: pulumi.Output<string | undefined>;
     /**
+     * HTTP DDoS Intelligent Protection Mode. Valid values:
+     */
+    declare public readonly aiMode: pulumi.Output<string>;
+    /**
+     * HTTP DDoS Intelligent Protection Level. Values:
+     */
+    declare public readonly aiTemplate: pulumi.Output<string>;
+    /**
      * Multi-level cache architecture mode. Possible values:
      */
     declare public readonly cacheArchitectureMode: pulumi.Output<string>;
@@ -133,6 +141,11 @@ export class Site extends pulumi.CustomResource {
      * CNAME flattening mode. Possible values:
      */
     declare public readonly flattenMode: pulumi.Output<string | undefined>;
+    /**
+     * HTTP DDoS Attack Protection Policy Modes. Valid values:
+     * - `very weak`: indicates a very permissive setting.
+     */
+    declare public readonly globalMode: pulumi.Output<string>;
     /**
      * The ID of the associated package instance.
      */
@@ -204,6 +217,8 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["accessType"] = state?.accessType;
             resourceInputs["addClientGeolocationHeader"] = state?.addClientGeolocationHeader;
             resourceInputs["addRealClientIpHeader"] = state?.addRealClientIpHeader;
+            resourceInputs["aiMode"] = state?.aiMode;
+            resourceInputs["aiTemplate"] = state?.aiTemplate;
             resourceInputs["cacheArchitectureMode"] = state?.cacheArchitectureMode;
             resourceInputs["cacheReserveEnable"] = state?.cacheReserveEnable;
             resourceInputs["cacheReserveInstanceId"] = state?.cacheReserveInstanceId;
@@ -213,6 +228,7 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["crossBorderOptimization"] = state?.crossBorderOptimization;
             resourceInputs["developmentMode"] = state?.developmentMode;
             resourceInputs["flattenMode"] = state?.flattenMode;
+            resourceInputs["globalMode"] = state?.globalMode;
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["ipv6Enable"] = state?.ipv6Enable;
             resourceInputs["ipv6Region"] = state?.ipv6Region;
@@ -237,6 +253,8 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["accessType"] = args?.accessType;
             resourceInputs["addClientGeolocationHeader"] = args?.addClientGeolocationHeader;
             resourceInputs["addRealClientIpHeader"] = args?.addRealClientIpHeader;
+            resourceInputs["aiMode"] = args?.aiMode;
+            resourceInputs["aiTemplate"] = args?.aiTemplate;
             resourceInputs["cacheArchitectureMode"] = args?.cacheArchitectureMode;
             resourceInputs["cacheReserveEnable"] = args?.cacheReserveEnable;
             resourceInputs["cacheReserveInstanceId"] = args?.cacheReserveInstanceId;
@@ -245,6 +263,7 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["crossBorderOptimization"] = args?.crossBorderOptimization;
             resourceInputs["developmentMode"] = args?.developmentMode;
             resourceInputs["flattenMode"] = args?.flattenMode;
+            resourceInputs["globalMode"] = args?.globalMode;
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["ipv6Enable"] = args?.ipv6Enable;
             resourceInputs["ipv6Region"] = args?.ipv6Region;
@@ -284,6 +303,14 @@ export interface SiteState {
      */
     addRealClientIpHeader?: pulumi.Input<string>;
     /**
+     * HTTP DDoS Intelligent Protection Mode. Valid values:
+     */
+    aiMode?: pulumi.Input<string>;
+    /**
+     * HTTP DDoS Intelligent Protection Level. Values:
+     */
+    aiTemplate?: pulumi.Input<string>;
+    /**
      * Multi-level cache architecture mode. Possible values:
      */
     cacheArchitectureMode?: pulumi.Input<string>;
@@ -319,6 +346,11 @@ export interface SiteState {
      * CNAME flattening mode. Possible values:
      */
     flattenMode?: pulumi.Input<string>;
+    /**
+     * HTTP DDoS Attack Protection Policy Modes. Valid values:
+     * - `very weak`: indicates a very permissive setting.
+     */
+    globalMode?: pulumi.Input<string>;
     /**
      * The ID of the associated package instance.
      */
@@ -394,6 +426,14 @@ export interface SiteArgs {
      */
     addRealClientIpHeader?: pulumi.Input<string>;
     /**
+     * HTTP DDoS Intelligent Protection Mode. Valid values:
+     */
+    aiMode?: pulumi.Input<string>;
+    /**
+     * HTTP DDoS Intelligent Protection Level. Values:
+     */
+    aiTemplate?: pulumi.Input<string>;
+    /**
      * Multi-level cache architecture mode. Possible values:
      */
     cacheArchitectureMode?: pulumi.Input<string>;
@@ -425,6 +465,11 @@ export interface SiteArgs {
      * CNAME flattening mode. Possible values:
      */
     flattenMode?: pulumi.Input<string>;
+    /**
+     * HTTP DDoS Attack Protection Policy Modes. Valid values:
+     * - `very weak`: indicates a very permissive setting.
+     */
+    globalMode?: pulumi.Input<string>;
     /**
      * The ID of the associated package instance.
      */

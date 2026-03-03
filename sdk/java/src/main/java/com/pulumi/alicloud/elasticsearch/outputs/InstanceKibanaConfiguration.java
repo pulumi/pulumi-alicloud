@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceKibanaConfiguration {
     /**
-     * @return The number of disks of the Elasticsearch Kibana node. The default value is 1.
+     * @return The number of nodes.
      * 
      */
     private @Nullable Integer amount;
     /**
-     * @return Elasticsearch Kibana node disk size
+     * @return Storage capacity per node, in GB.
      * 
      */
     private @Nullable Integer disk;
     /**
-     * @return Elasticsearch Kibana node disk specifications
+     * @return Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     private String spec;
 
     private InstanceKibanaConfiguration() {}
     /**
-     * @return The number of disks of the Elasticsearch Kibana node. The default value is 1.
+     * @return The number of nodes.
      * 
      */
     public Optional<Integer> amount() {
         return Optional.ofNullable(this.amount);
     }
     /**
-     * @return Elasticsearch Kibana node disk size
+     * @return Storage capacity per node, in GB.
      * 
      */
     public Optional<Integer> disk() {
         return Optional.ofNullable(this.disk);
     }
     /**
-     * @return Elasticsearch Kibana node disk specifications
+     * @return Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     public String spec() {

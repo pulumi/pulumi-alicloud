@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,16 +19,12 @@ public final class IpamIpamPoolCidrState extends com.pulumi.resources.ResourceAr
     /**
      * The CIDR address segment to be preset.
      * 
-     * &gt; **NOTE:**  currently, only IPv4 address segments are supported.
-     * 
      */
     @Import(name="cidr")
     private @Nullable Output<String> cidr;
 
     /**
      * @return The CIDR address segment to be preset.
-     * 
-     * &gt; **NOTE:**  currently, only IPv4 address segments are supported.
      * 
      */
     public Optional<Output<String>> cidr() {
@@ -50,14 +47,33 @@ public final class IpamIpamPoolCidrState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The status of the resource
+     * Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    @Import(name="netmaskLength")
+    private @Nullable Output<Integer> netmaskLength;
+
+    /**
+     * @return Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    public Optional<Output<Integer>> netmaskLength() {
+        return Optional.ofNullable(this.netmaskLength);
+    }
+
+    /**
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -69,6 +85,7 @@ public final class IpamIpamPoolCidrState extends com.pulumi.resources.ResourceAr
     private IpamIpamPoolCidrState(IpamIpamPoolCidrState $) {
         this.cidr = $.cidr;
         this.ipamPoolId = $.ipamPoolId;
+        this.netmaskLength = $.netmaskLength;
         this.status = $.status;
     }
 
@@ -93,8 +110,6 @@ public final class IpamIpamPoolCidrState extends com.pulumi.resources.ResourceAr
         /**
          * @param cidr The CIDR address segment to be preset.
          * 
-         * &gt; **NOTE:**  currently, only IPv4 address segments are supported.
-         * 
          * @return builder
          * 
          */
@@ -105,8 +120,6 @@ public final class IpamIpamPoolCidrState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param cidr The CIDR address segment to be preset.
-         * 
-         * &gt; **NOTE:**  currently, only IPv4 address segments are supported.
          * 
          * @return builder
          * 
@@ -137,7 +150,32 @@ public final class IpamIpamPoolCidrState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the resource
+         * @param netmaskLength Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder netmaskLength(@Nullable Output<Integer> netmaskLength) {
+            $.netmaskLength = netmaskLength;
+            return this;
+        }
+
+        /**
+         * @param netmaskLength Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder netmaskLength(Integer netmaskLength) {
+            return netmaskLength(Output.of(netmaskLength));
+        }
+
+        /**
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -148,7 +186,7 @@ public final class IpamIpamPoolCidrState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource.
          * 
          * @return builder
          * 

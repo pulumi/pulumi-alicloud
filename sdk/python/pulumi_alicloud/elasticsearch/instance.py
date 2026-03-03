@@ -74,75 +74,94 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
 
-        :param pulumi.Input[_builtins.str] version: Instance version
+        :param pulumi.Input[_builtins.str] version: The instance version. Valid values:
+               - 8.5.1_with_X-Pack
+               - 7.10_with_X-Pack
+               - 6.7_with_X-Pack
+               - 7.7_with_X-Pack
+               - 6.8_with_X-Pack
+               - 6.3_with_X-Pack
+               - 5.6_with_X-Pack
+               - 5.5.3_with_X-Pack
+               
+               > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
-        :param pulumi.Input[_builtins.int] auto_renew_duration: Renewal Period
+        :param pulumi.Input[_builtins.int] auto_renew_duration: Number of auto-renewal periods.
         :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
-        :param pulumi.Input['InstanceClientNodeConfigurationArgs'] client_node_configuration: Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
+        :param pulumi.Input['InstanceClientNodeConfigurationArgs'] client_node_configuration: Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `client_node_configuration` below.
         :param pulumi.Input[_builtins.str] client_node_spec: The client node spec. If specified, client node will be created.
         :param pulumi.Input[_builtins.int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
-        :param pulumi.Input['InstanceDataNodeConfigurationArgs'] data_node_configuration: Elasticsearch data node information See `data_node_configuration` below.
+        :param pulumi.Input['InstanceDataNodeConfigurationArgs'] data_node_configuration: Elasticsearch data node information. See `data_node_configuration` below.
         :param pulumi.Input[_builtins.bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[_builtins.int] data_node_disk_size: The single data node storage space.
         :param pulumi.Input[_builtins.str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.str] description: Instance name
-        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Whether to enable Kibana private network access.
+        :param pulumi.Input[_builtins.str] description: Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
+        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Indicates whether private network access to Kibana is enabled. Valid values:  
+               - true: Enabled
+               - false: Disabled
+        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Specifies whether to enable public access to Kibana. Valid values:  
+               - true: Enables public access.
+               - false: Disables public access.
+        :param pulumi.Input[_builtins.bool] enable_public: Specifies whether to enable a public endpoint for the instance. Valid values:
+               - true: Enables the public endpoint.
+               - false: Disables the public endpoint.
+        :param pulumi.Input[_builtins.bool] force: Whether to force a restart:
+               - true: Yes
+               - false (default): No.
                
-               The meaning of the value is as follows:
-               - true: On.
-               - false: does not open.
-        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Does Kibana enable public access
-        :param pulumi.Input[_builtins.bool] enable_public: Whether to enable Kibana public network access.
-               
-               The meaning of the value is as follows:
-               - true: On.
-               - false: does not open.
-        :param pulumi.Input[_builtins.bool] force: Whether to force changes
-               
-               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[_builtins.str] instance_category: Version type.
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.str] instance_category: Edition type:  
+               - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+               - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
-        :param pulumi.Input['InstanceKibanaConfigurationArgs'] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
+        :param pulumi.Input['InstanceKibanaConfigurationArgs'] kibana_configuration: The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
-        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: Kibana private network security group ID
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: Cluster Kibana node private network access whitelist
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: Kibana private network access whitelist
+        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: List of security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input['InstanceMasterConfigurationArgs'] master_configuration: Elasticsearch proprietary master node configuration information See `master_configuration` below.
+        :param pulumi.Input['InstanceMasterConfigurationArgs'] master_configuration: Configuration information for Elasticsearch dedicated master nodes. See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
-        :param pulumi.Input[_builtins.str] order_action_type: The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+        :param pulumi.Input[_builtins.str] order_action_type: Configuration change type. Valid values:
+               - upgrade (default): Upgrade configuration
+               - downgrade: Downgrade configuration.
                
-               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[_builtins.str] password: The access password of the instance.
-        :param pulumi.Input[_builtins.str] payment_type: The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.str] password: The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
+        :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Supported values:
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: Elasticsearch private network whitelist. (Same as EsIpWhitelist)
-        :param pulumi.Input[_builtins.str] protocol: Access protocol. Optional values: `HTTP` and **HTTPS * *.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: Elasticseach public network access whitelist IP list
-        :param pulumi.Input[_builtins.str] renew_status: Renewal Status
-        :param pulumi.Input[_builtins.str] renewal_duration_unit: Renewal Period Unit
-        :param pulumi.Input[_builtins.str] resource_group_id: Resource group to which the instance belongs
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: Configuration information
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Collection of tag key-value pairs
-        :param pulumi.Input[_builtins.str] update_strategy: The change policy for Elasticsearch.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
+        :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
+        :param pulumi.Input[_builtins.str] renew_status: The renewal status. Valid values:
+               - AutoRenewal: Auto-renewal.
+               - ManualRenewal: Manual renewal.
+               - NotRenewal: No renewal.
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. Valid values:  
+               - M: Month.
+               - Y: Year.
                
-               The values are as follows:
-               - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-               - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-               - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+               > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: YML configuration file settings for the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag group.
+        :param pulumi.Input[_builtins.str] update_strategy: Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+               - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+               - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+               - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
                
-               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
-        :param pulumi.Input['InstanceWarmNodeConfigurationArgs'] warm_node_configuration: Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
+        :param pulumi.Input['InstanceWarmNodeConfigurationArgs'] warm_node_configuration: Cold data node configuration for the Elasticsearch cluster. See `warm_node_configuration` below.
         :param pulumi.Input[_builtins.bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
         :param pulumi.Input[_builtins.str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.int] zone_count: The number of zones in the Elasticsearch instance.
+        :param pulumi.Input[_builtins.int] zone_count: The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -300,7 +319,17 @@ class InstanceArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[_builtins.str]:
         """
-        Instance version
+        The instance version. Valid values:
+        - 8.5.1_with_X-Pack
+        - 7.10_with_X-Pack
+        - 6.7_with_X-Pack
+        - 7.7_with_X-Pack
+        - 6.8_with_X-Pack
+        - 6.3_with_X-Pack
+        - 5.6_with_X-Pack
+        - 5.5.3_with_X-Pack
+
+        > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
         """
         return pulumi.get(self, "version")
 
@@ -324,7 +353,7 @@ class InstanceArgs:
     @pulumi.getter(name="autoRenewDuration")
     def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Renewal Period
+        Number of auto-renewal periods.
         """
         return pulumi.get(self, "auto_renew_duration")
 
@@ -349,7 +378,7 @@ class InstanceArgs:
     @pulumi.getter(name="clientNodeConfiguration")
     def client_node_configuration(self) -> Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']]:
         """
-        Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
+        Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `client_node_configuration` below.
         """
         return pulumi.get(self, "client_node_configuration")
 
@@ -387,7 +416,7 @@ class InstanceArgs:
     @pulumi.getter(name="dataNodeConfiguration")
     def data_node_configuration(self) -> Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']]:
         """
-        Elasticsearch data node information See `data_node_configuration` below.
+        Elasticsearch data node information. See `data_node_configuration` below.
         """
         return pulumi.get(self, "data_node_configuration")
 
@@ -464,7 +493,7 @@ class InstanceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance name
+        Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
         """
         return pulumi.get(self, "description")
 
@@ -476,11 +505,9 @@ class InstanceArgs:
     @pulumi.getter(name="enableKibanaPrivateNetwork")
     def enable_kibana_private_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable Kibana private network access.
-
-        The meaning of the value is as follows:
-        - true: On.
-        - false: does not open.
+        Indicates whether private network access to Kibana is enabled. Valid values:  
+        - true: Enabled
+        - false: Disabled
         """
         return pulumi.get(self, "enable_kibana_private_network")
 
@@ -492,7 +519,9 @@ class InstanceArgs:
     @pulumi.getter(name="enableKibanaPublicNetwork")
     def enable_kibana_public_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Does Kibana enable public access
+        Specifies whether to enable public access to Kibana. Valid values:  
+        - true: Enables public access.
+        - false: Disables public access.
         """
         return pulumi.get(self, "enable_kibana_public_network")
 
@@ -504,11 +533,9 @@ class InstanceArgs:
     @pulumi.getter(name="enablePublic")
     def enable_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable Kibana public network access.
-
-        The meaning of the value is as follows:
-        - true: On.
-        - false: does not open.
+        Specifies whether to enable a public endpoint for the instance. Valid values:
+        - true: Enables the public endpoint.
+        - false: Disables the public endpoint.
         """
         return pulumi.get(self, "enable_public")
 
@@ -520,9 +547,11 @@ class InstanceArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to force changes
+        Whether to force a restart:
+        - true: Yes
+        - false (default): No.
 
-        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         """
         return pulumi.get(self, "force")
 
@@ -534,7 +563,9 @@ class InstanceArgs:
     @pulumi.getter(name="instanceCategory")
     def instance_category(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Version type.
+        Edition type:  
+        - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+        - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         """
         return pulumi.get(self, "instance_category")
 
@@ -559,7 +590,7 @@ class InstanceArgs:
     @pulumi.getter(name="kibanaConfiguration")
     def kibana_configuration(self) -> Optional[pulumi.Input['InstanceKibanaConfigurationArgs']]:
         """
-        Elasticsearch Kibana node settings See `kibana_configuration` below.
+        The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
         """
         return pulumi.get(self, "kibana_configuration")
 
@@ -584,7 +615,7 @@ class InstanceArgs:
     @pulumi.getter(name="kibanaPrivateSecurityGroupId")
     def kibana_private_security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Kibana private network security group ID
+        List of security groups.
         """
         return pulumi.get(self, "kibana_private_security_group_id")
 
@@ -596,7 +627,7 @@ class InstanceArgs:
     @pulumi.getter(name="kibanaPrivateWhitelists")
     def kibana_private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Cluster Kibana node private network access whitelist
+        List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         """
         return pulumi.get(self, "kibana_private_whitelists")
 
@@ -608,7 +639,7 @@ class InstanceArgs:
     @pulumi.getter(name="kibanaWhitelists")
     def kibana_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Kibana private network access whitelist
+        The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         """
         return pulumi.get(self, "kibana_whitelists")
 
@@ -644,7 +675,7 @@ class InstanceArgs:
     @pulumi.getter(name="masterConfiguration")
     def master_configuration(self) -> Optional[pulumi.Input['InstanceMasterConfigurationArgs']]:
         """
-        Elasticsearch proprietary master node configuration information See `master_configuration` below.
+        Configuration information for Elasticsearch dedicated master nodes. See `master_configuration` below.
         """
         return pulumi.get(self, "master_configuration")
 
@@ -682,9 +713,11 @@ class InstanceArgs:
     @pulumi.getter(name="orderActionType")
     def order_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+        Configuration change type. Valid values:
+        - upgrade (default): Upgrade configuration
+        - downgrade: Downgrade configuration.
 
-        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         """
         return pulumi.get(self, "order_action_type")
 
@@ -696,7 +729,7 @@ class InstanceArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The access password of the instance.
+        The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
         """
         return pulumi.get(self, "password")
 
@@ -708,7 +741,7 @@ class InstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+        The billing method of the instance. Supported values:
         """
         return pulumi.get(self, "payment_type")
 
@@ -732,7 +765,7 @@ class InstanceArgs:
     @pulumi.getter(name="privateWhitelists")
     def private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+        The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         """
         return pulumi.get(self, "private_whitelists")
 
@@ -744,7 +777,7 @@ class InstanceArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Access protocol. Optional values: `HTTP` and **HTTPS * *.
+        The access protocol. Supported protocols: HTTP and HTTPS.
         """
         return pulumi.get(self, "protocol")
 
@@ -756,7 +789,7 @@ class InstanceArgs:
     @pulumi.getter(name="publicWhitelists")
     def public_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Elasticseach public network access whitelist IP list
+        The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         """
         return pulumi.get(self, "public_whitelists")
 
@@ -768,7 +801,10 @@ class InstanceArgs:
     @pulumi.getter(name="renewStatus")
     def renew_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Renewal Status
+        The renewal status. Valid values:
+        - AutoRenewal: Auto-renewal.
+        - ManualRenewal: Manual renewal.
+        - NotRenewal: No renewal.
         """
         return pulumi.get(self, "renew_status")
 
@@ -780,7 +816,11 @@ class InstanceArgs:
     @pulumi.getter(name="renewalDurationUnit")
     def renewal_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Renewal Period Unit
+        The unit of the auto-renewal period. Valid values:  
+        - M: Month.
+        - Y: Year.
+
+        > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
         """
         return pulumi.get(self, "renewal_duration_unit")
 
@@ -792,7 +832,7 @@ class InstanceArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Resource group to which the instance belongs
+        The ID of the resource group to which the instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -804,7 +844,7 @@ class InstanceArgs:
     @pulumi.getter(name="settingConfig")
     def setting_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Configuration information
+        YML configuration file settings for the instance.
         """
         return pulumi.get(self, "setting_config")
 
@@ -816,7 +856,7 @@ class InstanceArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Collection of tag key-value pairs
+        Instance tag group.
         """
         return pulumi.get(self, "tags")
 
@@ -828,14 +868,12 @@ class InstanceArgs:
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The change policy for Elasticsearch.
+        Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+        - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+        - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+        - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
 
-        The values are as follows:
-        - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-        - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-        - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-
-        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         """
         return pulumi.get(self, "update_strategy")
 
@@ -860,7 +898,7 @@ class InstanceArgs:
     @pulumi.getter(name="warmNodeConfiguration")
     def warm_node_configuration(self) -> Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']]:
         """
-        Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
+        Cold data node configuration for the Elasticsearch cluster. See `warm_node_configuration` below.
         """
         return pulumi.get(self, "warm_node_configuration")
 
@@ -924,7 +962,7 @@ class InstanceArgs:
     @pulumi.getter(name="zoneCount")
     def zone_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of zones in the Elasticsearch instance.
+        The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -963,6 +1001,7 @@ class _InstanceState:
                  kibana_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  kibana_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
                  kibana_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 kibana_private_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  kibana_private_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1000,84 +1039,104 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
 
-        :param pulumi.Input[_builtins.str] arch_type: Schema Type:.
-        :param pulumi.Input[_builtins.int] auto_renew_duration: Renewal Period
+        :param pulumi.Input[_builtins.str] arch_type: The deployment mode or architecture type:.
+        :param pulumi.Input[_builtins.int] auto_renew_duration: Number of auto-renewal periods.
         :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
-        :param pulumi.Input['InstanceClientNodeConfigurationArgs'] client_node_configuration: Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
+        :param pulumi.Input['InstanceClientNodeConfigurationArgs'] client_node_configuration: Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `client_node_configuration` below.
         :param pulumi.Input[_builtins.str] client_node_spec: The client node spec. If specified, client node will be created.
-        :param pulumi.Input[_builtins.str] create_time: Instance creation time.
+        :param pulumi.Input[_builtins.str] create_time: The time when the instance was created.
         :param pulumi.Input[_builtins.int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
-        :param pulumi.Input['InstanceDataNodeConfigurationArgs'] data_node_configuration: Elasticsearch data node information See `data_node_configuration` below.
+        :param pulumi.Input['InstanceDataNodeConfigurationArgs'] data_node_configuration: Elasticsearch data node information. See `data_node_configuration` below.
         :param pulumi.Input[_builtins.bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[_builtins.int] data_node_disk_size: The single data node storage space.
         :param pulumi.Input[_builtins.str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.str] description: Instance name
-        :param pulumi.Input[_builtins.str] domain: Elasticsearch cluster private domain name.
-        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Whether to enable Kibana private network access.
+        :param pulumi.Input[_builtins.str] description: Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
+        :param pulumi.Input[_builtins.str] domain: The internal network address of the instance.
+        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Indicates whether private network access to Kibana is enabled. Valid values:  
+               - true: Enabled
+               - false: Disabled
+        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Specifies whether to enable public access to Kibana. Valid values:  
+               - true: Enables public access.
+               - false: Disables public access.
+        :param pulumi.Input[_builtins.bool] enable_public: Specifies whether to enable a public endpoint for the instance. Valid values:
+               - true: Enables the public endpoint.
+               - false: Disables the public endpoint.
+        :param pulumi.Input[_builtins.bool] force: Whether to force a restart:
+               - true: Yes
+               - false (default): No.
                
-               The meaning of the value is as follows:
-               - true: On.
-               - false: does not open.
-        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Does Kibana enable public access
-        :param pulumi.Input[_builtins.bool] enable_public: Whether to enable Kibana public network access.
-               
-               The meaning of the value is as follows:
-               - true: On.
-               - false: does not open.
-        :param pulumi.Input[_builtins.bool] force: Whether to force changes
-               
-               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[_builtins.str] instance_category: Version type.
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.str] instance_category: Edition type:  
+               - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+               - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
-        :param pulumi.Input['InstanceKibanaConfigurationArgs'] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
-        :param pulumi.Input[_builtins.str] kibana_domain: Kibana address.
+        :param pulumi.Input['InstanceKibanaConfigurationArgs'] kibana_configuration: The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
+        :param pulumi.Input[_builtins.str] kibana_domain: Kibana endpoint.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
-        :param pulumi.Input[_builtins.int] kibana_port: The port assigned by the Kibana node.
-        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: Kibana private network security group ID
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: Cluster Kibana node private network access whitelist
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: Kibana private network access whitelist
+        :param pulumi.Input[_builtins.int] kibana_port: The access port for Kibana.
+        :param pulumi.Input[_builtins.str] kibana_private_domain: The private endpoint of Kibana.
+        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: List of security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input['InstanceMasterConfigurationArgs'] master_configuration: Elasticsearch proprietary master node configuration information See `master_configuration` below.
+        :param pulumi.Input['InstanceMasterConfigurationArgs'] master_configuration: Configuration information for Elasticsearch dedicated master nodes. See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
-        :param pulumi.Input[_builtins.str] order_action_type: The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+        :param pulumi.Input[_builtins.str] order_action_type: Configuration change type. Valid values:
+               - upgrade (default): Upgrade configuration
+               - downgrade: Downgrade configuration.
                
-               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[_builtins.str] password: The access password of the instance.
-        :param pulumi.Input[_builtins.str] payment_type: The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.str] password: The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
+        :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Supported values:
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[_builtins.int] port: Instance connection port.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: Elasticsearch private network whitelist. (Same as EsIpWhitelist)
-        :param pulumi.Input[_builtins.str] protocol: Access protocol. Optional values: `HTTP` and **HTTPS * *.
-        :param pulumi.Input[_builtins.str] public_domain: The public network address of the current instance.
-        :param pulumi.Input[_builtins.int] public_port: Elasticsearch cluster public network access port
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: Elasticseach public network access whitelist IP list
-        :param pulumi.Input[_builtins.str] renew_status: Renewal Status
-        :param pulumi.Input[_builtins.str] renewal_duration_unit: Renewal Period Unit
-        :param pulumi.Input[_builtins.str] resource_group_id: Resource group to which the instance belongs
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: Configuration information
-        :param pulumi.Input[_builtins.str] status: Instance change status
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Collection of tag key-value pairs
-        :param pulumi.Input[_builtins.str] update_strategy: The change policy for Elasticsearch.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
+        :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
+        :param pulumi.Input[_builtins.str] public_domain: The public endpoint of the instance.
+        :param pulumi.Input[_builtins.int] public_port: The public access port of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
+        :param pulumi.Input[_builtins.str] renew_status: The renewal status. Valid values:
+               - AutoRenewal: Auto-renewal.
+               - ManualRenewal: Manual renewal.
+               - NotRenewal: No renewal.
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. Valid values:  
+               - M: Month.
+               - Y: Year.
                
-               The values are as follows:
-               - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-               - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-               - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+               > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: YML configuration file settings for the instance.
+        :param pulumi.Input[_builtins.str] status: The status of the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag group.
+        :param pulumi.Input[_builtins.str] update_strategy: Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+               - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+               - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+               - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
                
-               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[_builtins.str] version: Instance version
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.str] version: The instance version. Valid values:
+               - 8.5.1_with_X-Pack
+               - 7.10_with_X-Pack
+               - 6.7_with_X-Pack
+               - 7.7_with_X-Pack
+               - 6.8_with_X-Pack
+               - 6.3_with_X-Pack
+               - 5.6_with_X-Pack
+               - 5.5.3_with_X-Pack
+               
+               > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
-        :param pulumi.Input['InstanceWarmNodeConfigurationArgs'] warm_node_configuration: Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
+        :param pulumi.Input['InstanceWarmNodeConfigurationArgs'] warm_node_configuration: Cold data node configuration for the Elasticsearch cluster. See `warm_node_configuration` below.
         :param pulumi.Input[_builtins.bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
         :param pulumi.Input[_builtins.str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.int] zone_count: The number of zones in the Elasticsearch instance.
+        :param pulumi.Input[_builtins.int] zone_count: The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -1161,6 +1220,8 @@ class _InstanceState:
             pulumi.set(__self__, "kibana_node_spec", kibana_node_spec)
         if kibana_port is not None:
             pulumi.set(__self__, "kibana_port", kibana_port)
+        if kibana_private_domain is not None:
+            pulumi.set(__self__, "kibana_private_domain", kibana_private_domain)
         if kibana_private_security_group_id is not None:
             pulumi.set(__self__, "kibana_private_security_group_id", kibana_private_security_group_id)
         if kibana_private_whitelists is not None:
@@ -1255,7 +1316,7 @@ class _InstanceState:
     @pulumi.getter(name="archType")
     def arch_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Schema Type:.
+        The deployment mode or architecture type:.
         """
         return pulumi.get(self, "arch_type")
 
@@ -1267,7 +1328,7 @@ class _InstanceState:
     @pulumi.getter(name="autoRenewDuration")
     def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Renewal Period
+        Number of auto-renewal periods.
         """
         return pulumi.get(self, "auto_renew_duration")
 
@@ -1292,7 +1353,7 @@ class _InstanceState:
     @pulumi.getter(name="clientNodeConfiguration")
     def client_node_configuration(self) -> Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']]:
         """
-        Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
+        Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `client_node_configuration` below.
         """
         return pulumi.get(self, "client_node_configuration")
 
@@ -1317,7 +1378,7 @@ class _InstanceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance creation time.
+        The time when the instance was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -1342,7 +1403,7 @@ class _InstanceState:
     @pulumi.getter(name="dataNodeConfiguration")
     def data_node_configuration(self) -> Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']]:
         """
-        Elasticsearch data node information See `data_node_configuration` below.
+        Elasticsearch data node information. See `data_node_configuration` below.
         """
         return pulumi.get(self, "data_node_configuration")
 
@@ -1419,7 +1480,7 @@ class _InstanceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance name
+        Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
         """
         return pulumi.get(self, "description")
 
@@ -1431,7 +1492,7 @@ class _InstanceState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Elasticsearch cluster private domain name.
+        The internal network address of the instance.
         """
         return pulumi.get(self, "domain")
 
@@ -1443,11 +1504,9 @@ class _InstanceState:
     @pulumi.getter(name="enableKibanaPrivateNetwork")
     def enable_kibana_private_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable Kibana private network access.
-
-        The meaning of the value is as follows:
-        - true: On.
-        - false: does not open.
+        Indicates whether private network access to Kibana is enabled. Valid values:  
+        - true: Enabled
+        - false: Disabled
         """
         return pulumi.get(self, "enable_kibana_private_network")
 
@@ -1459,7 +1518,9 @@ class _InstanceState:
     @pulumi.getter(name="enableKibanaPublicNetwork")
     def enable_kibana_public_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Does Kibana enable public access
+        Specifies whether to enable public access to Kibana. Valid values:  
+        - true: Enables public access.
+        - false: Disables public access.
         """
         return pulumi.get(self, "enable_kibana_public_network")
 
@@ -1471,11 +1532,9 @@ class _InstanceState:
     @pulumi.getter(name="enablePublic")
     def enable_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable Kibana public network access.
-
-        The meaning of the value is as follows:
-        - true: On.
-        - false: does not open.
+        Specifies whether to enable a public endpoint for the instance. Valid values:
+        - true: Enables the public endpoint.
+        - false: Disables the public endpoint.
         """
         return pulumi.get(self, "enable_public")
 
@@ -1487,9 +1546,11 @@ class _InstanceState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to force changes
+        Whether to force a restart:
+        - true: Yes
+        - false (default): No.
 
-        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         """
         return pulumi.get(self, "force")
 
@@ -1501,7 +1562,9 @@ class _InstanceState:
     @pulumi.getter(name="instanceCategory")
     def instance_category(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Version type.
+        Edition type:  
+        - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+        - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         """
         return pulumi.get(self, "instance_category")
 
@@ -1526,7 +1589,7 @@ class _InstanceState:
     @pulumi.getter(name="kibanaConfiguration")
     def kibana_configuration(self) -> Optional[pulumi.Input['InstanceKibanaConfigurationArgs']]:
         """
-        Elasticsearch Kibana node settings See `kibana_configuration` below.
+        The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
         """
         return pulumi.get(self, "kibana_configuration")
 
@@ -1538,7 +1601,7 @@ class _InstanceState:
     @pulumi.getter(name="kibanaDomain")
     def kibana_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Kibana address.
+        Kibana endpoint.
         """
         return pulumi.get(self, "kibana_domain")
 
@@ -1563,7 +1626,7 @@ class _InstanceState:
     @pulumi.getter(name="kibanaPort")
     def kibana_port(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The port assigned by the Kibana node.
+        The access port for Kibana.
         """
         return pulumi.get(self, "kibana_port")
 
@@ -1572,10 +1635,22 @@ class _InstanceState:
         pulumi.set(self, "kibana_port", value)
 
     @_builtins.property
+    @pulumi.getter(name="kibanaPrivateDomain")
+    def kibana_private_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The private endpoint of Kibana.
+        """
+        return pulumi.get(self, "kibana_private_domain")
+
+    @kibana_private_domain.setter
+    def kibana_private_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kibana_private_domain", value)
+
+    @_builtins.property
     @pulumi.getter(name="kibanaPrivateSecurityGroupId")
     def kibana_private_security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Kibana private network security group ID
+        List of security groups.
         """
         return pulumi.get(self, "kibana_private_security_group_id")
 
@@ -1587,7 +1662,7 @@ class _InstanceState:
     @pulumi.getter(name="kibanaPrivateWhitelists")
     def kibana_private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Cluster Kibana node private network access whitelist
+        List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         """
         return pulumi.get(self, "kibana_private_whitelists")
 
@@ -1599,7 +1674,7 @@ class _InstanceState:
     @pulumi.getter(name="kibanaWhitelists")
     def kibana_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Kibana private network access whitelist
+        The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         """
         return pulumi.get(self, "kibana_whitelists")
 
@@ -1635,7 +1710,7 @@ class _InstanceState:
     @pulumi.getter(name="masterConfiguration")
     def master_configuration(self) -> Optional[pulumi.Input['InstanceMasterConfigurationArgs']]:
         """
-        Elasticsearch proprietary master node configuration information See `master_configuration` below.
+        Configuration information for Elasticsearch dedicated master nodes. See `master_configuration` below.
         """
         return pulumi.get(self, "master_configuration")
 
@@ -1673,9 +1748,11 @@ class _InstanceState:
     @pulumi.getter(name="orderActionType")
     def order_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+        Configuration change type. Valid values:
+        - upgrade (default): Upgrade configuration
+        - downgrade: Downgrade configuration.
 
-        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         """
         return pulumi.get(self, "order_action_type")
 
@@ -1687,7 +1764,7 @@ class _InstanceState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The access password of the instance.
+        The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
         """
         return pulumi.get(self, "password")
 
@@ -1699,7 +1776,7 @@ class _InstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+        The billing method of the instance. Supported values:
         """
         return pulumi.get(self, "payment_type")
 
@@ -1735,7 +1812,7 @@ class _InstanceState:
     @pulumi.getter(name="privateWhitelists")
     def private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+        The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         """
         return pulumi.get(self, "private_whitelists")
 
@@ -1747,7 +1824,7 @@ class _InstanceState:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Access protocol. Optional values: `HTTP` and **HTTPS * *.
+        The access protocol. Supported protocols: HTTP and HTTPS.
         """
         return pulumi.get(self, "protocol")
 
@@ -1759,7 +1836,7 @@ class _InstanceState:
     @pulumi.getter(name="publicDomain")
     def public_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The public network address of the current instance.
+        The public endpoint of the instance.
         """
         return pulumi.get(self, "public_domain")
 
@@ -1771,7 +1848,7 @@ class _InstanceState:
     @pulumi.getter(name="publicPort")
     def public_port(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Elasticsearch cluster public network access port
+        The public access port of the instance.
         """
         return pulumi.get(self, "public_port")
 
@@ -1783,7 +1860,7 @@ class _InstanceState:
     @pulumi.getter(name="publicWhitelists")
     def public_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Elasticseach public network access whitelist IP list
+        The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         """
         return pulumi.get(self, "public_whitelists")
 
@@ -1795,7 +1872,10 @@ class _InstanceState:
     @pulumi.getter(name="renewStatus")
     def renew_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Renewal Status
+        The renewal status. Valid values:
+        - AutoRenewal: Auto-renewal.
+        - ManualRenewal: Manual renewal.
+        - NotRenewal: No renewal.
         """
         return pulumi.get(self, "renew_status")
 
@@ -1807,7 +1887,11 @@ class _InstanceState:
     @pulumi.getter(name="renewalDurationUnit")
     def renewal_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Renewal Period Unit
+        The unit of the auto-renewal period. Valid values:  
+        - M: Month.
+        - Y: Year.
+
+        > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
         """
         return pulumi.get(self, "renewal_duration_unit")
 
@@ -1819,7 +1903,7 @@ class _InstanceState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Resource group to which the instance belongs
+        The ID of the resource group to which the instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1831,7 +1915,7 @@ class _InstanceState:
     @pulumi.getter(name="settingConfig")
     def setting_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Configuration information
+        YML configuration file settings for the instance.
         """
         return pulumi.get(self, "setting_config")
 
@@ -1843,7 +1927,7 @@ class _InstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance change status
+        The status of the instance.
         """
         return pulumi.get(self, "status")
 
@@ -1855,7 +1939,7 @@ class _InstanceState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Collection of tag key-value pairs
+        Instance tag group.
         """
         return pulumi.get(self, "tags")
 
@@ -1867,14 +1951,12 @@ class _InstanceState:
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The change policy for Elasticsearch.
+        Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+        - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+        - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+        - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
 
-        The values are as follows:
-        - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-        - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-        - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-
-        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         """
         return pulumi.get(self, "update_strategy")
 
@@ -1886,7 +1968,17 @@ class _InstanceState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance version
+        The instance version. Valid values:
+        - 8.5.1_with_X-Pack
+        - 7.10_with_X-Pack
+        - 6.7_with_X-Pack
+        - 7.7_with_X-Pack
+        - 6.8_with_X-Pack
+        - 6.3_with_X-Pack
+        - 5.6_with_X-Pack
+        - 5.5.3_with_X-Pack
+
+        > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
         """
         return pulumi.get(self, "version")
 
@@ -1923,7 +2015,7 @@ class _InstanceState:
     @pulumi.getter(name="warmNodeConfiguration")
     def warm_node_configuration(self) -> Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']]:
         """
-        Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
+        Cold data node configuration for the Elasticsearch cluster. See `warm_node_configuration` below.
         """
         return pulumi.get(self, "warm_node_configuration")
 
@@ -1987,7 +2079,7 @@ class _InstanceState:
     @pulumi.getter(name="zoneCount")
     def zone_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of zones in the Elasticsearch instance.
+        The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -2114,75 +2206,94 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] auto_renew_duration: Renewal Period
+        :param pulumi.Input[_builtins.int] auto_renew_duration: Number of auto-renewal periods.
         :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
-        :param pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']] client_node_configuration: Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
+        :param pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']] client_node_configuration: Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `client_node_configuration` below.
         :param pulumi.Input[_builtins.str] client_node_spec: The client node spec. If specified, client node will be created.
         :param pulumi.Input[_builtins.int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
-        :param pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']] data_node_configuration: Elasticsearch data node information See `data_node_configuration` below.
+        :param pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']] data_node_configuration: Elasticsearch data node information. See `data_node_configuration` below.
         :param pulumi.Input[_builtins.bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[_builtins.int] data_node_disk_size: The single data node storage space.
         :param pulumi.Input[_builtins.str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.str] description: Instance name
-        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Whether to enable Kibana private network access.
+        :param pulumi.Input[_builtins.str] description: Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
+        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Indicates whether private network access to Kibana is enabled. Valid values:  
+               - true: Enabled
+               - false: Disabled
+        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Specifies whether to enable public access to Kibana. Valid values:  
+               - true: Enables public access.
+               - false: Disables public access.
+        :param pulumi.Input[_builtins.bool] enable_public: Specifies whether to enable a public endpoint for the instance. Valid values:
+               - true: Enables the public endpoint.
+               - false: Disables the public endpoint.
+        :param pulumi.Input[_builtins.bool] force: Whether to force a restart:
+               - true: Yes
+               - false (default): No.
                
-               The meaning of the value is as follows:
-               - true: On.
-               - false: does not open.
-        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Does Kibana enable public access
-        :param pulumi.Input[_builtins.bool] enable_public: Whether to enable Kibana public network access.
-               
-               The meaning of the value is as follows:
-               - true: On.
-               - false: does not open.
-        :param pulumi.Input[_builtins.bool] force: Whether to force changes
-               
-               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[_builtins.str] instance_category: Version type.
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.str] instance_category: Edition type:  
+               - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+               - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
-        :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
+        :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']] kibana_configuration: The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
-        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: Kibana private network security group ID
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: Cluster Kibana node private network access whitelist
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: Kibana private network access whitelist
+        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: List of security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']] master_configuration: Elasticsearch proprietary master node configuration information See `master_configuration` below.
+        :param pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']] master_configuration: Configuration information for Elasticsearch dedicated master nodes. See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
-        :param pulumi.Input[_builtins.str] order_action_type: The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+        :param pulumi.Input[_builtins.str] order_action_type: Configuration change type. Valid values:
+               - upgrade (default): Upgrade configuration
+               - downgrade: Downgrade configuration.
                
-               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[_builtins.str] password: The access password of the instance.
-        :param pulumi.Input[_builtins.str] payment_type: The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.str] password: The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
+        :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Supported values:
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: Elasticsearch private network whitelist. (Same as EsIpWhitelist)
-        :param pulumi.Input[_builtins.str] protocol: Access protocol. Optional values: `HTTP` and **HTTPS * *.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: Elasticseach public network access whitelist IP list
-        :param pulumi.Input[_builtins.str] renew_status: Renewal Status
-        :param pulumi.Input[_builtins.str] renewal_duration_unit: Renewal Period Unit
-        :param pulumi.Input[_builtins.str] resource_group_id: Resource group to which the instance belongs
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: Configuration information
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Collection of tag key-value pairs
-        :param pulumi.Input[_builtins.str] update_strategy: The change policy for Elasticsearch.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
+        :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
+        :param pulumi.Input[_builtins.str] renew_status: The renewal status. Valid values:
+               - AutoRenewal: Auto-renewal.
+               - ManualRenewal: Manual renewal.
+               - NotRenewal: No renewal.
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. Valid values:  
+               - M: Month.
+               - Y: Year.
                
-               The values are as follows:
-               - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-               - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-               - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+               > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: YML configuration file settings for the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag group.
+        :param pulumi.Input[_builtins.str] update_strategy: Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+               - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+               - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+               - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
                
-               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[_builtins.str] version: Instance version
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.str] version: The instance version. Valid values:
+               - 8.5.1_with_X-Pack
+               - 7.10_with_X-Pack
+               - 6.7_with_X-Pack
+               - 7.7_with_X-Pack
+               - 6.8_with_X-Pack
+               - 6.3_with_X-Pack
+               - 5.6_with_X-Pack
+               - 5.5.3_with_X-Pack
+               
+               > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
-        :param pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']] warm_node_configuration: Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
+        :param pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']] warm_node_configuration: Cold data node configuration for the Elasticsearch cluster. See `warm_node_configuration` below.
         :param pulumi.Input[_builtins.bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
         :param pulumi.Input[_builtins.str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.int] zone_count: The number of zones in the Elasticsearch instance.
+        :param pulumi.Input[_builtins.int] zone_count: The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -2382,6 +2493,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["domain"] = None
             __props__.__dict__["kibana_domain"] = None
             __props__.__dict__["kibana_port"] = None
+            __props__.__dict__["kibana_private_domain"] = None
             __props__.__dict__["port"] = None
             __props__.__dict__["public_domain"] = None
             __props__.__dict__["public_port"] = None
@@ -2423,6 +2535,7 @@ class Instance(pulumi.CustomResource):
             kibana_domain: Optional[pulumi.Input[_builtins.str]] = None,
             kibana_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
             kibana_port: Optional[pulumi.Input[_builtins.int]] = None,
+            kibana_private_domain: Optional[pulumi.Input[_builtins.str]] = None,
             kibana_private_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2464,84 +2577,104 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] arch_type: Schema Type:.
-        :param pulumi.Input[_builtins.int] auto_renew_duration: Renewal Period
+        :param pulumi.Input[_builtins.str] arch_type: The deployment mode or architecture type:.
+        :param pulumi.Input[_builtins.int] auto_renew_duration: Number of auto-renewal periods.
         :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
-        :param pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']] client_node_configuration: Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
+        :param pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']] client_node_configuration: Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `client_node_configuration` below.
         :param pulumi.Input[_builtins.str] client_node_spec: The client node spec. If specified, client node will be created.
-        :param pulumi.Input[_builtins.str] create_time: Instance creation time.
+        :param pulumi.Input[_builtins.str] create_time: The time when the instance was created.
         :param pulumi.Input[_builtins.int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
-        :param pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']] data_node_configuration: Elasticsearch data node information See `data_node_configuration` below.
+        :param pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']] data_node_configuration: Elasticsearch data node information. See `data_node_configuration` below.
         :param pulumi.Input[_builtins.bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[_builtins.int] data_node_disk_size: The single data node storage space.
         :param pulumi.Input[_builtins.str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.str] description: Instance name
-        :param pulumi.Input[_builtins.str] domain: Elasticsearch cluster private domain name.
-        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Whether to enable Kibana private network access.
+        :param pulumi.Input[_builtins.str] description: Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
+        :param pulumi.Input[_builtins.str] domain: The internal network address of the instance.
+        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Indicates whether private network access to Kibana is enabled. Valid values:  
+               - true: Enabled
+               - false: Disabled
+        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Specifies whether to enable public access to Kibana. Valid values:  
+               - true: Enables public access.
+               - false: Disables public access.
+        :param pulumi.Input[_builtins.bool] enable_public: Specifies whether to enable a public endpoint for the instance. Valid values:
+               - true: Enables the public endpoint.
+               - false: Disables the public endpoint.
+        :param pulumi.Input[_builtins.bool] force: Whether to force a restart:
+               - true: Yes
+               - false (default): No.
                
-               The meaning of the value is as follows:
-               - true: On.
-               - false: does not open.
-        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Does Kibana enable public access
-        :param pulumi.Input[_builtins.bool] enable_public: Whether to enable Kibana public network access.
-               
-               The meaning of the value is as follows:
-               - true: On.
-               - false: does not open.
-        :param pulumi.Input[_builtins.bool] force: Whether to force changes
-               
-               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[_builtins.str] instance_category: Version type.
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.str] instance_category: Edition type:  
+               - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+               - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
-        :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
-        :param pulumi.Input[_builtins.str] kibana_domain: Kibana address.
+        :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']] kibana_configuration: The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
+        :param pulumi.Input[_builtins.str] kibana_domain: Kibana endpoint.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
-        :param pulumi.Input[_builtins.int] kibana_port: The port assigned by the Kibana node.
-        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: Kibana private network security group ID
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: Cluster Kibana node private network access whitelist
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: Kibana private network access whitelist
+        :param pulumi.Input[_builtins.int] kibana_port: The access port for Kibana.
+        :param pulumi.Input[_builtins.str] kibana_private_domain: The private endpoint of Kibana.
+        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: List of security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']] master_configuration: Elasticsearch proprietary master node configuration information See `master_configuration` below.
+        :param pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']] master_configuration: Configuration information for Elasticsearch dedicated master nodes. See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
-        :param pulumi.Input[_builtins.str] order_action_type: The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+        :param pulumi.Input[_builtins.str] order_action_type: Configuration change type. Valid values:
+               - upgrade (default): Upgrade configuration
+               - downgrade: Downgrade configuration.
                
-               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[_builtins.str] password: The access password of the instance.
-        :param pulumi.Input[_builtins.str] payment_type: The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.str] password: The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
+        :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Supported values:
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[_builtins.int] port: Instance connection port.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: Elasticsearch private network whitelist. (Same as EsIpWhitelist)
-        :param pulumi.Input[_builtins.str] protocol: Access protocol. Optional values: `HTTP` and **HTTPS * *.
-        :param pulumi.Input[_builtins.str] public_domain: The public network address of the current instance.
-        :param pulumi.Input[_builtins.int] public_port: Elasticsearch cluster public network access port
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: Elasticseach public network access whitelist IP list
-        :param pulumi.Input[_builtins.str] renew_status: Renewal Status
-        :param pulumi.Input[_builtins.str] renewal_duration_unit: Renewal Period Unit
-        :param pulumi.Input[_builtins.str] resource_group_id: Resource group to which the instance belongs
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: Configuration information
-        :param pulumi.Input[_builtins.str] status: Instance change status
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Collection of tag key-value pairs
-        :param pulumi.Input[_builtins.str] update_strategy: The change policy for Elasticsearch.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
+        :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
+        :param pulumi.Input[_builtins.str] public_domain: The public endpoint of the instance.
+        :param pulumi.Input[_builtins.int] public_port: The public access port of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
+        :param pulumi.Input[_builtins.str] renew_status: The renewal status. Valid values:
+               - AutoRenewal: Auto-renewal.
+               - ManualRenewal: Manual renewal.
+               - NotRenewal: No renewal.
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. Valid values:  
+               - M: Month.
+               - Y: Year.
                
-               The values are as follows:
-               - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-               - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-               - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+               > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: YML configuration file settings for the instance.
+        :param pulumi.Input[_builtins.str] status: The status of the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag group.
+        :param pulumi.Input[_builtins.str] update_strategy: Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+               - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+               - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+               - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
                
-               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[_builtins.str] version: Instance version
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.str] version: The instance version. Valid values:
+               - 8.5.1_with_X-Pack
+               - 7.10_with_X-Pack
+               - 6.7_with_X-Pack
+               - 7.7_with_X-Pack
+               - 6.8_with_X-Pack
+               - 6.3_with_X-Pack
+               - 5.6_with_X-Pack
+               - 5.5.3_with_X-Pack
+               
+               > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
-        :param pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']] warm_node_configuration: Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
+        :param pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']] warm_node_configuration: Cold data node configuration for the Elasticsearch cluster. See `warm_node_configuration` below.
         :param pulumi.Input[_builtins.bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
         :param pulumi.Input[_builtins.str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.int] zone_count: The number of zones in the Elasticsearch instance.
+        :param pulumi.Input[_builtins.int] zone_count: The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -2574,6 +2707,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["kibana_domain"] = kibana_domain
         __props__.__dict__["kibana_node_spec"] = kibana_node_spec
         __props__.__dict__["kibana_port"] = kibana_port
+        __props__.__dict__["kibana_private_domain"] = kibana_private_domain
         __props__.__dict__["kibana_private_security_group_id"] = kibana_private_security_group_id
         __props__.__dict__["kibana_private_whitelists"] = kibana_private_whitelists
         __props__.__dict__["kibana_whitelists"] = kibana_whitelists
@@ -2614,7 +2748,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="archType")
     def arch_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Schema Type:.
+        The deployment mode or architecture type:.
         """
         return pulumi.get(self, "arch_type")
 
@@ -2622,7 +2756,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="autoRenewDuration")
     def auto_renew_duration(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Renewal Period
+        Number of auto-renewal periods.
         """
         return pulumi.get(self, "auto_renew_duration")
 
@@ -2639,7 +2773,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="clientNodeConfiguration")
     def client_node_configuration(self) -> pulumi.Output['outputs.InstanceClientNodeConfiguration']:
         """
-        Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
+        Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `client_node_configuration` below.
         """
         return pulumi.get(self, "client_node_configuration")
 
@@ -2656,7 +2790,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance creation time.
+        The time when the instance was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -2673,7 +2807,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="dataNodeConfiguration")
     def data_node_configuration(self) -> pulumi.Output['outputs.InstanceDataNodeConfiguration']:
         """
-        Elasticsearch data node information See `data_node_configuration` below.
+        Elasticsearch data node information. See `data_node_configuration` below.
         """
         return pulumi.get(self, "data_node_configuration")
 
@@ -2726,7 +2860,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance name
+        Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
         """
         return pulumi.get(self, "description")
 
@@ -2734,7 +2868,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[_builtins.str]:
         """
-        Elasticsearch cluster private domain name.
+        The internal network address of the instance.
         """
         return pulumi.get(self, "domain")
 
@@ -2742,11 +2876,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enableKibanaPrivateNetwork")
     def enable_kibana_private_network(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether to enable Kibana private network access.
-
-        The meaning of the value is as follows:
-        - true: On.
-        - false: does not open.
+        Indicates whether private network access to Kibana is enabled. Valid values:  
+        - true: Enabled
+        - false: Disabled
         """
         return pulumi.get(self, "enable_kibana_private_network")
 
@@ -2754,7 +2886,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enableKibanaPublicNetwork")
     def enable_kibana_public_network(self) -> pulumi.Output[_builtins.bool]:
         """
-        Does Kibana enable public access
+        Specifies whether to enable public access to Kibana. Valid values:  
+        - true: Enables public access.
+        - false: Disables public access.
         """
         return pulumi.get(self, "enable_kibana_public_network")
 
@@ -2762,11 +2896,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enablePublic")
     def enable_public(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether to enable Kibana public network access.
-
-        The meaning of the value is as follows:
-        - true: On.
-        - false: does not open.
+        Specifies whether to enable a public endpoint for the instance. Valid values:
+        - true: Enables the public endpoint.
+        - false: Disables the public endpoint.
         """
         return pulumi.get(self, "enable_public")
 
@@ -2774,9 +2906,11 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to force changes
+        Whether to force a restart:
+        - true: Yes
+        - false (default): No.
 
-        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         """
         return pulumi.get(self, "force")
 
@@ -2784,7 +2918,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceCategory")
     def instance_category(self) -> pulumi.Output[_builtins.str]:
         """
-        Version type.
+        Edition type:  
+        - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+        - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         """
         return pulumi.get(self, "instance_category")
 
@@ -2801,7 +2937,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kibanaConfiguration")
     def kibana_configuration(self) -> pulumi.Output['outputs.InstanceKibanaConfiguration']:
         """
-        Elasticsearch Kibana node settings See `kibana_configuration` below.
+        The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
         """
         return pulumi.get(self, "kibana_configuration")
 
@@ -2809,7 +2945,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kibanaDomain")
     def kibana_domain(self) -> pulumi.Output[_builtins.str]:
         """
-        Kibana address.
+        Kibana endpoint.
         """
         return pulumi.get(self, "kibana_domain")
 
@@ -2826,15 +2962,23 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kibanaPort")
     def kibana_port(self) -> pulumi.Output[_builtins.int]:
         """
-        The port assigned by the Kibana node.
+        The access port for Kibana.
         """
         return pulumi.get(self, "kibana_port")
+
+    @_builtins.property
+    @pulumi.getter(name="kibanaPrivateDomain")
+    def kibana_private_domain(self) -> pulumi.Output[_builtins.str]:
+        """
+        The private endpoint of Kibana.
+        """
+        return pulumi.get(self, "kibana_private_domain")
 
     @_builtins.property
     @pulumi.getter(name="kibanaPrivateSecurityGroupId")
     def kibana_private_security_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Kibana private network security group ID
+        List of security groups.
         """
         return pulumi.get(self, "kibana_private_security_group_id")
 
@@ -2842,7 +2986,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kibanaPrivateWhitelists")
     def kibana_private_whitelists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Cluster Kibana node private network access whitelist
+        List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         """
         return pulumi.get(self, "kibana_private_whitelists")
 
@@ -2850,7 +2994,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kibanaWhitelists")
     def kibana_whitelists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Kibana private network access whitelist
+        The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         """
         return pulumi.get(self, "kibana_whitelists")
 
@@ -2874,7 +3018,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="masterConfiguration")
     def master_configuration(self) -> pulumi.Output['outputs.InstanceMasterConfiguration']:
         """
-        Elasticsearch proprietary master node configuration information See `master_configuration` below.
+        Configuration information for Elasticsearch dedicated master nodes. See `master_configuration` below.
         """
         return pulumi.get(self, "master_configuration")
 
@@ -2900,9 +3044,11 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="orderActionType")
     def order_action_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+        Configuration change type. Valid values:
+        - upgrade (default): Upgrade configuration
+        - downgrade: Downgrade configuration.
 
-        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         """
         return pulumi.get(self, "order_action_type")
 
@@ -2910,7 +3056,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The access password of the instance.
+        The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
         """
         return pulumi.get(self, "password")
 
@@ -2918,7 +3064,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+        The billing method of the instance. Supported values:
         """
         return pulumi.get(self, "payment_type")
 
@@ -2942,7 +3088,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="privateWhitelists")
     def private_whitelists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+        The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         """
         return pulumi.get(self, "private_whitelists")
 
@@ -2950,7 +3096,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[_builtins.str]:
         """
-        Access protocol. Optional values: `HTTP` and **HTTPS * *.
+        The access protocol. Supported protocols: HTTP and HTTPS.
         """
         return pulumi.get(self, "protocol")
 
@@ -2958,7 +3104,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="publicDomain")
     def public_domain(self) -> pulumi.Output[_builtins.str]:
         """
-        The public network address of the current instance.
+        The public endpoint of the instance.
         """
         return pulumi.get(self, "public_domain")
 
@@ -2966,7 +3112,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="publicPort")
     def public_port(self) -> pulumi.Output[_builtins.int]:
         """
-        Elasticsearch cluster public network access port
+        The public access port of the instance.
         """
         return pulumi.get(self, "public_port")
 
@@ -2974,7 +3120,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="publicWhitelists")
     def public_whitelists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Elasticseach public network access whitelist IP list
+        The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         """
         return pulumi.get(self, "public_whitelists")
 
@@ -2982,7 +3128,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="renewStatus")
     def renew_status(self) -> pulumi.Output[_builtins.str]:
         """
-        Renewal Status
+        The renewal status. Valid values:
+        - AutoRenewal: Auto-renewal.
+        - ManualRenewal: Manual renewal.
+        - NotRenewal: No renewal.
         """
         return pulumi.get(self, "renew_status")
 
@@ -2990,7 +3139,11 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="renewalDurationUnit")
     def renewal_duration_unit(self) -> pulumi.Output[_builtins.str]:
         """
-        Renewal Period Unit
+        The unit of the auto-renewal period. Valid values:  
+        - M: Month.
+        - Y: Year.
+
+        > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
         """
         return pulumi.get(self, "renewal_duration_unit")
 
@@ -2998,7 +3151,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource group to which the instance belongs
+        The ID of the resource group to which the instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -3006,7 +3159,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="settingConfig")
     def setting_config(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
-        Configuration information
+        YML configuration file settings for the instance.
         """
         return pulumi.get(self, "setting_config")
 
@@ -3014,7 +3167,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance change status
+        The status of the instance.
         """
         return pulumi.get(self, "status")
 
@@ -3022,7 +3175,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Collection of tag key-value pairs
+        Instance tag group.
         """
         return pulumi.get(self, "tags")
 
@@ -3030,14 +3183,12 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The change policy for Elasticsearch.
+        Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+        - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+        - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+        - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
 
-        The values are as follows:
-        - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-        - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-        - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-
-        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         """
         return pulumi.get(self, "update_strategy")
 
@@ -3045,7 +3196,17 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance version
+        The instance version. Valid values:
+        - 8.5.1_with_X-Pack
+        - 7.10_with_X-Pack
+        - 6.7_with_X-Pack
+        - 7.7_with_X-Pack
+        - 6.8_with_X-Pack
+        - 6.3_with_X-Pack
+        - 5.6_with_X-Pack
+        - 5.5.3_with_X-Pack
+
+        > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
         """
         return pulumi.get(self, "version")
 
@@ -3070,7 +3231,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="warmNodeConfiguration")
     def warm_node_configuration(self) -> pulumi.Output['outputs.InstanceWarmNodeConfiguration']:
         """
-        Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
+        Cold data node configuration for the Elasticsearch cluster. See `warm_node_configuration` below.
         """
         return pulumi.get(self, "warm_node_configuration")
 
@@ -3114,7 +3275,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="zoneCount")
     def zone_count(self) -> pulumi.Output[_builtins.int]:
         """
-        The number of zones in the Elasticsearch instance.
+        The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """

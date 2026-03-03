@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> LockReason { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `PaymentType` can be set to `Subscription`.
+        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `PaymentType` can be set to `Subscription`. From version 1.272.0, `PaymentType` can be modified.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -387,7 +387,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? KmsId { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `PaymentType` can be set to `Subscription`.
+        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `PaymentType` can be set to `Subscription`. From version 1.272.0, `PaymentType` can be modified.
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
@@ -606,7 +606,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? LockReason { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `PaymentType` can be set to `Subscription`.
+        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `PaymentType` can be set to `Subscription`. From version 1.272.0, `PaymentType` can be modified.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }

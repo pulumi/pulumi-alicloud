@@ -31,6 +31,7 @@ class EnterpriseInstanceArgs:
                  port: pulumi.Input[_builtins.int],
                  query_timeout: pulumi.Input[_builtins.int],
                  safe_rule: pulumi.Input[_builtins.str],
+                 sell_trust: pulumi.Input[_builtins.bool],
                  data_link_name: Optional[pulumi.Input[_builtins.str]] = None,
                  dba_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ddl_online: Optional[pulumi.Input[_builtins.int]] = None,
@@ -60,6 +61,9 @@ class EnterpriseInstanceArgs:
         :param pulumi.Input[_builtins.int] port: Access port of the target database.
         :param pulumi.Input[_builtins.int] query_timeout: Query timeout time, unit: s (seconds).
         :param pulumi.Input[_builtins.str] safe_rule: The security rule of the instance is passed into the name of the security rule in the enterprise.
+        :param pulumi.Input[_builtins.bool] sell_trust: Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+               
+               ~>**NOTE:** The `database_user` will be encrypted if `sell_trust` set to `false`.
         :param pulumi.Input[_builtins.str] data_link_name: Cross-database query datalink name.
         :param pulumi.Input[_builtins.str] dba_id: The dba id of the database instance.
         :param pulumi.Input[_builtins.int] ddl_online: Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
@@ -87,6 +91,7 @@ class EnterpriseInstanceArgs:
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "query_timeout", query_timeout)
         pulumi.set(__self__, "safe_rule", safe_rule)
+        pulumi.set(__self__, "sell_trust", sell_trust)
         if data_link_name is not None:
             pulumi.set(__self__, "data_link_name", data_link_name)
         if dba_id is not None:
@@ -262,6 +267,20 @@ class EnterpriseInstanceArgs:
     @safe_rule.setter
     def safe_rule(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "safe_rule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sellTrust")
+    def sell_trust(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+
+        ~>**NOTE:** The `database_user` will be encrypted if `sell_trust` set to `false`.
+        """
+        return pulumi.get(self, "sell_trust")
+
+    @sell_trust.setter
+    def sell_trust(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "sell_trust", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLinkName")
@@ -458,6 +477,7 @@ class _EnterpriseInstanceState:
                  query_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  safe_rule: Optional[pulumi.Input[_builtins.str]] = None,
                  safe_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sell_trust: Optional[pulumi.Input[_builtins.bool]] = None,
                  sid: Optional[pulumi.Input[_builtins.str]] = None,
                  skip_test: Optional[pulumi.Input[_builtins.bool]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -490,6 +510,9 @@ class _EnterpriseInstanceState:
         :param pulumi.Input[_builtins.int] query_timeout: Query timeout time, unit: s (seconds).
         :param pulumi.Input[_builtins.str] safe_rule: The security rule of the instance is passed into the name of the security rule in the enterprise.
         :param pulumi.Input[_builtins.str] safe_rule_id: The safe rule id of the database instance.
+        :param pulumi.Input[_builtins.bool] sell_trust: Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+               
+               ~>**NOTE:** The `database_user` will be encrypted if `sell_trust` set to `false`.
         :param pulumi.Input[_builtins.str] sid: The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
         :param pulumi.Input[_builtins.bool] skip_test: Whether the instance ignores test connectivity. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] state: It has been deprecated from provider version 1.100.0 and 'status' instead.
@@ -545,6 +568,8 @@ class _EnterpriseInstanceState:
             pulumi.set(__self__, "safe_rule", safe_rule)
         if safe_rule_id is not None:
             pulumi.set(__self__, "safe_rule_id", safe_rule_id)
+        if sell_trust is not None:
+            pulumi.set(__self__, "sell_trust", sell_trust)
         if sid is not None:
             pulumi.set(__self__, "sid", sid)
         if skip_test is not None:
@@ -829,6 +854,20 @@ class _EnterpriseInstanceState:
         pulumi.set(self, "safe_rule_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="sellTrust")
+    def sell_trust(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+
+        ~>**NOTE:** The `database_user` will be encrypted if `sell_trust` set to `false`.
+        """
+        return pulumi.get(self, "sell_trust")
+
+    @sell_trust.setter
+    def sell_trust(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "sell_trust", value)
+
+    @_builtins.property
     @pulumi.getter
     def sid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -941,6 +980,7 @@ class EnterpriseInstance(pulumi.CustomResource):
                  query_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  safe_rule: Optional[pulumi.Input[_builtins.str]] = None,
                  safe_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sell_trust: Optional[pulumi.Input[_builtins.bool]] = None,
                  sid: Optional[pulumi.Input[_builtins.str]] = None,
                  skip_test: Optional[pulumi.Input[_builtins.bool]] = None,
                  tid: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1063,6 +1103,9 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] query_timeout: Query timeout time, unit: s (seconds).
         :param pulumi.Input[_builtins.str] safe_rule: The security rule of the instance is passed into the name of the security rule in the enterprise.
         :param pulumi.Input[_builtins.str] safe_rule_id: The safe rule id of the database instance.
+        :param pulumi.Input[_builtins.bool] sell_trust: Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+               
+               ~>**NOTE:** The `database_user` will be encrypted if `sell_trust` set to `false`.
         :param pulumi.Input[_builtins.str] sid: The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
         :param pulumi.Input[_builtins.bool] skip_test: Whether the instance ignores test connectivity. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] tid: The tenant ID.
@@ -1204,6 +1247,7 @@ class EnterpriseInstance(pulumi.CustomResource):
                  query_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  safe_rule: Optional[pulumi.Input[_builtins.str]] = None,
                  safe_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sell_trust: Optional[pulumi.Input[_builtins.bool]] = None,
                  sid: Optional[pulumi.Input[_builtins.str]] = None,
                  skip_test: Optional[pulumi.Input[_builtins.bool]] = None,
                  tid: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1263,6 +1307,9 @@ class EnterpriseInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'safe_rule'")
             __props__.__dict__["safe_rule"] = safe_rule
             __props__.__dict__["safe_rule_id"] = safe_rule_id
+            if sell_trust is None and not opts.urn:
+                raise TypeError("Missing required property 'sell_trust'")
+            __props__.__dict__["sell_trust"] = sell_trust
             __props__.__dict__["sid"] = sid
             __props__.__dict__["skip_test"] = skip_test
             __props__.__dict__["tid"] = tid
@@ -1305,6 +1352,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             query_timeout: Optional[pulumi.Input[_builtins.int]] = None,
             safe_rule: Optional[pulumi.Input[_builtins.str]] = None,
             safe_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
+            sell_trust: Optional[pulumi.Input[_builtins.bool]] = None,
             sid: Optional[pulumi.Input[_builtins.str]] = None,
             skip_test: Optional[pulumi.Input[_builtins.bool]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1341,6 +1389,9 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] query_timeout: Query timeout time, unit: s (seconds).
         :param pulumi.Input[_builtins.str] safe_rule: The security rule of the instance is passed into the name of the security rule in the enterprise.
         :param pulumi.Input[_builtins.str] safe_rule_id: The safe rule id of the database instance.
+        :param pulumi.Input[_builtins.bool] sell_trust: Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+               
+               ~>**NOTE:** The `database_user` will be encrypted if `sell_trust` set to `false`.
         :param pulumi.Input[_builtins.str] sid: The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
         :param pulumi.Input[_builtins.bool] skip_test: Whether the instance ignores test connectivity. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] state: It has been deprecated from provider version 1.100.0 and 'status' instead.
@@ -1375,6 +1426,7 @@ class EnterpriseInstance(pulumi.CustomResource):
         __props__.__dict__["query_timeout"] = query_timeout
         __props__.__dict__["safe_rule"] = safe_rule
         __props__.__dict__["safe_rule_id"] = safe_rule_id
+        __props__.__dict__["sell_trust"] = sell_trust
         __props__.__dict__["sid"] = sid
         __props__.__dict__["skip_test"] = skip_test
         __props__.__dict__["state"] = state
@@ -1560,6 +1612,16 @@ class EnterpriseInstance(pulumi.CustomResource):
         The safe rule id of the database instance.
         """
         return pulumi.get(self, "safe_rule_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sellTrust")
+    def sell_trust(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+
+        ~>**NOTE:** The `database_user` will be encrypted if `sell_trust` set to `false`.
+        """
+        return pulumi.get(self, "sell_trust")
 
     @_builtins.property
     @pulumi.getter

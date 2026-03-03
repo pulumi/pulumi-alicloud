@@ -20,14 +20,14 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
     public static final PatchBaselineArgs Empty = new PatchBaselineArgs();
 
     /**
-     * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+     * This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      * 
      */
     @Import(name="approvalRules", required=true)
     private Output<String> approvalRules;
 
     /**
-     * @return Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+     * @return This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      * 
      */
     public Output<String> approvalRules() {
@@ -35,14 +35,14 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Approved Patch.
+     * List of approved patches.
      * 
      */
     @Import(name="approvedPatches")
     private @Nullable Output<List<String>> approvedPatches;
 
     /**
-     * @return Approved Patch.
+     * @return List of approved patches.
      * 
      */
     public Optional<Output<List<String>>> approvedPatches() {
@@ -50,14 +50,14 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ApprovedPatchesEnableNonSecurity.
+     * Specifies whether approved patches include updates other than security updates.
      * 
      */
     @Import(name="approvedPatchesEnableNonSecurity")
     private @Nullable Output<Boolean> approvedPatchesEnableNonSecurity;
 
     /**
-     * @return ApprovedPatchesEnableNonSecurity.
+     * @return Specifies whether approved patches include updates other than security updates.
      * 
      */
     public Optional<Output<Boolean>> approvedPatchesEnableNonSecurity() {
@@ -65,14 +65,14 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Patches baseline description information.
+     * Description of the patch baseline.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Patches baseline description information.
+     * @return Description of the patch baseline.
      * 
      */
     public Optional<Output<String>> description() {
@@ -80,14 +80,36 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+     * Operating system type. Supported values:
+     * - Windows
+     * - Ubuntu
+     * - CentOS
+     * - Debian
+     * - AliyunLinux
+     * - RedhatEnterpriseLinux
+     * - Anolis
+     * - Fedora
+     * - Suse
+     * - RockyLinux
+     * - AlmaLinux.
      * 
      */
     @Import(name="operationSystem", required=true)
     private Output<String> operationSystem;
 
     /**
-     * @return Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+     * @return Operating system type. Supported values:
+     * - Windows
+     * - Ubuntu
+     * - CentOS
+     * - Debian
+     * - AliyunLinux
+     * - RedhatEnterpriseLinux
+     * - Anolis
+     * - Fedora
+     * - Suse
+     * - RockyLinux
+     * - AlmaLinux.
      * 
      */
     public Output<String> operationSystem() {
@@ -95,14 +117,14 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the patch baseline.
+     * Patch baseline name.
      * 
      */
     @Import(name="patchBaselineName", required=true)
     private Output<String> patchBaselineName;
 
     /**
-     * @return The name of the patch baseline.
+     * @return Patch baseline name.
      * 
      */
     public Output<String> patchBaselineName() {
@@ -110,14 +132,14 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Reject patches.
+     * List of rejected patches.
      * 
      */
     @Import(name="rejectedPatches")
     private @Nullable Output<List<String>> rejectedPatches;
 
     /**
-     * @return Reject patches.
+     * @return List of rejected patches.
      * 
      */
     public Optional<Output<List<String>>> rejectedPatches() {
@@ -140,14 +162,14 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group.
+     * Resource group ID.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return Resource group ID.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -155,14 +177,14 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Source.
+     * List of patch source configurations.
      * 
      */
     @Import(name="sources")
     private @Nullable Output<List<String>> sources;
 
     /**
-     * @return Source.
+     * @return List of patch source configurations.
      * 
      */
     public Optional<Output<List<String>>> sources() {
@@ -170,14 +192,14 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Label.
+     * A key-value map of tags. The number of key-value pairs must be between 1 and 20.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return Label.
+     * @return A key-value map of tags. The number of key-value pairs must be between 1 and 20.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -219,7 +241,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param approvalRules Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+         * @param approvalRules This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
          * 
          * @return builder
          * 
@@ -230,7 +252,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param approvalRules Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+         * @param approvalRules This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
          * 
          * @return builder
          * 
@@ -240,7 +262,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param approvedPatches Approved Patch.
+         * @param approvedPatches List of approved patches.
          * 
          * @return builder
          * 
@@ -251,7 +273,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param approvedPatches Approved Patch.
+         * @param approvedPatches List of approved patches.
          * 
          * @return builder
          * 
@@ -261,7 +283,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param approvedPatches Approved Patch.
+         * @param approvedPatches List of approved patches.
          * 
          * @return builder
          * 
@@ -271,7 +293,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param approvedPatchesEnableNonSecurity ApprovedPatchesEnableNonSecurity.
+         * @param approvedPatchesEnableNonSecurity Specifies whether approved patches include updates other than security updates.
          * 
          * @return builder
          * 
@@ -282,7 +304,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param approvedPatchesEnableNonSecurity ApprovedPatchesEnableNonSecurity.
+         * @param approvedPatchesEnableNonSecurity Specifies whether approved patches include updates other than security updates.
          * 
          * @return builder
          * 
@@ -292,7 +314,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Patches baseline description information.
+         * @param description Description of the patch baseline.
          * 
          * @return builder
          * 
@@ -303,7 +325,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Patches baseline description information.
+         * @param description Description of the patch baseline.
          * 
          * @return builder
          * 
@@ -313,7 +335,18 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operationSystem Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+         * @param operationSystem Operating system type. Supported values:
+         * - Windows
+         * - Ubuntu
+         * - CentOS
+         * - Debian
+         * - AliyunLinux
+         * - RedhatEnterpriseLinux
+         * - Anolis
+         * - Fedora
+         * - Suse
+         * - RockyLinux
+         * - AlmaLinux.
          * 
          * @return builder
          * 
@@ -324,7 +357,18 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operationSystem Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+         * @param operationSystem Operating system type. Supported values:
+         * - Windows
+         * - Ubuntu
+         * - CentOS
+         * - Debian
+         * - AliyunLinux
+         * - RedhatEnterpriseLinux
+         * - Anolis
+         * - Fedora
+         * - Suse
+         * - RockyLinux
+         * - AlmaLinux.
          * 
          * @return builder
          * 
@@ -334,7 +378,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param patchBaselineName The name of the patch baseline.
+         * @param patchBaselineName Patch baseline name.
          * 
          * @return builder
          * 
@@ -345,7 +389,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param patchBaselineName The name of the patch baseline.
+         * @param patchBaselineName Patch baseline name.
          * 
          * @return builder
          * 
@@ -355,7 +399,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rejectedPatches Reject patches.
+         * @param rejectedPatches List of rejected patches.
          * 
          * @return builder
          * 
@@ -366,7 +410,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rejectedPatches Reject patches.
+         * @param rejectedPatches List of rejected patches.
          * 
          * @return builder
          * 
@@ -376,7 +420,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rejectedPatches Reject patches.
+         * @param rejectedPatches List of rejected patches.
          * 
          * @return builder
          * 
@@ -407,7 +451,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId Resource group ID.
          * 
          * @return builder
          * 
@@ -418,7 +462,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId Resource group ID.
          * 
          * @return builder
          * 
@@ -428,7 +472,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources Source.
+         * @param sources List of patch source configurations.
          * 
          * @return builder
          * 
@@ -439,7 +483,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources Source.
+         * @param sources List of patch source configurations.
          * 
          * @return builder
          * 
@@ -449,7 +493,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources Source.
+         * @param sources List of patch source configurations.
          * 
          * @return builder
          * 
@@ -459,7 +503,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Label.
+         * @param tags A key-value map of tags. The number of key-value pairs must be between 1 and 20.
          * 
          * @return builder
          * 
@@ -470,7 +514,7 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Label.
+         * @param tags A key-value map of tags. The number of key-value pairs must be between 1 and 20.
          * 
          * @return builder
          * 

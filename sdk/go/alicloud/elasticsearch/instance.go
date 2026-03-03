@@ -99,27 +99,27 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// Schema Type:.
+	// The deployment mode or architecture type:.
 	ArchType pulumi.StringOutput `pulumi:"archType"`
-	// Renewal Period
+	// Number of auto-renewal periods.
 	AutoRenewDuration pulumi.IntPtrOutput `pulumi:"autoRenewDuration"`
 	// The Elasticsearch cluster's client node quantity, between 2 and 25.
 	//
 	// Deprecated: Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.
 	ClientNodeAmount pulumi.IntOutput `pulumi:"clientNodeAmount"`
-	// Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+	// Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
 	ClientNodeConfiguration InstanceClientNodeConfigurationOutput `pulumi:"clientNodeConfiguration"`
 	// The client node spec. If specified, client node will be created.
 	//
 	// Deprecated: Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.
 	ClientNodeSpec pulumi.StringOutput `pulumi:"clientNodeSpec"`
-	// Instance creation time.
+	// The time when the instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	//
 	// Deprecated: Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.
 	DataNodeAmount pulumi.IntOutput `pulumi:"dataNodeAmount"`
-	// Elasticsearch data node information See `dataNodeConfiguration` below.
+	// Elasticsearch data node information. See `dataNodeConfiguration` below.
 	DataNodeConfiguration InstanceDataNodeConfigurationOutput `pulumi:"dataNodeConfiguration"`
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	//
@@ -141,55 +141,59 @@ type Instance struct {
 	//
 	// Deprecated: Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.
 	DataNodeSpec pulumi.StringOutput `pulumi:"dataNodeSpec"`
-	// Instance name
+	// Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Elasticsearch cluster private domain name.
+	// The internal network address of the instance.
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// Whether to enable Kibana private network access.
-	//
-	// The meaning of the value is as follows:
-	// - true: On.
-	// - false: does not open.
+	// Indicates whether private network access to Kibana is enabled. Valid values:
+	// - true: Enabled
+	// - false: Disabled
 	EnableKibanaPrivateNetwork pulumi.BoolOutput `pulumi:"enableKibanaPrivateNetwork"`
-	// Does Kibana enable public access
+	// Specifies whether to enable public access to Kibana. Valid values:
+	// - true: Enables public access.
+	// - false: Disables public access.
 	EnableKibanaPublicNetwork pulumi.BoolOutput `pulumi:"enableKibanaPublicNetwork"`
-	// Whether to enable Kibana public network access.
-	//
-	// The meaning of the value is as follows:
-	// - true: On.
-	// - false: does not open.
+	// Specifies whether to enable a public endpoint for the instance. Valid values:
+	// - true: Enables the public endpoint.
+	// - false: Disables the public endpoint.
 	EnablePublic pulumi.BoolOutput `pulumi:"enablePublic"`
-	// Whether to force changes
+	// Whether to force a restart:
+	// - true: Yes
+	// - false (default): No.
 	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// Version type.
+	// Edition type:
+	// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+	// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
 	InstanceCategory pulumi.StringOutput `pulumi:"instanceCategory"`
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
-	// Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+	// The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
 	KibanaConfiguration InstanceKibanaConfigurationOutput `pulumi:"kibanaConfiguration"`
-	// Kibana address.
+	// Kibana endpoint.
 	KibanaDomain pulumi.StringOutput `pulumi:"kibanaDomain"`
 	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
 	//
 	// Deprecated: Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.
 	KibanaNodeSpec pulumi.StringOutput `pulumi:"kibanaNodeSpec"`
-	// The port assigned by the Kibana node.
+	// The access port for Kibana.
 	KibanaPort pulumi.IntOutput `pulumi:"kibanaPort"`
-	// Kibana private network security group ID
+	// The private endpoint of Kibana.
+	KibanaPrivateDomain pulumi.StringOutput `pulumi:"kibanaPrivateDomain"`
+	// List of security groups.
 	KibanaPrivateSecurityGroupId pulumi.StringPtrOutput `pulumi:"kibanaPrivateSecurityGroupId"`
-	// Cluster Kibana node private network access whitelist
+	// List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 	KibanaPrivateWhitelists pulumi.StringArrayOutput `pulumi:"kibanaPrivateWhitelists"`
-	// Kibana private network access whitelist
+	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	KibanaWhitelists pulumi.StringArrayOutput `pulumi:"kibanaWhitelists"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
-	// Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+	// Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
 	MasterConfiguration InstanceMasterConfigurationOutput `pulumi:"masterConfiguration"`
 	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
 	//
@@ -199,50 +203,67 @@ type Instance struct {
 	//
 	// Deprecated: Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.
 	MasterNodeSpec pulumi.StringOutput `pulumi:"masterNodeSpec"`
-	// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+	// Configuration change type. Valid values:
+	// - upgrade (default): Upgrade configuration
+	// - downgrade: Downgrade configuration.
 	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	OrderActionType pulumi.StringPtrOutput `pulumi:"orderActionType"`
-	// The access password of the instance.
+	// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+	// The billing method of the instance. Supported values:
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period pulumi.IntOutput `pulumi:"period"`
 	// Instance connection port.
 	Port pulumi.IntOutput `pulumi:"port"`
-	// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	PrivateWhitelists pulumi.StringArrayOutput `pulumi:"privateWhitelists"`
-	// Access protocol. Optional values: `HTTP` and **HTTPS * *.
+	// The access protocol. Supported protocols: HTTP and HTTPS.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
-	// The public network address of the current instance.
+	// The public endpoint of the instance.
 	PublicDomain pulumi.StringOutput `pulumi:"publicDomain"`
-	// Elasticsearch cluster public network access port
+	// The public access port of the instance.
 	PublicPort pulumi.IntOutput `pulumi:"publicPort"`
-	// Elasticseach public network access whitelist IP list
+	// The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 	PublicWhitelists pulumi.StringArrayOutput `pulumi:"publicWhitelists"`
-	// Renewal Status
+	// The renewal status. Valid values:
+	// - AutoRenewal: Auto-renewal.
+	// - ManualRenewal: Manual renewal.
+	// - NotRenewal: No renewal.
 	RenewStatus pulumi.StringOutput `pulumi:"renewStatus"`
-	// Renewal Period Unit
+	// The unit of the auto-renewal period. Valid values:
+	// - M: Month.
+	// - Y: Year.
+	//
+	// > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
 	RenewalDurationUnit pulumi.StringOutput `pulumi:"renewalDurationUnit"`
-	// Resource group to which the instance belongs
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Configuration information
+	// YML configuration file settings for the instance.
 	SettingConfig pulumi.StringMapOutput `pulumi:"settingConfig"`
-	// Instance change status
+	// The status of the instance.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Collection of tag key-value pairs
+	// Instance tag group.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The change policy for Elasticsearch.
+	// Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+	// - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+	// - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+	// - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
 	//
-	// The values are as follows:
-	// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-	// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-	// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	UpdateStrategy pulumi.StringPtrOutput `pulumi:"updateStrategy"`
-	// Instance version
+	// The instance version. Valid values:
+	// - 8.5.1_with_X-Pack
+	// - 7.10_with_X-Pack
+	// - 6.7_with_X-Pack
+	// - 7.7_with_X-Pack
+	// - 6.8_with_X-Pack
+	// - 6.3_with_X-Pack
+	// - 5.6_with_X-Pack
+	// - 5.5.3_with_X-Pack
+	//
+	// > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The ID of VSwitch.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
@@ -250,7 +271,7 @@ type Instance struct {
 	//
 	// Deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.
 	WarmNodeAmount pulumi.IntOutput `pulumi:"warmNodeAmount"`
-	// Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+	// Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
 	WarmNodeConfiguration InstanceWarmNodeConfigurationOutput `pulumi:"warmNodeConfiguration"`
 	// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
 	//
@@ -268,7 +289,7 @@ type Instance struct {
 	//
 	// Deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.
 	WarmNodeSpec pulumi.StringOutput `pulumi:"warmNodeSpec"`
-	// The number of zones in the Elasticsearch instance.
+	// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	ZoneCount pulumi.IntOutput `pulumi:"zoneCount"`
@@ -317,27 +338,27 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// Schema Type:.
+	// The deployment mode or architecture type:.
 	ArchType *string `pulumi:"archType"`
-	// Renewal Period
+	// Number of auto-renewal periods.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// The Elasticsearch cluster's client node quantity, between 2 and 25.
 	//
 	// Deprecated: Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.
 	ClientNodeAmount *int `pulumi:"clientNodeAmount"`
-	// Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+	// Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
 	ClientNodeConfiguration *InstanceClientNodeConfiguration `pulumi:"clientNodeConfiguration"`
 	// The client node spec. If specified, client node will be created.
 	//
 	// Deprecated: Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.
 	ClientNodeSpec *string `pulumi:"clientNodeSpec"`
-	// Instance creation time.
+	// The time when the instance was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	//
 	// Deprecated: Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.
 	DataNodeAmount *int `pulumi:"dataNodeAmount"`
-	// Elasticsearch data node information See `dataNodeConfiguration` below.
+	// Elasticsearch data node information. See `dataNodeConfiguration` below.
 	DataNodeConfiguration *InstanceDataNodeConfiguration `pulumi:"dataNodeConfiguration"`
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	//
@@ -359,55 +380,59 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.
 	DataNodeSpec *string `pulumi:"dataNodeSpec"`
-	// Instance name
+	// Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
 	Description *string `pulumi:"description"`
-	// Elasticsearch cluster private domain name.
+	// The internal network address of the instance.
 	Domain *string `pulumi:"domain"`
-	// Whether to enable Kibana private network access.
-	//
-	// The meaning of the value is as follows:
-	// - true: On.
-	// - false: does not open.
+	// Indicates whether private network access to Kibana is enabled. Valid values:
+	// - true: Enabled
+	// - false: Disabled
 	EnableKibanaPrivateNetwork *bool `pulumi:"enableKibanaPrivateNetwork"`
-	// Does Kibana enable public access
+	// Specifies whether to enable public access to Kibana. Valid values:
+	// - true: Enables public access.
+	// - false: Disables public access.
 	EnableKibanaPublicNetwork *bool `pulumi:"enableKibanaPublicNetwork"`
-	// Whether to enable Kibana public network access.
-	//
-	// The meaning of the value is as follows:
-	// - true: On.
-	// - false: does not open.
+	// Specifies whether to enable a public endpoint for the instance. Valid values:
+	// - true: Enables the public endpoint.
+	// - false: Disables the public endpoint.
 	EnablePublic *bool `pulumi:"enablePublic"`
-	// Whether to force changes
+	// Whether to force a restart:
+	// - true: Yes
+	// - false (default): No.
 	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	Force *bool `pulumi:"force"`
-	// Version type.
+	// Edition type:
+	// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+	// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
 	InstanceCategory *string `pulumi:"instanceCategory"`
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+	// The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
 	KibanaConfiguration *InstanceKibanaConfiguration `pulumi:"kibanaConfiguration"`
-	// Kibana address.
+	// Kibana endpoint.
 	KibanaDomain *string `pulumi:"kibanaDomain"`
 	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
 	//
 	// Deprecated: Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.
 	KibanaNodeSpec *string `pulumi:"kibanaNodeSpec"`
-	// The port assigned by the Kibana node.
+	// The access port for Kibana.
 	KibanaPort *int `pulumi:"kibanaPort"`
-	// Kibana private network security group ID
+	// The private endpoint of Kibana.
+	KibanaPrivateDomain *string `pulumi:"kibanaPrivateDomain"`
+	// List of security groups.
 	KibanaPrivateSecurityGroupId *string `pulumi:"kibanaPrivateSecurityGroupId"`
-	// Cluster Kibana node private network access whitelist
+	// List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 	KibanaPrivateWhitelists []string `pulumi:"kibanaPrivateWhitelists"`
-	// Kibana private network access whitelist
+	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	KibanaWhitelists []string `pulumi:"kibanaWhitelists"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
-	// Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+	// Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
 	MasterConfiguration *InstanceMasterConfiguration `pulumi:"masterConfiguration"`
 	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
 	//
@@ -417,50 +442,67 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.
 	MasterNodeSpec *string `pulumi:"masterNodeSpec"`
-	// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+	// Configuration change type. Valid values:
+	// - upgrade (default): Upgrade configuration
+	// - downgrade: Downgrade configuration.
 	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	OrderActionType *string `pulumi:"orderActionType"`
-	// The access password of the instance.
+	// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
 	Password *string `pulumi:"password"`
-	// The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+	// The billing method of the instance. Supported values:
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period *int `pulumi:"period"`
 	// Instance connection port.
 	Port *int `pulumi:"port"`
-	// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
-	// Access protocol. Optional values: `HTTP` and **HTTPS * *.
+	// The access protocol. Supported protocols: HTTP and HTTPS.
 	Protocol *string `pulumi:"protocol"`
-	// The public network address of the current instance.
+	// The public endpoint of the instance.
 	PublicDomain *string `pulumi:"publicDomain"`
-	// Elasticsearch cluster public network access port
+	// The public access port of the instance.
 	PublicPort *int `pulumi:"publicPort"`
-	// Elasticseach public network access whitelist IP list
+	// The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 	PublicWhitelists []string `pulumi:"publicWhitelists"`
-	// Renewal Status
+	// The renewal status. Valid values:
+	// - AutoRenewal: Auto-renewal.
+	// - ManualRenewal: Manual renewal.
+	// - NotRenewal: No renewal.
 	RenewStatus *string `pulumi:"renewStatus"`
-	// Renewal Period Unit
+	// The unit of the auto-renewal period. Valid values:
+	// - M: Month.
+	// - Y: Year.
+	//
+	// > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
-	// Resource group to which the instance belongs
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Configuration information
+	// YML configuration file settings for the instance.
 	SettingConfig map[string]string `pulumi:"settingConfig"`
-	// Instance change status
+	// The status of the instance.
 	Status *string `pulumi:"status"`
-	// Collection of tag key-value pairs
+	// Instance tag group.
 	Tags map[string]string `pulumi:"tags"`
-	// The change policy for Elasticsearch.
+	// Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+	// - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+	// - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+	// - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
 	//
-	// The values are as follows:
-	// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-	// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-	// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	UpdateStrategy *string `pulumi:"updateStrategy"`
-	// Instance version
+	// The instance version. Valid values:
+	// - 8.5.1_with_X-Pack
+	// - 7.10_with_X-Pack
+	// - 6.7_with_X-Pack
+	// - 7.7_with_X-Pack
+	// - 6.8_with_X-Pack
+	// - 6.3_with_X-Pack
+	// - 5.6_with_X-Pack
+	// - 5.5.3_with_X-Pack
+	//
+	// > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
 	Version *string `pulumi:"version"`
 	// The ID of VSwitch.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -468,7 +510,7 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.
 	WarmNodeAmount *int `pulumi:"warmNodeAmount"`
-	// Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+	// Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
 	WarmNodeConfiguration *InstanceWarmNodeConfiguration `pulumi:"warmNodeConfiguration"`
 	// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
 	//
@@ -486,34 +528,34 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.
 	WarmNodeSpec *string `pulumi:"warmNodeSpec"`
-	// The number of zones in the Elasticsearch instance.
+	// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	ZoneCount *int `pulumi:"zoneCount"`
 }
 
 type InstanceState struct {
-	// Schema Type:.
+	// The deployment mode or architecture type:.
 	ArchType pulumi.StringPtrInput
-	// Renewal Period
+	// Number of auto-renewal periods.
 	AutoRenewDuration pulumi.IntPtrInput
 	// The Elasticsearch cluster's client node quantity, between 2 and 25.
 	//
 	// Deprecated: Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.
 	ClientNodeAmount pulumi.IntPtrInput
-	// Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+	// Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
 	ClientNodeConfiguration InstanceClientNodeConfigurationPtrInput
 	// The client node spec. If specified, client node will be created.
 	//
 	// Deprecated: Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.
 	ClientNodeSpec pulumi.StringPtrInput
-	// Instance creation time.
+	// The time when the instance was created.
 	CreateTime pulumi.StringPtrInput
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	//
 	// Deprecated: Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.
 	DataNodeAmount pulumi.IntPtrInput
-	// Elasticsearch data node information See `dataNodeConfiguration` below.
+	// Elasticsearch data node information. See `dataNodeConfiguration` below.
 	DataNodeConfiguration InstanceDataNodeConfigurationPtrInput
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	//
@@ -535,55 +577,59 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.
 	DataNodeSpec pulumi.StringPtrInput
-	// Instance name
+	// Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
 	Description pulumi.StringPtrInput
-	// Elasticsearch cluster private domain name.
+	// The internal network address of the instance.
 	Domain pulumi.StringPtrInput
-	// Whether to enable Kibana private network access.
-	//
-	// The meaning of the value is as follows:
-	// - true: On.
-	// - false: does not open.
+	// Indicates whether private network access to Kibana is enabled. Valid values:
+	// - true: Enabled
+	// - false: Disabled
 	EnableKibanaPrivateNetwork pulumi.BoolPtrInput
-	// Does Kibana enable public access
+	// Specifies whether to enable public access to Kibana. Valid values:
+	// - true: Enables public access.
+	// - false: Disables public access.
 	EnableKibanaPublicNetwork pulumi.BoolPtrInput
-	// Whether to enable Kibana public network access.
-	//
-	// The meaning of the value is as follows:
-	// - true: On.
-	// - false: does not open.
+	// Specifies whether to enable a public endpoint for the instance. Valid values:
+	// - true: Enables the public endpoint.
+	// - false: Disables the public endpoint.
 	EnablePublic pulumi.BoolPtrInput
-	// Whether to force changes
+	// Whether to force a restart:
+	// - true: Yes
+	// - false (default): No.
 	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	Force pulumi.BoolPtrInput
-	// Version type.
+	// Edition type:
+	// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+	// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
 	InstanceCategory pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+	// The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
 	KibanaConfiguration InstanceKibanaConfigurationPtrInput
-	// Kibana address.
+	// Kibana endpoint.
 	KibanaDomain pulumi.StringPtrInput
 	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
 	//
 	// Deprecated: Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.
 	KibanaNodeSpec pulumi.StringPtrInput
-	// The port assigned by the Kibana node.
+	// The access port for Kibana.
 	KibanaPort pulumi.IntPtrInput
-	// Kibana private network security group ID
+	// The private endpoint of Kibana.
+	KibanaPrivateDomain pulumi.StringPtrInput
+	// List of security groups.
 	KibanaPrivateSecurityGroupId pulumi.StringPtrInput
-	// Cluster Kibana node private network access whitelist
+	// List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 	KibanaPrivateWhitelists pulumi.StringArrayInput
-	// Kibana private network access whitelist
+	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	KibanaWhitelists pulumi.StringArrayInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
-	// Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+	// Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
 	MasterConfiguration InstanceMasterConfigurationPtrInput
 	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
 	//
@@ -593,50 +639,67 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.
 	MasterNodeSpec pulumi.StringPtrInput
-	// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+	// Configuration change type. Valid values:
+	// - upgrade (default): Upgrade configuration
+	// - downgrade: Downgrade configuration.
 	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	OrderActionType pulumi.StringPtrInput
-	// The access password of the instance.
+	// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
 	Password pulumi.StringPtrInput
-	// The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+	// The billing method of the instance. Supported values:
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period pulumi.IntPtrInput
 	// Instance connection port.
 	Port pulumi.IntPtrInput
-	// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	PrivateWhitelists pulumi.StringArrayInput
-	// Access protocol. Optional values: `HTTP` and **HTTPS * *.
+	// The access protocol. Supported protocols: HTTP and HTTPS.
 	Protocol pulumi.StringPtrInput
-	// The public network address of the current instance.
+	// The public endpoint of the instance.
 	PublicDomain pulumi.StringPtrInput
-	// Elasticsearch cluster public network access port
+	// The public access port of the instance.
 	PublicPort pulumi.IntPtrInput
-	// Elasticseach public network access whitelist IP list
+	// The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 	PublicWhitelists pulumi.StringArrayInput
-	// Renewal Status
+	// The renewal status. Valid values:
+	// - AutoRenewal: Auto-renewal.
+	// - ManualRenewal: Manual renewal.
+	// - NotRenewal: No renewal.
 	RenewStatus pulumi.StringPtrInput
-	// Renewal Period Unit
+	// The unit of the auto-renewal period. Valid values:
+	// - M: Month.
+	// - Y: Year.
+	//
+	// > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
 	RenewalDurationUnit pulumi.StringPtrInput
-	// Resource group to which the instance belongs
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// Configuration information
+	// YML configuration file settings for the instance.
 	SettingConfig pulumi.StringMapInput
-	// Instance change status
+	// The status of the instance.
 	Status pulumi.StringPtrInput
-	// Collection of tag key-value pairs
+	// Instance tag group.
 	Tags pulumi.StringMapInput
-	// The change policy for Elasticsearch.
+	// Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+	// - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+	// - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+	// - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
 	//
-	// The values are as follows:
-	// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-	// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-	// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	UpdateStrategy pulumi.StringPtrInput
-	// Instance version
+	// The instance version. Valid values:
+	// - 8.5.1_with_X-Pack
+	// - 7.10_with_X-Pack
+	// - 6.7_with_X-Pack
+	// - 7.7_with_X-Pack
+	// - 6.8_with_X-Pack
+	// - 6.3_with_X-Pack
+	// - 5.6_with_X-Pack
+	// - 5.5.3_with_X-Pack
+	//
+	// > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
 	Version pulumi.StringPtrInput
 	// The ID of VSwitch.
 	VswitchId pulumi.StringPtrInput
@@ -644,7 +707,7 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.
 	WarmNodeAmount pulumi.IntPtrInput
-	// Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+	// Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
 	WarmNodeConfiguration InstanceWarmNodeConfigurationPtrInput
 	// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
 	//
@@ -662,7 +725,7 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.
 	WarmNodeSpec pulumi.StringPtrInput
-	// The number of zones in the Elasticsearch instance.
+	// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	ZoneCount pulumi.IntPtrInput
@@ -673,13 +736,13 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Renewal Period
+	// Number of auto-renewal periods.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// The Elasticsearch cluster's client node quantity, between 2 and 25.
 	//
 	// Deprecated: Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.
 	ClientNodeAmount *int `pulumi:"clientNodeAmount"`
-	// Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+	// Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
 	ClientNodeConfiguration *InstanceClientNodeConfiguration `pulumi:"clientNodeConfiguration"`
 	// The client node spec. If specified, client node will be created.
 	//
@@ -689,7 +752,7 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.
 	DataNodeAmount *int `pulumi:"dataNodeAmount"`
-	// Elasticsearch data node information See `dataNodeConfiguration` below.
+	// Elasticsearch data node information. See `dataNodeConfiguration` below.
 	DataNodeConfiguration *InstanceDataNodeConfiguration `pulumi:"dataNodeConfiguration"`
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	//
@@ -711,49 +774,51 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.
 	DataNodeSpec *string `pulumi:"dataNodeSpec"`
-	// Instance name
+	// Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
 	Description *string `pulumi:"description"`
-	// Whether to enable Kibana private network access.
-	//
-	// The meaning of the value is as follows:
-	// - true: On.
-	// - false: does not open.
+	// Indicates whether private network access to Kibana is enabled. Valid values:
+	// - true: Enabled
+	// - false: Disabled
 	EnableKibanaPrivateNetwork *bool `pulumi:"enableKibanaPrivateNetwork"`
-	// Does Kibana enable public access
+	// Specifies whether to enable public access to Kibana. Valid values:
+	// - true: Enables public access.
+	// - false: Disables public access.
 	EnableKibanaPublicNetwork *bool `pulumi:"enableKibanaPublicNetwork"`
-	// Whether to enable Kibana public network access.
-	//
-	// The meaning of the value is as follows:
-	// - true: On.
-	// - false: does not open.
+	// Specifies whether to enable a public endpoint for the instance. Valid values:
+	// - true: Enables the public endpoint.
+	// - false: Disables the public endpoint.
 	EnablePublic *bool `pulumi:"enablePublic"`
-	// Whether to force changes
+	// Whether to force a restart:
+	// - true: Yes
+	// - false (default): No.
 	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	Force *bool `pulumi:"force"`
-	// Version type.
+	// Edition type:
+	// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+	// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
 	InstanceCategory *string `pulumi:"instanceCategory"`
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+	// The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
 	KibanaConfiguration *InstanceKibanaConfiguration `pulumi:"kibanaConfiguration"`
 	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
 	//
 	// Deprecated: Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.
 	KibanaNodeSpec *string `pulumi:"kibanaNodeSpec"`
-	// Kibana private network security group ID
+	// List of security groups.
 	KibanaPrivateSecurityGroupId *string `pulumi:"kibanaPrivateSecurityGroupId"`
-	// Cluster Kibana node private network access whitelist
+	// List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 	KibanaPrivateWhitelists []string `pulumi:"kibanaPrivateWhitelists"`
-	// Kibana private network access whitelist
+	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	KibanaWhitelists []string `pulumi:"kibanaWhitelists"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
-	// Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+	// Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
 	MasterConfiguration *InstanceMasterConfiguration `pulumi:"masterConfiguration"`
 	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
 	//
@@ -763,42 +828,59 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.
 	MasterNodeSpec *string `pulumi:"masterNodeSpec"`
-	// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+	// Configuration change type. Valid values:
+	// - upgrade (default): Upgrade configuration
+	// - downgrade: Downgrade configuration.
 	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	OrderActionType *string `pulumi:"orderActionType"`
-	// The access password of the instance.
+	// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
 	Password *string `pulumi:"password"`
-	// The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+	// The billing method of the instance. Supported values:
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period *int `pulumi:"period"`
-	// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
-	// Access protocol. Optional values: `HTTP` and **HTTPS * *.
+	// The access protocol. Supported protocols: HTTP and HTTPS.
 	Protocol *string `pulumi:"protocol"`
-	// Elasticseach public network access whitelist IP list
+	// The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 	PublicWhitelists []string `pulumi:"publicWhitelists"`
-	// Renewal Status
+	// The renewal status. Valid values:
+	// - AutoRenewal: Auto-renewal.
+	// - ManualRenewal: Manual renewal.
+	// - NotRenewal: No renewal.
 	RenewStatus *string `pulumi:"renewStatus"`
-	// Renewal Period Unit
+	// The unit of the auto-renewal period. Valid values:
+	// - M: Month.
+	// - Y: Year.
+	//
+	// > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
-	// Resource group to which the instance belongs
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Configuration information
+	// YML configuration file settings for the instance.
 	SettingConfig map[string]string `pulumi:"settingConfig"`
-	// Collection of tag key-value pairs
+	// Instance tag group.
 	Tags map[string]string `pulumi:"tags"`
-	// The change policy for Elasticsearch.
+	// Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+	// - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+	// - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+	// - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
 	//
-	// The values are as follows:
-	// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-	// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-	// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	UpdateStrategy *string `pulumi:"updateStrategy"`
-	// Instance version
+	// The instance version. Valid values:
+	// - 8.5.1_with_X-Pack
+	// - 7.10_with_X-Pack
+	// - 6.7_with_X-Pack
+	// - 7.7_with_X-Pack
+	// - 6.8_with_X-Pack
+	// - 6.3_with_X-Pack
+	// - 5.6_with_X-Pack
+	// - 5.5.3_with_X-Pack
+	//
+	// > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
 	Version string `pulumi:"version"`
 	// The ID of VSwitch.
 	VswitchId string `pulumi:"vswitchId"`
@@ -806,7 +888,7 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.
 	WarmNodeAmount *int `pulumi:"warmNodeAmount"`
-	// Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+	// Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
 	WarmNodeConfiguration *InstanceWarmNodeConfiguration `pulumi:"warmNodeConfiguration"`
 	// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
 	//
@@ -824,7 +906,7 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.
 	WarmNodeSpec *string `pulumi:"warmNodeSpec"`
-	// The number of zones in the Elasticsearch instance.
+	// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	ZoneCount *int `pulumi:"zoneCount"`
@@ -832,13 +914,13 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Renewal Period
+	// Number of auto-renewal periods.
 	AutoRenewDuration pulumi.IntPtrInput
 	// The Elasticsearch cluster's client node quantity, between 2 and 25.
 	//
 	// Deprecated: Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.
 	ClientNodeAmount pulumi.IntPtrInput
-	// Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+	// Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
 	ClientNodeConfiguration InstanceClientNodeConfigurationPtrInput
 	// The client node spec. If specified, client node will be created.
 	//
@@ -848,7 +930,7 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.
 	DataNodeAmount pulumi.IntPtrInput
-	// Elasticsearch data node information See `dataNodeConfiguration` below.
+	// Elasticsearch data node information. See `dataNodeConfiguration` below.
 	DataNodeConfiguration InstanceDataNodeConfigurationPtrInput
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	//
@@ -870,49 +952,51 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.
 	DataNodeSpec pulumi.StringPtrInput
-	// Instance name
+	// Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
 	Description pulumi.StringPtrInput
-	// Whether to enable Kibana private network access.
-	//
-	// The meaning of the value is as follows:
-	// - true: On.
-	// - false: does not open.
+	// Indicates whether private network access to Kibana is enabled. Valid values:
+	// - true: Enabled
+	// - false: Disabled
 	EnableKibanaPrivateNetwork pulumi.BoolPtrInput
-	// Does Kibana enable public access
+	// Specifies whether to enable public access to Kibana. Valid values:
+	// - true: Enables public access.
+	// - false: Disables public access.
 	EnableKibanaPublicNetwork pulumi.BoolPtrInput
-	// Whether to enable Kibana public network access.
-	//
-	// The meaning of the value is as follows:
-	// - true: On.
-	// - false: does not open.
+	// Specifies whether to enable a public endpoint for the instance. Valid values:
+	// - true: Enables the public endpoint.
+	// - false: Disables the public endpoint.
 	EnablePublic pulumi.BoolPtrInput
-	// Whether to force changes
+	// Whether to force a restart:
+	// - true: Yes
+	// - false (default): No.
 	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	Force pulumi.BoolPtrInput
-	// Version type.
+	// Edition type:
+	// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+	// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
 	InstanceCategory pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+	// The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
 	KibanaConfiguration InstanceKibanaConfigurationPtrInput
 	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
 	//
 	// Deprecated: Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.
 	KibanaNodeSpec pulumi.StringPtrInput
-	// Kibana private network security group ID
+	// List of security groups.
 	KibanaPrivateSecurityGroupId pulumi.StringPtrInput
-	// Cluster Kibana node private network access whitelist
+	// List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 	KibanaPrivateWhitelists pulumi.StringArrayInput
-	// Kibana private network access whitelist
+	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	KibanaWhitelists pulumi.StringArrayInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
-	// Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+	// Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
 	MasterConfiguration InstanceMasterConfigurationPtrInput
 	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
 	//
@@ -922,42 +1006,59 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.
 	MasterNodeSpec pulumi.StringPtrInput
-	// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+	// Configuration change type. Valid values:
+	// - upgrade (default): Upgrade configuration
+	// - downgrade: Downgrade configuration.
 	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	OrderActionType pulumi.StringPtrInput
-	// The access password of the instance.
+	// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
 	Password pulumi.StringPtrInput
-	// The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+	// The billing method of the instance. Supported values:
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period pulumi.IntPtrInput
-	// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	PrivateWhitelists pulumi.StringArrayInput
-	// Access protocol. Optional values: `HTTP` and **HTTPS * *.
+	// The access protocol. Supported protocols: HTTP and HTTPS.
 	Protocol pulumi.StringPtrInput
-	// Elasticseach public network access whitelist IP list
+	// The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 	PublicWhitelists pulumi.StringArrayInput
-	// Renewal Status
+	// The renewal status. Valid values:
+	// - AutoRenewal: Auto-renewal.
+	// - ManualRenewal: Manual renewal.
+	// - NotRenewal: No renewal.
 	RenewStatus pulumi.StringPtrInput
-	// Renewal Period Unit
+	// The unit of the auto-renewal period. Valid values:
+	// - M: Month.
+	// - Y: Year.
+	//
+	// > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
 	RenewalDurationUnit pulumi.StringPtrInput
-	// Resource group to which the instance belongs
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// Configuration information
+	// YML configuration file settings for the instance.
 	SettingConfig pulumi.StringMapInput
-	// Collection of tag key-value pairs
+	// Instance tag group.
 	Tags pulumi.StringMapInput
-	// The change policy for Elasticsearch.
+	// Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+	// - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+	// - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+	// - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
 	//
-	// The values are as follows:
-	// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-	// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-	// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-	//
-	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	UpdateStrategy pulumi.StringPtrInput
-	// Instance version
+	// The instance version. Valid values:
+	// - 8.5.1_with_X-Pack
+	// - 7.10_with_X-Pack
+	// - 6.7_with_X-Pack
+	// - 7.7_with_X-Pack
+	// - 6.8_with_X-Pack
+	// - 6.3_with_X-Pack
+	// - 5.6_with_X-Pack
+	// - 5.5.3_with_X-Pack
+	//
+	// > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
 	Version pulumi.StringInput
 	// The ID of VSwitch.
 	VswitchId pulumi.StringInput
@@ -965,7 +1066,7 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.
 	WarmNodeAmount pulumi.IntPtrInput
-	// Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+	// Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
 	WarmNodeConfiguration InstanceWarmNodeConfigurationPtrInput
 	// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
 	//
@@ -983,7 +1084,7 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.
 	WarmNodeSpec pulumi.StringPtrInput
-	// The number of zones in the Elasticsearch instance.
+	// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	ZoneCount pulumi.IntPtrInput
@@ -1076,12 +1177,12 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// Schema Type:.
+// The deployment mode or architecture type:.
 func (o InstanceOutput) ArchType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ArchType }).(pulumi.StringOutput)
 }
 
-// Renewal Period
+// Number of auto-renewal periods.
 func (o InstanceOutput) AutoRenewDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.AutoRenewDuration }).(pulumi.IntPtrOutput)
 }
@@ -1093,7 +1194,7 @@ func (o InstanceOutput) ClientNodeAmount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ClientNodeAmount }).(pulumi.IntOutput)
 }
 
-// Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+// Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
 func (o InstanceOutput) ClientNodeConfiguration() InstanceClientNodeConfigurationOutput {
 	return o.ApplyT(func(v *Instance) InstanceClientNodeConfigurationOutput { return v.ClientNodeConfiguration }).(InstanceClientNodeConfigurationOutput)
 }
@@ -1105,7 +1206,7 @@ func (o InstanceOutput) ClientNodeSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ClientNodeSpec }).(pulumi.StringOutput)
 }
 
-// Instance creation time.
+// The time when the instance was created.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -1117,7 +1218,7 @@ func (o InstanceOutput) DataNodeAmount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DataNodeAmount }).(pulumi.IntOutput)
 }
 
-// Elasticsearch data node information See `dataNodeConfiguration` below.
+// Elasticsearch data node information. See `dataNodeConfiguration` below.
 func (o InstanceOutput) DataNodeConfiguration() InstanceDataNodeConfigurationOutput {
 	return o.ApplyT(func(v *Instance) InstanceDataNodeConfigurationOutput { return v.DataNodeConfiguration }).(InstanceDataNodeConfigurationOutput)
 }
@@ -1157,47 +1258,49 @@ func (o InstanceOutput) DataNodeSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DataNodeSpec }).(pulumi.StringOutput)
 }
 
-// Instance name
+// Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
 func (o InstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Elasticsearch cluster private domain name.
+// The internal network address of the instance.
 func (o InstanceOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// Whether to enable Kibana private network access.
-//
-// The meaning of the value is as follows:
-// - true: On.
-// - false: does not open.
+// Indicates whether private network access to Kibana is enabled. Valid values:
+// - true: Enabled
+// - false: Disabled
 func (o InstanceOutput) EnableKibanaPrivateNetwork() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnableKibanaPrivateNetwork }).(pulumi.BoolOutput)
 }
 
-// Does Kibana enable public access
+// Specifies whether to enable public access to Kibana. Valid values:
+// - true: Enables public access.
+// - false: Disables public access.
 func (o InstanceOutput) EnableKibanaPublicNetwork() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnableKibanaPublicNetwork }).(pulumi.BoolOutput)
 }
 
-// Whether to enable Kibana public network access.
-//
-// The meaning of the value is as follows:
-// - true: On.
-// - false: does not open.
+// Specifies whether to enable a public endpoint for the instance. Valid values:
+// - true: Enables the public endpoint.
+// - false: Disables the public endpoint.
 func (o InstanceOutput) EnablePublic() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnablePublic }).(pulumi.BoolOutput)
 }
 
-// Whether to force changes
+// Whether to force a restart:
+// - true: Yes
+// - false (default): No.
 //
-// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 func (o InstanceOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// Version type.
+// Edition type:
+// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
 func (o InstanceOutput) InstanceCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceCategory }).(pulumi.StringOutput)
 }
@@ -1209,12 +1312,12 @@ func (o InstanceOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
 
-// Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+// The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
 func (o InstanceOutput) KibanaConfiguration() InstanceKibanaConfigurationOutput {
 	return o.ApplyT(func(v *Instance) InstanceKibanaConfigurationOutput { return v.KibanaConfiguration }).(InstanceKibanaConfigurationOutput)
 }
 
-// Kibana address.
+// Kibana endpoint.
 func (o InstanceOutput) KibanaDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.KibanaDomain }).(pulumi.StringOutput)
 }
@@ -1226,22 +1329,27 @@ func (o InstanceOutput) KibanaNodeSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.KibanaNodeSpec }).(pulumi.StringOutput)
 }
 
-// The port assigned by the Kibana node.
+// The access port for Kibana.
 func (o InstanceOutput) KibanaPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.KibanaPort }).(pulumi.IntOutput)
 }
 
-// Kibana private network security group ID
+// The private endpoint of Kibana.
+func (o InstanceOutput) KibanaPrivateDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.KibanaPrivateDomain }).(pulumi.StringOutput)
+}
+
+// List of security groups.
 func (o InstanceOutput) KibanaPrivateSecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KibanaPrivateSecurityGroupId }).(pulumi.StringPtrOutput)
 }
 
-// Cluster Kibana node private network access whitelist
+// List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 func (o InstanceOutput) KibanaPrivateWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.KibanaPrivateWhitelists }).(pulumi.StringArrayOutput)
 }
 
-// Kibana private network access whitelist
+// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 func (o InstanceOutput) KibanaWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.KibanaWhitelists }).(pulumi.StringArrayOutput)
 }
@@ -1256,7 +1364,7 @@ func (o InstanceOutput) KmsEncryptionContext() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
-// Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+// Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
 func (o InstanceOutput) MasterConfiguration() InstanceMasterConfigurationOutput {
 	return o.ApplyT(func(v *Instance) InstanceMasterConfigurationOutput { return v.MasterConfiguration }).(InstanceMasterConfigurationOutput)
 }
@@ -1275,19 +1383,21 @@ func (o InstanceOutput) MasterNodeSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MasterNodeSpec }).(pulumi.StringOutput)
 }
 
-// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+// Configuration change type. Valid values:
+// - upgrade (default): Upgrade configuration
+// - downgrade: Downgrade configuration.
 //
-// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 func (o InstanceOutput) OrderActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.OrderActionType }).(pulumi.StringPtrOutput)
 }
 
-// The access password of the instance.
+// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
 func (o InstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+// The billing method of the instance. Supported values:
 func (o InstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
@@ -1302,74 +1412,89 @@ func (o InstanceOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }
 
-// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 func (o InstanceOutput) PrivateWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.PrivateWhitelists }).(pulumi.StringArrayOutput)
 }
 
-// Access protocol. Optional values: `HTTP` and **HTTPS * *.
+// The access protocol. Supported protocols: HTTP and HTTPS.
 func (o InstanceOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The public network address of the current instance.
+// The public endpoint of the instance.
 func (o InstanceOutput) PublicDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PublicDomain }).(pulumi.StringOutput)
 }
 
-// Elasticsearch cluster public network access port
+// The public access port of the instance.
 func (o InstanceOutput) PublicPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.PublicPort }).(pulumi.IntOutput)
 }
 
-// Elasticseach public network access whitelist IP list
+// The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 func (o InstanceOutput) PublicWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.PublicWhitelists }).(pulumi.StringArrayOutput)
 }
 
-// Renewal Status
+// The renewal status. Valid values:
+// - AutoRenewal: Auto-renewal.
+// - ManualRenewal: Manual renewal.
+// - NotRenewal: No renewal.
 func (o InstanceOutput) RenewStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewStatus }).(pulumi.StringOutput)
 }
 
-// Renewal Period Unit
+// The unit of the auto-renewal period. Valid values:
+// - M: Month.
+// - Y: Year.
+//
+// > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
 func (o InstanceOutput) RenewalDurationUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalDurationUnit }).(pulumi.StringOutput)
 }
 
-// Resource group to which the instance belongs
+// The ID of the resource group to which the instance belongs.
 func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Configuration information
+// YML configuration file settings for the instance.
 func (o InstanceOutput) SettingConfig() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.SettingConfig }).(pulumi.StringMapOutput)
 }
 
-// Instance change status
+// The status of the instance.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Collection of tag key-value pairs
+// Instance tag group.
 func (o InstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The change policy for Elasticsearch.
+// Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+// - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+// - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+// - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
 //
-// The values are as follows:
-// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-//
-// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 func (o InstanceOutput) UpdateStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UpdateStrategy }).(pulumi.StringPtrOutput)
 }
 
-// Instance version
+// The instance version. Valid values:
+// - 8.5.1_with_X-Pack
+// - 7.10_with_X-Pack
+// - 6.7_with_X-Pack
+// - 7.7_with_X-Pack
+// - 6.8_with_X-Pack
+// - 6.3_with_X-Pack
+// - 5.6_with_X-Pack
+// - 5.5.3_with_X-Pack
+//
+// > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
 func (o InstanceOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
@@ -1386,7 +1511,7 @@ func (o InstanceOutput) WarmNodeAmount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.WarmNodeAmount }).(pulumi.IntOutput)
 }
 
-// Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+// Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
 func (o InstanceOutput) WarmNodeConfiguration() InstanceWarmNodeConfigurationOutput {
 	return o.ApplyT(func(v *Instance) InstanceWarmNodeConfigurationOutput { return v.WarmNodeConfiguration }).(InstanceWarmNodeConfigurationOutput)
 }
@@ -1419,7 +1544,7 @@ func (o InstanceOutput) WarmNodeSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.WarmNodeSpec }).(pulumi.StringOutput)
 }
 
-// The number of zones in the Elasticsearch instance.
+// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
 //
 // The following arguments will be discarded. Please use new fields as soon as possible:
 func (o InstanceOutput) ZoneCount() pulumi.IntOutput {

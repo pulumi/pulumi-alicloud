@@ -10,7 +10,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -81,7 +83,7 @@ import javax.annotation.Nullable;
  * Vpc Ipam Ipam Pool Cidr can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example &lt;ipam_pool_id&gt;:&lt;cidr&gt;
+ * $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example &lt;ipam_pool_id&gt;#&lt;cidr&gt;
  * ```
  * 
  */
@@ -90,16 +92,12 @@ public class IpamIpamPoolCidr extends com.pulumi.resources.CustomResource {
     /**
      * The CIDR address segment to be preset.
      * 
-     * &gt; **NOTE:**  currently, only IPv4 address segments are supported.
-     * 
      */
     @Export(name="cidr", refs={String.class}, tree="[0]")
     private Output<String> cidr;
 
     /**
      * @return The CIDR address segment to be preset.
-     * 
-     * &gt; **NOTE:**  currently, only IPv4 address segments are supported.
      * 
      */
     public Output<String> cidr() {
@@ -120,14 +118,32 @@ public class IpamIpamPoolCidr extends com.pulumi.resources.CustomResource {
         return this.ipamPoolId;
     }
     /**
-     * The status of the resource
+     * Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    @Export(name="netmaskLength", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> netmaskLength;
+
+    /**
+     * @return Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    public Output<Optional<Integer>> netmaskLength() {
+        return Codegen.optional(this.netmaskLength);
+    }
+    /**
+     * The status of the resource.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {

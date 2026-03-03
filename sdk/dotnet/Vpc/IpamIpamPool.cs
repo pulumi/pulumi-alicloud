@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Vpc
     /// Vpc Ipam Ipam Pool can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:vpc/ipamIpamPool:IpamIpamPool example &lt;id&gt;
+    /// $ pulumi import alicloud:vpc/ipamIpamPool:IpamIpamPool example &lt;ipam_pool_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/ipamIpamPool:IpamIpamPool")]
@@ -82,21 +82,21 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The default network mask assigned by the IPAM address pool.
-        /// IPv4 network mask value range: **0 to 32** bits.
+        /// IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         /// </summary>
         [Output("allocationDefaultCidrMask")]
         public Output<int?> AllocationDefaultCidrMask { get; private set; } = null!;
 
         /// <summary>
         /// The maximum network mask assigned by the IPAM address pool.
-        /// IPv4 network mask value range: **0 to 32** bits.
+        /// IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         /// </summary>
         [Output("allocationMaxCidrMask")]
         public Output<int> AllocationMaxCidrMask { get; private set; } = null!;
 
         /// <summary>
         /// The minimum Network mask assigned by the IPAM address pool.
-        /// IPv4 network mask value range: **0 to 32** bits.
+        /// IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         /// </summary>
         [Output("allocationMinCidrMask")]
         public Output<int?> AllocationMinCidrMask { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The IP protocol version. Currently, only `IPv4` is supported * *.
+        /// The IP protocol version. Values: IPv4、IPv6.
         /// </summary>
         [Output("ipVersion")]
         public Output<string> IpVersion { get; private set; } = null!;
@@ -139,10 +139,16 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> IpamPoolName { get; private set; } = null!;
 
         /// <summary>
-        /// Ipam scope id.
+        /// The ID of the IPAM scope.
         /// </summary>
         [Output("ipamScopeId")]
         public Output<string> IpamScopeId { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the IPv6 CIDR block of the VPC.
+        /// </summary>
+        [Output("ipv6Isp")]
+        public Output<string> Ipv6Isp { get; private set; } = null!;
 
         /// <summary>
         /// The effective region of the IPAM address pool.
@@ -230,21 +236,21 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The default network mask assigned by the IPAM address pool.
-        /// IPv4 network mask value range: **0 to 32** bits.
+        /// IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         /// </summary>
         [Input("allocationDefaultCidrMask")]
         public Input<int>? AllocationDefaultCidrMask { get; set; }
 
         /// <summary>
         /// The maximum network mask assigned by the IPAM address pool.
-        /// IPv4 network mask value range: **0 to 32** bits.
+        /// IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         /// </summary>
         [Input("allocationMaxCidrMask")]
         public Input<int>? AllocationMaxCidrMask { get; set; }
 
         /// <summary>
         /// The minimum Network mask assigned by the IPAM address pool.
-        /// IPv4 network mask value range: **0 to 32** bits.
+        /// IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         /// </summary>
         [Input("allocationMinCidrMask")]
         public Input<int>? AllocationMinCidrMask { get; set; }
@@ -262,7 +268,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? ClearAllocationDefaultCidrMask { get; set; }
 
         /// <summary>
-        /// The IP protocol version. Currently, only `IPv4` is supported * *.
+        /// The IP protocol version. Values: IPv4、IPv6.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -281,10 +287,16 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? IpamPoolName { get; set; }
 
         /// <summary>
-        /// Ipam scope id.
+        /// The ID of the IPAM scope.
         /// </summary>
         [Input("ipamScopeId", required: true)]
         public Input<string> IpamScopeId { get; set; } = null!;
+
+        /// <summary>
+        /// The type of the IPv6 CIDR block of the VPC.
+        /// </summary>
+        [Input("ipv6Isp")]
+        public Input<string>? Ipv6Isp { get; set; }
 
         /// <summary>
         /// The effective region of the IPAM address pool.
@@ -328,21 +340,21 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The default network mask assigned by the IPAM address pool.
-        /// IPv4 network mask value range: **0 to 32** bits.
+        /// IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         /// </summary>
         [Input("allocationDefaultCidrMask")]
         public Input<int>? AllocationDefaultCidrMask { get; set; }
 
         /// <summary>
         /// The maximum network mask assigned by the IPAM address pool.
-        /// IPv4 network mask value range: **0 to 32** bits.
+        /// IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         /// </summary>
         [Input("allocationMaxCidrMask")]
         public Input<int>? AllocationMaxCidrMask { get; set; }
 
         /// <summary>
         /// The minimum Network mask assigned by the IPAM address pool.
-        /// IPv4 network mask value range: **0 to 32** bits.
+        /// IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         /// </summary>
         [Input("allocationMinCidrMask")]
         public Input<int>? AllocationMinCidrMask { get; set; }
@@ -366,7 +378,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The IP protocol version. Currently, only `IPv4` is supported * *.
+        /// The IP protocol version. Values: IPv4、IPv6.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -385,10 +397,16 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? IpamPoolName { get; set; }
 
         /// <summary>
-        /// Ipam scope id.
+        /// The ID of the IPAM scope.
         /// </summary>
         [Input("ipamScopeId")]
         public Input<string>? IpamScopeId { get; set; }
+
+        /// <summary>
+        /// The type of the IPv6 CIDR block of the VPC.
+        /// </summary>
+        [Input("ipv6Isp")]
+        public Input<string>? Ipv6Isp { get; set; }
 
         /// <summary>
         /// The effective region of the IPAM address pool.

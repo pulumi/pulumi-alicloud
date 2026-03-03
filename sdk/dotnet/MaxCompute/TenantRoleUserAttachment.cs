@@ -12,6 +12,10 @@ namespace Pulumi.AliCloud.MaxCompute
     /// <summary>
     /// Provides a Max Compute Tenant Role User Attachment resource.
     /// 
+    /// Binding relationship between tenant roles and users
+    /// 
+    /// &gt; **WARNING:** Using TenantRoleUserAttachment restricts the use of the [MaxCompute Console &gt; Tenant Management &gt; Tenant Attributes &gt; Use Account ID] feature. If you use the [Use Account ID] feature in the console, TenantRoleUserAttachment becomes unavailable and requires approximately one hour to recover.
+    /// 
     /// For information about Max Compute Tenant Role User Attachment and how to use it, see [What is Tenant Role User Attachment](https://next.api.alibabacloud.com/document/MaxCompute/2022-01-04/UpdateTenantUserRoles).
     /// 
     /// &gt; **NOTE:** Available since v1.270.0.

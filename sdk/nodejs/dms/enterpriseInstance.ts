@@ -227,6 +227,12 @@ export class EnterpriseInstance extends pulumi.CustomResource {
      */
     declare public readonly safeRuleId: pulumi.Output<string>;
     /**
+     * Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+     *
+     * ~>**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+     */
+    declare public readonly sellTrust: pulumi.Output<boolean>;
+    /**
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      */
     declare public readonly sid: pulumi.Output<string | undefined>;
@@ -292,6 +298,7 @@ export class EnterpriseInstance extends pulumi.CustomResource {
             resourceInputs["queryTimeout"] = state?.queryTimeout;
             resourceInputs["safeRule"] = state?.safeRule;
             resourceInputs["safeRuleId"] = state?.safeRuleId;
+            resourceInputs["sellTrust"] = state?.sellTrust;
             resourceInputs["sid"] = state?.sid;
             resourceInputs["skipTest"] = state?.skipTest;
             resourceInputs["state"] = state?.state;
@@ -337,6 +344,9 @@ export class EnterpriseInstance extends pulumi.CustomResource {
             if (args?.safeRule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'safeRule'");
             }
+            if (args?.sellTrust === undefined && !opts.urn) {
+                throw new Error("Missing required property 'sellTrust'");
+            }
             resourceInputs["dataLinkName"] = args?.dataLinkName;
             resourceInputs["databasePassword"] = args?.databasePassword ? pulumi.secret(args.databasePassword) : undefined;
             resourceInputs["databaseUser"] = args?.databaseUser;
@@ -358,6 +368,7 @@ export class EnterpriseInstance extends pulumi.CustomResource {
             resourceInputs["queryTimeout"] = args?.queryTimeout;
             resourceInputs["safeRule"] = args?.safeRule;
             resourceInputs["safeRuleId"] = args?.safeRuleId;
+            resourceInputs["sellTrust"] = args?.sellTrust;
             resourceInputs["sid"] = args?.sid;
             resourceInputs["skipTest"] = args?.skipTest;
             resourceInputs["tid"] = args?.tid;
@@ -468,6 +479,12 @@ export interface EnterpriseInstanceState {
      * The safe rule id of the database instance.
      */
     safeRuleId?: pulumi.Input<string>;
+    /**
+     * Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+     *
+     * ~>**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+     */
+    sellTrust?: pulumi.Input<boolean>;
     /**
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      */
@@ -590,6 +607,12 @@ export interface EnterpriseInstanceArgs {
      * The safe rule id of the database instance.
      */
     safeRuleId?: pulumi.Input<string>;
+    /**
+     * Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+     *
+     * ~>**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+     */
+    sellTrust: pulumi.Input<boolean>;
     /**
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      */

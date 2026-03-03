@@ -70,7 +70,7 @@ import (
 // Vpc Ipam Ipam can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example <id>
+// $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example <ipam_id>
 // ```
 type IpamIpam struct {
 	pulumi.CustomResourceState
@@ -86,6 +86,8 @@ type IpamIpam struct {
 	OperatingRegionLists pulumi.StringArrayOutput `pulumi:"operatingRegionLists"`
 	// After an IPAM is created, the scope of the private network IPAM created by the system by default.
 	PrivateDefaultScopeId pulumi.StringOutput `pulumi:"privateDefaultScopeId"`
+	// After an IPAM is created, the public network IPAM is created by default.
+	PublicDefaultScopeId pulumi.StringOutput `pulumi:"publicDefaultScopeId"`
 	// The region ID of the resource.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the resource group.
@@ -140,6 +142,8 @@ type ipamIpamState struct {
 	OperatingRegionLists []string `pulumi:"operatingRegionLists"`
 	// After an IPAM is created, the scope of the private network IPAM created by the system by default.
 	PrivateDefaultScopeId *string `pulumi:"privateDefaultScopeId"`
+	// After an IPAM is created, the public network IPAM is created by default.
+	PublicDefaultScopeId *string `pulumi:"publicDefaultScopeId"`
 	// The region ID of the resource.
 	RegionId *string `pulumi:"regionId"`
 	// The ID of the resource group.
@@ -162,6 +166,8 @@ type IpamIpamState struct {
 	OperatingRegionLists pulumi.StringArrayInput
 	// After an IPAM is created, the scope of the private network IPAM created by the system by default.
 	PrivateDefaultScopeId pulumi.StringPtrInput
+	// After an IPAM is created, the public network IPAM is created by default.
+	PublicDefaultScopeId pulumi.StringPtrInput
 	// The region ID of the resource.
 	RegionId pulumi.StringPtrInput
 	// The ID of the resource group.
@@ -316,6 +322,11 @@ func (o IpamIpamOutput) OperatingRegionLists() pulumi.StringArrayOutput {
 // After an IPAM is created, the scope of the private network IPAM created by the system by default.
 func (o IpamIpamOutput) PrivateDefaultScopeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpamIpam) pulumi.StringOutput { return v.PrivateDefaultScopeId }).(pulumi.StringOutput)
+}
+
+// After an IPAM is created, the public network IPAM is created by default.
+func (o IpamIpamOutput) PublicDefaultScopeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpamIpam) pulumi.StringOutput { return v.PublicDefaultScopeId }).(pulumi.StringOutput)
 }
 
 // The region ID of the resource.

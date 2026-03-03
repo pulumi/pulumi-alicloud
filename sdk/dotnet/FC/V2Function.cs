@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// &gt; **NOTE:** Available since v1.208.0.
     /// 
+    /// &gt; **NOTE:** This resource (alicloud_fc_function) represents the legacy Function Compute API. For new deployments and advanced features, please use the `alicloud.fc.V3Function` resource which provides access to the latest FCV3 capabilities.
+    /// 
     /// ## Import
     /// 
     /// FCV2 Function can be imported using the id, e.g.

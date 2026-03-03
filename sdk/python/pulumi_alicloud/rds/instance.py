@@ -248,6 +248,8 @@ class InstanceArgs:
                - optimized: Enable
                - none: Disable
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+               
+               > **NOTE:** The system will use `520` or `532` connections from `max_connections` depending on your instance type.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.bool] pg_bouncer_enabled: Modify the PgBouncer feature of the RDS PostgreSQL instance. Valid values:
@@ -310,10 +312,10 @@ class InstanceArgs:
                
                > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
                
-               Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+               > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
         :param pulumi.Input[_builtins.str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
                - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
                - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
@@ -335,8 +337,10 @@ class InstanceArgs:
                - true: upgrade
                - false: not to upgrade
                
-               > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
+               > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+               
                > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+               
                > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
         :param pulumi.Input[_builtins.str] upgrade_time: The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
                - Immediate: The minor engine version is immediately updated.
@@ -1123,6 +1127,8 @@ class InstanceArgs:
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
         """
         Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+
+        > **NOTE:** The system will use `520` or `532` connections from `max_connections` depending on your instance type.
         """
         return pulumi.get(self, "parameters")
 
@@ -1483,10 +1489,10 @@ class InstanceArgs:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
-        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
 
-        Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+        > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
         """
         return pulumi.get(self, "tags")
 
@@ -1575,8 +1581,10 @@ class InstanceArgs:
         - true: upgrade
         - false: not to upgrade
 
-        > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
+        > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+
         > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+
         > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
         """
         return pulumi.get(self, "upgrade_db_instance_kernel_version")
@@ -1922,6 +1930,8 @@ class _InstanceState:
                - optimized: Enable
                - none: Disable
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+               
+               > **NOTE:** The system will use `520` or `532` connections from `max_connections` depending on your instance type.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.bool] pg_bouncer_enabled: Modify the PgBouncer feature of the RDS PostgreSQL instance. Valid values:
@@ -1986,10 +1996,10 @@ class _InstanceState:
                
                > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
                
-               Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+               > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
         :param pulumi.Input[_builtins.str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
                - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
                - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
@@ -2012,8 +2022,10 @@ class _InstanceState:
                - true: upgrade
                - false: not to upgrade
                
-               > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
+               > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+               
                > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+               
                > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
         :param pulumi.Input[_builtins.str] upgrade_time: The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
                - Immediate: The minor engine version is immediately updated.
@@ -2852,6 +2864,8 @@ class _InstanceState:
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
         """
         Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+
+        > **NOTE:** The system will use `520` or `532` connections from `max_connections` depending on your instance type.
         """
         return pulumi.get(self, "parameters")
 
@@ -3236,10 +3250,10 @@ class _InstanceState:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
-        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
 
-        Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+        > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
         """
         return pulumi.get(self, "tags")
 
@@ -3340,8 +3354,10 @@ class _InstanceState:
         - true: upgrade
         - false: not to upgrade
 
-        > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
+        > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+
         > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+
         > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
         """
         return pulumi.get(self, "upgrade_db_instance_kernel_version")
@@ -3543,7 +3559,8 @@ class Instance(pulumi.CustomResource):
         For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
 
         > **NOTE:** This resource has a fatal bug in the version v1.155.0. If you want to use new feature, please upgrade it to v1.156.0.
-        **NOTE:** Available since v1.155.0.
+
+        > **NOTE:** Available since v1.155.0.
 
         ## Example Usage
 
@@ -4102,6 +4119,8 @@ class Instance(pulumi.CustomResource):
                - optimized: Enable
                - none: Disable
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+               
+               > **NOTE:** The system will use `520` or `532` connections from `max_connections` depending on your instance type.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.bool] pg_bouncer_enabled: Modify the PgBouncer feature of the RDS PostgreSQL instance. Valid values:
@@ -4164,10 +4183,10 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
                
-               Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+               > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
         :param pulumi.Input[_builtins.str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
                - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
                - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
@@ -4189,8 +4208,10 @@ class Instance(pulumi.CustomResource):
                - true: upgrade
                - false: not to upgrade
                
-               > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
+               > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+               
                > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+               
                > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
         :param pulumi.Input[_builtins.str] upgrade_time: The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
                - Immediate: The minor engine version is immediately updated.
@@ -4225,7 +4246,8 @@ class Instance(pulumi.CustomResource):
         For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
 
         > **NOTE:** This resource has a fatal bug in the version v1.155.0. If you want to use new feature, please upgrade it to v1.156.0.
-        **NOTE:** Available since v1.155.0.
+
+        > **NOTE:** Available since v1.155.0.
 
         ## Example Usage
 
@@ -5094,6 +5116,8 @@ class Instance(pulumi.CustomResource):
                - optimized: Enable
                - none: Disable
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+               
+               > **NOTE:** The system will use `520` or `532` connections from `max_connections` depending on your instance type.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.bool] pg_bouncer_enabled: Modify the PgBouncer feature of the RDS PostgreSQL instance. Valid values:
@@ -5158,10 +5182,10 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
                
-               Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+               > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
         :param pulumi.Input[_builtins.str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
                - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
                - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
@@ -5184,8 +5208,10 @@ class Instance(pulumi.CustomResource):
                - true: upgrade
                - false: not to upgrade
                
-               > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
+               > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+               
                > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+               
                > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
         :param pulumi.Input[_builtins.str] upgrade_time: The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
                - Immediate: The minor engine version is immediately updated.
@@ -5759,6 +5785,8 @@ class Instance(pulumi.CustomResource):
     def parameters(self) -> pulumi.Output[Sequence['outputs.InstanceParameter']]:
         """
         Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+
+        > **NOTE:** The system will use `520` or `532` connections from `max_connections` depending on your instance type.
         """
         return pulumi.get(self, "parameters")
 
@@ -6027,10 +6055,10 @@ class Instance(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
         A mapping of tags to assign to the resource.
-        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
 
-        Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+        > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
         """
         return pulumi.get(self, "tags")
 
@@ -6103,8 +6131,10 @@ class Instance(pulumi.CustomResource):
         - true: upgrade
         - false: not to upgrade
 
-        > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
+        > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+
         > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+
         > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
         """
         return pulumi.get(self, "upgrade_db_instance_kernel_version")

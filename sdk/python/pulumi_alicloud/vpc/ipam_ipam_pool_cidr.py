@@ -19,32 +19,23 @@ __all__ = ['IpamIpamPoolCidrArgs', 'IpamIpamPoolCidr']
 @pulumi.input_type
 class IpamIpamPoolCidrArgs:
     def __init__(__self__, *,
-                 cidr: pulumi.Input[_builtins.str],
-                 ipam_pool_id: pulumi.Input[_builtins.str]):
+                 ipam_pool_id: pulumi.Input[_builtins.str],
+                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
+                 netmask_length: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a IpamIpamPoolCidr resource.
 
-        :param pulumi.Input[_builtins.str] cidr: The CIDR address segment to be preset.
-               
-               > **NOTE:**  currently, only IPv4 address segments are supported.
         :param pulumi.Input[_builtins.str] ipam_pool_id: The ID of the IPAM pool instance.
+        :param pulumi.Input[_builtins.str] cidr: The CIDR address segment to be preset.
+        :param pulumi.Input[_builtins.int] netmask_length: Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
-        pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "ipam_pool_id", ipam_pool_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def cidr(self) -> pulumi.Input[_builtins.str]:
-        """
-        The CIDR address segment to be preset.
-
-        > **NOTE:**  currently, only IPv4 address segments are supported.
-        """
-        return pulumi.get(self, "cidr")
-
-    @cidr.setter
-    def cidr(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "cidr", value)
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
+        if netmask_length is not None:
+            pulumi.set(__self__, "netmask_length", netmask_length)
 
     @_builtins.property
     @pulumi.getter(name="ipamPoolId")
@@ -58,26 +49,56 @@ class IpamIpamPoolCidrArgs:
     def ipam_pool_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "ipam_pool_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The CIDR address segment to be preset.
+        """
+        return pulumi.get(self, "cidr")
+
+    @cidr.setter
+    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cidr", value)
+
+    @_builtins.property
+    @pulumi.getter(name="netmaskLength")
+    def netmask_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "netmask_length")
+
+    @netmask_length.setter
+    def netmask_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "netmask_length", value)
+
 
 @pulumi.input_type
 class _IpamIpamPoolCidrState:
     def __init__(__self__, *,
                  cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 netmask_length: Optional[pulumi.Input[_builtins.int]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IpamIpamPoolCidr resources.
 
         :param pulumi.Input[_builtins.str] cidr: The CIDR address segment to be preset.
-               
-               > **NOTE:**  currently, only IPv4 address segments are supported.
         :param pulumi.Input[_builtins.str] ipam_pool_id: The ID of the IPAM pool instance.
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.int] netmask_length: Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] status: The status of the resource.
         """
         if cidr is not None:
             pulumi.set(__self__, "cidr", cidr)
         if ipam_pool_id is not None:
             pulumi.set(__self__, "ipam_pool_id", ipam_pool_id)
+        if netmask_length is not None:
+            pulumi.set(__self__, "netmask_length", netmask_length)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -86,8 +107,6 @@ class _IpamIpamPoolCidrState:
     def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The CIDR address segment to be preset.
-
-        > **NOTE:**  currently, only IPv4 address segments are supported.
         """
         return pulumi.get(self, "cidr")
 
@@ -108,10 +127,24 @@ class _IpamIpamPoolCidrState:
         pulumi.set(self, "ipam_pool_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="netmaskLength")
+    def netmask_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "netmask_length")
+
+    @netmask_length.setter
+    def netmask_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "netmask_length", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -128,6 +161,7 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 netmask_length: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Vpc Ipam Ipam Pool Cidr resource.
@@ -167,16 +201,17 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
         Vpc Ipam Ipam Pool Cidr can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example <ipam_pool_id>:<cidr>
+        $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example <ipam_pool_id>#<cidr>
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr: The CIDR address segment to be preset.
-               
-               > **NOTE:**  currently, only IPv4 address segments are supported.
         :param pulumi.Input[_builtins.str] ipam_pool_id: The ID of the IPAM pool instance.
+        :param pulumi.Input[_builtins.int] netmask_length: Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         ...
     @overload
@@ -222,7 +257,7 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
         Vpc Ipam Ipam Pool Cidr can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example <ipam_pool_id>:<cidr>
+        $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example <ipam_pool_id>#<cidr>
         ```
 
 
@@ -243,6 +278,7 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 netmask_length: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -252,12 +288,11 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IpamIpamPoolCidrArgs.__new__(IpamIpamPoolCidrArgs)
 
-            if cidr is None and not opts.urn:
-                raise TypeError("Missing required property 'cidr'")
             __props__.__dict__["cidr"] = cidr
             if ipam_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ipam_pool_id'")
             __props__.__dict__["ipam_pool_id"] = ipam_pool_id
+            __props__.__dict__["netmask_length"] = netmask_length
             __props__.__dict__["status"] = None
         super(IpamIpamPoolCidr, __self__).__init__(
             'alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr',
@@ -271,6 +306,7 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cidr: Optional[pulumi.Input[_builtins.str]] = None,
             ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+            netmask_length: Optional[pulumi.Input[_builtins.int]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None) -> 'IpamIpamPoolCidr':
         """
         Get an existing IpamIpamPoolCidr resource's state with the given name, id, and optional extra
@@ -280,10 +316,11 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr: The CIDR address segment to be preset.
-               
-               > **NOTE:**  currently, only IPv4 address segments are supported.
         :param pulumi.Input[_builtins.str] ipam_pool_id: The ID of the IPAM pool instance.
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.int] netmask_length: Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] status: The status of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -291,6 +328,7 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
 
         __props__.__dict__["cidr"] = cidr
         __props__.__dict__["ipam_pool_id"] = ipam_pool_id
+        __props__.__dict__["netmask_length"] = netmask_length
         __props__.__dict__["status"] = status
         return IpamIpamPoolCidr(resource_name, opts=opts, __props__=__props__)
 
@@ -299,8 +337,6 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
     def cidr(self) -> pulumi.Output[_builtins.str]:
         """
         The CIDR address segment to be preset.
-
-        > **NOTE:**  currently, only IPv4 address segments are supported.
         """
         return pulumi.get(self, "cidr")
 
@@ -313,10 +349,20 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
         return pulumi.get(self, "ipam_pool_id")
 
     @_builtins.property
+    @pulumi.getter(name="netmaskLength")
+    def netmask_length(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "netmask_length")
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 

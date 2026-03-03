@@ -18,6 +18,8 @@ import (
 //
 // > **NOTE:** Available since v1.173.0.
 //
+// > **DEPRECATED:** This resource has been deprecated. Please use `ehpc.ClusterV2` for new deployments as it provides enhanced functionality and is actively maintained.
+//
 // ## Example Usage
 //
 // # Basic Usage

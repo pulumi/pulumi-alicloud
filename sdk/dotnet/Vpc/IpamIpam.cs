@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Vpc
     /// Vpc Ipam Ipam can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example &lt;id&gt;
+    /// $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example &lt;ipam_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/ipamIpam:IpamIpam")]
@@ -90,6 +90,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Output("privateDefaultScopeId")]
         public Output<string> PrivateDefaultScopeId { get; private set; } = null!;
+
+        /// <summary>
+        /// After an IPAM is created, the public network IPAM is created by default.
+        /// </summary>
+        [Output("publicDefaultScopeId")]
+        public Output<string> PublicDefaultScopeId { get; private set; } = null!;
 
         /// <summary>
         /// The region ID of the resource.
@@ -248,6 +254,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("privateDefaultScopeId")]
         public Input<string>? PrivateDefaultScopeId { get; set; }
+
+        /// <summary>
+        /// After an IPAM is created, the public network IPAM is created by default.
+        /// </summary>
+        [Input("publicDefaultScopeId")]
+        public Input<string>? PublicDefaultScopeId { get; set; }
 
         /// <summary>
         /// The region ID of the resource.

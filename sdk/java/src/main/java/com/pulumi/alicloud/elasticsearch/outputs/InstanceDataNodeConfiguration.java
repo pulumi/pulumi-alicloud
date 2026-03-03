@@ -15,74 +15,82 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceDataNodeConfiguration {
     /**
-     * @return Number of data nodes in the Elasticsearch cluster
+     * @return Number of data nodes. Valid values: 2 to 50.
      * 
      */
     private @Nullable Integer amount;
     /**
-     * @return Elasticsearch data node disk size
+     * @return Storage capacity per node, in GB.
      * 
      */
     private @Nullable Integer disk;
     /**
-     * @return Whether the Elasticsearch data node disk is encrypted
+     * @return Whether to enable cloud disk encryption:
+     * - true: Enabled
+     * - false: Disabled.
      * 
      */
     private @Nullable Boolean diskEncryption;
     /**
-     * @return Elasticsearch cluster data node disk type
+     * @return Node disk type. Supported types:
+     * - cloud_ssd: SSD cloud disk
+     * - cloud_efficiency: Ultra cloud disk.
      * 
      */
     private @Nullable String diskType;
     /**
-     * @return Elasticsearch cluster data node Essd disk level
+     * @return Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
      * 
      */
     private @Nullable String performanceLevel;
     /**
-     * @return Elasticsearch data node specification
+     * @return Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     private String spec;
 
     private InstanceDataNodeConfiguration() {}
     /**
-     * @return Number of data nodes in the Elasticsearch cluster
+     * @return Number of data nodes. Valid values: 2 to 50.
      * 
      */
     public Optional<Integer> amount() {
         return Optional.ofNullable(this.amount);
     }
     /**
-     * @return Elasticsearch data node disk size
+     * @return Storage capacity per node, in GB.
      * 
      */
     public Optional<Integer> disk() {
         return Optional.ofNullable(this.disk);
     }
     /**
-     * @return Whether the Elasticsearch data node disk is encrypted
+     * @return Whether to enable cloud disk encryption:
+     * - true: Enabled
+     * - false: Disabled.
      * 
      */
     public Optional<Boolean> diskEncryption() {
         return Optional.ofNullable(this.diskEncryption);
     }
     /**
-     * @return Elasticsearch cluster data node disk type
+     * @return Node disk type. Supported types:
+     * - cloud_ssd: SSD cloud disk
+     * - cloud_efficiency: Ultra cloud disk.
      * 
      */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
     /**
-     * @return Elasticsearch cluster data node Essd disk level
+     * @return Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
      * 
      */
     public Optional<String> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
     /**
-     * @return Elasticsearch data node specification
+     * @return Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     public String spec() {

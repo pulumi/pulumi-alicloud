@@ -391,6 +391,8 @@ class Trigger(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.93.0.
 
+        > **DEPRECATED:** This resource (alicloud_fc_trigger) represents the legacy Function Compute API. For new deployments and advanced features, please use the `fc.V3Trigger` resource which provides access to the latest FCV3 capabilities. The legacy FC trigger supports only basic functionality and does not include newer features available in FCV3.
+
         ## Example Usage
 
         Basic Usage
@@ -924,6 +926,8 @@ class Trigger(pulumi.CustomResource):
         > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
 
         > **NOTE:** Available since v1.93.0.
+
+        > **DEPRECATED:** This resource (alicloud_fc_trigger) represents the legacy Function Compute API. For new deployments and advanced features, please use the `fc.V3Trigger` resource which provides access to the latest FCV3 capabilities. The legacy FC trigger supports only basic functionality and does not include newer features available in FCV3.
 
         ## Example Usage
 

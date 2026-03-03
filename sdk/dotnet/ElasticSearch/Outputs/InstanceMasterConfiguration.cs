@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.ElasticSearch.Outputs
     public sealed class InstanceMasterConfiguration
     {
         /// <summary>
-        /// Elasticsearch proprietary master node number of disks
+        /// Number of nodes.
         /// </summary>
         public readonly int? Amount;
         /// <summary>
-        /// Elasticsearch proprietary master node disk size
+        /// Node storage capacity, in GB.
         /// </summary>
         public readonly int? Disk;
         /// <summary>
-        /// Elasticsearch proprietary master node disk type
+        /// Node storage type. Only CloudSsd (SSD cloud disk) is supported.
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// Elasticsearch proprietary master node specifications
+        /// Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         /// </summary>
         public readonly string? Spec;
 

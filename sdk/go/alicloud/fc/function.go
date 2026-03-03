@@ -20,6 +20,10 @@ import (
 //
 // > **NOTE:** Available since v1.10.0.
 //
+// > **NOTE:** FCV3 is the latest version of Alibaba Cloud Function Compute service. It provides enhanced performance, more features, and better scalability compared to previous versions (FC and FCV2). We strongly recommend migrating to FCV3 for all new function compute deployments.
+//
+// > **DEPRECATED:** This resource (alicloud_fc_function) represents the legacy Function Compute API. For new deployments and advanced features, please use the `fc.V3Function` resource which provides access to the latest FCV3 capabilities. The legacy FC resource supports only basic functionality and does not include newer features such as CPU allocation, disk size configuration, custom DNS, GPU support, and many other FCV3-specific features. If your configuration includes FCV3-specific parameters, you must migrate to the `fc.V3Function` resource.
+//
 // ## Import
 //
 // Function Compute function can be imported using the id, e.g.

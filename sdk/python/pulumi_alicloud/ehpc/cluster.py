@@ -2053,6 +2053,8 @@ class Cluster(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.173.0.
 
+        > **DEPRECATED:** This resource has been deprecated. Please use `ehpc.ClusterV2` for new deployments as it provides enhanced functionality and is actively maintained.
+
         ## Example Usage
 
         Basic Usage
@@ -2212,6 +2214,8 @@ class Cluster(pulumi.CustomResource):
         For information about Ehpc Cluster and how to use it, see [What is Cluster](https://www.alibabacloud.com/help/en/e-hpc/developer-reference/api-ehpc-2018-04-12-createcluster).
 
         > **NOTE:** Available since v1.173.0.
+
+        > **DEPRECATED:** This resource has been deprecated. Please use `ehpc.ClusterV2` for new deployments as it provides enhanced functionality and is actively maintained.
 
         ## Example Usage
 

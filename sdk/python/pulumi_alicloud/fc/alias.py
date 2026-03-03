@@ -211,6 +211,8 @@ class Alias(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.104.0.
 
+        > **DEPRECATED:** This resource (alicloud_fc_alias) represents the legacy Function Compute API. For new deployments and advanced features, please use the `fc.V3Alias` resource which provides access to the latest FCV3 capabilities. The legacy FC alias supports only basic functionality and does not include newer features available in FCV3.
+
         ## Example Usage
 
         Basic Usage
@@ -264,6 +266,8 @@ class Alias(pulumi.CustomResource):
          For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createalias).
 
         > **NOTE:** Available since v1.104.0.
+
+        > **DEPRECATED:** This resource (alicloud_fc_alias) represents the legacy Function Compute API. For new deployments and advanced features, please use the `fc.V3Alias` resource which provides access to the latest FCV3 capabilities. The legacy FC alias supports only basic functionality and does not include newer features available in FCV3.
 
         ## Example Usage
 

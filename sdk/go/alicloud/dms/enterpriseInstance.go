@@ -216,6 +216,10 @@ type EnterpriseInstance struct {
 	SafeRule pulumi.StringOutput `pulumi:"safeRule"`
 	// The safe rule id of the database instance.
 	SafeRuleId pulumi.StringOutput `pulumi:"safeRuleId"`
+	// Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+	//
+	// ~>**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+	SellTrust pulumi.BoolOutput `pulumi:"sellTrust"`
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
 	Sid pulumi.StringPtrOutput `pulumi:"sid"`
 	// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
@@ -276,6 +280,9 @@ func NewEnterpriseInstance(ctx *pulumi.Context,
 	}
 	if args.SafeRule == nil {
 		return nil, errors.New("invalid value for required argument 'SafeRule'")
+	}
+	if args.SellTrust == nil {
+		return nil, errors.New("invalid value for required argument 'SellTrust'")
 	}
 	if args.DatabasePassword != nil {
 		args.DatabasePassword = pulumi.ToSecret(args.DatabasePassword).(pulumi.StringInput)
@@ -353,6 +360,10 @@ type enterpriseInstanceState struct {
 	SafeRule *string `pulumi:"safeRule"`
 	// The safe rule id of the database instance.
 	SafeRuleId *string `pulumi:"safeRuleId"`
+	// Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+	//
+	// ~>**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+	SellTrust *bool `pulumi:"sellTrust"`
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
 	Sid *string `pulumi:"sid"`
 	// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
@@ -418,6 +429,10 @@ type EnterpriseInstanceState struct {
 	SafeRule pulumi.StringPtrInput
 	// The safe rule id of the database instance.
 	SafeRuleId pulumi.StringPtrInput
+	// Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+	//
+	// ~>**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+	SellTrust pulumi.BoolPtrInput
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
 	Sid pulumi.StringPtrInput
 	// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
@@ -485,6 +500,10 @@ type enterpriseInstanceArgs struct {
 	SafeRule string `pulumi:"safeRule"`
 	// The safe rule id of the database instance.
 	SafeRuleId *string `pulumi:"safeRuleId"`
+	// Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+	//
+	// ~>**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+	SellTrust bool `pulumi:"sellTrust"`
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
 	Sid *string `pulumi:"sid"`
 	// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
@@ -543,6 +562,10 @@ type EnterpriseInstanceArgs struct {
 	SafeRule pulumi.StringInput
 	// The safe rule id of the database instance.
 	SafeRuleId pulumi.StringPtrInput
+	// Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+	//
+	// ~>**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+	SellTrust pulumi.BoolInput
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
 	Sid pulumi.StringPtrInput
 	// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
@@ -752,6 +775,13 @@ func (o EnterpriseInstanceOutput) SafeRule() pulumi.StringOutput {
 // The safe rule id of the database instance.
 func (o EnterpriseInstanceOutput) SafeRuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.SafeRuleId }).(pulumi.StringOutput)
+}
+
+// Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+//
+// ~>**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+func (o EnterpriseInstanceOutput) SellTrust() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.BoolOutput { return v.SellTrust }).(pulumi.BoolOutput)
 }
 
 // The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.

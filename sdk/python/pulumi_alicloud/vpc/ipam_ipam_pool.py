@@ -28,6 +28,7 @@ class IpamIpamPoolArgs:
                  ip_version: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam_pool_description: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  source_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -35,19 +36,20 @@ class IpamIpamPoolArgs:
         """
         The set of arguments for constructing a IpamIpamPool resource.
 
-        :param pulumi.Input[_builtins.str] ipam_scope_id: Ipam scope id.
+        :param pulumi.Input[_builtins.str] ipam_scope_id: The ID of the IPAM scope.
         :param pulumi.Input[_builtins.int] allocation_default_cidr_mask: The default network mask assigned by the IPAM address pool.
-               IPv4 network mask value range: **0 to 32** bits.
+               IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         :param pulumi.Input[_builtins.int] allocation_max_cidr_mask: The maximum network mask assigned by the IPAM address pool.
-               IPv4 network mask value range: **0 to 32** bits.
+               IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         :param pulumi.Input[_builtins.int] allocation_min_cidr_mask: The minimum Network mask assigned by the IPAM address pool.
-               IPv4 network mask value range: **0 to 32** bits.
+               IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         :param pulumi.Input[_builtins.bool] auto_import: Whether the automatic import function is enabled for the address pool.
         :param pulumi.Input[_builtins.bool] clear_allocation_default_cidr_mask: Whether to clear the default network mask of the IPAM address pool. Value:
-        :param pulumi.Input[_builtins.str] ip_version: The IP protocol version. Currently, only `IPv4` is supported * *.
+        :param pulumi.Input[_builtins.str] ip_version: The IP protocol version. Values: IPv4、IPv6.
         :param pulumi.Input[_builtins.str] ipam_pool_description: The description of the IPAM address pool.
                It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[_builtins.str] ipam_pool_name: The name of the resource.
+        :param pulumi.Input[_builtins.str] ipv6_isp: The type of the IPv6 CIDR block of the VPC.
         :param pulumi.Input[_builtins.str] pool_region_id: The effective region of the IPAM address pool.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] source_ipam_pool_id: The instance ID of the source IPAM address pool.
@@ -72,6 +74,8 @@ class IpamIpamPoolArgs:
             pulumi.set(__self__, "ipam_pool_description", ipam_pool_description)
         if ipam_pool_name is not None:
             pulumi.set(__self__, "ipam_pool_name", ipam_pool_name)
+        if ipv6_isp is not None:
+            pulumi.set(__self__, "ipv6_isp", ipv6_isp)
         if pool_region_id is not None:
             pulumi.set(__self__, "pool_region_id", pool_region_id)
         if resource_group_id is not None:
@@ -85,7 +89,7 @@ class IpamIpamPoolArgs:
     @pulumi.getter(name="ipamScopeId")
     def ipam_scope_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Ipam scope id.
+        The ID of the IPAM scope.
         """
         return pulumi.get(self, "ipam_scope_id")
 
@@ -98,7 +102,7 @@ class IpamIpamPoolArgs:
     def allocation_default_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The default network mask assigned by the IPAM address pool.
-        IPv4 network mask value range: **0 to 32** bits.
+        IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         """
         return pulumi.get(self, "allocation_default_cidr_mask")
 
@@ -111,7 +115,7 @@ class IpamIpamPoolArgs:
     def allocation_max_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The maximum network mask assigned by the IPAM address pool.
-        IPv4 network mask value range: **0 to 32** bits.
+        IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         """
         return pulumi.get(self, "allocation_max_cidr_mask")
 
@@ -124,7 +128,7 @@ class IpamIpamPoolArgs:
     def allocation_min_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The minimum Network mask assigned by the IPAM address pool.
-        IPv4 network mask value range: **0 to 32** bits.
+        IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         """
         return pulumi.get(self, "allocation_min_cidr_mask")
 
@@ -160,7 +164,7 @@ class IpamIpamPoolArgs:
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The IP protocol version. Currently, only `IPv4` is supported * *.
+        The IP protocol version. Values: IPv4、IPv6.
         """
         return pulumi.get(self, "ip_version")
 
@@ -192,6 +196,18 @@ class IpamIpamPoolArgs:
     @ipam_pool_name.setter
     def ipam_pool_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ipam_pool_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Isp")
+    def ipv6_isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the IPv6 CIDR block of the VPC.
+        """
+        return pulumi.get(self, "ipv6_isp")
+
+    @ipv6_isp.setter
+    def ipv6_isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ipv6_isp", value)
 
     @_builtins.property
     @pulumi.getter(name="poolRegionId")
@@ -257,6 +273,7 @@ class _IpamIpamPoolState:
                  ipam_pool_description: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -267,19 +284,20 @@ class _IpamIpamPoolState:
         Input properties used for looking up and filtering IpamIpamPool resources.
 
         :param pulumi.Input[_builtins.int] allocation_default_cidr_mask: The default network mask assigned by the IPAM address pool.
-               IPv4 network mask value range: **0 to 32** bits.
+               IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         :param pulumi.Input[_builtins.int] allocation_max_cidr_mask: The maximum network mask assigned by the IPAM address pool.
-               IPv4 network mask value range: **0 to 32** bits.
+               IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         :param pulumi.Input[_builtins.int] allocation_min_cidr_mask: The minimum Network mask assigned by the IPAM address pool.
-               IPv4 network mask value range: **0 to 32** bits.
+               IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         :param pulumi.Input[_builtins.bool] auto_import: Whether the automatic import function is enabled for the address pool.
         :param pulumi.Input[_builtins.bool] clear_allocation_default_cidr_mask: Whether to clear the default network mask of the IPAM address pool. Value:
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
-        :param pulumi.Input[_builtins.str] ip_version: The IP protocol version. Currently, only `IPv4` is supported * *.
+        :param pulumi.Input[_builtins.str] ip_version: The IP protocol version. Values: IPv4、IPv6.
         :param pulumi.Input[_builtins.str] ipam_pool_description: The description of the IPAM address pool.
                It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[_builtins.str] ipam_pool_name: The name of the resource.
-        :param pulumi.Input[_builtins.str] ipam_scope_id: Ipam scope id.
+        :param pulumi.Input[_builtins.str] ipam_scope_id: The ID of the IPAM scope.
+        :param pulumi.Input[_builtins.str] ipv6_isp: The type of the IPv6 CIDR block of the VPC.
         :param pulumi.Input[_builtins.str] pool_region_id: The effective region of the IPAM address pool.
         :param pulumi.Input[_builtins.str] region_id: The ID of the IPAM hosting region.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -309,6 +327,8 @@ class _IpamIpamPoolState:
             pulumi.set(__self__, "ipam_pool_name", ipam_pool_name)
         if ipam_scope_id is not None:
             pulumi.set(__self__, "ipam_scope_id", ipam_scope_id)
+        if ipv6_isp is not None:
+            pulumi.set(__self__, "ipv6_isp", ipv6_isp)
         if pool_region_id is not None:
             pulumi.set(__self__, "pool_region_id", pool_region_id)
         if region_id is not None:
@@ -327,7 +347,7 @@ class _IpamIpamPoolState:
     def allocation_default_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The default network mask assigned by the IPAM address pool.
-        IPv4 network mask value range: **0 to 32** bits.
+        IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         """
         return pulumi.get(self, "allocation_default_cidr_mask")
 
@@ -340,7 +360,7 @@ class _IpamIpamPoolState:
     def allocation_max_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The maximum network mask assigned by the IPAM address pool.
-        IPv4 network mask value range: **0 to 32** bits.
+        IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         """
         return pulumi.get(self, "allocation_max_cidr_mask")
 
@@ -353,7 +373,7 @@ class _IpamIpamPoolState:
     def allocation_min_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The minimum Network mask assigned by the IPAM address pool.
-        IPv4 network mask value range: **0 to 32** bits.
+        IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         """
         return pulumi.get(self, "allocation_min_cidr_mask")
 
@@ -401,7 +421,7 @@ class _IpamIpamPoolState:
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The IP protocol version. Currently, only `IPv4` is supported * *.
+        The IP protocol version. Values: IPv4、IPv6.
         """
         return pulumi.get(self, "ip_version")
 
@@ -438,13 +458,25 @@ class _IpamIpamPoolState:
     @pulumi.getter(name="ipamScopeId")
     def ipam_scope_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Ipam scope id.
+        The ID of the IPAM scope.
         """
         return pulumi.get(self, "ipam_scope_id")
 
     @ipam_scope_id.setter
     def ipam_scope_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ipam_scope_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Isp")
+    def ipv6_isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the IPv6 CIDR block of the VPC.
+        """
+        return pulumi.get(self, "ipv6_isp")
+
+    @ipv6_isp.setter
+    def ipv6_isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ipv6_isp", value)
 
     @_builtins.property
     @pulumi.getter(name="poolRegionId")
@@ -536,6 +568,7 @@ class IpamIpamPool(pulumi.CustomResource):
                  ipam_pool_description: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  source_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -584,25 +617,26 @@ class IpamIpamPool(pulumi.CustomResource):
         Vpc Ipam Ipam Pool can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:vpc/ipamIpamPool:IpamIpamPool example <id>
+        $ pulumi import alicloud:vpc/ipamIpamPool:IpamIpamPool example <ipam_pool_id>
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] allocation_default_cidr_mask: The default network mask assigned by the IPAM address pool.
-               IPv4 network mask value range: **0 to 32** bits.
+               IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         :param pulumi.Input[_builtins.int] allocation_max_cidr_mask: The maximum network mask assigned by the IPAM address pool.
-               IPv4 network mask value range: **0 to 32** bits.
+               IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         :param pulumi.Input[_builtins.int] allocation_min_cidr_mask: The minimum Network mask assigned by the IPAM address pool.
-               IPv4 network mask value range: **0 to 32** bits.
+               IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         :param pulumi.Input[_builtins.bool] auto_import: Whether the automatic import function is enabled for the address pool.
         :param pulumi.Input[_builtins.bool] clear_allocation_default_cidr_mask: Whether to clear the default network mask of the IPAM address pool. Value:
-        :param pulumi.Input[_builtins.str] ip_version: The IP protocol version. Currently, only `IPv4` is supported * *.
+        :param pulumi.Input[_builtins.str] ip_version: The IP protocol version. Values: IPv4、IPv6.
         :param pulumi.Input[_builtins.str] ipam_pool_description: The description of the IPAM address pool.
                It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[_builtins.str] ipam_pool_name: The name of the resource.
-        :param pulumi.Input[_builtins.str] ipam_scope_id: Ipam scope id.
+        :param pulumi.Input[_builtins.str] ipam_scope_id: The ID of the IPAM scope.
+        :param pulumi.Input[_builtins.str] ipv6_isp: The type of the IPv6 CIDR block of the VPC.
         :param pulumi.Input[_builtins.str] pool_region_id: The effective region of the IPAM address pool.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] source_ipam_pool_id: The instance ID of the source IPAM address pool.
@@ -659,7 +693,7 @@ class IpamIpamPool(pulumi.CustomResource):
         Vpc Ipam Ipam Pool can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:vpc/ipamIpamPool:IpamIpamPool example <id>
+        $ pulumi import alicloud:vpc/ipamIpamPool:IpamIpamPool example <ipam_pool_id>
         ```
 
 
@@ -687,6 +721,7 @@ class IpamIpamPool(pulumi.CustomResource):
                  ipam_pool_description: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  source_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -711,6 +746,7 @@ class IpamIpamPool(pulumi.CustomResource):
             if ipam_scope_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ipam_scope_id'")
             __props__.__dict__["ipam_scope_id"] = ipam_scope_id
+            __props__.__dict__["ipv6_isp"] = ipv6_isp
             __props__.__dict__["pool_region_id"] = pool_region_id
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["source_ipam_pool_id"] = source_ipam_pool_id
@@ -738,6 +774,7 @@ class IpamIpamPool(pulumi.CustomResource):
             ipam_pool_description: Optional[pulumi.Input[_builtins.str]] = None,
             ipam_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
             ipam_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
+            ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
             pool_region_id: Optional[pulumi.Input[_builtins.str]] = None,
             region_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -752,19 +789,20 @@ class IpamIpamPool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] allocation_default_cidr_mask: The default network mask assigned by the IPAM address pool.
-               IPv4 network mask value range: **0 to 32** bits.
+               IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         :param pulumi.Input[_builtins.int] allocation_max_cidr_mask: The maximum network mask assigned by the IPAM address pool.
-               IPv4 network mask value range: **0 to 32** bits.
+               IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         :param pulumi.Input[_builtins.int] allocation_min_cidr_mask: The minimum Network mask assigned by the IPAM address pool.
-               IPv4 network mask value range: **0 to 32** bits.
+               IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         :param pulumi.Input[_builtins.bool] auto_import: Whether the automatic import function is enabled for the address pool.
         :param pulumi.Input[_builtins.bool] clear_allocation_default_cidr_mask: Whether to clear the default network mask of the IPAM address pool. Value:
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
-        :param pulumi.Input[_builtins.str] ip_version: The IP protocol version. Currently, only `IPv4` is supported * *.
+        :param pulumi.Input[_builtins.str] ip_version: The IP protocol version. Values: IPv4、IPv6.
         :param pulumi.Input[_builtins.str] ipam_pool_description: The description of the IPAM address pool.
                It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[_builtins.str] ipam_pool_name: The name of the resource.
-        :param pulumi.Input[_builtins.str] ipam_scope_id: Ipam scope id.
+        :param pulumi.Input[_builtins.str] ipam_scope_id: The ID of the IPAM scope.
+        :param pulumi.Input[_builtins.str] ipv6_isp: The type of the IPv6 CIDR block of the VPC.
         :param pulumi.Input[_builtins.str] pool_region_id: The effective region of the IPAM address pool.
         :param pulumi.Input[_builtins.str] region_id: The ID of the IPAM hosting region.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -788,6 +826,7 @@ class IpamIpamPool(pulumi.CustomResource):
         __props__.__dict__["ipam_pool_description"] = ipam_pool_description
         __props__.__dict__["ipam_pool_name"] = ipam_pool_name
         __props__.__dict__["ipam_scope_id"] = ipam_scope_id
+        __props__.__dict__["ipv6_isp"] = ipv6_isp
         __props__.__dict__["pool_region_id"] = pool_region_id
         __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -801,7 +840,7 @@ class IpamIpamPool(pulumi.CustomResource):
     def allocation_default_cidr_mask(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The default network mask assigned by the IPAM address pool.
-        IPv4 network mask value range: **0 to 32** bits.
+        IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         """
         return pulumi.get(self, "allocation_default_cidr_mask")
 
@@ -810,7 +849,7 @@ class IpamIpamPool(pulumi.CustomResource):
     def allocation_max_cidr_mask(self) -> pulumi.Output[_builtins.int]:
         """
         The maximum network mask assigned by the IPAM address pool.
-        IPv4 network mask value range: **0 to 32** bits.
+        IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         """
         return pulumi.get(self, "allocation_max_cidr_mask")
 
@@ -819,7 +858,7 @@ class IpamIpamPool(pulumi.CustomResource):
     def allocation_min_cidr_mask(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The minimum Network mask assigned by the IPAM address pool.
-        IPv4 network mask value range: **0 to 32** bits.
+        IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         """
         return pulumi.get(self, "allocation_min_cidr_mask")
 
@@ -851,7 +890,7 @@ class IpamIpamPool(pulumi.CustomResource):
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> pulumi.Output[_builtins.str]:
         """
-        The IP protocol version. Currently, only `IPv4` is supported * *.
+        The IP protocol version. Values: IPv4、IPv6.
         """
         return pulumi.get(self, "ip_version")
 
@@ -876,9 +915,17 @@ class IpamIpamPool(pulumi.CustomResource):
     @pulumi.getter(name="ipamScopeId")
     def ipam_scope_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Ipam scope id.
+        The ID of the IPAM scope.
         """
         return pulumi.get(self, "ipam_scope_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Isp")
+    def ipv6_isp(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of the IPv6 CIDR block of the VPC.
+        """
+        return pulumi.get(self, "ipv6_isp")
 
     @_builtins.property
     @pulumi.getter(name="poolRegionId")

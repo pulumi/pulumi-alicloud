@@ -33,17 +33,28 @@ class PatchBaselineArgs:
         """
         The set of arguments for constructing a PatchBaseline resource.
 
-        :param pulumi.Input[_builtins.str] approval_rules: Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
-        :param pulumi.Input[_builtins.str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
-        :param pulumi.Input[_builtins.str] patch_baseline_name: The name of the patch baseline.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] approved_patches: Approved Patch.
-        :param pulumi.Input[_builtins.bool] approved_patches_enable_non_security: ApprovedPatchesEnableNonSecurity.
-        :param pulumi.Input[_builtins.str] description: Patches baseline description information.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rejected_patches: Reject patches.
+        :param pulumi.Input[_builtins.str] approval_rules: This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+        :param pulumi.Input[_builtins.str] operation_system: Operating system type. Supported values:
+               - Windows
+               - Ubuntu
+               - CentOS
+               - Debian
+               - AliyunLinux
+               - RedhatEnterpriseLinux
+               - Anolis
+               - Fedora
+               - Suse
+               - RockyLinux
+               - AlmaLinux.
+        :param pulumi.Input[_builtins.str] patch_baseline_name: Patch baseline name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] approved_patches: List of approved patches.
+        :param pulumi.Input[_builtins.bool] approved_patches_enable_non_security: Specifies whether approved patches include updates other than security updates.
+        :param pulumi.Input[_builtins.str] description: Description of the patch baseline.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rejected_patches: List of rejected patches.
         :param pulumi.Input[_builtins.str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sources: Source.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource group ID.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sources: List of patch source configurations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A key-value map of tags. The number of key-value pairs must be between 1 and 20.
         """
         pulumi.set(__self__, "approval_rules", approval_rules)
         pulumi.set(__self__, "operation_system", operation_system)
@@ -69,7 +80,7 @@ class PatchBaselineArgs:
     @pulumi.getter(name="approvalRules")
     def approval_rules(self) -> pulumi.Input[_builtins.str]:
         """
-        Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+        This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         """
         return pulumi.get(self, "approval_rules")
 
@@ -81,7 +92,18 @@ class PatchBaselineArgs:
     @pulumi.getter(name="operationSystem")
     def operation_system(self) -> pulumi.Input[_builtins.str]:
         """
-        Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+        Operating system type. Supported values:
+        - Windows
+        - Ubuntu
+        - CentOS
+        - Debian
+        - AliyunLinux
+        - RedhatEnterpriseLinux
+        - Anolis
+        - Fedora
+        - Suse
+        - RockyLinux
+        - AlmaLinux.
         """
         return pulumi.get(self, "operation_system")
 
@@ -93,7 +115,7 @@ class PatchBaselineArgs:
     @pulumi.getter(name="patchBaselineName")
     def patch_baseline_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the patch baseline.
+        Patch baseline name.
         """
         return pulumi.get(self, "patch_baseline_name")
 
@@ -105,7 +127,7 @@ class PatchBaselineArgs:
     @pulumi.getter(name="approvedPatches")
     def approved_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Approved Patch.
+        List of approved patches.
         """
         return pulumi.get(self, "approved_patches")
 
@@ -117,7 +139,7 @@ class PatchBaselineArgs:
     @pulumi.getter(name="approvedPatchesEnableNonSecurity")
     def approved_patches_enable_non_security(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        ApprovedPatchesEnableNonSecurity.
+        Specifies whether approved patches include updates other than security updates.
         """
         return pulumi.get(self, "approved_patches_enable_non_security")
 
@@ -129,7 +151,7 @@ class PatchBaselineArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Patches baseline description information.
+        Description of the patch baseline.
         """
         return pulumi.get(self, "description")
 
@@ -141,7 +163,7 @@ class PatchBaselineArgs:
     @pulumi.getter(name="rejectedPatches")
     def rejected_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Reject patches.
+        List of rejected patches.
         """
         return pulumi.get(self, "rejected_patches")
 
@@ -165,7 +187,7 @@ class PatchBaselineArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the resource group.
+        Resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -177,7 +199,7 @@ class PatchBaselineArgs:
     @pulumi.getter
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Source.
+        List of patch source configurations.
         """
         return pulumi.get(self, "sources")
 
@@ -189,7 +211,7 @@ class PatchBaselineArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Label.
+        A key-value map of tags. The number of key-value pairs must be between 1 and 20.
         """
         return pulumi.get(self, "tags")
 
@@ -216,18 +238,29 @@ class _PatchBaselineState:
         """
         Input properties used for looking up and filtering PatchBaseline resources.
 
-        :param pulumi.Input[_builtins.str] approval_rules: Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] approved_patches: Approved Patch.
-        :param pulumi.Input[_builtins.bool] approved_patches_enable_non_security: ApprovedPatchesEnableNonSecurity.
+        :param pulumi.Input[_builtins.str] approval_rules: This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] approved_patches: List of approved patches.
+        :param pulumi.Input[_builtins.bool] approved_patches_enable_non_security: Specifies whether approved patches include updates other than security updates.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
-        :param pulumi.Input[_builtins.str] description: Patches baseline description information.
-        :param pulumi.Input[_builtins.str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
-        :param pulumi.Input[_builtins.str] patch_baseline_name: The name of the patch baseline.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rejected_patches: Reject patches.
+        :param pulumi.Input[_builtins.str] description: Description of the patch baseline.
+        :param pulumi.Input[_builtins.str] operation_system: Operating system type. Supported values:
+               - Windows
+               - Ubuntu
+               - CentOS
+               - Debian
+               - AliyunLinux
+               - RedhatEnterpriseLinux
+               - Anolis
+               - Fedora
+               - Suse
+               - RockyLinux
+               - AlmaLinux.
+        :param pulumi.Input[_builtins.str] patch_baseline_name: Patch baseline name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rejected_patches: List of rejected patches.
         :param pulumi.Input[_builtins.str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sources: Source.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource group ID.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sources: List of patch source configurations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A key-value map of tags. The number of key-value pairs must be between 1 and 20.
         """
         if approval_rules is not None:
             pulumi.set(__self__, "approval_rules", approval_rules)
@@ -258,7 +291,7 @@ class _PatchBaselineState:
     @pulumi.getter(name="approvalRules")
     def approval_rules(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+        This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         """
         return pulumi.get(self, "approval_rules")
 
@@ -270,7 +303,7 @@ class _PatchBaselineState:
     @pulumi.getter(name="approvedPatches")
     def approved_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Approved Patch.
+        List of approved patches.
         """
         return pulumi.get(self, "approved_patches")
 
@@ -282,7 +315,7 @@ class _PatchBaselineState:
     @pulumi.getter(name="approvedPatchesEnableNonSecurity")
     def approved_patches_enable_non_security(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        ApprovedPatchesEnableNonSecurity.
+        Specifies whether approved patches include updates other than security updates.
         """
         return pulumi.get(self, "approved_patches_enable_non_security")
 
@@ -306,7 +339,7 @@ class _PatchBaselineState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Patches baseline description information.
+        Description of the patch baseline.
         """
         return pulumi.get(self, "description")
 
@@ -318,7 +351,18 @@ class _PatchBaselineState:
     @pulumi.getter(name="operationSystem")
     def operation_system(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+        Operating system type. Supported values:
+        - Windows
+        - Ubuntu
+        - CentOS
+        - Debian
+        - AliyunLinux
+        - RedhatEnterpriseLinux
+        - Anolis
+        - Fedora
+        - Suse
+        - RockyLinux
+        - AlmaLinux.
         """
         return pulumi.get(self, "operation_system")
 
@@ -330,7 +374,7 @@ class _PatchBaselineState:
     @pulumi.getter(name="patchBaselineName")
     def patch_baseline_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the patch baseline.
+        Patch baseline name.
         """
         return pulumi.get(self, "patch_baseline_name")
 
@@ -342,7 +386,7 @@ class _PatchBaselineState:
     @pulumi.getter(name="rejectedPatches")
     def rejected_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Reject patches.
+        List of rejected patches.
         """
         return pulumi.get(self, "rejected_patches")
 
@@ -366,7 +410,7 @@ class _PatchBaselineState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the resource group.
+        Resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -378,7 +422,7 @@ class _PatchBaselineState:
     @pulumi.getter
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Source.
+        List of patch source configurations.
         """
         return pulumi.get(self, "sources")
 
@@ -390,7 +434,7 @@ class _PatchBaselineState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Label.
+        A key-value map of tags. The number of key-value pairs must be between 1 and 20.
         """
         return pulumi.get(self, "tags")
 
@@ -418,9 +462,9 @@ class PatchBaseline(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides a OOS Patch Baseline resource.
+        Provides a Operation Orchestration Service (OOS) Patch Baseline resource.
 
-        For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
+        For information about Operation Orchestration Service (OOS) Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
 
         > **NOTE:** Available since v1.146.0.
 
@@ -446,26 +490,37 @@ class PatchBaseline(pulumi.CustomResource):
 
         ## Import
 
-        OOS Patch Baseline can be imported using the id, e.g.
+        Operation Orchestration Service (OOS) Patch Baseline can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
+        $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <patch_baseline_name>
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] approval_rules: Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] approved_patches: Approved Patch.
-        :param pulumi.Input[_builtins.bool] approved_patches_enable_non_security: ApprovedPatchesEnableNonSecurity.
-        :param pulumi.Input[_builtins.str] description: Patches baseline description information.
-        :param pulumi.Input[_builtins.str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
-        :param pulumi.Input[_builtins.str] patch_baseline_name: The name of the patch baseline.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rejected_patches: Reject patches.
+        :param pulumi.Input[_builtins.str] approval_rules: This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] approved_patches: List of approved patches.
+        :param pulumi.Input[_builtins.bool] approved_patches_enable_non_security: Specifies whether approved patches include updates other than security updates.
+        :param pulumi.Input[_builtins.str] description: Description of the patch baseline.
+        :param pulumi.Input[_builtins.str] operation_system: Operating system type. Supported values:
+               - Windows
+               - Ubuntu
+               - CentOS
+               - Debian
+               - AliyunLinux
+               - RedhatEnterpriseLinux
+               - Anolis
+               - Fedora
+               - Suse
+               - RockyLinux
+               - AlmaLinux.
+        :param pulumi.Input[_builtins.str] patch_baseline_name: Patch baseline name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rejected_patches: List of rejected patches.
         :param pulumi.Input[_builtins.str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sources: Source.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource group ID.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sources: List of patch source configurations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A key-value map of tags. The number of key-value pairs must be between 1 and 20.
         """
         ...
     @overload
@@ -474,9 +529,9 @@ class PatchBaseline(pulumi.CustomResource):
                  args: PatchBaselineArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a OOS Patch Baseline resource.
+        Provides a Operation Orchestration Service (OOS) Patch Baseline resource.
 
-        For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
+        For information about Operation Orchestration Service (OOS) Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
 
         > **NOTE:** Available since v1.146.0.
 
@@ -502,10 +557,10 @@ class PatchBaseline(pulumi.CustomResource):
 
         ## Import
 
-        OOS Patch Baseline can be imported using the id, e.g.
+        Operation Orchestration Service (OOS) Patch Baseline can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
+        $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <patch_baseline_name>
         ```
 
 
@@ -591,18 +646,29 @@ class PatchBaseline(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] approval_rules: Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] approved_patches: Approved Patch.
-        :param pulumi.Input[_builtins.bool] approved_patches_enable_non_security: ApprovedPatchesEnableNonSecurity.
+        :param pulumi.Input[_builtins.str] approval_rules: This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] approved_patches: List of approved patches.
+        :param pulumi.Input[_builtins.bool] approved_patches_enable_non_security: Specifies whether approved patches include updates other than security updates.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
-        :param pulumi.Input[_builtins.str] description: Patches baseline description information.
-        :param pulumi.Input[_builtins.str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
-        :param pulumi.Input[_builtins.str] patch_baseline_name: The name of the patch baseline.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rejected_patches: Reject patches.
+        :param pulumi.Input[_builtins.str] description: Description of the patch baseline.
+        :param pulumi.Input[_builtins.str] operation_system: Operating system type. Supported values:
+               - Windows
+               - Ubuntu
+               - CentOS
+               - Debian
+               - AliyunLinux
+               - RedhatEnterpriseLinux
+               - Anolis
+               - Fedora
+               - Suse
+               - RockyLinux
+               - AlmaLinux.
+        :param pulumi.Input[_builtins.str] patch_baseline_name: Patch baseline name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rejected_patches: List of rejected patches.
         :param pulumi.Input[_builtins.str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sources: Source.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource group ID.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sources: List of patch source configurations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A key-value map of tags. The number of key-value pairs must be between 1 and 20.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -626,7 +692,7 @@ class PatchBaseline(pulumi.CustomResource):
     @pulumi.getter(name="approvalRules")
     def approval_rules(self) -> pulumi.Output[_builtins.str]:
         """
-        Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+        This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         """
         return pulumi.get(self, "approval_rules")
 
@@ -634,7 +700,7 @@ class PatchBaseline(pulumi.CustomResource):
     @pulumi.getter(name="approvedPatches")
     def approved_patches(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Approved Patch.
+        List of approved patches.
         """
         return pulumi.get(self, "approved_patches")
 
@@ -642,7 +708,7 @@ class PatchBaseline(pulumi.CustomResource):
     @pulumi.getter(name="approvedPatchesEnableNonSecurity")
     def approved_patches_enable_non_security(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        ApprovedPatchesEnableNonSecurity.
+        Specifies whether approved patches include updates other than security updates.
         """
         return pulumi.get(self, "approved_patches_enable_non_security")
 
@@ -658,7 +724,7 @@ class PatchBaseline(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Patches baseline description information.
+        Description of the patch baseline.
         """
         return pulumi.get(self, "description")
 
@@ -666,7 +732,18 @@ class PatchBaseline(pulumi.CustomResource):
     @pulumi.getter(name="operationSystem")
     def operation_system(self) -> pulumi.Output[_builtins.str]:
         """
-        Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+        Operating system type. Supported values:
+        - Windows
+        - Ubuntu
+        - CentOS
+        - Debian
+        - AliyunLinux
+        - RedhatEnterpriseLinux
+        - Anolis
+        - Fedora
+        - Suse
+        - RockyLinux
+        - AlmaLinux.
         """
         return pulumi.get(self, "operation_system")
 
@@ -674,7 +751,7 @@ class PatchBaseline(pulumi.CustomResource):
     @pulumi.getter(name="patchBaselineName")
     def patch_baseline_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the patch baseline.
+        Patch baseline name.
         """
         return pulumi.get(self, "patch_baseline_name")
 
@@ -682,7 +759,7 @@ class PatchBaseline(pulumi.CustomResource):
     @pulumi.getter(name="rejectedPatches")
     def rejected_patches(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Reject patches.
+        List of rejected patches.
         """
         return pulumi.get(self, "rejected_patches")
 
@@ -698,7 +775,7 @@ class PatchBaseline(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the resource group.
+        Resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -706,7 +783,7 @@ class PatchBaseline(pulumi.CustomResource):
     @pulumi.getter
     def sources(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Source.
+        List of patch source configurations.
         """
         return pulumi.get(self, "sources")
 
@@ -714,7 +791,7 @@ class PatchBaseline(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Label.
+        A key-value map of tags. The number of key-value pairs must be between 1 and 20.
         """
         return pulumi.get(self, "tags")
 

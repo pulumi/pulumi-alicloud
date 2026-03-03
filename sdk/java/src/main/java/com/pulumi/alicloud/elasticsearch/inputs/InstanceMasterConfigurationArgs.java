@@ -17,14 +17,14 @@ public final class InstanceMasterConfigurationArgs extends com.pulumi.resources.
     public static final InstanceMasterConfigurationArgs Empty = new InstanceMasterConfigurationArgs();
 
     /**
-     * Elasticsearch proprietary master node number of disks
+     * Number of nodes.
      * 
      */
     @Import(name="amount")
     private @Nullable Output<Integer> amount;
 
     /**
-     * @return Elasticsearch proprietary master node number of disks
+     * @return Number of nodes.
      * 
      */
     public Optional<Output<Integer>> amount() {
@@ -32,14 +32,14 @@ public final class InstanceMasterConfigurationArgs extends com.pulumi.resources.
     }
 
     /**
-     * Elasticsearch proprietary master node disk size
+     * Node storage capacity, in GB.
      * 
      */
     @Import(name="disk")
     private @Nullable Output<Integer> disk;
 
     /**
-     * @return Elasticsearch proprietary master node disk size
+     * @return Node storage capacity, in GB.
      * 
      */
     public Optional<Output<Integer>> disk() {
@@ -47,14 +47,14 @@ public final class InstanceMasterConfigurationArgs extends com.pulumi.resources.
     }
 
     /**
-     * Elasticsearch proprietary master node disk type
+     * Node storage type. Only cloudSsd (SSD cloud disk) is supported.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return Elasticsearch proprietary master node disk type
+     * @return Node storage type. Only cloudSsd (SSD cloud disk) is supported.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -62,14 +62,14 @@ public final class InstanceMasterConfigurationArgs extends com.pulumi.resources.
     }
 
     /**
-     * Elasticsearch proprietary master node specifications
+     * Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     @Import(name="spec")
     private @Nullable Output<String> spec;
 
     /**
-     * @return Elasticsearch proprietary master node specifications
+     * @return Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     public Optional<Output<String>> spec() {
@@ -104,7 +104,7 @@ public final class InstanceMasterConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param amount Elasticsearch proprietary master node number of disks
+         * @param amount Number of nodes.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class InstanceMasterConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param amount Elasticsearch proprietary master node number of disks
+         * @param amount Number of nodes.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class InstanceMasterConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param disk Elasticsearch proprietary master node disk size
+         * @param disk Node storage capacity, in GB.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class InstanceMasterConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param disk Elasticsearch proprietary master node disk size
+         * @param disk Node storage capacity, in GB.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class InstanceMasterConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param diskType Elasticsearch proprietary master node disk type
+         * @param diskType Node storage type. Only cloudSsd (SSD cloud disk) is supported.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class InstanceMasterConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param diskType Elasticsearch proprietary master node disk type
+         * @param diskType Node storage type. Only cloudSsd (SSD cloud disk) is supported.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class InstanceMasterConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param spec Elasticsearch proprietary master node specifications
+         * @param spec Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class InstanceMasterConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param spec Elasticsearch proprietary master node specifications
+         * @param spec Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          * 
          * @return builder
          * 

@@ -114,6 +114,7 @@ class _IpamIpamState:
                  ipam_name: Optional[pulumi.Input[_builtins.str]] = None,
                  operating_region_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  private_default_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 public_default_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
                  region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -127,6 +128,7 @@ class _IpamIpamState:
         :param pulumi.Input[_builtins.str] ipam_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] operating_region_lists: List of IPAM effective regions.
         :param pulumi.Input[_builtins.str] private_default_scope_id: After an IPAM is created, the scope of the private network IPAM created by the system by default.
+        :param pulumi.Input[_builtins.str] public_default_scope_id: After an IPAM is created, the public network IPAM is created by default.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
@@ -142,6 +144,8 @@ class _IpamIpamState:
             pulumi.set(__self__, "operating_region_lists", operating_region_lists)
         if private_default_scope_id is not None:
             pulumi.set(__self__, "private_default_scope_id", private_default_scope_id)
+        if public_default_scope_id is not None:
+            pulumi.set(__self__, "public_default_scope_id", public_default_scope_id)
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
@@ -211,6 +215,18 @@ class _IpamIpamState:
     @private_default_scope_id.setter
     def private_default_scope_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "private_default_scope_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="publicDefaultScopeId")
+    def public_default_scope_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        After an IPAM is created, the public network IPAM is created by default.
+        """
+        return pulumi.get(self, "public_default_scope_id")
+
+    @public_default_scope_id.setter
+    def public_default_scope_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "public_default_scope_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
@@ -308,7 +324,7 @@ class IpamIpam(pulumi.CustomResource):
         Vpc Ipam Ipam can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example <id>
+        $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example <ipam_id>
         ```
 
 
@@ -362,7 +378,7 @@ class IpamIpam(pulumi.CustomResource):
         Vpc Ipam Ipam can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example <id>
+        $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example <ipam_id>
         ```
 
 
@@ -404,6 +420,7 @@ class IpamIpam(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
             __props__.__dict__["private_default_scope_id"] = None
+            __props__.__dict__["public_default_scope_id"] = None
             __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(IpamIpam, __self__).__init__(
@@ -421,6 +438,7 @@ class IpamIpam(pulumi.CustomResource):
             ipam_name: Optional[pulumi.Input[_builtins.str]] = None,
             operating_region_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             private_default_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
+            public_default_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
             region_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -438,6 +456,7 @@ class IpamIpam(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipam_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] operating_region_lists: List of IPAM effective regions.
         :param pulumi.Input[_builtins.str] private_default_scope_id: After an IPAM is created, the scope of the private network IPAM created by the system by default.
+        :param pulumi.Input[_builtins.str] public_default_scope_id: After an IPAM is created, the public network IPAM is created by default.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
@@ -452,6 +471,7 @@ class IpamIpam(pulumi.CustomResource):
         __props__.__dict__["ipam_name"] = ipam_name
         __props__.__dict__["operating_region_lists"] = operating_region_lists
         __props__.__dict__["private_default_scope_id"] = private_default_scope_id
+        __props__.__dict__["public_default_scope_id"] = public_default_scope_id
         __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
@@ -498,6 +518,14 @@ class IpamIpam(pulumi.CustomResource):
         After an IPAM is created, the scope of the private network IPAM created by the system by default.
         """
         return pulumi.get(self, "private_default_scope_id")
+
+    @_builtins.property
+    @pulumi.getter(name="publicDefaultScopeId")
+    def public_default_scope_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        After an IPAM is created, the public network IPAM is created by default.
+        """
+        return pulumi.get(self, "public_default_scope_id")
 
     @_builtins.property
     @pulumi.getter(name="regionId")

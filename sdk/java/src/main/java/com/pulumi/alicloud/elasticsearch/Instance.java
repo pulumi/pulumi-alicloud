@@ -116,28 +116,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:elasticsearch/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Schema Type:.
+     * The deployment mode or architecture type:.
      * 
      */
     @Export(name="archType", refs={String.class}, tree="[0]")
     private Output<String> archType;
 
     /**
-     * @return Schema Type:.
+     * @return The deployment mode or architecture type:.
      * 
      */
     public Output<String> archType() {
         return this.archType;
     }
     /**
-     * Renewal Period
+     * Number of auto-renewal periods.
      * 
      */
     @Export(name="autoRenewDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewDuration;
 
     /**
-     * @return Renewal Period
+     * @return Number of auto-renewal periods.
      * 
      */
     public Output<Optional<Integer>> autoRenewDuration() {
@@ -162,14 +162,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.clientNodeAmount;
     }
     /**
-     * Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+     * Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
      * 
      */
     @Export(name="clientNodeConfiguration", refs={InstanceClientNodeConfiguration.class}, tree="[0]")
     private Output<InstanceClientNodeConfiguration> clientNodeConfiguration;
 
     /**
-     * @return Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+     * @return Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
      * 
      */
     public Output<InstanceClientNodeConfiguration> clientNodeConfiguration() {
@@ -194,14 +194,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.clientNodeSpec;
     }
     /**
-     * Instance creation time.
+     * The time when the instance was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Instance creation time.
+     * @return The time when the instance was created.
      * 
      */
     public Output<String> createTime() {
@@ -226,14 +226,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.dataNodeAmount;
     }
     /**
-     * Elasticsearch data node information See `dataNodeConfiguration` below.
+     * Elasticsearch data node information. See `dataNodeConfiguration` below.
      * 
      */
     @Export(name="dataNodeConfiguration", refs={InstanceDataNodeConfiguration.class}, tree="[0]")
     private Output<InstanceDataNodeConfiguration> dataNodeConfiguration;
 
     /**
-     * @return Elasticsearch data node information See `dataNodeConfiguration` below.
+     * @return Elasticsearch data node information. See `dataNodeConfiguration` below.
      * 
      */
     public Output<InstanceDataNodeConfiguration> dataNodeConfiguration() {
@@ -330,118 +330,122 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.dataNodeSpec;
     }
     /**
-     * Instance name
+     * Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return Instance name
+     * @return Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * Elasticsearch cluster private domain name.
+     * The internal network address of the instance.
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
-     * @return Elasticsearch cluster private domain name.
+     * @return The internal network address of the instance.
      * 
      */
     public Output<String> domain() {
         return this.domain;
     }
     /**
-     * Whether to enable Kibana private network access.
-     * 
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * Indicates whether private network access to Kibana is enabled. Valid values:
+     * - true: Enabled
+     * - false: Disabled
      * 
      */
     @Export(name="enableKibanaPrivateNetwork", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableKibanaPrivateNetwork;
 
     /**
-     * @return Whether to enable Kibana private network access.
-     * 
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * @return Indicates whether private network access to Kibana is enabled. Valid values:
+     * - true: Enabled
+     * - false: Disabled
      * 
      */
     public Output<Boolean> enableKibanaPrivateNetwork() {
         return this.enableKibanaPrivateNetwork;
     }
     /**
-     * Does Kibana enable public access
+     * Specifies whether to enable public access to Kibana. Valid values:
+     * - true: Enables public access.
+     * - false: Disables public access.
      * 
      */
     @Export(name="enableKibanaPublicNetwork", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableKibanaPublicNetwork;
 
     /**
-     * @return Does Kibana enable public access
+     * @return Specifies whether to enable public access to Kibana. Valid values:
+     * - true: Enables public access.
+     * - false: Disables public access.
      * 
      */
     public Output<Boolean> enableKibanaPublicNetwork() {
         return this.enableKibanaPublicNetwork;
     }
     /**
-     * Whether to enable Kibana public network access.
-     * 
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * Specifies whether to enable a public endpoint for the instance. Valid values:
+     * - true: Enables the public endpoint.
+     * - false: Disables the public endpoint.
      * 
      */
     @Export(name="enablePublic", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enablePublic;
 
     /**
-     * @return Whether to enable Kibana public network access.
-     * 
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * @return Specifies whether to enable a public endpoint for the instance. Valid values:
+     * - true: Enables the public endpoint.
+     * - false: Disables the public endpoint.
      * 
      */
     public Output<Boolean> enablePublic() {
         return this.enablePublic;
     }
     /**
-     * Whether to force changes
+     * Whether to force a restart:
+     * - true: Yes
+     * - false (default): No.
      * 
-     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return Whether to force changes
+     * @return Whether to force a restart:
+     * - true: Yes
+     * - false (default): No.
      * 
-     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * Version type.
+     * Edition type:
+     * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+     * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
      * 
      */
     @Export(name="instanceCategory", refs={String.class}, tree="[0]")
     private Output<String> instanceCategory;
 
     /**
-     * @return Version type.
+     * @return Edition type:
+     * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+     * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
      * 
      */
     public Output<String> instanceCategory() {
@@ -466,28 +470,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceChargeType;
     }
     /**
-     * Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     * The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
      * 
      */
     @Export(name="kibanaConfiguration", refs={InstanceKibanaConfiguration.class}, tree="[0]")
     private Output<InstanceKibanaConfiguration> kibanaConfiguration;
 
     /**
-     * @return Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     * @return The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
      * 
      */
     public Output<InstanceKibanaConfiguration> kibanaConfiguration() {
         return this.kibanaConfiguration;
     }
     /**
-     * Kibana address.
+     * Kibana endpoint.
      * 
      */
     @Export(name="kibanaDomain", refs={String.class}, tree="[0]")
     private Output<String> kibanaDomain;
 
     /**
-     * @return Kibana address.
+     * @return Kibana endpoint.
      * 
      */
     public Output<String> kibanaDomain() {
@@ -512,56 +516,70 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.kibanaNodeSpec;
     }
     /**
-     * The port assigned by the Kibana node.
+     * The access port for Kibana.
      * 
      */
     @Export(name="kibanaPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> kibanaPort;
 
     /**
-     * @return The port assigned by the Kibana node.
+     * @return The access port for Kibana.
      * 
      */
     public Output<Integer> kibanaPort() {
         return this.kibanaPort;
     }
     /**
-     * Kibana private network security group ID
+     * The private endpoint of Kibana.
+     * 
+     */
+    @Export(name="kibanaPrivateDomain", refs={String.class}, tree="[0]")
+    private Output<String> kibanaPrivateDomain;
+
+    /**
+     * @return The private endpoint of Kibana.
+     * 
+     */
+    public Output<String> kibanaPrivateDomain() {
+        return this.kibanaPrivateDomain;
+    }
+    /**
+     * List of security groups.
      * 
      */
     @Export(name="kibanaPrivateSecurityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kibanaPrivateSecurityGroupId;
 
     /**
-     * @return Kibana private network security group ID
+     * @return List of security groups.
      * 
      */
     public Output<Optional<String>> kibanaPrivateSecurityGroupId() {
         return Codegen.optional(this.kibanaPrivateSecurityGroupId);
     }
     /**
-     * Cluster Kibana node private network access whitelist
+     * List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
      * 
      */
     @Export(name="kibanaPrivateWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> kibanaPrivateWhitelists;
 
     /**
-     * @return Cluster Kibana node private network access whitelist
+     * @return List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
      * 
      */
     public Output<List<String>> kibanaPrivateWhitelists() {
         return this.kibanaPrivateWhitelists;
     }
     /**
-     * Kibana private network access whitelist
+     * The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
      * 
      */
     @Export(name="kibanaWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> kibanaWhitelists;
 
     /**
-     * @return Kibana private network access whitelist
+     * @return The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
      * 
      */
     public Output<List<String>> kibanaWhitelists() {
@@ -596,14 +614,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+     * Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
      * 
      */
     @Export(name="masterConfiguration", refs={InstanceMasterConfiguration.class}, tree="[0]")
     private Output<InstanceMasterConfiguration> masterConfiguration;
 
     /**
-     * @return Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+     * @return Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
      * 
      */
     public Output<InstanceMasterConfiguration> masterConfiguration() {
@@ -646,46 +664,50 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.masterNodeSpec;
     }
     /**
-     * The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+     * Configuration change type. Valid values:
+     * - upgrade (default): Upgrade configuration
+     * - downgrade: Downgrade configuration.
      * 
-     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     @Export(name="orderActionType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orderActionType;
 
     /**
-     * @return The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+     * @return Configuration change type. Valid values:
+     * - upgrade (default): Upgrade configuration
+     * - downgrade: Downgrade configuration.
      * 
-     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     public Output<Optional<String>> orderActionType() {
         return Codegen.optional(this.orderActionType);
     }
     /**
-     * The access password of the instance.
+     * The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!{@literal @}#$%^&amp;*()_+-=).
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The access password of the instance.
+     * @return The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!{@literal @}#$%^&amp;*()_+-=).
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
     /**
-     * The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+     * The billing method of the instance. Supported values:
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+     * @return The billing method of the instance. Supported values:
      * 
      */
     public Output<String> paymentType() {
@@ -720,196 +742,226 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.port;
     }
     /**
-     * Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+     * The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
      * 
      */
     @Export(name="privateWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> privateWhitelists;
 
     /**
-     * @return Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+     * @return The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
      * 
      */
     public Output<List<String>> privateWhitelists() {
         return this.privateWhitelists;
     }
     /**
-     * Access protocol. Optional values: `HTTP` and **HTTPS * *.
+     * The access protocol. Supported protocols: HTTP and HTTPS.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
-     * @return Access protocol. Optional values: `HTTP` and **HTTPS * *.
+     * @return The access protocol. Supported protocols: HTTP and HTTPS.
      * 
      */
     public Output<String> protocol() {
         return this.protocol;
     }
     /**
-     * The public network address of the current instance.
+     * The public endpoint of the instance.
      * 
      */
     @Export(name="publicDomain", refs={String.class}, tree="[0]")
     private Output<String> publicDomain;
 
     /**
-     * @return The public network address of the current instance.
+     * @return The public endpoint of the instance.
      * 
      */
     public Output<String> publicDomain() {
         return this.publicDomain;
     }
     /**
-     * Elasticsearch cluster public network access port
+     * The public access port of the instance.
      * 
      */
     @Export(name="publicPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> publicPort;
 
     /**
-     * @return Elasticsearch cluster public network access port
+     * @return The public access port of the instance.
      * 
      */
     public Output<Integer> publicPort() {
         return this.publicPort;
     }
     /**
-     * Elasticseach public network access whitelist IP list
+     * The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
      * 
      */
     @Export(name="publicWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> publicWhitelists;
 
     /**
-     * @return Elasticseach public network access whitelist IP list
+     * @return The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
      * 
      */
     public Output<List<String>> publicWhitelists() {
         return this.publicWhitelists;
     }
     /**
-     * Renewal Status
+     * The renewal status. Valid values:
+     * - AutoRenewal: Auto-renewal.
+     * - ManualRenewal: Manual renewal.
+     * - NotRenewal: No renewal.
      * 
      */
     @Export(name="renewStatus", refs={String.class}, tree="[0]")
     private Output<String> renewStatus;
 
     /**
-     * @return Renewal Status
+     * @return The renewal status. Valid values:
+     * - AutoRenewal: Auto-renewal.
+     * - ManualRenewal: Manual renewal.
+     * - NotRenewal: No renewal.
      * 
      */
     public Output<String> renewStatus() {
         return this.renewStatus;
     }
     /**
-     * Renewal Period Unit
+     * The unit of the auto-renewal period. Valid values:
+     * - M: Month.
+     * - Y: Year.
+     * 
+     * &gt; **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
      * 
      */
     @Export(name="renewalDurationUnit", refs={String.class}, tree="[0]")
     private Output<String> renewalDurationUnit;
 
     /**
-     * @return Renewal Period Unit
+     * @return The unit of the auto-renewal period. Valid values:
+     * - M: Month.
+     * - Y: Year.
+     * 
+     * &gt; **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
      * 
      */
     public Output<String> renewalDurationUnit() {
         return this.renewalDurationUnit;
     }
     /**
-     * Resource group to which the instance belongs
+     * The ID of the resource group to which the instance belongs.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return Resource group to which the instance belongs
+     * @return The ID of the resource group to which the instance belongs.
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * Configuration information
+     * YML configuration file settings for the instance.
      * 
      */
     @Export(name="settingConfig", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> settingConfig;
 
     /**
-     * @return Configuration information
+     * @return YML configuration file settings for the instance.
      * 
      */
     public Output<Map<String,String>> settingConfig() {
         return this.settingConfig;
     }
     /**
-     * Instance change status
+     * The status of the instance.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Instance change status
+     * @return The status of the instance.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * Collection of tag key-value pairs
+     * Instance tag group.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return Collection of tag key-value pairs
+     * @return Instance tag group.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The change policy for Elasticsearch.
+     * Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+     * - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+     * - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+     * - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
      * 
-     * The values are as follows:
-     * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-     * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-     * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-     * 
-     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     @Export(name="updateStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> updateStrategy;
 
     /**
-     * @return The change policy for Elasticsearch.
+     * @return Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+     * - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+     * - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+     * - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
      * 
-     * The values are as follows:
-     * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-     * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-     * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-     * 
-     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     public Output<Optional<String>> updateStrategy() {
         return Codegen.optional(this.updateStrategy);
     }
     /**
-     * Instance version
+     * The instance version. Valid values:
+     * - 8.5.1_with_X-Pack
+     * - 7.10_with_X-Pack
+     * - 6.7_with_X-Pack
+     * - 7.7_with_X-Pack
+     * - 6.8_with_X-Pack
+     * - 6.3_with_X-Pack
+     * - 5.6_with_X-Pack
+     * - 5.5.3_with_X-Pack
+     * 
+     * &gt; **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
      * 
      */
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
-     * @return Instance version
+     * @return The instance version. Valid values:
+     * - 8.5.1_with_X-Pack
+     * - 7.10_with_X-Pack
+     * - 6.7_with_X-Pack
+     * - 7.7_with_X-Pack
+     * - 6.8_with_X-Pack
+     * - 6.3_with_X-Pack
+     * - 5.6_with_X-Pack
+     * - 5.5.3_with_X-Pack
+     * 
+     * &gt; **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
      * 
      */
     public Output<String> version() {
@@ -948,14 +1000,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.warmNodeAmount;
     }
     /**
-     * Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+     * Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
      * 
      */
     @Export(name="warmNodeConfiguration", refs={InstanceWarmNodeConfiguration.class}, tree="[0]")
     private Output<InstanceWarmNodeConfiguration> warmNodeConfiguration;
 
     /**
-     * @return Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+     * @return Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
      * 
      */
     public Output<InstanceWarmNodeConfiguration> warmNodeConfiguration() {
@@ -1034,7 +1086,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.warmNodeSpec;
     }
     /**
-     * The number of zones in the Elasticsearch instance.
+     * The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -1043,7 +1095,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<Integer> zoneCount;
 
     /**
-     * @return The number of zones in the Elasticsearch instance.
+     * @return The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 

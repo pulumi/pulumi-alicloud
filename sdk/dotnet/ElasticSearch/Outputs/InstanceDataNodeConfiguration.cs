@@ -14,27 +14,31 @@ namespace Pulumi.AliCloud.ElasticSearch.Outputs
     public sealed class InstanceDataNodeConfiguration
     {
         /// <summary>
-        /// Number of data nodes in the Elasticsearch cluster
+        /// Number of data nodes. Valid values: 2 to 50.
         /// </summary>
         public readonly int? Amount;
         /// <summary>
-        /// Elasticsearch data node disk size
+        /// Storage capacity per node, in GB.
         /// </summary>
         public readonly int? Disk;
         /// <summary>
-        /// Whether the Elasticsearch data node disk is encrypted
+        /// Whether to enable cloud disk encryption:
+        /// - true: Enabled
+        /// - false: Disabled.
         /// </summary>
         public readonly bool? DiskEncryption;
         /// <summary>
-        /// Elasticsearch cluster data node disk type
+        /// Node disk type. Supported types:
+        /// - cloud_ssd: SSD cloud disk
+        /// - cloud_efficiency: Ultra cloud disk.
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// Elasticsearch cluster data node Essd disk level
+        /// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
         /// </summary>
         public readonly string? PerformanceLevel;
         /// <summary>
-        /// Elasticsearch data node specification
+        /// Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         /// </summary>
         public readonly string Spec;
 

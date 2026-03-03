@@ -18,14 +18,14 @@ public final class InstanceKibanaConfigurationArgs extends com.pulumi.resources.
     public static final InstanceKibanaConfigurationArgs Empty = new InstanceKibanaConfigurationArgs();
 
     /**
-     * The number of disks of the Elasticsearch Kibana node. The default value is 1.
+     * The number of nodes.
      * 
      */
     @Import(name="amount")
     private @Nullable Output<Integer> amount;
 
     /**
-     * @return The number of disks of the Elasticsearch Kibana node. The default value is 1.
+     * @return The number of nodes.
      * 
      */
     public Optional<Output<Integer>> amount() {
@@ -33,14 +33,14 @@ public final class InstanceKibanaConfigurationArgs extends com.pulumi.resources.
     }
 
     /**
-     * Elasticsearch Kibana node disk size
+     * Storage capacity per node, in GB.
      * 
      */
     @Import(name="disk")
     private @Nullable Output<Integer> disk;
 
     /**
-     * @return Elasticsearch Kibana node disk size
+     * @return Storage capacity per node, in GB.
      * 
      */
     public Optional<Output<Integer>> disk() {
@@ -48,14 +48,14 @@ public final class InstanceKibanaConfigurationArgs extends com.pulumi.resources.
     }
 
     /**
-     * Elasticsearch Kibana node disk specifications
+     * Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     @Import(name="spec", required=true)
     private Output<String> spec;
 
     /**
-     * @return Elasticsearch Kibana node disk specifications
+     * @return Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     public Output<String> spec() {
@@ -89,7 +89,7 @@ public final class InstanceKibanaConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param amount The number of disks of the Elasticsearch Kibana node. The default value is 1.
+         * @param amount The number of nodes.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class InstanceKibanaConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param amount The number of disks of the Elasticsearch Kibana node. The default value is 1.
+         * @param amount The number of nodes.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class InstanceKibanaConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param disk Elasticsearch Kibana node disk size
+         * @param disk Storage capacity per node, in GB.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class InstanceKibanaConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param disk Elasticsearch Kibana node disk size
+         * @param disk Storage capacity per node, in GB.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class InstanceKibanaConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param spec Elasticsearch Kibana node disk specifications
+         * @param spec Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class InstanceKibanaConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param spec Elasticsearch Kibana node disk specifications
+         * @param spec Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          * 
          * @return builder
          * 

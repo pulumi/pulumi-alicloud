@@ -18,14 +18,14 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
     public static final InstanceWarmNodeConfigurationArgs Empty = new InstanceWarmNodeConfigurationArgs();
 
     /**
-     * Elasticsearch cluster cold data node disk number
+     * Number of nodes.
      * 
      */
     @Import(name="amount")
     private @Nullable Output<Integer> amount;
 
     /**
-     * @return Elasticsearch cluster cold data node disk number
+     * @return Number of nodes.
      * 
      */
     public Optional<Output<Integer>> amount() {
@@ -33,14 +33,14 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
     }
 
     /**
-     * Elasticsearch cluster cold data node disk size
+     * Storage capacity per node, in GB.
      * 
      */
     @Import(name="disk")
     private @Nullable Output<Integer> disk;
 
     /**
-     * @return Elasticsearch cluster cold data node disk size
+     * @return Storage capacity per node, in GB.
      * 
      */
     public Optional<Output<Integer>> disk() {
@@ -48,14 +48,18 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
     }
 
     /**
-     * Elasticsearch cluster cold data node Disk encryption
+     * Whether to enable disk encryption. The values are as follows:
+     * - true: Enabled.
+     * - false: Disabled.
      * 
      */
     @Import(name="diskEncryption")
     private @Nullable Output<Boolean> diskEncryption;
 
     /**
-     * @return Elasticsearch cluster cold data node Disk encryption
+     * @return Whether to enable disk encryption. The values are as follows:
+     * - true: Enabled.
+     * - false: Disabled.
      * 
      */
     public Optional<Output<Boolean>> diskEncryption() {
@@ -63,14 +67,14 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
     }
 
     /**
-     * Elasticsearch cluster cold data node disk type
+     * Storage type for the node. Only `cloudEfficiency` (ultra disk) is supported.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return Elasticsearch cluster cold data node disk type
+     * @return Storage type for the node. Only `cloudEfficiency` (ultra disk) is supported.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -78,14 +82,14 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
     }
 
     /**
-     * Elasticsearch cluster cold data node Disk Specification
+     * Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     @Import(name="spec")
     private @Nullable Output<String> spec;
 
     /**
-     * @return Elasticsearch cluster cold data node Disk Specification
+     * @return Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     public Optional<Output<String>> spec() {
@@ -121,7 +125,7 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param amount Elasticsearch cluster cold data node disk number
+         * @param amount Number of nodes.
          * 
          * @return builder
          * 
@@ -132,7 +136,7 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param amount Elasticsearch cluster cold data node disk number
+         * @param amount Number of nodes.
          * 
          * @return builder
          * 
@@ -142,7 +146,7 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param disk Elasticsearch cluster cold data node disk size
+         * @param disk Storage capacity per node, in GB.
          * 
          * @return builder
          * 
@@ -153,7 +157,7 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param disk Elasticsearch cluster cold data node disk size
+         * @param disk Storage capacity per node, in GB.
          * 
          * @return builder
          * 
@@ -163,7 +167,9 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param diskEncryption Elasticsearch cluster cold data node Disk encryption
+         * @param diskEncryption Whether to enable disk encryption. The values are as follows:
+         * - true: Enabled.
+         * - false: Disabled.
          * 
          * @return builder
          * 
@@ -174,7 +180,9 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param diskEncryption Elasticsearch cluster cold data node Disk encryption
+         * @param diskEncryption Whether to enable disk encryption. The values are as follows:
+         * - true: Enabled.
+         * - false: Disabled.
          * 
          * @return builder
          * 
@@ -184,7 +192,7 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param diskType Elasticsearch cluster cold data node disk type
+         * @param diskType Storage type for the node. Only `cloudEfficiency` (ultra disk) is supported.
          * 
          * @return builder
          * 
@@ -195,7 +203,7 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param diskType Elasticsearch cluster cold data node disk type
+         * @param diskType Storage type for the node. Only `cloudEfficiency` (ultra disk) is supported.
          * 
          * @return builder
          * 
@@ -205,7 +213,7 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param spec Elasticsearch cluster cold data node Disk Specification
+         * @param spec Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          * 
          * @return builder
          * 
@@ -216,7 +224,7 @@ public final class InstanceWarmNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param spec Elasticsearch cluster cold data node Disk Specification
+         * @param spec Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          * 
          * @return builder
          * 
