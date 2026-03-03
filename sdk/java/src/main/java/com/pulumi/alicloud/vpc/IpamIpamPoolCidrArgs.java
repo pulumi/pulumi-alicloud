@@ -6,8 +6,11 @@ package com.pulumi.alicloud.vpc;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class IpamIpamPoolCidrArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,20 +20,16 @@ public final class IpamIpamPoolCidrArgs extends com.pulumi.resources.ResourceArg
     /**
      * The CIDR address segment to be preset.
      * 
-     * &gt; **NOTE:**  currently, only IPv4 address segments are supported.
-     * 
      */
-    @Import(name="cidr", required=true)
-    private Output<String> cidr;
+    @Import(name="cidr")
+    private @Nullable Output<String> cidr;
 
     /**
      * @return The CIDR address segment to be preset.
      * 
-     * &gt; **NOTE:**  currently, only IPv4 address segments are supported.
-     * 
      */
-    public Output<String> cidr() {
-        return this.cidr;
+    public Optional<Output<String>> cidr() {
+        return Optional.ofNullable(this.cidr);
     }
 
     /**
@@ -48,11 +47,31 @@ public final class IpamIpamPoolCidrArgs extends com.pulumi.resources.ResourceArg
         return this.ipamPoolId;
     }
 
+    /**
+     * Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    @Import(name="netmaskLength")
+    private @Nullable Output<Integer> netmaskLength;
+
+    /**
+     * @return Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    public Optional<Output<Integer>> netmaskLength() {
+        return Optional.ofNullable(this.netmaskLength);
+    }
+
     private IpamIpamPoolCidrArgs() {}
 
     private IpamIpamPoolCidrArgs(IpamIpamPoolCidrArgs $) {
         this.cidr = $.cidr;
         this.ipamPoolId = $.ipamPoolId;
+        this.netmaskLength = $.netmaskLength;
     }
 
     public static Builder builder() {
@@ -76,20 +95,16 @@ public final class IpamIpamPoolCidrArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param cidr The CIDR address segment to be preset.
          * 
-         * &gt; **NOTE:**  currently, only IPv4 address segments are supported.
-         * 
          * @return builder
          * 
          */
-        public Builder cidr(Output<String> cidr) {
+        public Builder cidr(@Nullable Output<String> cidr) {
             $.cidr = cidr;
             return this;
         }
 
         /**
          * @param cidr The CIDR address segment to be preset.
-         * 
-         * &gt; **NOTE:**  currently, only IPv4 address segments are supported.
          * 
          * @return builder
          * 
@@ -119,10 +134,32 @@ public final class IpamIpamPoolCidrArgs extends com.pulumi.resources.ResourceArg
             return ipamPoolId(Output.of(ipamPoolId));
         }
 
+        /**
+         * @param netmaskLength Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder netmaskLength(@Nullable Output<Integer> netmaskLength) {
+            $.netmaskLength = netmaskLength;
+            return this;
+        }
+
+        /**
+         * @param netmaskLength Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder netmaskLength(Integer netmaskLength) {
+            return netmaskLength(Output.of(netmaskLength));
+        }
+
         public IpamIpamPoolCidrArgs build() {
-            if ($.cidr == null) {
-                throw new MissingRequiredPropertyException("IpamIpamPoolCidrArgs", "cidr");
-            }
             if ($.ipamPoolId == null) {
                 throw new MissingRequiredPropertyException("IpamIpamPoolCidrArgs", "ipamPoolId");
             }

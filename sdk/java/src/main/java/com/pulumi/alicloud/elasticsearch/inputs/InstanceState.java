@@ -25,14 +25,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * Schema Type:.
+     * The deployment mode or architecture type:.
      * 
      */
     @Import(name="archType")
     private @Nullable Output<String> archType;
 
     /**
-     * @return Schema Type:.
+     * @return The deployment mode or architecture type:.
      * 
      */
     public Optional<Output<String>> archType() {
@@ -40,14 +40,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Renewal Period
+     * Number of auto-renewal periods.
      * 
      */
     @Import(name="autoRenewDuration")
     private @Nullable Output<Integer> autoRenewDuration;
 
     /**
-     * @return Renewal Period
+     * @return Number of auto-renewal periods.
      * 
      */
     public Optional<Output<Integer>> autoRenewDuration() {
@@ -78,14 +78,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+     * Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
      * 
      */
     @Import(name="clientNodeConfiguration")
     private @Nullable Output<InstanceClientNodeConfigurationArgs> clientNodeConfiguration;
 
     /**
-     * @return Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+     * @return Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
      * 
      */
     public Optional<Output<InstanceClientNodeConfigurationArgs>> clientNodeConfiguration() {
@@ -116,14 +116,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance creation time.
+     * The time when the instance was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Instance creation time.
+     * @return The time when the instance was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -154,14 +154,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Elasticsearch data node information See `dataNodeConfiguration` below.
+     * Elasticsearch data node information. See `dataNodeConfiguration` below.
      * 
      */
     @Import(name="dataNodeConfiguration")
     private @Nullable Output<InstanceDataNodeConfigurationArgs> dataNodeConfiguration;
 
     /**
-     * @return Elasticsearch data node information See `dataNodeConfiguration` below.
+     * @return Elasticsearch data node information. See `dataNodeConfiguration` below.
      * 
      */
     public Optional<Output<InstanceDataNodeConfigurationArgs>> dataNodeConfiguration() {
@@ -284,14 +284,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance name
+     * Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Instance name
+     * @return Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -299,14 +299,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Elasticsearch cluster private domain name.
+     * The internal network address of the instance.
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return Elasticsearch cluster private domain name.
+     * @return The internal network address of the instance.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -314,22 +314,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable Kibana private network access.
-     * 
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * Indicates whether private network access to Kibana is enabled. Valid values:
+     * - true: Enabled
+     * - false: Disabled
      * 
      */
     @Import(name="enableKibanaPrivateNetwork")
     private @Nullable Output<Boolean> enableKibanaPrivateNetwork;
 
     /**
-     * @return Whether to enable Kibana private network access.
-     * 
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * @return Indicates whether private network access to Kibana is enabled. Valid values:
+     * - true: Enabled
+     * - false: Disabled
      * 
      */
     public Optional<Output<Boolean>> enableKibanaPrivateNetwork() {
@@ -337,14 +333,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Does Kibana enable public access
+     * Specifies whether to enable public access to Kibana. Valid values:
+     * - true: Enables public access.
+     * - false: Disables public access.
      * 
      */
     @Import(name="enableKibanaPublicNetwork")
     private @Nullable Output<Boolean> enableKibanaPublicNetwork;
 
     /**
-     * @return Does Kibana enable public access
+     * @return Specifies whether to enable public access to Kibana. Valid values:
+     * - true: Enables public access.
+     * - false: Disables public access.
      * 
      */
     public Optional<Output<Boolean>> enableKibanaPublicNetwork() {
@@ -352,22 +352,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable Kibana public network access.
-     * 
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * Specifies whether to enable a public endpoint for the instance. Valid values:
+     * - true: Enables the public endpoint.
+     * - false: Disables the public endpoint.
      * 
      */
     @Import(name="enablePublic")
     private @Nullable Output<Boolean> enablePublic;
 
     /**
-     * @return Whether to enable Kibana public network access.
-     * 
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * @return Specifies whether to enable a public endpoint for the instance. Valid values:
+     * - true: Enables the public endpoint.
+     * - false: Disables the public endpoint.
      * 
      */
     public Optional<Output<Boolean>> enablePublic() {
@@ -375,18 +371,22 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to force changes
+     * Whether to force a restart:
+     * - true: Yes
+     * - false (default): No.
      * 
-     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return Whether to force changes
+     * @return Whether to force a restart:
+     * - true: Yes
+     * - false (default): No.
      * 
-     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -394,14 +394,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Version type.
+     * Edition type:
+     * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+     * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
      * 
      */
     @Import(name="instanceCategory")
     private @Nullable Output<String> instanceCategory;
 
     /**
-     * @return Version type.
+     * @return Edition type:
+     * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+     * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
      * 
      */
     public Optional<Output<String>> instanceCategory() {
@@ -432,14 +436,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     * The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
      * 
      */
     @Import(name="kibanaConfiguration")
     private @Nullable Output<InstanceKibanaConfigurationArgs> kibanaConfiguration;
 
     /**
-     * @return Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     * @return The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
      * 
      */
     public Optional<Output<InstanceKibanaConfigurationArgs>> kibanaConfiguration() {
@@ -447,14 +451,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kibana address.
+     * Kibana endpoint.
      * 
      */
     @Import(name="kibanaDomain")
     private @Nullable Output<String> kibanaDomain;
 
     /**
-     * @return Kibana address.
+     * @return Kibana endpoint.
      * 
      */
     public Optional<Output<String>> kibanaDomain() {
@@ -485,14 +489,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The port assigned by the Kibana node.
+     * The access port for Kibana.
      * 
      */
     @Import(name="kibanaPort")
     private @Nullable Output<Integer> kibanaPort;
 
     /**
-     * @return The port assigned by the Kibana node.
+     * @return The access port for Kibana.
      * 
      */
     public Optional<Output<Integer>> kibanaPort() {
@@ -500,14 +504,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kibana private network security group ID
+     * The private endpoint of Kibana.
+     * 
+     */
+    @Import(name="kibanaPrivateDomain")
+    private @Nullable Output<String> kibanaPrivateDomain;
+
+    /**
+     * @return The private endpoint of Kibana.
+     * 
+     */
+    public Optional<Output<String>> kibanaPrivateDomain() {
+        return Optional.ofNullable(this.kibanaPrivateDomain);
+    }
+
+    /**
+     * List of security groups.
      * 
      */
     @Import(name="kibanaPrivateSecurityGroupId")
     private @Nullable Output<String> kibanaPrivateSecurityGroupId;
 
     /**
-     * @return Kibana private network security group ID
+     * @return List of security groups.
      * 
      */
     public Optional<Output<String>> kibanaPrivateSecurityGroupId() {
@@ -515,14 +534,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster Kibana node private network access whitelist
+     * List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
      * 
      */
     @Import(name="kibanaPrivateWhitelists")
     private @Nullable Output<List<String>> kibanaPrivateWhitelists;
 
     /**
-     * @return Cluster Kibana node private network access whitelist
+     * @return List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
      * 
      */
     public Optional<Output<List<String>>> kibanaPrivateWhitelists() {
@@ -530,14 +549,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kibana private network access whitelist
+     * The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
      * 
      */
     @Import(name="kibanaWhitelists")
     private @Nullable Output<List<String>> kibanaWhitelists;
 
     /**
-     * @return Kibana private network access whitelist
+     * @return The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
      * 
      */
     public Optional<Output<List<String>>> kibanaWhitelists() {
@@ -575,14 +594,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+     * Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
      * 
      */
     @Import(name="masterConfiguration")
     private @Nullable Output<InstanceMasterConfigurationArgs> masterConfiguration;
 
     /**
-     * @return Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+     * @return Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
      * 
      */
     public Optional<Output<InstanceMasterConfigurationArgs>> masterConfiguration() {
@@ -636,18 +655,22 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+     * Configuration change type. Valid values:
+     * - upgrade (default): Upgrade configuration
+     * - downgrade: Downgrade configuration.
      * 
-     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     @Import(name="orderActionType")
     private @Nullable Output<String> orderActionType;
 
     /**
-     * @return The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+     * @return Configuration change type. Valid values:
+     * - upgrade (default): Upgrade configuration
+     * - downgrade: Downgrade configuration.
      * 
-     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     public Optional<Output<String>> orderActionType() {
@@ -655,14 +678,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The access password of the instance.
+     * The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!{@literal @}#$%^&amp;*()_+-=).
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The access password of the instance.
+     * @return The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!{@literal @}#$%^&amp;*()_+-=).
      * 
      */
     public Optional<Output<String>> password() {
@@ -670,14 +693,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+     * The billing method of the instance. Supported values:
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+     * @return The billing method of the instance. Supported values:
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -715,14 +738,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+     * The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
      * 
      */
     @Import(name="privateWhitelists")
     private @Nullable Output<List<String>> privateWhitelists;
 
     /**
-     * @return Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+     * @return The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
      * 
      */
     public Optional<Output<List<String>>> privateWhitelists() {
@@ -730,14 +753,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Access protocol. Optional values: `HTTP` and **HTTPS * *.
+     * The access protocol. Supported protocols: HTTP and HTTPS.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return Access protocol. Optional values: `HTTP` and **HTTPS * *.
+     * @return The access protocol. Supported protocols: HTTP and HTTPS.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -745,14 +768,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The public network address of the current instance.
+     * The public endpoint of the instance.
      * 
      */
     @Import(name="publicDomain")
     private @Nullable Output<String> publicDomain;
 
     /**
-     * @return The public network address of the current instance.
+     * @return The public endpoint of the instance.
      * 
      */
     public Optional<Output<String>> publicDomain() {
@@ -760,14 +783,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Elasticsearch cluster public network access port
+     * The public access port of the instance.
      * 
      */
     @Import(name="publicPort")
     private @Nullable Output<Integer> publicPort;
 
     /**
-     * @return Elasticsearch cluster public network access port
+     * @return The public access port of the instance.
      * 
      */
     public Optional<Output<Integer>> publicPort() {
@@ -775,14 +798,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Elasticseach public network access whitelist IP list
+     * The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
      * 
      */
     @Import(name="publicWhitelists")
     private @Nullable Output<List<String>> publicWhitelists;
 
     /**
-     * @return Elasticseach public network access whitelist IP list
+     * @return The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
      * 
      */
     public Optional<Output<List<String>>> publicWhitelists() {
@@ -790,14 +813,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Renewal Status
+     * The renewal status. Valid values:
+     * - AutoRenewal: Auto-renewal.
+     * - ManualRenewal: Manual renewal.
+     * - NotRenewal: No renewal.
      * 
      */
     @Import(name="renewStatus")
     private @Nullable Output<String> renewStatus;
 
     /**
-     * @return Renewal Status
+     * @return The renewal status. Valid values:
+     * - AutoRenewal: Auto-renewal.
+     * - ManualRenewal: Manual renewal.
+     * - NotRenewal: No renewal.
      * 
      */
     public Optional<Output<String>> renewStatus() {
@@ -805,14 +834,22 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Renewal Period Unit
+     * The unit of the auto-renewal period. Valid values:
+     * - M: Month.
+     * - Y: Year.
+     * 
+     * &gt; **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
      * 
      */
     @Import(name="renewalDurationUnit")
     private @Nullable Output<String> renewalDurationUnit;
 
     /**
-     * @return Renewal Period Unit
+     * @return The unit of the auto-renewal period. Valid values:
+     * - M: Month.
+     * - Y: Year.
+     * 
+     * &gt; **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
      * 
      */
     public Optional<Output<String>> renewalDurationUnit() {
@@ -820,14 +857,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource group to which the instance belongs
+     * The ID of the resource group to which the instance belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return Resource group to which the instance belongs
+     * @return The ID of the resource group to which the instance belongs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -835,14 +872,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration information
+     * YML configuration file settings for the instance.
      * 
      */
     @Import(name="settingConfig")
     private @Nullable Output<Map<String,String>> settingConfig;
 
     /**
-     * @return Configuration information
+     * @return YML configuration file settings for the instance.
      * 
      */
     public Optional<Output<Map<String,String>>> settingConfig() {
@@ -850,14 +887,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance change status
+     * The status of the instance.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Instance change status
+     * @return The status of the instance.
      * 
      */
     public Optional<Output<String>> status() {
@@ -865,14 +902,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Collection of tag key-value pairs
+     * Instance tag group.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return Collection of tag key-value pairs
+     * @return Instance tag group.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -880,28 +917,24 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The change policy for Elasticsearch.
+     * Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+     * - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+     * - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+     * - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
      * 
-     * The values are as follows:
-     * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-     * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-     * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-     * 
-     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     @Import(name="updateStrategy")
     private @Nullable Output<String> updateStrategy;
 
     /**
-     * @return The change policy for Elasticsearch.
+     * @return Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+     * - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+     * - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+     * - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
      * 
-     * The values are as follows:
-     * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-     * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-     * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-     * 
-     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     public Optional<Output<String>> updateStrategy() {
@@ -909,14 +942,34 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance version
+     * The instance version. Valid values:
+     * - 8.5.1_with_X-Pack
+     * - 7.10_with_X-Pack
+     * - 6.7_with_X-Pack
+     * - 7.7_with_X-Pack
+     * - 6.8_with_X-Pack
+     * - 6.3_with_X-Pack
+     * - 5.6_with_X-Pack
+     * - 5.5.3_with_X-Pack
+     * 
+     * &gt; **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Instance version
+     * @return The instance version. Valid values:
+     * - 8.5.1_with_X-Pack
+     * - 7.10_with_X-Pack
+     * - 6.7_with_X-Pack
+     * - 7.7_with_X-Pack
+     * - 6.8_with_X-Pack
+     * - 6.3_with_X-Pack
+     * - 5.6_with_X-Pack
+     * - 5.5.3_with_X-Pack
+     * 
+     * &gt; **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
      * 
      */
     public Optional<Output<String>> version() {
@@ -962,14 +1015,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+     * Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
      * 
      */
     @Import(name="warmNodeConfiguration")
     private @Nullable Output<InstanceWarmNodeConfigurationArgs> warmNodeConfiguration;
 
     /**
-     * @return Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+     * @return Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
      * 
      */
     public Optional<Output<InstanceWarmNodeConfigurationArgs>> warmNodeConfiguration() {
@@ -1069,7 +1122,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of zones in the Elasticsearch instance.
+     * The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -1078,7 +1131,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> zoneCount;
 
     /**
-     * @return The number of zones in the Elasticsearch instance.
+     * @return The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -1115,6 +1168,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.kibanaDomain = $.kibanaDomain;
         this.kibanaNodeSpec = $.kibanaNodeSpec;
         this.kibanaPort = $.kibanaPort;
+        this.kibanaPrivateDomain = $.kibanaPrivateDomain;
         this.kibanaPrivateSecurityGroupId = $.kibanaPrivateSecurityGroupId;
         this.kibanaPrivateWhitelists = $.kibanaPrivateWhitelists;
         this.kibanaWhitelists = $.kibanaWhitelists;
@@ -1170,7 +1224,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archType Schema Type:.
+         * @param archType The deployment mode or architecture type:.
          * 
          * @return builder
          * 
@@ -1181,7 +1235,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archType Schema Type:.
+         * @param archType The deployment mode or architecture type:.
          * 
          * @return builder
          * 
@@ -1191,7 +1245,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewDuration Renewal Period
+         * @param autoRenewDuration Number of auto-renewal periods.
          * 
          * @return builder
          * 
@@ -1202,7 +1256,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewDuration Renewal Period
+         * @param autoRenewDuration Number of auto-renewal periods.
          * 
          * @return builder
          * 
@@ -1241,7 +1295,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientNodeConfiguration Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+         * @param clientNodeConfiguration Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
          * 
          * @return builder
          * 
@@ -1252,7 +1306,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientNodeConfiguration Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+         * @param clientNodeConfiguration Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
          * 
          * @return builder
          * 
@@ -1291,7 +1345,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Instance creation time.
+         * @param createTime The time when the instance was created.
          * 
          * @return builder
          * 
@@ -1302,7 +1356,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Instance creation time.
+         * @param createTime The time when the instance was created.
          * 
          * @return builder
          * 
@@ -1341,7 +1395,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataNodeConfiguration Elasticsearch data node information See `dataNodeConfiguration` below.
+         * @param dataNodeConfiguration Elasticsearch data node information. See `dataNodeConfiguration` below.
          * 
          * @return builder
          * 
@@ -1352,7 +1406,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataNodeConfiguration Elasticsearch data node information See `dataNodeConfiguration` below.
+         * @param dataNodeConfiguration Elasticsearch data node information. See `dataNodeConfiguration` below.
          * 
          * @return builder
          * 
@@ -1507,7 +1561,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Instance name
+         * @param description Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
          * 
          * @return builder
          * 
@@ -1518,7 +1572,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Instance name
+         * @param description Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
          * 
          * @return builder
          * 
@@ -1528,7 +1582,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain Elasticsearch cluster private domain name.
+         * @param domain The internal network address of the instance.
          * 
          * @return builder
          * 
@@ -1539,7 +1593,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain Elasticsearch cluster private domain name.
+         * @param domain The internal network address of the instance.
          * 
          * @return builder
          * 
@@ -1549,11 +1603,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableKibanaPrivateNetwork Whether to enable Kibana private network access.
-         * 
-         * The meaning of the value is as follows:
-         * - true: On.
-         * - false: does not open.
+         * @param enableKibanaPrivateNetwork Indicates whether private network access to Kibana is enabled. Valid values:
+         * - true: Enabled
+         * - false: Disabled
          * 
          * @return builder
          * 
@@ -1564,11 +1616,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableKibanaPrivateNetwork Whether to enable Kibana private network access.
-         * 
-         * The meaning of the value is as follows:
-         * - true: On.
-         * - false: does not open.
+         * @param enableKibanaPrivateNetwork Indicates whether private network access to Kibana is enabled. Valid values:
+         * - true: Enabled
+         * - false: Disabled
          * 
          * @return builder
          * 
@@ -1578,7 +1628,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableKibanaPublicNetwork Does Kibana enable public access
+         * @param enableKibanaPublicNetwork Specifies whether to enable public access to Kibana. Valid values:
+         * - true: Enables public access.
+         * - false: Disables public access.
          * 
          * @return builder
          * 
@@ -1589,7 +1641,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableKibanaPublicNetwork Does Kibana enable public access
+         * @param enableKibanaPublicNetwork Specifies whether to enable public access to Kibana. Valid values:
+         * - true: Enables public access.
+         * - false: Disables public access.
          * 
          * @return builder
          * 
@@ -1599,11 +1653,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublic Whether to enable Kibana public network access.
-         * 
-         * The meaning of the value is as follows:
-         * - true: On.
-         * - false: does not open.
+         * @param enablePublic Specifies whether to enable a public endpoint for the instance. Valid values:
+         * - true: Enables the public endpoint.
+         * - false: Disables the public endpoint.
          * 
          * @return builder
          * 
@@ -1614,11 +1666,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublic Whether to enable Kibana public network access.
-         * 
-         * The meaning of the value is as follows:
-         * - true: On.
-         * - false: does not open.
+         * @param enablePublic Specifies whether to enable a public endpoint for the instance. Valid values:
+         * - true: Enables the public endpoint.
+         * - false: Disables the public endpoint.
          * 
          * @return builder
          * 
@@ -1628,9 +1678,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force Whether to force changes
+         * @param force Whether to force a restart:
+         * - true: Yes
+         * - false (default): No.
          * 
-         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
          * 
          * @return builder
          * 
@@ -1641,9 +1693,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force Whether to force changes
+         * @param force Whether to force a restart:
+         * - true: Yes
+         * - false (default): No.
          * 
-         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
          * 
          * @return builder
          * 
@@ -1653,7 +1707,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceCategory Version type.
+         * @param instanceCategory Edition type:
+         * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+         * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
          * 
          * @return builder
          * 
@@ -1664,7 +1720,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceCategory Version type.
+         * @param instanceCategory Edition type:
+         * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+         * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
          * 
          * @return builder
          * 
@@ -1703,7 +1761,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaConfiguration Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+         * @param kibanaConfiguration The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
          * 
          * @return builder
          * 
@@ -1714,7 +1772,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaConfiguration Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+         * @param kibanaConfiguration The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
          * 
          * @return builder
          * 
@@ -1724,7 +1782,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaDomain Kibana address.
+         * @param kibanaDomain Kibana endpoint.
          * 
          * @return builder
          * 
@@ -1735,7 +1793,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaDomain Kibana address.
+         * @param kibanaDomain Kibana endpoint.
          * 
          * @return builder
          * 
@@ -1774,7 +1832,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPort The port assigned by the Kibana node.
+         * @param kibanaPort The access port for Kibana.
          * 
          * @return builder
          * 
@@ -1785,7 +1843,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPort The port assigned by the Kibana node.
+         * @param kibanaPort The access port for Kibana.
          * 
          * @return builder
          * 
@@ -1795,7 +1853,28 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateSecurityGroupId Kibana private network security group ID
+         * @param kibanaPrivateDomain The private endpoint of Kibana.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kibanaPrivateDomain(@Nullable Output<String> kibanaPrivateDomain) {
+            $.kibanaPrivateDomain = kibanaPrivateDomain;
+            return this;
+        }
+
+        /**
+         * @param kibanaPrivateDomain The private endpoint of Kibana.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kibanaPrivateDomain(String kibanaPrivateDomain) {
+            return kibanaPrivateDomain(Output.of(kibanaPrivateDomain));
+        }
+
+        /**
+         * @param kibanaPrivateSecurityGroupId List of security groups.
          * 
          * @return builder
          * 
@@ -1806,7 +1885,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateSecurityGroupId Kibana private network security group ID
+         * @param kibanaPrivateSecurityGroupId List of security groups.
          * 
          * @return builder
          * 
@@ -1816,7 +1895,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateWhitelists Cluster Kibana node private network access whitelist
+         * @param kibanaPrivateWhitelists List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
          * 
          * @return builder
          * 
@@ -1827,7 +1906,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateWhitelists Cluster Kibana node private network access whitelist
+         * @param kibanaPrivateWhitelists List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
          * 
          * @return builder
          * 
@@ -1837,7 +1916,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateWhitelists Cluster Kibana node private network access whitelist
+         * @param kibanaPrivateWhitelists List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
          * 
          * @return builder
          * 
@@ -1847,7 +1926,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaWhitelists Kibana private network access whitelist
+         * @param kibanaWhitelists The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
          * 
          * @return builder
          * 
@@ -1858,7 +1937,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaWhitelists Kibana private network access whitelist
+         * @param kibanaWhitelists The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
          * 
          * @return builder
          * 
@@ -1868,7 +1947,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaWhitelists Kibana private network access whitelist
+         * @param kibanaWhitelists The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
          * 
          * @return builder
          * 
@@ -1920,7 +1999,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterConfiguration Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+         * @param masterConfiguration Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
          * 
          * @return builder
          * 
@@ -1931,7 +2010,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterConfiguration Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+         * @param masterConfiguration Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
          * 
          * @return builder
          * 
@@ -1999,9 +2078,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orderActionType The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+         * @param orderActionType Configuration change type. Valid values:
+         * - upgrade (default): Upgrade configuration
+         * - downgrade: Downgrade configuration.
          * 
-         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
          * 
          * @return builder
          * 
@@ -2012,9 +2093,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orderActionType The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+         * @param orderActionType Configuration change type. Valid values:
+         * - upgrade (default): Upgrade configuration
+         * - downgrade: Downgrade configuration.
          * 
-         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
          * 
          * @return builder
          * 
@@ -2024,7 +2107,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The access password of the instance.
+         * @param password The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!{@literal @}#$%^&amp;*()_+-=).
          * 
          * @return builder
          * 
@@ -2035,7 +2118,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The access password of the instance.
+         * @param password The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!{@literal @}#$%^&amp;*()_+-=).
          * 
          * @return builder
          * 
@@ -2045,7 +2128,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+         * @param paymentType The billing method of the instance. Supported values:
          * 
          * @return builder
          * 
@@ -2056,7 +2139,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+         * @param paymentType The billing method of the instance. Supported values:
          * 
          * @return builder
          * 
@@ -2108,7 +2191,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateWhitelists Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+         * @param privateWhitelists The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
          * 
          * @return builder
          * 
@@ -2119,7 +2202,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateWhitelists Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+         * @param privateWhitelists The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
          * 
          * @return builder
          * 
@@ -2129,7 +2212,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateWhitelists Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+         * @param privateWhitelists The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group&#39;s whitelist.
          * 
          * @return builder
          * 
@@ -2139,7 +2222,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol Access protocol. Optional values: `HTTP` and **HTTPS * *.
+         * @param protocol The access protocol. Supported protocols: HTTP and HTTPS.
          * 
          * @return builder
          * 
@@ -2150,7 +2233,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol Access protocol. Optional values: `HTTP` and **HTTPS * *.
+         * @param protocol The access protocol. Supported protocols: HTTP and HTTPS.
          * 
          * @return builder
          * 
@@ -2160,7 +2243,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicDomain The public network address of the current instance.
+         * @param publicDomain The public endpoint of the instance.
          * 
          * @return builder
          * 
@@ -2171,7 +2254,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicDomain The public network address of the current instance.
+         * @param publicDomain The public endpoint of the instance.
          * 
          * @return builder
          * 
@@ -2181,7 +2264,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicPort Elasticsearch cluster public network access port
+         * @param publicPort The public access port of the instance.
          * 
          * @return builder
          * 
@@ -2192,7 +2275,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicPort Elasticsearch cluster public network access port
+         * @param publicPort The public access port of the instance.
          * 
          * @return builder
          * 
@@ -2202,7 +2285,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicWhitelists Elasticseach public network access whitelist IP list
+         * @param publicWhitelists The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
          * 
          * @return builder
          * 
@@ -2213,7 +2296,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicWhitelists Elasticseach public network access whitelist IP list
+         * @param publicWhitelists The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
          * 
          * @return builder
          * 
@@ -2223,7 +2306,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicWhitelists Elasticseach public network access whitelist IP list
+         * @param publicWhitelists The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group&#39;s whitelist.
          * 
          * @return builder
          * 
@@ -2233,7 +2316,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewStatus Renewal Status
+         * @param renewStatus The renewal status. Valid values:
+         * - AutoRenewal: Auto-renewal.
+         * - ManualRenewal: Manual renewal.
+         * - NotRenewal: No renewal.
          * 
          * @return builder
          * 
@@ -2244,7 +2330,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewStatus Renewal Status
+         * @param renewStatus The renewal status. Valid values:
+         * - AutoRenewal: Auto-renewal.
+         * - ManualRenewal: Manual renewal.
+         * - NotRenewal: No renewal.
          * 
          * @return builder
          * 
@@ -2254,7 +2343,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalDurationUnit Renewal Period Unit
+         * @param renewalDurationUnit The unit of the auto-renewal period. Valid values:
+         * - M: Month.
+         * - Y: Year.
+         * 
+         * &gt; **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
          * 
          * @return builder
          * 
@@ -2265,7 +2358,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalDurationUnit Renewal Period Unit
+         * @param renewalDurationUnit The unit of the auto-renewal period. Valid values:
+         * - M: Month.
+         * - Y: Year.
+         * 
+         * &gt; **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
          * 
          * @return builder
          * 
@@ -2275,7 +2372,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId Resource group to which the instance belongs
+         * @param resourceGroupId The ID of the resource group to which the instance belongs.
          * 
          * @return builder
          * 
@@ -2286,7 +2383,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId Resource group to which the instance belongs
+         * @param resourceGroupId The ID of the resource group to which the instance belongs.
          * 
          * @return builder
          * 
@@ -2296,7 +2393,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param settingConfig Configuration information
+         * @param settingConfig YML configuration file settings for the instance.
          * 
          * @return builder
          * 
@@ -2307,7 +2404,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param settingConfig Configuration information
+         * @param settingConfig YML configuration file settings for the instance.
          * 
          * @return builder
          * 
@@ -2317,7 +2414,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Instance change status
+         * @param status The status of the instance.
          * 
          * @return builder
          * 
@@ -2328,7 +2425,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Instance change status
+         * @param status The status of the instance.
          * 
          * @return builder
          * 
@@ -2338,7 +2435,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Collection of tag key-value pairs
+         * @param tags Instance tag group.
          * 
          * @return builder
          * 
@@ -2349,7 +2446,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Collection of tag key-value pairs
+         * @param tags Instance tag group.
          * 
          * @return builder
          * 
@@ -2359,14 +2456,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateStrategy The change policy for Elasticsearch.
+         * @param updateStrategy Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+         * - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+         * - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+         * - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
          * 
-         * The values are as follows:
-         * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-         * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-         * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-         * 
-         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
          * 
          * @return builder
          * 
@@ -2377,14 +2472,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateStrategy The change policy for Elasticsearch.
+         * @param updateStrategy Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+         * - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+         * - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+         * - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
          * 
-         * The values are as follows:
-         * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-         * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-         * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-         * 
-         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
          * 
          * @return builder
          * 
@@ -2394,7 +2487,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Instance version
+         * @param version The instance version. Valid values:
+         * - 8.5.1_with_X-Pack
+         * - 7.10_with_X-Pack
+         * - 6.7_with_X-Pack
+         * - 7.7_with_X-Pack
+         * - 6.8_with_X-Pack
+         * - 6.3_with_X-Pack
+         * - 5.6_with_X-Pack
+         * - 5.5.3_with_X-Pack
+         * 
+         * &gt; **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
          * 
          * @return builder
          * 
@@ -2405,7 +2508,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Instance version
+         * @param version The instance version. Valid values:
+         * - 8.5.1_with_X-Pack
+         * - 7.10_with_X-Pack
+         * - 6.7_with_X-Pack
+         * - 7.7_with_X-Pack
+         * - 6.8_with_X-Pack
+         * - 6.3_with_X-Pack
+         * - 5.6_with_X-Pack
+         * - 5.5.3_with_X-Pack
+         * 
+         * &gt; **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
          * 
          * @return builder
          * 
@@ -2465,7 +2578,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warmNodeConfiguration Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+         * @param warmNodeConfiguration Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
          * 
          * @return builder
          * 
@@ -2476,7 +2589,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warmNodeConfiguration Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+         * @param warmNodeConfiguration Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
          * 
          * @return builder
          * 
@@ -2602,7 +2715,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneCount The number of zones in the Elasticsearch instance.
+         * @param zoneCount The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
@@ -2615,7 +2728,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneCount The number of zones in the Elasticsearch instance.
+         * @param zoneCount The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 

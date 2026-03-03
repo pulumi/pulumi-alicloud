@@ -886,12 +886,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      * 
+     * &gt; **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
+     * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<InstanceParameterArgs>> parameters;
 
     /**
      * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+     * 
+     * &gt; **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
      * 
      */
     public Optional<Output<List<InstanceParameterArgs>>> parameters() {
@@ -1398,10 +1402,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
+     * - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
      * 
-     * Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+     * &gt; **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
      * 
      */
     @Import(name="tags")
@@ -1409,10 +1413,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
+     * - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
      * 
-     * Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+     * &gt; **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -1538,9 +1542,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - true: upgrade
      * - false: not to upgrade
      * 
-     * &gt; **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
-     * **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
-     * **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
+     * &gt; **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+     * 
+     * &gt; **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+     * 
+     * &gt; **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
      * 
      * @deprecated
      * Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
@@ -1555,9 +1561,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - true: upgrade
      * - false: not to upgrade
      * 
-     * &gt; **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
-     * **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
-     * **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
+     * &gt; **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+     * 
+     * &gt; **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+     * 
+     * &gt; **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
      * 
      * @deprecated
      * Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
@@ -2947,6 +2955,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
          * 
+         * &gt; **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
+         * 
          * @return builder
          * 
          */
@@ -2958,6 +2968,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
          * 
+         * &gt; **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
+         * 
          * @return builder
          * 
          */
@@ -2967,6 +2979,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+         * 
+         * &gt; **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
          * 
          * @return builder
          * 
@@ -3683,10 +3697,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
-         * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
-         * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
+         * - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+         * - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
          * 
-         * Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+         * &gt; **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
          * 
          * @return builder
          * 
@@ -3698,10 +3712,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
-         * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
-         * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
+         * - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+         * - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
          * 
-         * Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+         * &gt; **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
          * 
          * @return builder
          * 
@@ -3885,9 +3899,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - true: upgrade
          * - false: not to upgrade
          * 
-         * &gt; **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
-         * **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
-         * **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
+         * &gt; **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+         * 
+         * &gt; **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+         * 
+         * &gt; **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
          * 
          * @return builder
          * 
@@ -3906,9 +3922,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - true: upgrade
          * - false: not to upgrade
          * 
-         * &gt; **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
-         * **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
-         * **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
+         * &gt; **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+         * 
+         * &gt; **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+         * 
+         * &gt; **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
          * 
          * @return builder
          * 

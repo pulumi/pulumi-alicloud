@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Esa
     /// ESA Site can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:esa/site:Site example &lt;id&gt;
+    /// $ pulumi import alicloud:esa/site:Site example &lt;site_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:esa/site:Site")]
@@ -94,6 +94,18 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Output("addRealClientIpHeader")]
         public Output<string?> AddRealClientIpHeader { get; private set; } = null!;
+
+        /// <summary>
+        /// HTTP DDoS Intelligent Protection Mode. Valid values:
+        /// </summary>
+        [Output("aiMode")]
+        public Output<string> AiMode { get; private set; } = null!;
+
+        /// <summary>
+        /// HTTP DDoS Intelligent Protection Level. Values:
+        /// </summary>
+        [Output("aiTemplate")]
+        public Output<string> AiTemplate { get; private set; } = null!;
 
         /// <summary>
         /// Multi-level cache architecture mode. Possible values:
@@ -148,6 +160,13 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Output("flattenMode")]
         public Output<string?> FlattenMode { get; private set; } = null!;
+
+        /// <summary>
+        /// HTTP DDoS Attack Protection Policy Modes. Valid values:
+        /// - `very weak`: indicates a very permissive setting.
+        /// </summary>
+        [Output("globalMode")]
+        public Output<string> GlobalMode { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the associated package instance.
@@ -296,6 +315,18 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? AddRealClientIpHeader { get; set; }
 
         /// <summary>
+        /// HTTP DDoS Intelligent Protection Mode. Valid values:
+        /// </summary>
+        [Input("aiMode")]
+        public Input<string>? AiMode { get; set; }
+
+        /// <summary>
+        /// HTTP DDoS Intelligent Protection Level. Values:
+        /// </summary>
+        [Input("aiTemplate")]
+        public Input<string>? AiTemplate { get; set; }
+
+        /// <summary>
         /// Multi-level cache architecture mode. Possible values:
         /// </summary>
         [Input("cacheArchitectureMode")]
@@ -342,6 +373,13 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("flattenMode")]
         public Input<string>? FlattenMode { get; set; }
+
+        /// <summary>
+        /// HTTP DDoS Attack Protection Policy Modes. Valid values:
+        /// - `very weak`: indicates a very permissive setting.
+        /// </summary>
+        [Input("globalMode")]
+        public Input<string>? GlobalMode { get; set; }
 
         /// <summary>
         /// The ID of the associated package instance.
@@ -452,6 +490,18 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? AddRealClientIpHeader { get; set; }
 
         /// <summary>
+        /// HTTP DDoS Intelligent Protection Mode. Valid values:
+        /// </summary>
+        [Input("aiMode")]
+        public Input<string>? AiMode { get; set; }
+
+        /// <summary>
+        /// HTTP DDoS Intelligent Protection Level. Values:
+        /// </summary>
+        [Input("aiTemplate")]
+        public Input<string>? AiTemplate { get; set; }
+
+        /// <summary>
         /// Multi-level cache architecture mode. Possible values:
         /// </summary>
         [Input("cacheArchitectureMode")]
@@ -504,6 +554,13 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("flattenMode")]
         public Input<string>? FlattenMode { get; set; }
+
+        /// <summary>
+        /// HTTP DDoS Attack Protection Policy Modes. Valid values:
+        /// - `very weak`: indicates a very permissive setting.
+        /// </summary>
+        [Input("globalMode")]
+        public Input<string>? GlobalMode { get; set; }
 
         /// <summary>
         /// The ID of the associated package instance.

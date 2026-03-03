@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Ehpc
     /// 
     /// &gt; **NOTE:** Available since v1.173.0.
     /// 
+    /// &gt; **DEPRECATED:** This resource has been deprecated. Please use `alicloud.ehpc.ClusterV2` for new deployments as it provides enhanced functionality and is actively maintained.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

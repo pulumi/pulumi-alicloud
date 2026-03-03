@@ -95,6 +95,21 @@ public final class IpamIpamState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * After an IPAM is created, the public network IPAM is created by default.
+     * 
+     */
+    @Import(name="publicDefaultScopeId")
+    private @Nullable Output<String> publicDefaultScopeId;
+
+    /**
+     * @return After an IPAM is created, the public network IPAM is created by default.
+     * 
+     */
+    public Optional<Output<String>> publicDefaultScopeId() {
+        return Optional.ofNullable(this.publicDefaultScopeId);
+    }
+
+    /**
      * The region ID of the resource.
      * 
      */
@@ -162,6 +177,7 @@ public final class IpamIpamState extends com.pulumi.resources.ResourceArgs {
         this.ipamName = $.ipamName;
         this.operatingRegionLists = $.operatingRegionLists;
         this.privateDefaultScopeId = $.privateDefaultScopeId;
+        this.publicDefaultScopeId = $.publicDefaultScopeId;
         this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
@@ -301,6 +317,27 @@ public final class IpamIpamState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder privateDefaultScopeId(String privateDefaultScopeId) {
             return privateDefaultScopeId(Output.of(privateDefaultScopeId));
+        }
+
+        /**
+         * @param publicDefaultScopeId After an IPAM is created, the public network IPAM is created by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicDefaultScopeId(@Nullable Output<String> publicDefaultScopeId) {
+            $.publicDefaultScopeId = publicDefaultScopeId;
+            return this;
+        }
+
+        /**
+         * @param publicDefaultScopeId After an IPAM is created, the public network IPAM is created by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicDefaultScopeId(String publicDefaultScopeId) {
+            return publicDefaultScopeId(Output.of(publicDefaultScopeId));
         }
 
         /**

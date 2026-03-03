@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  * Vpc Ipam Ipam Pool can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:vpc/ipamIpamPool:IpamIpamPool example &lt;id&gt;
+ * $ pulumi import alicloud:vpc/ipamIpamPool:IpamIpamPool example &lt;ipam_pool_id&gt;
  * ```
  * 
  */
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
 public class IpamIpamPool extends com.pulumi.resources.CustomResource {
     /**
      * The default network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      * 
      */
     @Export(name="allocationDefaultCidrMask", refs={Integer.class}, tree="[0]")
@@ -107,7 +107,7 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The default network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      * 
      */
     public Output<Optional<Integer>> allocationDefaultCidrMask() {
@@ -115,7 +115,7 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The maximum network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      * 
      */
     @Export(name="allocationMaxCidrMask", refs={Integer.class}, tree="[0]")
@@ -123,7 +123,7 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The maximum network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      * 
      */
     public Output<Integer> allocationMaxCidrMask() {
@@ -131,7 +131,7 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The minimum Network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      * 
      */
     @Export(name="allocationMinCidrMask", refs={Integer.class}, tree="[0]")
@@ -139,7 +139,7 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The minimum Network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      * 
      */
     public Output<Optional<Integer>> allocationMinCidrMask() {
@@ -188,14 +188,14 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The IP protocol version. Currently, only `IPv4` is supported * *.
+     * The IP protocol version. Values: IPv4、IPv6.
      * 
      */
     @Export(name="ipVersion", refs={String.class}, tree="[0]")
     private Output<String> ipVersion;
 
     /**
-     * @return The IP protocol version. Currently, only `IPv4` is supported * *.
+     * @return The IP protocol version. Values: IPv4、IPv6.
      * 
      */
     public Output<String> ipVersion() {
@@ -232,18 +232,32 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
         return this.ipamPoolName;
     }
     /**
-     * Ipam scope id.
+     * The ID of the IPAM scope.
      * 
      */
     @Export(name="ipamScopeId", refs={String.class}, tree="[0]")
     private Output<String> ipamScopeId;
 
     /**
-     * @return Ipam scope id.
+     * @return The ID of the IPAM scope.
      * 
      */
     public Output<String> ipamScopeId() {
         return this.ipamScopeId;
+    }
+    /**
+     * The type of the IPv6 CIDR block of the VPC.
+     * 
+     */
+    @Export(name="ipv6Isp", refs={String.class}, tree="[0]")
+    private Output<String> ipv6Isp;
+
+    /**
+     * @return The type of the IPv6 CIDR block of the VPC.
+     * 
+     */
+    public Output<String> ipv6Isp() {
+        return this.ipv6Isp;
     }
     /**
      * The effective region of the IPAM address pool.

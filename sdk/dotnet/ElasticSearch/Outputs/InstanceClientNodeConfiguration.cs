@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.ElasticSearch.Outputs
     public sealed class InstanceClientNodeConfiguration
     {
         /// <summary>
-        /// Number of disks in the Elasticsearch cluster coordination node
+        /// Number of nodes.
         /// </summary>
         public readonly int? Amount;
         /// <summary>
-        /// Elasticsearch cluster coordinates node disk size
+        /// Node storage capacity, in GB.
         /// </summary>
         public readonly int? Disk;
         /// <summary>
-        /// Elasticsearch cluster coordination node disk type
+        /// Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// Elasticsearch cluster coordination node specification
+        /// Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         /// </summary>
         public readonly string? Spec;
 

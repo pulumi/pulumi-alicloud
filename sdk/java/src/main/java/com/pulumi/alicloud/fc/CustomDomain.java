@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.98.0.
  * 
+ * &gt; **DEPRECATED:** This resource (alicloud_fc_custom_domain) represents the legacy Function Compute API. For new deployments and advanced features, please use the `alicloud.fc.V3CustomDomain` resource which provides access to the latest FCV3 capabilities. The legacy FC custom domain supports only basic functionality and does not include newer features available in FCV3.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

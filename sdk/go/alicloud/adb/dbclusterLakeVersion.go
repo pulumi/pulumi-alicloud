@@ -117,7 +117,7 @@ type DBClusterLakeVersion struct {
 	LockMode pulumi.StringOutput `pulumi:"lockMode"`
 	// The reason why the cluster is locked.
 	LockReason pulumi.StringOutput `pulumi:"lockReason"`
-	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
+	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
@@ -243,7 +243,7 @@ type dbclusterLakeVersionState struct {
 	LockMode *string `pulumi:"lockMode"`
 	// The reason why the cluster is locked.
 	LockReason *string `pulumi:"lockReason"`
-	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
+	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
 	PaymentType *string `pulumi:"paymentType"`
 	// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
 	Period *int `pulumi:"period"`
@@ -325,7 +325,7 @@ type DBClusterLakeVersionState struct {
 	LockMode pulumi.StringPtrInput
 	// The reason why the cluster is locked.
 	LockReason pulumi.StringPtrInput
-	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
+	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
 	PaymentType pulumi.StringPtrInput
 	// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
 	Period pulumi.IntPtrInput
@@ -393,7 +393,7 @@ type dbclusterLakeVersionArgs struct {
 	EnableSsl *bool `pulumi:"enableSsl"`
 	// The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId *string `pulumi:"kmsId"`
-	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
+	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
 	PaymentType string `pulumi:"paymentType"`
 	// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
 	Period *int `pulumi:"period"`
@@ -454,7 +454,7 @@ type DBClusterLakeVersionArgs struct {
 	EnableSsl pulumi.BoolPtrInput
 	// The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId pulumi.StringPtrInput
-	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
+	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
 	PaymentType pulumi.StringInput
 	// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
 	Period pulumi.IntPtrInput
@@ -669,7 +669,7 @@ func (o DBClusterLakeVersionOutput) LockReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.LockReason }).(pulumi.StringOutput)
 }
 
-// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
+// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
 func (o DBClusterLakeVersionOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }

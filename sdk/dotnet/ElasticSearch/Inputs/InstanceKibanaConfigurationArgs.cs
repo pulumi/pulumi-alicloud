@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.ElasticSearch.Inputs
     public sealed class InstanceKibanaConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of disks of the Elasticsearch Kibana node. The default value is 1.
+        /// The number of nodes.
         /// </summary>
         [Input("amount")]
         public Input<int>? Amount { get; set; }
 
         /// <summary>
-        /// Elasticsearch Kibana node disk size
+        /// Storage capacity per node, in GB.
         /// </summary>
         [Input("disk")]
         public Input<int>? Disk { get; set; }
 
         /// <summary>
-        /// Elasticsearch Kibana node disk specifications
+        /// Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         /// </summary>
         [Input("spec", required: true)]
         public Input<string> Spec { get; set; } = null!;

@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * Vpc Ipam Ipam can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example <id>
+ * $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example <ipam_id>
  * ```
  */
 export class IpamIpam extends pulumi.CustomResource {
@@ -91,6 +91,10 @@ export class IpamIpam extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly privateDefaultScopeId: pulumi.Output<string>;
     /**
+     * After an IPAM is created, the public network IPAM is created by default.
+     */
+    declare public /*out*/ readonly publicDefaultScopeId: pulumi.Output<string>;
+    /**
      * The region ID of the resource.
      */
     declare public /*out*/ readonly regionId: pulumi.Output<string>;
@@ -125,6 +129,7 @@ export class IpamIpam extends pulumi.CustomResource {
             resourceInputs["ipamName"] = state?.ipamName;
             resourceInputs["operatingRegionLists"] = state?.operatingRegionLists;
             resourceInputs["privateDefaultScopeId"] = state?.privateDefaultScopeId;
+            resourceInputs["publicDefaultScopeId"] = state?.publicDefaultScopeId;
             resourceInputs["regionId"] = state?.regionId;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["status"] = state?.status;
@@ -141,6 +146,7 @@ export class IpamIpam extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["privateDefaultScopeId"] = undefined /*out*/;
+            resourceInputs["publicDefaultScopeId"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -174,6 +180,10 @@ export interface IpamIpamState {
      * After an IPAM is created, the scope of the private network IPAM created by the system by default.
      */
     privateDefaultScopeId?: pulumi.Input<string>;
+    /**
+     * After an IPAM is created, the public network IPAM is created by default.
+     */
+    publicDefaultScopeId?: pulumi.Input<string>;
     /**
      * The region ID of the resource.
      */

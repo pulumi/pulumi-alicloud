@@ -24,6 +24,8 @@ class SiteArgs:
                  access_type: Optional[pulumi.Input[_builtins.str]] = None,
                  add_client_geolocation_header: Optional[pulumi.Input[_builtins.str]] = None,
                  add_real_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_template: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_architecture_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -32,6 +34,7 @@ class SiteArgs:
                  cross_border_optimization: Optional[pulumi.Input[_builtins.str]] = None,
                  development_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  flatten_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
                  paused: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -52,6 +55,8 @@ class SiteArgs:
                - `CNAME`
         :param pulumi.Input[_builtins.str] add_client_geolocation_header: Add visitor geolocation header. Value range:
         :param pulumi.Input[_builtins.str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
+        :param pulumi.Input[_builtins.str] ai_mode: HTTP DDoS Intelligent Protection Mode. Valid values:
+        :param pulumi.Input[_builtins.str] ai_template: HTTP DDoS Intelligent Protection Level. Values:
         :param pulumi.Input[_builtins.str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
         :param pulumi.Input[_builtins.str] cache_reserve_enable: Site cache hold switch. Value:
         :param pulumi.Input[_builtins.str] cache_reserve_instance_id: The ID of the cache instance.
@@ -60,6 +65,8 @@ class SiteArgs:
         :param pulumi.Input[_builtins.str] cross_border_optimization: Whether to enable mainland China network access optimization, the default is off. Value range:
         :param pulumi.Input[_builtins.str] development_mode: Development mode configuration function switch. Value range:
         :param pulumi.Input[_builtins.str] flatten_mode: CNAME flattening mode. Possible values:
+        :param pulumi.Input[_builtins.str] global_mode: HTTP DDoS Attack Protection Policy Modes. Valid values:
+               - `very weak`: indicates a very permissive setting.
         :param pulumi.Input[_builtins.str] ipv6_enable: Specifies whether to enable IPv6. Valid values:
         :param pulumi.Input[_builtins.str] ipv6_region: The region in which Ipv6 is enabled. The default value is x.x:
                - 'x.x': Global.
@@ -81,6 +88,10 @@ class SiteArgs:
             pulumi.set(__self__, "add_client_geolocation_header", add_client_geolocation_header)
         if add_real_client_ip_header is not None:
             pulumi.set(__self__, "add_real_client_ip_header", add_real_client_ip_header)
+        if ai_mode is not None:
+            pulumi.set(__self__, "ai_mode", ai_mode)
+        if ai_template is not None:
+            pulumi.set(__self__, "ai_template", ai_template)
         if cache_architecture_mode is not None:
             pulumi.set(__self__, "cache_architecture_mode", cache_architecture_mode)
         if cache_reserve_enable is not None:
@@ -97,6 +108,8 @@ class SiteArgs:
             pulumi.set(__self__, "development_mode", development_mode)
         if flatten_mode is not None:
             pulumi.set(__self__, "flatten_mode", flatten_mode)
+        if global_mode is not None:
+            pulumi.set(__self__, "global_mode", global_mode)
         if ipv6_enable is not None:
             pulumi.set(__self__, "ipv6_enable", ipv6_enable)
         if ipv6_region is not None:
@@ -179,6 +192,30 @@ class SiteArgs:
     @add_real_client_ip_header.setter
     def add_real_client_ip_header(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "add_real_client_ip_header", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiMode")
+    def ai_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP DDoS Intelligent Protection Mode. Valid values:
+        """
+        return pulumi.get(self, "ai_mode")
+
+    @ai_mode.setter
+    def ai_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ai_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiTemplate")
+    def ai_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP DDoS Intelligent Protection Level. Values:
+        """
+        return pulumi.get(self, "ai_template")
+
+    @ai_template.setter
+    def ai_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ai_template", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheArchitectureMode")
@@ -275,6 +312,19 @@ class SiteArgs:
     @flatten_mode.setter
     def flatten_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "flatten_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="globalMode")
+    def global_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP DDoS Attack Protection Policy Modes. Valid values:
+        - `very weak`: indicates a very permissive setting.
+        """
+        return pulumi.get(self, "global_mode")
+
+    @global_mode.setter
+    def global_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "global_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Enable")
@@ -405,6 +455,8 @@ class _SiteState:
                  access_type: Optional[pulumi.Input[_builtins.str]] = None,
                  add_client_geolocation_header: Optional[pulumi.Input[_builtins.str]] = None,
                  add_real_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_template: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_architecture_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -414,6 +466,7 @@ class _SiteState:
                  cross_border_optimization: Optional[pulumi.Input[_builtins.str]] = None,
                  development_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  flatten_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -435,6 +488,8 @@ class _SiteState:
                - `CNAME`
         :param pulumi.Input[_builtins.str] add_client_geolocation_header: Add visitor geolocation header. Value range:
         :param pulumi.Input[_builtins.str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
+        :param pulumi.Input[_builtins.str] ai_mode: HTTP DDoS Intelligent Protection Mode. Valid values:
+        :param pulumi.Input[_builtins.str] ai_template: HTTP DDoS Intelligent Protection Level. Values:
         :param pulumi.Input[_builtins.str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
         :param pulumi.Input[_builtins.str] cache_reserve_enable: Site cache hold switch. Value:
         :param pulumi.Input[_builtins.str] cache_reserve_instance_id: The ID of the cache instance.
@@ -444,6 +499,8 @@ class _SiteState:
         :param pulumi.Input[_builtins.str] cross_border_optimization: Whether to enable mainland China network access optimization, the default is off. Value range:
         :param pulumi.Input[_builtins.str] development_mode: Development mode configuration function switch. Value range:
         :param pulumi.Input[_builtins.str] flatten_mode: CNAME flattening mode. Possible values:
+        :param pulumi.Input[_builtins.str] global_mode: HTTP DDoS Attack Protection Policy Modes. Valid values:
+               - `very weak`: indicates a very permissive setting.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the associated package instance.
         :param pulumi.Input[_builtins.str] ipv6_enable: Specifies whether to enable IPv6. Valid values:
         :param pulumi.Input[_builtins.str] ipv6_region: The region in which Ipv6 is enabled. The default value is x.x:
@@ -466,6 +523,10 @@ class _SiteState:
             pulumi.set(__self__, "add_client_geolocation_header", add_client_geolocation_header)
         if add_real_client_ip_header is not None:
             pulumi.set(__self__, "add_real_client_ip_header", add_real_client_ip_header)
+        if ai_mode is not None:
+            pulumi.set(__self__, "ai_mode", ai_mode)
+        if ai_template is not None:
+            pulumi.set(__self__, "ai_template", ai_template)
         if cache_architecture_mode is not None:
             pulumi.set(__self__, "cache_architecture_mode", cache_architecture_mode)
         if cache_reserve_enable is not None:
@@ -484,6 +545,8 @@ class _SiteState:
             pulumi.set(__self__, "development_mode", development_mode)
         if flatten_mode is not None:
             pulumi.set(__self__, "flatten_mode", flatten_mode)
+        if global_mode is not None:
+            pulumi.set(__self__, "global_mode", global_mode)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if ipv6_enable is not None:
@@ -548,6 +611,30 @@ class _SiteState:
     @add_real_client_ip_header.setter
     def add_real_client_ip_header(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "add_real_client_ip_header", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiMode")
+    def ai_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP DDoS Intelligent Protection Mode. Valid values:
+        """
+        return pulumi.get(self, "ai_mode")
+
+    @ai_mode.setter
+    def ai_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ai_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiTemplate")
+    def ai_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP DDoS Intelligent Protection Level. Values:
+        """
+        return pulumi.get(self, "ai_template")
+
+    @ai_template.setter
+    def ai_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ai_template", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheArchitectureMode")
@@ -656,6 +743,19 @@ class _SiteState:
     @flatten_mode.setter
     def flatten_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "flatten_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="globalMode")
+    def global_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP DDoS Attack Protection Policy Modes. Valid values:
+        - `very weak`: indicates a very permissive setting.
+        """
+        return pulumi.get(self, "global_mode")
+
+    @global_mode.setter
+    def global_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "global_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -825,6 +925,8 @@ class Site(pulumi.CustomResource):
                  access_type: Optional[pulumi.Input[_builtins.str]] = None,
                  add_client_geolocation_header: Optional[pulumi.Input[_builtins.str]] = None,
                  add_real_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_template: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_architecture_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -833,6 +935,7 @@ class Site(pulumi.CustomResource):
                  cross_border_optimization: Optional[pulumi.Input[_builtins.str]] = None,
                  development_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  flatten_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -893,7 +996,7 @@ class Site(pulumi.CustomResource):
         ESA Site can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:esa/site:Site example <id>
+        $ pulumi import alicloud:esa/site:Site example <site_id>
         ```
 
 
@@ -904,6 +1007,8 @@ class Site(pulumi.CustomResource):
                - `CNAME`
         :param pulumi.Input[_builtins.str] add_client_geolocation_header: Add visitor geolocation header. Value range:
         :param pulumi.Input[_builtins.str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
+        :param pulumi.Input[_builtins.str] ai_mode: HTTP DDoS Intelligent Protection Mode. Valid values:
+        :param pulumi.Input[_builtins.str] ai_template: HTTP DDoS Intelligent Protection Level. Values:
         :param pulumi.Input[_builtins.str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
         :param pulumi.Input[_builtins.str] cache_reserve_enable: Site cache hold switch. Value:
         :param pulumi.Input[_builtins.str] cache_reserve_instance_id: The ID of the cache instance.
@@ -912,6 +1017,8 @@ class Site(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cross_border_optimization: Whether to enable mainland China network access optimization, the default is off. Value range:
         :param pulumi.Input[_builtins.str] development_mode: Development mode configuration function switch. Value range:
         :param pulumi.Input[_builtins.str] flatten_mode: CNAME flattening mode. Possible values:
+        :param pulumi.Input[_builtins.str] global_mode: HTTP DDoS Attack Protection Policy Modes. Valid values:
+               - `very weak`: indicates a very permissive setting.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the associated package instance.
         :param pulumi.Input[_builtins.str] ipv6_enable: Specifies whether to enable IPv6. Valid values:
         :param pulumi.Input[_builtins.str] ipv6_region: The region in which Ipv6 is enabled. The default value is x.x:
@@ -980,7 +1087,7 @@ class Site(pulumi.CustomResource):
         ESA Site can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:esa/site:Site example <id>
+        $ pulumi import alicloud:esa/site:Site example <site_id>
         ```
 
 
@@ -1002,6 +1109,8 @@ class Site(pulumi.CustomResource):
                  access_type: Optional[pulumi.Input[_builtins.str]] = None,
                  add_client_geolocation_header: Optional[pulumi.Input[_builtins.str]] = None,
                  add_real_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_template: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_architecture_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1010,6 +1119,7 @@ class Site(pulumi.CustomResource):
                  cross_border_optimization: Optional[pulumi.Input[_builtins.str]] = None,
                  development_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  flatten_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1034,6 +1144,8 @@ class Site(pulumi.CustomResource):
             __props__.__dict__["access_type"] = access_type
             __props__.__dict__["add_client_geolocation_header"] = add_client_geolocation_header
             __props__.__dict__["add_real_client_ip_header"] = add_real_client_ip_header
+            __props__.__dict__["ai_mode"] = ai_mode
+            __props__.__dict__["ai_template"] = ai_template
             __props__.__dict__["cache_architecture_mode"] = cache_architecture_mode
             __props__.__dict__["cache_reserve_enable"] = cache_reserve_enable
             __props__.__dict__["cache_reserve_instance_id"] = cache_reserve_instance_id
@@ -1042,6 +1154,7 @@ class Site(pulumi.CustomResource):
             __props__.__dict__["cross_border_optimization"] = cross_border_optimization
             __props__.__dict__["development_mode"] = development_mode
             __props__.__dict__["flatten_mode"] = flatten_mode
+            __props__.__dict__["global_mode"] = global_mode
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
@@ -1073,6 +1186,8 @@ class Site(pulumi.CustomResource):
             access_type: Optional[pulumi.Input[_builtins.str]] = None,
             add_client_geolocation_header: Optional[pulumi.Input[_builtins.str]] = None,
             add_real_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
+            ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
+            ai_template: Optional[pulumi.Input[_builtins.str]] = None,
             cache_architecture_mode: Optional[pulumi.Input[_builtins.str]] = None,
             cache_reserve_enable: Optional[pulumi.Input[_builtins.str]] = None,
             cache_reserve_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1082,6 +1197,7 @@ class Site(pulumi.CustomResource):
             cross_border_optimization: Optional[pulumi.Input[_builtins.str]] = None,
             development_mode: Optional[pulumi.Input[_builtins.str]] = None,
             flatten_mode: Optional[pulumi.Input[_builtins.str]] = None,
+            global_mode: Optional[pulumi.Input[_builtins.str]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
             ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
             ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1107,6 +1223,8 @@ class Site(pulumi.CustomResource):
                - `CNAME`
         :param pulumi.Input[_builtins.str] add_client_geolocation_header: Add visitor geolocation header. Value range:
         :param pulumi.Input[_builtins.str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
+        :param pulumi.Input[_builtins.str] ai_mode: HTTP DDoS Intelligent Protection Mode. Valid values:
+        :param pulumi.Input[_builtins.str] ai_template: HTTP DDoS Intelligent Protection Level. Values:
         :param pulumi.Input[_builtins.str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
         :param pulumi.Input[_builtins.str] cache_reserve_enable: Site cache hold switch. Value:
         :param pulumi.Input[_builtins.str] cache_reserve_instance_id: The ID of the cache instance.
@@ -1116,6 +1234,8 @@ class Site(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cross_border_optimization: Whether to enable mainland China network access optimization, the default is off. Value range:
         :param pulumi.Input[_builtins.str] development_mode: Development mode configuration function switch. Value range:
         :param pulumi.Input[_builtins.str] flatten_mode: CNAME flattening mode. Possible values:
+        :param pulumi.Input[_builtins.str] global_mode: HTTP DDoS Attack Protection Policy Modes. Valid values:
+               - `very weak`: indicates a very permissive setting.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the associated package instance.
         :param pulumi.Input[_builtins.str] ipv6_enable: Specifies whether to enable IPv6. Valid values:
         :param pulumi.Input[_builtins.str] ipv6_region: The region in which Ipv6 is enabled. The default value is x.x:
@@ -1139,6 +1259,8 @@ class Site(pulumi.CustomResource):
         __props__.__dict__["access_type"] = access_type
         __props__.__dict__["add_client_geolocation_header"] = add_client_geolocation_header
         __props__.__dict__["add_real_client_ip_header"] = add_real_client_ip_header
+        __props__.__dict__["ai_mode"] = ai_mode
+        __props__.__dict__["ai_template"] = ai_template
         __props__.__dict__["cache_architecture_mode"] = cache_architecture_mode
         __props__.__dict__["cache_reserve_enable"] = cache_reserve_enable
         __props__.__dict__["cache_reserve_instance_id"] = cache_reserve_instance_id
@@ -1148,6 +1270,7 @@ class Site(pulumi.CustomResource):
         __props__.__dict__["cross_border_optimization"] = cross_border_optimization
         __props__.__dict__["development_mode"] = development_mode
         __props__.__dict__["flatten_mode"] = flatten_mode
+        __props__.__dict__["global_mode"] = global_mode
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["ipv6_enable"] = ipv6_enable
         __props__.__dict__["ipv6_region"] = ipv6_region
@@ -1188,6 +1311,22 @@ class Site(pulumi.CustomResource):
         Add the "ali-real-client-ip" header containing the real client IP. Value range:
         """
         return pulumi.get(self, "add_real_client_ip_header")
+
+    @_builtins.property
+    @pulumi.getter(name="aiMode")
+    def ai_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        HTTP DDoS Intelligent Protection Mode. Valid values:
+        """
+        return pulumi.get(self, "ai_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="aiTemplate")
+    def ai_template(self) -> pulumi.Output[_builtins.str]:
+        """
+        HTTP DDoS Intelligent Protection Level. Values:
+        """
+        return pulumi.get(self, "ai_template")
 
     @_builtins.property
     @pulumi.getter(name="cacheArchitectureMode")
@@ -1260,6 +1399,15 @@ class Site(pulumi.CustomResource):
         CNAME flattening mode. Possible values:
         """
         return pulumi.get(self, "flatten_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="globalMode")
+    def global_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        HTTP DDoS Attack Protection Policy Modes. Valid values:
+        - `very weak`: indicates a very permissive setting.
+        """
+        return pulumi.get(self, "global_mode")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")

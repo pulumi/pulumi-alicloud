@@ -13,31 +13,33 @@ namespace Pulumi.AliCloud.ElasticSearch.Inputs
     public sealed class InstanceWarmNodeConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Elasticsearch cluster cold data node disk number
+        /// Number of nodes.
         /// </summary>
         [Input("amount")]
         public Input<int>? Amount { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster cold data node disk size
+        /// Storage capacity per node, in GB.
         /// </summary>
         [Input("disk")]
         public Input<int>? Disk { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster cold data node Disk encryption
+        /// Whether to enable disk encryption. The values are as follows:
+        /// - true: Enabled.
+        /// - false: Disabled.
         /// </summary>
         [Input("diskEncryption")]
         public Input<bool>? DiskEncryption { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster cold data node disk type
+        /// Storage type for the node. Only `CloudEfficiency` (ultra disk) is supported.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster cold data node Disk Specification
+        /// Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         /// </summary>
         [Input("spec")]
         public Input<string>? Spec { get; set; }

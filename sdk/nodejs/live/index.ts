@@ -10,6 +10,11 @@ export type Caster = import("./caster").Caster;
 export const Caster: typeof import("./caster").Caster = null as any;
 utilities.lazyLoad(exports, ["Caster"], () => require("./caster"));
 
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +22,12 @@ const _module = {
         switch (type) {
             case "alicloud:live/caster:Caster":
                 return new Caster(name, <any>undefined, { urn })
+            case "alicloud:live/domain:Domain":
+                return new Domain(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "live/caster", _module)
+pulumi.runtime.registerResourceModule("alicloud", "live/domain", _module)

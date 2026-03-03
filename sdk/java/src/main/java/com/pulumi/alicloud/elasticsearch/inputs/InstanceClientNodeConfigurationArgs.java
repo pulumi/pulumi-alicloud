@@ -17,14 +17,14 @@ public final class InstanceClientNodeConfigurationArgs extends com.pulumi.resour
     public static final InstanceClientNodeConfigurationArgs Empty = new InstanceClientNodeConfigurationArgs();
 
     /**
-     * Number of disks in the Elasticsearch cluster coordination node
+     * Number of nodes.
      * 
      */
     @Import(name="amount")
     private @Nullable Output<Integer> amount;
 
     /**
-     * @return Number of disks in the Elasticsearch cluster coordination node
+     * @return Number of nodes.
      * 
      */
     public Optional<Output<Integer>> amount() {
@@ -32,14 +32,14 @@ public final class InstanceClientNodeConfigurationArgs extends com.pulumi.resour
     }
 
     /**
-     * Elasticsearch cluster coordinates node disk size
+     * Node storage capacity, in GB.
      * 
      */
     @Import(name="disk")
     private @Nullable Output<Integer> disk;
 
     /**
-     * @return Elasticsearch cluster coordinates node disk size
+     * @return Node storage capacity, in GB.
      * 
      */
     public Optional<Output<Integer>> disk() {
@@ -47,14 +47,14 @@ public final class InstanceClientNodeConfigurationArgs extends com.pulumi.resour
     }
 
     /**
-     * Elasticsearch cluster coordination node disk type
+     * Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return Elasticsearch cluster coordination node disk type
+     * @return Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -62,14 +62,14 @@ public final class InstanceClientNodeConfigurationArgs extends com.pulumi.resour
     }
 
     /**
-     * Elasticsearch cluster coordination node specification
+     * Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     @Import(name="spec")
     private @Nullable Output<String> spec;
 
     /**
-     * @return Elasticsearch cluster coordination node specification
+     * @return Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     public Optional<Output<String>> spec() {
@@ -104,7 +104,7 @@ public final class InstanceClientNodeConfigurationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param amount Number of disks in the Elasticsearch cluster coordination node
+         * @param amount Number of nodes.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class InstanceClientNodeConfigurationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param amount Number of disks in the Elasticsearch cluster coordination node
+         * @param amount Number of nodes.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class InstanceClientNodeConfigurationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param disk Elasticsearch cluster coordinates node disk size
+         * @param disk Node storage capacity, in GB.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class InstanceClientNodeConfigurationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param disk Elasticsearch cluster coordinates node disk size
+         * @param disk Node storage capacity, in GB.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class InstanceClientNodeConfigurationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param diskType Elasticsearch cluster coordination node disk type
+         * @param diskType Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class InstanceClientNodeConfigurationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param diskType Elasticsearch cluster coordination node disk type
+         * @param diskType Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class InstanceClientNodeConfigurationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param spec Elasticsearch cluster coordination node specification
+         * @param spec Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class InstanceClientNodeConfigurationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param spec Elasticsearch cluster coordination node specification
+         * @param spec Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          * 
          * @return builder
          * 

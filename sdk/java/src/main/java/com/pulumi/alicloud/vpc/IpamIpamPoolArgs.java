@@ -21,7 +21,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The default network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      * 
      */
     @Import(name="allocationDefaultCidrMask")
@@ -29,7 +29,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The default network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      * 
      */
     public Optional<Output<Integer>> allocationDefaultCidrMask() {
@@ -38,7 +38,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The maximum network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      * 
      */
     @Import(name="allocationMaxCidrMask")
@@ -46,7 +46,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The maximum network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      * 
      */
     public Optional<Output<Integer>> allocationMaxCidrMask() {
@@ -55,7 +55,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The minimum Network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      * 
      */
     @Import(name="allocationMinCidrMask")
@@ -63,7 +63,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The minimum Network mask assigned by the IPAM address pool.
-     * IPv4 network mask value range: **0 to 32** bits.
+     * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      * 
      */
     public Optional<Output<Integer>> allocationMinCidrMask() {
@@ -101,14 +101,14 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IP protocol version. Currently, only `IPv4` is supported * *.
+     * The IP protocol version. Values: IPv4、IPv6.
      * 
      */
     @Import(name="ipVersion")
     private @Nullable Output<String> ipVersion;
 
     /**
-     * @return The IP protocol version. Currently, only `IPv4` is supported * *.
+     * @return The IP protocol version. Values: IPv4、IPv6.
      * 
      */
     public Optional<Output<String>> ipVersion() {
@@ -148,18 +148,33 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Ipam scope id.
+     * The ID of the IPAM scope.
      * 
      */
     @Import(name="ipamScopeId", required=true)
     private Output<String> ipamScopeId;
 
     /**
-     * @return Ipam scope id.
+     * @return The ID of the IPAM scope.
      * 
      */
     public Output<String> ipamScopeId() {
         return this.ipamScopeId;
+    }
+
+    /**
+     * The type of the IPv6 CIDR block of the VPC.
+     * 
+     */
+    @Import(name="ipv6Isp")
+    private @Nullable Output<String> ipv6Isp;
+
+    /**
+     * @return The type of the IPv6 CIDR block of the VPC.
+     * 
+     */
+    public Optional<Output<String>> ipv6Isp() {
+        return Optional.ofNullable(this.ipv6Isp);
     }
 
     /**
@@ -238,6 +253,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
         this.ipamPoolDescription = $.ipamPoolDescription;
         this.ipamPoolName = $.ipamPoolName;
         this.ipamScopeId = $.ipamScopeId;
+        this.ipv6Isp = $.ipv6Isp;
         this.poolRegionId = $.poolRegionId;
         this.resourceGroupId = $.resourceGroupId;
         this.sourceIpamPoolId = $.sourceIpamPoolId;
@@ -264,7 +280,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocationDefaultCidrMask The default network mask assigned by the IPAM address pool.
-         * IPv4 network mask value range: **0 to 32** bits.
+         * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
          * 
          * @return builder
          * 
@@ -276,7 +292,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocationDefaultCidrMask The default network mask assigned by the IPAM address pool.
-         * IPv4 network mask value range: **0 to 32** bits.
+         * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
          * 
          * @return builder
          * 
@@ -287,7 +303,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocationMaxCidrMask The maximum network mask assigned by the IPAM address pool.
-         * IPv4 network mask value range: **0 to 32** bits.
+         * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
          * 
          * @return builder
          * 
@@ -299,7 +315,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocationMaxCidrMask The maximum network mask assigned by the IPAM address pool.
-         * IPv4 network mask value range: **0 to 32** bits.
+         * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
          * 
          * @return builder
          * 
@@ -310,7 +326,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocationMinCidrMask The minimum Network mask assigned by the IPAM address pool.
-         * IPv4 network mask value range: **0 to 32** bits.
+         * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
          * 
          * @return builder
          * 
@@ -322,7 +338,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocationMinCidrMask The minimum Network mask assigned by the IPAM address pool.
-         * IPv4 network mask value range: **0 to 32** bits.
+         * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
          * 
          * @return builder
          * 
@@ -374,7 +390,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipVersion The IP protocol version. Currently, only `IPv4` is supported * *.
+         * @param ipVersion The IP protocol version. Values: IPv4、IPv6.
          * 
          * @return builder
          * 
@@ -385,7 +401,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipVersion The IP protocol version. Currently, only `IPv4` is supported * *.
+         * @param ipVersion The IP protocol version. Values: IPv4、IPv6.
          * 
          * @return builder
          * 
@@ -439,7 +455,7 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipamScopeId Ipam scope id.
+         * @param ipamScopeId The ID of the IPAM scope.
          * 
          * @return builder
          * 
@@ -450,13 +466,34 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipamScopeId Ipam scope id.
+         * @param ipamScopeId The ID of the IPAM scope.
          * 
          * @return builder
          * 
          */
         public Builder ipamScopeId(String ipamScopeId) {
             return ipamScopeId(Output.of(ipamScopeId));
+        }
+
+        /**
+         * @param ipv6Isp The type of the IPv6 CIDR block of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Isp(@Nullable Output<String> ipv6Isp) {
+            $.ipv6Isp = ipv6Isp;
+            return this;
+        }
+
+        /**
+         * @param ipv6Isp The type of the IPv6 CIDR block of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Isp(String ipv6Isp) {
+            return ipv6Isp(Output.of(ipv6Isp));
         }
 
         /**

@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceClientNodeConfiguration {
     /**
-     * @return Number of disks in the Elasticsearch cluster coordination node
+     * @return Number of nodes.
      * 
      */
     private @Nullable Integer amount;
     /**
-     * @return Elasticsearch cluster coordinates node disk size
+     * @return Node storage capacity, in GB.
      * 
      */
     private @Nullable Integer disk;
     /**
-     * @return Elasticsearch cluster coordination node disk type
+     * @return Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
      * 
      */
     private @Nullable String diskType;
     /**
-     * @return Elasticsearch cluster coordination node specification
+     * @return Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     private @Nullable String spec;
 
     private InstanceClientNodeConfiguration() {}
     /**
-     * @return Number of disks in the Elasticsearch cluster coordination node
+     * @return Number of nodes.
      * 
      */
     public Optional<Integer> amount() {
         return Optional.ofNullable(this.amount);
     }
     /**
-     * @return Elasticsearch cluster coordinates node disk size
+     * @return Node storage capacity, in GB.
      * 
      */
     public Optional<Integer> disk() {
         return Optional.ofNullable(this.disk);
     }
     /**
-     * @return Elasticsearch cluster coordination node disk type
+     * @return Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
      * 
      */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
     /**
-     * @return Elasticsearch cluster coordination node specification
+     * @return Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     public Optional<String> spec() {

@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a OOS Patch Baseline resource.
+ * Provides a Operation Orchestration Service (OOS) Patch Baseline resource.
  *
- * For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
+ * For information about Operation Orchestration Service (OOS) Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
  *
  * > **NOTE:** Available since v1.146.0.
  *
@@ -32,10 +32,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OOS Patch Baseline can be imported using the id, e.g.
+ * Operation Orchestration Service (OOS) Patch Baseline can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
+ * $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <patch_baseline_name>
  * ```
  */
 export class PatchBaseline extends pulumi.CustomResource {
@@ -67,15 +67,15 @@ export class PatchBaseline extends pulumi.CustomResource {
     }
 
     /**
-     * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+     * This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      */
     declare public readonly approvalRules: pulumi.Output<string>;
     /**
-     * Approved Patch.
+     * List of approved patches.
      */
     declare public readonly approvedPatches: pulumi.Output<string[] | undefined>;
     /**
-     * ApprovedPatchesEnableNonSecurity.
+     * Specifies whether approved patches include updates other than security updates.
      */
     declare public readonly approvedPatchesEnableNonSecurity: pulumi.Output<boolean | undefined>;
     /**
@@ -83,19 +83,30 @@ export class PatchBaseline extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Patches baseline description information.
+     * Description of the patch baseline.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+     * Operating system type. Supported values:
+     * - Windows
+     * - Ubuntu
+     * - CentOS
+     * - Debian
+     * - AliyunLinux
+     * - RedhatEnterpriseLinux
+     * - Anolis
+     * - Fedora
+     * - Suse
+     * - RockyLinux
+     * - AlmaLinux.
      */
     declare public readonly operationSystem: pulumi.Output<string>;
     /**
-     * The name of the patch baseline.
+     * Patch baseline name.
      */
     declare public readonly patchBaselineName: pulumi.Output<string>;
     /**
-     * Reject patches.
+     * List of rejected patches.
      */
     declare public readonly rejectedPatches: pulumi.Output<string[] | undefined>;
     /**
@@ -103,15 +114,15 @@ export class PatchBaseline extends pulumi.CustomResource {
      */
     declare public readonly rejectedPatchesAction: pulumi.Output<string>;
     /**
-     * The ID of the resource group.
+     * Resource group ID.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * Source.
+     * List of patch source configurations.
      */
     declare public readonly sources: pulumi.Output<string[] | undefined>;
     /**
-     * Label.
+     * A key-value map of tags. The number of key-value pairs must be between 1 and 20.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
@@ -174,15 +185,15 @@ export class PatchBaseline extends pulumi.CustomResource {
  */
 export interface PatchBaselineState {
     /**
-     * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+     * This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      */
     approvalRules?: pulumi.Input<string>;
     /**
-     * Approved Patch.
+     * List of approved patches.
      */
     approvedPatches?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ApprovedPatchesEnableNonSecurity.
+     * Specifies whether approved patches include updates other than security updates.
      */
     approvedPatchesEnableNonSecurity?: pulumi.Input<boolean>;
     /**
@@ -190,19 +201,30 @@ export interface PatchBaselineState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Patches baseline description information.
+     * Description of the patch baseline.
      */
     description?: pulumi.Input<string>;
     /**
-     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+     * Operating system type. Supported values:
+     * - Windows
+     * - Ubuntu
+     * - CentOS
+     * - Debian
+     * - AliyunLinux
+     * - RedhatEnterpriseLinux
+     * - Anolis
+     * - Fedora
+     * - Suse
+     * - RockyLinux
+     * - AlmaLinux.
      */
     operationSystem?: pulumi.Input<string>;
     /**
-     * The name of the patch baseline.
+     * Patch baseline name.
      */
     patchBaselineName?: pulumi.Input<string>;
     /**
-     * Reject patches.
+     * List of rejected patches.
      */
     rejectedPatches?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -210,15 +232,15 @@ export interface PatchBaselineState {
      */
     rejectedPatchesAction?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * Resource group ID.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Source.
+     * List of patch source configurations.
      */
     sources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Label.
+     * A key-value map of tags. The number of key-value pairs must be between 1 and 20.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -228,31 +250,42 @@ export interface PatchBaselineState {
  */
 export interface PatchBaselineArgs {
     /**
-     * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+     * This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      */
     approvalRules: pulumi.Input<string>;
     /**
-     * Approved Patch.
+     * List of approved patches.
      */
     approvedPatches?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ApprovedPatchesEnableNonSecurity.
+     * Specifies whether approved patches include updates other than security updates.
      */
     approvedPatchesEnableNonSecurity?: pulumi.Input<boolean>;
     /**
-     * Patches baseline description information.
+     * Description of the patch baseline.
      */
     description?: pulumi.Input<string>;
     /**
-     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+     * Operating system type. Supported values:
+     * - Windows
+     * - Ubuntu
+     * - CentOS
+     * - Debian
+     * - AliyunLinux
+     * - RedhatEnterpriseLinux
+     * - Anolis
+     * - Fedora
+     * - Suse
+     * - RockyLinux
+     * - AlmaLinux.
      */
     operationSystem: pulumi.Input<string>;
     /**
-     * The name of the patch baseline.
+     * Patch baseline name.
      */
     patchBaselineName: pulumi.Input<string>;
     /**
-     * Reject patches.
+     * List of rejected patches.
      */
     rejectedPatches?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -260,15 +293,15 @@ export interface PatchBaselineArgs {
      */
     rejectedPatchesAction?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * Resource group ID.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Source.
+     * List of patch source configurations.
      */
     sources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Label.
+     * A key-value map of tags. The number of key-value pairs must be between 1 and 20.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

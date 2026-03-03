@@ -10832,103 +10832,109 @@ export namespace eipanycast {
 export namespace elasticsearch {
     export interface InstanceClientNodeConfiguration {
         /**
-         * Number of disks in the Elasticsearch cluster coordination node
+         * Number of nodes.
          */
         amount?: pulumi.Input<number>;
         /**
-         * Elasticsearch cluster coordinates node disk size
+         * Node storage capacity, in GB.
          */
         disk?: pulumi.Input<number>;
         /**
-         * Elasticsearch cluster coordination node disk type
+         * Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
          */
         diskType?: pulumi.Input<string>;
         /**
-         * Elasticsearch cluster coordination node specification
+         * Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          */
         spec?: pulumi.Input<string>;
     }
 
     export interface InstanceDataNodeConfiguration {
         /**
-         * Number of data nodes in the Elasticsearch cluster
+         * Number of data nodes. Valid values: 2 to 50.
          */
         amount?: pulumi.Input<number>;
         /**
-         * Elasticsearch data node disk size
+         * Storage capacity per node, in GB.
          */
         disk?: pulumi.Input<number>;
         /**
-         * Whether the Elasticsearch data node disk is encrypted
+         * Whether to enable cloud disk encryption:
+         * - true: Enabled
+         * - false: Disabled.
          */
         diskEncryption?: pulumi.Input<boolean>;
         /**
-         * Elasticsearch cluster data node disk type
+         * Node disk type. Supported types:
+         * - cloud_ssd: SSD cloud disk
+         * - cloud_efficiency: Ultra cloud disk.
          */
         diskType?: pulumi.Input<string>;
         /**
-         * Elasticsearch cluster data node Essd disk level
+         * Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
          */
         performanceLevel?: pulumi.Input<string>;
         /**
-         * Elasticsearch data node specification
+         * Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          */
         spec: pulumi.Input<string>;
     }
 
     export interface InstanceKibanaConfiguration {
         /**
-         * The number of disks of the Elasticsearch Kibana node. The default value is 1.
+         * The number of nodes.
          */
         amount?: pulumi.Input<number>;
         /**
-         * Elasticsearch Kibana node disk size
+         * Storage capacity per node, in GB.
          */
         disk?: pulumi.Input<number>;
         /**
-         * Elasticsearch Kibana node disk specifications
+         * Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          */
         spec: pulumi.Input<string>;
     }
 
     export interface InstanceMasterConfiguration {
         /**
-         * Elasticsearch proprietary master node number of disks
+         * Number of nodes.
          */
         amount?: pulumi.Input<number>;
         /**
-         * Elasticsearch proprietary master node disk size
+         * Node storage capacity, in GB.
          */
         disk?: pulumi.Input<number>;
         /**
-         * Elasticsearch proprietary master node disk type
+         * Node storage type. Only cloudSsd (SSD cloud disk) is supported.
          */
         diskType?: pulumi.Input<string>;
         /**
-         * Elasticsearch proprietary master node specifications
+         * Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          */
         spec?: pulumi.Input<string>;
     }
 
     export interface InstanceWarmNodeConfiguration {
         /**
-         * Elasticsearch cluster cold data node disk number
+         * Number of nodes.
          */
         amount?: pulumi.Input<number>;
         /**
-         * Elasticsearch cluster cold data node disk size
+         * Storage capacity per node, in GB.
          */
         disk?: pulumi.Input<number>;
         /**
-         * Elasticsearch cluster cold data node Disk encryption
+         * Whether to enable disk encryption. The values are as follows:
+         * - true: Enabled.
+         * - false: Disabled.
          */
         diskEncryption?: pulumi.Input<boolean>;
         /**
-         * Elasticsearch cluster cold data node disk type
+         * Storage type for the node. Only `cloudEfficiency` (ultra disk) is supported.
          */
         diskType?: pulumi.Input<string>;
         /**
-         * Elasticsearch cluster cold data node Disk Specification
+         * Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          */
         spec?: pulumi.Input<string>;
     }

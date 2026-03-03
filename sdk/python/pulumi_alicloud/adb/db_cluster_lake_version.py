@@ -48,7 +48,7 @@ class DBClusterLakeVersionArgs:
         The set of arguments for constructing a DBClusterLakeVersion resource.
 
         :param pulumi.Input[_builtins.str] db_cluster_version: The version of the cluster. Valid values: `5.0`.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`. From version 1.272.0, `payment_type` can be modified.
         :param pulumi.Input[_builtins.str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the vSwitch.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource.
@@ -142,7 +142,7 @@ class DBClusterLakeVersionArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`. From version 1.272.0, `payment_type` can be modified.
         """
         return pulumi.get(self, "payment_type")
 
@@ -493,7 +493,7 @@ class _DBClusterLakeVersionState:
         :param pulumi.Input[_builtins.str] kms_id: The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[_builtins.str] lock_mode: The lock mode of the cluster.
         :param pulumi.Input[_builtins.str] lock_reason: The reason why the cluster is locked.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`. From version 1.272.0, `payment_type` can be modified.
         :param pulumi.Input[_builtins.int] period: The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
         :param pulumi.Input[_builtins.str] port: The port that is used to access the cluster.
         :param pulumi.Input[_builtins.str] product_form: The product form of the cluster. Valid values:
@@ -801,7 +801,7 @@ class _DBClusterLakeVersionState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`. From version 1.272.0, `payment_type` can be modified.
         """
         return pulumi.get(self, "payment_type")
 
@@ -1116,7 +1116,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_default_resource_group: Whether to enable default allocation of resources to user_default resource groups.
         :param pulumi.Input[_builtins.bool] enable_ssl: Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] kms_id: The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`. From version 1.272.0, `payment_type` can be modified.
         :param pulumi.Input[_builtins.int] period: The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
         :param pulumi.Input[_builtins.str] product_form: The product form of the cluster. Valid values:
                - `IntegrationForm`: Integrated.
@@ -1353,7 +1353,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kms_id: The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[_builtins.str] lock_mode: The lock mode of the cluster.
         :param pulumi.Input[_builtins.str] lock_reason: The reason why the cluster is locked.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`. From version 1.272.0, `payment_type` can be modified.
         :param pulumi.Input[_builtins.int] period: The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
         :param pulumi.Input[_builtins.str] port: The port that is used to access the cluster.
         :param pulumi.Input[_builtins.str] product_form: The product form of the cluster. Valid values:
@@ -1562,7 +1562,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`. From version 1.272.0, `payment_type` can be modified.
         """
         return pulumi.get(self, "payment_type")
 

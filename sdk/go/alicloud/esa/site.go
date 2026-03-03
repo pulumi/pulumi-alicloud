@@ -88,7 +88,7 @@ import (
 // ESA Site can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:esa/site:Site example <id>
+// $ pulumi import alicloud:esa/site:Site example <site_id>
 // ```
 type Site struct {
 	pulumi.CustomResourceState
@@ -101,6 +101,10 @@ type Site struct {
 	AddClientGeolocationHeader pulumi.StringPtrOutput `pulumi:"addClientGeolocationHeader"`
 	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
 	AddRealClientIpHeader pulumi.StringPtrOutput `pulumi:"addRealClientIpHeader"`
+	// HTTP DDoS Intelligent Protection Mode. Valid values:
+	AiMode pulumi.StringOutput `pulumi:"aiMode"`
+	// HTTP DDoS Intelligent Protection Level. Values:
+	AiTemplate pulumi.StringOutput `pulumi:"aiTemplate"`
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode pulumi.StringOutput `pulumi:"cacheArchitectureMode"`
 	// Site cache hold switch. Value:
@@ -119,6 +123,9 @@ type Site struct {
 	DevelopmentMode pulumi.StringPtrOutput `pulumi:"developmentMode"`
 	// CNAME flattening mode. Possible values:
 	FlattenMode pulumi.StringPtrOutput `pulumi:"flattenMode"`
+	// HTTP DDoS Attack Protection Policy Modes. Valid values:
+	// - `very weak`: indicates a very permissive setting.
+	GlobalMode pulumi.StringOutput `pulumi:"globalMode"`
 	// The ID of the associated package instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Specifies whether to enable IPv6. Valid values:
@@ -193,6 +200,10 @@ type siteState struct {
 	AddClientGeolocationHeader *string `pulumi:"addClientGeolocationHeader"`
 	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
 	AddRealClientIpHeader *string `pulumi:"addRealClientIpHeader"`
+	// HTTP DDoS Intelligent Protection Mode. Valid values:
+	AiMode *string `pulumi:"aiMode"`
+	// HTTP DDoS Intelligent Protection Level. Values:
+	AiTemplate *string `pulumi:"aiTemplate"`
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode *string `pulumi:"cacheArchitectureMode"`
 	// Site cache hold switch. Value:
@@ -211,6 +222,9 @@ type siteState struct {
 	DevelopmentMode *string `pulumi:"developmentMode"`
 	// CNAME flattening mode. Possible values:
 	FlattenMode *string `pulumi:"flattenMode"`
+	// HTTP DDoS Attack Protection Policy Modes. Valid values:
+	// - `very weak`: indicates a very permissive setting.
+	GlobalMode *string `pulumi:"globalMode"`
 	// The ID of the associated package instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// Specifies whether to enable IPv6. Valid values:
@@ -250,6 +264,10 @@ type SiteState struct {
 	AddClientGeolocationHeader pulumi.StringPtrInput
 	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
 	AddRealClientIpHeader pulumi.StringPtrInput
+	// HTTP DDoS Intelligent Protection Mode. Valid values:
+	AiMode pulumi.StringPtrInput
+	// HTTP DDoS Intelligent Protection Level. Values:
+	AiTemplate pulumi.StringPtrInput
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode pulumi.StringPtrInput
 	// Site cache hold switch. Value:
@@ -268,6 +286,9 @@ type SiteState struct {
 	DevelopmentMode pulumi.StringPtrInput
 	// CNAME flattening mode. Possible values:
 	FlattenMode pulumi.StringPtrInput
+	// HTTP DDoS Attack Protection Policy Modes. Valid values:
+	// - `very weak`: indicates a very permissive setting.
+	GlobalMode pulumi.StringPtrInput
 	// The ID of the associated package instance.
 	InstanceId pulumi.StringPtrInput
 	// Specifies whether to enable IPv6. Valid values:
@@ -311,6 +332,10 @@ type siteArgs struct {
 	AddClientGeolocationHeader *string `pulumi:"addClientGeolocationHeader"`
 	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
 	AddRealClientIpHeader *string `pulumi:"addRealClientIpHeader"`
+	// HTTP DDoS Intelligent Protection Mode. Valid values:
+	AiMode *string `pulumi:"aiMode"`
+	// HTTP DDoS Intelligent Protection Level. Values:
+	AiTemplate *string `pulumi:"aiTemplate"`
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode *string `pulumi:"cacheArchitectureMode"`
 	// Site cache hold switch. Value:
@@ -327,6 +352,9 @@ type siteArgs struct {
 	DevelopmentMode *string `pulumi:"developmentMode"`
 	// CNAME flattening mode. Possible values:
 	FlattenMode *string `pulumi:"flattenMode"`
+	// HTTP DDoS Attack Protection Policy Modes. Valid values:
+	// - `very weak`: indicates a very permissive setting.
+	GlobalMode *string `pulumi:"globalMode"`
 	// The ID of the associated package instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Specifies whether to enable IPv6. Valid values:
@@ -365,6 +393,10 @@ type SiteArgs struct {
 	AddClientGeolocationHeader pulumi.StringPtrInput
 	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
 	AddRealClientIpHeader pulumi.StringPtrInput
+	// HTTP DDoS Intelligent Protection Mode. Valid values:
+	AiMode pulumi.StringPtrInput
+	// HTTP DDoS Intelligent Protection Level. Values:
+	AiTemplate pulumi.StringPtrInput
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode pulumi.StringPtrInput
 	// Site cache hold switch. Value:
@@ -381,6 +413,9 @@ type SiteArgs struct {
 	DevelopmentMode pulumi.StringPtrInput
 	// CNAME flattening mode. Possible values:
 	FlattenMode pulumi.StringPtrInput
+	// HTTP DDoS Attack Protection Policy Modes. Valid values:
+	// - `very weak`: indicates a very permissive setting.
+	GlobalMode pulumi.StringPtrInput
 	// The ID of the associated package instance.
 	InstanceId pulumi.StringInput
 	// Specifies whether to enable IPv6. Valid values:
@@ -513,6 +548,16 @@ func (o SiteOutput) AddRealClientIpHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.AddRealClientIpHeader }).(pulumi.StringPtrOutput)
 }
 
+// HTTP DDoS Intelligent Protection Mode. Valid values:
+func (o SiteOutput) AiMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.AiMode }).(pulumi.StringOutput)
+}
+
+// HTTP DDoS Intelligent Protection Level. Values:
+func (o SiteOutput) AiTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.AiTemplate }).(pulumi.StringOutput)
+}
+
 // Multi-level cache architecture mode. Possible values:
 func (o SiteOutput) CacheArchitectureMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.CacheArchitectureMode }).(pulumi.StringOutput)
@@ -556,6 +601,12 @@ func (o SiteOutput) DevelopmentMode() pulumi.StringPtrOutput {
 // CNAME flattening mode. Possible values:
 func (o SiteOutput) FlattenMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.FlattenMode }).(pulumi.StringPtrOutput)
+}
+
+// HTTP DDoS Attack Protection Policy Modes. Valid values:
+// - `very weak`: indicates a very permissive setting.
+func (o SiteOutput) GlobalMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.GlobalMode }).(pulumi.StringOutput)
 }
 
 // The ID of the associated package instance.

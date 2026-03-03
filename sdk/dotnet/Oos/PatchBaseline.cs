@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oos
 {
     /// <summary>
-    /// Provides a OOS Patch Baseline resource.
+    /// Provides a Operation Orchestration Service (OOS) Patch Baseline resource.
     /// 
-    /// For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
+    /// For information about Operation Orchestration Service (OOS) Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
     /// 
     /// &gt; **NOTE:** Available since v1.146.0.
     /// 
@@ -44,29 +44,29 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// ## Import
     /// 
-    /// OOS Patch Baseline can be imported using the id, e.g.
+    /// Operation Orchestration Service (OOS) Patch Baseline can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example &lt;id&gt;
+    /// $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example &lt;patch_baseline_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/patchBaseline:PatchBaseline")]
     public partial class PatchBaseline : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+        /// This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         /// </summary>
         [Output("approvalRules")]
         public Output<string> ApprovalRules { get; private set; } = null!;
 
         /// <summary>
-        /// Approved Patch.
+        /// List of approved patches.
         /// </summary>
         [Output("approvedPatches")]
         public Output<ImmutableArray<string>> ApprovedPatches { get; private set; } = null!;
 
         /// <summary>
-        /// ApprovedPatchesEnableNonSecurity.
+        /// Specifies whether approved patches include updates other than security updates.
         /// </summary>
         [Output("approvedPatchesEnableNonSecurity")]
         public Output<bool?> ApprovedPatchesEnableNonSecurity { get; private set; } = null!;
@@ -78,25 +78,36 @@ namespace Pulumi.AliCloud.Oos
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Patches baseline description information.
+        /// Description of the patch baseline.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+        /// Operating system type. Supported values:
+        /// - Windows
+        /// - Ubuntu
+        /// - CentOS
+        /// - Debian
+        /// - AliyunLinux
+        /// - RedhatEnterpriseLinux
+        /// - Anolis
+        /// - Fedora
+        /// - Suse
+        /// - RockyLinux
+        /// - AlmaLinux.
         /// </summary>
         [Output("operationSystem")]
         public Output<string> OperationSystem { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the patch baseline.
+        /// Patch baseline name.
         /// </summary>
         [Output("patchBaselineName")]
         public Output<string> PatchBaselineName { get; private set; } = null!;
 
         /// <summary>
-        /// Reject patches.
+        /// List of rejected patches.
         /// </summary>
         [Output("rejectedPatches")]
         public Output<ImmutableArray<string>> RejectedPatches { get; private set; } = null!;
@@ -108,19 +119,19 @@ namespace Pulumi.AliCloud.Oos
         public Output<string> RejectedPatchesAction { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// Resource group ID.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Source.
+        /// List of patch source configurations.
         /// </summary>
         [Output("sources")]
         public Output<ImmutableArray<string>> Sources { get; private set; } = null!;
 
         /// <summary>
-        /// Label.
+        /// A key-value map of tags. The number of key-value pairs must be between 1 and 20.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -172,7 +183,7 @@ namespace Pulumi.AliCloud.Oos
     public sealed class PatchBaselineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+        /// This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         /// </summary>
         [Input("approvalRules", required: true)]
         public Input<string> ApprovalRules { get; set; } = null!;
@@ -181,7 +192,7 @@ namespace Pulumi.AliCloud.Oos
         private InputList<string>? _approvedPatches;
 
         /// <summary>
-        /// Approved Patch.
+        /// List of approved patches.
         /// </summary>
         public InputList<string> ApprovedPatches
         {
@@ -190,25 +201,36 @@ namespace Pulumi.AliCloud.Oos
         }
 
         /// <summary>
-        /// ApprovedPatchesEnableNonSecurity.
+        /// Specifies whether approved patches include updates other than security updates.
         /// </summary>
         [Input("approvedPatchesEnableNonSecurity")]
         public Input<bool>? ApprovedPatchesEnableNonSecurity { get; set; }
 
         /// <summary>
-        /// Patches baseline description information.
+        /// Description of the patch baseline.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+        /// Operating system type. Supported values:
+        /// - Windows
+        /// - Ubuntu
+        /// - CentOS
+        /// - Debian
+        /// - AliyunLinux
+        /// - RedhatEnterpriseLinux
+        /// - Anolis
+        /// - Fedora
+        /// - Suse
+        /// - RockyLinux
+        /// - AlmaLinux.
         /// </summary>
         [Input("operationSystem", required: true)]
         public Input<string> OperationSystem { get; set; } = null!;
 
         /// <summary>
-        /// The name of the patch baseline.
+        /// Patch baseline name.
         /// </summary>
         [Input("patchBaselineName", required: true)]
         public Input<string> PatchBaselineName { get; set; } = null!;
@@ -217,7 +239,7 @@ namespace Pulumi.AliCloud.Oos
         private InputList<string>? _rejectedPatches;
 
         /// <summary>
-        /// Reject patches.
+        /// List of rejected patches.
         /// </summary>
         public InputList<string> RejectedPatches
         {
@@ -232,7 +254,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? RejectedPatchesAction { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// Resource group ID.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -241,7 +263,7 @@ namespace Pulumi.AliCloud.Oos
         private InputList<string>? _sources;
 
         /// <summary>
-        /// Source.
+        /// List of patch source configurations.
         /// </summary>
         public InputList<string> Sources
         {
@@ -253,7 +275,7 @@ namespace Pulumi.AliCloud.Oos
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// Label.
+        /// A key-value map of tags. The number of key-value pairs must be between 1 and 20.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -270,7 +292,7 @@ namespace Pulumi.AliCloud.Oos
     public sealed class PatchBaselineState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+        /// This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         /// </summary>
         [Input("approvalRules")]
         public Input<string>? ApprovalRules { get; set; }
@@ -279,7 +301,7 @@ namespace Pulumi.AliCloud.Oos
         private InputList<string>? _approvedPatches;
 
         /// <summary>
-        /// Approved Patch.
+        /// List of approved patches.
         /// </summary>
         public InputList<string> ApprovedPatches
         {
@@ -288,7 +310,7 @@ namespace Pulumi.AliCloud.Oos
         }
 
         /// <summary>
-        /// ApprovedPatchesEnableNonSecurity.
+        /// Specifies whether approved patches include updates other than security updates.
         /// </summary>
         [Input("approvedPatchesEnableNonSecurity")]
         public Input<bool>? ApprovedPatchesEnableNonSecurity { get; set; }
@@ -300,19 +322,30 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Patches baseline description information.
+        /// Description of the patch baseline.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+        /// Operating system type. Supported values:
+        /// - Windows
+        /// - Ubuntu
+        /// - CentOS
+        /// - Debian
+        /// - AliyunLinux
+        /// - RedhatEnterpriseLinux
+        /// - Anolis
+        /// - Fedora
+        /// - Suse
+        /// - RockyLinux
+        /// - AlmaLinux.
         /// </summary>
         [Input("operationSystem")]
         public Input<string>? OperationSystem { get; set; }
 
         /// <summary>
-        /// The name of the patch baseline.
+        /// Patch baseline name.
         /// </summary>
         [Input("patchBaselineName")]
         public Input<string>? PatchBaselineName { get; set; }
@@ -321,7 +354,7 @@ namespace Pulumi.AliCloud.Oos
         private InputList<string>? _rejectedPatches;
 
         /// <summary>
-        /// Reject patches.
+        /// List of rejected patches.
         /// </summary>
         public InputList<string> RejectedPatches
         {
@@ -336,7 +369,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? RejectedPatchesAction { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// Resource group ID.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -345,7 +378,7 @@ namespace Pulumi.AliCloud.Oos
         private InputList<string>? _sources;
 
         /// <summary>
-        /// Source.
+        /// List of patch source configurations.
         /// </summary>
         public InputList<string> Sources
         {
@@ -357,7 +390,7 @@ namespace Pulumi.AliCloud.Oos
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// Label.
+        /// A key-value map of tags. The number of key-value pairs must be between 1 and 20.
         /// </summary>
         public InputMap<string> Tags
         {

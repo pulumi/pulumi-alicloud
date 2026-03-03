@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  * Vpc Ipam Ipam can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example &lt;id&gt;
+ * $ pulumi import alicloud:vpc/ipamIpam:IpamIpam example &lt;ipam_id&gt;
  * ```
  * 
  */
@@ -153,6 +153,20 @@ public class IpamIpam extends com.pulumi.resources.CustomResource {
      */
     public Output<String> privateDefaultScopeId() {
         return this.privateDefaultScopeId;
+    }
+    /**
+     * After an IPAM is created, the public network IPAM is created by default.
+     * 
+     */
+    @Export(name="publicDefaultScopeId", refs={String.class}, tree="[0]")
+    private Output<String> publicDefaultScopeId;
+
+    /**
+     * @return After an IPAM is created, the public network IPAM is created by default.
+     * 
+     */
+    public Output<String> publicDefaultScopeId() {
+        return this.publicDefaultScopeId;
     }
     /**
      * The region ID of the resource.

@@ -68,6 +68,36 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * HTTP DDoS Intelligent Protection Mode. Valid values:
+     * 
+     */
+    @Import(name="aiMode")
+    private @Nullable Output<String> aiMode;
+
+    /**
+     * @return HTTP DDoS Intelligent Protection Mode. Valid values:
+     * 
+     */
+    public Optional<Output<String>> aiMode() {
+        return Optional.ofNullable(this.aiMode);
+    }
+
+    /**
+     * HTTP DDoS Intelligent Protection Level. Values:
+     * 
+     */
+    @Import(name="aiTemplate")
+    private @Nullable Output<String> aiTemplate;
+
+    /**
+     * @return HTTP DDoS Intelligent Protection Level. Values:
+     * 
+     */
+    public Optional<Output<String>> aiTemplate() {
+        return Optional.ofNullable(this.aiTemplate);
+    }
+
+    /**
      * Multi-level cache architecture mode. Possible values:
      * 
      */
@@ -200,6 +230,23 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> flattenMode() {
         return Optional.ofNullable(this.flattenMode);
+    }
+
+    /**
+     * HTTP DDoS Attack Protection Policy Modes. Valid values:
+     * - `very weak`: indicates a very permissive setting.
+     * 
+     */
+    @Import(name="globalMode")
+    private @Nullable Output<String> globalMode;
+
+    /**
+     * @return HTTP DDoS Attack Protection Policy Modes. Valid values:
+     * - `very weak`: indicates a very permissive setting.
+     * 
+     */
+    public Optional<Output<String>> globalMode() {
+        return Optional.ofNullable(this.globalMode);
     }
 
     /**
@@ -407,6 +454,8 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
         this.accessType = $.accessType;
         this.addClientGeolocationHeader = $.addClientGeolocationHeader;
         this.addRealClientIpHeader = $.addRealClientIpHeader;
+        this.aiMode = $.aiMode;
+        this.aiTemplate = $.aiTemplate;
         this.cacheArchitectureMode = $.cacheArchitectureMode;
         this.cacheReserveEnable = $.cacheReserveEnable;
         this.cacheReserveInstanceId = $.cacheReserveInstanceId;
@@ -416,6 +465,7 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
         this.crossBorderOptimization = $.crossBorderOptimization;
         this.developmentMode = $.developmentMode;
         this.flattenMode = $.flattenMode;
+        this.globalMode = $.globalMode;
         this.instanceId = $.instanceId;
         this.ipv6Enable = $.ipv6Enable;
         this.ipv6Region = $.ipv6Region;
@@ -514,6 +564,48 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder addRealClientIpHeader(String addRealClientIpHeader) {
             return addRealClientIpHeader(Output.of(addRealClientIpHeader));
+        }
+
+        /**
+         * @param aiMode HTTP DDoS Intelligent Protection Mode. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiMode(@Nullable Output<String> aiMode) {
+            $.aiMode = aiMode;
+            return this;
+        }
+
+        /**
+         * @param aiMode HTTP DDoS Intelligent Protection Mode. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiMode(String aiMode) {
+            return aiMode(Output.of(aiMode));
+        }
+
+        /**
+         * @param aiTemplate HTTP DDoS Intelligent Protection Level. Values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiTemplate(@Nullable Output<String> aiTemplate) {
+            $.aiTemplate = aiTemplate;
+            return this;
+        }
+
+        /**
+         * @param aiTemplate HTTP DDoS Intelligent Protection Level. Values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiTemplate(String aiTemplate) {
+            return aiTemplate(Output.of(aiTemplate));
         }
 
         /**
@@ -703,6 +795,29 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder flattenMode(String flattenMode) {
             return flattenMode(Output.of(flattenMode));
+        }
+
+        /**
+         * @param globalMode HTTP DDoS Attack Protection Policy Modes. Valid values:
+         * - `very weak`: indicates a very permissive setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalMode(@Nullable Output<String> globalMode) {
+            $.globalMode = globalMode;
+            return this;
+        }
+
+        /**
+         * @param globalMode HTTP DDoS Attack Protection Policy Modes. Valid values:
+         * - `very weak`: indicates a very permissive setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalMode(String globalMode) {
+            return globalMode(Output.of(globalMode));
         }
 
         /**

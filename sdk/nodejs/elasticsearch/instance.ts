@@ -92,11 +92,11 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Schema Type:.
+     * The deployment mode or architecture type:.
      */
     declare public /*out*/ readonly archType: pulumi.Output<string>;
     /**
-     * Renewal Period
+     * Number of auto-renewal periods.
      */
     declare public readonly autoRenewDuration: pulumi.Output<number | undefined>;
     /**
@@ -106,7 +106,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly clientNodeAmount: pulumi.Output<number>;
     /**
-     * Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+     * Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
      */
     declare public readonly clientNodeConfiguration: pulumi.Output<outputs.elasticsearch.InstanceClientNodeConfiguration>;
     /**
@@ -116,7 +116,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly clientNodeSpec: pulumi.Output<string>;
     /**
-     * Instance creation time.
+     * The time when the instance was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -126,7 +126,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly dataNodeAmount: pulumi.Output<number>;
     /**
-     * Elasticsearch data node information See `dataNodeConfiguration` below.
+     * Elasticsearch data node information. See `dataNodeConfiguration` below.
      */
     declare public readonly dataNodeConfiguration: pulumi.Output<outputs.elasticsearch.InstanceDataNodeConfiguration>;
     /**
@@ -160,41 +160,43 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly dataNodeSpec: pulumi.Output<string>;
     /**
-     * Instance name
+     * Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * Elasticsearch cluster private domain name.
+     * The internal network address of the instance.
      */
     declare public /*out*/ readonly domain: pulumi.Output<string>;
     /**
-     * Whether to enable Kibana private network access.
-     *
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * Indicates whether private network access to Kibana is enabled. Valid values:  
+     * - true: Enabled
+     * - false: Disabled
      */
     declare public readonly enableKibanaPrivateNetwork: pulumi.Output<boolean>;
     /**
-     * Does Kibana enable public access
+     * Specifies whether to enable public access to Kibana. Valid values:  
+     * - true: Enables public access.
+     * - false: Disables public access.
      */
     declare public readonly enableKibanaPublicNetwork: pulumi.Output<boolean>;
     /**
-     * Whether to enable Kibana public network access.
-     *
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * Specifies whether to enable a public endpoint for the instance. Valid values:
+     * - true: Enables the public endpoint.
+     * - false: Disables the public endpoint.
      */
     declare public readonly enablePublic: pulumi.Output<boolean>;
     /**
-     * Whether to force changes
+     * Whether to force a restart:
+     * - true: Yes
+     * - false (default): No.
      *
-     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      */
     declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
-     * Version type.
+     * Edition type:  
+     * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+     * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
      */
     declare public readonly instanceCategory: pulumi.Output<string>;
     /**
@@ -204,11 +206,11 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly instanceChargeType: pulumi.Output<string>;
     /**
-     * Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     * The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
      */
     declare public readonly kibanaConfiguration: pulumi.Output<outputs.elasticsearch.InstanceKibanaConfiguration>;
     /**
-     * Kibana address.
+     * Kibana endpoint.
      */
     declare public /*out*/ readonly kibanaDomain: pulumi.Output<string>;
     /**
@@ -218,19 +220,23 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly kibanaNodeSpec: pulumi.Output<string>;
     /**
-     * The port assigned by the Kibana node.
+     * The access port for Kibana.
      */
     declare public /*out*/ readonly kibanaPort: pulumi.Output<number>;
     /**
-     * Kibana private network security group ID
+     * The private endpoint of Kibana.
+     */
+    declare public /*out*/ readonly kibanaPrivateDomain: pulumi.Output<string>;
+    /**
+     * List of security groups.
      */
     declare public readonly kibanaPrivateSecurityGroupId: pulumi.Output<string | undefined>;
     /**
-     * Cluster Kibana node private network access whitelist
+     * List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
      */
     declare public readonly kibanaPrivateWhitelists: pulumi.Output<string[]>;
     /**
-     * Kibana private network access whitelist
+     * The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
      */
     declare public readonly kibanaWhitelists: pulumi.Output<string[]>;
     /**
@@ -242,7 +248,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+     * Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
      */
     declare public readonly masterConfiguration: pulumi.Output<outputs.elasticsearch.InstanceMasterConfiguration>;
     /**
@@ -258,17 +264,19 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly masterNodeSpec: pulumi.Output<string>;
     /**
-     * The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+     * Configuration change type. Valid values:
+     * - upgrade (default): Upgrade configuration
+     * - downgrade: Downgrade configuration.
      *
-     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      */
     declare public readonly orderActionType: pulumi.Output<string | undefined>;
     /**
-     * The access password of the instance.
+     * The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
      */
     declare public readonly password: pulumi.Output<string | undefined>;
     /**
-     * The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+     * The billing method of the instance. Supported values:
      */
     declare public readonly paymentType: pulumi.Output<string>;
     /**
@@ -280,62 +288,77 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
-     * Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+     * The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
      */
     declare public readonly privateWhitelists: pulumi.Output<string[]>;
     /**
-     * Access protocol. Optional values: `HTTP` and **HTTPS * *.
+     * The access protocol. Supported protocols: HTTP and HTTPS.
      */
     declare public readonly protocol: pulumi.Output<string>;
     /**
-     * The public network address of the current instance.
+     * The public endpoint of the instance.
      */
     declare public /*out*/ readonly publicDomain: pulumi.Output<string>;
     /**
-     * Elasticsearch cluster public network access port
+     * The public access port of the instance.
      */
     declare public /*out*/ readonly publicPort: pulumi.Output<number>;
     /**
-     * Elasticseach public network access whitelist IP list
+     * The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
      */
     declare public readonly publicWhitelists: pulumi.Output<string[]>;
     /**
-     * Renewal Status
+     * The renewal status. Valid values:
+     * - AutoRenewal: Auto-renewal.
+     * - ManualRenewal: Manual renewal.
+     * - NotRenewal: No renewal.
      */
     declare public readonly renewStatus: pulumi.Output<string>;
     /**
-     * Renewal Period Unit
+     * The unit of the auto-renewal period. Valid values:  
+     * - M: Month.
+     * - Y: Year.
+     *
+     * > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
      */
     declare public readonly renewalDurationUnit: pulumi.Output<string>;
     /**
-     * Resource group to which the instance belongs
+     * The ID of the resource group to which the instance belongs.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * Configuration information
+     * YML configuration file settings for the instance.
      */
     declare public readonly settingConfig: pulumi.Output<{[key: string]: string}>;
     /**
-     * Instance change status
+     * The status of the instance.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Collection of tag key-value pairs
+     * Instance tag group.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The change policy for Elasticsearch.
+     * Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+     * - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+     * - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+     * - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
      *
-     * The values are as follows:
-     * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-     * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-     * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-     *
-     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      */
     declare public readonly updateStrategy: pulumi.Output<string | undefined>;
     /**
-     * Instance version
+     * The instance version. Valid values:
+     * - 8.5.1_with_X-Pack
+     * - 7.10_with_X-Pack
+     * - 6.7_with_X-Pack
+     * - 7.7_with_X-Pack
+     * - 6.8_with_X-Pack
+     * - 6.3_with_X-Pack
+     * - 5.6_with_X-Pack
+     * - 5.5.3_with_X-Pack
+     *
+     * > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
      */
     declare public readonly version: pulumi.Output<string>;
     /**
@@ -349,7 +372,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly warmNodeAmount: pulumi.Output<number>;
     /**
-     * Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+     * Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
      */
     declare public readonly warmNodeConfiguration: pulumi.Output<outputs.elasticsearch.InstanceWarmNodeConfiguration>;
     /**
@@ -377,7 +400,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly warmNodeSpec: pulumi.Output<string>;
     /**
-     * The number of zones in the Elasticsearch instance.
+     * The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -421,6 +444,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kibanaDomain"] = state?.kibanaDomain;
             resourceInputs["kibanaNodeSpec"] = state?.kibanaNodeSpec;
             resourceInputs["kibanaPort"] = state?.kibanaPort;
+            resourceInputs["kibanaPrivateDomain"] = state?.kibanaPrivateDomain;
             resourceInputs["kibanaPrivateSecurityGroupId"] = state?.kibanaPrivateSecurityGroupId;
             resourceInputs["kibanaPrivateWhitelists"] = state?.kibanaPrivateWhitelists;
             resourceInputs["kibanaWhitelists"] = state?.kibanaWhitelists;
@@ -518,6 +542,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["domain"] = undefined /*out*/;
             resourceInputs["kibanaDomain"] = undefined /*out*/;
             resourceInputs["kibanaPort"] = undefined /*out*/;
+            resourceInputs["kibanaPrivateDomain"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["publicDomain"] = undefined /*out*/;
             resourceInputs["publicPort"] = undefined /*out*/;
@@ -535,11 +560,11 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * Schema Type:.
+     * The deployment mode or architecture type:.
      */
     archType?: pulumi.Input<string>;
     /**
-     * Renewal Period
+     * Number of auto-renewal periods.
      */
     autoRenewDuration?: pulumi.Input<number>;
     /**
@@ -549,7 +574,7 @@ export interface InstanceState {
      */
     clientNodeAmount?: pulumi.Input<number>;
     /**
-     * Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+     * Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
      */
     clientNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceClientNodeConfiguration>;
     /**
@@ -559,7 +584,7 @@ export interface InstanceState {
      */
     clientNodeSpec?: pulumi.Input<string>;
     /**
-     * Instance creation time.
+     * The time when the instance was created.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -569,7 +594,7 @@ export interface InstanceState {
      */
     dataNodeAmount?: pulumi.Input<number>;
     /**
-     * Elasticsearch data node information See `dataNodeConfiguration` below.
+     * Elasticsearch data node information. See `dataNodeConfiguration` below.
      */
     dataNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceDataNodeConfiguration>;
     /**
@@ -603,41 +628,43 @@ export interface InstanceState {
      */
     dataNodeSpec?: pulumi.Input<string>;
     /**
-     * Instance name
+     * Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
      */
     description?: pulumi.Input<string>;
     /**
-     * Elasticsearch cluster private domain name.
+     * The internal network address of the instance.
      */
     domain?: pulumi.Input<string>;
     /**
-     * Whether to enable Kibana private network access.
-     *
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * Indicates whether private network access to Kibana is enabled. Valid values:  
+     * - true: Enabled
+     * - false: Disabled
      */
     enableKibanaPrivateNetwork?: pulumi.Input<boolean>;
     /**
-     * Does Kibana enable public access
+     * Specifies whether to enable public access to Kibana. Valid values:  
+     * - true: Enables public access.
+     * - false: Disables public access.
      */
     enableKibanaPublicNetwork?: pulumi.Input<boolean>;
     /**
-     * Whether to enable Kibana public network access.
-     *
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * Specifies whether to enable a public endpoint for the instance. Valid values:
+     * - true: Enables the public endpoint.
+     * - false: Disables the public endpoint.
      */
     enablePublic?: pulumi.Input<boolean>;
     /**
-     * Whether to force changes
+     * Whether to force a restart:
+     * - true: Yes
+     * - false (default): No.
      *
-     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      */
     force?: pulumi.Input<boolean>;
     /**
-     * Version type.
+     * Edition type:  
+     * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+     * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
      */
     instanceCategory?: pulumi.Input<string>;
     /**
@@ -647,11 +674,11 @@ export interface InstanceState {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     * The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
      */
     kibanaConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceKibanaConfiguration>;
     /**
-     * Kibana address.
+     * Kibana endpoint.
      */
     kibanaDomain?: pulumi.Input<string>;
     /**
@@ -661,19 +688,23 @@ export interface InstanceState {
      */
     kibanaNodeSpec?: pulumi.Input<string>;
     /**
-     * The port assigned by the Kibana node.
+     * The access port for Kibana.
      */
     kibanaPort?: pulumi.Input<number>;
     /**
-     * Kibana private network security group ID
+     * The private endpoint of Kibana.
+     */
+    kibanaPrivateDomain?: pulumi.Input<string>;
+    /**
+     * List of security groups.
      */
     kibanaPrivateSecurityGroupId?: pulumi.Input<string>;
     /**
-     * Cluster Kibana node private network access whitelist
+     * List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
      */
     kibanaPrivateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Kibana private network access whitelist
+     * The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
      */
     kibanaWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -685,7 +716,7 @@ export interface InstanceState {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+     * Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
      */
     masterConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceMasterConfiguration>;
     /**
@@ -701,17 +732,19 @@ export interface InstanceState {
      */
     masterNodeSpec?: pulumi.Input<string>;
     /**
-     * The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+     * Configuration change type. Valid values:
+     * - upgrade (default): Upgrade configuration
+     * - downgrade: Downgrade configuration.
      *
-     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      */
     orderActionType?: pulumi.Input<string>;
     /**
-     * The access password of the instance.
+     * The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
      */
     password?: pulumi.Input<string>;
     /**
-     * The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+     * The billing method of the instance. Supported values:
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -723,62 +756,77 @@ export interface InstanceState {
      */
     port?: pulumi.Input<number>;
     /**
-     * Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+     * The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
      */
     privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Access protocol. Optional values: `HTTP` and **HTTPS * *.
+     * The access protocol. Supported protocols: HTTP and HTTPS.
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The public network address of the current instance.
+     * The public endpoint of the instance.
      */
     publicDomain?: pulumi.Input<string>;
     /**
-     * Elasticsearch cluster public network access port
+     * The public access port of the instance.
      */
     publicPort?: pulumi.Input<number>;
     /**
-     * Elasticseach public network access whitelist IP list
+     * The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
      */
     publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Renewal Status
+     * The renewal status. Valid values:
+     * - AutoRenewal: Auto-renewal.
+     * - ManualRenewal: Manual renewal.
+     * - NotRenewal: No renewal.
      */
     renewStatus?: pulumi.Input<string>;
     /**
-     * Renewal Period Unit
+     * The unit of the auto-renewal period. Valid values:  
+     * - M: Month.
+     * - Y: Year.
+     *
+     * > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
      */
     renewalDurationUnit?: pulumi.Input<string>;
     /**
-     * Resource group to which the instance belongs
+     * The ID of the resource group to which the instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Configuration information
+     * YML configuration file settings for the instance.
      */
     settingConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Instance change status
+     * The status of the instance.
      */
     status?: pulumi.Input<string>;
     /**
-     * Collection of tag key-value pairs
+     * Instance tag group.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The change policy for Elasticsearch.
+     * Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+     * - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+     * - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+     * - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
      *
-     * The values are as follows:
-     * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-     * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-     * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-     *
-     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      */
     updateStrategy?: pulumi.Input<string>;
     /**
-     * Instance version
+     * The instance version. Valid values:
+     * - 8.5.1_with_X-Pack
+     * - 7.10_with_X-Pack
+     * - 6.7_with_X-Pack
+     * - 7.7_with_X-Pack
+     * - 6.8_with_X-Pack
+     * - 6.3_with_X-Pack
+     * - 5.6_with_X-Pack
+     * - 5.5.3_with_X-Pack
+     *
+     * > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
      */
     version?: pulumi.Input<string>;
     /**
@@ -792,7 +840,7 @@ export interface InstanceState {
      */
     warmNodeAmount?: pulumi.Input<number>;
     /**
-     * Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+     * Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
      */
     warmNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceWarmNodeConfiguration>;
     /**
@@ -820,7 +868,7 @@ export interface InstanceState {
      */
     warmNodeSpec?: pulumi.Input<string>;
     /**
-     * The number of zones in the Elasticsearch instance.
+     * The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -832,7 +880,7 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * Renewal Period
+     * Number of auto-renewal periods.
      */
     autoRenewDuration?: pulumi.Input<number>;
     /**
@@ -842,7 +890,7 @@ export interface InstanceArgs {
      */
     clientNodeAmount?: pulumi.Input<number>;
     /**
-     * Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+     * Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `clientNodeConfiguration` below.
      */
     clientNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceClientNodeConfiguration>;
     /**
@@ -858,7 +906,7 @@ export interface InstanceArgs {
      */
     dataNodeAmount?: pulumi.Input<number>;
     /**
-     * Elasticsearch data node information See `dataNodeConfiguration` below.
+     * Elasticsearch data node information. See `dataNodeConfiguration` below.
      */
     dataNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceDataNodeConfiguration>;
     /**
@@ -892,37 +940,39 @@ export interface InstanceArgs {
      */
     dataNodeSpec?: pulumi.Input<string>;
     /**
-     * Instance name
+     * Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to enable Kibana private network access.
-     *
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * Indicates whether private network access to Kibana is enabled. Valid values:  
+     * - true: Enabled
+     * - false: Disabled
      */
     enableKibanaPrivateNetwork?: pulumi.Input<boolean>;
     /**
-     * Does Kibana enable public access
+     * Specifies whether to enable public access to Kibana. Valid values:  
+     * - true: Enables public access.
+     * - false: Disables public access.
      */
     enableKibanaPublicNetwork?: pulumi.Input<boolean>;
     /**
-     * Whether to enable Kibana public network access.
-     *
-     * The meaning of the value is as follows:
-     * - true: On.
-     * - false: does not open.
+     * Specifies whether to enable a public endpoint for the instance. Valid values:
+     * - true: Enables the public endpoint.
+     * - false: Disables the public endpoint.
      */
     enablePublic?: pulumi.Input<boolean>;
     /**
-     * Whether to force changes
+     * Whether to force a restart:
+     * - true: Yes
+     * - false (default): No.
      *
-     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      */
     force?: pulumi.Input<boolean>;
     /**
-     * Version type.
+     * Edition type:  
+     * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+     * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
      */
     instanceCategory?: pulumi.Input<string>;
     /**
@@ -932,7 +982,7 @@ export interface InstanceArgs {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     * The configuration of Elasticsearch Kibana nodes. See `kibanaConfiguration` below.
      */
     kibanaConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceKibanaConfiguration>;
     /**
@@ -942,15 +992,15 @@ export interface InstanceArgs {
      */
     kibanaNodeSpec?: pulumi.Input<string>;
     /**
-     * Kibana private network security group ID
+     * List of security groups.
      */
     kibanaPrivateSecurityGroupId?: pulumi.Input<string>;
     /**
-     * Cluster Kibana node private network access whitelist
+     * List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
      */
     kibanaPrivateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Kibana private network access whitelist
+     * The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
      */
     kibanaWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -962,7 +1012,7 @@ export interface InstanceArgs {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+     * Configuration information for Elasticsearch dedicated master nodes. See `masterConfiguration` below.
      */
     masterConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceMasterConfiguration>;
     /**
@@ -978,17 +1028,19 @@ export interface InstanceArgs {
      */
     masterNodeSpec?: pulumi.Input<string>;
     /**
-     * The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+     * Configuration change type. Valid values:
+     * - upgrade (default): Upgrade configuration
+     * - downgrade: Downgrade configuration.
      *
-     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      */
     orderActionType?: pulumi.Input<string>;
     /**
-     * The access password of the instance.
+     * The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
      */
     password?: pulumi.Input<string>;
     /**
-     * The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+     * The billing method of the instance. Supported values:
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -996,50 +1048,65 @@ export interface InstanceArgs {
      */
     period?: pulumi.Input<number>;
     /**
-     * Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+     * The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
      */
     privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Access protocol. Optional values: `HTTP` and **HTTPS * *.
+     * The access protocol. Supported protocols: HTTP and HTTPS.
      */
     protocol?: pulumi.Input<string>;
     /**
-     * Elasticseach public network access whitelist IP list
+     * The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
      */
     publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Renewal Status
+     * The renewal status. Valid values:
+     * - AutoRenewal: Auto-renewal.
+     * - ManualRenewal: Manual renewal.
+     * - NotRenewal: No renewal.
      */
     renewStatus?: pulumi.Input<string>;
     /**
-     * Renewal Period Unit
+     * The unit of the auto-renewal period. Valid values:  
+     * - M: Month.
+     * - Y: Year.
+     *
+     * > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
      */
     renewalDurationUnit?: pulumi.Input<string>;
     /**
-     * Resource group to which the instance belongs
+     * The ID of the resource group to which the instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Configuration information
+     * YML configuration file settings for the instance.
      */
     settingConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Collection of tag key-value pairs
+     * Instance tag group.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The change policy for Elasticsearch.
+     * Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+     * - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+     * - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+     * - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
      *
-     * The values are as follows:
-     * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-     * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-     * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-     *
-     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      */
     updateStrategy?: pulumi.Input<string>;
     /**
-     * Instance version
+     * The instance version. Valid values:
+     * - 8.5.1_with_X-Pack
+     * - 7.10_with_X-Pack
+     * - 6.7_with_X-Pack
+     * - 7.7_with_X-Pack
+     * - 6.8_with_X-Pack
+     * - 6.3_with_X-Pack
+     * - 5.6_with_X-Pack
+     * - 5.5.3_with_X-Pack
+     *
+     * > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
      */
     version: pulumi.Input<string>;
     /**
@@ -1053,7 +1120,7 @@ export interface InstanceArgs {
      */
     warmNodeAmount?: pulumi.Input<number>;
     /**
-     * Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+     * Cold data node configuration for the Elasticsearch cluster. See `warmNodeConfiguration` below.
      */
     warmNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceWarmNodeConfiguration>;
     /**
@@ -1081,7 +1148,7 @@ export interface InstanceArgs {
      */
     warmNodeSpec?: pulumi.Input<string>;
     /**
-     * The number of zones in the Elasticsearch instance.
+     * The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */

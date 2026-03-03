@@ -13,25 +13,25 @@ namespace Pulumi.AliCloud.ElasticSearch.Inputs
     public sealed class InstanceClientNodeConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Number of disks in the Elasticsearch cluster coordination node
+        /// Number of nodes.
         /// </summary>
         [Input("amount")]
         public Input<int>? Amount { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster coordinates node disk size
+        /// Node storage capacity, in GB.
         /// </summary>
         [Input("disk")]
         public Input<int>? Disk { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster coordination node disk type
+        /// Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster coordination node specification
+        /// Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         /// </summary>
         [Input("spec")]
         public Input<string>? Spec { get; set; }

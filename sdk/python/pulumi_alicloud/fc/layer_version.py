@@ -351,6 +351,8 @@ class LayerVersion(pulumi.CustomResource):
 
         > **NOTE: Setting `skip_destroy` to `true` means that the Alicloud Provider will not destroy any layer version, even when running `terraform destroy`. Layer versions are thus intentional dangling resources that are not managed by Terraform and may incur extra expense in your Alicloud account.
 
+        > **DEPRECATED:** This resource (alicloud_fc_layer_version) represents the legacy Function Compute API. For new deployments and advanced features, please use FCV3 layer resources which provide access to the latest capabilities. The legacy FC layer version supports only basic functionality and does not include newer features available in FCV3.
+
         ## Example Usage
 
         Basic Usage
@@ -417,6 +419,8 @@ class LayerVersion(pulumi.CustomResource):
         > **NOTE:** Available since v1.180.0.
 
         > **NOTE: Setting `skip_destroy` to `true` means that the Alicloud Provider will not destroy any layer version, even when running `terraform destroy`. Layer versions are thus intentional dangling resources that are not managed by Terraform and may incur extra expense in your Alicloud account.
+
+        > **DEPRECATED:** This resource (alicloud_fc_layer_version) represents the legacy Function Compute API. For new deployments and advanced features, please use FCV3 layer resources which provide access to the latest capabilities. The legacy FC layer version supports only basic functionality and does not include newer features available in FCV3.
 
         ## Example Usage
 

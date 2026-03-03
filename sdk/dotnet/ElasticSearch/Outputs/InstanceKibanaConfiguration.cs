@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.ElasticSearch.Outputs
     public sealed class InstanceKibanaConfiguration
     {
         /// <summary>
-        /// The number of disks of the Elasticsearch Kibana node. The default value is 1.
+        /// The number of nodes.
         /// </summary>
         public readonly int? Amount;
         /// <summary>
-        /// Elasticsearch Kibana node disk size
+        /// Storage capacity per node, in GB.
         /// </summary>
         public readonly int? Disk;
         /// <summary>
-        /// Elasticsearch Kibana node disk specifications
+        /// Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         /// </summary>
         public readonly string Spec;
 

@@ -30,19 +30,19 @@ __all__ = [
 class InstanceClientNodeConfigurationArgsDict(TypedDict):
     amount: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Number of disks in the Elasticsearch cluster coordination node
+    Number of nodes.
     """
     disk: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Elasticsearch cluster coordinates node disk size
+    Node storage capacity, in GB.
     """
     disk_type: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Elasticsearch cluster coordination node disk type
+    Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
     """
     spec: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Elasticsearch cluster coordination node specification
+    Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
     """
 
 @pulumi.input_type
@@ -53,10 +53,10 @@ class InstanceClientNodeConfigurationArgs:
                  disk_type: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.int] amount: Number of disks in the Elasticsearch cluster coordination node
-        :param pulumi.Input[_builtins.int] disk: Elasticsearch cluster coordinates node disk size
-        :param pulumi.Input[_builtins.str] disk_type: Elasticsearch cluster coordination node disk type
-        :param pulumi.Input[_builtins.str] spec: Elasticsearch cluster coordination node specification
+        :param pulumi.Input[_builtins.int] amount: Number of nodes.
+        :param pulumi.Input[_builtins.int] disk: Node storage capacity, in GB.
+        :param pulumi.Input[_builtins.str] disk_type: Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
+        :param pulumi.Input[_builtins.str] spec: Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         """
         if amount is not None:
             pulumi.set(__self__, "amount", amount)
@@ -71,7 +71,7 @@ class InstanceClientNodeConfigurationArgs:
     @pulumi.getter
     def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Number of disks in the Elasticsearch cluster coordination node
+        Number of nodes.
         """
         return pulumi.get(self, "amount")
 
@@ -83,7 +83,7 @@ class InstanceClientNodeConfigurationArgs:
     @pulumi.getter
     def disk(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Elasticsearch cluster coordinates node disk size
+        Node storage capacity, in GB.
         """
         return pulumi.get(self, "disk")
 
@@ -95,7 +95,7 @@ class InstanceClientNodeConfigurationArgs:
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Elasticsearch cluster coordination node disk type
+        Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
         """
         return pulumi.get(self, "disk_type")
 
@@ -107,7 +107,7 @@ class InstanceClientNodeConfigurationArgs:
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Elasticsearch cluster coordination node specification
+        Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         """
         return pulumi.get(self, "spec")
 
@@ -119,27 +119,31 @@ class InstanceClientNodeConfigurationArgs:
 class InstanceDataNodeConfigurationArgsDict(TypedDict):
     spec: pulumi.Input[_builtins.str]
     """
-    Elasticsearch data node specification
+    Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
     """
     amount: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Number of data nodes in the Elasticsearch cluster
+    Number of data nodes. Valid values: 2 to 50.
     """
     disk: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Elasticsearch data node disk size
+    Storage capacity per node, in GB.
     """
     disk_encryption: NotRequired[pulumi.Input[_builtins.bool]]
     """
-    Whether the Elasticsearch data node disk is encrypted
+    Whether to enable cloud disk encryption:
+    - true: Enabled
+    - false: Disabled.
     """
     disk_type: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Elasticsearch cluster data node disk type
+    Node disk type. Supported types:
+    - cloud_ssd: SSD cloud disk
+    - cloud_efficiency: Ultra cloud disk.
     """
     performance_level: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Elasticsearch cluster data node Essd disk level
+    Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
     """
 
 @pulumi.input_type
@@ -152,12 +156,16 @@ class InstanceDataNodeConfigurationArgs:
                  disk_type: Optional[pulumi.Input[_builtins.str]] = None,
                  performance_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] spec: Elasticsearch data node specification
-        :param pulumi.Input[_builtins.int] amount: Number of data nodes in the Elasticsearch cluster
-        :param pulumi.Input[_builtins.int] disk: Elasticsearch data node disk size
-        :param pulumi.Input[_builtins.bool] disk_encryption: Whether the Elasticsearch data node disk is encrypted
-        :param pulumi.Input[_builtins.str] disk_type: Elasticsearch cluster data node disk type
-        :param pulumi.Input[_builtins.str] performance_level: Elasticsearch cluster data node Essd disk level
+        :param pulumi.Input[_builtins.str] spec: Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+        :param pulumi.Input[_builtins.int] amount: Number of data nodes. Valid values: 2 to 50.
+        :param pulumi.Input[_builtins.int] disk: Storage capacity per node, in GB.
+        :param pulumi.Input[_builtins.bool] disk_encryption: Whether to enable cloud disk encryption:
+               - true: Enabled
+               - false: Disabled.
+        :param pulumi.Input[_builtins.str] disk_type: Node disk type. Supported types:
+               - cloud_ssd: SSD cloud disk
+               - cloud_efficiency: Ultra cloud disk.
+        :param pulumi.Input[_builtins.str] performance_level: Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
         """
         pulumi.set(__self__, "spec", spec)
         if amount is not None:
@@ -175,7 +183,7 @@ class InstanceDataNodeConfigurationArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[_builtins.str]:
         """
-        Elasticsearch data node specification
+        Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         """
         return pulumi.get(self, "spec")
 
@@ -187,7 +195,7 @@ class InstanceDataNodeConfigurationArgs:
     @pulumi.getter
     def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Number of data nodes in the Elasticsearch cluster
+        Number of data nodes. Valid values: 2 to 50.
         """
         return pulumi.get(self, "amount")
 
@@ -199,7 +207,7 @@ class InstanceDataNodeConfigurationArgs:
     @pulumi.getter
     def disk(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Elasticsearch data node disk size
+        Storage capacity per node, in GB.
         """
         return pulumi.get(self, "disk")
 
@@ -211,7 +219,9 @@ class InstanceDataNodeConfigurationArgs:
     @pulumi.getter(name="diskEncryption")
     def disk_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether the Elasticsearch data node disk is encrypted
+        Whether to enable cloud disk encryption:
+        - true: Enabled
+        - false: Disabled.
         """
         return pulumi.get(self, "disk_encryption")
 
@@ -223,7 +233,9 @@ class InstanceDataNodeConfigurationArgs:
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Elasticsearch cluster data node disk type
+        Node disk type. Supported types:
+        - cloud_ssd: SSD cloud disk
+        - cloud_efficiency: Ultra cloud disk.
         """
         return pulumi.get(self, "disk_type")
 
@@ -235,7 +247,7 @@ class InstanceDataNodeConfigurationArgs:
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Elasticsearch cluster data node Essd disk level
+        Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
         """
         return pulumi.get(self, "performance_level")
 
@@ -247,15 +259,15 @@ class InstanceDataNodeConfigurationArgs:
 class InstanceKibanaConfigurationArgsDict(TypedDict):
     spec: pulumi.Input[_builtins.str]
     """
-    Elasticsearch Kibana node disk specifications
+    Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
     """
     amount: NotRequired[pulumi.Input[_builtins.int]]
     """
-    The number of disks of the Elasticsearch Kibana node. The default value is 1.
+    The number of nodes.
     """
     disk: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Elasticsearch Kibana node disk size
+    Storage capacity per node, in GB.
     """
 
 @pulumi.input_type
@@ -265,9 +277,9 @@ class InstanceKibanaConfigurationArgs:
                  amount: Optional[pulumi.Input[_builtins.int]] = None,
                  disk: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] spec: Elasticsearch Kibana node disk specifications
-        :param pulumi.Input[_builtins.int] amount: The number of disks of the Elasticsearch Kibana node. The default value is 1.
-        :param pulumi.Input[_builtins.int] disk: Elasticsearch Kibana node disk size
+        :param pulumi.Input[_builtins.str] spec: Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+        :param pulumi.Input[_builtins.int] amount: The number of nodes.
+        :param pulumi.Input[_builtins.int] disk: Storage capacity per node, in GB.
         """
         pulumi.set(__self__, "spec", spec)
         if amount is not None:
@@ -279,7 +291,7 @@ class InstanceKibanaConfigurationArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[_builtins.str]:
         """
-        Elasticsearch Kibana node disk specifications
+        Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         """
         return pulumi.get(self, "spec")
 
@@ -291,7 +303,7 @@ class InstanceKibanaConfigurationArgs:
     @pulumi.getter
     def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of disks of the Elasticsearch Kibana node. The default value is 1.
+        The number of nodes.
         """
         return pulumi.get(self, "amount")
 
@@ -303,7 +315,7 @@ class InstanceKibanaConfigurationArgs:
     @pulumi.getter
     def disk(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Elasticsearch Kibana node disk size
+        Storage capacity per node, in GB.
         """
         return pulumi.get(self, "disk")
 
@@ -315,19 +327,19 @@ class InstanceKibanaConfigurationArgs:
 class InstanceMasterConfigurationArgsDict(TypedDict):
     amount: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Elasticsearch proprietary master node number of disks
+    Number of nodes.
     """
     disk: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Elasticsearch proprietary master node disk size
+    Node storage capacity, in GB.
     """
     disk_type: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Elasticsearch proprietary master node disk type
+    Node storage type. Only cloud_ssd (SSD cloud disk) is supported.
     """
     spec: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Elasticsearch proprietary master node specifications
+    Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
     """
 
 @pulumi.input_type
@@ -338,10 +350,10 @@ class InstanceMasterConfigurationArgs:
                  disk_type: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.int] amount: Elasticsearch proprietary master node number of disks
-        :param pulumi.Input[_builtins.int] disk: Elasticsearch proprietary master node disk size
-        :param pulumi.Input[_builtins.str] disk_type: Elasticsearch proprietary master node disk type
-        :param pulumi.Input[_builtins.str] spec: Elasticsearch proprietary master node specifications
+        :param pulumi.Input[_builtins.int] amount: Number of nodes.
+        :param pulumi.Input[_builtins.int] disk: Node storage capacity, in GB.
+        :param pulumi.Input[_builtins.str] disk_type: Node storage type. Only cloud_ssd (SSD cloud disk) is supported.
+        :param pulumi.Input[_builtins.str] spec: Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         """
         if amount is not None:
             pulumi.set(__self__, "amount", amount)
@@ -356,7 +368,7 @@ class InstanceMasterConfigurationArgs:
     @pulumi.getter
     def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Elasticsearch proprietary master node number of disks
+        Number of nodes.
         """
         return pulumi.get(self, "amount")
 
@@ -368,7 +380,7 @@ class InstanceMasterConfigurationArgs:
     @pulumi.getter
     def disk(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Elasticsearch proprietary master node disk size
+        Node storage capacity, in GB.
         """
         return pulumi.get(self, "disk")
 
@@ -380,7 +392,7 @@ class InstanceMasterConfigurationArgs:
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Elasticsearch proprietary master node disk type
+        Node storage type. Only cloud_ssd (SSD cloud disk) is supported.
         """
         return pulumi.get(self, "disk_type")
 
@@ -392,7 +404,7 @@ class InstanceMasterConfigurationArgs:
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Elasticsearch proprietary master node specifications
+        Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         """
         return pulumi.get(self, "spec")
 
@@ -404,23 +416,25 @@ class InstanceMasterConfigurationArgs:
 class InstanceWarmNodeConfigurationArgsDict(TypedDict):
     amount: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Elasticsearch cluster cold data node disk number
+    Number of nodes.
     """
     disk: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Elasticsearch cluster cold data node disk size
+    Storage capacity per node, in GB.
     """
     disk_encryption: NotRequired[pulumi.Input[_builtins.bool]]
     """
-    Elasticsearch cluster cold data node Disk encryption
+    Whether to enable disk encryption. The values are as follows:
+    - true: Enabled.
+    - false: Disabled.
     """
     disk_type: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Elasticsearch cluster cold data node disk type
+    Storage type for the node. Only `cloud_efficiency` (ultra disk) is supported.
     """
     spec: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Elasticsearch cluster cold data node Disk Specification
+    Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
     """
 
 @pulumi.input_type
@@ -432,11 +446,13 @@ class InstanceWarmNodeConfigurationArgs:
                  disk_type: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.int] amount: Elasticsearch cluster cold data node disk number
-        :param pulumi.Input[_builtins.int] disk: Elasticsearch cluster cold data node disk size
-        :param pulumi.Input[_builtins.bool] disk_encryption: Elasticsearch cluster cold data node Disk encryption
-        :param pulumi.Input[_builtins.str] disk_type: Elasticsearch cluster cold data node disk type
-        :param pulumi.Input[_builtins.str] spec: Elasticsearch cluster cold data node Disk Specification
+        :param pulumi.Input[_builtins.int] amount: Number of nodes.
+        :param pulumi.Input[_builtins.int] disk: Storage capacity per node, in GB.
+        :param pulumi.Input[_builtins.bool] disk_encryption: Whether to enable disk encryption. The values are as follows:
+               - true: Enabled.
+               - false: Disabled.
+        :param pulumi.Input[_builtins.str] disk_type: Storage type for the node. Only `cloud_efficiency` (ultra disk) is supported.
+        :param pulumi.Input[_builtins.str] spec: Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         """
         if amount is not None:
             pulumi.set(__self__, "amount", amount)
@@ -453,7 +469,7 @@ class InstanceWarmNodeConfigurationArgs:
     @pulumi.getter
     def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Elasticsearch cluster cold data node disk number
+        Number of nodes.
         """
         return pulumi.get(self, "amount")
 
@@ -465,7 +481,7 @@ class InstanceWarmNodeConfigurationArgs:
     @pulumi.getter
     def disk(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Elasticsearch cluster cold data node disk size
+        Storage capacity per node, in GB.
         """
         return pulumi.get(self, "disk")
 
@@ -477,7 +493,9 @@ class InstanceWarmNodeConfigurationArgs:
     @pulumi.getter(name="diskEncryption")
     def disk_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Elasticsearch cluster cold data node Disk encryption
+        Whether to enable disk encryption. The values are as follows:
+        - true: Enabled.
+        - false: Disabled.
         """
         return pulumi.get(self, "disk_encryption")
 
@@ -489,7 +507,7 @@ class InstanceWarmNodeConfigurationArgs:
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Elasticsearch cluster cold data node disk type
+        Storage type for the node. Only `cloud_efficiency` (ultra disk) is supported.
         """
         return pulumi.get(self, "disk_type")
 
@@ -501,7 +519,7 @@ class InstanceWarmNodeConfigurationArgs:
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Elasticsearch cluster cold data node Disk Specification
+        Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         """
         return pulumi.get(self, "spec")
 

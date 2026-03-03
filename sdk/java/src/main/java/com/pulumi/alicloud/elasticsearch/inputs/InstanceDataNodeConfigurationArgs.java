@@ -19,14 +19,14 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
     public static final InstanceDataNodeConfigurationArgs Empty = new InstanceDataNodeConfigurationArgs();
 
     /**
-     * Number of data nodes in the Elasticsearch cluster
+     * Number of data nodes. Valid values: 2 to 50.
      * 
      */
     @Import(name="amount")
     private @Nullable Output<Integer> amount;
 
     /**
-     * @return Number of data nodes in the Elasticsearch cluster
+     * @return Number of data nodes. Valid values: 2 to 50.
      * 
      */
     public Optional<Output<Integer>> amount() {
@@ -34,14 +34,14 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
     }
 
     /**
-     * Elasticsearch data node disk size
+     * Storage capacity per node, in GB.
      * 
      */
     @Import(name="disk")
     private @Nullable Output<Integer> disk;
 
     /**
-     * @return Elasticsearch data node disk size
+     * @return Storage capacity per node, in GB.
      * 
      */
     public Optional<Output<Integer>> disk() {
@@ -49,14 +49,18 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
     }
 
     /**
-     * Whether the Elasticsearch data node disk is encrypted
+     * Whether to enable cloud disk encryption:
+     * - true: Enabled
+     * - false: Disabled.
      * 
      */
     @Import(name="diskEncryption")
     private @Nullable Output<Boolean> diskEncryption;
 
     /**
-     * @return Whether the Elasticsearch data node disk is encrypted
+     * @return Whether to enable cloud disk encryption:
+     * - true: Enabled
+     * - false: Disabled.
      * 
      */
     public Optional<Output<Boolean>> diskEncryption() {
@@ -64,14 +68,18 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
     }
 
     /**
-     * Elasticsearch cluster data node disk type
+     * Node disk type. Supported types:
+     * - cloud_ssd: SSD cloud disk
+     * - cloud_efficiency: Ultra cloud disk.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return Elasticsearch cluster data node disk type
+     * @return Node disk type. Supported types:
+     * - cloud_ssd: SSD cloud disk
+     * - cloud_efficiency: Ultra cloud disk.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -79,14 +87,14 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
     }
 
     /**
-     * Elasticsearch cluster data node Essd disk level
+     * Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
      * 
      */
     @Import(name="performanceLevel")
     private @Nullable Output<String> performanceLevel;
 
     /**
-     * @return Elasticsearch cluster data node Essd disk level
+     * @return Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
@@ -94,14 +102,14 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
     }
 
     /**
-     * Elasticsearch data node specification
+     * Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     @Import(name="spec", required=true)
     private Output<String> spec;
 
     /**
-     * @return Elasticsearch data node specification
+     * @return Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     public Output<String> spec() {
@@ -138,7 +146,7 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param amount Number of data nodes in the Elasticsearch cluster
+         * @param amount Number of data nodes. Valid values: 2 to 50.
          * 
          * @return builder
          * 
@@ -149,7 +157,7 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param amount Number of data nodes in the Elasticsearch cluster
+         * @param amount Number of data nodes. Valid values: 2 to 50.
          * 
          * @return builder
          * 
@@ -159,7 +167,7 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param disk Elasticsearch data node disk size
+         * @param disk Storage capacity per node, in GB.
          * 
          * @return builder
          * 
@@ -170,7 +178,7 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param disk Elasticsearch data node disk size
+         * @param disk Storage capacity per node, in GB.
          * 
          * @return builder
          * 
@@ -180,7 +188,9 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param diskEncryption Whether the Elasticsearch data node disk is encrypted
+         * @param diskEncryption Whether to enable cloud disk encryption:
+         * - true: Enabled
+         * - false: Disabled.
          * 
          * @return builder
          * 
@@ -191,7 +201,9 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param diskEncryption Whether the Elasticsearch data node disk is encrypted
+         * @param diskEncryption Whether to enable cloud disk encryption:
+         * - true: Enabled
+         * - false: Disabled.
          * 
          * @return builder
          * 
@@ -201,7 +213,9 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param diskType Elasticsearch cluster data node disk type
+         * @param diskType Node disk type. Supported types:
+         * - cloud_ssd: SSD cloud disk
+         * - cloud_efficiency: Ultra cloud disk.
          * 
          * @return builder
          * 
@@ -212,7 +226,9 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param diskType Elasticsearch cluster data node disk type
+         * @param diskType Node disk type. Supported types:
+         * - cloud_ssd: SSD cloud disk
+         * - cloud_efficiency: Ultra cloud disk.
          * 
          * @return builder
          * 
@@ -222,7 +238,7 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param performanceLevel Elasticsearch cluster data node Essd disk level
+         * @param performanceLevel Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
          * 
          * @return builder
          * 
@@ -233,7 +249,7 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param performanceLevel Elasticsearch cluster data node Essd disk level
+         * @param performanceLevel Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
          * 
          * @return builder
          * 
@@ -243,7 +259,7 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param spec Elasticsearch data node specification
+         * @param spec Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          * 
          * @return builder
          * 
@@ -254,7 +270,7 @@ public final class InstanceDataNodeConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param spec Elasticsearch data node specification
+         * @param spec Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
          * 
          * @return builder
          * 

@@ -277,6 +277,14 @@ namespace Pulumi.AliCloud.Dms
         public Output<string> SafeRuleId { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable the security hosting feature for the database instance. Possible values: `True`, `False`.
+        /// 
+        /// ~&gt;**NOTE:** The `DatabaseUser` will be encrypted if `SellTrust` set to `False`.
+        /// </summary>
+        [Output("sellTrust")]
+        public Output<bool> SellTrust { get; private set; } = null!;
+
+        /// <summary>
         /// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
         /// </summary>
         [Output("sid")]
@@ -505,6 +513,14 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? SafeRuleId { get; set; }
 
         /// <summary>
+        /// Whether to enable the security hosting feature for the database instance. Possible values: `True`, `False`.
+        /// 
+        /// ~&gt;**NOTE:** The `DatabaseUser` will be encrypted if `SellTrust` set to `False`.
+        /// </summary>
+        [Input("sellTrust", required: true)]
+        public Input<bool> SellTrust { get; set; } = null!;
+
+        /// <summary>
         /// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
         /// </summary>
         [Input("sid")]
@@ -683,6 +699,14 @@ namespace Pulumi.AliCloud.Dms
         /// </summary>
         [Input("safeRuleId")]
         public Input<string>? SafeRuleId { get; set; }
+
+        /// <summary>
+        /// Whether to enable the security hosting feature for the database instance. Possible values: `True`, `False`.
+        /// 
+        /// ~&gt;**NOTE:** The `DatabaseUser` will be encrypted if `SellTrust` set to `False`.
+        /// </summary>
+        [Input("sellTrust")]
+        public Input<bool>? SellTrust { get; set; }
 
         /// <summary>
         /// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.

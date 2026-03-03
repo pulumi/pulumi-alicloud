@@ -83,13 +83,13 @@ namespace Pulumi.AliCloud.ElasticSearch
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Schema Type:.
+        /// The deployment mode or architecture type:.
         /// </summary>
         [Output("archType")]
         public Output<string> ArchType { get; private set; } = null!;
 
         /// <summary>
-        /// Renewal Period
+        /// Number of auto-renewal periods.
         /// </summary>
         [Output("autoRenewDuration")]
         public Output<int?> AutoRenewDuration { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<int> ClientNodeAmount { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticsearch cluster coordination node configuration See `ClientNodeConfiguration` below.
+        /// Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `ClientNodeConfiguration` below.
         /// </summary>
         [Output("clientNodeConfiguration")]
         public Output<Outputs.InstanceClientNodeConfiguration> ClientNodeConfiguration { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> ClientNodeSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Instance creation time.
+        /// The time when the instance was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<int> DataNodeAmount { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticsearch data node information See `DataNodeConfiguration` below.
+        /// Elasticsearch data node information. See `DataNodeConfiguration` below.
         /// </summary>
         [Output("dataNodeConfiguration")]
         public Output<Outputs.InstanceDataNodeConfiguration> DataNodeConfiguration { get; private set; } = null!;
@@ -161,53 +161,55 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> DataNodeSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Instance name
+        /// Instance name, which supports fuzzy search. For example, searching for all instances containing `Abc` may return instances named `Abc`, `Abcde`, `Xyabc`, or `Xabcy`.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticsearch cluster private domain name.
+        /// The internal network address of the instance.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable Kibana private network access.
-        /// 
-        /// The meaning of the value is as follows:
-        /// - true: On.
-        /// - false: does not open.
+        /// Indicates whether private network access to Kibana is enabled. Valid values:  
+        /// - true: Enabled
+        /// - false: Disabled
         /// </summary>
         [Output("enableKibanaPrivateNetwork")]
         public Output<bool> EnableKibanaPrivateNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// Does Kibana enable public access
+        /// Specifies whether to enable public access to Kibana. Valid values:  
+        /// - true: Enables public access.
+        /// - false: Disables public access.
         /// </summary>
         [Output("enableKibanaPublicNetwork")]
         public Output<bool> EnableKibanaPublicNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable Kibana public network access.
-        /// 
-        /// The meaning of the value is as follows:
-        /// - true: On.
-        /// - false: does not open.
+        /// Specifies whether to enable a public endpoint for the instance. Valid values:
+        /// - true: Enables the public endpoint.
+        /// - false: Disables the public endpoint.
         /// </summary>
         [Output("enablePublic")]
         public Output<bool> EnablePublic { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to force changes
+        /// Whether to force a restart:
+        /// - true: Yes
+        /// - false (default): No.
         /// 
-        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// Version type.
+        /// Edition type:  
+        /// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+        /// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         /// </summary>
         [Output("instanceCategory")]
         public Output<string> InstanceCategory { get; private set; } = null!;
@@ -219,13 +221,13 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticsearch Kibana node settings See `KibanaConfiguration` below.
+        /// The configuration of Elasticsearch Kibana nodes. See `KibanaConfiguration` below.
         /// </summary>
         [Output("kibanaConfiguration")]
         public Output<Outputs.InstanceKibanaConfiguration> KibanaConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// Kibana address.
+        /// Kibana endpoint.
         /// </summary>
         [Output("kibanaDomain")]
         public Output<string> KibanaDomain { get; private set; } = null!;
@@ -237,25 +239,31 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> KibanaNodeSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The port assigned by the Kibana node.
+        /// The access port for Kibana.
         /// </summary>
         [Output("kibanaPort")]
         public Output<int> KibanaPort { get; private set; } = null!;
 
         /// <summary>
-        /// Kibana private network security group ID
+        /// The private endpoint of Kibana.
+        /// </summary>
+        [Output("kibanaPrivateDomain")]
+        public Output<string> KibanaPrivateDomain { get; private set; } = null!;
+
+        /// <summary>
+        /// List of security groups.
         /// </summary>
         [Output("kibanaPrivateSecurityGroupId")]
         public Output<string?> KibanaPrivateSecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster Kibana node private network access whitelist
+        /// List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         /// </summary>
         [Output("kibanaPrivateWhitelists")]
         public Output<ImmutableArray<string>> KibanaPrivateWhitelists { get; private set; } = null!;
 
         /// <summary>
-        /// Kibana private network access whitelist
+        /// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         /// </summary>
         [Output("kibanaWhitelists")]
         public Output<ImmutableArray<string>> KibanaWhitelists { get; private set; } = null!;
@@ -273,7 +281,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticsearch proprietary master node configuration information See `MasterConfiguration` below.
+        /// Configuration information for Elasticsearch dedicated master nodes. See `MasterConfiguration` below.
         /// </summary>
         [Output("masterConfiguration")]
         public Output<Outputs.InstanceMasterConfiguration> MasterConfiguration { get; private set; } = null!;
@@ -291,21 +299,23 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> MasterNodeSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+        /// Configuration change type. Valid values:
+        /// - upgrade (default): Upgrade configuration
+        /// - downgrade: Downgrade configuration.
         /// 
-        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         /// </summary>
         [Output("orderActionType")]
         public Output<string?> OrderActionType { get; private set; } = null!;
 
         /// <summary>
-        /// The access password of the instance.
+        /// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&amp;*()_+-=).
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The payment method of the instance. Optional values: `Prepaid` (subscription) and `Postpaid` (pay-as-you-go)
+        /// The billing method of the instance. Supported values:
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -323,86 +333,101 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+        /// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         /// </summary>
         [Output("privateWhitelists")]
         public Output<ImmutableArray<string>> PrivateWhitelists { get; private set; } = null!;
 
         /// <summary>
-        /// Access protocol. Optional values: `HTTP` and **HTTPS * *.
+        /// The access protocol. Supported protocols: HTTP and HTTPS.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The public network address of the current instance.
+        /// The public endpoint of the instance.
         /// </summary>
         [Output("publicDomain")]
         public Output<string> PublicDomain { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticsearch cluster public network access port
+        /// The public access port of the instance.
         /// </summary>
         [Output("publicPort")]
         public Output<int> PublicPort { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticseach public network access whitelist IP list
+        /// The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         /// </summary>
         [Output("publicWhitelists")]
         public Output<ImmutableArray<string>> PublicWhitelists { get; private set; } = null!;
 
         /// <summary>
-        /// Renewal Status
+        /// The renewal status. Valid values:
+        /// - AutoRenewal: Auto-renewal.
+        /// - ManualRenewal: Manual renewal.
+        /// - NotRenewal: No renewal.
         /// </summary>
         [Output("renewStatus")]
         public Output<string> RenewStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Renewal Period Unit
+        /// The unit of the auto-renewal period. Valid values:  
+        /// - M: Month.
+        /// - Y: Year.
+        /// 
+        /// &gt; **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
         /// </summary>
         [Output("renewalDurationUnit")]
         public Output<string> RenewalDurationUnit { get; private set; } = null!;
 
         /// <summary>
-        /// Resource group to which the instance belongs
+        /// The ID of the resource group to which the instance belongs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration information
+        /// YML configuration file settings for the instance.
         /// </summary>
         [Output("settingConfig")]
         public Output<ImmutableDictionary<string, string>> SettingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Instance change status
+        /// The status of the instance.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Collection of tag key-value pairs
+        /// Instance tag group.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The change policy for Elasticsearch.
+        /// Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+        /// - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+        /// - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+        /// - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
         /// 
-        /// The values are as follows:
-        /// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-        /// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-        /// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-        /// 
-        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         /// </summary>
         [Output("updateStrategy")]
         public Output<string?> UpdateStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// Instance version
+        /// The instance version. Valid values:
+        /// - 8.5.1_with_X-Pack
+        /// - 7.10_with_X-Pack
+        /// - 6.7_with_X-Pack
+        /// - 7.7_with_X-Pack
+        /// - 6.8_with_X-Pack
+        /// - 6.3_with_X-Pack
+        /// - 5.6_with_X-Pack
+        /// - 5.5.3_with_X-Pack
+        /// 
+        /// &gt; **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -420,7 +445,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<int> WarmNodeAmount { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticsearch cluster cold data node configuration See `WarmNodeConfiguration` below.
+        /// Cold data node configuration for the Elasticsearch cluster. See `WarmNodeConfiguration` below.
         /// </summary>
         [Output("warmNodeConfiguration")]
         public Output<Outputs.InstanceWarmNodeConfiguration> WarmNodeConfiguration { get; private set; } = null!;
@@ -450,7 +475,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> WarmNodeSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The number of zones in the Elasticsearch instance.
+        /// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -508,7 +533,7 @@ namespace Pulumi.AliCloud.ElasticSearch
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Renewal Period
+        /// Number of auto-renewal periods.
         /// </summary>
         [Input("autoRenewDuration")]
         public Input<int>? AutoRenewDuration { get; set; }
@@ -520,7 +545,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int>? ClientNodeAmount { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster coordination node configuration See `ClientNodeConfiguration` below.
+        /// Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `ClientNodeConfiguration` below.
         /// </summary>
         [Input("clientNodeConfiguration")]
         public Input<Inputs.InstanceClientNodeConfigurationArgs>? ClientNodeConfiguration { get; set; }
@@ -538,7 +563,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int>? DataNodeAmount { get; set; }
 
         /// <summary>
-        /// Elasticsearch data node information See `DataNodeConfiguration` below.
+        /// Elasticsearch data node information. See `DataNodeConfiguration` below.
         /// </summary>
         [Input("dataNodeConfiguration")]
         public Input<Inputs.InstanceDataNodeConfigurationArgs>? DataNodeConfiguration { get; set; }
@@ -574,47 +599,49 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? DataNodeSpec { get; set; }
 
         /// <summary>
-        /// Instance name
+        /// Instance name, which supports fuzzy search. For example, searching for all instances containing `Abc` may return instances named `Abc`, `Abcde`, `Xyabc`, or `Xabcy`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to enable Kibana private network access.
-        /// 
-        /// The meaning of the value is as follows:
-        /// - true: On.
-        /// - false: does not open.
+        /// Indicates whether private network access to Kibana is enabled. Valid values:  
+        /// - true: Enabled
+        /// - false: Disabled
         /// </summary>
         [Input("enableKibanaPrivateNetwork")]
         public Input<bool>? EnableKibanaPrivateNetwork { get; set; }
 
         /// <summary>
-        /// Does Kibana enable public access
+        /// Specifies whether to enable public access to Kibana. Valid values:  
+        /// - true: Enables public access.
+        /// - false: Disables public access.
         /// </summary>
         [Input("enableKibanaPublicNetwork")]
         public Input<bool>? EnableKibanaPublicNetwork { get; set; }
 
         /// <summary>
-        /// Whether to enable Kibana public network access.
-        /// 
-        /// The meaning of the value is as follows:
-        /// - true: On.
-        /// - false: does not open.
+        /// Specifies whether to enable a public endpoint for the instance. Valid values:
+        /// - true: Enables the public endpoint.
+        /// - false: Disables the public endpoint.
         /// </summary>
         [Input("enablePublic")]
         public Input<bool>? EnablePublic { get; set; }
 
         /// <summary>
-        /// Whether to force changes
+        /// Whether to force a restart:
+        /// - true: Yes
+        /// - false (default): No.
         /// 
-        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Version type.
+        /// Edition type:  
+        /// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+        /// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         /// </summary>
         [Input("instanceCategory")]
         public Input<string>? InstanceCategory { get; set; }
@@ -626,7 +653,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Elasticsearch Kibana node settings See `KibanaConfiguration` below.
+        /// The configuration of Elasticsearch Kibana nodes. See `KibanaConfiguration` below.
         /// </summary>
         [Input("kibanaConfiguration")]
         public Input<Inputs.InstanceKibanaConfigurationArgs>? KibanaConfiguration { get; set; }
@@ -638,7 +665,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? KibanaNodeSpec { get; set; }
 
         /// <summary>
-        /// Kibana private network security group ID
+        /// List of security groups.
         /// </summary>
         [Input("kibanaPrivateSecurityGroupId")]
         public Input<string>? KibanaPrivateSecurityGroupId { get; set; }
@@ -647,7 +674,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputList<string>? _kibanaPrivateWhitelists;
 
         /// <summary>
-        /// Cluster Kibana node private network access whitelist
+        /// List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         /// </summary>
         public InputList<string> KibanaPrivateWhitelists
         {
@@ -659,7 +686,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputList<string>? _kibanaWhitelists;
 
         /// <summary>
-        /// Kibana private network access whitelist
+        /// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         /// </summary>
         public InputList<string> KibanaWhitelists
         {
@@ -686,7 +713,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// Elasticsearch proprietary master node configuration information See `MasterConfiguration` below.
+        /// Configuration information for Elasticsearch dedicated master nodes. See `MasterConfiguration` below.
         /// </summary>
         [Input("masterConfiguration")]
         public Input<Inputs.InstanceMasterConfigurationArgs>? MasterConfiguration { get; set; }
@@ -704,9 +731,11 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? MasterNodeSpec { get; set; }
 
         /// <summary>
-        /// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+        /// Configuration change type. Valid values:
+        /// - upgrade (default): Upgrade configuration
+        /// - downgrade: Downgrade configuration.
         /// 
-        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         /// </summary>
         [Input("orderActionType")]
         public Input<string>? OrderActionType { get; set; }
@@ -715,7 +744,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private Input<string>? _password;
 
         /// <summary>
-        /// The access password of the instance.
+        /// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&amp;*()_+-=).
         /// </summary>
         public Input<string>? Password
         {
@@ -728,7 +757,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// The payment method of the instance. Optional values: `Prepaid` (subscription) and `Postpaid` (pay-as-you-go)
+        /// The billing method of the instance. Supported values:
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -743,7 +772,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputList<string>? _privateWhitelists;
 
         /// <summary>
-        /// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+        /// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         /// </summary>
         public InputList<string> PrivateWhitelists
         {
@@ -752,7 +781,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// Access protocol. Optional values: `HTTP` and **HTTPS * *.
+        /// The access protocol. Supported protocols: HTTP and HTTPS.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -761,7 +790,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputList<string>? _publicWhitelists;
 
         /// <summary>
-        /// Elasticseach public network access whitelist IP list
+        /// The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         /// </summary>
         public InputList<string> PublicWhitelists
         {
@@ -770,19 +799,26 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// Renewal Status
+        /// The renewal status. Valid values:
+        /// - AutoRenewal: Auto-renewal.
+        /// - ManualRenewal: Manual renewal.
+        /// - NotRenewal: No renewal.
         /// </summary>
         [Input("renewStatus")]
         public Input<string>? RenewStatus { get; set; }
 
         /// <summary>
-        /// Renewal Period Unit
+        /// The unit of the auto-renewal period. Valid values:  
+        /// - M: Month.
+        /// - Y: Year.
+        /// 
+        /// &gt; **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
         /// </summary>
         [Input("renewalDurationUnit")]
         public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
-        /// Resource group to which the instance belongs
+        /// The ID of the resource group to which the instance belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -791,7 +827,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputMap<string>? _settingConfig;
 
         /// <summary>
-        /// Configuration information
+        /// YML configuration file settings for the instance.
         /// </summary>
         public InputMap<string> SettingConfig
         {
@@ -803,7 +839,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// Collection of tag key-value pairs
+        /// Instance tag group.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -812,20 +848,28 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// The change policy for Elasticsearch.
+        /// Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+        /// - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+        /// - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+        /// - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
         /// 
-        /// The values are as follows:
-        /// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-        /// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-        /// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-        /// 
-        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         /// </summary>
         [Input("updateStrategy")]
         public Input<string>? UpdateStrategy { get; set; }
 
         /// <summary>
-        /// Instance version
+        /// The instance version. Valid values:
+        /// - 8.5.1_with_X-Pack
+        /// - 7.10_with_X-Pack
+        /// - 6.7_with_X-Pack
+        /// - 7.7_with_X-Pack
+        /// - 6.8_with_X-Pack
+        /// - 6.3_with_X-Pack
+        /// - 5.6_with_X-Pack
+        /// - 5.5.3_with_X-Pack
+        /// 
+        /// &gt; **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -843,7 +887,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int>? WarmNodeAmount { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster cold data node configuration See `WarmNodeConfiguration` below.
+        /// Cold data node configuration for the Elasticsearch cluster. See `WarmNodeConfiguration` below.
         /// </summary>
         [Input("warmNodeConfiguration")]
         public Input<Inputs.InstanceWarmNodeConfigurationArgs>? WarmNodeConfiguration { get; set; }
@@ -873,7 +917,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? WarmNodeSpec { get; set; }
 
         /// <summary>
-        /// The number of zones in the Elasticsearch instance.
+        /// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -889,13 +933,13 @@ namespace Pulumi.AliCloud.ElasticSearch
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Schema Type:.
+        /// The deployment mode or architecture type:.
         /// </summary>
         [Input("archType")]
         public Input<string>? ArchType { get; set; }
 
         /// <summary>
-        /// Renewal Period
+        /// Number of auto-renewal periods.
         /// </summary>
         [Input("autoRenewDuration")]
         public Input<int>? AutoRenewDuration { get; set; }
@@ -907,7 +951,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int>? ClientNodeAmount { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster coordination node configuration See `ClientNodeConfiguration` below.
+        /// Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `ClientNodeConfiguration` below.
         /// </summary>
         [Input("clientNodeConfiguration")]
         public Input<Inputs.InstanceClientNodeConfigurationGetArgs>? ClientNodeConfiguration { get; set; }
@@ -919,7 +963,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? ClientNodeSpec { get; set; }
 
         /// <summary>
-        /// Instance creation time.
+        /// The time when the instance was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -931,7 +975,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int>? DataNodeAmount { get; set; }
 
         /// <summary>
-        /// Elasticsearch data node information See `DataNodeConfiguration` below.
+        /// Elasticsearch data node information. See `DataNodeConfiguration` below.
         /// </summary>
         [Input("dataNodeConfiguration")]
         public Input<Inputs.InstanceDataNodeConfigurationGetArgs>? DataNodeConfiguration { get; set; }
@@ -967,53 +1011,55 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? DataNodeSpec { get; set; }
 
         /// <summary>
-        /// Instance name
+        /// Instance name, which supports fuzzy search. For example, searching for all instances containing `Abc` may return instances named `Abc`, `Abcde`, `Xyabc`, or `Xabcy`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster private domain name.
+        /// The internal network address of the instance.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Whether to enable Kibana private network access.
-        /// 
-        /// The meaning of the value is as follows:
-        /// - true: On.
-        /// - false: does not open.
+        /// Indicates whether private network access to Kibana is enabled. Valid values:  
+        /// - true: Enabled
+        /// - false: Disabled
         /// </summary>
         [Input("enableKibanaPrivateNetwork")]
         public Input<bool>? EnableKibanaPrivateNetwork { get; set; }
 
         /// <summary>
-        /// Does Kibana enable public access
+        /// Specifies whether to enable public access to Kibana. Valid values:  
+        /// - true: Enables public access.
+        /// - false: Disables public access.
         /// </summary>
         [Input("enableKibanaPublicNetwork")]
         public Input<bool>? EnableKibanaPublicNetwork { get; set; }
 
         /// <summary>
-        /// Whether to enable Kibana public network access.
-        /// 
-        /// The meaning of the value is as follows:
-        /// - true: On.
-        /// - false: does not open.
+        /// Specifies whether to enable a public endpoint for the instance. Valid values:
+        /// - true: Enables the public endpoint.
+        /// - false: Disables the public endpoint.
         /// </summary>
         [Input("enablePublic")]
         public Input<bool>? EnablePublic { get; set; }
 
         /// <summary>
-        /// Whether to force changes
+        /// Whether to force a restart:
+        /// - true: Yes
+        /// - false (default): No.
         /// 
-        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Version type.
+        /// Edition type:  
+        /// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+        /// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         /// </summary>
         [Input("instanceCategory")]
         public Input<string>? InstanceCategory { get; set; }
@@ -1025,13 +1071,13 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Elasticsearch Kibana node settings See `KibanaConfiguration` below.
+        /// The configuration of Elasticsearch Kibana nodes. See `KibanaConfiguration` below.
         /// </summary>
         [Input("kibanaConfiguration")]
         public Input<Inputs.InstanceKibanaConfigurationGetArgs>? KibanaConfiguration { get; set; }
 
         /// <summary>
-        /// Kibana address.
+        /// Kibana endpoint.
         /// </summary>
         [Input("kibanaDomain")]
         public Input<string>? KibanaDomain { get; set; }
@@ -1043,13 +1089,19 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? KibanaNodeSpec { get; set; }
 
         /// <summary>
-        /// The port assigned by the Kibana node.
+        /// The access port for Kibana.
         /// </summary>
         [Input("kibanaPort")]
         public Input<int>? KibanaPort { get; set; }
 
         /// <summary>
-        /// Kibana private network security group ID
+        /// The private endpoint of Kibana.
+        /// </summary>
+        [Input("kibanaPrivateDomain")]
+        public Input<string>? KibanaPrivateDomain { get; set; }
+
+        /// <summary>
+        /// List of security groups.
         /// </summary>
         [Input("kibanaPrivateSecurityGroupId")]
         public Input<string>? KibanaPrivateSecurityGroupId { get; set; }
@@ -1058,7 +1110,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputList<string>? _kibanaPrivateWhitelists;
 
         /// <summary>
-        /// Cluster Kibana node private network access whitelist
+        /// List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         /// </summary>
         public InputList<string> KibanaPrivateWhitelists
         {
@@ -1070,7 +1122,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputList<string>? _kibanaWhitelists;
 
         /// <summary>
-        /// Kibana private network access whitelist
+        /// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         /// </summary>
         public InputList<string> KibanaWhitelists
         {
@@ -1097,7 +1149,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// Elasticsearch proprietary master node configuration information See `MasterConfiguration` below.
+        /// Configuration information for Elasticsearch dedicated master nodes. See `MasterConfiguration` below.
         /// </summary>
         [Input("masterConfiguration")]
         public Input<Inputs.InstanceMasterConfigurationGetArgs>? MasterConfiguration { get; set; }
@@ -1115,9 +1167,11 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? MasterNodeSpec { get; set; }
 
         /// <summary>
-        /// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+        /// Configuration change type. Valid values:
+        /// - upgrade (default): Upgrade configuration
+        /// - downgrade: Downgrade configuration.
         /// 
-        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         /// </summary>
         [Input("orderActionType")]
         public Input<string>? OrderActionType { get; set; }
@@ -1126,7 +1180,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private Input<string>? _password;
 
         /// <summary>
-        /// The access password of the instance.
+        /// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&amp;*()_+-=).
         /// </summary>
         public Input<string>? Password
         {
@@ -1139,7 +1193,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// The payment method of the instance. Optional values: `Prepaid` (subscription) and `Postpaid` (pay-as-you-go)
+        /// The billing method of the instance. Supported values:
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -1160,7 +1214,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputList<string>? _privateWhitelists;
 
         /// <summary>
-        /// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+        /// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         /// </summary>
         public InputList<string> PrivateWhitelists
         {
@@ -1169,19 +1223,19 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// Access protocol. Optional values: `HTTP` and **HTTPS * *.
+        /// The access protocol. Supported protocols: HTTP and HTTPS.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The public network address of the current instance.
+        /// The public endpoint of the instance.
         /// </summary>
         [Input("publicDomain")]
         public Input<string>? PublicDomain { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster public network access port
+        /// The public access port of the instance.
         /// </summary>
         [Input("publicPort")]
         public Input<int>? PublicPort { get; set; }
@@ -1190,7 +1244,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputList<string>? _publicWhitelists;
 
         /// <summary>
-        /// Elasticseach public network access whitelist IP list
+        /// The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         /// </summary>
         public InputList<string> PublicWhitelists
         {
@@ -1199,19 +1253,26 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// Renewal Status
+        /// The renewal status. Valid values:
+        /// - AutoRenewal: Auto-renewal.
+        /// - ManualRenewal: Manual renewal.
+        /// - NotRenewal: No renewal.
         /// </summary>
         [Input("renewStatus")]
         public Input<string>? RenewStatus { get; set; }
 
         /// <summary>
-        /// Renewal Period Unit
+        /// The unit of the auto-renewal period. Valid values:  
+        /// - M: Month.
+        /// - Y: Year.
+        /// 
+        /// &gt; **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
         /// </summary>
         [Input("renewalDurationUnit")]
         public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
-        /// Resource group to which the instance belongs
+        /// The ID of the resource group to which the instance belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -1220,7 +1281,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputMap<string>? _settingConfig;
 
         /// <summary>
-        /// Configuration information
+        /// YML configuration file settings for the instance.
         /// </summary>
         public InputMap<string> SettingConfig
         {
@@ -1229,7 +1290,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// Instance change status
+        /// The status of the instance.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -1238,7 +1299,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// Collection of tag key-value pairs
+        /// Instance tag group.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -1247,20 +1308,28 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// The change policy for Elasticsearch.
+        /// Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
+        /// - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
+        /// - normal: In-place update, which applies changes directly in the current environment (for example, upgrades or scaling) without requiring additional resources.
+        /// - intelligent: Intelligent update, where the system automatically analyzes the update type and environment status to dynamically select the optimal strategy (either blue-green or in-place).
         /// 
-        /// The values are as follows:
-        /// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
-        /// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
-        /// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
-        /// 
-        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         /// </summary>
         [Input("updateStrategy")]
         public Input<string>? UpdateStrategy { get; set; }
 
         /// <summary>
-        /// Instance version
+        /// The instance version. Valid values:
+        /// - 8.5.1_with_X-Pack
+        /// - 7.10_with_X-Pack
+        /// - 6.7_with_X-Pack
+        /// - 7.7_with_X-Pack
+        /// - 6.8_with_X-Pack
+        /// - 6.3_with_X-Pack
+        /// - 5.6_with_X-Pack
+        /// - 5.5.3_with_X-Pack
+        /// 
+        /// &gt; **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -1278,7 +1347,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int>? WarmNodeAmount { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster cold data node configuration See `WarmNodeConfiguration` below.
+        /// Cold data node configuration for the Elasticsearch cluster. See `WarmNodeConfiguration` below.
         /// </summary>
         [Input("warmNodeConfiguration")]
         public Input<Inputs.InstanceWarmNodeConfigurationGetArgs>? WarmNodeConfiguration { get; set; }
@@ -1308,7 +1377,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? WarmNodeSpec { get; set; }
 
         /// <summary>
-        /// The number of zones in the Elasticsearch instance.
+        /// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>

@@ -342,6 +342,25 @@ public final class EnterpriseInstanceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+     * 
+     * ~&gt;**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+     * 
+     */
+    @Import(name="sellTrust", required=true)
+    private Output<Boolean> sellTrust;
+
+    /**
+     * @return Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+     * 
+     * ~&gt;**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+     * 
+     */
+    public Output<Boolean> sellTrust() {
+        return this.sellTrust;
+    }
+
+    /**
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      * 
      */
@@ -440,6 +459,7 @@ public final class EnterpriseInstanceArgs extends com.pulumi.resources.ResourceA
         this.queryTimeout = $.queryTimeout;
         this.safeRule = $.safeRule;
         this.safeRuleId = $.safeRuleId;
+        this.sellTrust = $.sellTrust;
         this.sid = $.sid;
         this.skipTest = $.skipTest;
         this.tid = $.tid;
@@ -915,6 +935,31 @@ public final class EnterpriseInstanceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param sellTrust Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+         * 
+         * ~&gt;**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sellTrust(Output<Boolean> sellTrust) {
+            $.sellTrust = sellTrust;
+            return this;
+        }
+
+        /**
+         * @param sellTrust Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+         * 
+         * ~&gt;**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sellTrust(Boolean sellTrust) {
+            return sellTrust(Output.of(sellTrust));
+        }
+
+        /**
          * @param sid The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
          * 
          * @return builder
@@ -1055,6 +1100,9 @@ public final class EnterpriseInstanceArgs extends com.pulumi.resources.ResourceA
             }
             if ($.safeRule == null) {
                 throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "safeRule");
+            }
+            if ($.sellTrust == null) {
+                throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "sellTrust");
             }
             return $;
         }

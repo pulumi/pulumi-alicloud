@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * Vpc Ipam Ipam Pool Cidr can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example <ipam_pool_id>:<cidr>
+ * $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example <ipam_pool_id>#<cidr>
  * ```
  */
 export class IpamIpamPoolCidr extends pulumi.CustomResource {
@@ -75,8 +75,6 @@ export class IpamIpamPoolCidr extends pulumi.CustomResource {
 
     /**
      * The CIDR address segment to be preset.
-     *
-     * > **NOTE:**  currently, only IPv4 address segments are supported.
      */
     declare public readonly cidr: pulumi.Output<string>;
     /**
@@ -84,7 +82,13 @@ export class IpamIpamPoolCidr extends pulumi.CustomResource {
      */
     declare public readonly ipamPoolId: pulumi.Output<string>;
     /**
-     * The status of the resource
+     * Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    declare public readonly netmaskLength: pulumi.Output<number | undefined>;
+    /**
+     * The status of the resource.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
@@ -103,17 +107,16 @@ export class IpamIpamPoolCidr extends pulumi.CustomResource {
             const state = argsOrState as IpamIpamPoolCidrState | undefined;
             resourceInputs["cidr"] = state?.cidr;
             resourceInputs["ipamPoolId"] = state?.ipamPoolId;
+            resourceInputs["netmaskLength"] = state?.netmaskLength;
             resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as IpamIpamPoolCidrArgs | undefined;
-            if (args?.cidr === undefined && !opts.urn) {
-                throw new Error("Missing required property 'cidr'");
-            }
             if (args?.ipamPoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipamPoolId'");
             }
             resourceInputs["cidr"] = args?.cidr;
             resourceInputs["ipamPoolId"] = args?.ipamPoolId;
+            resourceInputs["netmaskLength"] = args?.netmaskLength;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -127,8 +130,6 @@ export class IpamIpamPoolCidr extends pulumi.CustomResource {
 export interface IpamIpamPoolCidrState {
     /**
      * The CIDR address segment to be preset.
-     *
-     * > **NOTE:**  currently, only IPv4 address segments are supported.
      */
     cidr?: pulumi.Input<string>;
     /**
@@ -136,7 +137,13 @@ export interface IpamIpamPoolCidrState {
      */
     ipamPoolId?: pulumi.Input<string>;
     /**
-     * The status of the resource
+     * Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    netmaskLength?: pulumi.Input<number>;
+    /**
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
 }
@@ -147,12 +154,16 @@ export interface IpamIpamPoolCidrState {
 export interface IpamIpamPoolCidrArgs {
     /**
      * The CIDR address segment to be preset.
-     *
-     * > **NOTE:**  currently, only IPv4 address segments are supported.
      */
-    cidr: pulumi.Input<string>;
+    cidr?: pulumi.Input<string>;
     /**
      * The ID of the IPAM pool instance.
      */
     ipamPoolId: pulumi.Input<string>;
+    /**
+     * Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    netmaskLength?: pulumi.Input<number>;
 }

@@ -18,9 +18,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a OOS Patch Baseline resource.
+ * Provides a Operation Orchestration Service (OOS) Patch Baseline resource.
  * 
- * For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
+ * For information about Operation Orchestration Service (OOS) Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
  * 
  * &gt; **NOTE:** Available since v1.146.0.
  * 
@@ -67,52 +67,52 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * OOS Patch Baseline can be imported using the id, e.g.
+ * Operation Orchestration Service (OOS) Patch Baseline can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example &lt;id&gt;
+ * $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example &lt;patch_baseline_name&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:oos/patchBaseline:PatchBaseline")
 public class PatchBaseline extends com.pulumi.resources.CustomResource {
     /**
-     * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+     * This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      * 
      */
     @Export(name="approvalRules", refs={String.class}, tree="[0]")
     private Output<String> approvalRules;
 
     /**
-     * @return Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+     * @return This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      * 
      */
     public Output<String> approvalRules() {
         return this.approvalRules;
     }
     /**
-     * Approved Patch.
+     * List of approved patches.
      * 
      */
     @Export(name="approvedPatches", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> approvedPatches;
 
     /**
-     * @return Approved Patch.
+     * @return List of approved patches.
      * 
      */
     public Output<Optional<List<String>>> approvedPatches() {
         return Codegen.optional(this.approvedPatches);
     }
     /**
-     * ApprovedPatchesEnableNonSecurity.
+     * Specifies whether approved patches include updates other than security updates.
      * 
      */
     @Export(name="approvedPatchesEnableNonSecurity", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> approvedPatchesEnableNonSecurity;
 
     /**
-     * @return ApprovedPatchesEnableNonSecurity.
+     * @return Specifies whether approved patches include updates other than security updates.
      * 
      */
     public Output<Optional<Boolean>> approvedPatchesEnableNonSecurity() {
@@ -133,56 +133,78 @@ public class PatchBaseline extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Patches baseline description information.
+     * Description of the patch baseline.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Patches baseline description information.
+     * @return Description of the patch baseline.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+     * Operating system type. Supported values:
+     * - Windows
+     * - Ubuntu
+     * - CentOS
+     * - Debian
+     * - AliyunLinux
+     * - RedhatEnterpriseLinux
+     * - Anolis
+     * - Fedora
+     * - Suse
+     * - RockyLinux
+     * - AlmaLinux.
      * 
      */
     @Export(name="operationSystem", refs={String.class}, tree="[0]")
     private Output<String> operationSystem;
 
     /**
-     * @return Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
+     * @return Operating system type. Supported values:
+     * - Windows
+     * - Ubuntu
+     * - CentOS
+     * - Debian
+     * - AliyunLinux
+     * - RedhatEnterpriseLinux
+     * - Anolis
+     * - Fedora
+     * - Suse
+     * - RockyLinux
+     * - AlmaLinux.
      * 
      */
     public Output<String> operationSystem() {
         return this.operationSystem;
     }
     /**
-     * The name of the patch baseline.
+     * Patch baseline name.
      * 
      */
     @Export(name="patchBaselineName", refs={String.class}, tree="[0]")
     private Output<String> patchBaselineName;
 
     /**
-     * @return The name of the patch baseline.
+     * @return Patch baseline name.
      * 
      */
     public Output<String> patchBaselineName() {
         return this.patchBaselineName;
     }
     /**
-     * Reject patches.
+     * List of rejected patches.
      * 
      */
     @Export(name="rejectedPatches", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> rejectedPatches;
 
     /**
-     * @return Reject patches.
+     * @return List of rejected patches.
      * 
      */
     public Output<Optional<List<String>>> rejectedPatches() {
@@ -203,42 +225,42 @@ public class PatchBaseline extends com.pulumi.resources.CustomResource {
         return this.rejectedPatchesAction;
     }
     /**
-     * The ID of the resource group.
+     * Resource group ID.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return Resource group ID.
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * Source.
+     * List of patch source configurations.
      * 
      */
     @Export(name="sources", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sources;
 
     /**
-     * @return Source.
+     * @return List of patch source configurations.
      * 
      */
     public Output<Optional<List<String>>> sources() {
         return Codegen.optional(this.sources);
     }
     /**
-     * Label.
+     * A key-value map of tags. The number of key-value pairs must be between 1 and 20.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return Label.
+     * @return A key-value map of tags. The number of key-value pairs must be between 1 and 20.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {

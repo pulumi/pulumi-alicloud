@@ -14,62 +14,66 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceWarmNodeConfiguration {
     /**
-     * @return Elasticsearch cluster cold data node disk number
+     * @return Number of nodes.
      * 
      */
     private @Nullable Integer amount;
     /**
-     * @return Elasticsearch cluster cold data node disk size
+     * @return Storage capacity per node, in GB.
      * 
      */
     private @Nullable Integer disk;
     /**
-     * @return Elasticsearch cluster cold data node Disk encryption
+     * @return Whether to enable disk encryption. The values are as follows:
+     * - true: Enabled.
+     * - false: Disabled.
      * 
      */
     private @Nullable Boolean diskEncryption;
     /**
-     * @return Elasticsearch cluster cold data node disk type
+     * @return Storage type for the node. Only `cloudEfficiency` (ultra disk) is supported.
      * 
      */
     private @Nullable String diskType;
     /**
-     * @return Elasticsearch cluster cold data node Disk Specification
+     * @return Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     private @Nullable String spec;
 
     private InstanceWarmNodeConfiguration() {}
     /**
-     * @return Elasticsearch cluster cold data node disk number
+     * @return Number of nodes.
      * 
      */
     public Optional<Integer> amount() {
         return Optional.ofNullable(this.amount);
     }
     /**
-     * @return Elasticsearch cluster cold data node disk size
+     * @return Storage capacity per node, in GB.
      * 
      */
     public Optional<Integer> disk() {
         return Optional.ofNullable(this.disk);
     }
     /**
-     * @return Elasticsearch cluster cold data node Disk encryption
+     * @return Whether to enable disk encryption. The values are as follows:
+     * - true: Enabled.
+     * - false: Disabled.
      * 
      */
     public Optional<Boolean> diskEncryption() {
         return Optional.ofNullable(this.diskEncryption);
     }
     /**
-     * @return Elasticsearch cluster cold data node disk type
+     * @return Storage type for the node. Only `cloudEfficiency` (ultra disk) is supported.
      * 
      */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
     /**
-     * @return Elasticsearch cluster cold data node Disk Specification
+     * @return Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
      * 
      */
     public Optional<String> spec() {

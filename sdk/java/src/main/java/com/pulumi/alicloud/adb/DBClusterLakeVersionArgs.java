@@ -139,14 +139,14 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
      * 
      */
     @Import(name="paymentType", required=true)
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
      * 
      */
     public Output<String> paymentType() {
@@ -624,7 +624,7 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
          * 
          * @return builder
          * 
@@ -635,7 +635,7 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
          * 
          * @return builder
          * 

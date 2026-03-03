@@ -356,6 +356,25 @@ public final class EnterpriseInstanceState extends com.pulumi.resources.Resource
     }
 
     /**
+     * Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+     * 
+     * ~&gt;**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+     * 
+     */
+    @Import(name="sellTrust")
+    private @Nullable Output<Boolean> sellTrust;
+
+    /**
+     * @return Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+     * 
+     * ~&gt;**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> sellTrust() {
+        return Optional.ofNullable(this.sellTrust);
+    }
+
+    /**
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      * 
      */
@@ -493,6 +512,7 @@ public final class EnterpriseInstanceState extends com.pulumi.resources.Resource
         this.queryTimeout = $.queryTimeout;
         this.safeRule = $.safeRule;
         this.safeRuleId = $.safeRuleId;
+        this.sellTrust = $.sellTrust;
         this.sid = $.sid;
         this.skipTest = $.skipTest;
         this.state = $.state;
@@ -988,6 +1008,31 @@ public final class EnterpriseInstanceState extends com.pulumi.resources.Resource
          */
         public Builder safeRuleId(String safeRuleId) {
             return safeRuleId(Output.of(safeRuleId));
+        }
+
+        /**
+         * @param sellTrust Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+         * 
+         * ~&gt;**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sellTrust(@Nullable Output<Boolean> sellTrust) {
+            $.sellTrust = sellTrust;
+            return this;
+        }
+
+        /**
+         * @param sellTrust Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+         * 
+         * ~&gt;**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sellTrust(Boolean sellTrust) {
+            return sellTrust(Output.of(sellTrust));
         }
 
         /**

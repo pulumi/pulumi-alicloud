@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  * ESA Site can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:esa/site:Site example &lt;id&gt;
+ * $ pulumi import alicloud:esa/site:Site example &lt;site_id&gt;
  * ```
  * 
  */
@@ -147,6 +147,34 @@ public class Site extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> addRealClientIpHeader() {
         return Codegen.optional(this.addRealClientIpHeader);
+    }
+    /**
+     * HTTP DDoS Intelligent Protection Mode. Valid values:
+     * 
+     */
+    @Export(name="aiMode", refs={String.class}, tree="[0]")
+    private Output<String> aiMode;
+
+    /**
+     * @return HTTP DDoS Intelligent Protection Mode. Valid values:
+     * 
+     */
+    public Output<String> aiMode() {
+        return this.aiMode;
+    }
+    /**
+     * HTTP DDoS Intelligent Protection Level. Values:
+     * 
+     */
+    @Export(name="aiTemplate", refs={String.class}, tree="[0]")
+    private Output<String> aiTemplate;
+
+    /**
+     * @return HTTP DDoS Intelligent Protection Level. Values:
+     * 
+     */
+    public Output<String> aiTemplate() {
+        return this.aiTemplate;
     }
     /**
      * Multi-level cache architecture mode. Possible values:
@@ -273,6 +301,22 @@ public class Site extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> flattenMode() {
         return Codegen.optional(this.flattenMode);
+    }
+    /**
+     * HTTP DDoS Attack Protection Policy Modes. Valid values:
+     * - `very weak`: indicates a very permissive setting.
+     * 
+     */
+    @Export(name="globalMode", refs={String.class}, tree="[0]")
+    private Output<String> globalMode;
+
+    /**
+     * @return HTTP DDoS Attack Protection Policy Modes. Valid values:
+     * - `very weak`: indicates a very permissive setting.
+     * 
+     */
+    public Output<String> globalMode() {
+        return this.globalMode;
     }
     /**
      * The ID of the associated package instance.

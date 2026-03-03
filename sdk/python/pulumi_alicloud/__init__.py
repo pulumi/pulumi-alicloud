@@ -5987,6 +5987,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "live/domain",
+  "fqn": "pulumi_alicloud.live",
+  "classes": {
+   "alicloud:live/domain:Domain": "Domain"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "log/alert",
   "fqn": "pulumi_alicloud.log",
   "classes": {

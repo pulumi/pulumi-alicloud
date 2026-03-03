@@ -17,7 +17,8 @@ import (
 // For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
 //
 // > **NOTE:** This resource has a fatal bug in the version v1.155.0. If you want to use new feature, please upgrade it to v1.156.0.
-// **NOTE:** Available since v1.155.0.
+//
+// > **NOTE:** Available since v1.155.0.
 //
 // ## Example Usage
 //
@@ -1029,6 +1030,8 @@ type Instance struct {
 	// - none: Disable
 	OptimizedWrites pulumi.StringOutput `pulumi:"optimizedWrites"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+	//
+	// > **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -1124,10 +1127,10 @@ type Instance struct {
 	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
 	SwitchTime pulumi.StringPtrOutput `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
 	//
-	// Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+	// > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
 	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
@@ -1157,9 +1160,11 @@ type Instance struct {
 	// - true: upgrade
 	// - false: not to upgrade
 	//
-	// > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
-	// **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
-	// **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
+	// > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+	//
+	// > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+	//
+	// > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
 	//
 	// Deprecated: Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
 	UpgradeDbInstanceKernelVersion pulumi.BoolPtrOutput `pulumi:"upgradeDbInstanceKernelVersion"`
@@ -1433,6 +1438,8 @@ type instanceState struct {
 	// - none: Disable
 	OptimizedWrites *string `pulumi:"optimizedWrites"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+	//
+	// > **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -1528,10 +1535,10 @@ type instanceState struct {
 	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
 	SwitchTime *string `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
 	//
-	// Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+	// > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
 	Tags map[string]string `pulumi:"tags"`
 	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
 	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
@@ -1561,9 +1568,11 @@ type instanceState struct {
 	// - true: upgrade
 	// - false: not to upgrade
 	//
-	// > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
-	// **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
-	// **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
+	// > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+	//
+	// > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+	//
+	// > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
 	//
 	// Deprecated: Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
 	UpgradeDbInstanceKernelVersion *bool `pulumi:"upgradeDbInstanceKernelVersion"`
@@ -1785,6 +1794,8 @@ type InstanceState struct {
 	// - none: Disable
 	OptimizedWrites pulumi.StringPtrInput
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+	//
+	// > **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
 	Parameters InstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -1880,10 +1891,10 @@ type InstanceState struct {
 	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
 	SwitchTime pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
 	//
-	// Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+	// > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
 	Tags pulumi.StringMapInput
 	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
 	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
@@ -1913,9 +1924,11 @@ type InstanceState struct {
 	// - true: upgrade
 	// - false: not to upgrade
 	//
-	// > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
-	// **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
-	// **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
+	// > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+	//
+	// > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+	//
+	// > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
 	//
 	// Deprecated: Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
 	UpgradeDbInstanceKernelVersion pulumi.BoolPtrInput
@@ -2135,6 +2148,8 @@ type instanceArgs struct {
 	// - none: Disable
 	OptimizedWrites *string `pulumi:"optimizedWrites"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+	//
+	// > **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -2226,10 +2241,10 @@ type instanceArgs struct {
 	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
 	SwitchTime *string `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
 	//
-	// Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+	// > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
 	Tags map[string]string `pulumi:"tags"`
 	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
 	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
@@ -2257,9 +2272,11 @@ type instanceArgs struct {
 	// - true: upgrade
 	// - false: not to upgrade
 	//
-	// > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
-	// **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
-	// **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
+	// > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+	//
+	// > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+	//
+	// > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
 	//
 	// Deprecated: Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
 	UpgradeDbInstanceKernelVersion *bool `pulumi:"upgradeDbInstanceKernelVersion"`
@@ -2476,6 +2493,8 @@ type InstanceArgs struct {
 	// - none: Disable
 	OptimizedWrites pulumi.StringPtrInput
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+	//
+	// > **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
 	Parameters InstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -2567,10 +2586,10 @@ type InstanceArgs struct {
 	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
 	SwitchTime pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
 	//
-	// Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+	// > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
 	Tags pulumi.StringMapInput
 	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
 	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
@@ -2598,9 +2617,11 @@ type InstanceArgs struct {
 	// - true: upgrade
 	// - false: not to upgrade
 	//
-	// > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
-	// **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
-	// **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
+	// > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+	//
+	// > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+	//
+	// > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
 	//
 	// Deprecated: Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
 	UpgradeDbInstanceKernelVersion pulumi.BoolPtrInput
@@ -3040,6 +3061,8 @@ func (o InstanceOutput) OptimizedWrites() pulumi.StringOutput {
 }
 
 // Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+//
+// > **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
 func (o InstanceOutput) Parameters() InstanceParameterArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceParameterArrayOutput { return v.Parameters }).(InstanceParameterArrayOutput)
 }
@@ -3222,10 +3245,10 @@ func (o InstanceOutput) SwitchTime() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+// - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
 //
-// Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+// > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
 func (o InstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -3276,9 +3299,11 @@ func (o InstanceOutput) Templates() pulumi.StringMapArrayOutput {
 // - true: upgrade
 // - false: not to upgrade
 //
-// > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
-// **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
-// **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
+// > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+//
+// > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+//
+// > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
 //
 // Deprecated: Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
 func (o InstanceOutput) UpgradeDbInstanceKernelVersion() pulumi.BoolPtrOutput {

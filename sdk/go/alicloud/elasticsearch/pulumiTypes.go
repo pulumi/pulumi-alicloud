@@ -14,13 +14,13 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type InstanceClientNodeConfiguration struct {
-	// Number of disks in the Elasticsearch cluster coordination node
+	// Number of nodes.
 	Amount *int `pulumi:"amount"`
-	// Elasticsearch cluster coordinates node disk size
+	// Node storage capacity, in GB.
 	Disk *int `pulumi:"disk"`
-	// Elasticsearch cluster coordination node disk type
+	// Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
 	DiskType *string `pulumi:"diskType"`
-	// Elasticsearch cluster coordination node specification
+	// Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 	Spec *string `pulumi:"spec"`
 }
 
@@ -36,13 +36,13 @@ type InstanceClientNodeConfigurationInput interface {
 }
 
 type InstanceClientNodeConfigurationArgs struct {
-	// Number of disks in the Elasticsearch cluster coordination node
+	// Number of nodes.
 	Amount pulumi.IntPtrInput `pulumi:"amount"`
-	// Elasticsearch cluster coordinates node disk size
+	// Node storage capacity, in GB.
 	Disk pulumi.IntPtrInput `pulumi:"disk"`
-	// Elasticsearch cluster coordination node disk type
+	// Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// Elasticsearch cluster coordination node specification
+	// Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 	Spec pulumi.StringPtrInput `pulumi:"spec"`
 }
 
@@ -123,22 +123,22 @@ func (o InstanceClientNodeConfigurationOutput) ToInstanceClientNodeConfiguration
 	}).(InstanceClientNodeConfigurationPtrOutput)
 }
 
-// Number of disks in the Elasticsearch cluster coordination node
+// Number of nodes.
 func (o InstanceClientNodeConfigurationOutput) Amount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceClientNodeConfiguration) *int { return v.Amount }).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch cluster coordinates node disk size
+// Node storage capacity, in GB.
 func (o InstanceClientNodeConfigurationOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceClientNodeConfiguration) *int { return v.Disk }).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch cluster coordination node disk type
+// Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
 func (o InstanceClientNodeConfigurationOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceClientNodeConfiguration) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch cluster coordination node specification
+// Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 func (o InstanceClientNodeConfigurationOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceClientNodeConfiguration) *string { return v.Spec }).(pulumi.StringPtrOutput)
 }
@@ -167,7 +167,7 @@ func (o InstanceClientNodeConfigurationPtrOutput) Elem() InstanceClientNodeConfi
 	}).(InstanceClientNodeConfigurationOutput)
 }
 
-// Number of disks in the Elasticsearch cluster coordination node
+// Number of nodes.
 func (o InstanceClientNodeConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceClientNodeConfiguration) *int {
 		if v == nil {
@@ -177,7 +177,7 @@ func (o InstanceClientNodeConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch cluster coordinates node disk size
+// Node storage capacity, in GB.
 func (o InstanceClientNodeConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceClientNodeConfiguration) *int {
 		if v == nil {
@@ -187,7 +187,7 @@ func (o InstanceClientNodeConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch cluster coordination node disk type
+// Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
 func (o InstanceClientNodeConfigurationPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceClientNodeConfiguration) *string {
 		if v == nil {
@@ -197,7 +197,7 @@ func (o InstanceClientNodeConfigurationPtrOutput) DiskType() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch cluster coordination node specification
+// Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 func (o InstanceClientNodeConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceClientNodeConfiguration) *string {
 		if v == nil {
@@ -208,17 +208,21 @@ func (o InstanceClientNodeConfigurationPtrOutput) Spec() pulumi.StringPtrOutput 
 }
 
 type InstanceDataNodeConfiguration struct {
-	// Number of data nodes in the Elasticsearch cluster
+	// Number of data nodes. Valid values: 2 to 50.
 	Amount *int `pulumi:"amount"`
-	// Elasticsearch data node disk size
+	// Storage capacity per node, in GB.
 	Disk *int `pulumi:"disk"`
-	// Whether the Elasticsearch data node disk is encrypted
+	// Whether to enable cloud disk encryption:
+	// - true: Enabled
+	// - false: Disabled.
 	DiskEncryption *bool `pulumi:"diskEncryption"`
-	// Elasticsearch cluster data node disk type
+	// Node disk type. Supported types:
+	// - cloud_ssd: SSD cloud disk
+	// - cloud_efficiency: Ultra cloud disk.
 	DiskType *string `pulumi:"diskType"`
-	// Elasticsearch cluster data node Essd disk level
+	// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// Elasticsearch data node specification
+	// Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 	Spec string `pulumi:"spec"`
 }
 
@@ -234,17 +238,21 @@ type InstanceDataNodeConfigurationInput interface {
 }
 
 type InstanceDataNodeConfigurationArgs struct {
-	// Number of data nodes in the Elasticsearch cluster
+	// Number of data nodes. Valid values: 2 to 50.
 	Amount pulumi.IntPtrInput `pulumi:"amount"`
-	// Elasticsearch data node disk size
+	// Storage capacity per node, in GB.
 	Disk pulumi.IntPtrInput `pulumi:"disk"`
-	// Whether the Elasticsearch data node disk is encrypted
+	// Whether to enable cloud disk encryption:
+	// - true: Enabled
+	// - false: Disabled.
 	DiskEncryption pulumi.BoolPtrInput `pulumi:"diskEncryption"`
-	// Elasticsearch cluster data node disk type
+	// Node disk type. Supported types:
+	// - cloud_ssd: SSD cloud disk
+	// - cloud_efficiency: Ultra cloud disk.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// Elasticsearch cluster data node Essd disk level
+	// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// Elasticsearch data node specification
+	// Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 	Spec pulumi.StringInput `pulumi:"spec"`
 }
 
@@ -325,32 +333,36 @@ func (o InstanceDataNodeConfigurationOutput) ToInstanceDataNodeConfigurationPtrO
 	}).(InstanceDataNodeConfigurationPtrOutput)
 }
 
-// Number of data nodes in the Elasticsearch cluster
+// Number of data nodes. Valid values: 2 to 50.
 func (o InstanceDataNodeConfigurationOutput) Amount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDataNodeConfiguration) *int { return v.Amount }).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch data node disk size
+// Storage capacity per node, in GB.
 func (o InstanceDataNodeConfigurationOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDataNodeConfiguration) *int { return v.Disk }).(pulumi.IntPtrOutput)
 }
 
-// Whether the Elasticsearch data node disk is encrypted
+// Whether to enable cloud disk encryption:
+// - true: Enabled
+// - false: Disabled.
 func (o InstanceDataNodeConfigurationOutput) DiskEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceDataNodeConfiguration) *bool { return v.DiskEncryption }).(pulumi.BoolPtrOutput)
 }
 
-// Elasticsearch cluster data node disk type
+// Node disk type. Supported types:
+// - cloud_ssd: SSD cloud disk
+// - cloud_efficiency: Ultra cloud disk.
 func (o InstanceDataNodeConfigurationOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataNodeConfiguration) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch cluster data node Essd disk level
+// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
 func (o InstanceDataNodeConfigurationOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataNodeConfiguration) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch data node specification
+// Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 func (o InstanceDataNodeConfigurationOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceDataNodeConfiguration) string { return v.Spec }).(pulumi.StringOutput)
 }
@@ -379,7 +391,7 @@ func (o InstanceDataNodeConfigurationPtrOutput) Elem() InstanceDataNodeConfigura
 	}).(InstanceDataNodeConfigurationOutput)
 }
 
-// Number of data nodes in the Elasticsearch cluster
+// Number of data nodes. Valid values: 2 to 50.
 func (o InstanceDataNodeConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceDataNodeConfiguration) *int {
 		if v == nil {
@@ -389,7 +401,7 @@ func (o InstanceDataNodeConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch data node disk size
+// Storage capacity per node, in GB.
 func (o InstanceDataNodeConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceDataNodeConfiguration) *int {
 		if v == nil {
@@ -399,7 +411,9 @@ func (o InstanceDataNodeConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Whether the Elasticsearch data node disk is encrypted
+// Whether to enable cloud disk encryption:
+// - true: Enabled
+// - false: Disabled.
 func (o InstanceDataNodeConfigurationPtrOutput) DiskEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceDataNodeConfiguration) *bool {
 		if v == nil {
@@ -409,7 +423,9 @@ func (o InstanceDataNodeConfigurationPtrOutput) DiskEncryption() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Elasticsearch cluster data node disk type
+// Node disk type. Supported types:
+// - cloud_ssd: SSD cloud disk
+// - cloud_efficiency: Ultra cloud disk.
 func (o InstanceDataNodeConfigurationPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceDataNodeConfiguration) *string {
 		if v == nil {
@@ -419,7 +435,7 @@ func (o InstanceDataNodeConfigurationPtrOutput) DiskType() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch cluster data node Essd disk level
+// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
 func (o InstanceDataNodeConfigurationPtrOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceDataNodeConfiguration) *string {
 		if v == nil {
@@ -429,7 +445,7 @@ func (o InstanceDataNodeConfigurationPtrOutput) PerformanceLevel() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch data node specification
+// Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 func (o InstanceDataNodeConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceDataNodeConfiguration) *string {
 		if v == nil {
@@ -440,11 +456,11 @@ func (o InstanceDataNodeConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
 }
 
 type InstanceKibanaConfiguration struct {
-	// The number of disks of the Elasticsearch Kibana node. The default value is 1.
+	// The number of nodes.
 	Amount *int `pulumi:"amount"`
-	// Elasticsearch Kibana node disk size
+	// Storage capacity per node, in GB.
 	Disk *int `pulumi:"disk"`
-	// Elasticsearch Kibana node disk specifications
+	// Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 	Spec string `pulumi:"spec"`
 }
 
@@ -460,11 +476,11 @@ type InstanceKibanaConfigurationInput interface {
 }
 
 type InstanceKibanaConfigurationArgs struct {
-	// The number of disks of the Elasticsearch Kibana node. The default value is 1.
+	// The number of nodes.
 	Amount pulumi.IntPtrInput `pulumi:"amount"`
-	// Elasticsearch Kibana node disk size
+	// Storage capacity per node, in GB.
 	Disk pulumi.IntPtrInput `pulumi:"disk"`
-	// Elasticsearch Kibana node disk specifications
+	// Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 	Spec pulumi.StringInput `pulumi:"spec"`
 }
 
@@ -545,17 +561,17 @@ func (o InstanceKibanaConfigurationOutput) ToInstanceKibanaConfigurationPtrOutpu
 	}).(InstanceKibanaConfigurationPtrOutput)
 }
 
-// The number of disks of the Elasticsearch Kibana node. The default value is 1.
+// The number of nodes.
 func (o InstanceKibanaConfigurationOutput) Amount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceKibanaConfiguration) *int { return v.Amount }).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch Kibana node disk size
+// Storage capacity per node, in GB.
 func (o InstanceKibanaConfigurationOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceKibanaConfiguration) *int { return v.Disk }).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch Kibana node disk specifications
+// Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 func (o InstanceKibanaConfigurationOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceKibanaConfiguration) string { return v.Spec }).(pulumi.StringOutput)
 }
@@ -584,7 +600,7 @@ func (o InstanceKibanaConfigurationPtrOutput) Elem() InstanceKibanaConfiguration
 	}).(InstanceKibanaConfigurationOutput)
 }
 
-// The number of disks of the Elasticsearch Kibana node. The default value is 1.
+// The number of nodes.
 func (o InstanceKibanaConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceKibanaConfiguration) *int {
 		if v == nil {
@@ -594,7 +610,7 @@ func (o InstanceKibanaConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch Kibana node disk size
+// Storage capacity per node, in GB.
 func (o InstanceKibanaConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceKibanaConfiguration) *int {
 		if v == nil {
@@ -604,7 +620,7 @@ func (o InstanceKibanaConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch Kibana node disk specifications
+// Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 func (o InstanceKibanaConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceKibanaConfiguration) *string {
 		if v == nil {
@@ -615,13 +631,13 @@ func (o InstanceKibanaConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
 }
 
 type InstanceMasterConfiguration struct {
-	// Elasticsearch proprietary master node number of disks
+	// Number of nodes.
 	Amount *int `pulumi:"amount"`
-	// Elasticsearch proprietary master node disk size
+	// Node storage capacity, in GB.
 	Disk *int `pulumi:"disk"`
-	// Elasticsearch proprietary master node disk type
+	// Node storage type. Only cloudSsd (SSD cloud disk) is supported.
 	DiskType *string `pulumi:"diskType"`
-	// Elasticsearch proprietary master node specifications
+	// Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 	Spec *string `pulumi:"spec"`
 }
 
@@ -637,13 +653,13 @@ type InstanceMasterConfigurationInput interface {
 }
 
 type InstanceMasterConfigurationArgs struct {
-	// Elasticsearch proprietary master node number of disks
+	// Number of nodes.
 	Amount pulumi.IntPtrInput `pulumi:"amount"`
-	// Elasticsearch proprietary master node disk size
+	// Node storage capacity, in GB.
 	Disk pulumi.IntPtrInput `pulumi:"disk"`
-	// Elasticsearch proprietary master node disk type
+	// Node storage type. Only cloudSsd (SSD cloud disk) is supported.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// Elasticsearch proprietary master node specifications
+	// Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 	Spec pulumi.StringPtrInput `pulumi:"spec"`
 }
 
@@ -724,22 +740,22 @@ func (o InstanceMasterConfigurationOutput) ToInstanceMasterConfigurationPtrOutpu
 	}).(InstanceMasterConfigurationPtrOutput)
 }
 
-// Elasticsearch proprietary master node number of disks
+// Number of nodes.
 func (o InstanceMasterConfigurationOutput) Amount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMasterConfiguration) *int { return v.Amount }).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch proprietary master node disk size
+// Node storage capacity, in GB.
 func (o InstanceMasterConfigurationOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMasterConfiguration) *int { return v.Disk }).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch proprietary master node disk type
+// Node storage type. Only cloudSsd (SSD cloud disk) is supported.
 func (o InstanceMasterConfigurationOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMasterConfiguration) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch proprietary master node specifications
+// Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 func (o InstanceMasterConfigurationOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMasterConfiguration) *string { return v.Spec }).(pulumi.StringPtrOutput)
 }
@@ -768,7 +784,7 @@ func (o InstanceMasterConfigurationPtrOutput) Elem() InstanceMasterConfiguration
 	}).(InstanceMasterConfigurationOutput)
 }
 
-// Elasticsearch proprietary master node number of disks
+// Number of nodes.
 func (o InstanceMasterConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMasterConfiguration) *int {
 		if v == nil {
@@ -778,7 +794,7 @@ func (o InstanceMasterConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch proprietary master node disk size
+// Node storage capacity, in GB.
 func (o InstanceMasterConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMasterConfiguration) *int {
 		if v == nil {
@@ -788,7 +804,7 @@ func (o InstanceMasterConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch proprietary master node disk type
+// Node storage type. Only cloudSsd (SSD cloud disk) is supported.
 func (o InstanceMasterConfigurationPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceMasterConfiguration) *string {
 		if v == nil {
@@ -798,7 +814,7 @@ func (o InstanceMasterConfigurationPtrOutput) DiskType() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch proprietary master node specifications
+// Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 func (o InstanceMasterConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceMasterConfiguration) *string {
 		if v == nil {
@@ -809,15 +825,17 @@ func (o InstanceMasterConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
 }
 
 type InstanceWarmNodeConfiguration struct {
-	// Elasticsearch cluster cold data node disk number
+	// Number of nodes.
 	Amount *int `pulumi:"amount"`
-	// Elasticsearch cluster cold data node disk size
+	// Storage capacity per node, in GB.
 	Disk *int `pulumi:"disk"`
-	// Elasticsearch cluster cold data node Disk encryption
+	// Whether to enable disk encryption. The values are as follows:
+	// - true: Enabled.
+	// - false: Disabled.
 	DiskEncryption *bool `pulumi:"diskEncryption"`
-	// Elasticsearch cluster cold data node disk type
+	// Storage type for the node. Only `cloudEfficiency` (ultra disk) is supported.
 	DiskType *string `pulumi:"diskType"`
-	// Elasticsearch cluster cold data node Disk Specification
+	// Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 	Spec *string `pulumi:"spec"`
 }
 
@@ -833,15 +851,17 @@ type InstanceWarmNodeConfigurationInput interface {
 }
 
 type InstanceWarmNodeConfigurationArgs struct {
-	// Elasticsearch cluster cold data node disk number
+	// Number of nodes.
 	Amount pulumi.IntPtrInput `pulumi:"amount"`
-	// Elasticsearch cluster cold data node disk size
+	// Storage capacity per node, in GB.
 	Disk pulumi.IntPtrInput `pulumi:"disk"`
-	// Elasticsearch cluster cold data node Disk encryption
+	// Whether to enable disk encryption. The values are as follows:
+	// - true: Enabled.
+	// - false: Disabled.
 	DiskEncryption pulumi.BoolPtrInput `pulumi:"diskEncryption"`
-	// Elasticsearch cluster cold data node disk type
+	// Storage type for the node. Only `cloudEfficiency` (ultra disk) is supported.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// Elasticsearch cluster cold data node Disk Specification
+	// Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 	Spec pulumi.StringPtrInput `pulumi:"spec"`
 }
 
@@ -922,27 +942,29 @@ func (o InstanceWarmNodeConfigurationOutput) ToInstanceWarmNodeConfigurationPtrO
 	}).(InstanceWarmNodeConfigurationPtrOutput)
 }
 
-// Elasticsearch cluster cold data node disk number
+// Number of nodes.
 func (o InstanceWarmNodeConfigurationOutput) Amount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceWarmNodeConfiguration) *int { return v.Amount }).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch cluster cold data node disk size
+// Storage capacity per node, in GB.
 func (o InstanceWarmNodeConfigurationOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceWarmNodeConfiguration) *int { return v.Disk }).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch cluster cold data node Disk encryption
+// Whether to enable disk encryption. The values are as follows:
+// - true: Enabled.
+// - false: Disabled.
 func (o InstanceWarmNodeConfigurationOutput) DiskEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceWarmNodeConfiguration) *bool { return v.DiskEncryption }).(pulumi.BoolPtrOutput)
 }
 
-// Elasticsearch cluster cold data node disk type
+// Storage type for the node. Only `cloudEfficiency` (ultra disk) is supported.
 func (o InstanceWarmNodeConfigurationOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceWarmNodeConfiguration) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch cluster cold data node Disk Specification
+// Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 func (o InstanceWarmNodeConfigurationOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceWarmNodeConfiguration) *string { return v.Spec }).(pulumi.StringPtrOutput)
 }
@@ -971,7 +993,7 @@ func (o InstanceWarmNodeConfigurationPtrOutput) Elem() InstanceWarmNodeConfigura
 	}).(InstanceWarmNodeConfigurationOutput)
 }
 
-// Elasticsearch cluster cold data node disk number
+// Number of nodes.
 func (o InstanceWarmNodeConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceWarmNodeConfiguration) *int {
 		if v == nil {
@@ -981,7 +1003,7 @@ func (o InstanceWarmNodeConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch cluster cold data node disk size
+// Storage capacity per node, in GB.
 func (o InstanceWarmNodeConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceWarmNodeConfiguration) *int {
 		if v == nil {
@@ -991,7 +1013,9 @@ func (o InstanceWarmNodeConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Elasticsearch cluster cold data node Disk encryption
+// Whether to enable disk encryption. The values are as follows:
+// - true: Enabled.
+// - false: Disabled.
 func (o InstanceWarmNodeConfigurationPtrOutput) DiskEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceWarmNodeConfiguration) *bool {
 		if v == nil {
@@ -1001,7 +1025,7 @@ func (o InstanceWarmNodeConfigurationPtrOutput) DiskEncryption() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Elasticsearch cluster cold data node disk type
+// Storage type for the node. Only `cloudEfficiency` (ultra disk) is supported.
 func (o InstanceWarmNodeConfigurationPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceWarmNodeConfiguration) *string {
 		if v == nil {
@@ -1011,7 +1035,7 @@ func (o InstanceWarmNodeConfigurationPtrOutput) DiskType() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch cluster cold data node Disk Specification
+// Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
 func (o InstanceWarmNodeConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceWarmNodeConfiguration) *string {
 		if v == nil {

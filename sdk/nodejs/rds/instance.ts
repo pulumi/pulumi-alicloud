@@ -12,7 +12,8 @@ import * as utilities from "../utilities";
  * For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
  *
  * > **NOTE:** This resource has a fatal bug in the version v1.155.0. If you want to use new feature, please upgrade it to v1.156.0.
- * **NOTE:** Available since v1.155.0.
+ *
+ * > **NOTE:** Available since v1.155.0.
  *
  * ## Example Usage
  *
@@ -808,6 +809,8 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly optimizedWrites: pulumi.Output<string>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+     *
+     * > **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
      */
     declare public readonly parameters: pulumi.Output<outputs.rds.InstanceParameter[]>;
     /**
@@ -961,10 +964,10 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly switchTime: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     * - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
      *
-     * Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+     * > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -1008,8 +1011,10 @@ export class Instance extends pulumi.CustomResource {
      * - true: upgrade
      * - false: not to upgrade
      *
-     * > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
+     * > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+     *
      * > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+     *
      * > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
      *
      * @deprecated Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
@@ -1550,6 +1555,8 @@ export interface InstanceState {
     optimizedWrites?: pulumi.Input<string>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+     *
+     * > **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
     /**
@@ -1703,10 +1710,10 @@ export interface InstanceState {
     switchTime?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     * - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
      *
-     * Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+     * > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1750,8 +1757,10 @@ export interface InstanceState {
      * - true: upgrade
      * - false: not to upgrade
      *
-     * > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
+     * > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+     *
      * > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+     *
      * > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
      *
      * @deprecated Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
@@ -2070,6 +2079,8 @@ export interface InstanceArgs {
     optimizedWrites?: pulumi.Input<string>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+     *
+     * > **NOTE:** The system will use `520` or `532` connections from `maxConnections` depending on your instance type.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
     /**
@@ -2215,10 +2226,10 @@ export interface InstanceArgs {
     switchTime?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     * - Key: It can be up to 64 characters in length. It cannot begin with `aliyun`, `acs:`, `aliyun`, or `https://`. It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with `aliyun`, `acs:`, `http://`, or `https://`. It can be a null string.
      *
-     * Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+     * > **Note:** From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -2258,8 +2269,10 @@ export interface InstanceArgs {
      * - true: upgrade
      * - false: not to upgrade
      *
-     * > **NOTE:** Database Engine and Version: Supports only MySQL 5.7 or 8.0 instances.
+     * > **NOTE:** Database Engine and Version: Supports only MySQL `5.7` or `8.0` instances.
+     *
      * > **NOTE:** Storage Type: Supports only ESSD cloud disks and general-purpose cloud disks.
+     *
      * > **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
      *
      * @deprecated Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.

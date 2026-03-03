@@ -485,6 +485,24 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
         return this.safeRuleId;
     }
     /**
+     * Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+     * 
+     * ~&gt;**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+     * 
+     */
+    @Export(name="sellTrust", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> sellTrust;
+
+    /**
+     * @return Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
+     * 
+     * ~&gt;**NOTE:** The `databaseUser` will be encrypted if `sellTrust` set to `false`.
+     * 
+     */
+    public Output<Boolean> sellTrust() {
+        return this.sellTrust;
+    }
+    /**
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      * 
      */

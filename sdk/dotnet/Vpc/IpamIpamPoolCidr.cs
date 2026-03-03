@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Vpc
     /// Vpc Ipam Ipam Pool Cidr can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example &lt;ipam_pool_id&gt;:&lt;cidr&gt;
+    /// $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example &lt;ipam_pool_id&gt;#&lt;cidr&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr")]
@@ -71,8 +71,6 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The CIDR address segment to be preset.
-        /// 
-        /// &gt; **NOTE:**  currently, only IPv4 address segments are supported.
         /// </summary>
         [Output("cidr")]
         public Output<string> Cidr { get; private set; } = null!;
@@ -84,7 +82,15 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> IpamPoolId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        [Output("netmaskLength")]
+        public Output<int?> NetmaskLength { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -137,17 +143,23 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The CIDR address segment to be preset.
-        /// 
-        /// &gt; **NOTE:**  currently, only IPv4 address segments are supported.
         /// </summary>
-        [Input("cidr", required: true)]
-        public Input<string> Cidr { get; set; } = null!;
+        [Input("cidr")]
+        public Input<string>? Cidr { get; set; }
 
         /// <summary>
         /// The ID of the IPAM pool instance.
         /// </summary>
         [Input("ipamPoolId", required: true)]
         public Input<string> IpamPoolId { get; set; } = null!;
+
+        /// <summary>
+        /// Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        [Input("netmaskLength")]
+        public Input<int>? NetmaskLength { get; set; }
 
         public IpamIpamPoolCidrArgs()
         {
@@ -159,8 +171,6 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The CIDR address segment to be preset.
-        /// 
-        /// &gt; **NOTE:**  currently, only IPv4 address segments are supported.
         /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
@@ -172,7 +182,15 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? IpamPoolId { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        [Input("netmaskLength")]
+        public Input<int>? NetmaskLength { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

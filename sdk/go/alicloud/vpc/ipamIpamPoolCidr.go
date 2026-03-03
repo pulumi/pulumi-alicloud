@@ -78,18 +78,20 @@ import (
 // Vpc Ipam Ipam Pool Cidr can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example <ipam_pool_id>:<cidr>
+// $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example <ipam_pool_id>#<cidr>
 // ```
 type IpamIpamPoolCidr struct {
 	pulumi.CustomResourceState
 
 	// The CIDR address segment to be preset.
-	//
-	// > **NOTE:**  currently, only IPv4 address segments are supported.
 	Cidr pulumi.StringOutput `pulumi:"cidr"`
 	// The ID of the IPAM pool instance.
 	IpamPoolId pulumi.StringOutput `pulumi:"ipamPoolId"`
-	// The status of the resource
+	// Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	NetmaskLength pulumi.IntPtrOutput `pulumi:"netmaskLength"`
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -100,9 +102,6 @@ func NewIpamIpamPoolCidr(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Cidr == nil {
-		return nil, errors.New("invalid value for required argument 'Cidr'")
-	}
 	if args.IpamPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'IpamPoolId'")
 	}
@@ -130,23 +129,27 @@ func GetIpamIpamPoolCidr(ctx *pulumi.Context,
 // Input properties used for looking up and filtering IpamIpamPoolCidr resources.
 type ipamIpamPoolCidrState struct {
 	// The CIDR address segment to be preset.
-	//
-	// > **NOTE:**  currently, only IPv4 address segments are supported.
 	Cidr *string `pulumi:"cidr"`
 	// The ID of the IPAM pool instance.
 	IpamPoolId *string `pulumi:"ipamPoolId"`
-	// The status of the resource
+	// Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	NetmaskLength *int `pulumi:"netmaskLength"`
+	// The status of the resource.
 	Status *string `pulumi:"status"`
 }
 
 type IpamIpamPoolCidrState struct {
 	// The CIDR address segment to be preset.
-	//
-	// > **NOTE:**  currently, only IPv4 address segments are supported.
 	Cidr pulumi.StringPtrInput
 	// The ID of the IPAM pool instance.
 	IpamPoolId pulumi.StringPtrInput
-	// The status of the resource
+	// Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	NetmaskLength pulumi.IntPtrInput
+	// The status of the resource.
 	Status pulumi.StringPtrInput
 }
 
@@ -156,21 +159,25 @@ func (IpamIpamPoolCidrState) ElementType() reflect.Type {
 
 type ipamIpamPoolCidrArgs struct {
 	// The CIDR address segment to be preset.
-	//
-	// > **NOTE:**  currently, only IPv4 address segments are supported.
-	Cidr string `pulumi:"cidr"`
+	Cidr *string `pulumi:"cidr"`
 	// The ID of the IPAM pool instance.
 	IpamPoolId string `pulumi:"ipamPoolId"`
+	// Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	NetmaskLength *int `pulumi:"netmaskLength"`
 }
 
 // The set of arguments for constructing a IpamIpamPoolCidr resource.
 type IpamIpamPoolCidrArgs struct {
 	// The CIDR address segment to be preset.
-	//
-	// > **NOTE:**  currently, only IPv4 address segments are supported.
-	Cidr pulumi.StringInput
+	Cidr pulumi.StringPtrInput
 	// The ID of the IPAM pool instance.
 	IpamPoolId pulumi.StringInput
+	// Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	NetmaskLength pulumi.IntPtrInput
 }
 
 func (IpamIpamPoolCidrArgs) ElementType() reflect.Type {
@@ -261,8 +268,6 @@ func (o IpamIpamPoolCidrOutput) ToIpamIpamPoolCidrOutputWithContext(ctx context.
 }
 
 // The CIDR address segment to be preset.
-//
-// > **NOTE:**  currently, only IPv4 address segments are supported.
 func (o IpamIpamPoolCidrOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpamIpamPoolCidr) pulumi.StringOutput { return v.Cidr }).(pulumi.StringOutput)
 }
@@ -272,7 +277,14 @@ func (o IpamIpamPoolCidrOutput) IpamPoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpamIpamPoolCidr) pulumi.StringOutput { return v.IpamPoolId }).(pulumi.StringOutput)
 }
 
-// The status of the resource
+// Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+func (o IpamIpamPoolCidrOutput) NetmaskLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IpamIpamPoolCidr) pulumi.IntPtrOutput { return v.NetmaskLength }).(pulumi.IntPtrOutput)
+}
+
+// The status of the resource.
 func (o IpamIpamPoolCidrOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpamIpamPoolCidr) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
