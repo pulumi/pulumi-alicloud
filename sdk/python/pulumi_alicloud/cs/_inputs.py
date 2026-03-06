@@ -1725,7 +1725,7 @@ class ManagedKubernetesAddonArgsDict(TypedDict):
         "disabled": std.lookup(map=entry["value"],
             key="disabled",
             default=cluster_addons).result,
-    } for entry in [{"key": k, "value": v} for k, v in cluster_addons]])
+    } for entry in [{"key": k, "value": v} for k, v in cluster_addons.items()]])
     ```
 
     The `varibales.tf`:
@@ -1932,7 +1932,7 @@ class ManagedKubernetesAddonArgs:
                    "disabled": std.lookup(map=entry["value"],
                        key="disabled",
                        default=cluster_addons).result,
-               } for entry in [{"key": k, "value": v} for k, v in cluster_addons]])
+               } for entry in [{"key": k, "value": v} for k, v in cluster_addons.items()]])
                ```
                
                The `varibales.tf`:
@@ -2148,7 +2148,7 @@ class ManagedKubernetesAddonArgs:
             "disabled": std.lookup(map=entry["value"],
                 key="disabled",
                 default=cluster_addons).result,
-        } for entry in [{"key": k, "value": v} for k, v in cluster_addons]])
+        } for entry in [{"key": k, "value": v} for k, v in cluster_addons.items()]])
         ```
 
         The `varibales.tf`:
