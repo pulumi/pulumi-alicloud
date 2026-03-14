@@ -21,6 +21,21 @@ public final class EcsNetworkInterfaceArgs extends com.pulumi.resources.Resource
     public static final EcsNetworkInterfaceArgs Empty = new EcsNetworkInterfaceArgs();
 
     /**
+     * Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="deleteOnRelease")
+    private @Nullable Output<Boolean> deleteOnRelease;
+
+    /**
+     * @return Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> deleteOnRelease() {
+        return Optional.ofNullable(this.deleteOnRelease);
+    }
+
+    /**
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
@@ -393,6 +408,7 @@ public final class EcsNetworkInterfaceArgs extends com.pulumi.resources.Resource
     private EcsNetworkInterfaceArgs() {}
 
     private EcsNetworkInterfaceArgs(EcsNetworkInterfaceArgs $) {
+        this.deleteOnRelease = $.deleteOnRelease;
         this.description = $.description;
         this.instanceType = $.instanceType;
         this.ipv4PrefixCount = $.ipv4PrefixCount;
@@ -433,6 +449,27 @@ public final class EcsNetworkInterfaceArgs extends com.pulumi.resources.Resource
 
         public Builder(EcsNetworkInterfaceArgs defaults) {
             $ = new EcsNetworkInterfaceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deleteOnRelease Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteOnRelease(@Nullable Output<Boolean> deleteOnRelease) {
+            $.deleteOnRelease = deleteOnRelease;
+            return this;
+        }
+
+        /**
+         * @param deleteOnRelease Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteOnRelease(Boolean deleteOnRelease) {
+            return deleteOnRelease(Output.of(deleteOnRelease));
         }
 
         /**

@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Rds
     /// <summary>
     /// Provides a RDS Backup resource.
     /// 
+    /// Backup object at the instance level or database level.
+    /// 
     /// For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-createbackup).
     /// 
     /// &gt; **NOTE:** Available since v1.149.0.
@@ -53,48 +55,68 @@ namespace Pulumi.AliCloud.Rds
     /// RDS Backup can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:rds/rdsBackup:RdsBackup example &lt;db_instance_id&gt;:&lt;backup_id&gt;
+    /// $ pulumi import alicloud:rds/rdsBackup:RdsBackup example &lt;backup_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/rdsBackup:RdsBackup")]
     public partial class RdsBackup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The backup id.
+        /// The backup set ID.
         /// </summary>
         [Output("backupId")]
         public Output<string> BackupId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+        /// The backup type. Valid values:  
+        /// * `Logical`: logical backup (supported only for MySQL)
+        /// * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+        /// * `Snapshot`: snapshot backup (supported for all database engines)
+        /// 
+        /// Default value: `Physical`.
+        /// 
+        /// &gt; **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+        /// 
+        /// &gt; **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
         /// </summary>
         [Output("backupMethod")]
         public Output<string> BackupMethod { get; private set; } = null!;
 
         /// <summary>
-        /// The policy that you want to use for the backup task. Valid values:
-        /// * **db**: specifies to perform a database-level backup.
-        /// * **instance**: specifies to perform an instance-level backup.
+        /// When the database engine is SQL Server, `BackupStrategy` is set to `Db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        [Output("backupRetentionPeriod")]
+        public Output<int?> BackupRetentionPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// The backup strategy. Valid values:
         /// </summary>
         [Output("backupStrategy")]
         public Output<string?> BackupStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-        /// * **Auto**: specifies to automatically perform a full or incremental backup.
-        /// * **FullBackup**: specifies to perform a full backup.
+        /// The backup type. Valid values:  
+        /// - FullBackup: full backup
+        /// - IncrementalBackup: incremental backup
         /// </summary>
         [Output("backupType")]
         public Output<string> BackupType { get; private set; } = null!;
 
         /// <summary>
-        /// The db instance id.
+        /// The instance ID. You can call DescribeDBInstances to obtain it.
         /// </summary>
         [Output("dbInstanceId")]
         public Output<string> DbInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+        /// A list of databases, separated by commas (,).  
+        /// 
+        /// &gt; **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `Db`.
+        /// 
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("dbName")]
         public Output<string?> DbName { get; private set; } = null!;
@@ -106,7 +128,13 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> RemoveFromState { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+        /// The status of the resource.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the backup can be deleted.
         /// </summary>
         [Output("storeStatus")]
         public Output<string> StoreStatus { get; private set; } = null!;
@@ -158,35 +186,55 @@ namespace Pulumi.AliCloud.Rds
     public sealed class RdsBackupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+        /// The backup type. Valid values:  
+        /// * `Logical`: logical backup (supported only for MySQL)
+        /// * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+        /// * `Snapshot`: snapshot backup (supported for all database engines)
+        /// 
+        /// Default value: `Physical`.
+        /// 
+        /// &gt; **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+        /// 
+        /// &gt; **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
         /// </summary>
         [Input("backupMethod")]
         public Input<string>? BackupMethod { get; set; }
 
         /// <summary>
-        /// The policy that you want to use for the backup task. Valid values:
-        /// * **db**: specifies to perform a database-level backup.
-        /// * **instance**: specifies to perform an instance-level backup.
+        /// When the database engine is SQL Server, `BackupStrategy` is set to `Db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        [Input("backupRetentionPeriod")]
+        public Input<int>? BackupRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// The backup strategy. Valid values:
         /// </summary>
         [Input("backupStrategy")]
         public Input<string>? BackupStrategy { get; set; }
 
         /// <summary>
-        /// The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-        /// * **Auto**: specifies to automatically perform a full or incremental backup.
-        /// * **FullBackup**: specifies to perform a full backup.
+        /// The backup type. Valid values:  
+        /// - FullBackup: full backup
+        /// - IncrementalBackup: incremental backup
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// The db instance id.
+        /// The instance ID. You can call DescribeDBInstances to obtain it.
         /// </summary>
         [Input("dbInstanceId", required: true)]
         public Input<string> DbInstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+        /// A list of databases, separated by commas (,).  
+        /// 
+        /// &gt; **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `Db`.
+        /// 
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("dbName")]
         public Input<string>? DbName { get; set; }
@@ -206,41 +254,61 @@ namespace Pulumi.AliCloud.Rds
     public sealed class RdsBackupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The backup id.
+        /// The backup set ID.
         /// </summary>
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
 
         /// <summary>
-        /// The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+        /// The backup type. Valid values:  
+        /// * `Logical`: logical backup (supported only for MySQL)
+        /// * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+        /// * `Snapshot`: snapshot backup (supported for all database engines)
+        /// 
+        /// Default value: `Physical`.
+        /// 
+        /// &gt; **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+        /// 
+        /// &gt; **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
         /// </summary>
         [Input("backupMethod")]
         public Input<string>? BackupMethod { get; set; }
 
         /// <summary>
-        /// The policy that you want to use for the backup task. Valid values:
-        /// * **db**: specifies to perform a database-level backup.
-        /// * **instance**: specifies to perform an instance-level backup.
+        /// When the database engine is SQL Server, `BackupStrategy` is set to `Db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        [Input("backupRetentionPeriod")]
+        public Input<int>? BackupRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// The backup strategy. Valid values:
         /// </summary>
         [Input("backupStrategy")]
         public Input<string>? BackupStrategy { get; set; }
 
         /// <summary>
-        /// The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-        /// * **Auto**: specifies to automatically perform a full or incremental backup.
-        /// * **FullBackup**: specifies to perform a full backup.
+        /// The backup type. Valid values:  
+        /// - FullBackup: full backup
+        /// - IncrementalBackup: incremental backup
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// The db instance id.
+        /// The instance ID. You can call DescribeDBInstances to obtain it.
         /// </summary>
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
 
         /// <summary>
-        /// The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+        /// A list of databases, separated by commas (,).  
+        /// 
+        /// &gt; **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `Db`.
+        /// 
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("dbName")]
         public Input<string>? DbName { get; set; }
@@ -252,7 +320,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? RemoveFromState { get; set; }
 
         /// <summary>
-        /// Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Indicates whether the backup can be deleted.
         /// </summary>
         [Input("storeStatus")]
         public Input<string>? StoreStatus { get; set; }

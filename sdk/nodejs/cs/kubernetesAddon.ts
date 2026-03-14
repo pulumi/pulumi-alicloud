@@ -117,7 +117,9 @@ export class KubernetesAddon extends pulumi.CustomResource {
     }
 
     /**
-     * Is the addon ready for upgrade.
+     * (Deprecated since v1.273.0) Is the addon ready for upgrade.
+     *
+     * @deprecated Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
      */
     declare public /*out*/ readonly canUpgrade: pulumi.Output<boolean>;
     /**
@@ -137,7 +139,9 @@ export class KubernetesAddon extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The version which addon can be upgraded to.
+     * (Deprecated since v1.273.0) The version which addon can be upgraded to.
+     *
+     * @deprecated Field 'next_version' has been deprecated from provider version 1.273.0. Please use 'next_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
      */
     declare public /*out*/ readonly nextVersion: pulumi.Output<string>;
     /**
@@ -194,7 +198,9 @@ export class KubernetesAddon extends pulumi.CustomResource {
  */
 export interface KubernetesAddonState {
     /**
-     * Is the addon ready for upgrade.
+     * (Deprecated since v1.273.0) Is the addon ready for upgrade.
+     *
+     * @deprecated Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
      */
     canUpgrade?: pulumi.Input<boolean>;
     /**
@@ -214,7 +220,9 @@ export interface KubernetesAddonState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The version which addon can be upgraded to.
+     * (Deprecated since v1.273.0) The version which addon can be upgraded to.
+     *
+     * @deprecated Field 'next_version' has been deprecated from provider version 1.273.0. Please use 'next_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
      */
     nextVersion?: pulumi.Input<string>;
     /**

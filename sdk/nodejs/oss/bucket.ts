@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.2.0.
  *
+ * > **NOTE:** When using standalone sub-resources (e.g., `alicloud.oss.BucketPolicy`, `alicloud.oss.BucketLogging`, `alicloud.oss.BucketCors`, `alicloud.oss.BucketWebsite`, `alicloud.oss.BucketVersioning`, `alicloud.oss.BucketReferer`, `alicloud.oss.BucketServerSideEncryption`, `alicloud.oss.BucketTransferAcceleration`, `alicloud.oss.BucketAcl`) alongside `alicloud.oss.Bucket`, you **must** add a `lifecycle` block with `ignoreChanges` for the corresponding attribute on `alicloud.oss.Bucket`. This prevents Terraform from detecting spurious diffs caused by the same configuration being managed by both the bucket resource and the standalone sub-resource. Without `ignoreChanges`, Terraform may attempt to revert changes made by the sub-resource on every apply, causing unexpected behavior.
+ *
  * ## Example Usage
  *
  * Private Bucket
@@ -308,6 +310,48 @@ import * as utilities from "../utilities";
  *     acl: "private",
  * });
  * ```
+ *
+ * Using sub-resources with ignoreChanges
+ *
+ * When managing bucket configurations through standalone sub-resources such as `alicloud.oss.BucketPolicy`, `alicloud.oss.BucketLogging`, or `alicloud.oss.BucketCors`, you must use a `lifecycle` block with `ignoreChanges` on the `alicloud.oss.Bucket` to prevent Terraform from detecting configuration drift. The sub-resource manages the corresponding attribute independently, so without `ignoreChanges`, Terraform will see the attribute value differ from the bucket's inline configuration and attempt to revert it on every plan/apply.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const example = new alicloud.oss.Bucket("example", {bucket: `example-sub-resources-${_default.result}`});
+ * const exampleBucketAcl = new alicloud.oss.BucketAcl("example", {
+ *     bucket: example.bucket,
+ *     acl: "private",
+ * });
+ * const exampleBucketPolicy = new alicloud.oss.BucketPolicy("example", {
+ *     bucket: example.bucket,
+ *     policy: JSON.stringify({
+ *         Version: "1",
+ *         Statement: [{
+ *             Action: [
+ *                 "oss:PutObject",
+ *                 "oss:GetObject",
+ *             ],
+ *             Effect: "Deny",
+ *             Principal: ["1234567890"],
+ *             Resource: ["acs:oss:*:1234567890:*&#47;*"],
+ *         }],
+ *     }),
+ * });
+ * const exampleBucketLogging = new alicloud.oss.BucketLogging("example", {
+ *     bucket: example.bucket,
+ *     targetBucket: example.bucket,
+ *     targetPrefix: "log/",
+ * });
+ * ```
+ *
+ * > **NOTE:** You only need to include the attributes in `ignoreChanges` that correspond to the sub-resources you are actually using. For example, if you only use `alicloud.oss.BucketPolicy`, you only need `ignoreChanges = [policy]`.
  *
  * IA Bucket
  *

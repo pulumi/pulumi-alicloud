@@ -55,6 +55,11 @@ export type LogtailConfig = import("./logtailConfig").LogtailConfig;
 export const LogtailConfig: typeof import("./logtailConfig").LogtailConfig = null as any;
 utilities.lazyLoad(exports, ["LogtailConfig"], () => require("./logtailConfig"));
 
+export { LogtailPipelineConfigArgs, LogtailPipelineConfigState } from "./logtailPipelineConfig";
+export type LogtailPipelineConfig = import("./logtailPipelineConfig").LogtailPipelineConfig;
+export const LogtailPipelineConfig: typeof import("./logtailPipelineConfig").LogtailPipelineConfig = null as any;
+utilities.lazyLoad(exports, ["LogtailPipelineConfig"], () => require("./logtailPipelineConfig"));
+
 export { MachineGroupArgs, MachineGroupState } from "./machineGroup";
 export type MachineGroup = import("./machineGroup").MachineGroup;
 export const MachineGroup: typeof import("./machineGroup").MachineGroup = null as any;
@@ -85,6 +90,8 @@ const _module = {
                 return new Index(name, <any>undefined, { urn })
             case "alicloud:sls/logtailConfig:LogtailConfig":
                 return new LogtailConfig(name, <any>undefined, { urn })
+            case "alicloud:sls/logtailPipelineConfig:LogtailPipelineConfig":
+                return new LogtailPipelineConfig(name, <any>undefined, { urn })
             case "alicloud:sls/machineGroup:MachineGroup":
                 return new MachineGroup(name, <any>undefined, { urn })
             case "alicloud:sls/ossExportSink:OssExportSink":
@@ -101,6 +108,7 @@ pulumi.runtime.registerResourceModule("alicloud", "sls/collectionPolicy", _modul
 pulumi.runtime.registerResourceModule("alicloud", "sls/etl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/index", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/logtailConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sls/logtailPipelineConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/machineGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/ossExportSink", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/scheduledSql", _module)

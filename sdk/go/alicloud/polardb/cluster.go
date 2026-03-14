@@ -270,6 +270,9 @@ type Cluster struct {
 	DeletionLock pulumi.IntPtrOutput `pulumi:"deletionLock"`
 	// The description of cluster.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+	EnableDynamodb pulumi.BoolOutput `pulumi:"enableDynamodb"`
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
 	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables pulumi.StringPtrOutput `pulumi:"encryptNewTables"`
@@ -510,6 +513,9 @@ type clusterState struct {
 	DeletionLock *int `pulumi:"deletionLock"`
 	// The description of cluster.
 	Description *string `pulumi:"description"`
+	// Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+	EnableDynamodb *bool `pulumi:"enableDynamodb"`
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
 	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables *string `pulumi:"encryptNewTables"`
@@ -712,6 +718,9 @@ type ClusterState struct {
 	DeletionLock pulumi.IntPtrInput
 	// The description of cluster.
 	Description pulumi.StringPtrInput
+	// Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+	EnableDynamodb pulumi.BoolPtrInput
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
 	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables pulumi.StringPtrInput
@@ -912,6 +921,9 @@ type clusterArgs struct {
 	DeletionLock *int `pulumi:"deletionLock"`
 	// The description of cluster.
 	Description *string `pulumi:"description"`
+	// Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+	EnableDynamodb *bool `pulumi:"enableDynamodb"`
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
 	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables *string `pulumi:"encryptNewTables"`
@@ -1101,6 +1113,9 @@ type ClusterArgs struct {
 	DeletionLock pulumi.IntPtrInput
 	// The description of cluster.
 	Description pulumi.StringPtrInput
+	// Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+	EnableDynamodb pulumi.BoolPtrInput
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
 	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables pulumi.StringPtrInput
@@ -1445,6 +1460,12 @@ func (o ClusterOutput) DeletionLock() pulumi.IntPtrOutput {
 // The description of cluster.
 func (o ClusterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+// > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+func (o ClusterOutput) EnableDynamodb() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableDynamodb }).(pulumi.BoolOutput)
 }
 
 // turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.

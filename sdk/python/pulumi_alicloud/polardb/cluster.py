@@ -40,6 +40,7 @@ class ClusterArgs:
                  default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_lock: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_dynamodb: Optional[pulumi.Input[_builtins.bool]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  from_time_service: Optional[pulumi.Input[_builtins.str]] = None,
@@ -127,6 +128,8 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
+        :param pulumi.Input[_builtins.bool] enable_dynamodb: Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+               > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
         :param pulumi.Input[_builtins.str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
@@ -245,6 +248,8 @@ class ClusterArgs:
             pulumi.set(__self__, "deletion_lock", deletion_lock)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_dynamodb is not None:
+            pulumi.set(__self__, "enable_dynamodb", enable_dynamodb)
         if encrypt_new_tables is not None:
             pulumi.set(__self__, "encrypt_new_tables", encrypt_new_tables)
         if encryption_key is not None:
@@ -592,6 +597,19 @@ class ClusterArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableDynamodb")
+    def enable_dynamodb(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+        > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+        """
+        return pulumi.get(self, "enable_dynamodb")
+
+    @enable_dynamodb.setter
+    def enable_dynamodb(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_dynamodb", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptNewTables")
@@ -1295,6 +1313,7 @@ class _ClusterState:
                  default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_lock: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_dynamodb: Optional[pulumi.Input[_builtins.bool]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  from_time_service: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1388,6 +1407,8 @@ class _ClusterState:
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
+        :param pulumi.Input[_builtins.bool] enable_dynamodb: Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+               > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
         :param pulumi.Input[_builtins.str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
@@ -1520,6 +1541,8 @@ class _ClusterState:
             pulumi.set(__self__, "deletion_lock", deletion_lock)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_dynamodb is not None:
+            pulumi.set(__self__, "enable_dynamodb", enable_dynamodb)
         if encrypt_new_tables is not None:
             pulumi.set(__self__, "encrypt_new_tables", encrypt_new_tables)
         if encryption_key is not None:
@@ -1909,6 +1932,19 @@ class _ClusterState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableDynamodb")
+    def enable_dynamodb(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+        > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+        """
+        return pulumi.get(self, "enable_dynamodb")
+
+    @enable_dynamodb.setter
+    def enable_dynamodb(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_dynamodb", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptNewTables")
@@ -2650,6 +2686,7 @@ class Cluster(pulumi.CustomResource):
                  default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_lock: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_dynamodb: Optional[pulumi.Input[_builtins.bool]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  from_time_service: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2850,6 +2887,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
+        :param pulumi.Input[_builtins.bool] enable_dynamodb: Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+               > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
         :param pulumi.Input[_builtins.str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
@@ -3086,6 +3125,7 @@ class Cluster(pulumi.CustomResource):
                  default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_lock: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_dynamodb: Optional[pulumi.Input[_builtins.bool]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  from_time_service: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3174,6 +3214,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["default_time_zone"] = default_time_zone
             __props__.__dict__["deletion_lock"] = deletion_lock
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_dynamodb"] = enable_dynamodb
             __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
             __props__.__dict__["encryption_key"] = encryption_key
             __props__.__dict__["from_time_service"] = from_time_service
@@ -3266,6 +3307,7 @@ class Cluster(pulumi.CustomResource):
             default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
             deletion_lock: Optional[pulumi.Input[_builtins.int]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            enable_dynamodb: Optional[pulumi.Input[_builtins.bool]] = None,
             encrypt_new_tables: Optional[pulumi.Input[_builtins.str]] = None,
             encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
             from_time_service: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3363,6 +3405,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
+        :param pulumi.Input[_builtins.bool] enable_dynamodb: Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+               > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
         :param pulumi.Input[_builtins.str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
@@ -3477,6 +3521,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["default_time_zone"] = default_time_zone
         __props__.__dict__["deletion_lock"] = deletion_lock
         __props__.__dict__["description"] = description
+        __props__.__dict__["enable_dynamodb"] = enable_dynamodb
         __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["from_time_service"] = from_time_service
@@ -3722,6 +3767,15 @@ class Cluster(pulumi.CustomResource):
         The description of cluster.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="enableDynamodb")
+    def enable_dynamodb(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+        > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+        """
+        return pulumi.get(self, "enable_dynamodb")
 
     @_builtins.property
     @pulumi.getter(name="encryptNewTables")

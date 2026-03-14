@@ -66,7 +66,7 @@ import (
 //				VswitchId:                    defaultSwitch.ID(),
 //				Password:                     pulumi.String("Examplw1234"),
 //				Version:                      pulumi.String("7.10_with_X-Pack"),
-//				InstanceChargeType:           pulumi.String("PostPaid"),
+//				PaymentType:                  pulumi.String("PayAsYouGo"),
 //				DataNodeAmount:               pulumi.Int(2),
 //				DataNodeSpec:                 pulumi.String("elasticsearch.sn2ne.large"),
 //				DataNodeDiskSize:             pulumi.Int(20),
@@ -167,7 +167,7 @@ type Instance struct {
 	// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
 	// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
 	InstanceCategory pulumi.StringOutput `pulumi:"instanceCategory"`
-	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
@@ -212,6 +212,8 @@ type Instance struct {
 	// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The billing method of the instance. Supported values:
+	// - `PayAsYouGo`: Pay-as-you-go
+	// - `Subscription`: Subscription
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period pulumi.IntOutput `pulumi:"period"`
@@ -406,7 +408,7 @@ type instanceState struct {
 	// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
 	// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
 	InstanceCategory *string `pulumi:"instanceCategory"`
-	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -451,6 +453,8 @@ type instanceState struct {
 	// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
 	Password *string `pulumi:"password"`
 	// The billing method of the instance. Supported values:
+	// - `PayAsYouGo`: Pay-as-you-go
+	// - `Subscription`: Subscription
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period *int `pulumi:"period"`
@@ -603,7 +607,7 @@ type InstanceState struct {
 	// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
 	// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
 	InstanceCategory pulumi.StringPtrInput
-	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
@@ -648,6 +652,8 @@ type InstanceState struct {
 	// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
 	Password pulumi.StringPtrInput
 	// The billing method of the instance. Supported values:
+	// - `PayAsYouGo`: Pay-as-you-go
+	// - `Subscription`: Subscription
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period pulumi.IntPtrInput
@@ -798,7 +804,7 @@ type instanceArgs struct {
 	// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
 	// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
 	InstanceCategory *string `pulumi:"instanceCategory"`
-	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -837,6 +843,8 @@ type instanceArgs struct {
 	// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
 	Password *string `pulumi:"password"`
 	// The billing method of the instance. Supported values:
+	// - `PayAsYouGo`: Pay-as-you-go
+	// - `Subscription`: Subscription
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period *int `pulumi:"period"`
@@ -976,7 +984,7 @@ type InstanceArgs struct {
 	// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
 	// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
 	InstanceCategory pulumi.StringPtrInput
-	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
@@ -1015,6 +1023,8 @@ type InstanceArgs struct {
 	// The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
 	Password pulumi.StringPtrInput
 	// The billing method of the instance. Supported values:
+	// - `PayAsYouGo`: Pay-as-you-go
+	// - `Subscription`: Subscription
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period pulumi.IntPtrInput
@@ -1305,7 +1315,7 @@ func (o InstanceOutput) InstanceCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceCategory }).(pulumi.StringOutput)
 }
 
-// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
 //
 // Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
 func (o InstanceOutput) InstanceChargeType() pulumi.StringOutput {
@@ -1398,6 +1408,8 @@ func (o InstanceOutput) Password() pulumi.StringPtrOutput {
 }
 
 // The billing method of the instance. Supported values:
+// - `PayAsYouGo`: Pay-as-you-go
+// - `Subscription`: Subscription
 func (o InstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }

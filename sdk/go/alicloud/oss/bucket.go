@@ -17,6 +17,8 @@ import (
 //
 // > **NOTE:** Available since v1.2.0.
 //
+// > **NOTE:** When using standalone sub-resources (e.g., `oss.BucketPolicy`, `oss.BucketLogging`, `oss.BucketCors`, `oss.BucketWebsite`, `oss.BucketVersioning`, `oss.BucketReferer`, `oss.BucketServerSideEncryption`, `oss.BucketTransferAcceleration`, `oss.BucketAcl`) alongside `oss.Bucket`, you **must** add a `lifecycle` block with `ignoreChanges` for the corresponding attribute on `oss.Bucket`. This prevents Terraform from detecting spurious diffs caused by the same configuration being managed by both the bucket resource and the standalone sub-resource. Without `ignoreChanges`, Terraform may attempt to revert changes made by the sub-resource on every apply, causing unexpected behavior.
+//
 // ## Example Usage
 //
 // # Private Bucket
@@ -518,6 +520,90 @@ import (
 //	}
 //
 // ```
+//
+// # Using sub-resources with ignoreChanges
+//
+// When managing bucket configurations through standalone sub-resources such as `oss.BucketPolicy`, `oss.BucketLogging`, or `oss.BucketCors`, you must use a `lifecycle` block with `ignoreChanges` on the `oss.Bucket` to prevent Terraform from detecting configuration drift. The sub-resource manages the corresponding attribute independently, so without `ignoreChanges`, Terraform will see the attribute value differ from the bucket's inline configuration and attempt to revert it on every plan/apply.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example, err := oss.NewBucket(ctx, "example", &oss.BucketArgs{
+//				Bucket: pulumi.Sprintf("example-sub-resources-%v", _default.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketAcl(ctx, "example", &oss.BucketAclArgs{
+//				Bucket: example.Bucket,
+//				Acl:    pulumi.String("private"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"Version": "1",
+//				"Statement": []map[string]interface{}{
+//					map[string]interface{}{
+//						"Action": []string{
+//							"oss:PutObject",
+//							"oss:GetObject",
+//						},
+//						"Effect": "Deny",
+//						"Principal": []string{
+//							"1234567890",
+//						},
+//						"Resource": []string{
+//							"acs:oss:*:1234567890:*/*",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = oss.NewBucketPolicy(ctx, "example", &oss.BucketPolicyArgs{
+//				Bucket: example.Bucket,
+//				Policy: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketLogging(ctx, "example", &oss.BucketLoggingArgs{
+//				Bucket:       example.Bucket,
+//				TargetBucket: example.Bucket,
+//				TargetPrefix: pulumi.String("log/"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > **NOTE:** You only need to include the attributes in `ignoreChanges` that correspond to the sub-resources you are actually using. For example, if you only use `oss.BucketPolicy`, you only need `ignoreChanges = [policy]`.
 //
 // # IA Bucket
 //

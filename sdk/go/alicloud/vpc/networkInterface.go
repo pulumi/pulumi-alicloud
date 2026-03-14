@@ -101,6 +101,7 @@ import (
 type NetworkInterface struct {
 	pulumi.CustomResourceState
 
+	DeleteOnRelease pulumi.BoolOutput `pulumi:"deleteOnRelease"`
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      pulumi.StringPtrOutput   `pulumi:"description"`
 	InstanceType     pulumi.StringOutput      `pulumi:"instanceType"`
@@ -180,6 +181,7 @@ func GetNetworkInterface(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkInterface resources.
 type networkInterfaceState struct {
+	DeleteOnRelease *bool `pulumi:"deleteOnRelease"`
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      *string  `pulumi:"description"`
 	InstanceType     *string  `pulumi:"instanceType"`
@@ -227,6 +229,7 @@ type networkInterfaceState struct {
 }
 
 type NetworkInterfaceState struct {
+	DeleteOnRelease pulumi.BoolPtrInput
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      pulumi.StringPtrInput
 	InstanceType     pulumi.StringPtrInput
@@ -278,6 +281,7 @@ func (NetworkInterfaceState) ElementType() reflect.Type {
 }
 
 type networkInterfaceArgs struct {
+	DeleteOnRelease *bool `pulumi:"deleteOnRelease"`
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      *string  `pulumi:"description"`
 	InstanceType     *string  `pulumi:"instanceType"`
@@ -323,6 +327,7 @@ type networkInterfaceArgs struct {
 
 // The set of arguments for constructing a NetworkInterface resource.
 type NetworkInterfaceArgs struct {
+	DeleteOnRelease pulumi.BoolPtrInput
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      pulumi.StringPtrInput
 	InstanceType     pulumi.StringPtrInput
@@ -451,6 +456,10 @@ func (o NetworkInterfaceOutput) ToNetworkInterfaceOutput() NetworkInterfaceOutpu
 
 func (o NetworkInterfaceOutput) ToNetworkInterfaceOutputWithContext(ctx context.Context) NetworkInterfaceOutput {
 	return o
+}
+
+func (o NetworkInterfaceOutput) DeleteOnRelease() pulumi.BoolOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.BoolOutput { return v.DeleteOnRelease }).(pulumi.BoolOutput)
 }
 
 // Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.

@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Adb
 {
     /// <summary>
-    /// Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createaccount) account resource and used to manage databases.
+    /// Provides a AnalyticDB for MySQL (ADB) Account resource.
+    /// 
+    /// For information about AnalyticDB for MySQL (ADB) Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createaccount).
     /// 
     /// &gt; **NOTE:** Available since v1.71.0.
     /// 
@@ -25,8 +27,7 @@ namespace Pulumi.AliCloud.Adb
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var creation = config.Get("creation") ?? "ADB";
-    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var name = config.Get("name") ?? "terraform_example";
     ///     var @default = AliCloud.Adb.GetZones.Invoke();
     /// 
     ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
@@ -40,14 +41,12 @@ namespace Pulumi.AliCloud.Adb
     ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///     });
     /// 
-    ///     var vswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]);
-    /// 
     ///     var cluster = new AliCloud.Adb.DBCluster("cluster", new()
     ///     {
     ///         DbClusterCategory = "MixedStorage",
     ///         Mode = "flexible",
     ///         ComputeResource = "8Core32GB",
-    ///         VswitchId = vswitchId,
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///         Description = name,
     ///     });
     /// 
@@ -66,35 +65,49 @@ namespace Pulumi.AliCloud.Adb
     /// 
     /// ## Import
     /// 
-    /// ADB account can be imported using the id, e.g.
+    /// AnalyticDB for MySQL (ADB) Account can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:adb/account:Account example am-12345:tf_account
+    /// $ pulumi import alicloud:adb/account:Account example &lt;db_cluster_id&gt;:&lt;account_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:adb/account:Account")]
     public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// The description of the account.
         /// </summary>
         [Output("accountDescription")]
         public Output<string?> AccountDescription { get; private set; } = null!;
 
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        /// The name of the database account. The name must meet the following requirements:
+        /// - Start with a lowercase letter and end with a lowercase letter or a digit.
+        /// - Contain only lowercase letters, digits, and underscores (_).
+        /// - Its length must be between 2 and 16 characters.
+        /// - Cannot be a reserved name, such as root, admin, or opsadmin.
         /// </summary>
         [Output("accountName")]
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `AccountPassword` and `KmsEncryptedPassword` fields.
+        /// The password of the database account. The password must meet the following requirements:
+        /// - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+        /// - The allowed special characters are: (!), (@), (#), ($), (%), (^), (&amp;), (*), (()), (_), (+), (-), (=).
+        /// - Its length must be between 8 and 32 characters.
         /// </summary>
         [Output("accountPassword")]
         public Output<string?> AccountPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of cluster in which account belongs.
+        /// The type of the account. Valid values:
+        /// - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+        /// </summary>
+        [Output("accountType")]
+        public Output<string> AccountType { get; private set; } = null!;
+
+        /// <summary>
+        /// The cluster ID of the data warehouse edition.
         /// </summary>
         [Output("dbClusterId")]
         public Output<string> DbClusterId { get; private set; } = null!;
@@ -110,6 +123,18 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.273.0) The status of the account.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -162,13 +187,17 @@ namespace Pulumi.AliCloud.Adb
     public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// The description of the account.
         /// </summary>
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
 
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        /// The name of the database account. The name must meet the following requirements:
+        /// - Start with a lowercase letter and end with a lowercase letter or a digit.
+        /// - Contain only lowercase letters, digits, and underscores (_).
+        /// - Its length must be between 2 and 16 characters.
+        /// - Cannot be a reserved name, such as root, admin, or opsadmin.
         /// </summary>
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
@@ -177,7 +206,10 @@ namespace Pulumi.AliCloud.Adb
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `AccountPassword` and `KmsEncryptedPassword` fields.
+        /// The password of the database account. The password must meet the following requirements:
+        /// - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+        /// - The allowed special characters are: (!), (@), (#), ($), (%), (^), (&amp;), (*), (()), (_), (+), (-), (=).
+        /// - Its length must be between 8 and 32 characters.
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -190,7 +222,14 @@ namespace Pulumi.AliCloud.Adb
         }
 
         /// <summary>
-        /// The Id of cluster in which account belongs.
+        /// The type of the account. Valid values:
+        /// - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+        /// </summary>
+        [Input("accountType")]
+        public Input<string>? AccountType { get; set; }
+
+        /// <summary>
+        /// The cluster ID of the data warehouse edition.
         /// </summary>
         [Input("dbClusterId", required: true)]
         public Input<string> DbClusterId { get; set; } = null!;
@@ -213,6 +252,18 @@ namespace Pulumi.AliCloud.Adb
             set => _kmsEncryptionContext = value;
         }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         public AccountArgs()
         {
         }
@@ -222,13 +273,17 @@ namespace Pulumi.AliCloud.Adb
     public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// The description of the account.
         /// </summary>
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
 
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        /// The name of the database account. The name must meet the following requirements:
+        /// - Start with a lowercase letter and end with a lowercase letter or a digit.
+        /// - Contain only lowercase letters, digits, and underscores (_).
+        /// - Its length must be between 2 and 16 characters.
+        /// - Cannot be a reserved name, such as root, admin, or opsadmin.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
@@ -237,7 +292,10 @@ namespace Pulumi.AliCloud.Adb
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `AccountPassword` and `KmsEncryptedPassword` fields.
+        /// The password of the database account. The password must meet the following requirements:
+        /// - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+        /// - The allowed special characters are: (!), (@), (#), ($), (%), (^), (&amp;), (*), (()), (_), (+), (-), (=).
+        /// - Its length must be between 8 and 32 characters.
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -250,7 +308,14 @@ namespace Pulumi.AliCloud.Adb
         }
 
         /// <summary>
-        /// The Id of cluster in which account belongs.
+        /// The type of the account. Valid values:
+        /// - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+        /// </summary>
+        [Input("accountType")]
+        public Input<string>? AccountType { get; set; }
+
+        /// <summary>
+        /// The cluster ID of the data warehouse edition.
         /// </summary>
         [Input("dbClusterId")]
         public Input<string>? DbClusterId { get; set; }
@@ -271,6 +336,24 @@ namespace Pulumi.AliCloud.Adb
         {
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
+        }
+
+        /// <summary>
+        /// (Available since v1.273.0) The status of the account.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
         }
 
         public AccountState()

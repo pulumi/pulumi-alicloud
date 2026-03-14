@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<Outputs.PolicyBindingAdvancedOptions> AdvancedOptions { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource
+        /// The creation time of the resource.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<Inputs.PolicyBindingAdvancedOptionsGetArgs>? AdvancedOptions { get; set; }
 
         /// <summary>
-        /// The creation time of the resource
+        /// The creation time of the resource.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }

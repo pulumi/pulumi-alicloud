@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.CS
     public partial class KubernetesAddon : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Is the addon ready for upgrade.
+        /// (Deprecated since v1.273.0) Is the addon ready for upgrade.
         /// </summary>
         [Output("canUpgrade")]
         public Output<bool> CanUpgrade { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The version which addon can be upgraded to.
+        /// (Deprecated since v1.273.0) The version which addon can be upgraded to.
         /// </summary>
         [Output("nextVersion")]
         public Output<string> NextVersion { get; private set; } = null!;
@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class KubernetesAddonState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Is the addon ready for upgrade.
+        /// (Deprecated since v1.273.0) Is the addon ready for upgrade.
         /// </summary>
         [Input("canUpgrade")]
         public Input<bool>? CanUpgrade { get; set; }
@@ -289,7 +289,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The version which addon can be upgraded to.
+        /// (Deprecated since v1.273.0) The version which addon can be upgraded to.
         /// </summary>
         [Input("nextVersion")]
         public Input<string>? NextVersion { get; set; }

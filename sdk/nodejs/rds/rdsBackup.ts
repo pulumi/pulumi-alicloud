@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a RDS Backup resource.
  *
+ * Backup object at the instance level or database level.
+ *
  * For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-createbackup).
  *
  * > **NOTE:** Available since v1.149.0.
@@ -37,7 +39,7 @@ import * as utilities from "../utilities";
  * RDS Backup can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:rds/rdsBackup:RdsBackup example <db_instance_id>:<backup_id>
+ * $ pulumi import alicloud:rds/rdsBackup:RdsBackup example <backup_id>
  * ```
  */
 export class RdsBackup extends pulumi.CustomResource {
@@ -69,31 +71,49 @@ export class RdsBackup extends pulumi.CustomResource {
     }
 
     /**
-     * The backup id.
+     * The backup set ID.
      */
     declare public /*out*/ readonly backupId: pulumi.Output<string>;
     /**
-     * The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+     * The backup type. Valid values:  
+     * * `Logical`: logical backup (supported only for MySQL)
+     * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+     * * `Snapshot`: snapshot backup (supported for all database engines)
+     *
+     * Default value: `Physical`.
+     *
+     * > **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+     *
+     * > **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
      */
     declare public readonly backupMethod: pulumi.Output<string>;
     /**
-     * The policy that you want to use for the backup task. Valid values:
-     * * **db**: specifies to perform a database-level backup.
-     * * **instance**: specifies to perform an instance-level backup.
+     * When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    declare public readonly backupRetentionPeriod: pulumi.Output<number | undefined>;
+    /**
+     * The backup strategy. Valid values:
      */
     declare public readonly backupStrategy: pulumi.Output<string | undefined>;
     /**
-     * The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-     * * **Auto**: specifies to automatically perform a full or incremental backup.
-     * * **FullBackup**: specifies to perform a full backup.
+     * The backup type. Valid values:  
+     * - FullBackup: full backup
+     * - IncrementalBackup: incremental backup
      */
     declare public readonly backupType: pulumi.Output<string>;
     /**
-     * The db instance id.
+     * The instance ID. You can call DescribeDBInstances to obtain it.
      */
     declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
-     * The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+     * A list of databases, separated by commas (,).  
+     *
+     * > **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+     *
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
     declare public readonly dbName: pulumi.Output<string | undefined>;
     /**
@@ -101,7 +121,11 @@ export class RdsBackup extends pulumi.CustomResource {
      */
     declare public readonly removeFromState: pulumi.Output<boolean | undefined>;
     /**
-     * Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+     * The status of the resource.
+     */
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * Indicates whether the backup can be deleted.
      */
     declare public /*out*/ readonly storeStatus: pulumi.Output<string>;
 
@@ -120,11 +144,13 @@ export class RdsBackup extends pulumi.CustomResource {
             const state = argsOrState as RdsBackupState | undefined;
             resourceInputs["backupId"] = state?.backupId;
             resourceInputs["backupMethod"] = state?.backupMethod;
+            resourceInputs["backupRetentionPeriod"] = state?.backupRetentionPeriod;
             resourceInputs["backupStrategy"] = state?.backupStrategy;
             resourceInputs["backupType"] = state?.backupType;
             resourceInputs["dbInstanceId"] = state?.dbInstanceId;
             resourceInputs["dbName"] = state?.dbName;
             resourceInputs["removeFromState"] = state?.removeFromState;
+            resourceInputs["status"] = state?.status;
             resourceInputs["storeStatus"] = state?.storeStatus;
         } else {
             const args = argsOrState as RdsBackupArgs | undefined;
@@ -132,12 +158,14 @@ export class RdsBackup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
             resourceInputs["backupMethod"] = args?.backupMethod;
+            resourceInputs["backupRetentionPeriod"] = args?.backupRetentionPeriod;
             resourceInputs["backupStrategy"] = args?.backupStrategy;
             resourceInputs["backupType"] = args?.backupType;
             resourceInputs["dbInstanceId"] = args?.dbInstanceId;
             resourceInputs["dbName"] = args?.dbName;
             resourceInputs["removeFromState"] = args?.removeFromState;
             resourceInputs["backupId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
             resourceInputs["storeStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -150,31 +178,49 @@ export class RdsBackup extends pulumi.CustomResource {
  */
 export interface RdsBackupState {
     /**
-     * The backup id.
+     * The backup set ID.
      */
     backupId?: pulumi.Input<string>;
     /**
-     * The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+     * The backup type. Valid values:  
+     * * `Logical`: logical backup (supported only for MySQL)
+     * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+     * * `Snapshot`: snapshot backup (supported for all database engines)
+     *
+     * Default value: `Physical`.
+     *
+     * > **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+     *
+     * > **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
      */
     backupMethod?: pulumi.Input<string>;
     /**
-     * The policy that you want to use for the backup task. Valid values:
-     * * **db**: specifies to perform a database-level backup.
-     * * **instance**: specifies to perform an instance-level backup.
+     * When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    backupRetentionPeriod?: pulumi.Input<number>;
+    /**
+     * The backup strategy. Valid values:
      */
     backupStrategy?: pulumi.Input<string>;
     /**
-     * The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-     * * **Auto**: specifies to automatically perform a full or incremental backup.
-     * * **FullBackup**: specifies to perform a full backup.
+     * The backup type. Valid values:  
+     * - FullBackup: full backup
+     * - IncrementalBackup: incremental backup
      */
     backupType?: pulumi.Input<string>;
     /**
-     * The db instance id.
+     * The instance ID. You can call DescribeDBInstances to obtain it.
      */
     dbInstanceId?: pulumi.Input<string>;
     /**
-     * The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+     * A list of databases, separated by commas (,).  
+     *
+     * > **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+     *
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
     dbName?: pulumi.Input<string>;
     /**
@@ -182,7 +228,11 @@ export interface RdsBackupState {
      */
     removeFromState?: pulumi.Input<boolean>;
     /**
-     * Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Indicates whether the backup can be deleted.
      */
     storeStatus?: pulumi.Input<string>;
 }
@@ -192,27 +242,45 @@ export interface RdsBackupState {
  */
 export interface RdsBackupArgs {
     /**
-     * The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+     * The backup type. Valid values:  
+     * * `Logical`: logical backup (supported only for MySQL)
+     * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+     * * `Snapshot`: snapshot backup (supported for all database engines)
+     *
+     * Default value: `Physical`.
+     *
+     * > **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+     *
+     * > **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
      */
     backupMethod?: pulumi.Input<string>;
     /**
-     * The policy that you want to use for the backup task. Valid values:
-     * * **db**: specifies to perform a database-level backup.
-     * * **instance**: specifies to perform an instance-level backup.
+     * When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    backupRetentionPeriod?: pulumi.Input<number>;
+    /**
+     * The backup strategy. Valid values:
      */
     backupStrategy?: pulumi.Input<string>;
     /**
-     * The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-     * * **Auto**: specifies to automatically perform a full or incremental backup.
-     * * **FullBackup**: specifies to perform a full backup.
+     * The backup type. Valid values:  
+     * - FullBackup: full backup
+     * - IncrementalBackup: incremental backup
      */
     backupType?: pulumi.Input<string>;
     /**
-     * The db instance id.
+     * The instance ID. You can call DescribeDBInstances to obtain it.
      */
     dbInstanceId: pulumi.Input<string>;
     /**
-     * The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+     * A list of databases, separated by commas (,).  
+     *
+     * > **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+     *
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
     dbName?: pulumi.Input<string>;
     /**

@@ -1041,7 +1041,7 @@ public final class PvtzFunctions {
     /**
      * Using this data source can open Private Zone service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
+     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/dns/introduction-to-intranet-analysis).
      * 
      * &gt; **NOTE:** Available since v1.114.0.
      * 
@@ -1087,7 +1087,7 @@ public final class PvtzFunctions {
     /**
      * Using this data source can open Private Zone service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
+     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/dns/introduction-to-intranet-analysis).
      * 
      * &gt; **NOTE:** Available since v1.114.0.
      * 
@@ -1133,7 +1133,7 @@ public final class PvtzFunctions {
     /**
      * Using this data source can open Private Zone service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
+     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/dns/introduction-to-intranet-analysis).
      * 
      * &gt; **NOTE:** Available since v1.114.0.
      * 
@@ -1179,7 +1179,7 @@ public final class PvtzFunctions {
     /**
      * Using this data source can open Private Zone service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
+     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/dns/introduction-to-intranet-analysis).
      * 
      * &gt; **NOTE:** Available since v1.114.0.
      * 
@@ -1225,7 +1225,7 @@ public final class PvtzFunctions {
     /**
      * Using this data source can open Private Zone service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
+     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/dns/introduction-to-intranet-analysis).
      * 
      * &gt; **NOTE:** Available since v1.114.0.
      * 
@@ -1271,7 +1271,7 @@ public final class PvtzFunctions {
     /**
      * Using this data source can open Private Zone service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
+     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/dns/introduction-to-intranet-analysis).
      * 
      * &gt; **NOTE:** Available since v1.114.0.
      * 
@@ -1317,7 +1317,7 @@ public final class PvtzFunctions {
     /**
      * Using this data source can open Private Zone service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
+     * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/dns/introduction-to-intranet-analysis).
      * 
      * &gt; **NOTE:** Available since v1.114.0.
      * 

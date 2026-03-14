@@ -103,7 +103,7 @@ export class PolicyBinding extends pulumi.CustomResource {
      */
     declare public readonly advancedOptions: pulumi.Output<outputs.hbr.PolicyBindingAdvancedOptions>;
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -221,7 +221,7 @@ export interface PolicyBindingState {
      */
     advancedOptions?: pulumi.Input<inputs.hbr.PolicyBindingAdvancedOptions>;
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      */
     createTime?: pulumi.Input<string>;
     /**

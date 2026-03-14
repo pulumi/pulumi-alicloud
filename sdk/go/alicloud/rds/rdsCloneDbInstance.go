@@ -283,6 +283,10 @@ type RdsCloneDbInstance struct {
 	// The information about the databases and tables that you want to restore. Format:
 	// [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
 	TableMeta pulumi.StringPtrOutput `pulumi:"tableMeta"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The availability check method of the instance. Valid values:
 	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
 	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
@@ -518,6 +522,10 @@ type rdsCloneDbInstanceState struct {
 	// The information about the databases and tables that you want to restore. Format:
 	// [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
 	TableMeta *string `pulumi:"tableMeta"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags map[string]string `pulumi:"tags"`
 	// The availability check method of the instance. Valid values:
 	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
 	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
@@ -715,6 +723,10 @@ type RdsCloneDbInstanceState struct {
 	// The information about the databases and tables that you want to restore. Format:
 	// [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
 	TableMeta pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.StringMapInput
 	// The availability check method of the instance. Valid values:
 	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
 	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
@@ -914,6 +926,10 @@ type rdsCloneDbInstanceArgs struct {
 	// The information about the databases and tables that you want to restore. Format:
 	// [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
 	TableMeta *string `pulumi:"tableMeta"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags map[string]string `pulumi:"tags"`
 	// The availability check method of the instance. Valid values:
 	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
 	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
@@ -1110,6 +1126,10 @@ type RdsCloneDbInstanceArgs struct {
 	// The information about the databases and tables that you want to restore. Format:
 	// [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
 	TableMeta pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.StringMapInput
 	// The availability check method of the instance. Valid values:
 	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
 	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
@@ -1553,6 +1573,13 @@ func (o RdsCloneDbInstanceOutput) SyncMode() pulumi.StringOutput {
 // [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
 func (o RdsCloneDbInstanceOutput) TableMeta() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.TableMeta }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o RdsCloneDbInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The availability check method of the instance. Valid values:

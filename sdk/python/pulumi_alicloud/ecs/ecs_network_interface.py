@@ -20,6 +20,7 @@ __all__ = ['EcsNetworkInterfaceArgs', 'EcsNetworkInterface']
 class EcsNetworkInterfaceArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[_builtins.str],
+                 delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -45,6 +46,7 @@ class EcsNetworkInterfaceArgs:
         The set of arguments for constructing a EcsNetworkInterface resource.
 
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
+        :param pulumi.Input[_builtins.bool] delete_on_release: Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] instance_type: The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
         :param pulumi.Input[_builtins.int] ipv4_prefix_count: The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
@@ -68,6 +70,8 @@ class EcsNetworkInterfaceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if delete_on_release is not None:
+            pulumi.set(__self__, "delete_on_release", delete_on_release)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_type is not None:
@@ -137,6 +141,18 @@ class EcsNetworkInterfaceArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "vswitch_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteOnRelease")
+    def delete_on_release(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "delete_on_release")
+
+    @delete_on_release.setter
+    def delete_on_release(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_on_release", value)
 
     @_builtins.property
     @pulumi.getter
@@ -399,6 +415,7 @@ class EcsNetworkInterfaceArgs:
 @pulumi.input_type
 class _EcsNetworkInterfaceState:
     def __init__(__self__, *,
+                 delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -426,6 +443,7 @@ class _EcsNetworkInterfaceState:
         """
         Input properties used for looking up and filtering EcsNetworkInterface resources.
 
+        :param pulumi.Input[_builtins.bool] delete_on_release: Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] instance_type: The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
         :param pulumi.Input[_builtins.int] ipv4_prefix_count: The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
@@ -451,6 +469,8 @@ class _EcsNetworkInterfaceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
         """
+        if delete_on_release is not None:
+            pulumi.set(__self__, "delete_on_release", delete_on_release)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_type is not None:
@@ -514,6 +534,18 @@ class _EcsNetworkInterfaceState:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteOnRelease")
+    def delete_on_release(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "delete_on_release")
+
+    @delete_on_release.setter
+    def delete_on_release(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_on_release", value)
 
     @_builtins.property
     @pulumi.getter
@@ -815,6 +847,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -869,7 +902,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
             zone_id=default.zones[0].id,
             vpc_id=default_network.id)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=name,
+            security_group_name=name,
             vpc_id=default_network.id)
         default_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
         default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("default",
@@ -898,6 +931,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] delete_on_release: Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] instance_type: The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
         :param pulumi.Input[_builtins.int] ipv4_prefix_count: The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
@@ -958,7 +992,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
             zone_id=default.zones[0].id,
             vpc_id=default_network.id)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=name,
+            security_group_name=name,
             vpc_id=default_network.id)
         default_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
         default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("default",
@@ -1000,6 +1034,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1031,6 +1066,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EcsNetworkInterfaceArgs.__new__(EcsNetworkInterfaceArgs)
 
+            __props__.__dict__["delete_on_release"] = delete_on_release
             __props__.__dict__["description"] = description
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["ipv4_prefix_count"] = ipv4_prefix_count
@@ -1067,6 +1103,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             instance_type: Optional[pulumi.Input[_builtins.str]] = None,
             ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1098,6 +1135,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] delete_on_release: Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] instance_type: The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
         :param pulumi.Input[_builtins.int] ipv4_prefix_count: The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
@@ -1127,6 +1165,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
 
         __props__ = _EcsNetworkInterfaceState.__new__(_EcsNetworkInterfaceState)
 
+        __props__.__dict__["delete_on_release"] = delete_on_release
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["ipv4_prefix_count"] = ipv4_prefix_count
@@ -1152,6 +1191,14 @@ class EcsNetworkInterface(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         return EcsNetworkInterface(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteOnRelease")
+    def delete_on_release(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "delete_on_release")
 
     @_builtins.property
     @pulumi.getter

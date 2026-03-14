@@ -112,7 +112,7 @@ type PolicyBinding struct {
 
 	// Backup Advanced Options See `advancedOptions` below.
 	AdvancedOptions PolicyBindingAdvancedOptionsOutput `pulumi:"advancedOptions"`
-	// The creation time of the resource
+	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
 	CrossAccountRoleName pulumi.StringPtrOutput `pulumi:"crossAccountRoleName"`
@@ -180,7 +180,7 @@ func GetPolicyBinding(ctx *pulumi.Context,
 type policyBindingState struct {
 	// Backup Advanced Options See `advancedOptions` below.
 	AdvancedOptions *PolicyBindingAdvancedOptions `pulumi:"advancedOptions"`
-	// The creation time of the resource
+	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
 	// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
 	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`
@@ -219,7 +219,7 @@ type policyBindingState struct {
 type PolicyBindingState struct {
 	// Backup Advanced Options See `advancedOptions` below.
 	AdvancedOptions PolicyBindingAdvancedOptionsPtrInput
-	// The creation time of the resource
+	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
 	// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
 	CrossAccountRoleName pulumi.StringPtrInput
@@ -426,7 +426,7 @@ func (o PolicyBindingOutput) AdvancedOptions() PolicyBindingAdvancedOptionsOutpu
 	return o.ApplyT(func(v *PolicyBinding) PolicyBindingAdvancedOptionsOutput { return v.AdvancedOptions }).(PolicyBindingAdvancedOptionsOutput)
 }
 
-// The creation time of the resource
+// The creation time of the resource.
 func (o PolicyBindingOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyBinding) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }

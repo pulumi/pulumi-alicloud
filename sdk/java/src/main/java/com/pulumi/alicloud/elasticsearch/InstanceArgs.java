@@ -369,7 +369,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
      * 
      * @deprecated
      * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
@@ -380,7 +380,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     * @return Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
      * 
      * @deprecated
      * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
@@ -605,6 +605,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The billing method of the instance. Supported values:
+     * - `PayAsYouGo`: Pay-as-you-go
+     * - `Subscription`: Subscription
      * 
      */
     @Import(name="paymentType")
@@ -612,6 +614,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The billing method of the instance. Supported values:
+     * - `PayAsYouGo`: Pay-as-you-go
+     * - `Subscription`: Subscription
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -1510,7 +1514,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
          * 
          * @return builder
          * 
@@ -1525,7 +1529,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
          * 
          * @return builder
          * 
@@ -1844,6 +1848,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param paymentType The billing method of the instance. Supported values:
+         * - `PayAsYouGo`: Pay-as-you-go
+         * - `Subscription`: Subscription
          * 
          * @return builder
          * 
@@ -1855,6 +1861,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param paymentType The billing method of the instance. Supported values:
+         * - `PayAsYouGo`: Pay-as-you-go
+         * - `Subscription`: Subscription
          * 
          * @return builder
          * 

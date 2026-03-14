@@ -14,13 +14,21 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     public sealed class PolicyBindingAdvancedOptions
     {
         /// <summary>
+        /// OSS Backup Advanced options See `OssDetail` below.
+        /// </summary>
+        public readonly Outputs.PolicyBindingAdvancedOptionsOssDetail? OssDetail;
+        /// <summary>
         /// ECS Backup Advanced options See `UdmDetail` below.
         /// </summary>
         public readonly Outputs.PolicyBindingAdvancedOptionsUdmDetail? UdmDetail;
 
         [OutputConstructor]
-        private PolicyBindingAdvancedOptions(Outputs.PolicyBindingAdvancedOptionsUdmDetail? udmDetail)
+        private PolicyBindingAdvancedOptions(
+            Outputs.PolicyBindingAdvancedOptionsOssDetail? ossDetail,
+
+            Outputs.PolicyBindingAdvancedOptionsUdmDetail? udmDetail)
         {
+            OssDetail = ossDetail;
             UdmDetail = udmDetail;
         }
     }

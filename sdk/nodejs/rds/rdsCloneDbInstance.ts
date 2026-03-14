@@ -379,6 +379,12 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      */
     declare public readonly tableMeta: pulumi.Output<string | undefined>;
     /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The availability check method of the instance. Valid values:
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
@@ -492,6 +498,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
             resourceInputs["switchTime"] = state?.switchTime;
             resourceInputs["syncMode"] = state?.syncMode;
             resourceInputs["tableMeta"] = state?.tableMeta;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["tcpConnectionType"] = state?.tcpConnectionType;
             resourceInputs["tdeStatus"] = state?.tdeStatus;
             resourceInputs["usedTime"] = state?.usedTime;
@@ -564,6 +571,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
             resourceInputs["switchTime"] = args?.switchTime;
             resourceInputs["syncMode"] = args?.syncMode;
             resourceInputs["tableMeta"] = args?.tableMeta;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["tcpConnectionType"] = args?.tcpConnectionType;
             resourceInputs["tdeStatus"] = args?.tdeStatus;
             resourceInputs["usedTime"] = args?.usedTime;
@@ -855,6 +863,12 @@ export interface RdsCloneDbInstanceState {
      * [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
      */
     tableMeta?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The availability check method of the instance. Valid values:
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
@@ -1175,6 +1189,12 @@ export interface RdsCloneDbInstanceArgs {
      * [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
      */
     tableMeta?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The availability check method of the instance. Valid values:
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.

@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Index{}
 	case "alicloud:sls/logtailConfig:LogtailConfig":
 		r = &LogtailConfig{}
+	case "alicloud:sls/logtailPipelineConfig:LogtailPipelineConfig":
+		r = &LogtailPipelineConfig{}
 	case "alicloud:sls/machineGroup:MachineGroup":
 		r = &MachineGroup{}
 	case "alicloud:sls/ossExportSink:OssExportSink":
@@ -73,6 +75,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"sls/logtailConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sls/logtailPipelineConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

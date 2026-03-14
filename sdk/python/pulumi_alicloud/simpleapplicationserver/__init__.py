@@ -7,6 +7,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .custom_image import *
+from .disk import *
 from .firewall_rule import *
 from .get_images import *
 from .get_instances import *

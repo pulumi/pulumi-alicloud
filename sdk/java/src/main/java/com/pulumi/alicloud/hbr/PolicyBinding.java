@@ -133,14 +133,14 @@ public class PolicyBinding extends com.pulumi.resources.CustomResource {
         return this.advancedOptions;
     }
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The creation time of the resource.
      * 
      */
     public Output<String> createTime() {

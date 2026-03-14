@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .name(name)
+ *             .securityGroupName(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
@@ -121,6 +121,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface")
 public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
+    /**
+     * Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="deleteOnRelease", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> deleteOnRelease;
+
+    /**
+     * @return Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Boolean> deleteOnRelease() {
+        return this.deleteOnRelease;
+    }
     /**
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 

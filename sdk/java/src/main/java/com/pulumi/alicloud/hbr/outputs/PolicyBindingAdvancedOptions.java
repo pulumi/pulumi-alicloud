@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.hbr.outputs;
 
+import com.pulumi.alicloud.hbr.outputs.PolicyBindingAdvancedOptionsOssDetail;
 import com.pulumi.alicloud.hbr.outputs.PolicyBindingAdvancedOptionsUdmDetail;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
@@ -12,12 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PolicyBindingAdvancedOptions {
     /**
+     * @return OSS Backup Advanced options See `ossDetail` below.
+     * 
+     */
+    private @Nullable PolicyBindingAdvancedOptionsOssDetail ossDetail;
+    /**
      * @return ECS Backup Advanced options See `udmDetail` below.
      * 
      */
     private @Nullable PolicyBindingAdvancedOptionsUdmDetail udmDetail;
 
     private PolicyBindingAdvancedOptions() {}
+    /**
+     * @return OSS Backup Advanced options See `ossDetail` below.
+     * 
+     */
+    public Optional<PolicyBindingAdvancedOptionsOssDetail> ossDetail() {
+        return Optional.ofNullable(this.ossDetail);
+    }
     /**
      * @return ECS Backup Advanced options See `udmDetail` below.
      * 
@@ -35,13 +48,21 @@ public final class PolicyBindingAdvancedOptions {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PolicyBindingAdvancedOptionsOssDetail ossDetail;
         private @Nullable PolicyBindingAdvancedOptionsUdmDetail udmDetail;
         public Builder() {}
         public Builder(PolicyBindingAdvancedOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.ossDetail = defaults.ossDetail;
     	      this.udmDetail = defaults.udmDetail;
         }
 
+        @CustomType.Setter
+        public Builder ossDetail(@Nullable PolicyBindingAdvancedOptionsOssDetail ossDetail) {
+
+            this.ossDetail = ossDetail;
+            return this;
+        }
         @CustomType.Setter
         public Builder udmDetail(@Nullable PolicyBindingAdvancedOptionsUdmDetail udmDetail) {
 
@@ -50,6 +71,7 @@ public final class PolicyBindingAdvancedOptions {
         }
         public PolicyBindingAdvancedOptions build() {
             final var _resultValue = new PolicyBindingAdvancedOptions();
+            _resultValue.ossDetail = ossDetail;
             _resultValue.udmDetail = udmDetail;
             return _resultValue;
         }

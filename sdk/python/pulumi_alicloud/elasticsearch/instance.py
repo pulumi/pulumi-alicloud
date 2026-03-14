@@ -115,7 +115,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] instance_category: Edition type:  
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
-        :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+        :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
         :param pulumi.Input['InstanceKibanaConfigurationArgs'] kibana_configuration: The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[_builtins.str] kibana_private_security_group_id: List of security groups.
@@ -133,6 +133,8 @@ class InstanceArgs:
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         :param pulumi.Input[_builtins.str] password: The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Supported values:
+               - `PayAsYouGo`: Pay-as-you-go
+               - `Subscription`: Subscription
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
@@ -578,7 +580,7 @@ class InstanceArgs:
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.""")
     def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+        Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -742,6 +744,8 @@ class InstanceArgs:
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The billing method of the instance. Supported values:
+        - `PayAsYouGo`: Pay-as-you-go
+        - `Subscription`: Subscription
         """
         return pulumi.get(self, "payment_type")
 
@@ -1071,7 +1075,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] instance_category: Edition type:  
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
-        :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+        :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
         :param pulumi.Input['InstanceKibanaConfigurationArgs'] kibana_configuration: The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
         :param pulumi.Input[_builtins.str] kibana_domain: Kibana endpoint.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
@@ -1092,6 +1096,8 @@ class _InstanceState:
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         :param pulumi.Input[_builtins.str] password: The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Supported values:
+               - `PayAsYouGo`: Pay-as-you-go
+               - `Subscription`: Subscription
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[_builtins.int] port: Instance connection port.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
@@ -1577,7 +1583,7 @@ class _InstanceState:
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.""")
     def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+        Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -1777,6 +1783,8 @@ class _InstanceState:
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The billing method of the instance. Supported values:
+        - `PayAsYouGo`: Pay-as-you-go
+        - `Subscription`: Subscription
         """
         return pulumi.get(self, "payment_type")
 
@@ -2180,7 +2188,7 @@ class Instance(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             password="Examplw1234",
             version="7.10_with_X-Pack",
-            instance_charge_type="PostPaid",
+            payment_type="PayAsYouGo",
             data_node_amount=2,
             data_node_spec="elasticsearch.sn2ne.large",
             data_node_disk_size=20,
@@ -2235,7 +2243,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_category: Edition type:  
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
-        :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+        :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
         :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']] kibana_configuration: The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[_builtins.str] kibana_private_security_group_id: List of security groups.
@@ -2253,6 +2261,8 @@ class Instance(pulumi.CustomResource):
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         :param pulumi.Input[_builtins.str] password: The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Supported values:
+               - `PayAsYouGo`: Pay-as-you-go
+               - `Subscription`: Subscription
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
@@ -2336,7 +2346,7 @@ class Instance(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             password="Examplw1234",
             version="7.10_with_X-Pack",
-            instance_charge_type="PostPaid",
+            payment_type="PayAsYouGo",
             data_node_amount=2,
             data_node_spec="elasticsearch.sn2ne.large",
             data_node_disk_size=20,
@@ -2609,7 +2619,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_category: Edition type:  
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
-        :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+        :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
         :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']] kibana_configuration: The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
         :param pulumi.Input[_builtins.str] kibana_domain: Kibana endpoint.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
@@ -2630,6 +2640,8 @@ class Instance(pulumi.CustomResource):
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         :param pulumi.Input[_builtins.str] password: The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Supported values:
+               - `PayAsYouGo`: Pay-as-you-go
+               - `Subscription`: Subscription
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[_builtins.int] port: Instance connection port.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
@@ -2929,7 +2941,7 @@ class Instance(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.""")
     def instance_charge_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+        Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -3065,6 +3077,8 @@ class Instance(pulumi.CustomResource):
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
         The billing method of the instance. Supported values:
+        - `PayAsYouGo`: Pay-as-you-go
+        - `Subscription`: Subscription
         """
         return pulumi.get(self, "payment_type")
 

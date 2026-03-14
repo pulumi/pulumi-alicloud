@@ -21,6 +21,7 @@ class RdsBackupArgs:
     def __init__(__self__, *,
                  db_instance_id: pulumi.Input[_builtins.str],
                  backup_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_type: Optional[pulumi.Input[_builtins.str]] = None,
                  db_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -28,20 +29,37 @@ class RdsBackupArgs:
         """
         The set of arguments for constructing a RdsBackup resource.
 
-        :param pulumi.Input[_builtins.str] db_instance_id: The db instance id.
-        :param pulumi.Input[_builtins.str] backup_method: The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
-        :param pulumi.Input[_builtins.str] backup_strategy: The policy that you want to use for the backup task. Valid values:
-               * **db**: specifies to perform a database-level backup.
-               * **instance**: specifies to perform an instance-level backup.
-        :param pulumi.Input[_builtins.str] backup_type: The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-               * **Auto**: specifies to automatically perform a full or incremental backup.
-               * **FullBackup**: specifies to perform a full backup.
-        :param pulumi.Input[_builtins.str] db_name: The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+        :param pulumi.Input[_builtins.str] db_instance_id: The instance ID. You can call DescribeDBInstances to obtain it.
+        :param pulumi.Input[_builtins.str] backup_method: The backup type. Valid values:  
+               * `Logical`: logical backup (supported only for MySQL)
+               * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+               * `Snapshot`: snapshot backup (supported for all database engines)
+               
+               Default value: `Physical`.
+               
+               > **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+               
+               > **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
+        :param pulumi.Input[_builtins.int] backup_retention_period: When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] backup_strategy: The backup strategy. Valid values:
+        :param pulumi.Input[_builtins.str] backup_type: The backup type. Valid values:  
+               - FullBackup: full backup
+               - IncrementalBackup: incremental backup
+        :param pulumi.Input[_builtins.str] db_name: A list of databases, separated by commas (,).  
+               
+               > **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+               
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.bool] remove_from_state: Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
         """
         pulumi.set(__self__, "db_instance_id", db_instance_id)
         if backup_method is not None:
             pulumi.set(__self__, "backup_method", backup_method)
+        if backup_retention_period is not None:
+            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
         if backup_strategy is not None:
             pulumi.set(__self__, "backup_strategy", backup_strategy)
         if backup_type is not None:
@@ -55,7 +73,7 @@ class RdsBackupArgs:
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The db instance id.
+        The instance ID. You can call DescribeDBInstances to obtain it.
         """
         return pulumi.get(self, "db_instance_id")
 
@@ -67,7 +85,16 @@ class RdsBackupArgs:
     @pulumi.getter(name="backupMethod")
     def backup_method(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+        The backup type. Valid values:  
+        * `Logical`: logical backup (supported only for MySQL)
+        * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+        * `Snapshot`: snapshot backup (supported for all database engines)
+
+        Default value: `Physical`.
+
+        > **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+
+        > **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
         """
         return pulumi.get(self, "backup_method")
 
@@ -76,12 +103,24 @@ class RdsBackupArgs:
         pulumi.set(self, "backup_method", value)
 
     @_builtins.property
+    @pulumi.getter(name="backupRetentionPeriod")
+    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "backup_retention_period")
+
+    @backup_retention_period.setter
+    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "backup_retention_period", value)
+
+    @_builtins.property
     @pulumi.getter(name="backupStrategy")
     def backup_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The policy that you want to use for the backup task. Valid values:
-        * **db**: specifies to perform a database-level backup.
-        * **instance**: specifies to perform an instance-level backup.
+        The backup strategy. Valid values:
         """
         return pulumi.get(self, "backup_strategy")
 
@@ -93,9 +132,9 @@ class RdsBackupArgs:
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-        * **Auto**: specifies to automatically perform a full or incremental backup.
-        * **FullBackup**: specifies to perform a full backup.
+        The backup type. Valid values:  
+        - FullBackup: full backup
+        - IncrementalBackup: incremental backup
         """
         return pulumi.get(self, "backup_type")
 
@@ -107,7 +146,12 @@ class RdsBackupArgs:
     @pulumi.getter(name="dbName")
     def db_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+        A list of databases, separated by commas (,).  
+
+        > **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "db_name")
 
@@ -133,32 +177,52 @@ class _RdsBackupState:
     def __init__(__self__, *,
                  backup_id: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_type: Optional[pulumi.Input[_builtins.str]] = None,
                  db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  db_name: Optional[pulumi.Input[_builtins.str]] = None,
                  remove_from_state: Optional[pulumi.Input[_builtins.bool]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
                  store_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RdsBackup resources.
 
-        :param pulumi.Input[_builtins.str] backup_id: The backup id.
-        :param pulumi.Input[_builtins.str] backup_method: The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
-        :param pulumi.Input[_builtins.str] backup_strategy: The policy that you want to use for the backup task. Valid values:
-               * **db**: specifies to perform a database-level backup.
-               * **instance**: specifies to perform an instance-level backup.
-        :param pulumi.Input[_builtins.str] backup_type: The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-               * **Auto**: specifies to automatically perform a full or incremental backup.
-               * **FullBackup**: specifies to perform a full backup.
-        :param pulumi.Input[_builtins.str] db_instance_id: The db instance id.
-        :param pulumi.Input[_builtins.str] db_name: The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+        :param pulumi.Input[_builtins.str] backup_id: The backup set ID.
+        :param pulumi.Input[_builtins.str] backup_method: The backup type. Valid values:  
+               * `Logical`: logical backup (supported only for MySQL)
+               * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+               * `Snapshot`: snapshot backup (supported for all database engines)
+               
+               Default value: `Physical`.
+               
+               > **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+               
+               > **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
+        :param pulumi.Input[_builtins.int] backup_retention_period: When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] backup_strategy: The backup strategy. Valid values:
+        :param pulumi.Input[_builtins.str] backup_type: The backup type. Valid values:  
+               - FullBackup: full backup
+               - IncrementalBackup: incremental backup
+        :param pulumi.Input[_builtins.str] db_instance_id: The instance ID. You can call DescribeDBInstances to obtain it.
+        :param pulumi.Input[_builtins.str] db_name: A list of databases, separated by commas (,).  
+               
+               > **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+               
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.bool] remove_from_state: Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
-        :param pulumi.Input[_builtins.str] store_status: Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+        :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[_builtins.str] store_status: Indicates whether the backup can be deleted.
         """
         if backup_id is not None:
             pulumi.set(__self__, "backup_id", backup_id)
         if backup_method is not None:
             pulumi.set(__self__, "backup_method", backup_method)
+        if backup_retention_period is not None:
+            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
         if backup_strategy is not None:
             pulumi.set(__self__, "backup_strategy", backup_strategy)
         if backup_type is not None:
@@ -169,6 +233,8 @@ class _RdsBackupState:
             pulumi.set(__self__, "db_name", db_name)
         if remove_from_state is not None:
             pulumi.set(__self__, "remove_from_state", remove_from_state)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if store_status is not None:
             pulumi.set(__self__, "store_status", store_status)
 
@@ -176,7 +242,7 @@ class _RdsBackupState:
     @pulumi.getter(name="backupId")
     def backup_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The backup id.
+        The backup set ID.
         """
         return pulumi.get(self, "backup_id")
 
@@ -188,7 +254,16 @@ class _RdsBackupState:
     @pulumi.getter(name="backupMethod")
     def backup_method(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+        The backup type. Valid values:  
+        * `Logical`: logical backup (supported only for MySQL)
+        * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+        * `Snapshot`: snapshot backup (supported for all database engines)
+
+        Default value: `Physical`.
+
+        > **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+
+        > **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
         """
         return pulumi.get(self, "backup_method")
 
@@ -197,12 +272,24 @@ class _RdsBackupState:
         pulumi.set(self, "backup_method", value)
 
     @_builtins.property
+    @pulumi.getter(name="backupRetentionPeriod")
+    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "backup_retention_period")
+
+    @backup_retention_period.setter
+    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "backup_retention_period", value)
+
+    @_builtins.property
     @pulumi.getter(name="backupStrategy")
     def backup_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The policy that you want to use for the backup task. Valid values:
-        * **db**: specifies to perform a database-level backup.
-        * **instance**: specifies to perform an instance-level backup.
+        The backup strategy. Valid values:
         """
         return pulumi.get(self, "backup_strategy")
 
@@ -214,9 +301,9 @@ class _RdsBackupState:
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-        * **Auto**: specifies to automatically perform a full or incremental backup.
-        * **FullBackup**: specifies to perform a full backup.
+        The backup type. Valid values:  
+        - FullBackup: full backup
+        - IncrementalBackup: incremental backup
         """
         return pulumi.get(self, "backup_type")
 
@@ -228,7 +315,7 @@ class _RdsBackupState:
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The db instance id.
+        The instance ID. You can call DescribeDBInstances to obtain it.
         """
         return pulumi.get(self, "db_instance_id")
 
@@ -240,7 +327,12 @@ class _RdsBackupState:
     @pulumi.getter(name="dbName")
     def db_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+        A list of databases, separated by commas (,).  
+
+        > **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "db_name")
 
@@ -261,10 +353,22 @@ class _RdsBackupState:
         pulumi.set(self, "remove_from_state", value)
 
     @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
     @pulumi.getter(name="storeStatus")
     def store_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+        Indicates whether the backup can be deleted.
         """
         return pulumi.get(self, "store_status")
 
@@ -280,6 +384,7 @@ class RdsBackup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_type: Optional[pulumi.Input[_builtins.str]] = None,
                  db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -288,6 +393,8 @@ class RdsBackup(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a RDS Backup resource.
+
+        Backup object at the instance level or database level.
 
         For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-createbackup).
 
@@ -318,21 +425,36 @@ class RdsBackup(pulumi.CustomResource):
         RDS Backup can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:rds/rdsBackup:RdsBackup example <db_instance_id>:<backup_id>
+        $ pulumi import alicloud:rds/rdsBackup:RdsBackup example <backup_id>
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] backup_method: The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
-        :param pulumi.Input[_builtins.str] backup_strategy: The policy that you want to use for the backup task. Valid values:
-               * **db**: specifies to perform a database-level backup.
-               * **instance**: specifies to perform an instance-level backup.
-        :param pulumi.Input[_builtins.str] backup_type: The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-               * **Auto**: specifies to automatically perform a full or incremental backup.
-               * **FullBackup**: specifies to perform a full backup.
-        :param pulumi.Input[_builtins.str] db_instance_id: The db instance id.
-        :param pulumi.Input[_builtins.str] db_name: The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+        :param pulumi.Input[_builtins.str] backup_method: The backup type. Valid values:  
+               * `Logical`: logical backup (supported only for MySQL)
+               * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+               * `Snapshot`: snapshot backup (supported for all database engines)
+               
+               Default value: `Physical`.
+               
+               > **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+               
+               > **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
+        :param pulumi.Input[_builtins.int] backup_retention_period: When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] backup_strategy: The backup strategy. Valid values:
+        :param pulumi.Input[_builtins.str] backup_type: The backup type. Valid values:  
+               - FullBackup: full backup
+               - IncrementalBackup: incremental backup
+        :param pulumi.Input[_builtins.str] db_instance_id: The instance ID. You can call DescribeDBInstances to obtain it.
+        :param pulumi.Input[_builtins.str] db_name: A list of databases, separated by commas (,).  
+               
+               > **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+               
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.bool] remove_from_state: Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
         """
         ...
@@ -344,6 +466,8 @@ class RdsBackup(pulumi.CustomResource):
         """
         Provides a RDS Backup resource.
 
+        Backup object at the instance level or database level.
+
         For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-createbackup).
 
         > **NOTE:** Available since v1.149.0.
@@ -373,7 +497,7 @@ class RdsBackup(pulumi.CustomResource):
         RDS Backup can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:rds/rdsBackup:RdsBackup example <db_instance_id>:<backup_id>
+        $ pulumi import alicloud:rds/rdsBackup:RdsBackup example <backup_id>
         ```
 
 
@@ -393,6 +517,7 @@ class RdsBackup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_type: Optional[pulumi.Input[_builtins.str]] = None,
                  db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -408,6 +533,7 @@ class RdsBackup(pulumi.CustomResource):
             __props__ = RdsBackupArgs.__new__(RdsBackupArgs)
 
             __props__.__dict__["backup_method"] = backup_method
+            __props__.__dict__["backup_retention_period"] = backup_retention_period
             __props__.__dict__["backup_strategy"] = backup_strategy
             __props__.__dict__["backup_type"] = backup_type
             if db_instance_id is None and not opts.urn:
@@ -416,6 +542,7 @@ class RdsBackup(pulumi.CustomResource):
             __props__.__dict__["db_name"] = db_name
             __props__.__dict__["remove_from_state"] = remove_from_state
             __props__.__dict__["backup_id"] = None
+            __props__.__dict__["status"] = None
             __props__.__dict__["store_status"] = None
         super(RdsBackup, __self__).__init__(
             'alicloud:rds/rdsBackup:RdsBackup',
@@ -429,11 +556,13 @@ class RdsBackup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backup_id: Optional[pulumi.Input[_builtins.str]] = None,
             backup_method: Optional[pulumi.Input[_builtins.str]] = None,
+            backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
             backup_strategy: Optional[pulumi.Input[_builtins.str]] = None,
             backup_type: Optional[pulumi.Input[_builtins.str]] = None,
             db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
             db_name: Optional[pulumi.Input[_builtins.str]] = None,
             remove_from_state: Optional[pulumi.Input[_builtins.bool]] = None,
+            status: Optional[pulumi.Input[_builtins.str]] = None,
             store_status: Optional[pulumi.Input[_builtins.str]] = None) -> 'RdsBackup':
         """
         Get an existing RdsBackup resource's state with the given name, id, and optional extra
@@ -442,18 +571,34 @@ class RdsBackup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] backup_id: The backup id.
-        :param pulumi.Input[_builtins.str] backup_method: The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
-        :param pulumi.Input[_builtins.str] backup_strategy: The policy that you want to use for the backup task. Valid values:
-               * **db**: specifies to perform a database-level backup.
-               * **instance**: specifies to perform an instance-level backup.
-        :param pulumi.Input[_builtins.str] backup_type: The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-               * **Auto**: specifies to automatically perform a full or incremental backup.
-               * **FullBackup**: specifies to perform a full backup.
-        :param pulumi.Input[_builtins.str] db_instance_id: The db instance id.
-        :param pulumi.Input[_builtins.str] db_name: The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+        :param pulumi.Input[_builtins.str] backup_id: The backup set ID.
+        :param pulumi.Input[_builtins.str] backup_method: The backup type. Valid values:  
+               * `Logical`: logical backup (supported only for MySQL)
+               * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+               * `Snapshot`: snapshot backup (supported for all database engines)
+               
+               Default value: `Physical`.
+               
+               > **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+               
+               > **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
+        :param pulumi.Input[_builtins.int] backup_retention_period: When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] backup_strategy: The backup strategy. Valid values:
+        :param pulumi.Input[_builtins.str] backup_type: The backup type. Valid values:  
+               - FullBackup: full backup
+               - IncrementalBackup: incremental backup
+        :param pulumi.Input[_builtins.str] db_instance_id: The instance ID. You can call DescribeDBInstances to obtain it.
+        :param pulumi.Input[_builtins.str] db_name: A list of databases, separated by commas (,).  
+               
+               > **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+               
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.bool] remove_from_state: Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
-        :param pulumi.Input[_builtins.str] store_status: Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+        :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[_builtins.str] store_status: Indicates whether the backup can be deleted.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -461,11 +606,13 @@ class RdsBackup(pulumi.CustomResource):
 
         __props__.__dict__["backup_id"] = backup_id
         __props__.__dict__["backup_method"] = backup_method
+        __props__.__dict__["backup_retention_period"] = backup_retention_period
         __props__.__dict__["backup_strategy"] = backup_strategy
         __props__.__dict__["backup_type"] = backup_type
         __props__.__dict__["db_instance_id"] = db_instance_id
         __props__.__dict__["db_name"] = db_name
         __props__.__dict__["remove_from_state"] = remove_from_state
+        __props__.__dict__["status"] = status
         __props__.__dict__["store_status"] = store_status
         return RdsBackup(resource_name, opts=opts, __props__=__props__)
 
@@ -473,7 +620,7 @@ class RdsBackup(pulumi.CustomResource):
     @pulumi.getter(name="backupId")
     def backup_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The backup id.
+        The backup set ID.
         """
         return pulumi.get(self, "backup_id")
 
@@ -481,17 +628,34 @@ class RdsBackup(pulumi.CustomResource):
     @pulumi.getter(name="backupMethod")
     def backup_method(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+        The backup type. Valid values:  
+        * `Logical`: logical backup (supported only for MySQL)
+        * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+        * `Snapshot`: snapshot backup (supported for all database engines)
+
+        Default value: `Physical`.
+
+        > **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+
+        > **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
         """
         return pulumi.get(self, "backup_method")
+
+    @_builtins.property
+    @pulumi.getter(name="backupRetentionPeriod")
+    def backup_retention_period(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "backup_retention_period")
 
     @_builtins.property
     @pulumi.getter(name="backupStrategy")
     def backup_strategy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The policy that you want to use for the backup task. Valid values:
-        * **db**: specifies to perform a database-level backup.
-        * **instance**: specifies to perform an instance-level backup.
+        The backup strategy. Valid values:
         """
         return pulumi.get(self, "backup_strategy")
 
@@ -499,9 +663,9 @@ class RdsBackup(pulumi.CustomResource):
     @pulumi.getter(name="backupType")
     def backup_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-        * **Auto**: specifies to automatically perform a full or incremental backup.
-        * **FullBackup**: specifies to perform a full backup.
+        The backup type. Valid values:  
+        - FullBackup: full backup
+        - IncrementalBackup: incremental backup
         """
         return pulumi.get(self, "backup_type")
 
@@ -509,7 +673,7 @@ class RdsBackup(pulumi.CustomResource):
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The db instance id.
+        The instance ID. You can call DescribeDBInstances to obtain it.
         """
         return pulumi.get(self, "db_instance_id")
 
@@ -517,7 +681,12 @@ class RdsBackup(pulumi.CustomResource):
     @pulumi.getter(name="dbName")
     def db_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+        A list of databases, separated by commas (,).  
+
+        > **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "db_name")
 
@@ -530,10 +699,18 @@ class RdsBackup(pulumi.CustomResource):
         return pulumi.get(self, "remove_from_state")
 
     @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
     @pulumi.getter(name="storeStatus")
     def store_status(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+        Indicates whether the backup can be deleted.
         """
         return pulumi.get(self, "store_status")
 

@@ -10,6 +10,11 @@ export type CustomImage = import("./customImage").CustomImage;
 export const CustomImage: typeof import("./customImage").CustomImage = null as any;
 utilities.lazyLoad(exports, ["CustomImage"], () => require("./customImage"));
 
+export { DiskArgs, DiskState } from "./disk";
+export type Disk = import("./disk").Disk;
+export const Disk: typeof import("./disk").Disk = null as any;
+utilities.lazyLoad(exports, ["Disk"], () => require("./disk"));
+
 export { FirewallRuleArgs, FirewallRuleState } from "./firewallRule";
 export type FirewallRule = import("./firewallRule").FirewallRule;
 export const FirewallRule: typeof import("./firewallRule").FirewallRule = null as any;
@@ -67,6 +72,8 @@ const _module = {
         switch (type) {
             case "alicloud:simpleapplicationserver/customImage:CustomImage":
                 return new CustomImage(name, <any>undefined, { urn })
+            case "alicloud:simpleapplicationserver/disk:Disk":
+                return new Disk(name, <any>undefined, { urn })
             case "alicloud:simpleapplicationserver/firewallRule:FirewallRule":
                 return new FirewallRule(name, <any>undefined, { urn })
             case "alicloud:simpleapplicationserver/instance:Instance":
@@ -79,6 +86,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "simpleapplicationserver/customImage", _module)
+pulumi.runtime.registerResourceModule("alicloud", "simpleapplicationserver/disk", _module)
 pulumi.runtime.registerResourceModule("alicloud", "simpleapplicationserver/firewallRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "simpleapplicationserver/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "simpleapplicationserver/snapshot", _module)

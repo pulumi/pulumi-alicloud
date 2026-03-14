@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rds.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +18,14 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
     public static final RdsBackupState Empty = new RdsBackupState();
 
     /**
-     * The backup id.
+     * The backup set ID.
      * 
      */
     @Import(name="backupId")
     private @Nullable Output<String> backupId;
 
     /**
-     * @return The backup id.
+     * @return The backup set ID.
      * 
      */
     public Optional<Output<String>> backupId() {
@@ -32,14 +33,32 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+     * The backup type. Valid values:
+     * * `Logical`: logical backup (supported only for MySQL)
+     * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+     * * `Snapshot`: snapshot backup (supported for all database engines)
+     * 
+     * Default value: `Physical`.
+     * 
+     * &gt; **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+     * 
+     * &gt; **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
      * 
      */
     @Import(name="backupMethod")
     private @Nullable Output<String> backupMethod;
 
     /**
-     * @return The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+     * @return The backup type. Valid values:
+     * * `Logical`: logical backup (supported only for MySQL)
+     * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+     * * `Snapshot`: snapshot backup (supported for all database engines)
+     * 
+     * Default value: `Physical`.
+     * 
+     * &gt; **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+     * 
+     * &gt; **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
      * 
      */
     public Optional<Output<String>> backupMethod() {
@@ -47,18 +66,33 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The policy that you want to use for the backup task. Valid values:
-     * * **db**: specifies to perform a database-level backup.
-     * * **instance**: specifies to perform an instance-level backup.
+     * When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    @Import(name="backupRetentionPeriod")
+    private @Nullable Output<Integer> backupRetentionPeriod;
+
+    /**
+     * @return When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    public Optional<Output<Integer>> backupRetentionPeriod() {
+        return Optional.ofNullable(this.backupRetentionPeriod);
+    }
+
+    /**
+     * The backup strategy. Valid values:
      * 
      */
     @Import(name="backupStrategy")
     private @Nullable Output<String> backupStrategy;
 
     /**
-     * @return The policy that you want to use for the backup task. Valid values:
-     * * **db**: specifies to perform a database-level backup.
-     * * **instance**: specifies to perform an instance-level backup.
+     * @return The backup strategy. Valid values:
      * 
      */
     public Optional<Output<String>> backupStrategy() {
@@ -66,18 +100,18 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-     * * **Auto**: specifies to automatically perform a full or incremental backup.
-     * * **FullBackup**: specifies to perform a full backup.
+     * The backup type. Valid values:
+     * - FullBackup: full backup
+     * - IncrementalBackup: incremental backup
      * 
      */
     @Import(name="backupType")
     private @Nullable Output<String> backupType;
 
     /**
-     * @return The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-     * * **Auto**: specifies to automatically perform a full or incremental backup.
-     * * **FullBackup**: specifies to perform a full backup.
+     * @return The backup type. Valid values:
+     * - FullBackup: full backup
+     * - IncrementalBackup: incremental backup
      * 
      */
     public Optional<Output<String>> backupType() {
@@ -85,14 +119,14 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The db instance id.
+     * The instance ID. You can call DescribeDBInstances to obtain it.
      * 
      */
     @Import(name="dbInstanceId")
     private @Nullable Output<String> dbInstanceId;
 
     /**
-     * @return The db instance id.
+     * @return The instance ID. You can call DescribeDBInstances to obtain it.
      * 
      */
     public Optional<Output<String>> dbInstanceId() {
@@ -100,14 +134,22 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+     * A list of databases, separated by commas (,).
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="dbName")
     private @Nullable Output<String> dbName;
 
     /**
-     * @return The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+     * @return A list of databases, separated by commas (,).
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> dbName() {
@@ -130,14 +172,29 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+     * The status of the resource.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the resource.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * Indicates whether the backup can be deleted.
      * 
      */
     @Import(name="storeStatus")
     private @Nullable Output<String> storeStatus;
 
     /**
-     * @return Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+     * @return Indicates whether the backup can be deleted.
      * 
      */
     public Optional<Output<String>> storeStatus() {
@@ -149,11 +206,13 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
     private RdsBackupState(RdsBackupState $) {
         this.backupId = $.backupId;
         this.backupMethod = $.backupMethod;
+        this.backupRetentionPeriod = $.backupRetentionPeriod;
         this.backupStrategy = $.backupStrategy;
         this.backupType = $.backupType;
         this.dbInstanceId = $.dbInstanceId;
         this.dbName = $.dbName;
         this.removeFromState = $.removeFromState;
+        this.status = $.status;
         this.storeStatus = $.storeStatus;
     }
 
@@ -176,7 +235,7 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupId The backup id.
+         * @param backupId The backup set ID.
          * 
          * @return builder
          * 
@@ -187,7 +246,7 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupId The backup id.
+         * @param backupId The backup set ID.
          * 
          * @return builder
          * 
@@ -197,7 +256,16 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupMethod The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+         * @param backupMethod The backup type. Valid values:
+         * * `Logical`: logical backup (supported only for MySQL)
+         * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+         * * `Snapshot`: snapshot backup (supported for all database engines)
+         * 
+         * Default value: `Physical`.
+         * 
+         * &gt; **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+         * 
+         * &gt; **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
          * 
          * @return builder
          * 
@@ -208,7 +276,16 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupMethod The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+         * @param backupMethod The backup type. Valid values:
+         * * `Logical`: logical backup (supported only for MySQL)
+         * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+         * * `Snapshot`: snapshot backup (supported for all database engines)
+         * 
+         * Default value: `Physical`.
+         * 
+         * &gt; **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+         * 
+         * &gt; **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
          * 
          * @return builder
          * 
@@ -218,9 +295,32 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupStrategy The policy that you want to use for the backup task. Valid values:
-         * * **db**: specifies to perform a database-level backup.
-         * * **instance**: specifies to perform an instance-level backup.
+         * @param backupRetentionPeriod When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPeriod(@Nullable Output<Integer> backupRetentionPeriod) {
+            $.backupRetentionPeriod = backupRetentionPeriod;
+            return this;
+        }
+
+        /**
+         * @param backupRetentionPeriod When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPeriod(Integer backupRetentionPeriod) {
+            return backupRetentionPeriod(Output.of(backupRetentionPeriod));
+        }
+
+        /**
+         * @param backupStrategy The backup strategy. Valid values:
          * 
          * @return builder
          * 
@@ -231,9 +331,7 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupStrategy The policy that you want to use for the backup task. Valid values:
-         * * **db**: specifies to perform a database-level backup.
-         * * **instance**: specifies to perform an instance-level backup.
+         * @param backupStrategy The backup strategy. Valid values:
          * 
          * @return builder
          * 
@@ -243,9 +341,9 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupType The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-         * * **Auto**: specifies to automatically perform a full or incremental backup.
-         * * **FullBackup**: specifies to perform a full backup.
+         * @param backupType The backup type. Valid values:
+         * - FullBackup: full backup
+         * - IncrementalBackup: incremental backup
          * 
          * @return builder
          * 
@@ -256,9 +354,9 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupType The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-         * * **Auto**: specifies to automatically perform a full or incremental backup.
-         * * **FullBackup**: specifies to perform a full backup.
+         * @param backupType The backup type. Valid values:
+         * - FullBackup: full backup
+         * - IncrementalBackup: incremental backup
          * 
          * @return builder
          * 
@@ -268,7 +366,7 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceId The db instance id.
+         * @param dbInstanceId The instance ID. You can call DescribeDBInstances to obtain it.
          * 
          * @return builder
          * 
@@ -279,7 +377,7 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceId The db instance id.
+         * @param dbInstanceId The instance ID. You can call DescribeDBInstances to obtain it.
          * 
          * @return builder
          * 
@@ -289,7 +387,11 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbName The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+         * @param dbName A list of databases, separated by commas (,).
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -300,7 +402,11 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbName The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+         * @param dbName A list of databases, separated by commas (,).
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -331,7 +437,28 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storeStatus Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+         * @param status The status of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param storeStatus Indicates whether the backup can be deleted.
          * 
          * @return builder
          * 
@@ -342,7 +469,7 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storeStatus Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+         * @param storeStatus Indicates whether the backup can be deleted.
          * 
          * @return builder
          * 

@@ -16,11 +16,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Nat Ip Cidr resource.
+ * Provides a Nat Gateway Nat Ip Cidr resource.
  * 
- * For information about VPC Nat Ip Cidr and how to use it, see [What is Nat Ip Cidr](https://www.alibabacloud.com/help/doc-detail/281972.htm).
+ * NAT IP address segment.
  * 
- * &gt; **NOTE:** Available in v1.136.0+.
+ * For information about Nat Gateway Nat Ip Cidr and how to use it, see [What is Nat Ip Cidr](https://www.alibabacloud.com/help/doc-detail/281972.htm).
+ * 
+ * &gt; **NOTE:** Available since v1.136.0.
  * 
  * ## Example Usage
  * 
@@ -56,34 +58,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
- *             .vpcId(exampleNetwork.id())
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/21")
- *             .zoneId(example.zones()[0].id())
+ *             .zoneId(default_.zones()[0].id())
  *             .vswitchName("terraform-example")
  *             .build());
  * 
- *         var exampleNatGateway = new NatGateway("exampleNatGateway", NatGatewayArgs.builder()
- *             .vpcId(exampleNetwork.id())
+ *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()
+ *             .vpcId(defaultNetwork.id())
  *             .internetChargeType("PayByLcu")
  *             .natGatewayName("terraform-example")
  *             .description("terraform-example")
  *             .natType("Enhanced")
- *             .vswitchId(exampleSwitch.id())
+ *             .vswitchId(defaultSwitch.id())
  *             .networkType("intranet")
  *             .build());
  * 
- *         var exampleNatIpCidr = new NatIpCidr("exampleNatIpCidr", NatIpCidrArgs.builder()
- *             .natGatewayId(exampleNatGateway.id())
+ *         var defaultNatIpCidr = new NatIpCidr("defaultNatIpCidr", NatIpCidrArgs.builder()
+ *             .natGatewayId(defaultNatGateway.id())
  *             .natIpCidrName("terraform-example")
  *             .natIpCidr("192.168.0.0/16")
  *             .build());
@@ -97,7 +99,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Nat Ip Cidr can be imported using the id, e.g.
+ * Nat Gateway Nat Ip Cidr can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/natIpCidr:NatIpCidr example &lt;nat_gateway_id&gt;:&lt;nat_ip_cidr&gt;
@@ -107,84 +109,114 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/natIpCidr:NatIpCidr")
 public class NatIpCidr extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether to precheck this request only. Valid values: `true` and `false`.
+     * (Available since v1.273.0) The time when the NAT IP CIDR block was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.273.0) The time when the NAT IP CIDR block was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Specifies whether to only precheck this request. Valid values:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> dryRun;
+    private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Specifies whether to precheck this request only. Valid values: `true` and `false`.
+     * @return Specifies whether to only precheck this request. Valid values:
      * 
      */
-    public Output<Boolean> dryRun() {
-        return this.dryRun;
+    public Output<Optional<Boolean>> dryRun() {
+        return Codegen.optional(this.dryRun);
     }
     /**
-     * The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
+     * The ID of the VPC NAT gateway instance to which the NAT IP address block belongs.
      * 
      */
     @Export(name="natGatewayId", refs={String.class}, tree="[0]")
     private Output<String> natGatewayId;
 
     /**
-     * @return The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
+     * @return The ID of the VPC NAT gateway instance to which the NAT IP address block belongs.
      * 
      */
     public Output<String> natGatewayId() {
         return this.natGatewayId;
     }
     /**
-     * The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
+     * The NAT IP CIDR block to create.
+     * 
+     * The newly created CIDR block must meet the following requirements:
+     * - It must belong to the 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 CIDR blocks or their subnets.
+     * - The subnet mask length must be between 16 and 32 bits.
+     * - It must not overlap with the private CIDR block of the VPC to which the VPC NAT gateway belongs. If you need to translate a private IP address to another address within the VPC&#39;s private CIDR block, create a vSwitch in the corresponding VPC private CIDR block and then create a new VPC NAT gateway in that vSwitch to provide private address translation.
+     * - If you want to use a public CIDR block as the NAT IP CIDR block, the CIDR block must belong to the customer CIDR block of the VPC to which the VPC NAT gateway belongs. For more information about customer CIDR blocks, see [What is a customer CIDR block?](https://help.aliyun.com/document_detail/185311.html).
      * 
      */
     @Export(name="natIpCidr", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> natIpCidr;
+    private Output<String> natIpCidr;
 
     /**
-     * @return The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
+     * @return The NAT IP CIDR block to create.
+     * 
+     * The newly created CIDR block must meet the following requirements:
+     * - It must belong to the 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 CIDR blocks or their subnets.
+     * - The subnet mask length must be between 16 and 32 bits.
+     * - It must not overlap with the private CIDR block of the VPC to which the VPC NAT gateway belongs. If you need to translate a private IP address to another address within the VPC&#39;s private CIDR block, create a vSwitch in the corresponding VPC private CIDR block and then create a new VPC NAT gateway in that vSwitch to provide private address translation.
+     * - If you want to use a public CIDR block as the NAT IP CIDR block, the CIDR block must belong to the customer CIDR block of the VPC to which the VPC NAT gateway belongs. For more information about customer CIDR blocks, see [What is a customer CIDR block?](https://help.aliyun.com/document_detail/185311.html).
      * 
      */
-    public Output<Optional<String>> natIpCidr() {
-        return Codegen.optional(this.natIpCidr);
+    public Output<String> natIpCidr() {
+        return this.natIpCidr;
     }
     /**
-     * The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+     * The description of the NAT IP CIDR block to modify.
+     * The description must be 2 to 256 characters in length, start with a letter or Chinese character, and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="natIpCidrDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> natIpCidrDescription;
 
     /**
-     * @return The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+     * @return The description of the NAT IP CIDR block to modify.
+     * The description must be 2 to 256 characters in length, start with a letter or Chinese character, and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> natIpCidrDescription() {
         return Codegen.optional(this.natIpCidrDescription);
     }
     /**
-     * The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
+     * The name of the NAT IP address block.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="natIpCidrName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> natIpCidrName;
+    private Output<String> natIpCidrName;
 
     /**
-     * @return The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
+     * @return The name of the NAT IP address block.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
      * 
      */
-    public Output<Optional<String>> natIpCidrName() {
-        return Codegen.optional(this.natIpCidrName);
+    public Output<String> natIpCidrName() {
+        return this.natIpCidrName;
     }
     /**
-     * The status of the CIDR block of the NAT gateway. Valid values: `Available`.
+     * The status of the NAT IP CIDR block to query.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the CIDR block of the NAT gateway. Valid values: `Available`.
+     * @return The status of the NAT IP CIDR block to query.
      * 
      */
     public Output<String> status() {

@@ -85,6 +85,7 @@ export class NetworkInterface extends pulumi.CustomResource {
         return obj['__pulumiType'] === NetworkInterface.__pulumiType;
     }
 
+    declare public readonly deleteOnRelease: pulumi.Output<boolean>;
     /**
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
@@ -163,6 +164,7 @@ export class NetworkInterface extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkInterfaceState | undefined;
+            resourceInputs["deleteOnRelease"] = state?.deleteOnRelease;
             resourceInputs["description"] = state?.description;
             resourceInputs["instanceType"] = state?.instanceType;
             resourceInputs["ipv4PrefixCount"] = state?.ipv4PrefixCount;
@@ -192,6 +194,7 @@ export class NetworkInterface extends pulumi.CustomResource {
             if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
+            resourceInputs["deleteOnRelease"] = args?.deleteOnRelease;
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["ipv4PrefixCount"] = args?.ipv4PrefixCount;
@@ -226,6 +229,7 @@ export class NetworkInterface extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetworkInterface resources.
  */
 export interface NetworkInterfaceState {
+    deleteOnRelease?: pulumi.Input<boolean>;
     /**
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
@@ -296,6 +300,7 @@ export interface NetworkInterfaceState {
  * The set of arguments for constructing a NetworkInterface resource.
  */
 export interface NetworkInterfaceArgs {
+    deleteOnRelease?: pulumi.Input<boolean>;
     /**
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */

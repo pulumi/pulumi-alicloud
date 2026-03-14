@@ -20,6 +20,7 @@ __all__ = ['NetworkInterfaceArgs', 'NetworkInterface']
 class NetworkInterfaceArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[_builtins.str],
+                 delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -55,6 +56,8 @@ class NetworkInterfaceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if delete_on_release is not None:
+            pulumi.set(__self__, "delete_on_release", delete_on_release)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_type is not None:
@@ -124,6 +127,15 @@ class NetworkInterfaceArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "vswitch_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteOnRelease")
+    def delete_on_release(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "delete_on_release")
+
+    @delete_on_release.setter
+    def delete_on_release(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_on_release", value)
 
     @_builtins.property
     @pulumi.getter
@@ -347,6 +359,7 @@ class NetworkInterfaceArgs:
 @pulumi.input_type
 class _NetworkInterfaceState:
     def __init__(__self__, *,
+                 delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -385,6 +398,8 @@ class _NetworkInterfaceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitch to create the ENI in.
         """
+        if delete_on_release is not None:
+            pulumi.set(__self__, "delete_on_release", delete_on_release)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_type is not None:
@@ -448,6 +463,15 @@ class _NetworkInterfaceState:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteOnRelease")
+    def delete_on_release(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "delete_on_release")
+
+    @delete_on_release.setter
+    def delete_on_release(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_on_release", value)
 
     @_builtins.property
     @pulumi.getter
@@ -707,6 +731,7 @@ class NetworkInterface(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -863,6 +888,7 @@ class NetworkInterface(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -894,6 +920,7 @@ class NetworkInterface(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NetworkInterfaceArgs.__new__(NetworkInterfaceArgs)
 
+            __props__.__dict__["delete_on_release"] = delete_on_release
             __props__.__dict__["description"] = description
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["ipv4_prefix_count"] = ipv4_prefix_count
@@ -930,6 +957,7 @@ class NetworkInterface(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             instance_type: Optional[pulumi.Input[_builtins.str]] = None,
             ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -976,6 +1004,7 @@ class NetworkInterface(pulumi.CustomResource):
 
         __props__ = _NetworkInterfaceState.__new__(_NetworkInterfaceState)
 
+        __props__.__dict__["delete_on_release"] = delete_on_release
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["ipv4_prefix_count"] = ipv4_prefix_count
@@ -1001,6 +1030,11 @@ class NetworkInterface(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         return NetworkInterface(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteOnRelease")
+    def delete_on_release(self) -> pulumi.Output[_builtins.bool]:
+        return pulumi.get(self, "delete_on_release")
 
     @_builtins.property
     @pulumi.getter

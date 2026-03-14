@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.hbr.inputs;
 
+import com.pulumi.alicloud.hbr.inputs.PolicyBindingAdvancedOptionsOssDetailArgs;
 import com.pulumi.alicloud.hbr.inputs.PolicyBindingAdvancedOptionsUdmDetailArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class PolicyBindingAdvancedOptionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PolicyBindingAdvancedOptionsArgs Empty = new PolicyBindingAdvancedOptionsArgs();
+
+    /**
+     * OSS Backup Advanced options See `ossDetail` below.
+     * 
+     */
+    @Import(name="ossDetail")
+    private @Nullable Output<PolicyBindingAdvancedOptionsOssDetailArgs> ossDetail;
+
+    /**
+     * @return OSS Backup Advanced options See `ossDetail` below.
+     * 
+     */
+    public Optional<Output<PolicyBindingAdvancedOptionsOssDetailArgs>> ossDetail() {
+        return Optional.ofNullable(this.ossDetail);
+    }
 
     /**
      * ECS Backup Advanced options See `udmDetail` below.
@@ -33,6 +49,7 @@ public final class PolicyBindingAdvancedOptionsArgs extends com.pulumi.resources
     private PolicyBindingAdvancedOptionsArgs() {}
 
     private PolicyBindingAdvancedOptionsArgs(PolicyBindingAdvancedOptionsArgs $) {
+        this.ossDetail = $.ossDetail;
         this.udmDetail = $.udmDetail;
     }
 
@@ -52,6 +69,27 @@ public final class PolicyBindingAdvancedOptionsArgs extends com.pulumi.resources
 
         public Builder(PolicyBindingAdvancedOptionsArgs defaults) {
             $ = new PolicyBindingAdvancedOptionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param ossDetail OSS Backup Advanced options See `ossDetail` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ossDetail(@Nullable Output<PolicyBindingAdvancedOptionsOssDetailArgs> ossDetail) {
+            $.ossDetail = ossDetail;
+            return this;
+        }
+
+        /**
+         * @param ossDetail OSS Backup Advanced options See `ossDetail` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ossDetail(PolicyBindingAdvancedOptionsOssDetailArgs ossDetail) {
+            return ossDetail(Output.of(ossDetail));
         }
 
         /**

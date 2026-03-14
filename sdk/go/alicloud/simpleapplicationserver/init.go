@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:simpleapplicationserver/customImage:CustomImage":
 		r = &CustomImage{}
+	case "alicloud:simpleapplicationserver/disk:Disk":
+		r = &Disk{}
 	case "alicloud:simpleapplicationserver/firewallRule:FirewallRule":
 		r = &FirewallRule{}
 	case "alicloud:simpleapplicationserver/instance:Instance":
@@ -45,6 +47,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"simpleapplicationserver/customImage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"simpleapplicationserver/disk",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

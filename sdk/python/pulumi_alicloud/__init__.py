@@ -6539,6 +6539,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "nlb/hdMonitorRegionConfig",
+  "fqn": "pulumi_alicloud.nlb",
+  "classes": {
+   "alicloud:nlb/hdMonitorRegionConfig:HdMonitorRegionConfig": "HdMonitorRegionConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "nlb/listener",
   "fqn": "pulumi_alicloud.nlb",
   "classes": {
@@ -8403,6 +8411,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "simpleapplicationserver/disk",
+  "fqn": "pulumi_alicloud.simpleapplicationserver",
+  "classes": {
+   "alicloud:simpleapplicationserver/disk:Disk": "Disk"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "simpleapplicationserver/firewallRule",
   "fqn": "pulumi_alicloud.simpleapplicationserver",
   "classes": {
@@ -8583,6 +8599,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sls",
   "classes": {
    "alicloud:sls/logtailConfig:LogtailConfig": "LogtailConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sls/logtailPipelineConfig",
+  "fqn": "pulumi_alicloud.sls",
+  "classes": {
+   "alicloud:sls/logtailPipelineConfig:LogtailPipelineConfig": "LogtailPipelineConfig"
   }
  },
  {

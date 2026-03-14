@@ -251,6 +251,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
+     * Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+     * > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+     */
+    declare public readonly enableDynamodb: pulumi.Output<boolean>;
+    /**
      * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
      * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      */
@@ -544,6 +549,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["defaultTimeZone"] = state?.defaultTimeZone;
             resourceInputs["deletionLock"] = state?.deletionLock;
             resourceInputs["description"] = state?.description;
+            resourceInputs["enableDynamodb"] = state?.enableDynamodb;
             resourceInputs["encryptNewTables"] = state?.encryptNewTables;
             resourceInputs["encryptionKey"] = state?.encryptionKey;
             resourceInputs["fromTimeService"] = state?.fromTimeService;
@@ -631,6 +637,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["defaultTimeZone"] = args?.defaultTimeZone;
             resourceInputs["deletionLock"] = args?.deletionLock;
             resourceInputs["description"] = args?.description;
+            resourceInputs["enableDynamodb"] = args?.enableDynamodb;
             resourceInputs["encryptNewTables"] = args?.encryptNewTables;
             resourceInputs["encryptionKey"] = args?.encryptionKey;
             resourceInputs["fromTimeService"] = args?.fromTimeService;
@@ -800,6 +807,11 @@ export interface ClusterState {
      * The description of cluster.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+     * > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+     */
+    enableDynamodb?: pulumi.Input<boolean>;
     /**
      * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
      * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
@@ -1151,6 +1163,11 @@ export interface ClusterArgs {
      * The description of cluster.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+     * > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+     */
+    enableDynamodb?: pulumi.Input<boolean>;
     /**
      * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
      * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
