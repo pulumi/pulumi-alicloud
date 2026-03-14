@@ -35,6 +35,11 @@ export const getZones: typeof import("./getZones").getZones = null as any;
 export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
 utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
 
+export { HdMonitorRegionConfigArgs, HdMonitorRegionConfigState } from "./hdMonitorRegionConfig";
+export type HdMonitorRegionConfig = import("./hdMonitorRegionConfig").HdMonitorRegionConfig;
+export const HdMonitorRegionConfig: typeof import("./hdMonitorRegionConfig").HdMonitorRegionConfig = null as any;
+utilities.lazyLoad(exports, ["HdMonitorRegionConfig"], () => require("./hdMonitorRegionConfig"));
+
 export { ListenerArgs, ListenerState } from "./listener";
 export type Listener = import("./listener").Listener;
 export const Listener: typeof import("./listener").Listener = null as any;
@@ -85,6 +90,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:nlb/hdMonitorRegionConfig:HdMonitorRegionConfig":
+                return new HdMonitorRegionConfig(name, <any>undefined, { urn })
             case "alicloud:nlb/listener:Listener":
                 return new Listener(name, <any>undefined, { urn })
             case "alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment":
@@ -108,6 +115,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "nlb/hdMonitorRegionConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/listener", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/listenerAdditionalCertificateAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/loadBalancer", _module)

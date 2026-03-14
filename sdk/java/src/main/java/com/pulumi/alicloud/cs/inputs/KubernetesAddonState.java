@@ -17,16 +17,24 @@ public final class KubernetesAddonState extends com.pulumi.resources.ResourceArg
     public static final KubernetesAddonState Empty = new KubernetesAddonState();
 
     /**
-     * Is the addon ready for upgrade.
+     * (Deprecated since v1.273.0) Is the addon ready for upgrade.
+     * 
+     * @deprecated
+     * Field &#39;can_upgrade&#39; has been deprecated from provider version 1.273.0. Please compare &#39;next_version&#39; and &#39;current_version&#39; of DataSource &#39;alicloud_cs_kubernetes_addons&#39; to replace it
      * 
      */
+    @Deprecated /* Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it */
     @Import(name="canUpgrade")
     private @Nullable Output<Boolean> canUpgrade;
 
     /**
-     * @return Is the addon ready for upgrade.
+     * @return (Deprecated since v1.273.0) Is the addon ready for upgrade.
+     * 
+     * @deprecated
+     * Field &#39;can_upgrade&#39; has been deprecated from provider version 1.273.0. Please compare &#39;next_version&#39; and &#39;current_version&#39; of DataSource &#39;alicloud_cs_kubernetes_addons&#39; to replace it
      * 
      */
+    @Deprecated /* Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it */
     public Optional<Output<Boolean>> canUpgrade() {
         return Optional.ofNullable(this.canUpgrade);
     }
@@ -92,16 +100,24 @@ public final class KubernetesAddonState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The version which addon can be upgraded to.
+     * (Deprecated since v1.273.0) The version which addon can be upgraded to.
+     * 
+     * @deprecated
+     * Field &#39;next_version&#39; has been deprecated from provider version 1.273.0. Please use &#39;next_version&#39; of DataSource &#39;alicloud_cs_kubernetes_addons&#39; to replace it
      * 
      */
+    @Deprecated /* Field 'next_version' has been deprecated from provider version 1.273.0. Please use 'next_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it */
     @Import(name="nextVersion")
     private @Nullable Output<String> nextVersion;
 
     /**
-     * @return The version which addon can be upgraded to.
+     * @return (Deprecated since v1.273.0) The version which addon can be upgraded to.
+     * 
+     * @deprecated
+     * Field &#39;next_version&#39; has been deprecated from provider version 1.273.0. Please use &#39;next_version&#39; of DataSource &#39;alicloud_cs_kubernetes_addons&#39; to replace it
      * 
      */
+    @Deprecated /* Field 'next_version' has been deprecated from provider version 1.273.0. Please use 'next_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it */
     public Optional<Output<String>> nextVersion() {
         return Optional.ofNullable(this.nextVersion);
     }
@@ -168,22 +184,30 @@ public final class KubernetesAddonState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param canUpgrade Is the addon ready for upgrade.
+         * @param canUpgrade (Deprecated since v1.273.0) Is the addon ready for upgrade.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;can_upgrade&#39; has been deprecated from provider version 1.273.0. Please compare &#39;next_version&#39; and &#39;current_version&#39; of DataSource &#39;alicloud_cs_kubernetes_addons&#39; to replace it
+         * 
          */
+        @Deprecated /* Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it */
         public Builder canUpgrade(@Nullable Output<Boolean> canUpgrade) {
             $.canUpgrade = canUpgrade;
             return this;
         }
 
         /**
-         * @param canUpgrade Is the addon ready for upgrade.
+         * @param canUpgrade (Deprecated since v1.273.0) Is the addon ready for upgrade.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;can_upgrade&#39; has been deprecated from provider version 1.273.0. Please compare &#39;next_version&#39; and &#39;current_version&#39; of DataSource &#39;alicloud_cs_kubernetes_addons&#39; to replace it
+         * 
          */
+        @Deprecated /* Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it */
         public Builder canUpgrade(Boolean canUpgrade) {
             return canUpgrade(Output.of(canUpgrade));
         }
@@ -273,22 +297,30 @@ public final class KubernetesAddonState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nextVersion The version which addon can be upgraded to.
+         * @param nextVersion (Deprecated since v1.273.0) The version which addon can be upgraded to.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;next_version&#39; has been deprecated from provider version 1.273.0. Please use &#39;next_version&#39; of DataSource &#39;alicloud_cs_kubernetes_addons&#39; to replace it
+         * 
          */
+        @Deprecated /* Field 'next_version' has been deprecated from provider version 1.273.0. Please use 'next_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it */
         public Builder nextVersion(@Nullable Output<String> nextVersion) {
             $.nextVersion = nextVersion;
             return this;
         }
 
         /**
-         * @param nextVersion The version which addon can be upgraded to.
+         * @param nextVersion (Deprecated since v1.273.0) The version which addon can be upgraded to.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;next_version&#39; has been deprecated from provider version 1.273.0. Please use &#39;next_version&#39; of DataSource &#39;alicloud_cs_kubernetes_addons&#39; to replace it
+         * 
          */
+        @Deprecated /* Field 'next_version' has been deprecated from provider version 1.273.0. Please use 'next_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it */
         public Builder nextVersion(String nextVersion) {
             return nextVersion(Output.of(nextVersion));
         }

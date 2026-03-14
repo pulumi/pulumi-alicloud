@@ -19,6 +19,7 @@ __all__ = [
     'OtsBackupPlanOtsDetail',
     'OtsBackupPlanRule',
     'PolicyBindingAdvancedOptions',
+    'PolicyBindingAdvancedOptionsOssDetail',
     'PolicyBindingAdvancedOptionsUdmDetail',
     'PolicyRule',
     'PolicyRuleDataSourceFilter',
@@ -178,7 +179,9 @@ class PolicyBindingAdvancedOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "udmDetail":
+        if key == "ossDetail":
+            suggest = "oss_detail"
+        elif key == "udmDetail":
             suggest = "udm_detail"
 
         if suggest:
@@ -193,12 +196,24 @@ class PolicyBindingAdvancedOptions(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 oss_detail: Optional['outputs.PolicyBindingAdvancedOptionsOssDetail'] = None,
                  udm_detail: Optional['outputs.PolicyBindingAdvancedOptionsUdmDetail'] = None):
         """
+        :param 'PolicyBindingAdvancedOptionsOssDetailArgs' oss_detail: OSS Backup Advanced options See `oss_detail` below.
         :param 'PolicyBindingAdvancedOptionsUdmDetailArgs' udm_detail: ECS Backup Advanced options See `udm_detail` below.
         """
+        if oss_detail is not None:
+            pulumi.set(__self__, "oss_detail", oss_detail)
         if udm_detail is not None:
             pulumi.set(__self__, "udm_detail", udm_detail)
+
+    @_builtins.property
+    @pulumi.getter(name="ossDetail")
+    def oss_detail(self) -> Optional['outputs.PolicyBindingAdvancedOptionsOssDetail']:
+        """
+        OSS Backup Advanced options See `oss_detail` below.
+        """
+        return pulumi.get(self, "oss_detail")
 
     @_builtins.property
     @pulumi.getter(name="udmDetail")
@@ -207,6 +222,70 @@ class PolicyBindingAdvancedOptions(dict):
         ECS Backup Advanced options See `udm_detail` below.
         """
         return pulumi.get(self, "udm_detail")
+
+
+@pulumi.output_type
+class PolicyBindingAdvancedOptionsOssDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreArchiveObject":
+            suggest = "ignore_archive_object"
+        elif key == "inventoryCleanupPolicy":
+            suggest = "inventory_cleanup_policy"
+        elif key == "inventoryId":
+            suggest = "inventory_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyBindingAdvancedOptionsOssDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyBindingAdvancedOptionsOssDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyBindingAdvancedOptionsOssDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ignore_archive_object: Optional[_builtins.bool] = None,
+                 inventory_cleanup_policy: Optional[_builtins.str] = None,
+                 inventory_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool ignore_archive_object: Archived objects are not prompted in task statistics and failed file lists
+        :param _builtins.str inventory_cleanup_policy: Whether to delete the inventory file after the backup. Valid only when using the OSS inventory. Supported: NO_CLEANUP: Do not delete. DELETE_CURRENT: Deletes the current file. DELETE_CURRENT_AND_PREVIOUS: Deletes all files.
+        :param _builtins.str inventory_id: The name of the OSS inventory. If the value is not empty, the OSS inventory will be used for performance tuning. We recommend that you use a list to improve incremental performance when backing up more than 0.1 billion OSS objects. OSS charges the storage fee for the list file separately. It takes time to generate the OSS inventory file. The backup may fail before the OSS inventory file is generated. You can wait for the next cycle.
+        """
+        if ignore_archive_object is not None:
+            pulumi.set(__self__, "ignore_archive_object", ignore_archive_object)
+        if inventory_cleanup_policy is not None:
+            pulumi.set(__self__, "inventory_cleanup_policy", inventory_cleanup_policy)
+        if inventory_id is not None:
+            pulumi.set(__self__, "inventory_id", inventory_id)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreArchiveObject")
+    def ignore_archive_object(self) -> Optional[_builtins.bool]:
+        """
+        Archived objects are not prompted in task statistics and failed file lists
+        """
+        return pulumi.get(self, "ignore_archive_object")
+
+    @_builtins.property
+    @pulumi.getter(name="inventoryCleanupPolicy")
+    def inventory_cleanup_policy(self) -> Optional[_builtins.str]:
+        """
+        Whether to delete the inventory file after the backup. Valid only when using the OSS inventory. Supported: NO_CLEANUP: Do not delete. DELETE_CURRENT: Deletes the current file. DELETE_CURRENT_AND_PREVIOUS: Deletes all files.
+        """
+        return pulumi.get(self, "inventory_cleanup_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="inventoryId")
+    def inventory_id(self) -> Optional[_builtins.str]:
+        """
+        The name of the OSS inventory. If the value is not empty, the OSS inventory will be used for performance tuning. We recommend that you use a list to improve incremental performance when backing up more than 0.1 billion OSS objects. OSS charges the storage fee for the list file separately. It takes time to generate the OSS inventory file. The backup may fail before the OSS inventory file is generated. You can wait for the next cycle.
+        """
+        return pulumi.get(self, "inventory_id")
 
 
 @pulumi.output_type

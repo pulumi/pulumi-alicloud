@@ -68,8 +68,8 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				SecurityGroupName: pulumi.String(name),
+//				VpcId:             defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -115,6 +115,8 @@ import (
 type EcsNetworkInterface struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+	DeleteOnRelease pulumi.BoolOutput `pulumi:"deleteOnRelease"`
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
@@ -208,6 +210,8 @@ func GetEcsNetworkInterface(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsNetworkInterface resources.
 type ecsNetworkInterfaceState struct {
+	// Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+	DeleteOnRelease *bool `pulumi:"deleteOnRelease"`
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
 	// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
@@ -269,6 +273,8 @@ type ecsNetworkInterfaceState struct {
 }
 
 type EcsNetworkInterfaceState struct {
+	// Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+	DeleteOnRelease pulumi.BoolPtrInput
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
 	// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
@@ -334,6 +340,8 @@ func (EcsNetworkInterfaceState) ElementType() reflect.Type {
 }
 
 type ecsNetworkInterfaceArgs struct {
+	// Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+	DeleteOnRelease *bool `pulumi:"deleteOnRelease"`
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
 	// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
@@ -392,6 +400,8 @@ type ecsNetworkInterfaceArgs struct {
 
 // The set of arguments for constructing a EcsNetworkInterface resource.
 type EcsNetworkInterfaceArgs struct {
+	// Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+	DeleteOnRelease pulumi.BoolPtrInput
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
 	// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
@@ -533,6 +543,11 @@ func (o EcsNetworkInterfaceOutput) ToEcsNetworkInterfaceOutput() EcsNetworkInter
 
 func (o EcsNetworkInterfaceOutput) ToEcsNetworkInterfaceOutputWithContext(ctx context.Context) EcsNetworkInterfaceOutput {
 	return o
+}
+
+// Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+func (o EcsNetworkInterfaceOutput) DeleteOnRelease() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.BoolOutput { return v.DeleteOnRelease }).(pulumi.BoolOutput)
 }
 
 // The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.

@@ -773,6 +773,8 @@ class Bucket(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.2.0.
 
+        > **NOTE:** When using standalone sub-resources (e.g., `oss.BucketPolicy`, `oss.BucketLogging`, `oss.BucketCors`, `oss.BucketWebsite`, `oss.BucketVersioning`, `oss.BucketReferer`, `oss.BucketServerSideEncryption`, `oss.BucketTransferAcceleration`, `oss.BucketAcl`) alongside `oss.Bucket`, you **must** add a `lifecycle` block with `ignore_changes` for the corresponding attribute on `oss.Bucket`. This prevents Terraform from detecting spurious diffs caused by the same configuration being managed by both the bucket resource and the standalone sub-resource. Without `ignore_changes`, Terraform may attempt to revert changes made by the sub-resource on every apply, causing unexpected behavior.
+
         ## Example Usage
 
         Private Bucket
@@ -1036,6 +1038,45 @@ class Bucket(pulumi.CustomResource):
             bucket=bucket_policy.bucket,
             acl="private")
         ```
+
+        Using sub-resources with ignore_changes
+
+        When managing bucket configurations through standalone sub-resources such as `oss.BucketPolicy`, `oss.BucketLogging`, or `oss.BucketCors`, you must use a `lifecycle` block with `ignore_changes` on the `oss.Bucket` to prevent Terraform from detecting configuration drift. The sub-resource manages the corresponding attribute independently, so without `ignore_changes`, Terraform will see the attribute value differ from the bucket's inline configuration and attempt to revert it on every plan/apply.
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        example = alicloud.oss.Bucket("example", bucket=f"example-sub-resources-{default['result']}")
+        example_bucket_acl = alicloud.oss.BucketAcl("example",
+            bucket=example.bucket,
+            acl="private")
+        example_bucket_policy = alicloud.oss.BucketPolicy("example",
+            bucket=example.bucket,
+            policy=json.dumps({
+                "Version": "1",
+                "Statement": [{
+                    "Action": [
+                        "oss:PutObject",
+                        "oss:GetObject",
+                    ],
+                    "Effect": "Deny",
+                    "Principal": ["1234567890"],
+                    "Resource": ["acs:oss:*:1234567890:*/*"],
+                }],
+            }))
+        example_bucket_logging = alicloud.oss.BucketLogging("example",
+            bucket=example.bucket,
+            target_bucket=example.bucket,
+            target_prefix="log/")
+        ```
+
+        > **NOTE:** You only need to include the attributes in `ignore_changes` that correspond to the sub-resources you are actually using. For example, if you only use `oss.BucketPolicy`, you only need `ignore_changes = [policy]`.
 
         IA Bucket
 
@@ -1220,6 +1261,8 @@ class Bucket(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.2.0.
 
+        > **NOTE:** When using standalone sub-resources (e.g., `oss.BucketPolicy`, `oss.BucketLogging`, `oss.BucketCors`, `oss.BucketWebsite`, `oss.BucketVersioning`, `oss.BucketReferer`, `oss.BucketServerSideEncryption`, `oss.BucketTransferAcceleration`, `oss.BucketAcl`) alongside `oss.Bucket`, you **must** add a `lifecycle` block with `ignore_changes` for the corresponding attribute on `oss.Bucket`. This prevents Terraform from detecting spurious diffs caused by the same configuration being managed by both the bucket resource and the standalone sub-resource. Without `ignore_changes`, Terraform may attempt to revert changes made by the sub-resource on every apply, causing unexpected behavior.
+
         ## Example Usage
 
         Private Bucket
@@ -1483,6 +1526,45 @@ class Bucket(pulumi.CustomResource):
             bucket=bucket_policy.bucket,
             acl="private")
         ```
+
+        Using sub-resources with ignore_changes
+
+        When managing bucket configurations through standalone sub-resources such as `oss.BucketPolicy`, `oss.BucketLogging`, or `oss.BucketCors`, you must use a `lifecycle` block with `ignore_changes` on the `oss.Bucket` to prevent Terraform from detecting configuration drift. The sub-resource manages the corresponding attribute independently, so without `ignore_changes`, Terraform will see the attribute value differ from the bucket's inline configuration and attempt to revert it on every plan/apply.
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        example = alicloud.oss.Bucket("example", bucket=f"example-sub-resources-{default['result']}")
+        example_bucket_acl = alicloud.oss.BucketAcl("example",
+            bucket=example.bucket,
+            acl="private")
+        example_bucket_policy = alicloud.oss.BucketPolicy("example",
+            bucket=example.bucket,
+            policy=json.dumps({
+                "Version": "1",
+                "Statement": [{
+                    "Action": [
+                        "oss:PutObject",
+                        "oss:GetObject",
+                    ],
+                    "Effect": "Deny",
+                    "Principal": ["1234567890"],
+                    "Resource": ["acs:oss:*:1234567890:*/*"],
+                }],
+            }))
+        example_bucket_logging = alicloud.oss.BucketLogging("example",
+            bucket=example.bucket,
+            target_bucket=example.bucket,
+            target_prefix="log/")
+        ```
+
+        > **NOTE:** You only need to include the attributes in `ignore_changes` that correspond to the sub-resources you are actually using. For example, if you only use `oss.BucketPolicy`, you only need `ignore_changes = [policy]`.
 
         IA Bucket
 

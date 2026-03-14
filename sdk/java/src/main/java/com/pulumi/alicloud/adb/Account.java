@@ -17,7 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createaccount) account resource and used to manage databases.
+ * Provides a AnalyticDB for MySQL (ADB) Account resource.
+ * 
+ * For information about AnalyticDB for MySQL (ADB) Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createaccount).
  * 
  * &gt; **NOTE:** Available since v1.71.0.
  * 
@@ -53,8 +55,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var creation = config.get("creation").orElse("ADB");
- *         final var name = config.get("name").orElse("tfexample");
+ *         final var name = config.get("name").orElse("terraform_example");
  *         final var default = AdbFunctions.getZones(GetZonesArgs.builder()
  *             .build());
  * 
@@ -67,13 +68,11 @@ import javax.annotation.Nullable;
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         final var vswitchId = defaultGetSwitches.ids()[0];
- * 
  *         var cluster = new DBCluster("cluster", DBClusterArgs.builder()
  *             .dbClusterCategory("MixedStorage")
  *             .mode("flexible")
  *             .computeResource("8Core32GB")
- *             .vswitchId(vswitchId)
+ *             .vswitchId(defaultGetSwitches.ids()[0])
  *             .description(name)
  *             .build());
  * 
@@ -93,66 +92,96 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ADB account can be imported using the id, e.g.
+ * AnalyticDB for MySQL (ADB) Account can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:adb/account:Account example am-12345:tf_account
+ * $ pulumi import alicloud:adb/account:Account example &lt;db_cluster_id&gt;:&lt;account_name&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:adb/account:Account")
 public class Account extends com.pulumi.resources.CustomResource {
     /**
-     * Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * The description of the account.
      * 
      */
     @Export(name="accountDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountDescription;
 
     /**
-     * @return Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * @return The description of the account.
      * 
      */
     public Output<Optional<String>> accountDescription() {
         return Codegen.optional(this.accountDescription);
     }
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * The name of the database account. The name must meet the following requirements:
+     * - Start with a lowercase letter and end with a lowercase letter or a digit.
+     * - Contain only lowercase letters, digits, and underscores (_).
+     * - Its length must be between 2 and 16 characters.
+     * - Cannot be a reserved name, such as root, admin, or opsadmin.
      * 
      */
     @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
-     * @return Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * @return The name of the database account. The name must meet the following requirements:
+     * - Start with a lowercase letter and end with a lowercase letter or a digit.
+     * - Contain only lowercase letters, digits, and underscores (_).
+     * - Its length must be between 2 and 16 characters.
+     * - Cannot be a reserved name, such as root, admin, or opsadmin.
      * 
      */
     public Output<String> accountName() {
         return this.accountName;
     }
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+     * The password of the database account. The password must meet the following requirements:
+     * - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+     * - The allowed special characters are: (!), ({@literal @}), (#), ($), (%), (^), (&amp;), (*), (()), (_), (+), (-), (=).
+     * - Its length must be between 8 and 32 characters.
      * 
      */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountPassword;
 
     /**
-     * @return Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+     * @return The password of the database account. The password must meet the following requirements:
+     * - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+     * - The allowed special characters are: (!), ({@literal @}), (#), ($), (%), (^), (&amp;), (*), (()), (_), (+), (-), (=).
+     * - Its length must be between 8 and 32 characters.
      * 
      */
     public Output<Optional<String>> accountPassword() {
         return Codegen.optional(this.accountPassword);
     }
     /**
-     * The Id of cluster in which account belongs.
+     * The type of the account. Valid values:
+     * - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+     * 
+     */
+    @Export(name="accountType", refs={String.class}, tree="[0]")
+    private Output<String> accountType;
+
+    /**
+     * @return The type of the account. Valid values:
+     * - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+     * 
+     */
+    public Output<String> accountType() {
+        return this.accountType;
+    }
+    /**
+     * The cluster ID of the data warehouse edition.
      * 
      */
     @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     /**
-     * @return The Id of cluster in which account belongs.
+     * @return The cluster ID of the data warehouse edition.
      * 
      */
     public Output<String> dbClusterId() {
@@ -185,6 +214,34 @@ public class Account extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
+    }
+    /**
+     * (Available since v1.273.0) The status of the account.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return (Available since v1.273.0) The status of the account.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

@@ -13,6 +13,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -531,6 +532,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+     * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+     * 
+     */
+    @Export(name="enableDynamodb", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableDynamodb;
+
+    /**
+     * @return Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+     * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+     * 
+     */
+    public Output<Boolean> enableDynamodb() {
+        return this.enableDynamodb;
     }
     /**
      * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.

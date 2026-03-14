@@ -16,6 +16,7 @@ from .get_logtail_configs import *
 from .get_machine_groups import *
 from .index import *
 from .logtail_config import *
+from .logtail_pipeline_config import *
 from .machine_group import *
 from .oss_export_sink import *
 from .scheduled_sql import *

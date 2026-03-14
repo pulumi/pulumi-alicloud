@@ -17,14 +17,14 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     public static final AccountState Empty = new AccountState();
 
     /**
-     * Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * The description of the account.
      * 
      */
     @Import(name="accountDescription")
     private @Nullable Output<String> accountDescription;
 
     /**
-     * @return Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * @return The description of the account.
      * 
      */
     public Optional<Output<String>> accountDescription() {
@@ -32,14 +32,22 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * The name of the database account. The name must meet the following requirements:
+     * - Start with a lowercase letter and end with a lowercase letter or a digit.
+     * - Contain only lowercase letters, digits, and underscores (_).
+     * - Its length must be between 2 and 16 characters.
+     * - Cannot be a reserved name, such as root, admin, or opsadmin.
      * 
      */
     @Import(name="accountName")
     private @Nullable Output<String> accountName;
 
     /**
-     * @return Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * @return The name of the database account. The name must meet the following requirements:
+     * - Start with a lowercase letter and end with a lowercase letter or a digit.
+     * - Contain only lowercase letters, digits, and underscores (_).
+     * - Its length must be between 2 and 16 characters.
+     * - Cannot be a reserved name, such as root, admin, or opsadmin.
      * 
      */
     public Optional<Output<String>> accountName() {
@@ -47,14 +55,20 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+     * The password of the database account. The password must meet the following requirements:
+     * - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+     * - The allowed special characters are: (!), ({@literal @}), (#), ($), (%), (^), (&amp;), (*), (()), (_), (+), (-), (=).
+     * - Its length must be between 8 and 32 characters.
      * 
      */
     @Import(name="accountPassword")
     private @Nullable Output<String> accountPassword;
 
     /**
-     * @return Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+     * @return The password of the database account. The password must meet the following requirements:
+     * - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+     * - The allowed special characters are: (!), ({@literal @}), (#), ($), (%), (^), (&amp;), (*), (()), (_), (+), (-), (=).
+     * - Its length must be between 8 and 32 characters.
      * 
      */
     public Optional<Output<String>> accountPassword() {
@@ -62,14 +76,31 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Id of cluster in which account belongs.
+     * The type of the account. Valid values:
+     * - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+     * 
+     */
+    @Import(name="accountType")
+    private @Nullable Output<String> accountType;
+
+    /**
+     * @return The type of the account. Valid values:
+     * - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+     * 
+     */
+    public Optional<Output<String>> accountType() {
+        return Optional.ofNullable(this.accountType);
+    }
+
+    /**
+     * The cluster ID of the data warehouse edition.
      * 
      */
     @Import(name="dbClusterId")
     private @Nullable Output<String> dbClusterId;
 
     /**
-     * @return The Id of cluster in which account belongs.
+     * @return The cluster ID of the data warehouse edition.
      * 
      */
     public Optional<Output<String>> dbClusterId() {
@@ -106,15 +137,48 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.kmsEncryptionContext);
     }
 
+    /**
+     * (Available since v1.273.0) The status of the account.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return (Available since v1.273.0) The status of the account.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private AccountState() {}
 
     private AccountState(AccountState $) {
         this.accountDescription = $.accountDescription;
         this.accountName = $.accountName;
         this.accountPassword = $.accountPassword;
+        this.accountType = $.accountType;
         this.dbClusterId = $.dbClusterId;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
+        this.status = $.status;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -136,7 +200,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountDescription Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+         * @param accountDescription The description of the account.
          * 
          * @return builder
          * 
@@ -147,7 +211,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountDescription Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+         * @param accountDescription The description of the account.
          * 
          * @return builder
          * 
@@ -157,7 +221,11 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountName Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+         * @param accountName The name of the database account. The name must meet the following requirements:
+         * - Start with a lowercase letter and end with a lowercase letter or a digit.
+         * - Contain only lowercase letters, digits, and underscores (_).
+         * - Its length must be between 2 and 16 characters.
+         * - Cannot be a reserved name, such as root, admin, or opsadmin.
          * 
          * @return builder
          * 
@@ -168,7 +236,11 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountName Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+         * @param accountName The name of the database account. The name must meet the following requirements:
+         * - Start with a lowercase letter and end with a lowercase letter or a digit.
+         * - Contain only lowercase letters, digits, and underscores (_).
+         * - Its length must be between 2 and 16 characters.
+         * - Cannot be a reserved name, such as root, admin, or opsadmin.
          * 
          * @return builder
          * 
@@ -178,7 +250,10 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+         * @param accountPassword The password of the database account. The password must meet the following requirements:
+         * - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+         * - The allowed special characters are: (!), ({@literal @}), (#), ($), (%), (^), (&amp;), (*), (()), (_), (+), (-), (=).
+         * - Its length must be between 8 and 32 characters.
          * 
          * @return builder
          * 
@@ -189,7 +264,10 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+         * @param accountPassword The password of the database account. The password must meet the following requirements:
+         * - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+         * - The allowed special characters are: (!), ({@literal @}), (#), ($), (%), (^), (&amp;), (*), (()), (_), (+), (-), (=).
+         * - Its length must be between 8 and 32 characters.
          * 
          * @return builder
          * 
@@ -199,7 +277,30 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterId The Id of cluster in which account belongs.
+         * @param accountType The type of the account. Valid values:
+         * - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountType(@Nullable Output<String> accountType) {
+            $.accountType = accountType;
+            return this;
+        }
+
+        /**
+         * @param accountType The type of the account. Valid values:
+         * - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountType(String accountType) {
+            return accountType(Output.of(accountType));
+        }
+
+        /**
+         * @param dbClusterId The cluster ID of the data warehouse edition.
          * 
          * @return builder
          * 
@@ -210,7 +311,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterId The Id of cluster in which account belongs.
+         * @param dbClusterId The cluster ID of the data warehouse edition.
          * 
          * @return builder
          * 
@@ -259,6 +360,48 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kmsEncryptionContext(Map<String,String> kmsEncryptionContext) {
             return kmsEncryptionContext(Output.of(kmsEncryptionContext));
+        }
+
+        /**
+         * @param status (Available since v1.273.0) The status of the account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status (Available since v1.273.0) The status of the account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public AccountState build() {

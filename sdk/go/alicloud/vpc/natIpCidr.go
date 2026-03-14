@@ -12,11 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Nat Ip Cidr resource.
+// Provides a Nat Gateway Nat Ip Cidr resource.
 //
-// For information about VPC Nat Ip Cidr and how to use it, see [What is Nat Ip Cidr](https://www.alibabacloud.com/help/doc-detail/281972.htm).
+// NAT IP address segment.
 //
-// > **NOTE:** Available in v1.136.0+.
+// For information about Nat Gateway Nat Ip Cidr and how to use it, see [What is Nat Ip Cidr](https://www.alibabacloud.com/help/doc-detail/281972.htm).
+//
+// > **NOTE:** Available since v1.136.0.
 //
 // ## Example Usage
 //
@@ -35,42 +37,42 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VpcId:       exampleNetwork.ID(),
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(example.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleNatGateway, err := vpc.NewNatGateway(ctx, "example", &vpc.NatGatewayArgs{
-//				VpcId:              exampleNetwork.ID(),
+//			defaultNatGateway, err := vpc.NewNatGateway(ctx, "default", &vpc.NatGatewayArgs{
+//				VpcId:              defaultNetwork.ID(),
 //				InternetChargeType: pulumi.String("PayByLcu"),
 //				NatGatewayName:     pulumi.String("terraform-example"),
 //				Description:        pulumi.String("terraform-example"),
 //				NatType:            pulumi.String("Enhanced"),
-//				VswitchId:          exampleSwitch.ID(),
+//				VswitchId:          defaultSwitch.ID(),
 //				NetworkType:        pulumi.String("intranet"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewNatIpCidr(ctx, "example", &vpc.NatIpCidrArgs{
-//				NatGatewayId:  exampleNatGateway.ID(),
+//			_, err = vpc.NewNatIpCidr(ctx, "default", &vpc.NatIpCidrArgs{
+//				NatGatewayId:  defaultNatGateway.ID(),
 //				NatIpCidrName: pulumi.String("terraform-example"),
 //				NatIpCidr:     pulumi.String("192.168.0.0/16"),
 //			})
@@ -87,7 +89,7 @@ import (
 //
 // ## Import
 //
-// VPC Nat Ip Cidr can be imported using the id, e.g.
+// Nat Gateway Nat Ip Cidr can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/natIpCidr:NatIpCidr example <nat_gateway_id>:<nat_ip_cidr>
@@ -95,17 +97,27 @@ import (
 type NatIpCidr struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether to precheck this request only. Valid values: `true` and `false`.
-	DryRun pulumi.BoolOutput `pulumi:"dryRun"`
-	// The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
+	// (Available since v1.273.0) The time when the NAT IP CIDR block was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Specifies whether to only precheck this request. Valid values:
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// The ID of the VPC NAT gateway instance to which the NAT IP address block belongs.
 	NatGatewayId pulumi.StringOutput `pulumi:"natGatewayId"`
-	// The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
-	NatIpCidr pulumi.StringPtrOutput `pulumi:"natIpCidr"`
-	// The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The NAT IP CIDR block to create.
+	//
+	// The newly created CIDR block must meet the following requirements:
+	// - It must belong to the 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 CIDR blocks or their subnets.
+	// - The subnet mask length must be between 16 and 32 bits.
+	// - It must not overlap with the private CIDR block of the VPC to which the VPC NAT gateway belongs. If you need to translate a private IP address to another address within the VPC's private CIDR block, create a vSwitch in the corresponding VPC private CIDR block and then create a new VPC NAT gateway in that vSwitch to provide private address translation.
+	// - If you want to use a public CIDR block as the NAT IP CIDR block, the CIDR block must belong to the customer CIDR block of the VPC to which the VPC NAT gateway belongs. For more information about customer CIDR blocks, see [What is a customer CIDR block?](https://help.aliyun.com/document_detail/185311.html).
+	NatIpCidr pulumi.StringOutput `pulumi:"natIpCidr"`
+	// The description of the NAT IP CIDR block to modify.
+	// The description must be 2 to 256 characters in length, start with a letter or Chinese character, and cannot start with `http://` or `https://`.
 	NatIpCidrDescription pulumi.StringPtrOutput `pulumi:"natIpCidrDescription"`
-	// The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
-	NatIpCidrName pulumi.StringPtrOutput `pulumi:"natIpCidrName"`
-	// The status of the CIDR block of the NAT gateway. Valid values: `Available`.
+	// The name of the NAT IP address block.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
+	NatIpCidrName pulumi.StringOutput `pulumi:"natIpCidrName"`
+	// The status of the NAT IP CIDR block to query.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -118,6 +130,12 @@ func NewNatIpCidr(ctx *pulumi.Context,
 
 	if args.NatGatewayId == nil {
 		return nil, errors.New("invalid value for required argument 'NatGatewayId'")
+	}
+	if args.NatIpCidr == nil {
+		return nil, errors.New("invalid value for required argument 'NatIpCidr'")
+	}
+	if args.NatIpCidrName == nil {
+		return nil, errors.New("invalid value for required argument 'NatIpCidrName'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NatIpCidr
@@ -142,32 +160,52 @@ func GetNatIpCidr(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NatIpCidr resources.
 type natIpCidrState struct {
-	// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+	// (Available since v1.273.0) The time when the NAT IP CIDR block was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Specifies whether to only precheck this request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
+	// The ID of the VPC NAT gateway instance to which the NAT IP address block belongs.
 	NatGatewayId *string `pulumi:"natGatewayId"`
-	// The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
+	// The NAT IP CIDR block to create.
+	//
+	// The newly created CIDR block must meet the following requirements:
+	// - It must belong to the 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 CIDR blocks or their subnets.
+	// - The subnet mask length must be between 16 and 32 bits.
+	// - It must not overlap with the private CIDR block of the VPC to which the VPC NAT gateway belongs. If you need to translate a private IP address to another address within the VPC's private CIDR block, create a vSwitch in the corresponding VPC private CIDR block and then create a new VPC NAT gateway in that vSwitch to provide private address translation.
+	// - If you want to use a public CIDR block as the NAT IP CIDR block, the CIDR block must belong to the customer CIDR block of the VPC to which the VPC NAT gateway belongs. For more information about customer CIDR blocks, see [What is a customer CIDR block?](https://help.aliyun.com/document_detail/185311.html).
 	NatIpCidr *string `pulumi:"natIpCidr"`
-	// The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The description of the NAT IP CIDR block to modify.
+	// The description must be 2 to 256 characters in length, start with a letter or Chinese character, and cannot start with `http://` or `https://`.
 	NatIpCidrDescription *string `pulumi:"natIpCidrDescription"`
-	// The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
+	// The name of the NAT IP address block.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
 	NatIpCidrName *string `pulumi:"natIpCidrName"`
-	// The status of the CIDR block of the NAT gateway. Valid values: `Available`.
+	// The status of the NAT IP CIDR block to query.
 	Status *string `pulumi:"status"`
 }
 
 type NatIpCidrState struct {
-	// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+	// (Available since v1.273.0) The time when the NAT IP CIDR block was created.
+	CreateTime pulumi.StringPtrInput
+	// Specifies whether to only precheck this request. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
+	// The ID of the VPC NAT gateway instance to which the NAT IP address block belongs.
 	NatGatewayId pulumi.StringPtrInput
-	// The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
+	// The NAT IP CIDR block to create.
+	//
+	// The newly created CIDR block must meet the following requirements:
+	// - It must belong to the 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 CIDR blocks or their subnets.
+	// - The subnet mask length must be between 16 and 32 bits.
+	// - It must not overlap with the private CIDR block of the VPC to which the VPC NAT gateway belongs. If you need to translate a private IP address to another address within the VPC's private CIDR block, create a vSwitch in the corresponding VPC private CIDR block and then create a new VPC NAT gateway in that vSwitch to provide private address translation.
+	// - If you want to use a public CIDR block as the NAT IP CIDR block, the CIDR block must belong to the customer CIDR block of the VPC to which the VPC NAT gateway belongs. For more information about customer CIDR blocks, see [What is a customer CIDR block?](https://help.aliyun.com/document_detail/185311.html).
 	NatIpCidr pulumi.StringPtrInput
-	// The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The description of the NAT IP CIDR block to modify.
+	// The description must be 2 to 256 characters in length, start with a letter or Chinese character, and cannot start with `http://` or `https://`.
 	NatIpCidrDescription pulumi.StringPtrInput
-	// The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
+	// The name of the NAT IP address block.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
 	NatIpCidrName pulumi.StringPtrInput
-	// The status of the CIDR block of the NAT gateway. Valid values: `Available`.
+	// The status of the NAT IP CIDR block to query.
 	Status pulumi.StringPtrInput
 }
 
@@ -176,30 +214,46 @@ func (NatIpCidrState) ElementType() reflect.Type {
 }
 
 type natIpCidrArgs struct {
-	// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+	// Specifies whether to only precheck this request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
+	// The ID of the VPC NAT gateway instance to which the NAT IP address block belongs.
 	NatGatewayId string `pulumi:"natGatewayId"`
-	// The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
-	NatIpCidr *string `pulumi:"natIpCidr"`
-	// The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The NAT IP CIDR block to create.
+	//
+	// The newly created CIDR block must meet the following requirements:
+	// - It must belong to the 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 CIDR blocks or their subnets.
+	// - The subnet mask length must be between 16 and 32 bits.
+	// - It must not overlap with the private CIDR block of the VPC to which the VPC NAT gateway belongs. If you need to translate a private IP address to another address within the VPC's private CIDR block, create a vSwitch in the corresponding VPC private CIDR block and then create a new VPC NAT gateway in that vSwitch to provide private address translation.
+	// - If you want to use a public CIDR block as the NAT IP CIDR block, the CIDR block must belong to the customer CIDR block of the VPC to which the VPC NAT gateway belongs. For more information about customer CIDR blocks, see [What is a customer CIDR block?](https://help.aliyun.com/document_detail/185311.html).
+	NatIpCidr string `pulumi:"natIpCidr"`
+	// The description of the NAT IP CIDR block to modify.
+	// The description must be 2 to 256 characters in length, start with a letter or Chinese character, and cannot start with `http://` or `https://`.
 	NatIpCidrDescription *string `pulumi:"natIpCidrDescription"`
-	// The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
-	NatIpCidrName *string `pulumi:"natIpCidrName"`
+	// The name of the NAT IP address block.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
+	NatIpCidrName string `pulumi:"natIpCidrName"`
 }
 
 // The set of arguments for constructing a NatIpCidr resource.
 type NatIpCidrArgs struct {
-	// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+	// Specifies whether to only precheck this request. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
+	// The ID of the VPC NAT gateway instance to which the NAT IP address block belongs.
 	NatGatewayId pulumi.StringInput
-	// The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
-	NatIpCidr pulumi.StringPtrInput
-	// The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The NAT IP CIDR block to create.
+	//
+	// The newly created CIDR block must meet the following requirements:
+	// - It must belong to the 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 CIDR blocks or their subnets.
+	// - The subnet mask length must be between 16 and 32 bits.
+	// - It must not overlap with the private CIDR block of the VPC to which the VPC NAT gateway belongs. If you need to translate a private IP address to another address within the VPC's private CIDR block, create a vSwitch in the corresponding VPC private CIDR block and then create a new VPC NAT gateway in that vSwitch to provide private address translation.
+	// - If you want to use a public CIDR block as the NAT IP CIDR block, the CIDR block must belong to the customer CIDR block of the VPC to which the VPC NAT gateway belongs. For more information about customer CIDR blocks, see [What is a customer CIDR block?](https://help.aliyun.com/document_detail/185311.html).
+	NatIpCidr pulumi.StringInput
+	// The description of the NAT IP CIDR block to modify.
+	// The description must be 2 to 256 characters in length, start with a letter or Chinese character, and cannot start with `http://` or `https://`.
 	NatIpCidrDescription pulumi.StringPtrInput
-	// The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
-	NatIpCidrName pulumi.StringPtrInput
+	// The name of the NAT IP address block.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
+	NatIpCidrName pulumi.StringInput
 }
 
 func (NatIpCidrArgs) ElementType() reflect.Type {
@@ -289,32 +343,45 @@ func (o NatIpCidrOutput) ToNatIpCidrOutputWithContext(ctx context.Context) NatIp
 	return o
 }
 
-// Specifies whether to precheck this request only. Valid values: `true` and `false`.
-func (o NatIpCidrOutput) DryRun() pulumi.BoolOutput {
-	return o.ApplyT(func(v *NatIpCidr) pulumi.BoolOutput { return v.DryRun }).(pulumi.BoolOutput)
+// (Available since v1.273.0) The time when the NAT IP CIDR block was created.
+func (o NatIpCidrOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatIpCidr) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
+// Specifies whether to only precheck this request. Valid values:
+func (o NatIpCidrOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NatIpCidr) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the VPC NAT gateway instance to which the NAT IP address block belongs.
 func (o NatIpCidrOutput) NatGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatIpCidr) pulumi.StringOutput { return v.NatGatewayId }).(pulumi.StringOutput)
 }
 
-// The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
-func (o NatIpCidrOutput) NatIpCidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NatIpCidr) pulumi.StringPtrOutput { return v.NatIpCidr }).(pulumi.StringPtrOutput)
+// The NAT IP CIDR block to create.
+//
+// The newly created CIDR block must meet the following requirements:
+// - It must belong to the 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 CIDR blocks or their subnets.
+// - The subnet mask length must be between 16 and 32 bits.
+// - It must not overlap with the private CIDR block of the VPC to which the VPC NAT gateway belongs. If you need to translate a private IP address to another address within the VPC's private CIDR block, create a vSwitch in the corresponding VPC private CIDR block and then create a new VPC NAT gateway in that vSwitch to provide private address translation.
+// - If you want to use a public CIDR block as the NAT IP CIDR block, the CIDR block must belong to the customer CIDR block of the VPC to which the VPC NAT gateway belongs. For more information about customer CIDR blocks, see [What is a customer CIDR block?](https://help.aliyun.com/document_detail/185311.html).
+func (o NatIpCidrOutput) NatIpCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatIpCidr) pulumi.StringOutput { return v.NatIpCidr }).(pulumi.StringOutput)
 }
 
-// The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+// The description of the NAT IP CIDR block to modify.
+// The description must be 2 to 256 characters in length, start with a letter or Chinese character, and cannot start with `http://` or `https://`.
 func (o NatIpCidrOutput) NatIpCidrDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NatIpCidr) pulumi.StringPtrOutput { return v.NatIpCidrDescription }).(pulumi.StringPtrOutput)
 }
 
-// The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
-func (o NatIpCidrOutput) NatIpCidrName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NatIpCidr) pulumi.StringPtrOutput { return v.NatIpCidrName }).(pulumi.StringPtrOutput)
+// The name of the NAT IP address block.
+// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
+func (o NatIpCidrOutput) NatIpCidrName() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatIpCidr) pulumi.StringOutput { return v.NatIpCidrName }).(pulumi.StringOutput)
 }
 
-// The status of the CIDR block of the NAT gateway. Valid values: `Available`.
+// The status of the NAT IP CIDR block to query.
 func (o NatIpCidrOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatIpCidr) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

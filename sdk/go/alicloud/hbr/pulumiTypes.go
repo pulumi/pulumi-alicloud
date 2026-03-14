@@ -247,6 +247,8 @@ func (o OtsBackupPlanRuleArrayOutput) Index(i pulumi.IntInput) OtsBackupPlanRule
 }
 
 type PolicyBindingAdvancedOptions struct {
+	// OSS Backup Advanced options See `ossDetail` below.
+	OssDetail *PolicyBindingAdvancedOptionsOssDetail `pulumi:"ossDetail"`
 	// ECS Backup Advanced options See `udmDetail` below.
 	UdmDetail *PolicyBindingAdvancedOptionsUdmDetail `pulumi:"udmDetail"`
 }
@@ -263,6 +265,8 @@ type PolicyBindingAdvancedOptionsInput interface {
 }
 
 type PolicyBindingAdvancedOptionsArgs struct {
+	// OSS Backup Advanced options See `ossDetail` below.
+	OssDetail PolicyBindingAdvancedOptionsOssDetailPtrInput `pulumi:"ossDetail"`
 	// ECS Backup Advanced options See `udmDetail` below.
 	UdmDetail PolicyBindingAdvancedOptionsUdmDetailPtrInput `pulumi:"udmDetail"`
 }
@@ -344,6 +348,11 @@ func (o PolicyBindingAdvancedOptionsOutput) ToPolicyBindingAdvancedOptionsPtrOut
 	}).(PolicyBindingAdvancedOptionsPtrOutput)
 }
 
+// OSS Backup Advanced options See `ossDetail` below.
+func (o PolicyBindingAdvancedOptionsOutput) OssDetail() PolicyBindingAdvancedOptionsOssDetailPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptions) *PolicyBindingAdvancedOptionsOssDetail { return v.OssDetail }).(PolicyBindingAdvancedOptionsOssDetailPtrOutput)
+}
+
 // ECS Backup Advanced options See `udmDetail` below.
 func (o PolicyBindingAdvancedOptionsOutput) UdmDetail() PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
 	return o.ApplyT(func(v PolicyBindingAdvancedOptions) *PolicyBindingAdvancedOptionsUdmDetail { return v.UdmDetail }).(PolicyBindingAdvancedOptionsUdmDetailPtrOutput)
@@ -373,6 +382,16 @@ func (o PolicyBindingAdvancedOptionsPtrOutput) Elem() PolicyBindingAdvancedOptio
 	}).(PolicyBindingAdvancedOptionsOutput)
 }
 
+// OSS Backup Advanced options See `ossDetail` below.
+func (o PolicyBindingAdvancedOptionsPtrOutput) OssDetail() PolicyBindingAdvancedOptionsOssDetailPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptions) *PolicyBindingAdvancedOptionsOssDetail {
+		if v == nil {
+			return nil
+		}
+		return v.OssDetail
+	}).(PolicyBindingAdvancedOptionsOssDetailPtrOutput)
+}
+
 // ECS Backup Advanced options See `udmDetail` below.
 func (o PolicyBindingAdvancedOptionsPtrOutput) UdmDetail() PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
 	return o.ApplyT(func(v *PolicyBindingAdvancedOptions) *PolicyBindingAdvancedOptionsUdmDetail {
@@ -381,6 +400,181 @@ func (o PolicyBindingAdvancedOptionsPtrOutput) UdmDetail() PolicyBindingAdvanced
 		}
 		return v.UdmDetail
 	}).(PolicyBindingAdvancedOptionsUdmDetailPtrOutput)
+}
+
+type PolicyBindingAdvancedOptionsOssDetail struct {
+	// Archived objects are not prompted in task statistics and failed file lists
+	IgnoreArchiveObject *bool `pulumi:"ignoreArchiveObject"`
+	// Whether to delete the inventory file after the backup. Valid only when using the OSS inventory. Supported: NO_CLEANUP: Do not delete. DELETE_CURRENT: Deletes the current file. DELETE_CURRENT_AND_PREVIOUS: Deletes all files.
+	InventoryCleanupPolicy *string `pulumi:"inventoryCleanupPolicy"`
+	// The name of the OSS inventory. If the value is not empty, the OSS inventory will be used for performance tuning. We recommend that you use a list to improve incremental performance when backing up more than 0.1 billion OSS objects. OSS charges the storage fee for the list file separately. It takes time to generate the OSS inventory file. The backup may fail before the OSS inventory file is generated. You can wait for the next cycle.
+	InventoryId *string `pulumi:"inventoryId"`
+}
+
+// PolicyBindingAdvancedOptionsOssDetailInput is an input type that accepts PolicyBindingAdvancedOptionsOssDetailArgs and PolicyBindingAdvancedOptionsOssDetailOutput values.
+// You can construct a concrete instance of `PolicyBindingAdvancedOptionsOssDetailInput` via:
+//
+//	PolicyBindingAdvancedOptionsOssDetailArgs{...}
+type PolicyBindingAdvancedOptionsOssDetailInput interface {
+	pulumi.Input
+
+	ToPolicyBindingAdvancedOptionsOssDetailOutput() PolicyBindingAdvancedOptionsOssDetailOutput
+	ToPolicyBindingAdvancedOptionsOssDetailOutputWithContext(context.Context) PolicyBindingAdvancedOptionsOssDetailOutput
+}
+
+type PolicyBindingAdvancedOptionsOssDetailArgs struct {
+	// Archived objects are not prompted in task statistics and failed file lists
+	IgnoreArchiveObject pulumi.BoolPtrInput `pulumi:"ignoreArchiveObject"`
+	// Whether to delete the inventory file after the backup. Valid only when using the OSS inventory. Supported: NO_CLEANUP: Do not delete. DELETE_CURRENT: Deletes the current file. DELETE_CURRENT_AND_PREVIOUS: Deletes all files.
+	InventoryCleanupPolicy pulumi.StringPtrInput `pulumi:"inventoryCleanupPolicy"`
+	// The name of the OSS inventory. If the value is not empty, the OSS inventory will be used for performance tuning. We recommend that you use a list to improve incremental performance when backing up more than 0.1 billion OSS objects. OSS charges the storage fee for the list file separately. It takes time to generate the OSS inventory file. The backup may fail before the OSS inventory file is generated. You can wait for the next cycle.
+	InventoryId pulumi.StringPtrInput `pulumi:"inventoryId"`
+}
+
+func (PolicyBindingAdvancedOptionsOssDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBindingAdvancedOptionsOssDetail)(nil)).Elem()
+}
+
+func (i PolicyBindingAdvancedOptionsOssDetailArgs) ToPolicyBindingAdvancedOptionsOssDetailOutput() PolicyBindingAdvancedOptionsOssDetailOutput {
+	return i.ToPolicyBindingAdvancedOptionsOssDetailOutputWithContext(context.Background())
+}
+
+func (i PolicyBindingAdvancedOptionsOssDetailArgs) ToPolicyBindingAdvancedOptionsOssDetailOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsOssDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBindingAdvancedOptionsOssDetailOutput)
+}
+
+func (i PolicyBindingAdvancedOptionsOssDetailArgs) ToPolicyBindingAdvancedOptionsOssDetailPtrOutput() PolicyBindingAdvancedOptionsOssDetailPtrOutput {
+	return i.ToPolicyBindingAdvancedOptionsOssDetailPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyBindingAdvancedOptionsOssDetailArgs) ToPolicyBindingAdvancedOptionsOssDetailPtrOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsOssDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBindingAdvancedOptionsOssDetailOutput).ToPolicyBindingAdvancedOptionsOssDetailPtrOutputWithContext(ctx)
+}
+
+// PolicyBindingAdvancedOptionsOssDetailPtrInput is an input type that accepts PolicyBindingAdvancedOptionsOssDetailArgs, PolicyBindingAdvancedOptionsOssDetailPtr and PolicyBindingAdvancedOptionsOssDetailPtrOutput values.
+// You can construct a concrete instance of `PolicyBindingAdvancedOptionsOssDetailPtrInput` via:
+//
+//	        PolicyBindingAdvancedOptionsOssDetailArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyBindingAdvancedOptionsOssDetailPtrInput interface {
+	pulumi.Input
+
+	ToPolicyBindingAdvancedOptionsOssDetailPtrOutput() PolicyBindingAdvancedOptionsOssDetailPtrOutput
+	ToPolicyBindingAdvancedOptionsOssDetailPtrOutputWithContext(context.Context) PolicyBindingAdvancedOptionsOssDetailPtrOutput
+}
+
+type policyBindingAdvancedOptionsOssDetailPtrType PolicyBindingAdvancedOptionsOssDetailArgs
+
+func PolicyBindingAdvancedOptionsOssDetailPtr(v *PolicyBindingAdvancedOptionsOssDetailArgs) PolicyBindingAdvancedOptionsOssDetailPtrInput {
+	return (*policyBindingAdvancedOptionsOssDetailPtrType)(v)
+}
+
+func (*policyBindingAdvancedOptionsOssDetailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyBindingAdvancedOptionsOssDetail)(nil)).Elem()
+}
+
+func (i *policyBindingAdvancedOptionsOssDetailPtrType) ToPolicyBindingAdvancedOptionsOssDetailPtrOutput() PolicyBindingAdvancedOptionsOssDetailPtrOutput {
+	return i.ToPolicyBindingAdvancedOptionsOssDetailPtrOutputWithContext(context.Background())
+}
+
+func (i *policyBindingAdvancedOptionsOssDetailPtrType) ToPolicyBindingAdvancedOptionsOssDetailPtrOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsOssDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBindingAdvancedOptionsOssDetailPtrOutput)
+}
+
+type PolicyBindingAdvancedOptionsOssDetailOutput struct{ *pulumi.OutputState }
+
+func (PolicyBindingAdvancedOptionsOssDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBindingAdvancedOptionsOssDetail)(nil)).Elem()
+}
+
+func (o PolicyBindingAdvancedOptionsOssDetailOutput) ToPolicyBindingAdvancedOptionsOssDetailOutput() PolicyBindingAdvancedOptionsOssDetailOutput {
+	return o
+}
+
+func (o PolicyBindingAdvancedOptionsOssDetailOutput) ToPolicyBindingAdvancedOptionsOssDetailOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsOssDetailOutput {
+	return o
+}
+
+func (o PolicyBindingAdvancedOptionsOssDetailOutput) ToPolicyBindingAdvancedOptionsOssDetailPtrOutput() PolicyBindingAdvancedOptionsOssDetailPtrOutput {
+	return o.ToPolicyBindingAdvancedOptionsOssDetailPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyBindingAdvancedOptionsOssDetailOutput) ToPolicyBindingAdvancedOptionsOssDetailPtrOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsOssDetailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyBindingAdvancedOptionsOssDetail) *PolicyBindingAdvancedOptionsOssDetail {
+		return &v
+	}).(PolicyBindingAdvancedOptionsOssDetailPtrOutput)
+}
+
+// Archived objects are not prompted in task statistics and failed file lists
+func (o PolicyBindingAdvancedOptionsOssDetailOutput) IgnoreArchiveObject() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsOssDetail) *bool { return v.IgnoreArchiveObject }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to delete the inventory file after the backup. Valid only when using the OSS inventory. Supported: NO_CLEANUP: Do not delete. DELETE_CURRENT: Deletes the current file. DELETE_CURRENT_AND_PREVIOUS: Deletes all files.
+func (o PolicyBindingAdvancedOptionsOssDetailOutput) InventoryCleanupPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsOssDetail) *string { return v.InventoryCleanupPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the OSS inventory. If the value is not empty, the OSS inventory will be used for performance tuning. We recommend that you use a list to improve incremental performance when backing up more than 0.1 billion OSS objects. OSS charges the storage fee for the list file separately. It takes time to generate the OSS inventory file. The backup may fail before the OSS inventory file is generated. You can wait for the next cycle.
+func (o PolicyBindingAdvancedOptionsOssDetailOutput) InventoryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsOssDetail) *string { return v.InventoryId }).(pulumi.StringPtrOutput)
+}
+
+type PolicyBindingAdvancedOptionsOssDetailPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyBindingAdvancedOptionsOssDetailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyBindingAdvancedOptionsOssDetail)(nil)).Elem()
+}
+
+func (o PolicyBindingAdvancedOptionsOssDetailPtrOutput) ToPolicyBindingAdvancedOptionsOssDetailPtrOutput() PolicyBindingAdvancedOptionsOssDetailPtrOutput {
+	return o
+}
+
+func (o PolicyBindingAdvancedOptionsOssDetailPtrOutput) ToPolicyBindingAdvancedOptionsOssDetailPtrOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsOssDetailPtrOutput {
+	return o
+}
+
+func (o PolicyBindingAdvancedOptionsOssDetailPtrOutput) Elem() PolicyBindingAdvancedOptionsOssDetailOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsOssDetail) PolicyBindingAdvancedOptionsOssDetail {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyBindingAdvancedOptionsOssDetail
+		return ret
+	}).(PolicyBindingAdvancedOptionsOssDetailOutput)
+}
+
+// Archived objects are not prompted in task statistics and failed file lists
+func (o PolicyBindingAdvancedOptionsOssDetailPtrOutput) IgnoreArchiveObject() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsOssDetail) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreArchiveObject
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to delete the inventory file after the backup. Valid only when using the OSS inventory. Supported: NO_CLEANUP: Do not delete. DELETE_CURRENT: Deletes the current file. DELETE_CURRENT_AND_PREVIOUS: Deletes all files.
+func (o PolicyBindingAdvancedOptionsOssDetailPtrOutput) InventoryCleanupPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsOssDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InventoryCleanupPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the OSS inventory. If the value is not empty, the OSS inventory will be used for performance tuning. We recommend that you use a list to improve incremental performance when backing up more than 0.1 billion OSS objects. OSS charges the storage fee for the list file separately. It takes time to generate the OSS inventory file. The backup may fail before the OSS inventory file is generated. You can wait for the next cycle.
+func (o PolicyBindingAdvancedOptionsOssDetailPtrOutput) InventoryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsOssDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InventoryId
+	}).(pulumi.StringPtrOutput)
 }
 
 type PolicyBindingAdvancedOptionsUdmDetail struct {
@@ -5894,6 +6088,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanRuleArrayInput)(nil)).Elem(), OtsBackupPlanRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingAdvancedOptionsInput)(nil)).Elem(), PolicyBindingAdvancedOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingAdvancedOptionsPtrInput)(nil)).Elem(), PolicyBindingAdvancedOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingAdvancedOptionsOssDetailInput)(nil)).Elem(), PolicyBindingAdvancedOptionsOssDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingAdvancedOptionsOssDetailPtrInput)(nil)).Elem(), PolicyBindingAdvancedOptionsOssDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingAdvancedOptionsUdmDetailInput)(nil)).Elem(), PolicyBindingAdvancedOptionsUdmDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingAdvancedOptionsUdmDetailPtrInput)(nil)).Elem(), PolicyBindingAdvancedOptionsUdmDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleInput)(nil)).Elem(), PolicyRuleArgs{})
@@ -5956,6 +6152,8 @@ func init() {
 	pulumi.RegisterOutputType(OtsBackupPlanRuleArrayOutput{})
 	pulumi.RegisterOutputType(PolicyBindingAdvancedOptionsOutput{})
 	pulumi.RegisterOutputType(PolicyBindingAdvancedOptionsPtrOutput{})
+	pulumi.RegisterOutputType(PolicyBindingAdvancedOptionsOssDetailOutput{})
+	pulumi.RegisterOutputType(PolicyBindingAdvancedOptionsOssDetailPtrOutput{})
 	pulumi.RegisterOutputType(PolicyBindingAdvancedOptionsUdmDetailOutput{})
 	pulumi.RegisterOutputType(PolicyBindingAdvancedOptionsUdmDetailPtrOutput{})
 	pulumi.RegisterOutputType(PolicyRuleOutput{})

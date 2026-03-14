@@ -6878,6 +6878,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "oss_detail": {
+                                    "maxItemsOne": true
+                                },
                                 "udm_detail": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -7858,6 +7861,9 @@
             },
             "alicloud_network_interface_attachment": {
                 "current": "alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment"
+            },
+            "alicloud_nlb_hd_monitor_region_config": {
+                "current": "alicloud:nlb/hdMonitorRegionConfig:HdMonitorRegionConfig"
             },
             "alicloud_nlb_listener": {
                 "current": "alicloud:nlb/listener:Listener",
@@ -10129,6 +10135,9 @@
             "alicloud_simple_application_server_custom_image": {
                 "current": "alicloud:simpleapplicationserver/customImage:CustomImage"
             },
+            "alicloud_simple_application_server_disk": {
+                "current": "alicloud:simpleapplicationserver/disk:Disk"
+            },
             "alicloud_simple_application_server_firewall_rule": {
                 "current": "alicloud:simpleapplicationserver/firewallRule:FirewallRule"
             },
@@ -10387,6 +10396,23 @@
                 "fields": {
                     "output_detail": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "alicloud_sls_logtail_pipeline_config": {
+                "current": "alicloud:sls/logtailPipelineConfig:LogtailPipelineConfig",
+                "fields": {
+                    "aggregators": {
+                        "maxItemsOne": false
+                    },
+                    "flushers": {
+                        "maxItemsOne": false
+                    },
+                    "inputs": {
+                        "maxItemsOne": false
+                    },
+                    "processors": {
+                        "maxItemsOne": false
                     }
                 }
             },

@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AliCloud.SimpleApplicationServer
+namespace Pulumi.AliCloud.simpleApplicationServer
 {
     /// <summary>
     /// Provides a Simple Application Server Instance resource.

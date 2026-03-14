@@ -272,7 +272,7 @@ class _PolicyBindingState:
         Input properties used for looking up and filtering PolicyBinding resources.
 
         :param pulumi.Input['PolicyBindingAdvancedOptionsArgs'] advanced_options: Backup Advanced Options See `advanced_options` below.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] cross_account_role_name: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
         :param pulumi.Input[_builtins.str] cross_account_type: Cross-account type, supported
         :param pulumi.Input[_builtins.int] cross_account_user_id: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
@@ -339,7 +339,7 @@ class _PolicyBindingState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation time of the resource
+        The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
@@ -757,7 +757,7 @@ class PolicyBinding(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']] advanced_options: Backup Advanced Options See `advanced_options` below.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] cross_account_role_name: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
         :param pulumi.Input[_builtins.str] cross_account_type: Cross-account type, supported
         :param pulumi.Input[_builtins.int] cross_account_user_id: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
@@ -811,7 +811,7 @@ class PolicyBinding(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation time of the resource
+        The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 

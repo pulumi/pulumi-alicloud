@@ -311,6 +311,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable DynamoDB compatibility. Valid values: `True`, `False`.
+        /// &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+        /// </summary>
+        [Output("enableDynamodb")]
+        public Output<bool> EnableDynamodb { get; private set; } = null!;
+
+        /// <summary>
         /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
         /// &gt; **NOTE:** `EncryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
@@ -860,6 +867,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable DynamoDB compatibility. Valid values: `True`, `False`.
+        /// &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+        /// </summary>
+        [Input("enableDynamodb")]
+        public Input<bool>? EnableDynamodb { get; set; }
+
+        /// <summary>
         /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
         /// &gt; **NOTE:** `EncryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
@@ -1403,6 +1417,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable DynamoDB compatibility. Valid values: `True`, `False`.
+        /// &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+        /// </summary>
+        [Input("enableDynamodb")]
+        public Input<bool>? EnableDynamodb { get; set; }
 
         /// <summary>
         /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 

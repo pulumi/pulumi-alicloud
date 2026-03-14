@@ -20,6 +20,21 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     public static final EcsNetworkInterfaceState Empty = new EcsNetworkInterfaceState();
 
     /**
+     * Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="deleteOnRelease")
+    private @Nullable Output<Boolean> deleteOnRelease;
+
+    /**
+     * @return Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> deleteOnRelease() {
+        return Optional.ofNullable(this.deleteOnRelease);
+    }
+
+    /**
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
@@ -422,6 +437,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     private EcsNetworkInterfaceState() {}
 
     private EcsNetworkInterfaceState(EcsNetworkInterfaceState $) {
+        this.deleteOnRelease = $.deleteOnRelease;
         this.description = $.description;
         this.instanceType = $.instanceType;
         this.ipv4PrefixCount = $.ipv4PrefixCount;
@@ -464,6 +480,27 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
 
         public Builder(EcsNetworkInterfaceState defaults) {
             $ = new EcsNetworkInterfaceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deleteOnRelease Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteOnRelease(@Nullable Output<Boolean> deleteOnRelease) {
+            $.deleteOnRelease = deleteOnRelease;
+            return this;
+        }
+
+        /**
+         * @param deleteOnRelease Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteOnRelease(Boolean deleteOnRelease) {
+            return deleteOnRelease(Output.of(deleteOnRelease));
         }
 
         /**

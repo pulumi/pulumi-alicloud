@@ -83,6 +83,9 @@ namespace Pulumi.AliCloud.Vpc
     [AliCloudResourceType("alicloud:vpc/networkInterface:NetworkInterface")]
     public partial class NetworkInterface : global::Pulumi.CustomResource
     {
+        [Output("deleteOnRelease")]
+        public Output<bool> DeleteOnRelease { get; private set; } = null!;
+
         /// <summary>
         /// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
@@ -231,6 +234,9 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class NetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("deleteOnRelease")]
+        public Input<bool>? DeleteOnRelease { get; set; }
+
         /// <summary>
         /// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
@@ -372,6 +378,9 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class NetworkInterfaceState : global::Pulumi.ResourceArgs
     {
+        [Input("deleteOnRelease")]
+        public Input<bool>? DeleteOnRelease { get; set; }
+
         /// <summary>
         /// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>

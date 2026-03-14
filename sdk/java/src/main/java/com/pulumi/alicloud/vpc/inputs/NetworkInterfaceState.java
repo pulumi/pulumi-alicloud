@@ -19,6 +19,13 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
 
     public static final NetworkInterfaceState Empty = new NetworkInterfaceState();
 
+    @Import(name="deleteOnRelease")
+    private @Nullable Output<Boolean> deleteOnRelease;
+
+    public Optional<Output<Boolean>> deleteOnRelease() {
+        return Optional.ofNullable(this.deleteOnRelease);
+    }
+
     /**
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      * 
@@ -310,6 +317,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
     private NetworkInterfaceState() {}
 
     private NetworkInterfaceState(NetworkInterfaceState $) {
+        this.deleteOnRelease = $.deleteOnRelease;
         this.description = $.description;
         this.instanceType = $.instanceType;
         this.ipv4PrefixCount = $.ipv4PrefixCount;
@@ -352,6 +360,15 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
 
         public Builder(NetworkInterfaceState defaults) {
             $ = new NetworkInterfaceState(Objects.requireNonNull(defaults));
+        }
+
+        public Builder deleteOnRelease(@Nullable Output<Boolean> deleteOnRelease) {
+            $.deleteOnRelease = deleteOnRelease;
+            return this;
+        }
+
+        public Builder deleteOnRelease(Boolean deleteOnRelease) {
+            return deleteOnRelease(Output.of(deleteOnRelease));
         }
 
         /**

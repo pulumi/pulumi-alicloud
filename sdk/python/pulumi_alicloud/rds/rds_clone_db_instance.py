@@ -74,6 +74,7 @@ class RdsCloneDbInstanceArgs:
                  switch_time: Optional[pulumi.Input[_builtins.str]] = None,
                  sync_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  table_meta: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tcp_connection_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tde_status: Optional[pulumi.Input[_builtins.str]] = None,
                  used_time: Optional[pulumi.Input[_builtins.int]] = None,
@@ -194,6 +195,9 @@ class RdsCloneDbInstanceArgs:
                > **NOTE:** SQL Server 2017 cluster version is currently not supported.
         :param pulumi.Input[_builtins.str] table_meta: The information about the databases and tables that you want to restore. Format:
                [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.str] tcp_connection_type: The availability check method of the instance. Valid values:
                - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
                - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
@@ -320,6 +324,8 @@ class RdsCloneDbInstanceArgs:
             pulumi.set(__self__, "sync_mode", sync_mode)
         if table_meta is not None:
             pulumi.set(__self__, "table_meta", table_meta)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tcp_connection_type is not None:
             pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
         if tde_status is not None:
@@ -1030,6 +1036,20 @@ class RdsCloneDbInstanceArgs:
         pulumi.set(self, "table_meta", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="tcpConnectionType")
     def tcp_connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1197,6 +1217,7 @@ class _RdsCloneDbInstanceState:
                  switch_time: Optional[pulumi.Input[_builtins.str]] = None,
                  sync_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  table_meta: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tcp_connection_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tde_status: Optional[pulumi.Input[_builtins.str]] = None,
                  used_time: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1318,6 +1339,9 @@ class _RdsCloneDbInstanceState:
                > **NOTE:** SQL Server 2017 cluster version is currently not supported.
         :param pulumi.Input[_builtins.str] table_meta: The information about the databases and tables that you want to restore. Format:
                [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.str] tcp_connection_type: The availability check method of the instance. Valid values:
                - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
                - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
@@ -1449,6 +1473,8 @@ class _RdsCloneDbInstanceState:
             pulumi.set(__self__, "sync_mode", sync_mode)
         if table_meta is not None:
             pulumi.set(__self__, "table_meta", table_meta)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tcp_connection_type is not None:
             pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
         if tde_status is not None:
@@ -2171,6 +2197,20 @@ class _RdsCloneDbInstanceState:
         pulumi.set(self, "table_meta", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="tcpConnectionType")
     def tcp_connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -2340,6 +2380,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  switch_time: Optional[pulumi.Input[_builtins.str]] = None,
                  sync_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  table_meta: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tcp_connection_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tde_status: Optional[pulumi.Input[_builtins.str]] = None,
                  used_time: Optional[pulumi.Input[_builtins.int]] = None,
@@ -2524,6 +2565,9 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                > **NOTE:** SQL Server 2017 cluster version is currently not supported.
         :param pulumi.Input[_builtins.str] table_meta: The information about the databases and tables that you want to restore. Format:
                [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.str] tcp_connection_type: The availability check method of the instance. Valid values:
                - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
                - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
@@ -2685,6 +2729,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  switch_time: Optional[pulumi.Input[_builtins.str]] = None,
                  sync_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  table_meta: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tcp_connection_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tde_status: Optional[pulumi.Input[_builtins.str]] = None,
                  used_time: Optional[pulumi.Input[_builtins.int]] = None,
@@ -2761,6 +2806,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             __props__.__dict__["switch_time"] = switch_time
             __props__.__dict__["sync_mode"] = sync_mode
             __props__.__dict__["table_meta"] = table_meta
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["tcp_connection_type"] = tcp_connection_type
             __props__.__dict__["tde_status"] = tde_status
             __props__.__dict__["used_time"] = used_time
@@ -2834,6 +2880,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             switch_time: Optional[pulumi.Input[_builtins.str]] = None,
             sync_mode: Optional[pulumi.Input[_builtins.str]] = None,
             table_meta: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             tcp_connection_type: Optional[pulumi.Input[_builtins.str]] = None,
             tde_status: Optional[pulumi.Input[_builtins.str]] = None,
             used_time: Optional[pulumi.Input[_builtins.int]] = None,
@@ -2959,6 +3006,9 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                > **NOTE:** SQL Server 2017 cluster version is currently not supported.
         :param pulumi.Input[_builtins.str] table_meta: The information about the databases and tables that you want to restore. Format:
                [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.str] tcp_connection_type: The availability check method of the instance. Valid values:
                - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
                - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
@@ -3040,6 +3090,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         __props__.__dict__["switch_time"] = switch_time
         __props__.__dict__["sync_mode"] = sync_mode
         __props__.__dict__["table_meta"] = table_meta
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["tcp_connection_type"] = tcp_connection_type
         __props__.__dict__["tde_status"] = tde_status
         __props__.__dict__["used_time"] = used_time
@@ -3537,6 +3588,16 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
         """
         return pulumi.get(self, "table_meta")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="tcpConnectionType")

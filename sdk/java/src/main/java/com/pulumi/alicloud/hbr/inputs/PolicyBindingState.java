@@ -34,14 +34,14 @@ public final class PolicyBindingState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The creation time of the resource.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -303,7 +303,7 @@ public final class PolicyBindingState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param createTime The creation time of the resource.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class PolicyBindingState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param createTime The creation time of the resource.
          * 
          * @return builder
          * 

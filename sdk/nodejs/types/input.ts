@@ -15667,9 +15667,28 @@ export namespace hbr {
 
     export interface PolicyBindingAdvancedOptions {
         /**
+         * OSS Backup Advanced options See `ossDetail` below.
+         */
+        ossDetail?: pulumi.Input<inputs.hbr.PolicyBindingAdvancedOptionsOssDetail>;
+        /**
          * ECS Backup Advanced options See `udmDetail` below.
          */
         udmDetail?: pulumi.Input<inputs.hbr.PolicyBindingAdvancedOptionsUdmDetail>;
+    }
+
+    export interface PolicyBindingAdvancedOptionsOssDetail {
+        /**
+         * Archived objects are not prompted in task statistics and failed file lists
+         */
+        ignoreArchiveObject?: pulumi.Input<boolean>;
+        /**
+         * Whether to delete the inventory file after the backup. Valid only when using the OSS inventory. Supported: NO_CLEANUP: Do not delete. DELETE_CURRENT: Deletes the current file. DELETE_CURRENT_AND_PREVIOUS: Deletes all files.
+         */
+        inventoryCleanupPolicy?: pulumi.Input<string>;
+        /**
+         * The name of the OSS inventory. If the value is not empty, the OSS inventory will be used for performance tuning. We recommend that you use a list to improve incremental performance when backing up more than 0.1 billion OSS objects. OSS charges the storage fee for the list file separately. It takes time to generate the OSS inventory file. The backup may fail before the OSS inventory file is generated. You can wait for the next cycle.
+         */
+        inventoryId?: pulumi.Input<string>;
     }
 
     export interface PolicyBindingAdvancedOptionsUdmDetail {

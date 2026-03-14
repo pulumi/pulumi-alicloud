@@ -147,14 +147,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cs/kubernetesAddon:KubernetesAddon")
 public class KubernetesAddon extends com.pulumi.resources.CustomResource {
     /**
-     * Is the addon ready for upgrade.
+     * (Deprecated since v1.273.0) Is the addon ready for upgrade.
+     * 
+     * @deprecated
+     * Field &#39;can_upgrade&#39; has been deprecated from provider version 1.273.0. Please compare &#39;next_version&#39; and &#39;current_version&#39; of DataSource &#39;alicloud_cs_kubernetes_addons&#39; to replace it
      * 
      */
+    @Deprecated /* Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it */
     @Export(name="canUpgrade", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> canUpgrade;
 
     /**
-     * @return Is the addon ready for upgrade.
+     * @return (Deprecated since v1.273.0) Is the addon ready for upgrade.
      * 
      */
     public Output<Boolean> canUpgrade() {
@@ -217,14 +221,18 @@ public class KubernetesAddon extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The version which addon can be upgraded to.
+     * (Deprecated since v1.273.0) The version which addon can be upgraded to.
+     * 
+     * @deprecated
+     * Field &#39;next_version&#39; has been deprecated from provider version 1.273.0. Please use &#39;next_version&#39; of DataSource &#39;alicloud_cs_kubernetes_addons&#39; to replace it
      * 
      */
+    @Deprecated /* Field 'next_version' has been deprecated from provider version 1.273.0. Please use 'next_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it */
     @Export(name="nextVersion", refs={String.class}, tree="[0]")
     private Output<String> nextVersion;
 
     /**
-     * @return The version which addon can be upgraded to.
+     * @return (Deprecated since v1.273.0) The version which addon can be upgraded to.
      * 
      */
     public Output<String> nextVersion() {

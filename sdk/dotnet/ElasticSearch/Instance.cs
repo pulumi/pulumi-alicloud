@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.ElasticSearch
     ///         VswitchId = defaultSwitch.Id,
     ///         Password = "Examplw1234",
     ///         Version = "7.10_with_X-Pack",
-    ///         InstanceChargeType = "PostPaid",
+    ///         PaymentType = "PayAsYouGo",
     ///         DataNodeAmount = 2,
     ///         DataNodeSpec = "elasticsearch.sn2ne.large",
     ///         DataNodeDiskSize = 20,
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> InstanceCategory { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your InstanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `Period`.
+        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your InstanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `Period`. Use `PaymentType` instead with values `PayAsYouGo` or `Subscription`.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
@@ -316,6 +316,8 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         /// <summary>
         /// The billing method of the instance. Supported values:
+        /// - `PayAsYouGo`: Pay-as-you-go
+        /// - `Subscription`: Subscription
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -647,7 +649,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? InstanceCategory { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your InstanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `Period`.
+        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your InstanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `Period`. Use `PaymentType` instead with values `PayAsYouGo` or `Subscription`.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -758,6 +760,8 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         /// <summary>
         /// The billing method of the instance. Supported values:
+        /// - `PayAsYouGo`: Pay-as-you-go
+        /// - `Subscription`: Subscription
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -1065,7 +1069,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? InstanceCategory { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your InstanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `Period`.
+        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your InstanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `Period`. Use `PaymentType` instead with values `PayAsYouGo` or `Subscription`.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -1194,6 +1198,8 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         /// <summary>
         /// The billing method of the instance. Supported values:
+        /// - `PayAsYouGo`: Pay-as-you-go
+        /// - `Subscription`: Subscription
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }

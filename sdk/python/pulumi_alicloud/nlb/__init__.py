@@ -12,6 +12,7 @@ from .get_security_policies import *
 from .get_server_group_server_attachments import *
 from .get_server_groups import *
 from .get_zones import *
+from .hd_monitor_region_config import *
 from .listener import *
 from .listener_additional_certificate_attachment import *
 from .load_balancer import *

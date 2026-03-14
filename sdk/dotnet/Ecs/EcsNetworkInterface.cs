@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = name,
+    ///         SecurityGroupName = name,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
@@ -96,6 +96,12 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface")]
     public partial class EcsNetworkInterface : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Specifies whether to release the ENI when the associated instance is released. Valid values: `True`, `False`.
+        /// </summary>
+        [Output("deleteOnRelease")]
+        public Output<bool> DeleteOnRelease { get; private set; } = null!;
+
         /// <summary>
         /// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
@@ -287,6 +293,12 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsNetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to release the ENI when the associated instance is released. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("deleteOnRelease")]
+        public Input<bool>? DeleteOnRelease { get; set; }
+
+        /// <summary>
         /// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
@@ -470,6 +482,12 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class EcsNetworkInterfaceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to release the ENI when the associated instance is released. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("deleteOnRelease")]
+        public Input<bool>? DeleteOnRelease { get; set; }
+
         /// <summary>
         /// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>

@@ -23,17 +23,29 @@ class AccountArgs:
                  db_cluster_id: pulumi.Input[_builtins.str],
                  account_description: Optional[pulumi.Input[_builtins.str]] = None,
                  account_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Account resource.
 
-        :param pulumi.Input[_builtins.str] account_name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
-        :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster in which account belongs.
-        :param pulumi.Input[_builtins.str] account_description: Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[_builtins.str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[_builtins.str] account_name: The name of the database account. The name must meet the following requirements:
+               - Start with a lowercase letter and end with a lowercase letter or a digit.
+               - Contain only lowercase letters, digits, and underscores (_).
+               - Its length must be between 2 and 16 characters.
+               - Cannot be a reserved name, such as root, admin, or opsadmin.
+        :param pulumi.Input[_builtins.str] db_cluster_id: The cluster ID of the data warehouse edition.
+        :param pulumi.Input[_builtins.str] account_description: The description of the account.
+        :param pulumi.Input[_builtins.str] account_password: The password of the database account. The password must meet the following requirements:
+               - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+               - The allowed special characters are: (!), (@), (#), ($), (%), (^), (&), (*), (()), (_), (+), (-), (=).
+               - Its length must be between 8 and 32 characters.
+        :param pulumi.Input[_builtins.str] account_type: The type of the account. Valid values:
+               - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "db_cluster_id", db_cluster_id)
@@ -41,16 +53,24 @@ class AccountArgs:
             pulumi.set(__self__, "account_description", account_description)
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if account_type is not None:
+            pulumi.set(__self__, "account_type", account_type)
         if kms_encrypted_password is not None:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        The name of the database account. The name must meet the following requirements:
+        - Start with a lowercase letter and end with a lowercase letter or a digit.
+        - Contain only lowercase letters, digits, and underscores (_).
+        - Its length must be between 2 and 16 characters.
+        - Cannot be a reserved name, such as root, admin, or opsadmin.
         """
         return pulumi.get(self, "account_name")
 
@@ -62,7 +82,7 @@ class AccountArgs:
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The Id of cluster in which account belongs.
+        The cluster ID of the data warehouse edition.
         """
         return pulumi.get(self, "db_cluster_id")
 
@@ -74,7 +94,7 @@ class AccountArgs:
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        The description of the account.
         """
         return pulumi.get(self, "account_description")
 
@@ -86,13 +106,29 @@ class AccountArgs:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        The password of the database account. The password must meet the following requirements:
+        - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+        - The allowed special characters are: (!), (@), (#), ($), (%), (^), (&), (*), (()), (_), (+), (-), (=).
+        - Its length must be between 8 and 32 characters.
         """
         return pulumi.get(self, "account_password")
 
     @account_password.setter
     def account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the account. Valid values:
+        - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+        """
+        return pulumi.get(self, "account_type")
+
+    @account_type.setter
+    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
@@ -118,6 +154,18 @@ class AccountArgs:
     def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _AccountState:
@@ -125,18 +173,32 @@ class _AccountState:
                  account_description: Optional[pulumi.Input[_builtins.str]] = None,
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  account_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
                  db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Account resources.
 
-        :param pulumi.Input[_builtins.str] account_description: Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[_builtins.str] account_name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
-        :param pulumi.Input[_builtins.str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster in which account belongs.
+        :param pulumi.Input[_builtins.str] account_description: The description of the account.
+        :param pulumi.Input[_builtins.str] account_name: The name of the database account. The name must meet the following requirements:
+               - Start with a lowercase letter and end with a lowercase letter or a digit.
+               - Contain only lowercase letters, digits, and underscores (_).
+               - Its length must be between 2 and 16 characters.
+               - Cannot be a reserved name, such as root, admin, or opsadmin.
+        :param pulumi.Input[_builtins.str] account_password: The password of the database account. The password must meet the following requirements:
+               - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+               - The allowed special characters are: (!), (@), (#), ($), (%), (^), (&), (*), (()), (_), (+), (-), (=).
+               - Its length must be between 8 and 32 characters.
+        :param pulumi.Input[_builtins.str] account_type: The type of the account. Valid values:
+               - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+        :param pulumi.Input[_builtins.str] db_cluster_id: The cluster ID of the data warehouse edition.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[_builtins.str] status: (Available since v1.273.0) The status of the account.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         if account_description is not None:
             pulumi.set(__self__, "account_description", account_description)
@@ -144,18 +206,24 @@ class _AccountState:
             pulumi.set(__self__, "account_name", account_name)
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if account_type is not None:
+            pulumi.set(__self__, "account_type", account_type)
         if db_cluster_id is not None:
             pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         if kms_encrypted_password is not None:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        The description of the account.
         """
         return pulumi.get(self, "account_description")
 
@@ -167,7 +235,11 @@ class _AccountState:
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        The name of the database account. The name must meet the following requirements:
+        - Start with a lowercase letter and end with a lowercase letter or a digit.
+        - Contain only lowercase letters, digits, and underscores (_).
+        - Its length must be between 2 and 16 characters.
+        - Cannot be a reserved name, such as root, admin, or opsadmin.
         """
         return pulumi.get(self, "account_name")
 
@@ -179,7 +251,10 @@ class _AccountState:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        The password of the database account. The password must meet the following requirements:
+        - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+        - The allowed special characters are: (!), (@), (#), ($), (%), (^), (&), (*), (()), (_), (+), (-), (=).
+        - Its length must be between 8 and 32 characters.
         """
         return pulumi.get(self, "account_password")
 
@@ -188,10 +263,23 @@ class _AccountState:
         pulumi.set(self, "account_password", value)
 
     @_builtins.property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the account. Valid values:
+        - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+        """
+        return pulumi.get(self, "account_type")
+
+    @account_type.setter
+    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Id of cluster in which account belongs.
+        The cluster ID of the data warehouse edition.
         """
         return pulumi.get(self, "db_cluster_id")
 
@@ -223,6 +311,30 @@ class _AccountState:
     def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.273.0) The status of the account.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.type_token("alicloud:adb/account:Account")
 class Account(pulumi.CustomResource):
@@ -233,12 +345,16 @@ class Account(pulumi.CustomResource):
                  account_description: Optional[pulumi.Input[_builtins.str]] = None,
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  account_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
                  db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createaccount) account resource and used to manage databases.
+        Provides a AnalyticDB for MySQL (ADB) Account resource.
+
+        For information about AnalyticDB for MySQL (ADB) Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createaccount).
 
         > **NOTE:** Available since v1.71.0.
 
@@ -249,22 +365,18 @@ class Account(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "ADB"
         name = config.get("name")
         if name is None:
-            name = "tfexample"
+            name = "terraform_example"
         default = alicloud.adb.get_zones()
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id=default.ids[0])
-        vswitch_id = default_get_switches.ids[0]
         cluster = alicloud.adb.DBCluster("cluster",
             db_cluster_category="MixedStorage",
             mode="flexible",
             compute_resource="8Core32GB",
-            vswitch_id=vswitch_id,
+            vswitch_id=default_get_switches.ids[0],
             description=name)
         default_account = alicloud.adb.Account("default",
             db_cluster_id=cluster.id,
@@ -277,21 +389,31 @@ class Account(pulumi.CustomResource):
 
         ## Import
 
-        ADB account can be imported using the id, e.g.
+        AnalyticDB for MySQL (ADB) Account can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:adb/account:Account example am-12345:tf_account
+        $ pulumi import alicloud:adb/account:Account example <db_cluster_id>:<account_name>
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_description: Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[_builtins.str] account_name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
-        :param pulumi.Input[_builtins.str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster in which account belongs.
+        :param pulumi.Input[_builtins.str] account_description: The description of the account.
+        :param pulumi.Input[_builtins.str] account_name: The name of the database account. The name must meet the following requirements:
+               - Start with a lowercase letter and end with a lowercase letter or a digit.
+               - Contain only lowercase letters, digits, and underscores (_).
+               - Its length must be between 2 and 16 characters.
+               - Cannot be a reserved name, such as root, admin, or opsadmin.
+        :param pulumi.Input[_builtins.str] account_password: The password of the database account. The password must meet the following requirements:
+               - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+               - The allowed special characters are: (!), (@), (#), ($), (%), (^), (&), (*), (()), (_), (+), (-), (=).
+               - Its length must be between 8 and 32 characters.
+        :param pulumi.Input[_builtins.str] account_type: The type of the account. Valid values:
+               - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+        :param pulumi.Input[_builtins.str] db_cluster_id: The cluster ID of the data warehouse edition.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         ...
     @overload
@@ -300,7 +422,9 @@ class Account(pulumi.CustomResource):
                  args: AccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createaccount) account resource and used to manage databases.
+        Provides a AnalyticDB for MySQL (ADB) Account resource.
+
+        For information about AnalyticDB for MySQL (ADB) Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createaccount).
 
         > **NOTE:** Available since v1.71.0.
 
@@ -311,22 +435,18 @@ class Account(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "ADB"
         name = config.get("name")
         if name is None:
-            name = "tfexample"
+            name = "terraform_example"
         default = alicloud.adb.get_zones()
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id=default.ids[0])
-        vswitch_id = default_get_switches.ids[0]
         cluster = alicloud.adb.DBCluster("cluster",
             db_cluster_category="MixedStorage",
             mode="flexible",
             compute_resource="8Core32GB",
-            vswitch_id=vswitch_id,
+            vswitch_id=default_get_switches.ids[0],
             description=name)
         default_account = alicloud.adb.Account("default",
             db_cluster_id=cluster.id,
@@ -339,10 +459,10 @@ class Account(pulumi.CustomResource):
 
         ## Import
 
-        ADB account can be imported using the id, e.g.
+        AnalyticDB for MySQL (ADB) Account can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:adb/account:Account example am-12345:tf_account
+        $ pulumi import alicloud:adb/account:Account example <db_cluster_id>:<account_name>
         ```
 
 
@@ -364,9 +484,11 @@ class Account(pulumi.CustomResource):
                  account_description: Optional[pulumi.Input[_builtins.str]] = None,
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  account_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
                  db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -381,11 +503,14 @@ class Account(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_name'")
             __props__.__dict__["account_name"] = account_name
             __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
+            __props__.__dict__["account_type"] = account_type
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__.__dict__["db_cluster_id"] = db_cluster_id
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["status"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Account, __self__).__init__(
@@ -401,9 +526,12 @@ class Account(pulumi.CustomResource):
             account_description: Optional[pulumi.Input[_builtins.str]] = None,
             account_name: Optional[pulumi.Input[_builtins.str]] = None,
             account_password: Optional[pulumi.Input[_builtins.str]] = None,
+            account_type: Optional[pulumi.Input[_builtins.str]] = None,
             db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Account':
+            kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            status: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -411,12 +539,23 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_description: Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[_builtins.str] account_name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
-        :param pulumi.Input[_builtins.str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster in which account belongs.
+        :param pulumi.Input[_builtins.str] account_description: The description of the account.
+        :param pulumi.Input[_builtins.str] account_name: The name of the database account. The name must meet the following requirements:
+               - Start with a lowercase letter and end with a lowercase letter or a digit.
+               - Contain only lowercase letters, digits, and underscores (_).
+               - Its length must be between 2 and 16 characters.
+               - Cannot be a reserved name, such as root, admin, or opsadmin.
+        :param pulumi.Input[_builtins.str] account_password: The password of the database account. The password must meet the following requirements:
+               - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+               - The allowed special characters are: (!), (@), (#), ($), (%), (^), (&), (*), (()), (_), (+), (-), (=).
+               - Its length must be between 8 and 32 characters.
+        :param pulumi.Input[_builtins.str] account_type: The type of the account. Valid values:
+               - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+        :param pulumi.Input[_builtins.str] db_cluster_id: The cluster ID of the data warehouse edition.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[_builtins.str] status: (Available since v1.273.0) The status of the account.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -425,16 +564,19 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["account_description"] = account_description
         __props__.__dict__["account_name"] = account_name
         __props__.__dict__["account_password"] = account_password
+        __props__.__dict__["account_type"] = account_type
         __props__.__dict__["db_cluster_id"] = db_cluster_id
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return Account(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        The description of the account.
         """
         return pulumi.get(self, "account_description")
 
@@ -442,7 +584,11 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        The name of the database account. The name must meet the following requirements:
+        - Start with a lowercase letter and end with a lowercase letter or a digit.
+        - Contain only lowercase letters, digits, and underscores (_).
+        - Its length must be between 2 and 16 characters.
+        - Cannot be a reserved name, such as root, admin, or opsadmin.
         """
         return pulumi.get(self, "account_name")
 
@@ -450,15 +596,27 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        The password of the database account. The password must meet the following requirements:
+        - It must consist of uppercase letters, lowercase letters, digits, and special characters.
+        - The allowed special characters are: (!), (@), (#), ($), (%), (^), (&), (*), (()), (_), (+), (-), (=).
+        - Its length must be between 8 and 32 characters.
         """
         return pulumi.get(self, "account_password")
+
+    @_builtins.property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of the account. Valid values:
+        - `Super` (default): A privileged account. You can create only one privileged account for a cluster.
+        """
+        return pulumi.get(self, "account_type")
 
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The Id of cluster in which account belongs.
+        The cluster ID of the data warehouse edition.
         """
         return pulumi.get(self, "db_cluster_id")
 
@@ -477,4 +635,20 @@ class Account(pulumi.CustomResource):
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.273.0) The status of the account.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 

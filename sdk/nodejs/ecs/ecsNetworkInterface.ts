@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     name: name,
+ *     securityGroupName: name,
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({
@@ -95,6 +95,10 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
         return obj['__pulumiType'] === EcsNetworkInterface.__pulumiType;
     }
 
+    /**
+     * Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+     */
+    declare public readonly deleteOnRelease: pulumi.Output<boolean>;
     /**
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
@@ -215,6 +219,7 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsNetworkInterfaceState | undefined;
+            resourceInputs["deleteOnRelease"] = state?.deleteOnRelease;
             resourceInputs["description"] = state?.description;
             resourceInputs["instanceType"] = state?.instanceType;
             resourceInputs["ipv4PrefixCount"] = state?.ipv4PrefixCount;
@@ -244,6 +249,7 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
             if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
+            resourceInputs["deleteOnRelease"] = args?.deleteOnRelease;
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["ipv4PrefixCount"] = args?.ipv4PrefixCount;
@@ -278,6 +284,10 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EcsNetworkInterface resources.
  */
 export interface EcsNetworkInterfaceState {
+    /**
+     * Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+     */
+    deleteOnRelease?: pulumi.Input<boolean>;
     /**
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
@@ -390,6 +400,10 @@ export interface EcsNetworkInterfaceState {
  * The set of arguments for constructing a EcsNetworkInterface resource.
  */
 export interface EcsNetworkInterfaceArgs {
+    /**
+     * Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
+     */
+    deleteOnRelease?: pulumi.Input<boolean>;
     /**
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */

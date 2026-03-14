@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultSwitch.id())
  *             .password("Examplw1234")
  *             .version("7.10_with_X-Pack")
- *             .instanceChargeType("PostPaid")
+ *             .paymentType("PayAsYouGo")
  *             .dataNodeAmount(2)
  *             .dataNodeSpec("elasticsearch.sn2ne.large")
  *             .dataNodeDiskSize(20)
@@ -452,7 +452,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceCategory;
     }
     /**
-     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
      * 
      * @deprecated
      * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
@@ -463,7 +463,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> instanceChargeType;
 
     /**
-     * @return Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     * @return Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
      * 
      */
     public Output<String> instanceChargeType() {
@@ -701,6 +701,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The billing method of the instance. Supported values:
+     * - `PayAsYouGo`: Pay-as-you-go
+     * - `Subscription`: Subscription
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
@@ -708,6 +710,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The billing method of the instance. Supported values:
+     * - `PayAsYouGo`: Pay-as-you-go
+     * - `Subscription`: Subscription
      * 
      */
     public Output<String> paymentType() {

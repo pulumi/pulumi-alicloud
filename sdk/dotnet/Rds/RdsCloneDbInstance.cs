@@ -484,6 +484,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> TableMeta { get; private set; } = null!;
 
         /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The availability check method of the instance. Valid values:
         /// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
         /// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
@@ -989,6 +997,20 @@ namespace Pulumi.AliCloud.Rds
         [Input("tableMeta")]
         public Input<string>? TableMeta { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The availability check method of the instance. Valid values:
         /// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
@@ -1462,6 +1484,20 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("tableMeta")]
         public Input<string>? TableMeta { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The availability check method of the instance. Valid values:

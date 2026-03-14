@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Using this data source can open Private Zone service automatically. If the service has been opened, it will return opened.
  *
- * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
+ * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/dns/introduction-to-intranet-analysis).
  *
  * > **NOTE:** Available since v1.114.0.
  *
@@ -39,7 +39,7 @@ export interface GetServiceArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
      *
-     * > **NOTE:** Setting `enable = "On"` to open the Private Zone service that means you have read and agreed the [Private Zone Terms of Service](https://help.aliyun.com/document_detail/65657.html). The service can not closed once it is opened.
+     * > **NOTE:** Setting `enable = "On"` to open the Private Zone service that means you have read and agreed the [Private Zone Terms of Service](https://www.alibabacloud.com/help/en/legal/latest/alibaba-cloud-international-website-product-terms-of-service-v-3-8-0). The service can not closed once it is opened.
      */
     enable?: string;
 }
@@ -61,7 +61,7 @@ export interface GetServiceResult {
 /**
  * Using this data source can open Private Zone service automatically. If the service has been opened, it will return opened.
  *
- * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
+ * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/dns/introduction-to-intranet-analysis).
  *
  * > **NOTE:** Available since v1.114.0.
  *
@@ -93,7 +93,7 @@ export interface GetServiceOutputArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
      *
-     * > **NOTE:** Setting `enable = "On"` to open the Private Zone service that means you have read and agreed the [Private Zone Terms of Service](https://help.aliyun.com/document_detail/65657.html). The service can not closed once it is opened.
+     * > **NOTE:** Setting `enable = "On"` to open the Private Zone service that means you have read and agreed the [Private Zone Terms of Service](https://www.alibabacloud.com/help/en/legal/latest/alibaba-cloud-international-website-product-terms-of-service-v-3-8-0). The service can not closed once it is opened.
      */
     enable?: pulumi.Input<string>;
 }

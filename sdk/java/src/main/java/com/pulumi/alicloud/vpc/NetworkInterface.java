@@ -108,6 +108,12 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:vpc/networkInterface:NetworkInterface")
 public class NetworkInterface extends com.pulumi.resources.CustomResource {
+    @Export(name="deleteOnRelease", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> deleteOnRelease;
+
+    public Output<Boolean> deleteOnRelease() {
+        return this.deleteOnRelease;
+    }
     /**
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      * 

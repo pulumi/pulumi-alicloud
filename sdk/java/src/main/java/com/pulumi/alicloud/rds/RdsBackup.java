@@ -11,12 +11,15 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a RDS Backup resource.
+ * 
+ * Backup object at the instance level or database level.
  * 
  * For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-createbackup).
  * 
@@ -75,99 +78,139 @@ import javax.annotation.Nullable;
  * RDS Backup can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:rds/rdsBackup:RdsBackup example &lt;db_instance_id&gt;:&lt;backup_id&gt;
+ * $ pulumi import alicloud:rds/rdsBackup:RdsBackup example &lt;backup_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:rds/rdsBackup:RdsBackup")
 public class RdsBackup extends com.pulumi.resources.CustomResource {
     /**
-     * The backup id.
+     * The backup set ID.
      * 
      */
     @Export(name="backupId", refs={String.class}, tree="[0]")
     private Output<String> backupId;
 
     /**
-     * @return The backup id.
+     * @return The backup set ID.
      * 
      */
     public Output<String> backupId() {
         return this.backupId;
     }
     /**
-     * The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+     * The backup type. Valid values:
+     * * `Logical`: logical backup (supported only for MySQL)
+     * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+     * * `Snapshot`: snapshot backup (supported for all database engines)
+     * 
+     * Default value: `Physical`.
+     * 
+     * &gt; **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+     * 
+     * &gt; **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
      * 
      */
     @Export(name="backupMethod", refs={String.class}, tree="[0]")
     private Output<String> backupMethod;
 
     /**
-     * @return The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+     * @return The backup type. Valid values:
+     * * `Logical`: logical backup (supported only for MySQL)
+     * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
+     * * `Snapshot`: snapshot backup (supported for all database engines)
+     * 
+     * Default value: `Physical`.
+     * 
+     * &gt; **NOTE:**  * When using logical backup, the database must contain data (the data cannot be empty).
+     * 
+     * &gt; **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
      * 
      */
     public Output<String> backupMethod() {
         return this.backupMethod;
     }
     /**
-     * The policy that you want to use for the backup task. Valid values:
-     * * **db**: specifies to perform a database-level backup.
-     * * **instance**: specifies to perform an instance-level backup.
+     * When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    @Export(name="backupRetentionPeriod", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> backupRetentionPeriod;
+
+    /**
+     * @return When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    public Output<Optional<Integer>> backupRetentionPeriod() {
+        return Codegen.optional(this.backupRetentionPeriod);
+    }
+    /**
+     * The backup strategy. Valid values:
      * 
      */
     @Export(name="backupStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupStrategy;
 
     /**
-     * @return The policy that you want to use for the backup task. Valid values:
-     * * **db**: specifies to perform a database-level backup.
-     * * **instance**: specifies to perform an instance-level backup.
+     * @return The backup strategy. Valid values:
      * 
      */
     public Output<Optional<String>> backupStrategy() {
         return Codegen.optional(this.backupStrategy);
     }
     /**
-     * The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-     * * **Auto**: specifies to automatically perform a full or incremental backup.
-     * * **FullBackup**: specifies to perform a full backup.
+     * The backup type. Valid values:
+     * - FullBackup: full backup
+     * - IncrementalBackup: incremental backup
      * 
      */
     @Export(name="backupType", refs={String.class}, tree="[0]")
     private Output<String> backupType;
 
     /**
-     * @return The method that you want to use for the backup task. Default value: `Auto`. Valid values:
-     * * **Auto**: specifies to automatically perform a full or incremental backup.
-     * * **FullBackup**: specifies to perform a full backup.
+     * @return The backup type. Valid values:
+     * - FullBackup: full backup
+     * - IncrementalBackup: incremental backup
      * 
      */
     public Output<String> backupType() {
         return this.backupType;
     }
     /**
-     * The db instance id.
+     * The instance ID. You can call DescribeDBInstances to obtain it.
      * 
      */
     @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
-     * @return The db instance id.
+     * @return The instance ID. You can call DescribeDBInstances to obtain it.
      * 
      */
     public Output<String> dbInstanceId() {
         return this.dbInstanceId;
     }
     /**
-     * The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+     * A list of databases, separated by commas (,).
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="dbName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbName;
 
     /**
-     * @return The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+     * @return A list of databases, separated by commas (,).
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<String>> dbName() {
@@ -188,14 +231,28 @@ public class RdsBackup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.removeFromState);
     }
     /**
-     * Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+     * The status of the resource.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return The status of the resource.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * Indicates whether the backup can be deleted.
      * 
      */
     @Export(name="storeStatus", refs={String.class}, tree="[0]")
     private Output<String> storeStatus;
 
     /**
-     * @return Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+     * @return Indicates whether the backup can be deleted.
      * 
      */
     public Output<String> storeStatus() {

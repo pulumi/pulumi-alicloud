@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     password: "Examplw1234",
  *     version: "7.10_with_X-Pack",
- *     instanceChargeType: "PostPaid",
+ *     paymentType: "PayAsYouGo",
  *     dataNodeAmount: 2,
  *     dataNodeSpec: "elasticsearch.sn2ne.large",
  *     dataNodeDiskSize: 20,
@@ -200,7 +200,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly instanceCategory: pulumi.Output<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
      */
@@ -277,6 +277,8 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The billing method of the instance. Supported values:
+     * - `PayAsYouGo`: Pay-as-you-go
+     * - `Subscription`: Subscription
      */
     declare public readonly paymentType: pulumi.Output<string>;
     /**
@@ -668,7 +670,7 @@ export interface InstanceState {
      */
     instanceCategory?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
      */
@@ -745,6 +747,8 @@ export interface InstanceState {
     password?: pulumi.Input<string>;
     /**
      * The billing method of the instance. Supported values:
+     * - `PayAsYouGo`: Pay-as-you-go
+     * - `Subscription`: Subscription
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -976,7 +980,7 @@ export interface InstanceArgs {
      */
     instanceCategory?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
      */
@@ -1041,6 +1045,8 @@ export interface InstanceArgs {
     password?: pulumi.Input<string>;
     /**
      * The billing method of the instance. Supported values:
+     * - `PayAsYouGo`: Pay-as-you-go
+     * - `Subscription`: Subscription
      */
     paymentType?: pulumi.Input<string>;
     /**

@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.2.0.
  * 
+ * &gt; **NOTE:** When using standalone sub-resources (e.g., `alicloud.oss.BucketPolicy`, `alicloud.oss.BucketLogging`, `alicloud.oss.BucketCors`, `alicloud.oss.BucketWebsite`, `alicloud.oss.BucketVersioning`, `alicloud.oss.BucketReferer`, `alicloud.oss.BucketServerSideEncryption`, `alicloud.oss.BucketTransferAcceleration`, `alicloud.oss.BucketAcl`) alongside `alicloud.oss.Bucket`, you **must** add a `lifecycle` block with `ignoreChanges` for the corresponding attribute on `alicloud.oss.Bucket`. This prevents Terraform from detecting spurious diffs caused by the same configuration being managed by both the bucket resource and the standalone sub-resource. Without `ignoreChanges`, Terraform may attempt to revert changes made by the sub-resource on every apply, causing unexpected behavior.
+ * 
  * ## Example Usage
  * 
  * Private Bucket
@@ -507,6 +509,85 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * Using sub-resources with ignoreChanges
+ * 
+ * When managing bucket configurations through standalone sub-resources such as `alicloud.oss.BucketPolicy`, `alicloud.oss.BucketLogging`, or `alicloud.oss.BucketCors`, you must use a `lifecycle` block with `ignoreChanges` on the `alicloud.oss.Bucket` to prevent Terraform from detecting configuration drift. The sub-resource manages the corresponding attribute independently, so without `ignoreChanges`, Terraform will see the attribute value differ from the bucket&#39;s inline configuration and attempt to revert it on every plan/apply.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketAcl;
+ * import com.pulumi.alicloud.oss.BucketAclArgs;
+ * import com.pulumi.alicloud.oss.BucketPolicy;
+ * import com.pulumi.alicloud.oss.BucketPolicyArgs;
+ * import com.pulumi.alicloud.oss.BucketLogging;
+ * import com.pulumi.alicloud.oss.BucketLoggingArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var example = new Bucket("example", BucketArgs.builder()
+ *             .bucket(String.format("example-sub-resources-%s", default_.result()))
+ *             .build());
+ * 
+ *         var exampleBucketAcl = new BucketAcl("exampleBucketAcl", BucketAclArgs.builder()
+ *             .bucket(example.bucket())
+ *             .acl("private")
+ *             .build());
+ * 
+ *         var exampleBucketPolicy = new BucketPolicy("exampleBucketPolicy", BucketPolicyArgs.builder()
+ *             .bucket(example.bucket())
+ *             .policy(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Version", "1"),
+ *                     jsonProperty("Statement", jsonArray(jsonObject(
+ *                         jsonProperty("Action", jsonArray(
+ *                             "oss:PutObject", 
+ *                             "oss:GetObject"
+ *                         )),
+ *                         jsonProperty("Effect", "Deny"),
+ *                         jsonProperty("Principal", jsonArray("1234567890")),
+ *                         jsonProperty("Resource", jsonArray("acs:oss:*:1234567890:*}&#47;{@code *"))
+ *                     )))
+ *                 )))
+ *             .build());
+ * 
+ *         var exampleBucketLogging = new BucketLogging("exampleBucketLogging", BucketLoggingArgs.builder()
+ *             .bucket(example.bucket())
+ *             .targetBucket(example.bucket())
+ *             .targetPrefix("log/")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * &gt; **NOTE:** You only need to include the attributes in `ignoreChanges` that correspond to the sub-resources you are actually using. For example, if you only use `alicloud.oss.BucketPolicy`, you only need `ignoreChanges = [policy]`.
  * 
  * IA Bucket
  * 

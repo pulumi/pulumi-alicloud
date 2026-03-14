@@ -154,7 +154,9 @@ import (
 type KubernetesAddon struct {
 	pulumi.CustomResourceState
 
-	// Is the addon ready for upgrade.
+	// (Deprecated since v1.273.0) Is the addon ready for upgrade.
+	//
+	// Deprecated: Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
 	CanUpgrade pulumi.BoolOutput `pulumi:"canUpgrade"`
 	// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
 	CleanupCloudResources pulumi.BoolPtrOutput `pulumi:"cleanupCloudResources"`
@@ -164,7 +166,9 @@ type KubernetesAddon struct {
 	Config pulumi.StringOutput `pulumi:"config"`
 	// The name of addon.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The version which addon can be upgraded to.
+	// (Deprecated since v1.273.0) The version which addon can be upgraded to.
+	//
+	// Deprecated: Field 'next_version' has been deprecated from provider version 1.273.0. Please use 'next_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
 	NextVersion pulumi.StringOutput `pulumi:"nextVersion"`
 	// Is it a mandatory addon to be installed.
 	Required pulumi.BoolOutput `pulumi:"required"`
@@ -205,7 +209,9 @@ func GetKubernetesAddon(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KubernetesAddon resources.
 type kubernetesAddonState struct {
-	// Is the addon ready for upgrade.
+	// (Deprecated since v1.273.0) Is the addon ready for upgrade.
+	//
+	// Deprecated: Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
 	CanUpgrade *bool `pulumi:"canUpgrade"`
 	// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
 	CleanupCloudResources *bool `pulumi:"cleanupCloudResources"`
@@ -215,7 +221,9 @@ type kubernetesAddonState struct {
 	Config *string `pulumi:"config"`
 	// The name of addon.
 	Name *string `pulumi:"name"`
-	// The version which addon can be upgraded to.
+	// (Deprecated since v1.273.0) The version which addon can be upgraded to.
+	//
+	// Deprecated: Field 'next_version' has been deprecated from provider version 1.273.0. Please use 'next_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
 	NextVersion *string `pulumi:"nextVersion"`
 	// Is it a mandatory addon to be installed.
 	Required *bool `pulumi:"required"`
@@ -224,7 +232,9 @@ type kubernetesAddonState struct {
 }
 
 type KubernetesAddonState struct {
-	// Is the addon ready for upgrade.
+	// (Deprecated since v1.273.0) Is the addon ready for upgrade.
+	//
+	// Deprecated: Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
 	CanUpgrade pulumi.BoolPtrInput
 	// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
 	CleanupCloudResources pulumi.BoolPtrInput
@@ -234,7 +244,9 @@ type KubernetesAddonState struct {
 	Config pulumi.StringPtrInput
 	// The name of addon.
 	Name pulumi.StringPtrInput
-	// The version which addon can be upgraded to.
+	// (Deprecated since v1.273.0) The version which addon can be upgraded to.
+	//
+	// Deprecated: Field 'next_version' has been deprecated from provider version 1.273.0. Please use 'next_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
 	NextVersion pulumi.StringPtrInput
 	// Is it a mandatory addon to be installed.
 	Required pulumi.BoolPtrInput
@@ -360,7 +372,9 @@ func (o KubernetesAddonOutput) ToKubernetesAddonOutputWithContext(ctx context.Co
 	return o
 }
 
-// Is the addon ready for upgrade.
+// (Deprecated since v1.273.0) Is the addon ready for upgrade.
+//
+// Deprecated: Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
 func (o KubernetesAddonOutput) CanUpgrade() pulumi.BoolOutput {
 	return o.ApplyT(func(v *KubernetesAddon) pulumi.BoolOutput { return v.CanUpgrade }).(pulumi.BoolOutput)
 }
@@ -385,7 +399,9 @@ func (o KubernetesAddonOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesAddon) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The version which addon can be upgraded to.
+// (Deprecated since v1.273.0) The version which addon can be upgraded to.
+//
+// Deprecated: Field 'next_version' has been deprecated from provider version 1.273.0. Please use 'next_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
 func (o KubernetesAddonOutput) NextVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesAddon) pulumi.StringOutput { return v.NextVersion }).(pulumi.StringOutput)
 }

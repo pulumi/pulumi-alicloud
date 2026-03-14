@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// &gt; **NOTE:** Available since v1.2.0.
     /// 
+    /// &gt; **NOTE:** When using standalone sub-resources (e.g., `alicloud.oss.BucketPolicy`, `alicloud.oss.BucketLogging`, `alicloud.oss.BucketCors`, `alicloud.oss.BucketWebsite`, `alicloud.oss.BucketVersioning`, `alicloud.oss.BucketReferer`, `alicloud.oss.BucketServerSideEncryption`, `alicloud.oss.BucketTransferAcceleration`, `alicloud.oss.BucketAcl`) alongside `alicloud.oss.Bucket`, you **must** add a `Lifecycle` block with `IgnoreChanges` for the corresponding attribute on `alicloud.oss.Bucket`. This prevents Terraform from detecting spurious diffs caused by the same configuration being managed by both the bucket resource and the standalone sub-resource. Without `IgnoreChanges`, Terraform may attempt to revert changes made by the sub-resource on every apply, causing unexpected behavior.
+    /// 
     /// ## Example Usage
     /// 
     /// Private Bucket
@@ -484,6 +486,78 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// });
     /// ```
+    /// 
+    /// Using sub-resources with IgnoreChanges
+    /// 
+    /// When managing bucket configurations through standalone sub-resources such as `alicloud.oss.BucketPolicy`, `alicloud.oss.BucketLogging`, or `alicloud.oss.BucketCors`, you must use a `Lifecycle` block with `IgnoreChanges` on the `alicloud.oss.Bucket` to prevent Terraform from detecting configuration drift. The sub-resource manages the corresponding attribute independently, so without `IgnoreChanges`, Terraform will see the attribute value differ from the bucket's inline configuration and attempt to revert it on every plan/apply.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Oss.Bucket("example", new()
+    ///     {
+    ///         BucketName = $"example-sub-resources-{@default.Result}",
+    ///     });
+    /// 
+    ///     var exampleBucketAcl = new AliCloud.Oss.BucketAcl("example", new()
+    ///     {
+    ///         Bucket = example.BucketName,
+    ///         Acl = "private",
+    ///     });
+    /// 
+    ///     var exampleBucketPolicy = new AliCloud.Oss.BucketPolicy("example", new()
+    ///     {
+    ///         Bucket = example.BucketName,
+    ///         Policy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Version"] = "1",
+    ///             ["Statement"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Action"] = new[]
+    ///                     {
+    ///                         "oss:PutObject",
+    ///                         "oss:GetObject",
+    ///                     },
+    ///                     ["Effect"] = "Deny",
+    ///                     ["Principal"] = new[]
+    ///                     {
+    ///                         "1234567890",
+    ///                     },
+    ///                     ["Resource"] = new[]
+    ///                     {
+    ///                         "acs:oss:*:1234567890:*/*",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var exampleBucketLogging = new AliCloud.Oss.BucketLogging("example", new()
+    ///     {
+    ///         Bucket = example.BucketName,
+    ///         TargetBucket = example.BucketName,
+    ///         TargetPrefix = "log/",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; **NOTE:** You only need to include the attributes in `IgnoreChanges` that correspond to the sub-resources you are actually using. For example, if you only use `alicloud.oss.BucketPolicy`, you only need `IgnoreChanges = [policy]`.
     /// 
     /// IA Bucket
     /// 

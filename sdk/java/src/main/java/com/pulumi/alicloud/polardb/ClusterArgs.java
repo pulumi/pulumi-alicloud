@@ -8,6 +8,7 @@ import com.pulumi.alicloud.polardb.inputs.ClusterParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -326,6 +327,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+     * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+     * 
+     */
+    @Import(name="enableDynamodb")
+    private @Nullable Output<Boolean> enableDynamodb;
+
+    /**
+     * @return Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+     * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+     * 
+     */
+    public Optional<Output<Boolean>> enableDynamodb() {
+        return Optional.ofNullable(this.enableDynamodb);
     }
 
     /**
@@ -1216,6 +1234,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.defaultTimeZone = $.defaultTimeZone;
         this.deletionLock = $.deletionLock;
         this.description = $.description;
+        this.enableDynamodb = $.enableDynamodb;
         this.encryptNewTables = $.encryptNewTables;
         this.encryptionKey = $.encryptionKey;
         this.fromTimeService = $.fromTimeService;
@@ -1719,6 +1738,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param enableDynamodb Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+         * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDynamodb(@Nullable Output<Boolean> enableDynamodb) {
+            $.enableDynamodb = enableDynamodb;
+            return this;
+        }
+
+        /**
+         * @param enableDynamodb Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+         * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDynamodb(Boolean enableDynamodb) {
+            return enableDynamodb(Output.of(enableDynamodb));
         }
 
         /**
