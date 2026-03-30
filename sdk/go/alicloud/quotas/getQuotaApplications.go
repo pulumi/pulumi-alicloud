@@ -52,7 +52,7 @@ import (
 //				return quotas.GetQuotaApplicationsResult(interface{}(quotas.GetQuotaApplications(ctx, &quotas.GetQuotaApplicationsArgs{
 //					ProductCode:   "vpc",
 //					EnableDetails: pulumi.BoolRef(pulumi.BoolRef(true)),
-//					QuotaCategory: pulumi.StringRef(pulumi.StringRef(quotaCategory)),
+//					QuotaCategory: pulumi.StringRef(pulumi.StringRef(pulumi.String(quotaCategory))),
 //					Ids: []string{
 //						id,
 //					},

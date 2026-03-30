@@ -42,8 +42,8 @@ import (
 //				name = param
 //			}
 //			_default, err := resourcemanager.NewResourceGroup(ctx, "default", &resourcemanager.ResourceGroupArgs{
-//				DisplayName:       pulumi.String(name),
-//				ResourceGroupName: pulumi.String(name),
+//				DisplayName:       pulumi.String(pulumi.String(name)),
+//				ResourceGroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -56,8 +56,8 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewIpv4Gateway(ctx, "default", &vpc.Ipv4GatewayArgs{
-//				Ipv4GatewayName:        pulumi.String(name),
-//				Ipv4GatewayDescription: pulumi.String(name),
+//				Ipv4GatewayName:        pulumi.String(pulumi.String(name)),
+//				Ipv4GatewayDescription: pulumi.String(pulumi.String(name)),
 //				ResourceGroupId:        _default.ID(),
 //				VpcId:                  defaultNetwork.ID(),
 //			})

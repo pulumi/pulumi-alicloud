@@ -44,8 +44,8 @@ import (
 //			}
 //			_, err := hbr.NewCrossAccount(ctx, "default", &hbr.CrossAccountArgs{
 //				CrossAccountUserId:   pulumi.Int(1),
-//				CrossAccountRoleName: pulumi.String(name),
-//				Alias:                pulumi.String(name),
+//				CrossAccountRoleName: pulumi.String(pulumi.String(name)),
+//				Alias:                pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

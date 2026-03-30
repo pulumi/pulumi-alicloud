@@ -39,7 +39,7 @@ import (
 //				name = param
 //			}
 //			_, err := ddos.NewSchedulerRule(ctx, "example", &ddos.SchedulerRuleArgs{
-//				RuleName: pulumi.String(name),
+//				RuleName: pulumi.String(pulumi.String(name)),
 //				RuleType: pulumi.Int(3),
 //				Rules: ddos.SchedulerRuleRuleArray{
 //					&ddos.SchedulerRuleRuleArgs{

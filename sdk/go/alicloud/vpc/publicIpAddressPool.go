@@ -47,10 +47,10 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewPublicIpAddressPool(ctx, "default", &vpc.PublicIpAddressPoolArgs{
-//				Description:             pulumi.String(name),
-//				PublicIpAddressPoolName: pulumi.String(name),
+//				Description:             pulumi.String(pulumi.String(name)),
+//				PublicIpAddressPoolName: pulumi.String(pulumi.String(name)),
 //				Isp:                     pulumi.String("BGP"),
-//				ResourceGroupId:         pulumi.String(_default.Ids[0]),
+//				ResourceGroupId:         pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err

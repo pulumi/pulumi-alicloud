@@ -62,7 +62,7 @@ import (
 //	    _ := index
 //
 // __res, err := cloudsso.NewDirectory(ctx, fmt.Sprintf("default-%v", key0), &cloudsso.DirectoryArgs{
-// DirectoryName: pulumi.String(name),
+// DirectoryName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
@@ -86,9 +86,9 @@ import (
 // return &tmp1, nil
 // }).(pulumi.Interface{}PtrOutput)
 // _, err = cloudsso.NewGroup(ctx, "default", &cloudsso.GroupArgs{
-// DirectoryId: pulumi.Any(directoryId),
-// GroupName: pulumi.String(name),
-// Description: pulumi.String(name),
+// DirectoryId: pulumi.String(pulumi.Any(directoryId)),
+// GroupName: pulumi.String(pulumi.String(name)),
+// Description: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err

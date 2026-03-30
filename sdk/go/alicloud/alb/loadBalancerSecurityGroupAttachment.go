@@ -53,38 +53,38 @@ import (
 //			}
 //			createVpc, err := vpc.NewNetwork(ctx, "create_vpc", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			createVsw1, err := vpc.NewSwitch(ctx, "create_vsw_1", &vpc.SwitchArgs{
 //				VpcId:       createVpc.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			createVsw2, err := vpc.NewSwitch(ctx, "create_vsw_2", &vpc.SwitchArgs{
 //				VpcId:       createVpc.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[1].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[1].Id)),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			createSecurityGroup, err := ecs.NewSecurityGroup(ctx, "create_security_group", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: createVpc.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			createAlb, err := alb.NewLoadBalancer(ctx, "create_alb", &alb.LoadBalancerArgs{
-//				LoadBalancerName:    pulumi.String(name),
+//				LoadBalancerName:    pulumi.String(pulumi.String(name)),
 //				LoadBalancerEdition: pulumi.String("Standard"),
 //				VpcId:               createVpc.ID(),
 //				LoadBalancerBillingConfig: &alb.LoadBalancerLoadBalancerBillingConfigArgs{

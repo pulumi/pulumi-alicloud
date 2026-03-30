@@ -140,7 +140,7 @@ import (
 //			}
 //			_, err = maxcompute.NewQuotaSchedule(ctx, "default", &maxcompute.QuotaScheduleArgs{
 //				Timezone: pulumi.String("UTC+8"),
-//				Nickname: pulumi.String(quotaNickName),
+//				Nickname: pulumi.String(pulumi.String(quotaNickName)),
 //				ScheduleLists: maxcompute.QuotaScheduleScheduleListArray{
 //					&maxcompute.QuotaScheduleScheduleListArgs{
 //						Plan: pulumi.String("Default"),

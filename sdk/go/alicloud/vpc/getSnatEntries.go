@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			fooNetwork, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
-//				Name:      pulumi.String(name),
+//				Name:      pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -53,8 +53,8 @@ import (
 //			fooSwitch, err := vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
 //				VpcId:            fooNetwork.ID(),
 //				CidrBlock:        pulumi.String("172.16.0.0/21"),
-//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
-//				VswitchName:      pulumi.String(name),
+//				AvailabilityZone: pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName:      pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -62,13 +62,13 @@ import (
 //			fooNatGateway, err := vpc.NewNatGateway(ctx, "foo", &vpc.NatGatewayArgs{
 //				VpcId:         fooNetwork.ID(),
 //				Specification: pulumi.String("Small"),
-//				Name:          pulumi.String(name),
+//				Name:          pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			fooEipAddress, err := ecs.NewEipAddress(ctx, "foo", &ecs.EipAddressArgs{
-//				AddressName: pulumi.String(name),
+//				AddressName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

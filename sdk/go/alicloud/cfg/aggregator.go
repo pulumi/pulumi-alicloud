@@ -60,8 +60,8 @@ import (
 //						AccountType: pulumi.String("ResourceDirectory"),
 //					},
 //				},
-//				AggregatorName: pulumi.String(name),
-//				Description:    pulumi.String(name),
+//				AggregatorName: pulumi.String(pulumi.String(name)),
+//				Description:    pulumi.String(pulumi.String(name)),
 //				AggregatorType: pulumi.String("CUSTOM"),
 //			})
 //			if err != nil {

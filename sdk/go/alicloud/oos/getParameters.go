@@ -38,10 +38,10 @@ import (
 //				name = param
 //			}
 //			_default, err := oos.NewParameter(ctx, "default", &oos.ParameterArgs{
-//				ParameterName: pulumi.String(name),
+//				ParameterName: pulumi.String(pulumi.String(name)),
 //				Value:         pulumi.String("tf-testacc-oos_parameter"),
 //				Type:          pulumi.String("String"),
-//				Description:   pulumi.String(name),
+//				Description:   pulumi.String(pulumi.String(name)),
 //				Constraints: pulumi.String(`  {
 //	    \"AllowedValues\": [
 //	        \"tf-testacc-oos_parameter\"

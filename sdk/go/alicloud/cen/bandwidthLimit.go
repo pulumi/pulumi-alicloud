@@ -72,7 +72,7 @@ import (
 //				InstanceId:            example.ID(),
 //				ChildInstanceId:       vpc1.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String(region1),
+//				ChildInstanceRegionId: pulumi.String(pulumi.String(region1)),
 //			})
 //			if err != nil {
 //				return err
@@ -81,7 +81,7 @@ import (
 //				InstanceId:            example.ID(),
 //				ChildInstanceId:       vpc2.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String(region2),
+//				ChildInstanceRegionId: pulumi.String(pulumi.String(region2)),
 //			})
 //			if err != nil {
 //				return err

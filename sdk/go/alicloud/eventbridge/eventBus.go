@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_, err := eventbridge.NewEventBus(ctx, "example", &eventbridge.EventBusArgs{
-//				EventBusName: pulumi.String(name),
+//				EventBusName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

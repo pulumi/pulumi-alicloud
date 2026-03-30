@@ -47,29 +47,29 @@ import (
 //			}
 //			zone := _default.Resources[0].MasterZones[1]
 //			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
 //				VpcId:       example.ID(),
-//				ZoneId:      pulumi.String(zone),
+//				ZoneId:      pulumi.String(pulumi.String(zone)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
-//				TransitRouterName: pulumi.String(name),
+//				TransitRouterName: pulumi.String(pulumi.String(name)),
 //				CenId:             exampleInstance.ID(),
 //				SupportMulticast:  pulumi.Bool(true),
 //			})
@@ -78,7 +78,7 @@ import (
 //			}
 //			exampleTransitRouterMulticastDomain, err := cen.NewTransitRouterMulticastDomain(ctx, "example", &cen.TransitRouterMulticastDomainArgs{
 //				TransitRouterId:                  exampleTransitRouter.TransitRouterId,
-//				TransitRouterMulticastDomainName: pulumi.String(name),
+//				TransitRouterMulticastDomainName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

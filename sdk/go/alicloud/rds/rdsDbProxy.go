@@ -46,7 +46,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -55,14 +55,14 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
@@ -74,7 +74,7 @@ import (
 //				InstanceType:          pulumi.String("rds.mysql.c1.large"),
 //				InstanceStorage:       pulumi.Int(20),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
-//				InstanceName:          pulumi.String(name),
+//				InstanceName:          pulumi.String(pulumi.String(name)),
 //				VswitchId:             defaultSwitch.ID(),
 //				DbInstanceStorageType: pulumi.String("local_ssd"),
 //			})

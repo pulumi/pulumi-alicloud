@@ -44,8 +44,8 @@ import (
 //			}
 //			_default, err := maxcompute.NewProject(ctx, "default", &maxcompute.ProjectArgs{
 //				DefaultQuota: pulumi.String("默认后付费Quota"),
-//				ProjectName:  pulumi.String(name),
-//				Comment:      pulumi.String(name),
+//				ProjectName:  pulumi.String(pulumi.String(name)),
+//				Comment:      pulumi.String(pulumi.String(name)),
 //				ProductType:  pulumi.String("PayAsYouGo"),
 //			})
 //			if err != nil {
@@ -73,7 +73,7 @@ import (
 //			_, err = maxcompute.NewRole(ctx, "default", &maxcompute.RoleArgs{
 //				Type:        pulumi.String("admin"),
 //				ProjectName: _default.ID(),
-//				Policy:      pulumi.String(json0),
+//				Policy:      pulumi.String(pulumi.String(json0)),
 //				RoleName:    pulumi.String("tf_example112"),
 //			})
 //			if err != nil {

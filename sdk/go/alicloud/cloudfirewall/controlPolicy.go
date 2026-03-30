@@ -43,7 +43,7 @@ import (
 //			_, err := cloudfirewall.NewControlPolicy(ctx, "default", &cloudfirewall.ControlPolicyArgs{
 //				Direction:       pulumi.String("in"),
 //				ApplicationName: pulumi.String("ANY"),
-//				Description:     pulumi.String(name),
+//				Description:     pulumi.String(pulumi.String(name)),
 //				AclAction:       pulumi.String("accept"),
 //				Source:          pulumi.String("127.0.0.1/32"),
 //				SourceType:      pulumi.String("net"),

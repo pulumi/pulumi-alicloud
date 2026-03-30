@@ -50,7 +50,7 @@ import (
 //					CustomType: pulumi.StringRef(pulumi.StringRef("custom")),
 //				}, nil))), nil
 //			}).(threatdetection.GetBaselineStrategiesResultOutput)
-//			ctx.Export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.Strategys[0].Id)
+//			ctx.Export("alicloudThreatDetectionBaselineStrategyExampleId", pulumi.Any(defaultAlicloudThreatDetectionBaselineStrategys.Strategys[0].Id))
 //			return nil
 //		})
 //	}

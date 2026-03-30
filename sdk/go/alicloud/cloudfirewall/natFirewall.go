@@ -51,7 +51,7 @@ import (
 //			}
 //			defaultikZ0gD, err := vpc.NewNetwork(ctx, "defaultikZ0gD", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -59,8 +59,8 @@ import (
 //			defaultp4O7qi, err := vpc.NewSwitch(ctx, "defaultp4O7qi", &vpc.SwitchArgs{
 //				VpcId:       defaultikZ0gD.ID(),
 //				CidrBlock:   pulumi.String("172.16.6.0/24"),
-//				VswitchName: pulumi.String(name),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				VswitchName: pulumi.String(pulumi.String(name)),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -68,7 +68,7 @@ import (
 //			default2iRZpC, err := vpc.NewNatGateway(ctx, "default2iRZpC", &vpc.NatGatewayArgs{
 //				EipBindMode:    pulumi.String("MULTI_BINDED"),
 //				VpcId:          defaultikZ0gD.ID(),
-//				NatGatewayName: pulumi.String(name),
+//				NatGatewayName: pulumi.String(pulumi.String(name)),
 //				PaymentType:    pulumi.String("PayAsYouGo"),
 //				VswitchId:      defaultp4O7qi.ID(),
 //				NatType:        pulumi.String("Enhanced"),
@@ -78,7 +78,7 @@ import (
 //				return err
 //			}
 //			defaultyiRwgs, err := ecs.NewEipAddress(ctx, "defaultyiRwgs", &ecs.EipAddressArgs{
-//				AddressName: pulumi.String(name),
+//				AddressName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

@@ -90,7 +90,7 @@ import (
 //			}
 //			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
 //				ProjectName:        defaultProject.ProjectName,
-//				LogstoreName:       pulumi.String(name),
+//				LogstoreName:       pulumi.String(pulumi.String(name)),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
 //				MaxSplitShardCount: pulumi.Int(60),
@@ -100,7 +100,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -115,15 +115,15 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "default", &cloudstoragegateway.GatewayArgs{
-//				GatewayName:            pulumi.String(name),
-//				Description:            pulumi.String(name),
+//				GatewayName:            pulumi.String(pulumi.String(name)),
+//				Description:            pulumi.String(pulumi.String(name)),
 //				GatewayClass:           pulumi.String("Standard"),
 //				Type:                   pulumi.String("File"),
 //				PaymentType:            pulumi.String("PayAsYouGo"),

@@ -57,17 +57,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultGetRegions.Regions[0].ZoneIds[0].ZoneId),
+//				ZoneId:      pulumi.String(pulumi.String(defaultGetRegions.Regions[0].ZoneIds[0].ZoneId)),
 //			})
 //			if err != nil {
 //				return err
@@ -83,7 +83,7 @@ import (
 //				StorageType:          pulumi.String("cloud_essd"),
 //				VswitchId:            defaultSwitch.ID(),
 //				VpcId:                defaultNetwork.ID(),
-//				ResourceGroupId:      pulumi.String(_default.Groups[0].Id),
+//				ResourceGroupId:      pulumi.String(pulumi.String(_default.Groups[0].Id)),
 //			})
 //			if err != nil {
 //				return err

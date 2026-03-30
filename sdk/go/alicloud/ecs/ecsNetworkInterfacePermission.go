@@ -64,7 +64,7 @@ import (
 // VswitchName: pulumi.String("terraform-example"),
 // CidrBlock: pulumi.String("172.17.3.0/24"),
 // VpcId: defaultNetwork.ID(),
-// ZoneId: pulumi.String(_default.Zones[0].Id),
+// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 // })
 // if err != nil {
 // return err
@@ -98,13 +98,13 @@ import (
 // "Created": pulumi.String("TF"),
 // "For": pulumi.String("example"),
 // },
-// ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
+// ResourceGroupId: pulumi.String(pulumi.String(defaultGetResourceGroups.Ids[0])),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = ecs.NewEcsNetworkInterfacePermission(ctx, "example", &ecs.EcsNetworkInterfacePermissionArgs{
-// AccountId: pulumi.String(defaultGetAccount.Id),
+// AccountId: pulumi.String(pulumi.String(defaultGetAccount.Id)),
 // NetworkInterfaceId: defaultEcsNetworkInterface.ID(),
 // Permission: pulumi.String("InstanceAttach"),
 // Force: pulumi.Bool(true),

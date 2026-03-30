@@ -53,7 +53,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {

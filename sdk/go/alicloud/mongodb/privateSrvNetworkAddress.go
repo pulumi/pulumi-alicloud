@@ -53,14 +53,14 @@ import (
 //			}
 //			defaultie35CW, err := vpc.NewNetwork(ctx, "defaultie35CW", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultg0DCAR, err := vpc.NewSwitch(ctx, "defaultg0DCAR", &vpc.SwitchArgs{
 //				VpcId:     defaultie35CW.ID(),
-//				ZoneId:    pulumi.String(zoneId),
+//				ZoneId:    pulumi.String(pulumi.String(zoneId)),
 //				CidrBlock: pulumi.String("10.0.0.0/24"),
 //			})
 //			if err != nil {
@@ -75,7 +75,7 @@ import (
 //				DbInstanceClass:   pulumi.String("mdb.shard.4x.large.d"),
 //				StorageEngine:     pulumi.String("WiredTiger"),
 //				NetworkType:       pulumi.String("VPC"),
-//				ZoneId:            pulumi.String(zoneId),
+//				ZoneId:            pulumi.String(pulumi.String(zoneId)),
 //			})
 //			if err != nil {
 //				return err

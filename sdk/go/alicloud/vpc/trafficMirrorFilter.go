@@ -42,7 +42,7 @@ import (
 //			}
 //			default3iXhoa, err := resourcemanager.NewResourceGroup(ctx, "default3iXhoa", &resourcemanager.ResourceGroupArgs{
 //				DisplayName:       pulumi.String("testname03"),
-//				ResourceGroupName: pulumi.String(name),
+//				ResourceGroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -56,7 +56,7 @@ import (
 //			}
 //			_, err = vpc.NewTrafficMirrorFilter(ctx, "default", &vpc.TrafficMirrorFilterArgs{
 //				TrafficMirrorFilterDescription: pulumi.String("test"),
-//				TrafficMirrorFilterName:        pulumi.String(name),
+//				TrafficMirrorFilterName:        pulumi.String(pulumi.String(name)),
 //				ResourceGroupId:                default3iXhoa.ID(),
 //				EgressRules: vpc.TrafficMirrorFilterEgressRuleTypeArray{
 //					&vpc.TrafficMirrorFilterEgressRuleTypeArgs{

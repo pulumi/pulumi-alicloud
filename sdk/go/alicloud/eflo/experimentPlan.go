@@ -69,8 +69,8 @@ import (
 //					},
 //				},
 //				PrivacyLevel:        pulumi.String("private"),
-//				TemplateName:        pulumi.String(name),
-//				TemplateDescription: pulumi.String(name),
+//				TemplateName:        pulumi.String(pulumi.String(name)),
+//				TemplateDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -95,15 +95,15 @@ import (
 //					NetworkMode: pulumi.String("net"),
 //					Name:        pulumi.String("lingjun"),
 //				},
-//				ClusterName: pulumi.String(name),
-//				ClusterDesc: pulumi.String(name),
+//				ClusterName: pulumi.String(pulumi.String(name)),
+//				ClusterDesc: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = eflo.NewExperimentPlan(ctx, "default", &eflo.ExperimentPlanArgs{
 //				ResourceId: defaultResource.ResourceId,
-//				PlanName:   pulumi.String(name),
+//				PlanName:   pulumi.String(pulumi.String(name)),
 //				TemplateId: defaultpSZN7t.ID(),
 //			})
 //			if err != nil {

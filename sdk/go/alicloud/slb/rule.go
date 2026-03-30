@@ -77,7 +77,7 @@ import (
 // return err
 // }
 // ruleNetwork, err := vpc.NewNetwork(ctx, "rule", &vpc.NetworkArgs{
-// VpcName: pulumi.String(slbRuleName),
+// VpcName: pulumi.String(pulumi.String(slbRuleName)),
 // CidrBlock: pulumi.String("172.16.0.0/16"),
 // })
 // if err != nil {
@@ -86,14 +86,14 @@ import (
 // ruleSwitch, err := vpc.NewSwitch(ctx, "rule", &vpc.SwitchArgs{
 // VpcId: ruleNetwork.ID(),
 // CidrBlock: pulumi.String("172.16.0.0/16"),
-// ZoneId: pulumi.String(rule.Zones[0].Id),
-// VswitchName: pulumi.String(slbRuleName),
+// ZoneId: pulumi.String(pulumi.String(rule.Zones[0].Id)),
+// VswitchName: pulumi.String(pulumi.String(slbRuleName)),
 // })
 // if err != nil {
 // return err
 // }
 // ruleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "rule", &ecs.SecurityGroupArgs{
-// Name: pulumi.String(slbRuleName),
+// Name: pulumi.String(pulumi.String(slbRuleName)),
 // VpcId: ruleNetwork.ID(),
 // })
 // if err != nil {
@@ -104,22 +104,22 @@ import (
 // splat0 = append(splat0, val0.ID())
 // }
 // _, err = ecs.NewInstance(ctx, "rule", &ecs.InstanceArgs{
-// ImageId: pulumi.String(ruleGetImages.Images[0].Id),
-// InstanceType: pulumi.String(ruleGetInstanceTypes.InstanceTypes[0].Id),
+// ImageId: pulumi.String(pulumi.String(ruleGetImages.Images[0].Id)),
+// InstanceType: pulumi.String(pulumi.String(ruleGetInstanceTypes.InstanceTypes[0].Id)),
 // SecurityGroups: splat0,
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(10),
-// AvailabilityZone: pulumi.String(rule.Zones[0].Id),
+// AvailabilityZone: pulumi.String(pulumi.String(rule.Zones[0].Id)),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // VswitchId: ruleSwitch.ID(),
-// InstanceName: pulumi.String(slbRuleName),
+// InstanceName: pulumi.String(pulumi.String(slbRuleName)),
 // })
 // if err != nil {
 // return err
 // }
 // ruleApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "rule", &slb.ApplicationLoadBalancerArgs{
-// LoadBalancerName: pulumi.String(slbRuleName),
+// LoadBalancerName: pulumi.String(pulumi.String(slbRuleName)),
 // VswitchId: ruleSwitch.ID(),
 // InstanceChargeType: pulumi.String("PayByCLCU"),
 // })
@@ -139,7 +139,7 @@ import (
 // }
 // ruleServerGroup, err := slb.NewServerGroup(ctx, "rule", &slb.ServerGroupArgs{
 // LoadBalancerId: ruleApplicationLoadBalancer.ID(),
-// Name: pulumi.String(slbRuleName),
+// Name: pulumi.String(pulumi.String(slbRuleName)),
 // })
 // if err != nil {
 // return err
@@ -147,7 +147,7 @@ import (
 // _, err = slb.NewRule(ctx, "rule", &slb.RuleArgs{
 // LoadBalancerId: ruleApplicationLoadBalancer.ID(),
 // FrontendPort: ruleListener.FrontendPort,
-// Name: pulumi.String(slbRuleName),
+// Name: pulumi.String(pulumi.String(slbRuleName)),
 // Domain: pulumi.String("*.aliyun.com"),
 // Url: pulumi.String("/image"),
 // ServerGroupId: ruleServerGroup.ID(),

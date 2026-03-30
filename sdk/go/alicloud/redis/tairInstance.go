@@ -74,12 +74,12 @@ import (
 //				PaymentType:      pulumi.String("Subscription"),
 //				Period:           pulumi.Int(1),
 //				InstanceType:     pulumi.String("tair_rdb"),
-//				ZoneId:           pulumi.String(zoneId),
+//				ZoneId:           pulumi.String(pulumi.String(zoneId)),
 //				InstanceClass:    pulumi.String("tair.rdb.2g"),
 //				ShardCount:       pulumi.Int(2),
-//				VswitchId:        pulumi.String(vswitchId),
-//				VpcId:            pulumi.String(defaultGetNetworks.Ids[0]),
-//				TairInstanceName: pulumi.String(name),
+//				VswitchId:        pulumi.String(pulumi.String(vswitchId)),
+//				VpcId:            pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
+//				TairInstanceName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

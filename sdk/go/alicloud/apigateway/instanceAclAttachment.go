@@ -39,7 +39,7 @@ import (
 //				name = param
 //			}
 //			_default, err := apigateway.NewInstance(ctx, "default", &apigateway.InstanceArgs{
-//				InstanceName: pulumi.String(name),
+//				InstanceName: pulumi.String(pulumi.String(name)),
 //				InstanceSpec: pulumi.String("api.s1.small"),
 //				HttpsPolicy:  pulumi.String("HTTPS2_TLS1_0"),
 //				ZoneId:       pulumi.String("cn-hangzhou-MAZ6"),
@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			defaultAccessControlList, err := apigateway.NewAccessControlList(ctx, "default", &apigateway.AccessControlListArgs{
-//				AccessControlListName: pulumi.String(name),
+//				AccessControlListName: pulumi.String(pulumi.String(name)),
 //				AddressIpVersion:      pulumi.String("ipv4"),
 //			})
 //			if err != nil {

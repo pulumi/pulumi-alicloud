@@ -82,15 +82,15 @@ import (
 //				return err
 //			}
 //			vpcId, err := vpc.NewNetwork(ctx, "vpcId", &vpc.NetworkArgs{
-//				VpcName: pulumi.String(vpcName),
+//				VpcName: pulumi.String(pulumi.String(vpcName)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vSwitchId, err := vpc.NewSwitch(ctx, "vSwitchId", &vpc.SwitchArgs{
 //				VpcId:       vpcId.ID(),
-//				ZoneId:      pulumi.String(exampleZoneId),
-//				VswitchName: pulumi.String(vswtich_id),
+//				ZoneId:      pulumi.String(pulumi.String(exampleZoneId)),
+//				VswitchName: pulumi.String(pulumi.String(vswtich_id)),
 //				CidrBlock:   pulumi.String("172.16.5.0/24"),
 //			})
 //			if err != nil {
@@ -98,7 +98,7 @@ import (
 //			}
 //			securityGroupId, err := ecs.NewSecurityGroup(ctx, "securityGroupId", &ecs.SecurityGroupArgs{
 //				VpcId:             vpcId.ID(),
-//				SecurityGroupName: pulumi.String(securitygroupName),
+//				SecurityGroupName: pulumi.String(pulumi.String(securitygroupName)),
 //			})
 //			if err != nil {
 //				return err
@@ -131,9 +131,9 @@ import (
 //					securityGroupId.ID(),
 //				},
 //				IoOptimized:                 pulumi.String("optimized"),
-//				Description:                 pulumi.String(description),
+//				Description:                 pulumi.String(pulumi.String(description)),
 //				KeyPairName:                 keyPairName.ID(),
-//				ZoneId:                      pulumi.String(exampleZoneId),
+//				ZoneId:                      pulumi.String(pulumi.String(exampleZoneId)),
 //				InstanceChargeType:          pulumi.String("Prepaid"),
 //				InternetMaxBandwidthOut:     pulumi.Int(0),
 //				ImageId:                     pulumi.String("aliyun_2_1903_x64_20G_alibase_20240628.vhd"),
@@ -149,7 +149,7 @@ import (
 //				SpotStrategy:    pulumi.String("NoSpot"),
 //				VswitchId:       vSwitchId.ID(),
 //				SupportCase:     pulumi.String("eni"),
-//				DeploymentSetId: pulumi.String(deploymentsetid),
+//				DeploymentSetId: pulumi.String(pulumi.String(deploymentsetid)),
 //				DryRun:          pulumi.Bool(false),
 //			})
 //			if err != nil {

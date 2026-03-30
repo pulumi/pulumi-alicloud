@@ -121,11 +121,11 @@ import (
 //				privateKey = param
 //			}
 //			_, err := fc.NewV3CustomDomain(ctx, "default", &fc.V3CustomDomainArgs{
-//				CustomDomainName: pulumi.String(name),
+//				CustomDomainName: pulumi.String(pulumi.String(name)),
 //				RouteConfig: &fc.V3CustomDomainRouteConfigArgs{
 //					Routes: fc.V3CustomDomainRouteConfigRouteArray{
 //						&fc.V3CustomDomainRouteConfigRouteArgs{
-//							FunctionName: pulumi.String(functionName1),
+//							FunctionName: pulumi.String(pulumi.String(functionName1)),
 //							RewriteConfig: &fc.V3CustomDomainRouteConfigRouteRewriteConfigArgs{
 //								RegexRules: fc.V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArray{
 //									&fc.V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs{
@@ -180,7 +180,7 @@ import (
 //							Qualifier: pulumi.String("LATEST"),
 //						},
 //						&fc.V3CustomDomainRouteConfigRouteArgs{
-//							FunctionName: pulumi.String(functionName1),
+//							FunctionName: pulumi.String(pulumi.String(functionName1)),
 //							Methods: pulumi.StringArray{
 //								pulumi.String("GET"),
 //							},
@@ -188,7 +188,7 @@ import (
 //							Qualifier: pulumi.String("LATEST"),
 //						},
 //						&fc.V3CustomDomainRouteConfigRouteArgs{
-//							FunctionName: pulumi.String(functionName1),
+//							FunctionName: pulumi.String(pulumi.String(functionName1)),
 //							Methods: pulumi.StringArray{
 //								pulumi.String("POST"),
 //							},
@@ -199,13 +199,13 @@ import (
 //				},
 //				AuthConfig: &fc.V3CustomDomainAuthConfigArgs{
 //					AuthType: pulumi.String("jwt"),
-//					AuthInfo: pulumi.String(authConfig),
+//					AuthInfo: pulumi.String(pulumi.String(authConfig)),
 //				},
 //				Protocol: pulumi.String("HTTP,HTTPS"),
 //				CertConfig: &fc.V3CustomDomainCertConfigArgs{
 //					CertName:    pulumi.String("cert-name"),
-//					Certificate: pulumi.String(certificate),
-//					PrivateKey:  pulumi.String(privateKey),
+//					Certificate: pulumi.String(pulumi.String(certificate)),
+//					PrivateKey:  pulumi.String(pulumi.String(privateKey)),
 //				},
 //				TlsConfig: &fc.V3CustomDomainTlsConfigArgs{
 //					CipherSuites: pulumi.StringArray{

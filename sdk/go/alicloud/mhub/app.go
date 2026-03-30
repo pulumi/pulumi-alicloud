@@ -43,13 +43,13 @@ import (
 //				name = param
 //			}
 //			_default, err := mhub.NewProduct(ctx, "default", &mhub.ProductArgs{
-//				ProductName: pulumi.String(name),
+//				ProductName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = mhub.NewApp(ctx, "default", &mhub.AppArgs{
-//				AppName:     pulumi.String(name),
+//				AppName:     pulumi.String(pulumi.String(name)),
 //				ProductId:   _default.ID(),
 //				PackageName: pulumi.String("com.example.android"),
 //				Type:        pulumi.String("Android"),

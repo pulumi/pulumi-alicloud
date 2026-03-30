@@ -66,7 +66,7 @@ import (
 //					pulumi.String("172.16.2.0/24"),
 //					pulumi.String("172.16.1.0/24"),
 //				},
-//				VpcOwnerId:          pulumi.String(current.Id),
+//				VpcOwnerId:          pulumi.Int(pulumi.String(current.Id)),
 //				AssociationRegionId: pulumi.String("cn-hangzhou"),
 //				VpcId:               default8qAtD6.ID(),
 //			})

@@ -52,40 +52,40 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.1.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultGetZones.Zones[1].Id),
+//				ZoneId:      pulumi.String(pulumi.String(defaultGetZones.Zones[1].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultLoadBalancer, err := nlb.NewLoadBalancer(ctx, "default", &nlb.LoadBalancerArgs{
-//				LoadBalancerName: pulumi.String(name),
-//				ResourceGroupId:  pulumi.String(_default.Ids[0]),
+//				LoadBalancerName: pulumi.String(pulumi.String(name)),
+//				ResourceGroupId:  pulumi.String(pulumi.String(_default.Ids[0])),
 //				LoadBalancerType: pulumi.String("Network"),
 //				AddressType:      pulumi.String("Internet"),
 //				AddressIpVersion: pulumi.String("Ipv4"),
@@ -109,8 +109,8 @@ import (
 //				return err
 //			}
 //			defaultServerGroup, err := nlb.NewServerGroup(ctx, "default", &nlb.ServerGroupArgs{
-//				ResourceGroupId:        pulumi.String(_default.Ids[0]),
-//				ServerGroupName:        pulumi.String(name),
+//				ResourceGroupId:        pulumi.String(pulumi.String(_default.Ids[0])),
+//				ServerGroupName:        pulumi.String(pulumi.String(name)),
 //				ServerGroupType:        pulumi.String("Instance"),
 //				VpcId:                  defaultNetwork.ID(),
 //				Scheduler:              pulumi.String("Wrr"),
@@ -144,7 +144,7 @@ import (
 //			_, err = nlb.NewListener(ctx, "default", &nlb.ListenerArgs{
 //				ListenerProtocol:     pulumi.String("TCP"),
 //				ListenerPort:         pulumi.Int(80),
-//				ListenerDescription:  pulumi.String(name),
+//				ListenerDescription:  pulumi.String(pulumi.String(name)),
 //				LoadBalancerId:       defaultLoadBalancer.ID(),
 //				ServerGroupId:        defaultServerGroup.ID(),
 //				IdleTimeout:          pulumi.Int(900),

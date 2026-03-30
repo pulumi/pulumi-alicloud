@@ -45,7 +45,7 @@ import (
 //			_, err := eflo.NewVsc(ctx, "default", &eflo.VscArgs{
 //				VscType: pulumi.String("primary"),
 //				NodeId:  pulumi.String("e01-cn-9me49omda01"),
-//				VscName: pulumi.String(name),
+//				VscName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

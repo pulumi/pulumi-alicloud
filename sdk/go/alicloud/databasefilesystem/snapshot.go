@@ -45,9 +45,9 @@ import (
 //				return err
 //			}
 //			_, err = databasefilesystem.NewSnapshot(ctx, "example", &databasefilesystem.SnapshotArgs{
-//				InstanceId:    pulumi.String(_default.Instances[0].Id),
+//				InstanceId:    pulumi.String(pulumi.String(_default.Instances[0].Id)),
 //				RetentionDays: pulumi.Int(50),
-//				SnapshotName:  pulumi.String(name),
+//				SnapshotName:  pulumi.String(pulumi.String(name)),
 //				Description:   pulumi.String("DbfsSnapshot"),
 //			})
 //			if err != nil {

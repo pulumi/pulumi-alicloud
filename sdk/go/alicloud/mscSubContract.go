@@ -39,7 +39,7 @@ import (
 //				name = param
 //			}
 //			_, err := alicloud.NewMscSubContract(ctx, "default", &alicloud.MscSubContractArgs{
-//				ContactName: pulumi.String(name),
+//				ContactName: pulumi.String(pulumi.String(name)),
 //				Position:    pulumi.String("CEO"),
 //				Email:       pulumi.String("123@163.com"),
 //				Mobile:      pulumi.String("15388888888"),

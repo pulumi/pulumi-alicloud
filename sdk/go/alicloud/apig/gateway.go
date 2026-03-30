@@ -67,7 +67,7 @@ import (
 //						Enable: pulumi.Bool(false),
 //					},
 //				},
-//				ResourceGroupId: pulumi.String(_default.Ids[1]),
+//				ResourceGroupId: pulumi.String(pulumi.String(_default.Ids[1])),
 //				Spec:            pulumi.String("apigw.small.x1"),
 //				Vpc: &apig.GatewayVpcArgs{
 //					VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
@@ -79,7 +79,7 @@ import (
 //					VswitchId: pulumi.String(defaultGetSwitches.Ids[0]),
 //				},
 //				PaymentType: pulumi.String("PayAsYouGo"),
-//				GatewayName: pulumi.String(name),
+//				GatewayName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

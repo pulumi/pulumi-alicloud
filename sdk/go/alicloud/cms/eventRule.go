@@ -41,16 +41,16 @@ import (
 //				name = param
 //			}
 //			_default, err := cms.NewMonitorGroup(ctx, "default", &cms.MonitorGroupArgs{
-//				MonitorGroupName: pulumi.String(name),
+//				MonitorGroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cms.NewEventRule(ctx, "example", &cms.EventRuleArgs{
-//				RuleName:    pulumi.String(name),
+//				RuleName:    pulumi.String(pulumi.String(name)),
 //				GroupId:     _default.ID(),
 //				SilenceTime: pulumi.Int(100),
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				Status:      pulumi.String("ENABLED"),
 //				EventPattern: &cms.EventRuleEventPatternArgs{
 //					Product:   pulumi.String("ecs"),

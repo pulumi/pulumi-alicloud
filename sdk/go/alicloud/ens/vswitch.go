@@ -41,8 +41,8 @@ import (
 //				name = param
 //			}
 //			_default, err := ens.NewNetwork(ctx, "default", &ens.NetworkArgs{
-//				NetworkName: pulumi.String(name),
-//				Description: pulumi.String(name),
+//				NetworkName: pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
 //				EnsRegionId: pulumi.String("cn-chenzhou-telecom_unicom_cmcc"),
 //			})
@@ -50,9 +50,9 @@ import (
 //				return err
 //			}
 //			_, err = ens.NewVswitch(ctx, "default", &ens.VswitchArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				EnsRegionId: pulumi.String("cn-chenzhou-telecom_unicom_cmcc"),
 //				NetworkId:   _default.ID(),
 //			})

@@ -55,7 +55,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(example.Zones[1].ZoneId),
+//				ZoneId:      pulumi.String(pulumi.String(example.Zones[1].ZoneId)),
 //			})
 //			if err != nil {
 //				return err
@@ -66,7 +66,7 @@ import (
 //				FileSystemType: pulumi.String("cpfs"),
 //				Capacity:       pulumi.Int(3600),
 //				Description:    pulumi.String("terraform-example"),
-//				ZoneId:         pulumi.String(example.Zones[1].ZoneId),
+//				ZoneId:         pulumi.String(pulumi.String(example.Zones[1].ZoneId)),
 //				VpcId:          exampleNetwork.ID(),
 //				VswitchId:      exampleSwitch.ID(),
 //			})

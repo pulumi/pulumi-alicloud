@@ -51,7 +51,7 @@ import (
 //			}
 //			_, err = esa.NewTransportLayerApplication(ctx, "default", &esa.TransportLayerApplicationArgs{
 //				RecordName:              pulumi.String("resource2.gositecdn.cn"),
-//				SiteId:                  pulumi.Int(_default.Sites[0].SiteId),
+//				SiteId:                  pulumi.String(pulumi.Int(_default.Sites[0].SiteId)),
 //				IpAccessRule:            pulumi.String("off"),
 //				Ipv6:                    pulumi.String("off"),
 //				CrossBorderOptimization: pulumi.String("off"),

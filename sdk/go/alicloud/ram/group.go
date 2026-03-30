@@ -42,8 +42,8 @@ import (
 //				name = param
 //			}
 //			_, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
-//				GroupName: pulumi.String(name),
-//				Comments:  pulumi.String(name),
+//				GroupName: pulumi.String(pulumi.String(name)),
+//				Comments:  pulumi.String(pulumi.String(name)),
 //				Force:     pulumi.Bool(true),
 //			})
 //			if err != nil {

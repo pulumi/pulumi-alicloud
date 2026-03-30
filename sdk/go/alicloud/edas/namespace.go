@@ -46,9 +46,9 @@ import (
 //			}
 //			_, err := edas.NewNamespace(ctx, "default", &edas.NamespaceArgs{
 //				DebugEnable:        pulumi.Bool(false),
-//				Description:        pulumi.String(name),
+//				Description:        pulumi.String(pulumi.String(name)),
 //				NamespaceLogicalId: pulumi.Sprintf("%v:%v", region, name),
-//				NamespaceName:      pulumi.String(name),
+//				NamespaceName:      pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

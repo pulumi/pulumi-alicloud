@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			defaultEr, err := eflo.NewEr(ctx, "default", &eflo.ErArgs{
-//				ErName:       pulumi.String(name),
+//				ErName:       pulumi.String(pulumi.String(name)),
 //				MasterZoneId: pulumi.String("cn-hangzhou-a"),
 //			})
 //			if err != nil {
@@ -56,13 +56,13 @@ import (
 //			}
 //			defaultVpd, err := eflo.NewVpd(ctx, "default", &eflo.VpdArgs{
 //				Cidr:    pulumi.String("10.0.0.0/8"),
-//				VpdName: pulumi.String(name),
+//				VpdName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = eflo.NewVpdGrantRule(ctx, "default", &eflo.VpdGrantRuleArgs{
-//				GrantTenantId: pulumi.String(_default.Id),
+//				GrantTenantId: pulumi.String(pulumi.String(_default.Id)),
 //				ErId:          defaultEr.ID(),
 //				InstanceId:    defaultVpd.ID(),
 //			})

@@ -42,7 +42,7 @@ import (
 //			}
 //			_default, err := ga.NewAcl(ctx, "default", &ga.AclArgs{
 //				AddressIpVersion: pulumi.String("IPv4"),
-//				AclName:          pulumi.String(name),
+//				AclName:          pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -50,7 +50,7 @@ import (
 //			_, err = ga.NewAclEntryAttachment(ctx, "default", &ga.AclEntryAttachmentArgs{
 //				AclId:            _default.ID(),
 //				Entry:            pulumi.String("192.168.1.1/32"),
-//				EntryDescription: pulumi.String(name),
+//				EntryDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

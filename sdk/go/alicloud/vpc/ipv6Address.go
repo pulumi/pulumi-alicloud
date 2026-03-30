@@ -56,7 +56,7 @@ import (
 //				Ipv6Isp:    pulumi.String("BGP"),
 //				CidrBlock:  pulumi.String("172.168.0.0/16"),
 //				EnableIpv6: pulumi.Bool(true),
-//				VpcName:    pulumi.String(name),
+//				VpcName:    pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -64,18 +64,18 @@ import (
 //			vswich, err := vpc.NewSwitch(ctx, "vswich", &vpc.SwitchArgs{
 //				VpcId:             vpc.ID(),
 //				CidrBlock:         pulumi.String("172.168.0.0/24"),
-//				ZoneId:            pulumi.String(defaultGetZones.Zones[0].Id),
-//				VswitchName:       pulumi.String(name),
+//				ZoneId:            pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
+//				VswitchName:       pulumi.String(pulumi.String(name)),
 //				Ipv6CidrBlockMask: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewIpv6Address(ctx, "default", &vpc.Ipv6AddressArgs{
-//				ResourceGroupId:        pulumi.String(_default.Ids[0]),
+//				ResourceGroupId:        pulumi.String(pulumi.String(_default.Ids[0])),
 //				VswitchId:              vswich.ID(),
 //				Ipv6AddressDescription: pulumi.String("create_description"),
-//				Ipv6AddressName:        pulumi.String(name),
+//				Ipv6AddressName:        pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

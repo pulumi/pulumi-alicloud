@@ -58,7 +58,7 @@ import (
 //			}
 //			defaultRv5UXt, err := vpc.NewSwitch(ctx, "defaultRv5UXt", &vpc.SwitchArgs{
 //				VpcId:     defaultZc8RD9.ID(),
-//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//				ZoneId:    pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				CidrBlock: pulumi.String("192.168.1.0/24"),
 //			})
 //			if err != nil {
@@ -74,13 +74,13 @@ import (
 //				PaymentType:         pulumi.String("PayAsYouGo"),
 //				SslEnabled:          pulumi.Int(0),
 //				EngineVersion:       pulumi.String("6.0"),
-//				ZoneId:              pulumi.String(_default.Zones[0].Id),
+//				ZoneId:              pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				VswitchId:           defaultRv5UXt.ID(),
 //				StorageSize:         pulumi.Int(50),
 //				MasterCu:            pulumi.Int(4),
 //				VpcId:               defaultZc8RD9.ID(),
 //				DbInstanceMode:      pulumi.String("StorageElastic"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -97,7 +97,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = gpdb.NewDbResourceGroup(ctx, "default", &gpdb.DbResourceGroupArgs{
-//				ResourceGroupConfig: pulumi.String(json0),
+//				ResourceGroupConfig: pulumi.String(pulumi.String(json0)),
 //				DbInstanceId:        defaultJXWSlW.ID(),
 //				ResourceGroupName:   pulumi.String("yb_example_group"),
 //			})

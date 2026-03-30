@@ -71,7 +71,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				CidrBlock: pulumi.String("10.4.0.0/24"),
 //				VpcId:     _default.ID(),
-//				ZoneId:    pulumi.String(enhanced.Zones[0].ZoneId),
+//				ZoneId:    pulumi.String(pulumi.String(enhanced.Zones[0].ZoneId)),
 //			})
 //			if err != nil {
 //				return err
@@ -107,19 +107,19 @@ import (
 //				return err
 //			}
 //			defaultKeyPair, err := ecs.NewKeyPair(ctx, "default", &ecs.KeyPairArgs{
-//				KeyPairName: pulumi.String(keyName),
+//				KeyPairName: pulumi.String(pulumi.String(keyName)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				NodePoolName: pulumi.String(name),
+//				NodePoolName: pulumi.String(pulumi.String(name)),
 //				ClusterId:    defaultManagedKubernetes.ID(),
 //				VswitchIds: pulumi.StringArray{
 //					defaultSwitch.ID(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//					pulumi.String(pulumi.String(cloudEfficiency.InstanceTypes[0].Id)),
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),

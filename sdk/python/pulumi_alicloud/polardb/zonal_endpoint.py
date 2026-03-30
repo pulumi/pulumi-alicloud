@@ -514,7 +514,7 @@ class ZonalEndpoint(pulumi.CustomResource):
             ens_region_id="tr-Istanbul-1",
             vpc_id=default.id,
             vswitch_id=default_vswitch.id,
-            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config if v != None}) for node, config in db_cluster_nodes_configs})
+            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config.items() if v != None}) for node, config in db_cluster_nodes_configs.items()})
         default_zonal_endpoint = alicloud.polardb.ZonalEndpoint("default",
             db_cluster_id=default_zonal_db_cluster.id,
             db_cluster_nodes_ids=default_zonal_db_cluster.db_cluster_nodes_ids,
@@ -605,7 +605,7 @@ class ZonalEndpoint(pulumi.CustomResource):
             ens_region_id="tr-Istanbul-1",
             vpc_id=default.id,
             vswitch_id=default_vswitch.id,
-            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config if v != None}) for node, config in db_cluster_nodes_configs})
+            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config.items() if v != None}) for node, config in db_cluster_nodes_configs.items()})
         default_zonal_endpoint = alicloud.polardb.ZonalEndpoint("default",
             db_cluster_id=default_zonal_db_cluster.id,
             db_cluster_nodes_ids=default_zonal_db_cluster.db_cluster_nodes_ids,

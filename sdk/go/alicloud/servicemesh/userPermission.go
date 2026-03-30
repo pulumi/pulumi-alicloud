@@ -77,7 +77,7 @@ import (
 //				return err
 //			}
 //			defaultUser, err := ram.NewUser(ctx, "default", &ram.UserArgs{
-//				Name: pulumi.String(name),
+//				Name: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -86,7 +86,7 @@ import (
 //				ServiceMeshName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				Edition:         pulumi.String("Default"),
 //				ClusterSpec:     pulumi.String("standard"),
-//				Version:         pulumi.String(_default.Versions[0].Version),
+//				Version:         pulumi.String(pulumi.String(_default.Versions[0].Version)),
 //				Network: &servicemesh.ServiceMeshNetworkArgs{
 //					VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
 //					VswitcheLists: []*string{

@@ -53,13 +53,13 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:     defaultNetwork.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
-//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//				ZoneId:    pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = alikafka.NewInstance(ctx, "default", &alikafka.InstanceArgs{
-//				Name:         pulumi.String(instanceName),
+//				Name:         pulumi.String(pulumi.String(instanceName)),
 //				PartitionNum: pulumi.Int(50),
 //				DiskType:     pulumi.Int(1),
 //				DiskSize:     pulumi.Int(500),

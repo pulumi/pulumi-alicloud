@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				Name:      pulumi.String(name),
+//				Name:      pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -72,36 +72,36 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-//				ImageId:                 pulumi.String(defaultGetImages.Images[0].Id),
-//				InstanceType:            pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:                 pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+//				InstanceType:            pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
-//				InstanceName: pulumi.String(name),
+//				InstanceName: pulumi.String(pulumi.String(name)),
 //				VswitchId:    defaultSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
-//				LoadBalancerName: pulumi.String(name),
+//				LoadBalancerName: pulumi.String(pulumi.String(name)),
 //				VswitchId:        defaultSwitch.ID(),
 //				LoadBalancerSpec: pulumi.String("slb.s1.small"),
 //			})

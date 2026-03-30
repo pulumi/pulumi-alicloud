@@ -57,7 +57,7 @@ import (
 //			_, err = eventbridge.NewEventSourceV2(ctx, "default", &eventbridge.EventSourceV2Args{
 //				EventBusName:         defaultEventBus.EventBusName,
 //				EventSourceName:      pulumi.Sprintf("%v-%v", name, _default.Result),
-//				Description:          pulumi.String(name),
+//				Description:          pulumi.String(pulumi.String(name)),
 //				LinkedExternalSource: pulumi.Bool(true),
 //				SourceHttpEventParameters: &eventbridge.EventSourceV2SourceHttpEventParametersArgs{
 //					Type:           pulumi.String("HTTP"),

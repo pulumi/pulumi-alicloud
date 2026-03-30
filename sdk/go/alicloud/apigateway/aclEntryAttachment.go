@@ -39,7 +39,7 @@ import (
 //				name = param
 //			}
 //			_default, err := apigateway.NewAccessControlList(ctx, "default", &apigateway.AccessControlListArgs{
-//				AccessControlListName: pulumi.String(name),
+//				AccessControlListName: pulumi.String(pulumi.String(name)),
 //				AddressIpVersion:      pulumi.String("ipv4"),
 //			})
 //			if err != nil {

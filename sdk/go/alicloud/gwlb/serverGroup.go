@@ -65,7 +65,7 @@ import (
 //			}
 //			defaultc3uVID, err := vpc.NewSwitch(ctx, "defaultc3uVID", &vpc.SwitchArgs{
 //				VpcId:       defaultEaxcvb.ID(),
-//				ZoneId:      pulumi.String(zoneId1),
+//				ZoneId:      pulumi.String(pulumi.String(zoneId1)),
 //				CidrBlock:   pulumi.String("10.0.0.0/24"),
 //				VswitchName: pulumi.String("tf-example-vsw1"),
 //			})
@@ -124,7 +124,7 @@ import (
 //				},
 //				VpcId:           defaultEaxcvb.ID(),
 //				ServerGroupType: pulumi.String("Instance"),
-//				ServerGroupName: pulumi.String(name),
+//				ServerGroupName: pulumi.String(pulumi.String(name)),
 //				HealthCheckConfig: &gwlb.ServerGroupHealthCheckConfigArgs{
 //					HealthCheckConnectPort:    pulumi.Int(80),
 //					HealthCheckEnabled:        pulumi.Bool(true),
@@ -141,7 +141,7 @@ import (
 //					HealthyThreshold:    pulumi.Int(2),
 //					UnhealthyThreshold:  pulumi.Int(2),
 //				},
-//				ResourceGroupId: pulumi.String(_default.Ids[0]),
+//				ResourceGroupId: pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err

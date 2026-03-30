@@ -81,11 +81,11 @@ import (
 //			}
 //			_, err = vpn.NewGateway(ctx, "default", &vpn.GatewayArgs{
 //				VpnType:                   pulumi.String("Normal"),
-//				VpnGatewayName:            pulumi.String(name),
-//				VswitchId:                 pulumi.String(default0.Ids[0]),
-//				DisasterRecoveryVswitchId: pulumi.String(default1.Ids[0]),
+//				VpnGatewayName:            pulumi.String(pulumi.String(name)),
+//				VswitchId:                 pulumi.String(pulumi.String(default0.Ids[0])),
+//				DisasterRecoveryVswitchId: pulumi.String(pulumi.String(default1.Ids[0])),
 //				AutoPay:                   pulumi.Bool(true),
-//				VpcId:                     pulumi.String(defaultGetNetworks.Ids[0]),
+//				VpcId:                     pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //				NetworkType:               pulumi.String("public"),
 //				PaymentType:               pulumi.String("Subscription"),
 //				EnableIpsec:               pulumi.Bool(true),

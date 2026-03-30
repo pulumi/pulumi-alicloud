@@ -65,7 +65,7 @@ import (
 //				ClusterName:     pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				ClusterType:     pulumi.Int(2),
 //				NetworkMode:     pulumi.Int(2),
-//				LogicalRegionId: pulumi.String(_default.Regions[0].Id),
+//				LogicalRegionId: pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //				VpcId:           defaultNetwork.ID(),
 //			})
 //			if err != nil {

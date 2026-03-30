@@ -63,9 +63,9 @@ import (
 //				projectName = param
 //			}
 //			_, err := maxcompute.NewRoleUserAttachment(ctx, "default", &maxcompute.RoleUserAttachmentArgs{
-//				RoleName:    pulumi.String(roleName),
-//				User:        pulumi.String(ramRole),
-//				ProjectName: pulumi.String(projectName),
+//				RoleName:    pulumi.String(pulumi.String(roleName)),
+//				User:        pulumi.String(pulumi.String(ramRole)),
+//				ProjectName: pulumi.String(pulumi.String(projectName)),
 //			})
 //			if err != nil {
 //				return err

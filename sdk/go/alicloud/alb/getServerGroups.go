@@ -39,7 +39,7 @@ import (
 //				name = param
 //			}
 //			_default, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
@@ -48,7 +48,7 @@ import (
 //			defaultServerGroup, err := alb.NewServerGroup(ctx, "default", &alb.ServerGroupArgs{
 //				Protocol:        pulumi.String("HTTP"),
 //				VpcId:           _default.ID(),
-//				ServerGroupName: pulumi.String(name),
+//				ServerGroupName: pulumi.String(pulumi.String(name)),
 //				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
 //					HealthCheckEnabled: pulumi.Bool(false),
 //				},

@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_default, err := message.NewServiceTopic(ctx, "default", &message.ServiceTopicArgs{
-//				TopicName:      pulumi.String(name),
+//				TopicName:      pulumi.String(pulumi.String(name)),
 //				MaxMessageSize: pulumi.Int(16888),
 //				EnableLogging:  pulumi.Bool(true),
 //			})
@@ -50,10 +50,10 @@ import (
 //			}
 //			_, err = message.NewServiceSubscription(ctx, "default", &message.ServiceSubscriptionArgs{
 //				TopicName:           _default.TopicName,
-//				SubscriptionName:    pulumi.String(name),
+//				SubscriptionName:    pulumi.String(pulumi.String(name)),
 //				Endpoint:            pulumi.String("http://example.com"),
 //				PushType:            pulumi.String("http"),
-//				FilterTag:           pulumi.String(name),
+//				FilterTag:           pulumi.String(pulumi.String(name)),
 //				NotifyContentFormat: pulumi.String("XML"),
 //				NotifyStrategy:      pulumi.String("BACKOFF_RETRY"),
 //			})

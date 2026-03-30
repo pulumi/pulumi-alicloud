@@ -66,8 +66,8 @@ import (
 //				EngineVersion:     pulumi.String("4.4"),
 //				DbInstanceClass:   pulumi.String("mdb.shard.2x.xlarge.d"),
 //				DbInstanceStorage: pulumi.Int(20),
-//				VswitchId:         pulumi.String(defaultGetSwitches.Ids[0]),
-//				Name:              pulumi.String(name),
+//				VswitchId:         pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
+//				Name:              pulumi.String(pulumi.String(name)),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("Instance"),

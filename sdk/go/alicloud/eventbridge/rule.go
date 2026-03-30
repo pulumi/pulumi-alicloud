@@ -48,13 +48,13 @@ import (
 //				return err
 //			}
 //			defaultEventBus, err := eventbridge.NewEventBus(ctx, "default", &eventbridge.EventBusArgs{
-//				EventBusName: pulumi.String(name),
+//				EventBusName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			queue1, err := mns.NewQueue(ctx, "queue1", &mns.QueueArgs{
-//				Name: pulumi.String(name),
+//				Name: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +74,7 @@ import (
 //			}, nil).Result
 //			_, err = eventbridge.NewRule(ctx, "example", &eventbridge.RuleArgs{
 //				EventBusName:  defaultEventBus.EventBusName,
-//				RuleName:      pulumi.String(name),
+//				RuleName:      pulumi.String(pulumi.String(name)),
 //				Description:   pulumi.String("example"),
 //				FilterPattern: pulumi.String("{\"source\":[\"crmabc.newsletter\"],\"type\":[\"UserSignUp\", \"UserLogin\"]}"),
 //				Targets: eventbridge.RuleTargetArray{

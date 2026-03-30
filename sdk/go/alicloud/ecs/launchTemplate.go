@@ -44,11 +44,11 @@ import (
 //			_, err = ecs.NewLaunchTemplate(ctx, "template", &ecs.LaunchTemplateArgs{
 //				Name:                        pulumi.String("tf-test-template"),
 //				Description:                 pulumi.String("test1"),
-//				ImageId:                     pulumi.String(images.Images[0].Id),
+//				ImageId:                     pulumi.String(pulumi.String(images.Images[0].Id)),
 //				HostName:                    pulumi.String("tf-test-host"),
 //				InstanceChargeType:          pulumi.String("PrePaid"),
 //				InstanceName:                pulumi.String("tf-instance-name"),
-//				InstanceType:                pulumi.String(instances.Instances[0].InstanceType),
+//				InstanceType:                pulumi.String(pulumi.String(instances.Instances[0].InstanceType)),
 //				InternetChargeType:          pulumi.String("PayByBandwidth"),
 //				InternetMaxBandwidthIn:      pulumi.Int(5),
 //				InternetMaxBandwidthOut:     pulumi.Int(0),

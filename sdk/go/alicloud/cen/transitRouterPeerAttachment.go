@@ -49,7 +49,7 @@ import (
 //				peerRegion = param
 //			}
 //			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
@@ -86,12 +86,12 @@ import (
 //			_, err = cen.NewTransitRouterPeerAttachment(ctx, "example", &cen.TransitRouterPeerAttachmentArgs{
 //				CenId:                              example.ID(),
 //				TransitRouterId:                    exampleTransitRouter.TransitRouterId,
-//				PeerTransitRouterRegionId:          pulumi.String(peerRegion),
+//				PeerTransitRouterRegionId:          pulumi.String(pulumi.String(peerRegion)),
 //				PeerTransitRouterId:                peer.TransitRouterId,
 //				CenBandwidthPackageId:              exampleBandwidthPackageAttachment.BandwidthPackageId,
 //				Bandwidth:                          pulumi.Int(5),
-//				TransitRouterAttachmentDescription: pulumi.String(name),
-//				TransitRouterAttachmentName:        pulumi.String(name),
+//				TransitRouterAttachmentDescription: pulumi.String(pulumi.String(name)),
+//				TransitRouterAttachmentName:        pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

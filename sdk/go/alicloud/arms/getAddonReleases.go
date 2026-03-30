@@ -73,7 +73,7 @@ import (
 // Description: pulumi.String("api-resource-test1-hz"),
 // VpcId: vpc.ID(),
 // VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-// ZoneId: pulumi.String(enhanced.Zones[0].ZoneId),
+// ZoneId: pulumi.String(pulumi.String(enhanced.Zones[0].ZoneId)),
 // CidrBlock: pulumi.String(vpc.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
 // %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
 // return invoke.Result, nil
@@ -173,7 +173,7 @@ import (
 // AddonName: pulumi.String("mysql"),
 // EnvironmentId: defaultEnvironment.ID(),
 // AddonVersion: pulumi.String("0.0.2"),
-// Values: pulumi.String(json0),
+// Values: pulumi.String(pulumi.String(json0)),
 // })
 // if err != nil {
 // return err

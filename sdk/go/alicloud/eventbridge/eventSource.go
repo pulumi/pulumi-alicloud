@@ -68,7 +68,7 @@ import (
 //			_, err = eventbridge.NewEventSource(ctx, "default", &eventbridge.EventSourceArgs{
 //				EventBusName:         defaultEventBus.EventBusName,
 //				EventSourceName:      pulumi.Sprintf("%v-%v", name, _default.Result),
-//				Description:          pulumi.String(name),
+//				Description:          pulumi.String(pulumi.String(name)),
 //				LinkedExternalSource: pulumi.Bool(true),
 //				ExternalSourceType:   pulumi.String("MNS"),
 //				ExternalSourceConfig: pulumi.StringMap{

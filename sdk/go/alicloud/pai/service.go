@@ -68,7 +68,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			_, err = pai.NewService(ctx, "default", &pai.ServiceArgs{
 //				Develop:       pulumi.String("false"),
-//				ServiceConfig: pulumi.String(json0),
+//				ServiceConfig: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err

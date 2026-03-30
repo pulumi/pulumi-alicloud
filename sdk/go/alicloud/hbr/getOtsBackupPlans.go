@@ -37,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("hbrOtsBackupPlanId", plans[0].Id)
+//			ctx.Export("hbrOtsBackupPlanId", pulumi.Any(plans[0].Id))
 //			return nil
 //		})
 //	}

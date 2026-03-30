@@ -108,7 +108,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -123,15 +123,15 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(defaultGetStocks.Stocks[0].ZoneId),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(defaultGetStocks.Stocks[0].ZoneId)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "default", &cloudstoragegateway.GatewayArgs{
-//				GatewayName:            pulumi.String(name),
-//				Description:            pulumi.String(name),
+//				GatewayName:            pulumi.String(pulumi.String(name)),
+//				Description:            pulumi.String(pulumi.String(name)),
 //				GatewayClass:           pulumi.String("Standard"),
 //				Type:                   pulumi.String("File"),
 //				PaymentType:            pulumi.String("PayAsYouGo"),
@@ -153,7 +153,7 @@ import (
 //				return err
 //			}
 //			defaultGatewayFileShare, err := cloudstoragegateway.NewGatewayFileShare(ctx, "default", &cloudstoragegateway.GatewayFileShareArgs{
-//				GatewayFileShareName: pulumi.String(name),
+//				GatewayFileShareName: pulumi.String(pulumi.String(name)),
 //				GatewayId:            defaultGateway.ID(),
 //				LocalPath:            defaultGatewayCacheDisk.LocalFilePath,
 //				OssBucketName:        defaultBucket.Bucket,
@@ -171,8 +171,8 @@ import (
 //			}
 //			defaultExpressSync, err := cloudstoragegateway.NewExpressSync(ctx, "default", &cloudstoragegateway.ExpressSyncArgs{
 //				BucketName:      defaultGatewayFileShare.OssBucketName,
-//				BucketRegion:    pulumi.String(_default.Regions[0].Id),
-//				Description:     pulumi.String(name),
+//				BucketRegion:    pulumi.String(pulumi.String(_default.Regions[0].Id)),
+//				Description:     pulumi.String(pulumi.String(name)),
 //				ExpressSyncName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //			})
 //			if err != nil {

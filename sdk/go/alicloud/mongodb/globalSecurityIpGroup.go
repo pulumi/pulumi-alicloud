@@ -43,7 +43,7 @@ import (
 //				name = param
 //			}
 //			_, err := mongodb.NewGlobalSecurityIpGroup(ctx, "default", &mongodb.GlobalSecurityIpGroupArgs{
-//				GlobalIgName:         pulumi.String(name),
+//				GlobalIgName:         pulumi.String(pulumi.String(name)),
 //				GlobalSecurityIpList: pulumi.String("192.168.1.1,192.168.1.2,192.168.1.3"),
 //			})
 //			if err != nil {

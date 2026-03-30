@@ -80,7 +80,7 @@ import (
 //	    _ := index
 //
 // __res, err := cloudsso.NewDirectory(ctx, fmt.Sprintf("default-%v", key0), &cloudsso.DirectoryArgs{
-// DirectoryName: pulumi.String(name),
+// DirectoryName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
@@ -104,24 +104,24 @@ import (
 // return &tmp1, nil
 // }).(pulumi.Interface{}PtrOutput)
 // defaultUser, err := cloudsso.NewUser(ctx, "default", &cloudsso.UserArgs{
-// DirectoryId: pulumi.Any(directoryId),
+// DirectoryId: pulumi.String(pulumi.Any(directoryId)),
 // UserName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 // })
 // if err != nil {
 // return err
 // }
 // defaultAccessConfiguration, err := cloudsso.NewAccessConfiguration(ctx, "default", &cloudsso.AccessConfigurationArgs{
-// DirectoryId: pulumi.Any(directoryId),
+// DirectoryId: pulumi.String(pulumi.Any(directoryId)),
 // AccessConfigurationName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = cloudsso.NewAccessManagement(ctx, "default", &cloudsso.AccessManagementArgs{
-// DirectoryId: pulumi.Any(directoryId),
+// DirectoryId: pulumi.String(pulumi.Any(directoryId)),
 // AccessConfigurationId: defaultAccessConfiguration.AccessConfigurationId,
 // TargetType: pulumi.String("RD-Account"),
-// TargetId: pulumi.String(defaultGetResourceDirectories.Directories[0].MasterAccountId),
+// TargetId: pulumi.String(pulumi.String(defaultGetResourceDirectories.Directories[0].MasterAccountId)),
 // PrincipalType: pulumi.String("User"),
 // PrincipalId: defaultUser.UserId,
 // DeprovisionStrategy: pulumi.String("DeprovisionForLastAccessAssignmentOnAccount"),

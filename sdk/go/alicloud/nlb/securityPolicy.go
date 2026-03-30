@@ -46,8 +46,8 @@ import (
 //				return err
 //			}
 //			_, err = nlb.NewSecurityPolicy(ctx, "default", &nlb.SecurityPolicyArgs{
-//				ResourceGroupId:    pulumi.String(_default.Ids[0]),
-//				SecurityPolicyName: pulumi.String(name),
+//				ResourceGroupId:    pulumi.String(pulumi.String(_default.Ids[0])),
+//				SecurityPolicyName: pulumi.String(pulumi.String(name)),
 //				Ciphers: pulumi.StringArray{
 //					pulumi.String("ECDHE-RSA-AES128-SHA"),
 //					pulumi.String("ECDHE-ECDSA-AES128-SHA"),

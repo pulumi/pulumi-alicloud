@@ -44,7 +44,7 @@ import (
 //				name = param
 //			}
 //			_default, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
@@ -58,7 +58,7 @@ import (
 //				DiskAllocationRatio:    pulumi.Int(200),
 //				AllocationPolicy:       pulumi.String("Evenly"),
 //				HostReplacePolicy:      pulumi.String("Manual"),
-//				DedicatedHostGroupDesc: pulumi.String(name),
+//				DedicatedHostGroupDesc: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

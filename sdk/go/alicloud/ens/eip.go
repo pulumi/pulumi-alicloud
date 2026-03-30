@@ -48,7 +48,7 @@ import (
 //				Isp:                pulumi.String("cmcc"),
 //				PaymentType:        pulumi.String("PayAsYouGo"),
 //				EnsRegionId:        pulumi.String("cn-chenzhou-telecom_unicom_cmcc"),
-//				EipName:            pulumi.String(name),
+//				EipName:            pulumi.String(pulumi.String(name)),
 //				InternetChargeType: pulumi.String("95BandwidthByMonth"),
 //			})
 //			if err != nil {

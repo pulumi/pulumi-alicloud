@@ -42,7 +42,7 @@ import (
 //			}
 //			example, err := esa.NewSite(ctx, "example", &esa.SiteArgs{
 //				SiteName:   pulumi.String("compression.example.com"),
-//				InstanceId: pulumi.String(_default.Sites[0].InstanceId),
+//				InstanceId: pulumi.String(pulumi.String(_default.Sites[0].InstanceId)),
 //				Coverage:   pulumi.String("domestic"),
 //				AccessType: pulumi.String("NS"),
 //			})

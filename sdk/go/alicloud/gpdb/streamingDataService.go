@@ -64,7 +64,7 @@ import (
 //			}
 //			default1oSPzX, err := gpdb.NewInstance(ctx, "default1oSPzX", &gpdb.InstanceArgs{
 //				InstanceSpec:        pulumi.String("2C8G"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //				SegNodeNum:          pulumi.Int(2),
 //				SegStorageType:      pulumi.String("cloud_essd"),
 //				InstanceNetworkType: pulumi.String("VPC"),

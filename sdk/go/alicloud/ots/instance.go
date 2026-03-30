@@ -46,7 +46,7 @@ import (
 //			}
 //			_, err = ots.NewInstance(ctx, "default", &ots.InstanceArgs{
 //				Name:        pulumi.Sprintf("%v-%v", name, _default.Result),
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				AccessedBy:  pulumi.String("Vpc"),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),

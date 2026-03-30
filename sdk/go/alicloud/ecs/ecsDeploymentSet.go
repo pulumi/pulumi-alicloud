@@ -41,8 +41,8 @@ import (
 //			}
 //			_, err := ecs.NewEcsDeploymentSet(ctx, "default", &ecs.EcsDeploymentSetArgs{
 //				Strategy:          pulumi.String("Availability"),
-//				DeploymentSetName: pulumi.String(name),
-//				Description:       pulumi.String(name),
+//				DeploymentSetName: pulumi.String(pulumi.String(name)),
+//				Description:       pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

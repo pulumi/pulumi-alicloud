@@ -53,14 +53,14 @@ import (
 //				DbInstanceStorageType: pulumi.String("general_essd"),
 //				InstanceType:          pulumi.String("pg.n2.1c.1m"),
 //				InstanceStorage:       pulumi.Int(100),
-//				VswitchId:             pulumi.String(_default.Ids[0]),
-//				InstanceName:          pulumi.String(name),
+//				VswitchId:             pulumi.String(pulumi.String(_default.Ids[0])),
+//				InstanceName:          pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = rds.NewAiInstance(ctx, "default", &rds.AiInstanceArgs{
-//				AppName:        pulumi.String(name),
+//				AppName:        pulumi.String(pulumi.String(name)),
 //				AppType:        pulumi.String("supabase"),
 //				DbInstanceName: defaultInstance.ID(),
 //			})

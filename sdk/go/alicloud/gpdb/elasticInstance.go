@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String("vpc-123456"),

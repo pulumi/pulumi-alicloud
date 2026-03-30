@@ -42,7 +42,7 @@ import (
 //				name = param
 //			}
 //			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
-//				Name: pulumi.String(name),
+//				Name: pulumi.String(pulumi.String(name)),
 //				Document: pulumi.String(`  {
 //	    \"Statement\": [
 //	      {
@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			_, err = imm.NewProject(ctx, "example", &imm.ProjectArgs{
-//				Project:     pulumi.String(name),
+//				Project:     pulumi.String(pulumi.String(name)),
 //				ServiceRole: role.Name,
 //			})
 //			if err != nil {

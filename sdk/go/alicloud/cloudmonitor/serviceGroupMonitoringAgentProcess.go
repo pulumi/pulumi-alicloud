@@ -42,7 +42,7 @@ import (
 //				name = param
 //			}
 //			_default, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
-//				AlarmContactGroupName: pulumi.String(name),
+//				AlarmContactGroupName: pulumi.String(pulumi.String(name)),
 //				Contacts: pulumi.StringArray{
 //					pulumi.String("user"),
 //					pulumi.String("user1"),
@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "default", &cms.MonitorGroupArgs{
-//				MonitorGroupName: pulumi.String(name),
+//				MonitorGroupName: pulumi.String(pulumi.String(name)),
 //				ContactGroups: pulumi.StringArray{
 //					_default.ID(),
 //				},
@@ -63,11 +63,11 @@ import (
 //			}
 //			_, err = cloudmonitor.NewServiceGroupMonitoringAgentProcess(ctx, "default", &cloudmonitor.ServiceGroupMonitoringAgentProcessArgs{
 //				GroupId:                    defaultMonitorGroup.ID(),
-//				ProcessName:                pulumi.String(name),
+//				ProcessName:                pulumi.String(pulumi.String(name)),
 //				MatchExpressFilterRelation: pulumi.String("or"),
 //				MatchExpresses: cloudmonitor.ServiceGroupMonitoringAgentProcessMatchExpressArray{
 //					&cloudmonitor.ServiceGroupMonitoringAgentProcessMatchExpressArgs{
-//						Name:     pulumi.String(name),
+//						Name:     pulumi.String(pulumi.String(name)),
 //						Value:    pulumi.String("*"),
 //						Function: pulumi.String("all"),
 //					},

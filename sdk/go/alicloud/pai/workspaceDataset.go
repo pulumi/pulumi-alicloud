@@ -43,9 +43,9 @@ import (
 //				name = param
 //			}
 //			defaultWorkspace, err := pai.NewWorkspaceWorkspace(ctx, "defaultWorkspace", &pai.WorkspaceWorkspaceArgs{
-//				Description:   pulumi.String(name),
-//				DisplayName:   pulumi.String(name),
-//				WorkspaceName: pulumi.String(name),
+//				Description:   pulumi.String(pulumi.String(name)),
+//				DisplayName:   pulumi.String(pulumi.String(name)),
+//				WorkspaceName: pulumi.String(pulumi.String(name)),
 //				EnvTypes: pulumi.StringArray{
 //					pulumi.String("prod"),
 //				},
@@ -61,10 +61,10 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = pai.NewWorkspaceDataset(ctx, "default", &pai.WorkspaceDatasetArgs{
-//				Options:        pulumi.String(json0),
-//				Description:    pulumi.String(name),
+//				Options:        pulumi.String(pulumi.String(json0)),
+//				Description:    pulumi.String(pulumi.String(name)),
 //				Accessibility:  pulumi.String("PRIVATE"),
-//				DatasetName:    pulumi.String(name),
+//				DatasetName:    pulumi.String(pulumi.String(name)),
 //				DataSourceType: pulumi.String("NAS"),
 //				SourceType:     pulumi.String("ITAG"),
 //				WorkspaceId:    defaultWorkspace.ID(),

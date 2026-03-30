@@ -60,7 +60,7 @@ import (
 //			securityGroup, err := ecs.NewSecurityGroup(ctx, "security_group", &ecs.SecurityGroupArgs{
 //				Description:       pulumi.String("terraform_example_group"),
 //				SecurityGroupName: pulumi.String("terraform_example_group"),
-//				VpcId:             pulumi.String(_default.Ids[0]),
+//				VpcId:             pulumi.String(pulumi.String(_default.Ids[0])),
 //				SecurityGroupType: pulumi.String("normal"),
 //				InnerAccessPolicy: pulumi.String("Accept"),
 //			})
@@ -69,14 +69,14 @@ import (
 //			}
 //			workspace, err := dms.NewEnterpriseWorkspace(ctx, "workspace", &dms.EnterpriseWorkspaceArgs{
 //				Description:   pulumi.String("terraform-example"),
-//				VpcId:         pulumi.String(_default.Ids[0]),
+//				VpcId:         pulumi.String(pulumi.String(_default.Ids[0])),
 //				WorkspaceName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dms.NewAirflow(ctx, "default", &dms.AirflowArgs{
-//				VpcId:                    pulumi.String(_default.Ids[0]),
+//				VpcId:                    pulumi.String(pulumi.String(_default.Ids[0])),
 //				OssPath:                  pulumi.String("/"),
 //				DagsDir:                  pulumi.String("default/dags"),
 //				ZoneId:                   pulumi.String("cn-hangzhou-h"),
@@ -89,7 +89,7 @@ import (
 //				StartupFile:              pulumi.String("default/startup.sh"),
 //				AppSpec:                  pulumi.String("SMALL"),
 //				OssBucketName:            pulumi.String("hansheng"),
-//				VswitchId:                pulumi.String(defaultGetSwitches.Ids[0]),
+//				VswitchId:                pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //				WorkspaceId:              workspace.ID(),
 //			})
 //			if err != nil {

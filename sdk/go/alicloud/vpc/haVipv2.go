@@ -51,8 +51,8 @@ import (
 //				return err
 //			}
 //			defaultVpc, err := vpc.NewNetwork(ctx, "defaultVpc", &vpc.NetworkArgs{
-//				Description: pulumi.String(name),
-//				VpcName:     pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
+//				VpcName:     pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
@@ -62,8 +62,8 @@ import (
 //				VpcId:       defaultVpc.ID(),
 //				CidrBlock:   pulumi.String("192.168.0.0/21"),
 //				VswitchName: pulumi.Sprintf("%v1", name),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				Description: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				Description: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -83,9 +83,9 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewHaVipv2(ctx, "default", &vpc.HaVipv2Args{
-//				Description:     pulumi.String(name),
+//				Description:     pulumi.String(pulumi.String(name)),
 //				VswitchId:       defaultVswitch.ID(),
-//				HaVipName:       pulumi.String(name),
+//				HaVipName:       pulumi.String(pulumi.String(name)),
 //				IpAddress:       pulumi.String("192.168.1.101"),
 //				ResourceGroupId: defaultRg.ID(),
 //			})

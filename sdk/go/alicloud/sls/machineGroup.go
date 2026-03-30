@@ -47,14 +47,14 @@ import (
 //			}
 //			_, err := log.NewProject(ctx, "defaultyJqrue", &log.ProjectArgs{
 //				Description: pulumi.String("for terraform example"),
-//				Name:        pulumi.String(projectName),
+//				Name:        pulumi.String(pulumi.String(projectName)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sls.NewMachineGroup(ctx, "default", &sls.MachineGroupArgs{
 //				GroupName:           pulumi.String("group1"),
-//				ProjectName:         pulumi.String(projectName),
+//				ProjectName:         pulumi.String(pulumi.String(projectName)),
 //				MachineIdentifyType: pulumi.String("ip"),
 //				GroupAttribute: &sls.MachineGroupGroupAttributeArgs{
 //					GroupTopic:   pulumi.String("example"),

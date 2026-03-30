@@ -52,13 +52,13 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewCommonBandwithPackage(ctx, "default", &vpc.CommonBandwithPackageArgs{
-//				BandwidthPackageName: pulumi.String(name),
-//				Description:          pulumi.String(name),
+//				BandwidthPackageName: pulumi.String(pulumi.String(name)),
+//				Description:          pulumi.String(pulumi.String(name)),
 //				Isp:                  pulumi.String("BGP"),
 //				Bandwidth:            pulumi.String("1000"),
 //				Ratio:                pulumi.Int(100),
 //				InternetChargeType:   pulumi.String("PayByBandwidth"),
-//				ResourceGroupId:      pulumi.String(_default.Ids[0]),
+//				ResourceGroupId:      pulumi.String(pulumi.String(_default.Ids[0])),
 //				SecurityProtectionTypes: pulumi.StringArray{
 //					pulumi.String("AntiDDoS_Enhanced"),
 //				},

@@ -45,7 +45,7 @@ import (
 //				Description:    pulumi.String("terraform-example"),
 //				EncryptType:    pulumi.Int(0),
 //				FileSystemType: pulumi.String("standard"),
-//				ZoneId:         pulumi.String(example.Zones[0].ZoneId),
+//				ZoneId:         pulumi.String(pulumi.String(example.Zones[0].ZoneId)),
 //			})
 //			if err != nil {
 //				return err

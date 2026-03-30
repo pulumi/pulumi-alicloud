@@ -45,7 +45,7 @@ import (
 //					pulumi.String("aa"),
 //				},
 //				Description:                pulumi.String("aa"),
-//				ApplicationAccessPointName: pulumi.String(name),
+//				ApplicationAccessPointName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

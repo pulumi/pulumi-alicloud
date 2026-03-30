@@ -60,7 +60,7 @@ import (
 //			}
 //			_, err := maxcompute.NewQuota(ctx, "default", &maxcompute.QuotaArgs{
 //				PaymentType:   pulumi.String("Subscription"),
-//				PartNickName:  pulumi.String(partNickName),
+//				PartNickName:  pulumi.String(pulumi.String(partNickName)),
 //				CommodityData: pulumi.String("{\"CU\":80,\"ord_time\":\"1:Month\",\"autoRenew\":false} "),
 //				CommodityCode: pulumi.String("odpsplus"),
 //				SubQuotaInfoLists: maxcompute.QuotaSubQuotaInfoListArray{
@@ -84,11 +84,11 @@ import (
 //							EnablePriority:   pulumi.Bool(false),
 //							ForceReservedMin: pulumi.Bool(false),
 //						},
-//						NickName: pulumi.String(subQuotaNickname1),
+//						NickName: pulumi.String(pulumi.String(subQuotaNickname1)),
 //						Type:     pulumi.String("FUXI_OFFLINE"),
 //					},
 //					&maxcompute.QuotaSubQuotaInfoListArgs{
-//						NickName: pulumi.String(subQuotaNickname2),
+//						NickName: pulumi.String(pulumi.String(subQuotaNickname2)),
 //						Type:     pulumi.String("FUXI_OFFLINE"),
 //						Parameter: &maxcompute.QuotaSubQuotaInfoListParameterArgs{
 //							MinCu:            pulumi.Int(60),

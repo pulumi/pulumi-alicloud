@@ -584,7 +584,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			_, err = oss.NewBucketPolicy(ctx, "example", &oss.BucketPolicyArgs{
 //				Bucket: example.Bucket,
-//				Policy: pulumi.String(json0),
+//				Policy: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err
@@ -902,7 +902,7 @@ import (
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-accelerate", &oss.BucketArgs{
 //				Bucket:          pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
-//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(pulumi.String(_default.Groups[0].Id)),
 //			})
 //			if err != nil {
 //				return err

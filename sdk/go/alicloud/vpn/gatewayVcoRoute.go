@@ -42,15 +42,15 @@ import (
 //				name = param
 //			}
 //			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
 //				CenId:                    defaultInstance.ID(),
-//				TransitRouterDescription: pulumi.String(name),
-//				TransitRouterName:        pulumi.String(name),
+//				TransitRouterDescription: pulumi.String(pulumi.String(name)),
+//				TransitRouterName:        pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -58,8 +58,8 @@ import (
 //			defaultTransitRouterCidr, err := cen.NewTransitRouterCidr(ctx, "default", &cen.TransitRouterCidrArgs{
 //				TransitRouterId:       defaultTransitRouter.TransitRouterId,
 //				Cidr:                  pulumi.String("192.168.0.0/16"),
-//				TransitRouterCidrName: pulumi.String(name),
-//				Description:           pulumi.String(name),
+//				TransitRouterCidrName: pulumi.String(pulumi.String(name)),
+//				Description:           pulumi.String(pulumi.String(name)),
 //				PublishCidrRoute:      pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -70,10 +70,10 @@ import (
 //				return err
 //			}
 //			defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "default", &vpn.CustomerGatewayArgs{
-//				CustomerGatewayName: pulumi.String(name),
+//				CustomerGatewayName: pulumi.String(pulumi.String(name)),
 //				IpAddress:           pulumi.String("42.104.22.210"),
 //				Asn:                 pulumi.String("45014"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -117,15 +117,15 @@ import (
 //				},
 //				EnableDpd:          pulumi.Bool(true),
 //				EnableNatTraversal: pulumi.Bool(true),
-//				VpnAttachmentName:  pulumi.String(name),
+//				VpnAttachmentName:  pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultTransitRouterVpnAttachment, err := cen.NewTransitRouterVpnAttachment(ctx, "default", &cen.TransitRouterVpnAttachmentArgs{
 //				AutoPublishRouteEnabled:            pulumi.Bool(false),
-//				TransitRouterAttachmentDescription: pulumi.String(name),
-//				TransitRouterAttachmentName:        pulumi.String(name),
+//				TransitRouterAttachmentDescription: pulumi.String(pulumi.String(name)),
+//				TransitRouterAttachmentName:        pulumi.String(pulumi.String(name)),
 //				CenId:                              defaultTransitRouter.CenId,
 //				TransitRouterId:                    defaultTransitRouterCidr.TransitRouterId,
 //				VpnId:                              defaultGatewayVpnAttachment.ID(),

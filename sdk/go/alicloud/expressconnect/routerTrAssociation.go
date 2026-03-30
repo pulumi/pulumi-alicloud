@@ -69,7 +69,7 @@ import (
 //				return err
 //			}
 //			default418DC9, err := cen.NewInstance(ctx, "default418DC9", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -87,11 +87,11 @@ import (
 //			_, err = expressconnect.NewRouterTrAssociation(ctx, "default", &expressconnect.RouterTrAssociationArgs{
 //				EcrId:                defaultpX0KlC.ID(),
 //				CenId:                default418DC9.ID(),
-//				TransitRouterOwnerId: pulumi.String(current.Id),
+//				TransitRouterOwnerId: pulumi.Int(pulumi.String(current.Id)),
 //				AllowedPrefixes: pulumi.StringArray{
-//					pulumi.String(alowprefix1),
-//					pulumi.String(allowprefix3),
-//					pulumi.String(allowprefix2),
+//					pulumi.String(pulumi.String(alowprefix1)),
+//					pulumi.String(pulumi.String(allowprefix3)),
+//					pulumi.String(pulumi.String(allowprefix2)),
 //				},
 //				TransitRouterId:     defaultRYcjsc.TransitRouterId,
 //				AssociationRegionId: pulumi.String("cn-hangzhou"),

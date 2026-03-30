@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			_, err = threatdetection.NewAssetBind(ctx, "default", &threatdetection.AssetBindArgs{
-//				Uuid:        pulumi.String(_default.Assets[0].Uuid),
+//				Uuid:        pulumi.String(pulumi.String(_default.Assets[0].Uuid)),
 //				AuthVersion: pulumi.Int(5),
 //			})
 //			if err != nil {

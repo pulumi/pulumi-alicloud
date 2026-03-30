@@ -63,7 +63,7 @@ import (
 //				DisplayName:           pulumi.String("tf_new_api_display"),
 //				DevRoleDisabled:       pulumi.Bool(true),
 //				DevEnvironmentEnabled: pulumi.Bool(false),
-//				ResourceGroupId:       pulumi.String(_default.Ids[0]),
+//				ResourceGroupId:       pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err
@@ -92,11 +92,11 @@ import (
 //			json0 := string(tmpJSON0)
 //			_, err = dataworks.NewDataSource(ctx, "default", &dataworks.DataSourceArgs{
 //				Type:                     pulumi.String("hive"),
-//				DataSourceName:           pulumi.String(name),
-//				ConnectionProperties:     pulumi.String(json0),
+//				DataSourceName:           pulumi.String(pulumi.String(name)),
+//				ConnectionProperties:     pulumi.String(pulumi.String(json0)),
 //				ConnectionPropertiesMode: pulumi.String("UrlMode"),
 //				ProjectId:                defaultkguw4R.ID(),
-//				Description:              pulumi.String(name),
+//				Description:              pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

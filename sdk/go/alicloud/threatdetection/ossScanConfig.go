@@ -92,7 +92,7 @@ import (
 //					pulumi.Int(4),
 //					pulumi.Int(3),
 //				},
-//				OssScanConfigName: pulumi.String(name),
+//				OssScanConfigName: pulumi.String(pulumi.String(name)),
 //				EndTime:           pulumi.String("00:00:02"),
 //				StartTime:         pulumi.String("00:00:01"),
 //				Enable:            pulumi.Int(1),

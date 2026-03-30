@@ -69,7 +69,7 @@ import (
 //			}
 //			defaultoZAPmO, err := vpc.NewSwitch(ctx, "defaultoZAPmO", &vpc.SwitchArgs{
 //				VpcId:     defaultkyVC70.ID(),
-//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//				ZoneId:    pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
 //			})
 //			if err != nil {
@@ -85,7 +85,7 @@ import (
 //			}
 //			defaultVtUpDh, err := nas.NewFileSystem(ctx, "defaultVtUpDh", &nas.FileSystemArgs{
 //				StorageType:    pulumi.String("Performance"),
-//				ZoneId:         pulumi.String(azone),
+//				ZoneId:         pulumi.String(pulumi.String(azone)),
 //				EncryptType:    pulumi.Int(0),
 //				ProtocolType:   pulumi.String("NFS"),
 //				FileSystemType: pulumi.String("standard"),
@@ -99,7 +99,7 @@ import (
 //				AccessGroup:     defaultBbc7ev.AccessGroupName,
 //				VswitchId:       defaultoZAPmO.ID(),
 //				FileSystemId:    defaultVtUpDh.ID(),
-//				AccessPointName: pulumi.String(name),
+//				AccessPointName: pulumi.String(pulumi.String(name)),
 //				PosixUser: &nas.AccessPointPosixUserArgs{
 //					PosixGroupId: pulumi.Int(123),
 //					PosixUserId:  pulumi.Int(123),

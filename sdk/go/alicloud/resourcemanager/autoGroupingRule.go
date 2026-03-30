@@ -75,13 +75,13 @@ import (
 //
 //					},
 //				},
-//				RuleDesc:              pulumi.String(name),
+//				RuleDesc:              pulumi.String(pulumi.String(name)),
 //				RuleType:              pulumi.String("custom_condition"),
 //				RegionIdsScope:        pulumi.String("cn-hangzhou,cn-shanghai"),
 //				ResourceIdsScope:      pulumi.String("imock-xxxxxx"),
 //				ResourceGroupIdsScope: pulumi.String("rg-aek22*****3sbvz"),
 //				ResourceTypesScope:    pulumi.String("ecs.instance,vpc.vpc"),
-//				RuleName:              pulumi.String(name),
+//				RuleName:              pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

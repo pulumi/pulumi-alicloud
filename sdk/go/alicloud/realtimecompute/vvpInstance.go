@@ -94,10 +94,10 @@ import (
 //					},
 //				},
 //				VvpInstanceName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				VpcId:           pulumi.String(defaultGetNetworks.Ids[0]),
-//				ZoneId:          pulumi.String(zoneId),
+//				VpcId:           pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
+//				ZoneId:          pulumi.String(pulumi.String(zoneId)),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.String(defaultGetSwitches.Ids[0]),
+//					pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //				},
 //				PaymentType: pulumi.String("PayAsYouGo"),
 //			})

@@ -70,34 +70,34 @@ import (
 //				return err
 //			}
 //			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/16"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(exampleGetZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(exampleGetZones.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				Name:        pulumi.String(name),
-//				Description: pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //				VpcId:       exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleInstance, err := ecs.NewInstance(ctx, "example", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(exampleGetZones.Zones[0].Id),
-//				InstanceName:     pulumi.String(name),
-//				ImageId:          pulumi.String(exampleGetImages.Images[0].Id),
-//				InstanceType:     pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id),
+//				AvailabilityZone: pulumi.String(pulumi.String(exampleGetZones.Zones[0].Id)),
+//				InstanceName:     pulumi.String(pulumi.String(name)),
+//				ImageId:          pulumi.String(pulumi.String(exampleGetImages.Images[0].Id)),
+//				InstanceType:     pulumi.String(pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id)),
 //				SecurityGroups: pulumi.StringArray{
 //					exampleSecurityGroup.ID(),
 //				},
@@ -109,8 +109,8 @@ import (
 //			_, err = alb.NewServerGroup(ctx, "example", &alb.ServerGroupArgs{
 //				Protocol:        pulumi.String("HTTP"),
 //				VpcId:           exampleNetwork.ID(),
-//				ServerGroupName: pulumi.String(name),
-//				ResourceGroupId: pulumi.String(example.Groups[0].Id),
+//				ServerGroupName: pulumi.String(pulumi.String(name)),
+//				ResourceGroupId: pulumi.String(pulumi.String(example.Groups[0].Id)),
 //				StickySessionConfig: &alb.ServerGroupStickySessionConfigArgs{
 //					StickySessionEnabled: pulumi.Bool(true),
 //					Cookie:               pulumi.String("tf-example"),
@@ -136,7 +136,7 @@ import (
 //				},
 //				Servers: alb.ServerGroupServerArray{
 //					&alb.ServerGroupServerArgs{
-//						Description: pulumi.String(name),
+//						Description: pulumi.String(pulumi.String(name)),
 //						Port:        pulumi.Int(80),
 //						ServerId:    exampleInstance.ID(),
 //						ServerIp:    exampleInstance.PrivateIp,

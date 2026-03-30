@@ -43,10 +43,10 @@ import (
 //				name = param
 //			}
 //			_, err := vpn.NewCustomerGateway(ctx, "default", &vpn.CustomerGatewayArgs{
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //				IpAddress:           pulumi.String("4.3.2.10"),
 //				Asn:                 pulumi.String("1219002"),
-//				CustomerGatewayName: pulumi.String(name),
+//				CustomerGatewayName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

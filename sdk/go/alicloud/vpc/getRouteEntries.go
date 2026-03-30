@@ -60,7 +60,7 @@ import (
 //				name = param
 //			}
 //			fooNetwork, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
-//				Name:      pulumi.String(name),
+//				Name:      pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.1.0.0/21"),
 //			})
 //			if err != nil {
@@ -69,14 +69,14 @@ import (
 //			fooSwitch, err := vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
 //				VpcId:            fooNetwork.ID(),
 //				CidrBlock:        pulumi.String("10.1.1.0/24"),
-//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
-//				VswitchName:      pulumi.String(name),
+//				AvailabilityZone: pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName:      pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			tfTestFoo, err := ecs.NewSecurityGroup(ctx, "tf_test_foo", &ecs.SecurityGroupArgs{
-//				Name:        pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
 //				Description: pulumi.String("foo"),
 //				VpcId:       fooNetwork.ID(),
 //			})
@@ -90,12 +90,12 @@ import (
 //				VswitchId:               fooSwitch.ID(),
 //				AllocatePublicIp:        pulumi.Bool(true),
 //				InstanceChargeType:      pulumi.String("PostPaid"),
-//				InstanceType:            pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				InstanceType:            pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
-//				ImageId:                 pulumi.String(defaultGetImages.Images[0].Id),
-//				InstanceName:            pulumi.String(name),
+//				ImageId:                 pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+//				InstanceName:            pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

@@ -40,8 +40,8 @@ import (
 //				name = param
 //			}
 //			_default, err := rdc.NewOrganization(ctx, "default", &rdc.OrganizationArgs{
-//				OrganizationName: pulumi.String(name),
-//				Source:           pulumi.String(name),
+//				OrganizationName: pulumi.String(pulumi.String(name)),
+//				Source:           pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

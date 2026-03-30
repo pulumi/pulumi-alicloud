@@ -50,7 +50,7 @@ import (
 //			}
 //			defaultDI9fsL, err := pai.NewWorkspaceWorkspace(ctx, "defaultDI9fsL", &pai.WorkspaceWorkspaceArgs{
 //				Description:   pulumi.String("802"),
-//				DisplayName:   pulumi.String(name),
+//				DisplayName:   pulumi.String(pulumi.String(name)),
 //				WorkspaceName: pulumi.Sprintf("%v_%v", name, _default.Result),
 //				EnvTypes: pulumi.StringArray{
 //					pulumi.String("prod"),
@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			defaultsHptEL, err := pai.NewWorkspaceModel(ctx, "defaultsHptEL", &pai.WorkspaceModelArgs{
-//				ModelName:        pulumi.String(name),
+//				ModelName:        pulumi.String(pulumi.String(name)),
 //				WorkspaceId:      defaultDI9fsL.ID(),
 //				Origin:           pulumi.String("Civitai"),
 //				Task:             pulumi.String("text-to-image-synthesis"),

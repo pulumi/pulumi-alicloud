@@ -90,11 +90,11 @@ import (
 //				BaselineItems: governance.BaselineBaselineItemArray{
 //					&governance.BaselineBaselineItemArgs{
 //						Version: pulumi.String("1.0"),
-//						Name:    pulumi.String(itemPasswordPolicy),
-//						Config:  pulumi.String(json0),
+//						Name:    pulumi.String(pulumi.String(itemPasswordPolicy)),
+//						Config:  pulumi.String(pulumi.String(json0)),
 //					},
 //				},
-//				Description:  pulumi.String(name),
+//				Description:  pulumi.String(pulumi.String(name)),
 //				BaselineName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {

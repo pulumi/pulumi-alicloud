@@ -72,7 +72,7 @@ import (
 //			}
 //			_, err = ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.Any(name),
-//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//				VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //			})
 //			if err != nil {
 //				return err
@@ -89,7 +89,7 @@ import (
 //				Description:  pulumi.Any(name),
 //				Force:        pulumi.Bool(true),
 //				KeyPairName:  defaultKeyPair.KeyPairName,
-//				VswitchId:    pulumi.String(defaultGetSwitches.Ids[0]),
+//				VswitchId:    pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //				ImageId:      pulumi.String("android_9_0_0_release_2851157_20211201.vhd"),
 //				InstanceType: pulumi.String(instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
 //					return ecp.GetInstanceTypesInstanceType(defaultGetInstanceTypes.InstanceTypes[float64(instanceTypeCountSize.ApplyT(func(__convert float64) (float64, error) {

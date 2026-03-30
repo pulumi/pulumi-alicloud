@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			defaultAutoSnapshotPolicy, err := ecs.NewAutoSnapshotPolicy(ctx, "default", &ecs.AutoSnapshotPolicyArgs{
-//				AutoSnapshotPolicyName: pulumi.String(name),
+//				AutoSnapshotPolicyName: pulumi.String(pulumi.String(name)),
 //				RepeatWeekdays: pulumi.StringArray{
 //					pulumi.String("1"),
 //					pulumi.String("2"),
@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "default", &ecs.EcsDiskArgs{
-//				ZoneId: pulumi.String(_default.Zones[0].Id),
+//				ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				Size:   pulumi.Int(500),
 //			})
 //			if err != nil {

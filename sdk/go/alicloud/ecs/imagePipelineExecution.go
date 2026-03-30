@@ -47,7 +47,7 @@ import (
 //			pipelineExecution_vpc, err := vpc.NewNetwork(ctx, "pipelineExecution-vpc", &vpc.NetworkArgs{
 //				Description: pulumi.String("example-pipeline"),
 //				EnableIpv6:  pulumi.Bool(true),
-//				VpcName:     pulumi.String(name),
+//				VpcName:     pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

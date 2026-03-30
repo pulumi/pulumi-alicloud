@@ -139,17 +139,17 @@ import (
 //			}
 //			json6 := string(tmpJSON6)
 //			_, err = cs.NewManagedKubernetes(ctx, "auto-mode", &cs.ManagedKubernetesArgs{
-//				Name:        pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				ZoneIds: pulumi.StringArray{
-//					pulumi.String(enhanced.Zones[0].ZoneId),
+//					pulumi.String(pulumi.String(enhanced.Zones[0].ZoneId)),
 //				},
 //				NewNatGateway:               pulumi.Bool(true),
 //				IsEnterpriseSecurityGroup:   pulumi.Bool(true),
 //				SlbInternetEnabled:          pulumi.Bool(false),
 //				SkipSetCertificateAuthority: pulumi.Bool(true),
-//				ProxyMode:                   pulumi.String(proxyMode),
-//				ServiceCidr:                 pulumi.String(serviceCidr),
+//				ProxyMode:                   pulumi.String(pulumi.String(proxyMode)),
+//				ServiceCidr:                 pulumi.String(pulumi.String(serviceCidr)),
 //				IpStack:                     pulumi.String("ipv4"),
 //				DeletionProtection:          pulumi.Bool(true),
 //				AutoMode: &cs.ManagedKubernetesAutoModeArgs{
@@ -197,11 +197,11 @@ import (
 //					},
 //					&cs.ManagedKubernetesAddonArgs{
 //						Name:   pulumi.String("terway-controlplane"),
-//						Config: pulumi.String(json0),
+//						Config: pulumi.String(pulumi.String(json0)),
 //					},
 //					&cs.ManagedKubernetesAddonArgs{
 //						Name:   pulumi.String("terway-eniip"),
-//						Config: pulumi.String(json1),
+//						Config: pulumi.String(pulumi.String(json1)),
 //					},
 //					&cs.ManagedKubernetesAddonArgs{
 //						Name: pulumi.String("csi-plugin"),
@@ -211,15 +211,15 @@ import (
 //					},
 //					&cs.ManagedKubernetesAddonArgs{
 //						Name:   pulumi.String("storage-operator"),
-//						Config: pulumi.String(json2),
+//						Config: pulumi.String(pulumi.String(json2)),
 //					},
 //					&cs.ManagedKubernetesAddonArgs{
 //						Name:   pulumi.String("loongcollector"),
-//						Config: pulumi.String(json3),
+//						Config: pulumi.String(pulumi.String(json3)),
 //					},
 //					&cs.ManagedKubernetesAddonArgs{
 //						Name:   pulumi.String("ack-node-problem-detector"),
-//						Config: pulumi.String(json4),
+//						Config: pulumi.String(pulumi.String(json4)),
 //					},
 //					&cs.ManagedKubernetesAddonArgs{
 //						Name:     pulumi.String("nginx-ingress-controller"),
@@ -227,11 +227,11 @@ import (
 //					},
 //					&cs.ManagedKubernetesAddonArgs{
 //						Name:   pulumi.String("alb-ingress-controller"),
-//						Config: pulumi.String(json5),
+//						Config: pulumi.String(pulumi.String(json5)),
 //					},
 //					&cs.ManagedKubernetesAddonArgs{
 //						Name:   pulumi.String("arms-prometheus"),
-//						Config: pulumi.String(json6),
+//						Config: pulumi.String(pulumi.String(json6)),
 //					},
 //					&cs.ManagedKubernetesAddonArgs{
 //						Name: pulumi.String("alicloud-monitor-controller"),

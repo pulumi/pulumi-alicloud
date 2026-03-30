@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = hbase.NewInstance(ctx, "hbase", &hbase.InstanceArgs{
-//				CoreInstanceType: pulumi.Any(_default.Types[0].Id),
+//				CoreInstanceType: pulumi.String(pulumi.Any(_default.Types[0].Id)),
 //			})
 //			if err != nil {
 //				return err

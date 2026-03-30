@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			exampleVpcEndpointService, err := privatelink.NewVpcEndpointService(ctx, "example", &privatelink.VpcEndpointServiceArgs{
-//				ServiceDescription:   pulumi.String(name),
+//				ServiceDescription:   pulumi.String(pulumi.String(name)),
 //				ConnectBandwidth:     pulumi.Int(103),
 //				AutoAcceptConnection: pulumi.Bool(false),
 //			})
@@ -61,30 +61,30 @@ import (
 //				return err
 //			}
 //			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(example.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(example.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "example", &slb.ApplicationLoadBalancerArgs{
-//				LoadBalancerName: pulumi.String(name),
+//				LoadBalancerName: pulumi.String(pulumi.String(name)),
 //				VswitchId:        exampleSwitch.ID(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
 //				AddressType:      pulumi.String("intranet"),
@@ -106,7 +106,7 @@ import (
 //					exampleSecurityGroup.ID(),
 //				},
 //				VpcId:           exampleNetwork.ID(),
-//				VpcEndpointName: pulumi.String(name),
+//				VpcEndpointName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

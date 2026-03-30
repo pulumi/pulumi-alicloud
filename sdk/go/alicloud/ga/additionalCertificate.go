@@ -61,7 +61,7 @@ import (
 //				PaymentType:          pulumi.String("PayAsYouGo"),
 //				BillingType:          pulumi.String("PayBy95"),
 //				Ratio:                pulumi.Int(30),
-//				BandwidthPackageName: pulumi.String(name),
+//				BandwidthPackageName: pulumi.String(pulumi.String(name)),
 //				AutoPay:              pulumi.Bool(true),
 //				AutoUseCoupon:        pulumi.Bool(true),
 //			})
@@ -69,7 +69,7 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      pulumi.String(_default.Ids[0]),
+//				AcceleratorId:      pulumi.String(pulumi.String(_default.Ids[0])),
 //				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
@@ -156,7 +156,7 @@ import (
 //			}
 //			defaultListener, err := ga.NewListener(ctx, "default", &ga.ListenerArgs{
 //				AcceleratorId: defaultBandwidthPackageAttachment.AcceleratorId,
-//				Name:          pulumi.String(name),
+//				Name:          pulumi.String(pulumi.String(name)),
 //				Protocol:      pulumi.String("HTTPS"),
 //				PortRanges: ga.ListenerPortRangeArray{
 //					&ga.ListenerPortRangeArgs{
@@ -170,7 +170,7 @@ import (
 //							Separator: pulumi.String("-"),
 //							Input: pulumi.StringArray{
 //								defaultServiceCertificate[1].ID(),
-//								pulumi.String(region),
+//								pulumi.String(pulumi.String(region)),
 //							},
 //						}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
 //							return invoke.Result, nil
@@ -187,12 +187,12 @@ import (
 //					Separator: pulumi.String("-"),
 //					Input: pulumi.StringArray{
 //						defaultServiceCertificate[1].ID(),
-//						pulumi.String(region),
+//						pulumi.String(pulumi.String(region)),
 //					},
 //				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
 //					return invoke.Result, nil
 //				}).(pulumi.StringPtrOutput)),
-//				Domain:        pulumi.String(domain),
+//				Domain:        pulumi.String(pulumi.String(domain)),
 //				AcceleratorId: defaultListener.AcceleratorId,
 //				ListenerId:    defaultListener.ID(),
 //			})

@@ -43,9 +43,9 @@ import (
 //				name = param
 //			}
 //			defaultAiWorkspace, err := pai.NewWorkspaceWorkspace(ctx, "defaultAiWorkspace", &pai.WorkspaceWorkspaceArgs{
-//				Description:   pulumi.String(name),
-//				DisplayName:   pulumi.String(name),
-//				WorkspaceName: pulumi.String(name),
+//				Description:   pulumi.String(pulumi.String(name)),
+//				DisplayName:   pulumi.String(pulumi.String(name)),
+//				WorkspaceName: pulumi.String(pulumi.String(name)),
 //				EnvTypes: pulumi.StringArray{
 //					pulumi.String("prod"),
 //				},
@@ -74,8 +74,8 @@ import (
 //				SourceType:     pulumi.String("USER"),
 //				DataType:       pulumi.String("PIC"),
 //				WorkspaceId:    defaultAiWorkspace.ID(),
-//				Options:        pulumi.String(json0),
-//				Description:    pulumi.String(name),
+//				Options:        pulumi.String(pulumi.String(json0)),
+//				Description:    pulumi.String(pulumi.String(name)),
 //				SourceId:       pulumi.String("d-xxxxx_v1"),
 //				Uri:            pulumi.String("oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/"),
 //				DatasetName:    pulumi.String(invokeFormat.Result),
@@ -94,8 +94,8 @@ import (
 //			}
 //			json1 := string(tmpJSON1)
 //			_, err = pai.NewWorkspaceDatasetversion(ctx, "default", &pai.WorkspaceDatasetversionArgs{
-//				Options:        pulumi.String(json1),
-//				Description:    pulumi.String(name),
+//				Options:        pulumi.String(pulumi.String(json1)),
+//				Description:    pulumi.String(pulumi.String(name)),
 //				DataSourceType: pulumi.String("OSS"),
 //				SourceType:     pulumi.String("USER"),
 //				SourceId:       pulumi.String("d-xxxxx_v1"),

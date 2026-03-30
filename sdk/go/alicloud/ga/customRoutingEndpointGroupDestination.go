@@ -82,7 +82,7 @@ import (
 //			defaultCustomRoutingEndpointGroup, err := ga.NewCustomRoutingEndpointGroup(ctx, "default", &ga.CustomRoutingEndpointGroupArgs{
 //				AcceleratorId:                  defaultListener.AcceleratorId,
 //				ListenerId:                     defaultListener.ID(),
-//				EndpointGroupRegion:            pulumi.String(region),
+//				EndpointGroupRegion:            pulumi.String(pulumi.String(region)),
 //				CustomRoutingEndpointGroupName: pulumi.String("terraform-example"),
 //				Description:                    pulumi.String("terraform-example"),
 //			})

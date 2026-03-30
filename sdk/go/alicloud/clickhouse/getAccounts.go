@@ -53,17 +53,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Regions[0].ZoneIds[0].ZoneId),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Regions[0].ZoneIds[0].ZoneId)),
 //			})
 //			if err != nil {
 //				return err
@@ -73,7 +73,7 @@ import (
 //				Category:             pulumi.String("Basic"),
 //				DbClusterClass:       pulumi.String("S8"),
 //				DbClusterNetworkType: pulumi.String("vpc"),
-//				DbClusterDescription: pulumi.String(name),
+//				DbClusterDescription: pulumi.String(pulumi.String(name)),
 //				DbNodeGroupCount:     pulumi.Int(1),
 //				PaymentType:          pulumi.String("PayAsYouGo"),
 //				DbNodeStorage:        pulumi.String("500"),
@@ -87,9 +87,9 @@ import (
 //			defaultAccount, err := clickhouse.NewAccount(ctx, "default", &clickhouse.AccountArgs{
 //				DbClusterId:        defaultDbCluster.ID(),
 //				AccountDescription: pulumi.String("your_description"),
-//				AccountName:        pulumi.String(name),
-//				AccountPassword:    pulumi.String(pwd),
-//				Type:               pulumi.String(_type),
+//				AccountName:        pulumi.String(pulumi.String(name)),
+//				AccountPassword:    pulumi.String(pulumi.String(pwd)),
+//				Type:               pulumi.String(pulumi.String(_type)),
 //			})
 //			if err != nil {
 //				return err

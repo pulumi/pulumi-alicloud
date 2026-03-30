@@ -48,9 +48,9 @@ import (
 //			}
 //			_, err := fc.NewV3Alias(ctx, "default", &fc.V3AliasArgs{
 //				VersionId:    pulumi.String("1"),
-//				FunctionName: pulumi.String(functionName),
+//				FunctionName: pulumi.String(pulumi.String(functionName)),
 //				Description:  pulumi.String("create alias"),
-//				AliasName:    pulumi.String(name),
+//				AliasName:    pulumi.String(pulumi.String(name)),
 //				AdditionalVersionWeight: pulumi.Float64Map{
 //					"2": pulumi.Float64(0.5),
 //				},

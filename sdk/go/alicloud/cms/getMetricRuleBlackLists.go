@@ -38,7 +38,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("alicloudCmsRuleBlackListExampleId", lists[0].Id)
+// ctx.Export("alicloudCmsRuleBlackListExampleId", pulumi.Any(lists[0].Id))
 // return nil
 // })
 // }

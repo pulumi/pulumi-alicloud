@@ -53,7 +53,7 @@ import (
 //				AutoRenew:           pulumi.Bool(false),
 //				RenewalStatus:       pulumi.String("AutoRenewal"),
 //				Period:              pulumi.Int(12),
-//				InstanceName:        pulumi.String(name),
+//				InstanceName:        pulumi.String(pulumi.String(name)),
 //				SupportTracing:      pulumi.Bool(false),
 //				PaymentType:         pulumi.String("Subscription"),
 //				RenewalDurationUnit: pulumi.String("Month"),
@@ -66,11 +66,11 @@ import (
 //				return err
 //			}
 //			_, err = amqp.NewExchange(ctx, "default", &amqp.ExchangeArgs{
-//				VirtualHostName:   pulumi.String(virtualHostName),
+//				VirtualHostName:   pulumi.String(pulumi.String(virtualHostName)),
 //				InstanceId:        createInstance.ID(),
 //				Internal:          pulumi.Bool(true),
 //				AutoDeleteState:   pulumi.Bool(false),
-//				ExchangeName:      pulumi.String(name),
+//				ExchangeName:      pulumi.String(pulumi.String(name)),
 //				ExchangeType:      pulumi.String("X_CONSISTENT_HASH"),
 //				AlternateExchange: pulumi.String("bakExchange"),
 //				XDelayedType:      pulumi.String("DIRECT"),

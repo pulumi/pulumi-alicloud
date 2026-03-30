@@ -51,7 +51,7 @@ import (
 //			}
 //			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
 //				ProjectName: pulumi.Sprintf("%v-%v", name, _default.Result),
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

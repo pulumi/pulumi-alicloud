@@ -56,12 +56,12 @@ import (
 //				return err
 //			}
 //			defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "default", &ecs.EcsDiskArgs{
-//				ZoneId:             pulumi.String(defaultGetRegions.Regions[0].Zones[0].ZoneId),
+//				ZoneId:             pulumi.String(pulumi.String(defaultGetRegions.Regions[0].Zones[0].ZoneId)),
 //				Category:           pulumi.String("cloud_essd"),
 //				DeleteAutoSnapshot: pulumi.Bool(true),
 //				DeleteWithInstance: pulumi.Bool(true),
-//				Description:        pulumi.String(name),
-//				DiskName:           pulumi.String(name),
+//				Description:        pulumi.String(pulumi.String(name)),
+//				DiskName:           pulumi.String(pulumi.String(name)),
 //				EnableAutoSnapshot: pulumi.Bool(true),
 //				Encrypted:          pulumi.Bool(true),
 //				Size:               pulumi.Int(500),
@@ -84,12 +84,12 @@ import (
 //				return err
 //			}
 //			destination, err := ecs.NewEcsDisk(ctx, "destination", &ecs.EcsDiskArgs{
-//				ZoneId:             pulumi.String(defaultGetRegions.Regions[0].Zones[1].ZoneId),
+//				ZoneId:             pulumi.String(pulumi.String(defaultGetRegions.Regions[0].Zones[1].ZoneId)),
 //				Category:           pulumi.String("cloud_essd"),
 //				DeleteAutoSnapshot: pulumi.Bool(true),
 //				DeleteWithInstance: pulumi.Bool(true),
 //				Description:        pulumi.String(invokeFormat.Result),
-//				DiskName:           pulumi.String(name),
+//				DiskName:           pulumi.String(pulumi.String(name)),
 //				EnableAutoSnapshot: pulumi.Bool(true),
 //				Encrypted:          pulumi.Bool(true),
 //				Size:               pulumi.Int(500),
@@ -104,12 +104,12 @@ import (
 //			}
 //			_, err = ebs.NewDiskReplicaPair(ctx, "default", &ebs.DiskReplicaPairArgs{
 //				DestinationDiskId:   destination.ID(),
-//				DestinationRegionId: pulumi.String(_default.Regions[0].Id),
+//				DestinationRegionId: pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //				PaymentType:         pulumi.String("POSTPAY"),
 //				DestinationZoneId:   destination.ZoneId,
 //				SourceZoneId:        defaultEcsDisk.ZoneId,
 //				DiskId:              defaultEcsDisk.ID(),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

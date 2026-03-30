@@ -64,7 +64,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -98,7 +98,7 @@ import (
 //			}
 //			defaultBasicIpSet, err := ga.NewBasicIpSet(ctx, "default", &ga.BasicIpSetArgs{
 //				AcceleratorId:      defaultBasicAccelerator.ID(),
-//				AccelerateRegionId: pulumi.String(endpointRegion),
+//				AccelerateRegionId: pulumi.String(pulumi.String(endpointRegion)),
 //				IspType:            pulumi.String("BGP"),
 //				Bandwidth:          pulumi.Int(5),
 //			})
@@ -114,7 +114,7 @@ import (
 //			}
 //			defaultBasicEndpointGroup, err := ga.NewBasicEndpointGroup(ctx, "default", &ga.BasicEndpointGroupArgs{
 //				AcceleratorId:          defaultBasicAccelerator.ID(),
-//				EndpointGroupRegion:    pulumi.String(region),
+//				EndpointGroupRegion:    pulumi.String(pulumi.String(region)),
 //				BasicEndpointGroupName: pulumi.String("terraform-example"),
 //				Description:            pulumi.String("terraform-example"),
 //			})

@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			VPCID, err := vpc.NewNetwork(ctx, "VPCID", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -59,7 +59,7 @@ import (
 //			VSWITCHID, err := vpc.NewSwitch(ctx, "VSWITCHID", &vpc.SwitchArgs{
 //				VpcId:       VPCID.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-k"),
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //			})
 //			if err != nil {
@@ -70,7 +70,7 @@ import (
 //				ZoneId:               pulumi.String("cn-hangzhou-k"),
 //				VpcId:                VPCID.ID(),
 //				VswitchId:            VSWITCHID.ID(),
-//				DbClusterDescription: pulumi.String(name),
+//				DbClusterDescription: pulumi.String(pulumi.String(name)),
 //				ComputeResource:      pulumi.String("16ACU"),
 //				DbClusterVersion:     pulumi.String("5.0"),
 //				PaymentType:          pulumi.String("PayAsYouGo"),
@@ -117,7 +117,7 @@ import (
 //						},
 //					},
 //				},
-//				AccountDescription: pulumi.String(name),
+//				AccountDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

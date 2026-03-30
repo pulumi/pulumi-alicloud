@@ -43,8 +43,8 @@ import (
 //				name = param
 //			}
 //			_, err := eipanycast.NewAnycastEipAddress(ctx, "default", &eipanycast.AnycastEipAddressArgs{
-//				AnycastEipAddressName: pulumi.String(name),
-//				Description:           pulumi.String(name),
+//				AnycastEipAddressName: pulumi.String(pulumi.String(name)),
+//				Description:           pulumi.String(pulumi.String(name)),
 //				Bandwidth:             pulumi.Int(200),
 //				ServiceLocation:       pulumi.String("international"),
 //				InternetChargeType:    pulumi.String("PayByTraffic"),

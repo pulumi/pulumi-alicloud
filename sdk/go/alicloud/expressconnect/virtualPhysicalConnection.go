@@ -60,13 +60,13 @@ import (
 //				return err
 //			}
 //			_, err = expressconnect.NewVirtualPhysicalConnection(ctx, "example", &expressconnect.VirtualPhysicalConnectionArgs{
-//				VirtualPhysicalConnectionName: pulumi.String(name),
-//				Description:                   pulumi.String(name),
+//				VirtualPhysicalConnectionName: pulumi.String(pulumi.String(name)),
+//				Description:                   pulumi.String(pulumi.String(name)),
 //				OrderMode:                     pulumi.String("PayByPhysicalConnectionOwner"),
-//				ParentPhysicalConnectionId:    pulumi.String(example.Ids[0]),
+//				ParentPhysicalConnectionId:    pulumi.String(pulumi.String(example.Ids[0])),
 //				Spec:                          pulumi.String("50M"),
 //				VlanId:                        vlanId.Id,
-//				VpconnAliUid:                  pulumi.String(_default.Id),
+//				VpconnAliUid:                  pulumi.String(pulumi.String(_default.Id)),
 //			})
 //			if err != nil {
 //				return err

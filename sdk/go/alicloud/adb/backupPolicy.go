@@ -61,8 +61,8 @@ import (
 //				DbClusterCategory: pulumi.String("MixedStorage"),
 //				Mode:              pulumi.String("flexible"),
 //				ComputeResource:   pulumi.String("8Core32GB"),
-//				VswitchId:         pulumi.String(vswitchId),
-//				Description:       pulumi.String(name),
+//				VswitchId:         pulumi.String(pulumi.String(vswitchId)),
+//				Description:       pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

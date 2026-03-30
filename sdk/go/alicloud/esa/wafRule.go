@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			defaultWafRuleset, err := esa.NewWafRuleset(ctx, "default", &esa.WafRulesetArgs{
-//				SiteId:      pulumi.Int(_default.Sites[0].SiteId),
+//				SiteId:      pulumi.String(pulumi.Int(_default.Sites[0].SiteId)),
 //				Phase:       pulumi.String("http_custom"),
 //				SiteVersion: pulumi.Int(0),
 //			})
@@ -66,7 +66,7 @@ import (
 //					Name: pulumi.String("111"),
 //				},
 //				SiteVersion: pulumi.Int(0),
-//				SiteId:      pulumi.Int(_default.Sites[0].SiteId),
+//				SiteId:      pulumi.String(pulumi.Int(_default.Sites[0].SiteId)),
 //			})
 //			if err != nil {
 //				return err

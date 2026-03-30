@@ -41,8 +41,8 @@ import (
 //				name = param
 //			}
 //			_, err := apigateway.NewBackend(ctx, "default", &apigateway.BackendArgs{
-//				BackendName: pulumi.String(name),
-//				Description: pulumi.String(name),
+//				BackendName: pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //				BackendType: pulumi.String("HTTP"),
 //			})
 //			if err != nil {

@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_default, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
-//				InstanceName:        pulumi.String(name),
+//				InstanceName:        pulumi.String(pulumi.String(name)),
 //				InstanceType:        pulumi.String("enterprise"),
 //				MaxTps:              pulumi.String("3000"),
 //				MaxConnections:      pulumi.Int(2000),

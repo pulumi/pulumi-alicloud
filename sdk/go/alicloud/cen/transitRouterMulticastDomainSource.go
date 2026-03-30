@@ -49,14 +49,14 @@ import (
 // return err
 // }
 // defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-// VpcName: pulumi.String(name),
+// VpcName: pulumi.String(pulumi.String(name)),
 // CidrBlock: pulumi.String("192.168.0.0/16"),
 // })
 // if err != nil {
 // return err
 // }
 // defaultMaster, err := vpc.NewSwitch(ctx, "default_master", &vpc.SwitchArgs{
-// VswitchName: pulumi.String(name),
+// VswitchName: pulumi.String(pulumi.String(name)),
 // VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("192.168.1.0/24"),
 // ZoneId: pulumi.String("cn-hangzhou-i"),
@@ -65,7 +65,7 @@ import (
 // return err
 // }
 // defaultSlave, err := vpc.NewSwitch(ctx, "default_slave", &vpc.SwitchArgs{
-// VswitchName: pulumi.String(name),
+// VswitchName: pulumi.String(pulumi.String(name)),
 // VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("192.168.2.0/24"),
 // ZoneId: pulumi.String("cn-hangzhou-j"),
@@ -74,7 +74,7 @@ import (
 // return err
 // }
 // defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
-// CenInstanceName: pulumi.String(name),
+// CenInstanceName: pulumi.String(pulumi.String(name)),
 // ProtectionLevel: pulumi.String("REDUCED"),
 // })
 // if err != nil {
@@ -101,14 +101,14 @@ import (
 // VswitchId: defaultSlave.ID(),
 // },
 // },
-// TransitRouterAttachmentName: pulumi.String(name),
-// TransitRouterAttachmentDescription: pulumi.String(name),
+// TransitRouterAttachmentName: pulumi.String(pulumi.String(name)),
+// TransitRouterAttachmentDescription: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-// Name: pulumi.String(name),
+// Name: pulumi.String(pulumi.String(name)),
 // VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
@@ -122,8 +122,8 @@ import (
 // }
 // defaultTransitRouterMulticastDomain, err := cen.NewTransitRouterMulticastDomain(ctx, "default", &cen.TransitRouterMulticastDomainArgs{
 // TransitRouterId: defaultTransitRouter.TransitRouterId,
-// TransitRouterMulticastDomainName: pulumi.String(name),
-// TransitRouterMulticastDomainDescription: pulumi.String(name),
+// TransitRouterMulticastDomainName: pulumi.String(pulumi.String(name)),
+// TransitRouterMulticastDomainDescription: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
@@ -136,7 +136,7 @@ import (
 // return err
 // }
 // defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
-// NetworkInterfaceName: pulumi.String(name),
+// NetworkInterfaceName: pulumi.String(pulumi.String(name)),
 // VswitchId: defaultMaster.ID(),
 // SecurityGroupIds: pulumi.StringArray{
 // defaultSecurityGroup.ID(),
@@ -150,7 +150,7 @@ import (
 // "Created": pulumi.String("TF"),
 // "For": pulumi.String("Test"),
 // },
-// ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
+// ResourceGroupId: pulumi.String(pulumi.String(defaultGetResourceGroups.Ids[0])),
 // })
 // if err != nil {
 // return err

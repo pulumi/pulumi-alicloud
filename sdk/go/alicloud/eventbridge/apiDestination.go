@@ -45,7 +45,7 @@ import (
 //				name = param
 //			}
 //			_default, err := eventbridge.NewConnection(ctx, "default", &eventbridge.ConnectionArgs{
-//				ConnectionName: pulumi.String(name),
+//				ConnectionName: pulumi.String(pulumi.String(name)),
 //				NetworkParameters: &eventbridge.ConnectionNetworkParametersArgs{
 //					NetworkType: pulumi.String("PublicNetwork"),
 //				},
@@ -55,7 +55,7 @@ import (
 //			}
 //			_, err = eventbridge.NewApiDestination(ctx, "default", &eventbridge.ApiDestinationArgs{
 //				ConnectionName:     _default.ConnectionName,
-//				ApiDestinationName: pulumi.String(name),
+//				ApiDestinationName: pulumi.String(pulumi.String(name)),
 //				Description:        pulumi.String("test-api-destination-connection"),
 //				HttpApiParameters: &eventbridge.ApiDestinationHttpApiParametersArgs{
 //					Endpoint: pulumi.String("http://127.0.0.1:8001"),

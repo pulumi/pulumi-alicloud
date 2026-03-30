@@ -53,7 +53,7 @@ import (
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -69,7 +69,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(zoneId1),
+//				ZoneId:      pulumi.String(pulumi.String(zoneId1)),
 //				CidrBlock:   pulumi.String("10.0.0.0/24"),
 //				VswitchName: pulumi.String(invokeFormat.Result),
 //			})
@@ -91,7 +91,7 @@ import (
 //				ZoneMappings: gwlb.LoadBalancerZoneMappingArray{
 //					&gwlb.LoadBalancerZoneMappingArgs{
 //						VswitchId: defaultSwitch.ID(),
-//						ZoneId:    pulumi.String(zoneId1),
+//						ZoneId:    pulumi.String(pulumi.String(zoneId1)),
 //					},
 //				},
 //				AddressIpVersion: pulumi.String("Ipv4"),
@@ -124,7 +124,7 @@ import (
 //					ConnectionDrainEnabled: pulumi.Bool(true),
 //					ConnectionDrainTimeout: pulumi.Int(1),
 //				},
-//				ResourceGroupId: pulumi.String(_default.Ids[0]),
+//				ResourceGroupId: pulumi.String(pulumi.String(_default.Ids[0])),
 //				DryRun:          pulumi.Bool(false),
 //				HealthCheckConfig: &gwlb.ServerGroupHealthCheckConfigArgs{
 //					HealthCheckProtocol: pulumi.String("HTTP"),

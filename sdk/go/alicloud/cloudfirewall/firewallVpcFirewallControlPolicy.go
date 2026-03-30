@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //				Description:     pulumi.String("example_value"),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
@@ -73,7 +73,7 @@ import (
 //				DestPortType:    pulumi.String("port"),
 //				Proto:           pulumi.String("TCP"),
 //				Release:         pulumi.String("true"),
-//				MemberUid:       pulumi.String(_default.Id),
+//				MemberUid:       pulumi.String(pulumi.String(_default.Id)),
 //				VpcFirewallId:   defaultInstance.ID(),
 //			})
 //			if err != nil {

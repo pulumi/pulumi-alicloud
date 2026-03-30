@@ -44,7 +44,7 @@ import (
 //			}
 //			_, err := dataworks.NewProject(ctx, "defaultZImuCO", &dataworks.ProjectArgs{
 //				Description:    pulumi.String("default_pj002"),
-//				ProjectName:    pulumi.String(name),
+//				ProjectName:    pulumi.String(pulumi.String(name)),
 //				DisplayName:    pulumi.String("default_pj002"),
 //				PaiTaskEnabled: pulumi.Bool(true),
 //			})

@@ -71,7 +71,7 @@ import (
 //				FirstDateStr:    pulumi.Int(1650556800000),
 //				PeriodUnit:      pulumi.String("day"),
 //				IntervalPeriod:  pulumi.Int(7),
-//				Param:           pulumi.String(json0),
+//				Param:           pulumi.String(pulumi.String(json0)),
 //				Enable:          pulumi.Int(1),
 //			})
 //			if err != nil {

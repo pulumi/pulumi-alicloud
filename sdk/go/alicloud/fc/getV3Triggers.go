@@ -51,7 +51,7 @@ import (
 // Code: &fc.V3FunctionCodeArgs{
 // ZipFile: pulumi.String("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA="),
 // },
-// FunctionName: pulumi.String(name),
+// FunctionName: pulumi.String(pulumi.String(name)),
 // Runtime: pulumi.String("python3.9"),
 // DiskSize: pulumi.Int(512),
 // LogConfig: &fc.V3FunctionLogConfigArgs{
@@ -78,7 +78,7 @@ import (
 // TriggerName: pulumi.String("tf-exampleacceu-central-1fcv3trigger28547"),
 // Description: pulumi.String("create"),
 // Qualifier: pulumi.String("LATEST"),
-// TriggerConfig: pulumi.String(json0),
+// TriggerConfig: pulumi.String(pulumi.String(json0)),
 // })
 // if err != nil {
 // return err
@@ -88,7 +88,7 @@ import (
 // defaultV3Trigger.ID(),
 // },
 // NameRegex: defaultV3Trigger.TriggerName,
-// FunctionName: pulumi.String(functionName),
+// FunctionName: pulumi.String(pulumi.String(functionName)),
 // }, nil);
 // ctx.Export("alicloudFcv3TriggerExampleId", _default.ApplyT(func(_default fc.GetV3TriggersResult) (*string, error) {
 // return &default.Triggers[0].Id, nil

@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -63,7 +63,7 @@ import (
 //			}
 //			defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "default", &vpn.CustomerGatewayArgs{
 //				IpAddress:           pulumi.String("1.1.1.8"),
-//				CustomerGatewayName: pulumi.String(name),
+//				CustomerGatewayName: pulumi.String(pulumi.String(name)),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				defaultTransitRouterCidr,
 //			}))
@@ -74,7 +74,7 @@ import (
 //				NetworkType:       pulumi.String("public"),
 //				LocalSubnet:       pulumi.String("0.0.0.0/0"),
 //				EnableTunnelsBgp:  pulumi.Bool(false),
-//				VpnAttachmentName: pulumi.String(name),
+//				VpnAttachmentName: pulumi.String(pulumi.String(name)),
 //				TunnelOptionsSpecifications: vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArray{
 //					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
 //						CustomerGatewayId:  defaultCustomerGateway.ID(),
@@ -130,12 +130,12 @@ import (
 //			}
 //			defaultTransitRouterVpnAttachment, err := cen.NewTransitRouterVpnAttachment(ctx, "default", &cen.TransitRouterVpnAttachmentArgs{
 //				AutoPublishRouteEnabled:            pulumi.Bool(false),
-//				TransitRouterAttachmentDescription: pulumi.String(name),
-//				TransitRouterAttachmentName:        pulumi.String(name),
+//				TransitRouterAttachmentDescription: pulumi.String(pulumi.String(name)),
+//				TransitRouterAttachmentName:        pulumi.String(pulumi.String(name)),
 //				CenId:                              defaultTransitRouter.CenId,
 //				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
 //				VpnId:                              defaultGatewayVpnAttachment.ID(),
-//				VpnOwnerId:                         pulumi.String(_default.Id),
+//				VpnOwnerId:                         pulumi.String(pulumi.String(_default.Id)),
 //				ChargeType:                         pulumi.String("POSTPAY"),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
@@ -154,7 +154,7 @@ import (
 //						id,
 //					},
 //					CenId:           pulumi.StringRef(pulumi.StringRef(cenId)),
-//					TransitRouterId: pulumi.StringRef(pulumi.StringRef(transitRouterId)),
+//					TransitRouterId: pulumi.StringRef(pulumi.StringRef(pulumi.String(transitRouterId))),
 //				}, nil))), nil
 //			}).(cen.GetTransitRouterVpnAttachmentsResultOutput)
 //			ctx.Export("cenTransitRouterVpnAttachmentId0", ids.ApplyT(func(ids cen.GetTransitRouterVpnAttachmentsResult) (*string, error) {

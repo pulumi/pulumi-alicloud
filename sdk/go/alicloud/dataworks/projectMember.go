@@ -73,7 +73,7 @@ import (
 //				DisplayName:           pulumi.String("tf_new_api_display"),
 //				DevRoleDisabled:       pulumi.Bool(true),
 //				DevEnvironmentEnabled: pulumi.Bool(false),
-//				ResourceGroupId:       pulumi.String(_default.Ids[0]),
+//				ResourceGroupId:       pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err
@@ -83,7 +83,7 @@ import (
 //				ProjectId: defaultQeRfvU.ID(),
 //				Roles: dataworks.ProjectMemberRoleArray{
 //					&dataworks.ProjectMemberRoleArgs{
-//						Code: pulumi.String(adminCode),
+//						Code: pulumi.String(pulumi.String(adminCode)),
 //					},
 //				},
 //			})

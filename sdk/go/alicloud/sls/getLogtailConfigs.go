@@ -50,7 +50,7 @@ import (
 // projectName = param
 // }
 // defaultuA28zS, err := log.NewProject(ctx, "defaultuA28zS", &log.ProjectArgs{
-// ProjectName: pulumi.String(projectName),
+// ProjectName: pulumi.String(pulumi.String(projectName)),
 // })
 // if err != nil {
 // return err
@@ -108,7 +108,7 @@ import (
 // LogstoreName: pulumi.String("example"),
 // },
 // OutputType: pulumi.String("LogService"),
-// InputDetail: pulumi.String(json0),
+// InputDetail: pulumi.String(pulumi.String(json0)),
 // LogtailConfigName: pulumi.String("tfaccsls62147"),
 // InputType: pulumi.String("file"),
 // })

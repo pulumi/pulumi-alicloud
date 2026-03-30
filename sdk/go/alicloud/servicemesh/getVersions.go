@@ -37,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("serviceMeshVersion", versions[0].Version)
+//			ctx.Export("serviceMeshVersion", pulumi.Any(versions[0].Version))
 //			return nil
 //		})
 //	}

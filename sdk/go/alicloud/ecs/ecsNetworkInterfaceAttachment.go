@@ -57,23 +57,23 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				VpcId:       defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:        pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
 //				Description: pulumi.String("New security group"),
 //				VpcId:       defaultNetwork.ID(),
 //			})
@@ -89,11 +89,11 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
-//				InstanceName:     pulumi.String(name),
+//				AvailabilityZone: pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				InstanceName:     pulumi.String(pulumi.String(name)),
 //				HostName:         pulumi.String("tf-example"),
-//				ImageId:          pulumi.String(defaultGetImages.Images[0].Id),
-//				InstanceType:     pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:          pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+//				InstanceType:     pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
@@ -109,7 +109,7 @@ import (
 //				return err
 //			}
 //			defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
-//				NetworkInterfaceName: pulumi.String(name),
+//				NetworkInterfaceName: pulumi.String(pulumi.String(name)),
 //				VswitchId:            defaultSwitch.ID(),
 //				SecurityGroupIds: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
@@ -120,7 +120,7 @@ import (
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("example"),
 //				},
-//				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
+//				ResourceGroupId: pulumi.String(pulumi.String(defaultGetResourceGroups.Ids[0])),
 //			})
 //			if err != nil {
 //				return err

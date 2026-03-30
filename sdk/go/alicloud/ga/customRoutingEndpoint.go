@@ -59,7 +59,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -106,7 +106,7 @@ import (
 //			defaultCustomRoutingEndpointGroup, err := ga.NewCustomRoutingEndpointGroup(ctx, "default", &ga.CustomRoutingEndpointGroupArgs{
 //				AcceleratorId:                  defaultListener.AcceleratorId,
 //				ListenerId:                     defaultListener.ID(),
-//				EndpointGroupRegion:            pulumi.String(region),
+//				EndpointGroupRegion:            pulumi.String(pulumi.String(region)),
 //				CustomRoutingEndpointGroupName: pulumi.String("terraform-example"),
 //				Description:                    pulumi.String("terraform-example"),
 //			})

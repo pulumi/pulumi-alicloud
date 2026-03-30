@@ -124,7 +124,7 @@ import (
 //				SyncRuleName:        pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				TargetInstanceId:    target.ID(),
 //				TargetNamespaceName: targetRegistryEnterpriseNamespace.Name,
-//				TargetRegionId:      pulumi.String(_default.Regions[0].Id),
+//				TargetRegionId:      pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //				TagFilter:           pulumi.String(".*"),
 //				RepoName:            sourceRegistryEnterpriseRepo.Name,
 //				TargetRepoName:      targetRegistryEnterpriseRepo.Name,

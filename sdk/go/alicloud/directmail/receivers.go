@@ -52,8 +52,8 @@ import (
 //			}
 //			_, err = directmail.NewReceivers(ctx, "example", &directmail.ReceiversArgs{
 //				ReceiversAlias: pulumi.String(invokeFormat.Result),
-//				ReceiversName:  pulumi.String(name),
-//				Description:    pulumi.String(name),
+//				ReceiversName:  pulumi.String(pulumi.String(name)),
+//				Description:    pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

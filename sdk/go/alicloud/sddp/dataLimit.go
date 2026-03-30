@@ -73,23 +73,23 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
@@ -98,10 +98,10 @@ import (
 //			defaultInstance, err := rds.NewInstance(ctx, "default", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
-//				InstanceType:          pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass)),
+//				InstanceStorage:       pulumi.Int(pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min)),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
-//				InstanceName:          pulumi.String(name),
+//				InstanceName:          pulumi.String(pulumi.String(name)),
 //				VswitchId:             defaultSwitch.ID(),
 //				MonitoringPeriod:      pulumi.Int(60),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
@@ -114,7 +114,7 @@ import (
 //			}
 //			defaultRdsAccount, err := rds.NewRdsAccount(ctx, "default", &rds.RdsAccountArgs{
 //				DbInstanceId:    defaultInstance.ID(),
-//				AccountName:     pulumi.String(name),
+//				AccountName:     pulumi.String(pulumi.String(name)),
 //				AccountPassword: pulumi.String("Example1234"),
 //			})
 //			if err != nil {
@@ -122,7 +122,7 @@ import (
 //			}
 //			defaultDatabase, err := rds.NewDatabase(ctx, "default", &rds.DatabaseArgs{
 //				InstanceId: defaultInstance.ID(),
-//				Name:       pulumi.String(name),
+//				Name:       pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -154,7 +154,7 @@ import (
 //				UserName:        defaultDatabase.Name,
 //				Password:        defaultRdsAccount.AccountPassword,
 //				Port:            pulumi.Int(3306),
-//				ServiceRegionId: pulumi.String(_default.Regions[0].Id),
+//				ServiceRegionId: pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //			})
 //			if err != nil {
 //				return err

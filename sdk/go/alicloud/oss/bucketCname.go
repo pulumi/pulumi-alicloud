@@ -44,7 +44,7 @@ import (
 //				name = param
 //			}
 //			createBucket, err := oss.NewBucket(ctx, "CreateBucket", &oss.BucketArgs{
-//				Bucket:       pulumi.String(name),
+//				Bucket:       pulumi.String(pulumi.String(name)),
 //				StorageClass: pulumi.String("Standard"),
 //			})
 //			if err != nil {

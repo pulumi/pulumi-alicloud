@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				Name:      pulumi.String(name),
+//				Name:      pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -58,7 +58,7 @@ import (
 //			}
 //			defaultNetworkAcl, err := vpc.NewNetworkAcl(ctx, "default", &vpc.NetworkAclArgs{
 //				VpcId: defaultNetwork.ID(),
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -66,8 +66,8 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:     defaultNetwork.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/21"),
-//				ZoneId:    pulumi.String(_default.Zones[0].Id),
-//				Name:      pulumi.String(name),
+//				ZoneId:    pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				Name:      pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -91,10 +91,10 @@ import (
 //						Protocol:     pulumi.String("all"),
 //						Port:         pulumi.String("-1/-1"),
 //						SourceCidrIp: pulumi.String("0.0.0.0/32"),
-//						Name:         pulumi.String(name),
+//						Name:         pulumi.String(pulumi.String(name)),
 //						EntryType:    pulumi.String("custom"),
 //						Policy:       pulumi.String("accept"),
-//						Description:  pulumi.String(name),
+//						Description:  pulumi.String(pulumi.String(name)),
 //					},
 //				},
 //				Egresses: vpc.NetworkAclEntriesEgressArray{
@@ -102,10 +102,10 @@ import (
 //						Protocol:          pulumi.String("all"),
 //						Port:              pulumi.String("-1/-1"),
 //						DestinationCidrIp: pulumi.String("0.0.0.0/32"),
-//						Name:              pulumi.String(name),
+//						Name:              pulumi.String(pulumi.String(name)),
 //						EntryType:         pulumi.String("custom"),
 //						Policy:            pulumi.String("accept"),
-//						Description:       pulumi.String(name),
+//						Description:       pulumi.String(pulumi.String(name)),
 //					},
 //				},
 //			})

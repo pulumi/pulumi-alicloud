@@ -56,8 +56,8 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = sae.NewConfigMap(ctx, "example", &sae.ConfigMapArgs{
-//				Data:        pulumi.String(json0),
-//				Name:        pulumi.String(configMapName),
+//				Data:        pulumi.String(pulumi.String(json0)),
+//				Name:        pulumi.String(pulumi.String(configMapName)),
 //				NamespaceId: example.NamespaceId,
 //			})
 //			if err != nil {

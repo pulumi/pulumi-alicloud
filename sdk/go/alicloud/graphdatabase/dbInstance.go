@@ -48,7 +48,7 @@ import (
 //				DbInstanceStorageType: pulumi.String("cloud_ssd"),
 //				DbNodeStorage:         pulumi.Int(50),
 //				PaymentType:           pulumi.String("PayAsYouGo"),
-//				DbInstanceDescription: pulumi.String(name),
+//				DbInstanceDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

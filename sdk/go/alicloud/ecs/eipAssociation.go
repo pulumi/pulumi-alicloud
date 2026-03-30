@@ -72,33 +72,33 @@ import (
 //				return err
 //			}
 //			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(example.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(example.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleInstance, err := ecs.NewInstance(ctx, "example", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(example.Zones[0].Id),
-//				InstanceName:     pulumi.String(name),
-//				ImageId:          pulumi.String(exampleGetImages.Images[0].Id),
-//				InstanceType:     pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id),
+//				AvailabilityZone: pulumi.String(pulumi.String(example.Zones[0].Id)),
+//				InstanceName:     pulumi.String(pulumi.String(name)),
+//				ImageId:          pulumi.String(pulumi.String(exampleGetImages.Images[0].Id)),
+//				InstanceType:     pulumi.String(pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id)),
 //				SecurityGroups: pulumi.StringArray{
 //					exampleSecurityGroup.ID(),
 //				},
@@ -112,7 +112,7 @@ import (
 //				return err
 //			}
 //			exampleEipAddress, err := ecs.NewEipAddress(ctx, "example", &ecs.EipAddressArgs{
-//				AddressName: pulumi.String(name),
+//				AddressName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

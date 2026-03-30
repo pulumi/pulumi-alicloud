@@ -49,13 +49,13 @@ import (
 //			}
 //			_, err = dts.NewInstance(ctx, "default", &dts.InstanceArgs{
 //				Type:                          pulumi.String("sync"),
-//				ResourceGroupId:               pulumi.String(_default.Ids[0]),
+//				ResourceGroupId:               pulumi.String(pulumi.String(_default.Ids[0])),
 //				PaymentType:                   pulumi.String("Subscription"),
 //				InstanceClass:                 pulumi.String("large"),
 //				SourceEndpointEngineName:      pulumi.String("MySQL"),
-//				SourceRegion:                  pulumi.String(defaultGetRegions.Regions[0].Id),
+//				SourceRegion:                  pulumi.String(pulumi.String(defaultGetRegions.Regions[0].Id)),
 //				DestinationEndpointEngineName: pulumi.String("MySQL"),
-//				DestinationRegion:             pulumi.String(defaultGetRegions.Regions[0].Id),
+//				DestinationRegion:             pulumi.String(pulumi.String(defaultGetRegions.Regions[0].Id)),
 //			})
 //			if err != nil {
 //				return err

@@ -41,13 +41,13 @@ import (
 //				name = param
 //			}
 //			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
-//				TransitRouterName: pulumi.String(name),
+//				TransitRouterName: pulumi.String(pulumi.String(name)),
 //				CenId:             example.ID(),
 //				SupportMulticast:  pulumi.Bool(true),
 //			})
@@ -56,8 +56,8 @@ import (
 //			}
 //			_, err = cen.NewTransitRouterMulticastDomain(ctx, "default", &cen.TransitRouterMulticastDomainArgs{
 //				TransitRouterId:                         exampleTransitRouter.TransitRouterId,
-//				TransitRouterMulticastDomainName:        pulumi.String(name),
-//				TransitRouterMulticastDomainDescription: pulumi.String(name),
+//				TransitRouterMulticastDomainName:        pulumi.String(pulumi.String(name)),
+//				TransitRouterMulticastDomainDescription: pulumi.String(pulumi.String(name)),
 //				Options: &cen.TransitRouterMulticastDomainOptionsArgs{
 //					Igmpv2Support: pulumi.String("disable"),
 //				},

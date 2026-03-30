@@ -51,7 +51,7 @@ import (
 //			createVpc, err := vpc.NewNetwork(ctx, "createVpc", &vpc.NetworkArgs{
 //				Description: pulumi.String("example"),
 //				CidrBlock:   pulumi.String("172.16.0.0/12"),
-//				VpcName:     pulumi.String(name),
+//				VpcName:     pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -59,9 +59,9 @@ import (
 //			createVswitch, err := vpc.NewSwitch(ctx, "createVswitch", &vpc.SwitchArgs{
 //				Description: pulumi.String("example"),
 //				VpcId:       createVpc.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +74,7 @@ import (
 //				},
 //				ServiceCode:   pulumi.String("rmq"),
 //				PaymentType:   pulumi.String("PayAsYouGo"),
-//				InstanceName:  pulumi.String(name),
+//				InstanceName:  pulumi.String(pulumi.String(name)),
 //				SubSeriesCode: pulumi.String("cluster_ha"),
 //				Remark:        pulumi.String("example"),
 //				IpWhitelists: pulumi.StringArray{
@@ -110,7 +110,7 @@ import (
 //				return err
 //			}
 //			_, err = rocketmq.NewConsumerGroup(ctx, "default", &rocketmq.ConsumerGroupArgs{
-//				ConsumerGroupId: pulumi.String(name),
+//				ConsumerGroupId: pulumi.String(pulumi.String(name)),
 //				InstanceId:      createInstance.ID(),
 //				ConsumeRetryPolicy: &rocketmq.ConsumerGroupConsumeRetryPolicyArgs{
 //					RetryPolicy:   pulumi.String("DefaultRetryPolicy"),

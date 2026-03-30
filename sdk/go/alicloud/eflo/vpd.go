@@ -49,8 +49,8 @@ import (
 //			}
 //			_, err = eflo.NewVpd(ctx, "default", &eflo.VpdArgs{
 //				Cidr:            pulumi.String("10.0.0.0/8"),
-//				VpdName:         pulumi.String(name),
-//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
+//				VpdName:         pulumi.String(pulumi.String(name)),
+//				ResourceGroupId: pulumi.String(pulumi.String(_default.Groups[0].Id)),
 //			})
 //			if err != nil {
 //				return err

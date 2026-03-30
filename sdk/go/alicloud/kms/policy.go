@@ -108,7 +108,7 @@ import (
 //					pulumi.String("secret/*"),
 //					pulumi.String("key/*"),
 //				},
-//				PolicyName:    pulumi.String(name),
+//				PolicyName:    pulumi.String(pulumi.String(name)),
 //				KmsInstanceId: pulumi.String("shared"),
 //				AccessControlRules: pulumi.String(`  {
 //	      \"NetworkRules\":[

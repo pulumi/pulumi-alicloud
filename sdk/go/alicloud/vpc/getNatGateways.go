@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			fooNetwork, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -52,7 +52,7 @@ import (
 //			fooNatGateway, err := vpc.NewNatGateway(ctx, "foo", &vpc.NatGatewayArgs{
 //				VpcId:          fooNetwork.ID(),
 //				Specification:  pulumi.String("Small"),
-//				NatGatewayName: pulumi.String(name),
+//				NatGatewayName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

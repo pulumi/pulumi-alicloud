@@ -73,7 +73,7 @@ import (
 //			}
 //			_, err = cloudfirewall.NewPrivateDns(ctx, "default", &cloudfirewall.PrivateDnsArgs{
 //				RegionNo:           pulumi.String("cn-hangzhou"),
-//				AccessInstanceName: pulumi.String(name),
+//				AccessInstanceName: pulumi.String(pulumi.String(name)),
 //				Port:               pulumi.Int(53),
 //				PrimaryVswitchId:   vpcvsw1.ID(),
 //				StandbyDns:         pulumi.String("4.4.4.4"),
@@ -90,7 +90,7 @@ import (
 //				},
 //				PrimaryVswitchIp: pulumi.String("172.16.3.1"),
 //				StandbyVswitchIp: pulumi.String("172.16.4.1"),
-//				MemberUid:        pulumi.String(current.Id),
+//				MemberUid:        pulumi.Int(pulumi.String(current.Id)),
 //			})
 //			if err != nil {
 //				return err

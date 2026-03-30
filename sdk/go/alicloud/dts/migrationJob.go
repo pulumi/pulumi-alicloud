@@ -76,7 +76,7 @@ import (
 //				return err
 //			}
 //			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -85,14 +85,14 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(exampleGetZones.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(exampleGetZones.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
@@ -114,8 +114,8 @@ import (
 //				__res, err := rds.NewInstance(ctx, fmt.Sprintf("example-%v", key0), &rds.InstanceArgs{
 //					Engine:                pulumi.String("MySQL"),
 //					EngineVersion:         pulumi.String("8.0"),
-//					InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
-//					InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//					InstanceType:          pulumi.String(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass)),
+//					InstanceStorage:       pulumi.Int(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min)),
 //					InstanceChargeType:    pulumi.String("Postpaid"),
 //					InstanceName:          pulumi.String(invokeFormat.Result),
 //					VswitchId:             exampleSwitch.ID(),
@@ -204,9 +204,9 @@ import (
 //			exampleMigrationInstance, err := dts.NewMigrationInstance(ctx, "example", &dts.MigrationInstanceArgs{
 //				PaymentType:                   pulumi.String("PayAsYouGo"),
 //				SourceEndpointEngineName:      pulumi.String("MySQL"),
-//				SourceEndpointRegion:          pulumi.String(example.Regions[0].Id),
+//				SourceEndpointRegion:          pulumi.String(pulumi.String(example.Regions[0].Id)),
 //				DestinationEndpointEngineName: pulumi.String("MySQL"),
-//				DestinationEndpointRegion:     pulumi.String(example.Regions[0].Id),
+//				DestinationEndpointRegion:     pulumi.String(pulumi.String(example.Regions[0].Id)),
 //				InstanceClass:                 pulumi.String("small"),
 //				SyncArchitecture:              pulumi.String("oneway"),
 //			})
@@ -215,17 +215,17 @@ import (
 //			}
 //			_, err = dts.NewMigrationJob(ctx, "example", &dts.MigrationJobArgs{
 //				DtsInstanceId:                   exampleMigrationInstance.ID(),
-//				DtsJobName:                      pulumi.String(name),
+//				DtsJobName:                      pulumi.String(pulumi.String(name)),
 //				SourceEndpointInstanceType:      pulumi.String("RDS"),
 //				SourceEndpointInstanceId:        exampleAccountPrivilege[0].InstanceId,
 //				SourceEndpointEngineName:        pulumi.String("MySQL"),
-//				SourceEndpointRegion:            pulumi.String(example.Regions[0].Id),
+//				SourceEndpointRegion:            pulumi.String(pulumi.String(example.Regions[0].Id)),
 //				SourceEndpointUserName:          exampleRdsAccount[0].AccountName,
 //				SourceEndpointPassword:          exampleRdsAccount[0].AccountPassword,
 //				DestinationEndpointInstanceType: pulumi.String("RDS"),
 //				DestinationEndpointInstanceId:   exampleAccountPrivilege[1].InstanceId,
 //				DestinationEndpointEngineName:   pulumi.String("MySQL"),
-//				DestinationEndpointRegion:       pulumi.String(example.Regions[0].Id),
+//				DestinationEndpointRegion:       pulumi.String(pulumi.String(example.Regions[0].Id)),
 //				DestinationEndpointUserName:     exampleRdsAccount[1].AccountName,
 //				DestinationEndpointPassword:     exampleRdsAccount[1].AccountPassword,
 //				DbList: pulumi.All(exampleDatabase[0].Name, exampleDatabase[1].Name).ApplyT(func(_args []interface{}) (string, error) {

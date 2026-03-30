@@ -43,7 +43,7 @@ import (
 //				name = param
 //			}
 //			defaultVpc, err := vpc.NewNetwork(ctx, "defaultVpc", &vpc.NetworkArgs{
-//				VpcName: pulumi.String(name),
+//				VpcName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ import (
 //			_, err = vpc.NewRouteTable(ctx, "default", &vpc.RouteTableArgs{
 //				Description:    pulumi.String("test-description"),
 //				VpcId:          defaultVpc.ID(),
-//				RouteTableName: pulumi.String(name),
+//				RouteTableName: pulumi.String(pulumi.String(name)),
 //				AssociateType:  pulumi.String("VSwitch"),
 //			})
 //			if err != nil {

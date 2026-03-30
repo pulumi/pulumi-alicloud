@@ -85,10 +85,10 @@ import (
 //	    _ := index
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
-// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 // CidrBlock: pulumi.String(invokeCidrsubnet.Result),
 // ZoneId: pulumi.String("me-east-1a"),
-// VswitchName: pulumi.String(name),
+// VswitchName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
@@ -113,10 +113,10 @@ import (
 // }).(pulumi.Interface{}PtrOutput)
 // defaultGateway, err := vpn.NewGateway(ctx, "default", &vpn.GatewayArgs{
 // VpnType: pulumi.String("Normal"),
-// VpnGatewayName: pulumi.String(name),
-// VswitchId: pulumi.Any(vswitchId),
+// VpnGatewayName: pulumi.String(pulumi.String(name)),
+// VswitchId: pulumi.String(pulumi.Any(vswitchId)),
 // AutoPay: pulumi.Bool(true),
-// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 // NetworkType: pulumi.String("public"),
 // PaymentType: pulumi.String("Subscription"),
 // EnableIpsec: pulumi.Bool(true),

@@ -70,7 +70,7 @@ import (
 //	    _ := index
 //
 // __res, err := cloudsso.NewDirectory(ctx, fmt.Sprintf("default-%v", key0), &cloudsso.DirectoryArgs{
-// DirectoryName: pulumi.String(name),
+// DirectoryName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
@@ -94,7 +94,7 @@ import (
 // return &tmp1, nil
 // }).(pulumi.Interface{}PtrOutput)
 // _, err = cloudsso.NewUser(ctx, "default", &cloudsso.UserArgs{
-// DirectoryId: pulumi.Any(directoryId),
+// DirectoryId: pulumi.String(pulumi.Any(directoryId)),
 // UserName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 // })
 // if err != nil {

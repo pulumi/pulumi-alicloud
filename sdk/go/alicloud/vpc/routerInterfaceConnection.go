@@ -50,34 +50,34 @@ import (
 //				name = param
 //			}
 //			foo, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			bar, err := vpc.NewNetwork(ctx, "bar", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			initiate, err := vpc.NewRouterInterface(ctx, "initiate", &vpc.RouterInterfaceArgs{
-//				OppositeRegion:     pulumi.String(region),
+//				OppositeRegion:     pulumi.String(pulumi.String(region)),
 //				RouterType:         pulumi.String("VRouter"),
 //				RouterId:           foo.RouterId,
 //				Role:               pulumi.String("InitiatingSide"),
 //				Specification:      pulumi.String("Large.2"),
-//				Name:               pulumi.String(name),
-//				Description:        pulumi.String(name),
+//				Name:               pulumi.String(pulumi.String(name)),
+//				Description:        pulumi.String(pulumi.String(name)),
 //				InstanceChargeType: pulumi.String("PostPaid"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			opposite, err := vpc.NewRouterInterface(ctx, "opposite", &vpc.RouterInterfaceArgs{
-//				OppositeRegion: pulumi.String(region),
+//				OppositeRegion: pulumi.String(pulumi.String(region)),
 //				RouterType:     pulumi.String("VRouter"),
 //				RouterId:       bar.RouterId,
 //				Role:           pulumi.String("AcceptingSide"),

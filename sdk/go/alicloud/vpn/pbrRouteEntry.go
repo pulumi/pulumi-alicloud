@@ -48,7 +48,7 @@ import (
 //				Description:         pulumi.String("defaultCustomerGateway"),
 //				IpAddress:           pulumi.String("2.2.2.5"),
 //				Asn:                 pulumi.String("2224"),
-//				CustomerGatewayName: pulumi.String(name),
+//				CustomerGatewayName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -57,14 +57,14 @@ import (
 //				Description:         pulumi.String("changeCustomerGateway"),
 //				IpAddress:           pulumi.String("2.2.2.6"),
 //				Asn:                 pulumi.String("2225"),
-//				CustomerGatewayName: pulumi.String(name),
+//				CustomerGatewayName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultConnection, err := vpn.NewConnection(ctx, "default", &vpn.ConnectionArgs{
-//				VpnGatewayId:      pulumi.String(_default.Ids[0]),
-//				VpnConnectionName: pulumi.String(name),
+//				VpnGatewayId:      pulumi.String(pulumi.String(_default.Ids[0])),
+//				VpnConnectionName: pulumi.String(pulumi.String(name)),
 //				LocalSubnets: pulumi.StringArray{
 //					pulumi.String("3.0.0.0/24"),
 //				},
@@ -136,7 +136,7 @@ import (
 //				return err
 //			}
 //			_, err = vpn.NewPbrRouteEntry(ctx, "default", &vpn.PbrRouteEntryArgs{
-//				VpnGatewayId: pulumi.String(_default.Ids[0]),
+//				VpnGatewayId: pulumi.String(pulumi.String(_default.Ids[0])),
 //				RouteSource:  pulumi.String("192.168.1.0/24"),
 //				RouteDest:    pulumi.String("10.0.0.0/24"),
 //				NextHop:      defaultConnection.ID(),

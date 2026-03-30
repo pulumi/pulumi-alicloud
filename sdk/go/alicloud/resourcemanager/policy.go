@@ -40,7 +40,7 @@ import (
 //				name = param
 //			}
 //			_, err := resourcemanager.NewPolicy(ctx, "example", &resourcemanager.PolicyArgs{
-//				PolicyName: pulumi.String(name),
+//				PolicyName: pulumi.String(pulumi.String(name)),
 //				PolicyDocument: pulumi.String(`\t\t{
 //
 // \t\t\t\"Statement\": [{

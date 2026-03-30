@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			example, err := cr.NewNamespace(ctx, "example", &cr.NamespaceArgs{
-//				Name:              pulumi.String(name),
+//				Name:              pulumi.String(pulumi.String(name)),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})
@@ -50,7 +50,7 @@ import (
 //			}
 //			_, err = cr.NewRepo(ctx, "example", &cr.RepoArgs{
 //				Namespace: example.Name,
-//				Name:      pulumi.String(name),
+//				Name:      pulumi.String(pulumi.String(name)),
 //				Summary:   pulumi.String("this is summary of my new repo"),
 //				RepoType:  pulumi.String("PRIVATE"),
 //				Detail:    pulumi.String("this is a private repo"),

@@ -45,9 +45,9 @@ import (
 //				name = param
 //			}
 //			_, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				Isp:         pulumi.String("BGP"),
-//				AddressName: pulumi.String(name),
+//				AddressName: pulumi.String(pulumi.String(name)),
 //				Netmode:     pulumi.String("public"),
 //				Bandwidth:   pulumi.String("1"),
 //				SecurityProtectionTypes: pulumi.StringArray{

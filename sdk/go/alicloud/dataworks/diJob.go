@@ -43,16 +43,16 @@ import (
 //				name = param
 //			}
 //			defaultMMHL8U, err := dataworks.NewProject(ctx, "defaultMMHL8U", &dataworks.ProjectArgs{
-//				ProjectName:    pulumi.String(name),
-//				DisplayName:    pulumi.String(name),
-//				Description:    pulumi.String(name),
+//				ProjectName:    pulumi.String(pulumi.String(name)),
+//				DisplayName:    pulumi.String(pulumi.String(name)),
+//				Description:    pulumi.String(pulumi.String(name)),
 //				PaiTaskEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dataworks.NewDiJob(ctx, "default", &dataworks.DiJobArgs{
-//				Description:   pulumi.String(name),
+//				Description:   pulumi.String(pulumi.String(name)),
 //				ProjectId:     defaultMMHL8U.ID(),
 //				JobName:       pulumi.String("zhenyuan_example_case"),
 //				MigrationType: pulumi.String("api_FullAndRealtimeIncremental"),

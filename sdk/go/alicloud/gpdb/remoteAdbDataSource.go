@@ -66,7 +66,7 @@ import (
 //			}
 //			defaultEtEzMF, err := gpdb.NewInstance(ctx, "defaultEtEzMF", &gpdb.InstanceArgs{
 //				InstanceSpec:        pulumi.String("2C8G"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //				SegNodeNum:          pulumi.Int(2),
 //				SegStorageType:      pulumi.String("cloud_essd"),
 //				InstanceNetworkType: pulumi.String("VPC"),
@@ -87,7 +87,7 @@ import (
 //			}
 //			defaultEY7t9t, err := gpdb.NewInstance(ctx, "defaultEY7t9t", &gpdb.InstanceArgs{
 //				InstanceSpec:        pulumi.String("2C8G"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //				SegNodeNum:          pulumi.Int(2),
 //				SegStorageType:      pulumi.String("cloud_essd"),
 //				InstanceNetworkType: pulumi.String("VPC"),

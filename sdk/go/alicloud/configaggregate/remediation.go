@@ -113,7 +113,7 @@ import (
 //				InvokeType:              pulumi.String("MANUAL_EXECUTION"),
 //				RemediationType:         pulumi.String("OOS"),
 //				AggregatorId:            create_agg.ID(),
-//				RemediationOriginParams: pulumi.String(json0),
+//				RemediationOriginParams: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err

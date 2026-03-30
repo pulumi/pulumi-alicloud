@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -60,14 +60,14 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = slb.NewLoadBalancer(ctx, "default", &slb.LoadBalancerArgs{
-//				LoadBalancerName: pulumi.String(name),
+//				LoadBalancerName: pulumi.String(pulumi.String(name)),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
 //				VswitchId:        defaultSwitch.ID(),
 //				Tags: pulumi.StringMap{

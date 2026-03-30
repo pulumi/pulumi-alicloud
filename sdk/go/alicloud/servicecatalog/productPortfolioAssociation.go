@@ -44,9 +44,9 @@ import (
 //				name = param
 //			}
 //			default0yAgJ8, err := servicecatalog.NewPortfolio(ctx, "default0yAgJ8", &servicecatalog.PortfolioArgs{
-//				ProviderName:  pulumi.String(name),
+//				ProviderName:  pulumi.String(pulumi.String(name)),
 //				Description:   pulumi.String("desc"),
-//				PortfolioName: pulumi.String(name),
+//				PortfolioName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -61,7 +61,7 @@ import (
 //				return err
 //			}
 //			defaultRetBJw, err := servicecatalog.NewProduct(ctx, "defaultRetBJw", &servicecatalog.ProductArgs{
-//				ProviderName: pulumi.String(name),
+//				ProviderName: pulumi.String(pulumi.String(name)),
 //				ProductName:  pulumi.String(invokeFormat.Result),
 //				ProductType:  pulumi.String("Ros"),
 //			})

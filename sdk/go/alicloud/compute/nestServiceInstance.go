@@ -72,17 +72,17 @@ import (
 // return err
 // }
 // defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-// VpcName: pulumi.String(name),
+// VpcName: pulumi.String(pulumi.String(name)),
 // CidrBlock: pulumi.String("10.0.0.0/8"),
 // })
 // if err != nil {
 // return err
 // }
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-// VswitchName: pulumi.String(name),
+// VswitchName: pulumi.String(pulumi.String(name)),
 // CidrBlock: pulumi.String("10.1.0.0/16"),
 // VpcId: defaultNetwork.ID(),
-// ZoneId: pulumi.String(defaultGetZones.Zones[0].Id),
+// ZoneId: pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
 // })
 // if err != nil {
 // return err
@@ -98,12 +98,12 @@ import (
 // splat0 = append(splat0, val0.ID())
 // }
 // defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
-// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+// ImageId: pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+// InstanceType: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 // SecurityGroups: splat0,
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(10),
-// AvailabilityZone: pulumi.String(defaultGetZones.Zones[0].Id),
+// AvailabilityZone: pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // VswitchId: defaultSwitch.ID(),
@@ -114,8 +114,8 @@ import (
 // _, err = compute.NewNestServiceInstance(ctx, "default", &compute.NestServiceInstanceArgs{
 // ServiceId: pulumi.String("service-dd475e6e468348799f0f"),
 // ServiceVersion: pulumi.String("1"),
-// ServiceInstanceName: pulumi.String(name),
-// ResourceGroupId: pulumi.String(_default.Groups[0].Id),
+// ServiceInstanceName: pulumi.String(pulumi.String(name)),
+// ResourceGroupId: pulumi.String(pulumi.String(_default.Groups[0].Id)),
 // PaymentType: pulumi.String("Permanent"),
 // OperationMetadata: &compute.NestServiceInstanceOperationMetadataArgs{
 // OperationStartTime: pulumi.String("1681281179000"),

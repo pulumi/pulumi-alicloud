@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			defaultAppGroup, err := opensearch.NewAppGroup(ctx, "default", &opensearch.AppGroupArgs{
-//				AppGroupName: pulumi.String(name),
+//				AppGroupName: pulumi.String(pulumi.String(name)),
 //				PaymentType:  pulumi.String("PayAsYouGo"),
 //				Type:         pulumi.String("standard"),
 //				Quota: &opensearch.AppGroupQuotaArgs{

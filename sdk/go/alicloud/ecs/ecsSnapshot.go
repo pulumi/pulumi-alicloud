@@ -64,23 +64,23 @@ import (
 // return err
 // }
 // defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-// VpcName: pulumi.String(name),
+// VpcName: pulumi.String(pulumi.String(name)),
 // CidrBlock: pulumi.String("192.168.0.0/16"),
 // })
 // if err != nil {
 // return err
 // }
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-// VswitchName: pulumi.String(name),
+// VswitchName: pulumi.String(pulumi.String(name)),
 // VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("192.168.192.0/24"),
-// ZoneId: pulumi.String(_default.Zones[0].Id),
+// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 // })
 // if err != nil {
 // return err
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-// SecurityGroupName: pulumi.String(name),
+// SecurityGroupName: pulumi.String(pulumi.String(name)),
 // VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
@@ -91,16 +91,16 @@ import (
 // splat0 = append(splat0, val0.ID())
 // }
 // defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
-// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+// ImageId: pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+// InstanceType: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 // SecurityGroups: splat0,
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(10),
-// AvailabilityZone: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
+// AvailabilityZone: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0])),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_essd"),
 // VswitchId: defaultSwitch.ID(),
-// InstanceName: pulumi.String(name),
+// InstanceName: pulumi.String(pulumi.String(name)),
 // DataDisks: ecs.InstanceDataDiskArray{
 // &ecs.InstanceDataDiskArgs{
 // Category: pulumi.String("cloud_essd"),
@@ -112,8 +112,8 @@ import (
 // return err
 // }
 // defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "default", &ecs.EcsDiskArgs{
-// DiskName: pulumi.String(name),
-// ZoneId: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
+// DiskName: pulumi.String(pulumi.String(name)),
+// ZoneId: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0])),
 // Category: pulumi.String("cloud_essd"),
 // Size: pulumi.Int(500),
 // })

@@ -69,23 +69,23 @@ import (
 // return err
 // }
 // defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-// VpcName: pulumi.String(name),
+// VpcName: pulumi.String(pulumi.String(name)),
 // CidrBlock: pulumi.String("172.17.3.0/24"),
 // })
 // if err != nil {
 // return err
 // }
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-// VswitchName: pulumi.String(name),
+// VswitchName: pulumi.String(pulumi.String(name)),
 // CidrBlock: pulumi.String("172.17.3.0/24"),
 // VpcId: defaultNetwork.ID(),
-// ZoneId: pulumi.String(_default.Zones[0].Id),
+// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 // })
 // if err != nil {
 // return err
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-// Name: pulumi.String(name),
+// Name: pulumi.String(pulumi.String(name)),
 // VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
@@ -97,16 +97,16 @@ import (
 // }
 // _, err = ecs.NewEcsInstanceSet(ctx, "beijing_k", &ecs.EcsInstanceSetArgs{
 // Amount: pulumi.Int(10),
-// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
-// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
-// InstanceName: pulumi.String(name),
+// ImageId: pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+// InstanceType: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
+// InstanceName: pulumi.String(pulumi.String(name)),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskPerformanceLevel: pulumi.String("PL0"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // SystemDiskSize: pulumi.Int(200),
 // VswitchId: defaultSwitch.ID(),
 // SecurityGroupIds: splat0,
-// ZoneId: pulumi.String(_default.Zones[0].Id),
+// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 // })
 // if err != nil {
 // return err

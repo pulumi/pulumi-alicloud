@@ -60,11 +60,11 @@ import (
 //				return err
 //			}
 //			defaultEnvironment, err := arms.NewEnvironment(ctx, "default", &arms.EnvironmentArgs{
-//				BindResourceId:     pulumi.String(defaultGetNetworks.Ids[0]),
+//				BindResourceId:     pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //				EnvironmentSubType: pulumi.String("ECS"),
 //				EnvironmentType:    pulumi.String("ECS"),
 //				EnvironmentName:    pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				ResourceGroupId:    pulumi.String(_default.Ids[1]),
+//				ResourceGroupId:    pulumi.String(pulumi.String(_default.Ids[1])),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("Environment"),

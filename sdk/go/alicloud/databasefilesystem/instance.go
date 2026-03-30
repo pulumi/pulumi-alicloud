@@ -46,7 +46,7 @@ import (
 //				Category:         pulumi.String("standard"),
 //				ZoneId:           pulumi.String("cn-hangzhou-i"),
 //				PerformanceLevel: pulumi.String("PL1"),
-//				FsName:           pulumi.String(name),
+//				FsName:           pulumi.String(pulumi.String(name)),
 //				Size:             pulumi.Int(100),
 //			})
 //			if err != nil {

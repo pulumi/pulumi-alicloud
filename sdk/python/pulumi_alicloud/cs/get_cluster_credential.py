@@ -151,7 +151,7 @@ def get_cluster_credential(cluster_id: Optional[_builtins.str] = None,
         enable_details=False)
     auth = {__key: alicloud.cs.get_cluster_credential(cluster_id=__key,
         temporary_duration_minutes=60,
-        output_file="my-auth-json") for __key, __value in std.toset(input=k8s.ids).result}
+        output_file="my-auth-json") for __key, __value in enumerate(std.toset(input=k8s.ids).result)}
     ```
 
 
@@ -198,7 +198,7 @@ def get_cluster_credential_output(cluster_id: Optional[pulumi.Input[_builtins.st
         enable_details=False)
     auth = {__key: alicloud.cs.get_cluster_credential(cluster_id=__key,
         temporary_duration_minutes=60,
-        output_file="my-auth-json") for __key, __value in std.toset(input=k8s.ids).result}
+        output_file="my-auth-json") for __key, __value in enumerate(std.toset(input=k8s.ids).result)}
     ```
 
 

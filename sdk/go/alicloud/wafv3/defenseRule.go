@@ -64,7 +64,7 @@ import (
 //				},
 //				Domain:     pulumi.String("example.wafqax.top"),
 //				AccessType: pulumi.String("share"),
-//				InstanceId: pulumi.String(_default.Ids[0]),
+//				InstanceId: pulumi.String(pulumi.String(_default.Ids[0])),
 //				Listen: &wafv3.DomainListenArgs{
 //					HttpPorts: pulumi.IntArray{
 //						pulumi.Int(80),
@@ -91,7 +91,7 @@ import (
 //						},
 //					},
 //				},
-//				InstanceId: pulumi.String(_default.Ids[0]),
+//				InstanceId: pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err

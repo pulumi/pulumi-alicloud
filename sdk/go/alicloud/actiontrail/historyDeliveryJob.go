@@ -71,8 +71,8 @@ import (
 //				return err
 //			}
 //			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
-//				Description: pulumi.String(name),
-//				ProjectName: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
+//				ProjectName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -91,12 +91,12 @@ import (
 //				SlsProjectArn: defaultProject.ProjectName.ApplyT(func(projectName string) (string, error) {
 //					return fmt.Sprintf("acs:log:%v:%v:project/%v", _default.Regions[0].Id, defaultGetAccount.Id, projectName), nil
 //				}).(pulumi.StringOutput),
-//				TrailName:            pulumi.String(name),
-//				SlsWriteRoleArn:      pulumi.String(defaultGetRoles.Roles[0].Arn),
+//				TrailName:            pulumi.String(pulumi.String(name)),
+//				SlsWriteRoleArn:      pulumi.String(pulumi.String(defaultGetRoles.Roles[0].Arn)),
 //				TrailRegion:          pulumi.String("All"),
 //				IsOrganizationTrail:  pulumi.Bool(false),
 //				Status:               pulumi.String("Enable"),
-//				EventSelectors:       pulumi.String(json0),
+//				EventSelectors:       pulumi.String(pulumi.String(json0)),
 //				DataEventTrailRegion: pulumi.String("cn-hangzhou"),
 //			})
 //			if err != nil {

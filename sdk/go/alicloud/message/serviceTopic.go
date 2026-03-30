@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_, err := message.NewServiceTopic(ctx, "default", &message.ServiceTopicArgs{
-//				TopicName:      pulumi.String(name),
+//				TopicName:      pulumi.String(pulumi.String(name)),
 //				MaxMessageSize: pulumi.Int(16888),
 //				EnableLogging:  pulumi.Bool(true),
 //			})

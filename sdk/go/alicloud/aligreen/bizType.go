@@ -41,8 +41,8 @@ import (
 //				name = param
 //			}
 //			_, err := aligreen.NewBizType(ctx, "default", &aligreen.BizTypeArgs{
-//				BizTypeName:   pulumi.String(name),
-//				Description:   pulumi.String(name),
+//				BizTypeName:   pulumi.String(pulumi.String(name)),
+//				Description:   pulumi.String(pulumi.String(name)),
 //				CiteTemplate:  pulumi.Bool(true),
 //				IndustryInfo:  pulumi.String("社交-注册信息-昵称"),
 //				BizTypeImport: pulumi.String("1"),

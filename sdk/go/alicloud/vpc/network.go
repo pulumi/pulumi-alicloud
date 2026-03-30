@@ -52,7 +52,7 @@ import (
 //				Ipv6Isp:     pulumi.String("BGP"),
 //				Description: pulumi.String("test"),
 //				CidrBlock:   pulumi.String("10.0.0.0/8"),
-//				VpcName:     pulumi.String(name),
+//				VpcName:     pulumi.String(pulumi.String(name)),
 //				EnableIpv6:  pulumi.Bool(true),
 //			})
 //			if err != nil {

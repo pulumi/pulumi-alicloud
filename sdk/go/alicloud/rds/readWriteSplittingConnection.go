@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -64,14 +64,14 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(example.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(example.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
@@ -81,10 +81,10 @@ import (
 //				Engine:             pulumi.String("MySQL"),
 //				EngineVersion:      pulumi.String("5.6"),
 //				Category:           pulumi.String("HighAvailability"),
-//				InstanceType:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[1].InstanceClass),
+//				InstanceType:       pulumi.String(pulumi.String(exampleGetInstanceClasses.InstanceClasses[1].InstanceClass)),
 //				InstanceStorage:    pulumi.Int(20),
 //				InstanceChargeType: pulumi.String("Postpaid"),
-//				InstanceName:       pulumi.String(name),
+//				InstanceName:       pulumi.String(pulumi.String(name)),
 //				VswitchId:          exampleSwitch.ID(),
 //				SecurityIps: pulumi.StringArray{
 //					pulumi.String("10.168.1.12"),

@@ -41,8 +41,8 @@ import (
 //				name = param
 //			}
 //			_, err := resourcemanager.NewResourceGroup(ctx, "example", &resourcemanager.ResourceGroupArgs{
-//				ResourceGroupName: pulumi.String(name),
-//				DisplayName:       pulumi.String(name),
+//				ResourceGroupName: pulumi.String(pulumi.String(name)),
+//				DisplayName:       pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

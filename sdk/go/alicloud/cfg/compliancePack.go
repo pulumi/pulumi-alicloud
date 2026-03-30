@@ -48,12 +48,12 @@ import (
 //				return err
 //			}
 //			rule1, err := cfg.NewRule(ctx, "rule1", &cfg.RuleArgs{
-//				Description:               pulumi.String(name),
+//				Description:               pulumi.String(pulumi.String(name)),
 //				SourceOwner:               pulumi.String("ALIYUN"),
 //				SourceIdentifier:          pulumi.String("ram-user-ak-create-date-expired-check"),
 //				RiskLevel:                 pulumi.Int(1),
 //				MaximumExecutionFrequency: pulumi.String("TwentyFour_Hours"),
-//				RegionIdsScope:            pulumi.String(_default.Regions[0].Id),
+//				RegionIdsScope:            pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //				ConfigRuleTriggerTypes:    pulumi.String("ScheduledNotification"),
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::RAM::User"),
@@ -67,11 +67,11 @@ import (
 //				return err
 //			}
 //			rule2, err := cfg.NewRule(ctx, "rule2", &cfg.RuleArgs{
-//				Description:            pulumi.String(name),
+//				Description:            pulumi.String(pulumi.String(name)),
 //				SourceOwner:            pulumi.String("ALIYUN"),
 //				SourceIdentifier:       pulumi.String("adb-cluster-maintain-time-check"),
 //				RiskLevel:              pulumi.Int(2),
-//				RegionIdsScope:         pulumi.String(_default.Regions[0].Id),
+//				RegionIdsScope:         pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //				ConfigRuleTriggerTypes: pulumi.String("ScheduledNotification"),
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::ADB::DBCluster"),
@@ -85,7 +85,7 @@ import (
 //				return err
 //			}
 //			_, err = cfg.NewCompliancePack(ctx, "default", &cfg.CompliancePackArgs{
-//				CompliancePackName: pulumi.String(name),
+//				CompliancePackName: pulumi.String(pulumi.String(name)),
 //				Description:        pulumi.String("CloudGovernanceCenter evaluation"),
 //				RiskLevel:          pulumi.Int(2),
 //				ConfigRuleIds: cfg.CompliancePackConfigRuleIdArray{

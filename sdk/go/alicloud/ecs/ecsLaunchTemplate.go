@@ -66,7 +66,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -81,11 +81,11 @@ import (
 //			_, err = ecs.NewEcsLaunchTemplate(ctx, "default", &ecs.EcsLaunchTemplateArgs{
 //				LaunchTemplateName:          pulumi.String("terraform-example"),
 //				Description:                 pulumi.String("terraform-example"),
-//				ImageId:                     pulumi.String(defaultGetImages.Images[0].Id),
+//				ImageId:                     pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
 //				HostName:                    pulumi.String("terraform-example"),
 //				InstanceChargeType:          pulumi.String("PrePaid"),
 //				InstanceName:                pulumi.String("terraform-example"),
-//				InstanceType:                pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				InstanceType:                pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				InternetChargeType:          pulumi.String("PayByBandwidth"),
 //				InternetMaxBandwidthIn:      pulumi.Int(5),
 //				InternetMaxBandwidthOut:     pulumi.Int(5),
@@ -109,7 +109,7 @@ import (
 //				UserData:  pulumi.String("xxxxxxx"),
 //				VswitchId: defaultSwitch.ID(),
 //				VpcId:     defaultNetwork.ID(),
-//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//				ZoneId:    pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				TemplateTags: pulumi.StringMap{
 //					"Create": pulumi.String("Terraform"),
 //					"For":    pulumi.String("example"),

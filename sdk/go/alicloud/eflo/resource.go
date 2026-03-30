@@ -68,8 +68,8 @@ import (
 //					NetworkMode: pulumi.String("net"),
 //					Name:        pulumi.String("lingjun"),
 //				},
-//				ClusterName: pulumi.String(name),
-//				ClusterDesc: pulumi.String(name),
+//				ClusterName: pulumi.String(pulumi.String(name)),
+//				ClusterDesc: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

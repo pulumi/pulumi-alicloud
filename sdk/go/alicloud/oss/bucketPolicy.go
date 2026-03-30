@@ -80,7 +80,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = oss.NewBucketPolicy(ctx, "default", &oss.BucketPolicyArgs{
-//				Policy: pulumi.String(json0),
+//				Policy: pulumi.String(pulumi.String(json0)),
 //				Bucket: createBucket.Bucket,
 //			})
 //			if err != nil {

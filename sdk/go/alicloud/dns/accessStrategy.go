@@ -54,13 +54,13 @@ import (
 //				return err
 //			}
 //			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
-//				AlarmContactGroupName: pulumi.String(name),
+//				AlarmContactGroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultGtmInstance, err := dns.NewGtmInstance(ctx, "default", &dns.GtmInstanceArgs{
-//				InstanceName:         pulumi.String(name),
+//				InstanceName:         pulumi.String(pulumi.String(name)),
 //				PaymentType:          pulumi.String("Subscription"),
 //				Period:               pulumi.Int(1),
 //				RenewalStatus:        pulumi.String("ManualRenewal"),
@@ -70,11 +70,11 @@ import (
 //				PublicCnameMode:      pulumi.String("SYSTEM_ASSIGN"),
 //				Ttl:                  pulumi.Int(60),
 //				CnameType:            pulumi.String("PUBLIC"),
-//				ResourceGroupId:      pulumi.String(_default.Groups[0].Id),
+//				ResourceGroupId:      pulumi.String(pulumi.String(_default.Groups[0].Id)),
 //				AlertGroups: pulumi.StringArray{
 //					defaultAlarmContactGroup.AlarmContactGroupName,
 //				},
-//				PublicUserDomainName: pulumi.String(domainName),
+//				PublicUserDomainName: pulumi.String(pulumi.String(domainName)),
 //				AlertConfigs: dns.GtmInstanceAlertConfigArray{
 //					&dns.GtmInstanceAlertConfigArgs{
 //						SmsNotice:      pulumi.Bool(true),
@@ -121,7 +121,7 @@ import (
 //				defaultAddressPool = append(defaultAddressPool, __res)
 //			}
 //			_, err = dns.NewAccessStrategy(ctx, "default", &dns.AccessStrategyArgs{
-//				StrategyName:               pulumi.String(name),
+//				StrategyName:               pulumi.String(pulumi.String(name)),
 //				StrategyMode:               pulumi.String("GEO"),
 //				InstanceId:                 defaultGtmInstance.ID(),
 //				DefaultAddrPoolType:        pulumi.String("IPV4"),

@@ -71,7 +71,7 @@ import (
 //				VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("192.168.192.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -80,12 +80,12 @@ import (
 //				StorageBundleId:        defaultStorageBundle.ID(),
 //				Type:                   pulumi.String("File"),
 //				Location:               pulumi.String("Cloud"),
-//				GatewayName:            pulumi.String(name),
+//				GatewayName:            pulumi.String(pulumi.String(name)),
 //				GatewayClass:           pulumi.String("Standard"),
 //				VswitchId:              defaultSwitch.ID(),
 //				PublicNetworkBandwidth: pulumi.Int(50),
 //				PaymentType:            pulumi.String("PayAsYouGo"),
-//				Description:            pulumi.String(name),
+//				Description:            pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

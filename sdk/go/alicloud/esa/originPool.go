@@ -50,7 +50,7 @@ import (
 //			}
 //			defaultSite, err := esa.NewSite(ctx, "default", &esa.SiteArgs{
 //				SiteName:   pulumi.Sprintf("gositecdn-%v.cn", defaultInteger.Result),
-//				InstanceId: pulumi.String(_default.Sites[0].InstanceId),
+//				InstanceId: pulumi.String(pulumi.String(_default.Sites[0].InstanceId)),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),
 //			})

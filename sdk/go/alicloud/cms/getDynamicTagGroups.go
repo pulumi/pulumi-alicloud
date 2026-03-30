@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_default, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
-//				AlarmContactGroupName: pulumi.String(name),
+//				AlarmContactGroupName: pulumi.String(pulumi.String(name)),
 //				Describe:              pulumi.String("example_value"),
 //				EnableSubscribed:      pulumi.Bool(true),
 //			})

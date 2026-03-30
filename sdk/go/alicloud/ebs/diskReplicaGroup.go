@@ -56,12 +56,12 @@ import (
 //				return err
 //			}
 //			_, err = ebs.NewDiskReplicaGroup(ctx, "default", &ebs.DiskReplicaGroupArgs{
-//				SourceRegionId:      pulumi.String(_default.Regions[0].Id),
-//				SourceZoneId:        pulumi.String(defaultGetRegions.Regions[0].Zones[0].ZoneId),
-//				DestinationRegionId: pulumi.String(_default.Regions[0].Id),
-//				DestinationZoneId:   pulumi.String(defaultGetRegions.Regions[0].Zones[1].ZoneId),
-//				GroupName:           pulumi.String(name),
-//				Description:         pulumi.String(name),
+//				SourceRegionId:      pulumi.String(pulumi.String(_default.Regions[0].Id)),
+//				SourceZoneId:        pulumi.String(pulumi.String(defaultGetRegions.Regions[0].Zones[0].ZoneId)),
+//				DestinationRegionId: pulumi.String(pulumi.String(_default.Regions[0].Id)),
+//				DestinationZoneId:   pulumi.String(pulumi.String(defaultGetRegions.Regions[0].Zones[1].ZoneId)),
+//				GroupName:           pulumi.String(pulumi.String(name)),
+//				Description:         pulumi.String(pulumi.String(name)),
 //				Rpo:                 pulumi.Int(900),
 //			})
 //			if err != nil {

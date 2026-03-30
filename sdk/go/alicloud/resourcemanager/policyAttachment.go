@@ -43,13 +43,13 @@ import (
 //				name = param
 //			}
 //			exampleUser, err := ram.NewUser(ctx, "example", &ram.UserArgs{
-//				Name: pulumi.String(name),
+//				Name: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			examplePolicy, err := resourcemanager.NewPolicy(ctx, "example", &resourcemanager.PolicyArgs{
-//				PolicyName: pulumi.String(name),
+//				PolicyName: pulumi.String(pulumi.String(name)),
 //				PolicyDocument: pulumi.String(`\t\t{
 //
 // \t\t\t\"Statement\": [{
@@ -92,7 +92,7 @@ import (
 //				PolicyType:      pulumi.String("Custom"),
 //				PrincipalName:   pulumi.String(invokeFormat.Result),
 //				PrincipalType:   pulumi.String("IMSUser"),
-//				ResourceGroupId: pulumi.String(example.Ids[0]),
+//				ResourceGroupId: pulumi.String(pulumi.String(example.Ids[0])),
 //			})
 //			if err != nil {
 //				return err

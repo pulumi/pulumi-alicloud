@@ -50,7 +50,7 @@ import (
 //			}
 //			defaultENuC6u, err := pai.NewWorkspaceWorkspace(ctx, "defaultENuC6u", &pai.WorkspaceWorkspaceArgs{
 //				Description:   pulumi.String("156"),
-//				DisplayName:   pulumi.String(name),
+//				DisplayName:   pulumi.String(pulumi.String(name)),
 //				WorkspaceName: pulumi.Sprintf("%v_%v", name, _default.Result),
 //				EnvTypes: pulumi.StringArray{
 //					pulumi.String("prod"),
@@ -62,7 +62,7 @@ import (
 //			_, err = pai.NewWorkspaceModel(ctx, "default", &pai.WorkspaceModelArgs{
 //				Origin:        pulumi.String("Civitai"),
 //				Task:          pulumi.String("text-to-image-synthesis"),
-//				ModelName:     pulumi.String(name),
+//				ModelName:     pulumi.String(pulumi.String(name)),
 //				Accessibility: pulumi.String("PRIVATE"),
 //				WorkspaceId:   defaultENuC6u.ID(),
 //				ModelType:     pulumi.String("Checkpoint"),

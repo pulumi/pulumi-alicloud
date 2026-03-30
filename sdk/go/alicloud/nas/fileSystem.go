@@ -51,7 +51,7 @@ import (
 //			_, err = nas.NewFileSystem(ctx, "default", &nas.FileSystemArgs{
 //				ProtocolType:   pulumi.String("NFS"),
 //				StorageType:    pulumi.String("Capacity"),
-//				Description:    pulumi.String(name),
+//				Description:    pulumi.String(pulumi.String(name)),
 //				EncryptType:    pulumi.Int(1),
 //				FileSystemType: pulumi.String("standard"),
 //				RecycleBin: &nas.FileSystemRecycleBinArgs{
@@ -61,7 +61,7 @@ import (
 //				NfsAcl: &nas.FileSystemNfsAclArgs{
 //					Enabled: pulumi.Bool(true),
 //				},
-//				ZoneId: pulumi.String(_default.Zones[0].ZoneId),
+//				ZoneId: pulumi.String(pulumi.String(_default.Zones[0].ZoneId)),
 //			})
 //			if err != nil {
 //				return err

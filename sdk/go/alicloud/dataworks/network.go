@@ -45,8 +45,8 @@ import (
 //				name = param
 //			}
 //			default5Bia4h, err := vpc.NewNetwork(ctx, "default5Bia4h", &vpc.NetworkArgs{
-//				Description: pulumi.String(name),
-//				VpcName:     pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
+//				VpcName:     pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {
@@ -62,7 +62,7 @@ import (
 //				return err
 //			}
 //			defaultss7s7F, err := vpc.NewSwitch(ctx, "defaultss7s7F", &vpc.SwitchArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				VpcId:       default5Bia4h.ID(),
 //				ZoneId:      pulumi.String("cn-beijing-g"),
 //				VswitchName: pulumi.String(invokeFormat.Result),
@@ -76,7 +76,7 @@ import (
 //				PaymentType:         pulumi.String("PostPaid"),
 //				Specification:       pulumi.Int(500),
 //				DefaultVswitchId:    defaultss7s7F.ID(),
-//				Remark:              pulumi.String(name),
+//				Remark:              pulumi.String(pulumi.String(name)),
 //				ResourceGroupName:   pulumi.String("network_openapi_example01"),
 //				DefaultVpcId:        default5Bia4h.ID(),
 //			})
@@ -93,7 +93,7 @@ import (
 //				return err
 //			}
 //			defaulte4zhaL, err := vpc.NewNetwork(ctx, "defaulte4zhaL", &vpc.NetworkArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				VpcName:     pulumi.String(invokeFormat1.Result),
 //				CidrBlock:   pulumi.String("172.16.0.0/12"),
 //			})
@@ -110,7 +110,7 @@ import (
 //				return err
 //			}
 //			default675v38, err := vpc.NewSwitch(ctx, "default675v38", &vpc.SwitchArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				VpcId:       defaulte4zhaL.ID(),
 //				ZoneId:      pulumi.String("cn-beijing-g"),
 //				VswitchName: pulumi.String(invokeFormat2.Result),

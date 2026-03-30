@@ -44,7 +44,7 @@ import (
 //				ActionType:               pulumi.Int(0),
 //				Platform:                 pulumi.String("windows"),
 //				RegistryContent:          pulumi.String("123"),
-//				ClientUserDefineRuleName: pulumi.String(name),
+//				ClientUserDefineRuleName: pulumi.String(pulumi.String(name)),
 //				ParentProcPath:           pulumi.String("/root/bash"),
 //				Type:                     pulumi.Int(5),
 //				Cmdline:                  pulumi.String("bash"),

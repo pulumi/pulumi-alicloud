@@ -64,7 +64,7 @@ import (
 //			}
 //			_, err = vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
 //				Description:     pulumi.String("test"),
-//				Ipv6GatewayName: pulumi.String(name),
+//				Ipv6GatewayName: pulumi.String(pulumi.String(name)),
 //				VpcId:           defaultVpc.ID(),
 //				ResourceGroupId: defaultRg.ID(),
 //			})

@@ -131,7 +131,7 @@ import (
 //			_ = vpn.GetGatewayVcoRoutesOutput(ctx, vpn.GetGatewayVcoRoutesOutputArgs{
 //				VpnConnectionId: defaultTransitRouterVpnAttachment.VpnId,
 //			}, nil)
-//			ctx.Export("vpnGatewayVcoRouteId1", ids.Routes[0].Id)
+//			ctx.Export("vpnGatewayVcoRouteId1", pulumi.Any(ids.Routes[0].Id))
 //			return nil
 //		})
 //	}

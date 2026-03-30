@@ -64,7 +64,7 @@ import (
 //				Configuration: &sls.EtlConfigurationArgs{
 //					Script:  pulumi.String("* | extend a=1"),
 //					Lang:    pulumi.String("SPL"),
-//					RoleArn: pulumi.String(name),
+//					RoleArn: pulumi.String(pulumi.String(name)),
 //					Sinks: sls.EtlConfigurationSinkArray{
 //						&sls.EtlConfigurationSinkArgs{
 //							Name:     pulumi.String("11111"),
@@ -74,7 +74,7 @@ import (
 //							Datasets: pulumi.StringArray{
 //								pulumi.String("__UNNAMED__"),
 //							},
-//							RoleArn: pulumi.String(name),
+//							RoleArn: pulumi.String(pulumi.String(name)),
 //						},
 //					},
 //					Logstore: defaultzWKLkp.LogstoreName,

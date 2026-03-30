@@ -46,7 +46,7 @@ import (
 // return err
 // }
 // defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-// Name: pulumi.String(name),
+// Name: pulumi.String(pulumi.String(name)),
 // CidrBlock: pulumi.String("172.16.0.0/12"),
 // })
 // if err != nil {
@@ -55,14 +55,14 @@ import (
 // _, err = vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 // VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("172.16.0.0/21"),
-// ZoneId: pulumi.String(_default.Zones[0].Id),
-// VswitchName: pulumi.String(name),
+// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
+// VswitchName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
 // }
 // defaultLoadBalancer, err := slb.NewLoadBalancer(ctx, "default", &slb.LoadBalancerArgs{
-// Name: pulumi.String(name),
+// Name: pulumi.String(pulumi.String(name)),
 // Specification: pulumi.String("slb.s2.small"),
 // VswitchId: pulumi.Any(defaultAlicloudVswitches.Ids[0]),
 // })
@@ -78,9 +78,9 @@ import (
 // namespaceId = param
 // }
 // defaultNamespace, err := sae.NewNamespace(ctx, "default", &sae.NamespaceArgs{
-// NamespaceId: pulumi.String(namespaceId),
-// NamespaceName: pulumi.String(name),
-// NamespaceDescription: pulumi.String(desc),
+// NamespaceId: pulumi.String(pulumi.String(namespaceId)),
+// NamespaceName: pulumi.String(pulumi.String(name)),
+// NamespaceDescription: pulumi.String(pulumi.String(desc)),
 // })
 // if err != nil {
 // return err

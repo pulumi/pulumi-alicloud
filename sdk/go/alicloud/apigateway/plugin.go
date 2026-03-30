@@ -83,9 +83,9 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = apigateway.NewPlugin(ctx, "default", &apigateway.PluginArgs{
-//				Description: pulumi.String(name),
-//				PluginName:  pulumi.String(name),
-//				PluginData:  pulumi.String(json0),
+//				Description: pulumi.String(pulumi.String(name)),
+//				PluginName:  pulumi.String(pulumi.String(name)),
+//				PluginData:  pulumi.String(pulumi.String(json0)),
 //				PluginType:  pulumi.String("routing"),
 //			})
 //			if err != nil {

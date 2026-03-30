@@ -45,7 +45,7 @@ import (
 //				domain = param
 //			}
 //			_default, err := ddos.NewDdosCooInstance(ctx, "default", &ddos.DdosCooInstanceArgs{
-//				Name:             pulumi.String(name),
+//				Name:             pulumi.String(pulumi.String(name)),
 //				Bandwidth:        pulumi.String("30"),
 //				BaseBandwidth:    pulumi.String("30"),
 //				ServiceBandwidth: pulumi.String("100"),
@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = ddos.NewDomainResource(ctx, "default", &ddos.DomainResourceArgs{
-//				Domain: pulumi.String(domain),
+//				Domain: pulumi.String(pulumi.String(domain)),
 //				RsType: pulumi.Int(0),
 //				InstanceIds: pulumi.StringArray{
 //					_default.ID(),

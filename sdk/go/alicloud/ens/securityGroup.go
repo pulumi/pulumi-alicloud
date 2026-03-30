@@ -40,8 +40,8 @@ import (
 //				name = param
 //			}
 //			_, err := ens.NewSecurityGroup(ctx, "default", &ens.SecurityGroupArgs{
-//				Description:       pulumi.String(name),
-//				SecurityGroupName: pulumi.String(name),
+//				Description:       pulumi.String(pulumi.String(name)),
+//				SecurityGroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

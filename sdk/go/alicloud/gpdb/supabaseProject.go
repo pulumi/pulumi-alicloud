@@ -51,12 +51,12 @@ import (
 //			_, err = gpdb.NewSupabaseProject(ctx, "default", &gpdb.SupabaseProjectArgs{
 //				ProjectSpec: pulumi.String("1C2G"),
 //				ZoneId:      pulumi.String("cn-hangzhou-j"),
-//				VpcId:       pulumi.String(_default.Ids[0]),
+//				VpcId:       pulumi.String(pulumi.String(_default.Ids[0])),
 //				ProjectName: pulumi.String("supabase_example"),
 //				SecurityIpLists: pulumi.StringArray{
 //					pulumi.String("127.0.0.1"),
 //				},
-//				VswitchId:            pulumi.String(defaultGetSwitches.Ids[0]),
+//				VswitchId:            pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //				DiskPerformanceLevel: pulumi.String("PL0"),
 //				StorageSize:          pulumi.Int(1),
 //				AccountPassword:      pulumi.String("YourPassword123!"),

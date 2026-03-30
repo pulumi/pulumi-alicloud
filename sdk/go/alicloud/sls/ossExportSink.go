@@ -127,7 +127,7 @@ import (
 //						TimeZone:        pulumi.String("+0700"),
 //						ContentType:     pulumi.String("json"),
 //						CompressionType: pulumi.String("none"),
-//						ContentDetail:   pulumi.String(json0),
+//						ContentDetail:   pulumi.String(pulumi.String(json0)),
 //						BufferInterval:  pulumi.String("300"),
 //						BufferSize:      pulumi.String("256"),
 //						Endpoint:        pulumi.String("https://oss-cn-shanghai-internal.aliyuncs.com"),

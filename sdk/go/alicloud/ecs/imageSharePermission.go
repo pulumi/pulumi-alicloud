@@ -70,7 +70,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -83,14 +83,14 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
+//				AvailabilityZone: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				InstanceName:     pulumi.String("terraform-example"),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
 //				VswitchId:               defaultSwitch.ID(),
-//				InstanceType:            pulumi.String(defaultGetInstanceTypes.Ids[0]),
-//				ImageId:                 pulumi.String(defaultGetImages.Ids[0]),
+//				InstanceType:            pulumi.String(pulumi.String(defaultGetInstanceTypes.Ids[0])),
+//				ImageId:                 pulumi.String(pulumi.String(defaultGetImages.Ids[0])),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
 //			})
 //			if err != nil {
@@ -118,7 +118,7 @@ import (
 //			}
 //			_, err = ecs.NewImageSharePermission(ctx, "default", &ecs.ImageSharePermissionArgs{
 //				ImageId:   defaultImage.ID(),
-//				AccountId: pulumi.String(anotherUid),
+//				AccountId: pulumi.String(pulumi.String(anotherUid)),
 //			})
 //			if err != nil {
 //				return err

@@ -43,7 +43,7 @@ import (
 //				name = param
 //			}
 //			_, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
-//				InstanceName:  pulumi.String(name),
+//				InstanceName:  pulumi.String(pulumi.String(name)),
 //				InstanceType:  pulumi.String("enterprise"),
 //				MaxTps:        pulumi.String("1000"),
 //				QueueCapacity: pulumi.String("50"),
@@ -83,7 +83,7 @@ import (
 //				name = param
 //			}
 //			_, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
-//				InstanceName:         pulumi.String(name),
+//				InstanceName:         pulumi.String(pulumi.String(name)),
 //				PaymentType:          pulumi.String("PayAsYouGo"),
 //				ServerlessChargeType: pulumi.String("onDemand"),
 //			})

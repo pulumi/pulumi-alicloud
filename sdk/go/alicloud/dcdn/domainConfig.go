@@ -41,7 +41,7 @@ import (
 //				domainName = param
 //			}
 //			example, err := dcdn.NewDomain(ctx, "example", &dcdn.DomainArgs{
-//				DomainName: pulumi.String(domainName),
+//				DomainName: pulumi.String(pulumi.String(domainName)),
 //				Scope:      pulumi.String("overseas"),
 //				Status:     pulumi.String("online"),
 //				Sources: dcdn.DomainSourceArray{

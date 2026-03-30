@@ -51,9 +51,9 @@ import (
 //				return err
 //			}
 //			defaultDomainResource, err := ddos.NewDomainResource(ctx, "default", &ddos.DomainResourceArgs{
-//				Domain: pulumi.String(domain),
+//				Domain: pulumi.String(pulumi.String(domain)),
 //				InstanceIds: pulumi.StringArray{
-//					pulumi.String(_default.Ids[0]),
+//					pulumi.String(pulumi.String(_default.Ids[0])),
 //				},
 //				ProxyTypes: ddos.DomainResourceProxyTypeArray{
 //					&ddos.DomainResourceProxyTypeArgs{
@@ -83,7 +83,7 @@ import (
 //				Action:  pulumi.String("accept"),
 //				Expires: pulumi.Int(0),
 //				Domain:  defaultDomainResource.ID(),
-//				Name:    pulumi.String(name),
+//				Name:    pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

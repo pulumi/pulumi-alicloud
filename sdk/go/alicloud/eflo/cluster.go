@@ -81,7 +81,7 @@ import (
 //					pulumi.String("1111"),
 //				},
 //				IgnoreFailedNodeTasks: pulumi.Bool(true),
-//				ResourceGroupId:       pulumi.String(_default.Ids[1]),
+//				ResourceGroupId:       pulumi.String(pulumi.String(_default.Ids[1])),
 //				NodeGroups: eflo.ClusterNodeGroupArray{
 //					&eflo.ClusterNodeGroupArgs{
 //						ImageId:              pulumi.String("i198448731735114628708"),

@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			loadBalancerNetwork, err := vpc.NewNetwork(ctx, "load_balancer", &vpc.NetworkArgs{
-//				VpcName: pulumi.String(slbLoadBalancerName),
+//				VpcName: pulumi.String(pulumi.String(slbLoadBalancerName)),
 //			})
 //			if err != nil {
 //				return err
@@ -57,14 +57,14 @@ import (
 //			loadBalancerSwitch, err := vpc.NewSwitch(ctx, "load_balancer", &vpc.SwitchArgs{
 //				VpcId:       loadBalancerNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(loadBalancer.Zones[0].Id),
-//				VswitchName: pulumi.String(slbLoadBalancerName),
+//				ZoneId:      pulumi.String(pulumi.String(loadBalancer.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(slbLoadBalancerName)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = slb.NewApplicationLoadBalancer(ctx, "load_balancer", &slb.ApplicationLoadBalancerArgs{
-//				LoadBalancerName: pulumi.String(slbLoadBalancerName),
+//				LoadBalancerName: pulumi.String(pulumi.String(slbLoadBalancerName)),
 //				AddressType:      pulumi.String("intranet"),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
 //				VswitchId:        loadBalancerSwitch.ID(),

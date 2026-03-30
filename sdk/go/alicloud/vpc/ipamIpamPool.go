@@ -71,7 +71,7 @@ import (
 //			_, err = vpc.NewIpamIpamPool(ctx, "default", &vpc.IpamIpamPoolArgs{
 //				IpamScopeId:      defaultIpam.PrivateDefaultScopeId,
 //				PoolRegionId:     parentIpamPool.PoolRegionId,
-//				IpamPoolName:     pulumi.String(name),
+//				IpamPoolName:     pulumi.String(pulumi.String(name)),
 //				SourceIpamPoolId: parentIpamPool.ID(),
 //				IpVersion:        pulumi.String("IPv4"),
 //			})

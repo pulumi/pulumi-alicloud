@@ -59,7 +59,7 @@ import (
 //				QueryStringMode:          pulumi.String("ignore_all"),
 //				Rule:                     pulumi.String("http.host eq \"video.example.com\""),
 //				CacheDeceptionArmor:      pulumi.String("off"),
-//				SiteId:                   pulumi.Int(_default.Sites[0].Id),
+//				SiteId:                   pulumi.String(pulumi.Int(_default.Sites[0].Id)),
 //				BypassCache:              pulumi.String("cache_all"),
 //				EdgeCacheTtl:             pulumi.String("300"),
 //				RuleEnable:               pulumi.String("off"),

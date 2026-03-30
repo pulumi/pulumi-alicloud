@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
@@ -69,8 +69,8 @@ import (
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId:    pulumi.String(_default.Connections[0].Id),
-//				VirtualBorderRouterName: pulumi.String(name),
+//				PhysicalConnectionId:    pulumi.String(pulumi.String(_default.Connections[0].Id)),
+//				VirtualBorderRouterName: pulumi.String(pulumi.String(name)),
 //				VlanId:                  defaultInteger.Id,
 //				MinRxInterval:           pulumi.Int(1000),
 //				MinTxInterval:           pulumi.Int(1000),
@@ -84,15 +84,15 @@ import (
 //				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
 //				VbrId:                              defaultVirtualBorderRouter.ID(),
 //				AutoPublishRouteEnabled:            pulumi.Bool(true),
-//				TransitRouterAttachmentName:        pulumi.String(name),
-//				TransitRouterAttachmentDescription: pulumi.String(name),
+//				TransitRouterAttachmentName:        pulumi.String(pulumi.String(name)),
+//				TransitRouterAttachmentDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultTransitRouterRouteTable, err := cen.NewTransitRouterRouteTable(ctx, "default", &cen.TransitRouterRouteTableArgs{
 //				TransitRouterId:             defaultTransitRouter.TransitRouterId,
-//				TransitRouterRouteTableName: pulumi.String(name),
+//				TransitRouterRouteTableName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

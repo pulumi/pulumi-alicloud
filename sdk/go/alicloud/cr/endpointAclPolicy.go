@@ -68,7 +68,7 @@ import (
 // return &default.InstanceId, nil
 // }).(pulumi.StringPtrOutput)),
 // Entry: pulumi.String("192.168.1.0/24"),
-// Description: pulumi.String(name),
+// Description: pulumi.String(pulumi.String(name)),
 // ModuleName: pulumi.String("Registry"),
 // EndpointType: pulumi.String("internet"),
 // })

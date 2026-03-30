@@ -69,7 +69,7 @@ import (
 //				VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("192.168.192.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].ZoneId),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].ZoneId)),
 //			})
 //			if err != nil {
 //				return err
@@ -89,15 +89,15 @@ import (
 //				return err
 //			}
 //			_, err = ecp.NewInstance(ctx, "default", &ecp.InstanceArgs{
-//				InstanceType:    pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].InstanceType),
+//				InstanceType:    pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].InstanceType)),
 //				ImageId:         pulumi.String("android-image-release5501072_a11_20240530.raw"),
 //				VswitchId:       defaultSwitch.ID(),
 //				SecurityGroupId: defaultSecurityGroup.ID(),
 //				KeyPairName:     defaultKeyPair.KeyPairName,
 //				VncPassword:     pulumi.String("Ecp123"),
 //				PaymentType:     pulumi.String("PayAsYouGo"),
-//				InstanceName:    pulumi.String(name),
-//				Description:     pulumi.String(name),
+//				InstanceName:    pulumi.String(pulumi.String(name)),
+//				Description:     pulumi.String(pulumi.String(name)),
 //				Force:           pulumi.Bool(true),
 //			})
 //			if err != nil {

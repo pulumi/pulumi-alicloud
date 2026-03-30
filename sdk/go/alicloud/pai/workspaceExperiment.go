@@ -41,9 +41,9 @@ import (
 //				name = param
 //			}
 //			defaultDI9fsL, err := pai.NewWorkspaceWorkspace(ctx, "defaultDI9fsL", &pai.WorkspaceWorkspaceArgs{
-//				Description:   pulumi.String(name),
-//				DisplayName:   pulumi.String(name),
-//				WorkspaceName: pulumi.String(name),
+//				Description:   pulumi.String(pulumi.String(name)),
+//				DisplayName:   pulumi.String(pulumi.String(name)),
+//				WorkspaceName: pulumi.String(pulumi.String(name)),
 //				EnvTypes: pulumi.StringArray{
 //					pulumi.String("prod"),
 //				},
@@ -54,7 +54,7 @@ import (
 //			_, err = pai.NewWorkspaceExperiment(ctx, "default", &pai.WorkspaceExperimentArgs{
 //				Accessibility:  pulumi.String("PRIVATE"),
 //				ArtifactUri:    pulumi.String("oss://yyt-409262.oss-cn-hangzhou.aliyuncs.com/example/"),
-//				ExperimentName: pulumi.String(name),
+//				ExperimentName: pulumi.String(pulumi.String(name)),
 //				WorkspaceId:    defaultDI9fsL.ID(),
 //			})
 //			if err != nil {

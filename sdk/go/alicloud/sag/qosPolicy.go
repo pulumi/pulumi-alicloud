@@ -46,7 +46,7 @@ import (
 //				name = param
 //			}
 //			_default, err := sag.NewQos(ctx, "default", &sag.QosArgs{
-//				Name: pulumi.String(name),
+//				Name: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -76,8 +76,8 @@ import (
 //			}
 //			_, err = sag.NewQosPolicy(ctx, "default", &sag.QosPolicyArgs{
 //				QosId:           _default.ID(),
-//				Name:            pulumi.String(name),
-//				Description:     pulumi.String(name),
+//				Name:            pulumi.String(pulumi.String(name)),
+//				Description:     pulumi.String(pulumi.String(name)),
 //				Priority:        pulumi.Int(1),
 //				IpProtocol:      pulumi.String("ALL"),
 //				SourceCidr:      pulumi.String("192.168.0.0/24"),

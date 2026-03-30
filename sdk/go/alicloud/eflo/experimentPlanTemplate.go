@@ -61,8 +61,8 @@ import (
 //					},
 //				},
 //				PrivacyLevel:        pulumi.String("private"),
-//				TemplateName:        pulumi.String(name),
-//				TemplateDescription: pulumi.String(name),
+//				TemplateName:        pulumi.String(pulumi.String(name)),
+//				TemplateDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

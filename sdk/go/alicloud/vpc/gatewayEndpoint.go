@@ -55,17 +55,17 @@ import (
 //			}
 //			defaultRg, err := resourcemanager.NewResourceGroup(ctx, "defaultRg", &resourcemanager.ResourceGroupArgs{
 //				DisplayName:       pulumi.String("tf-example-497"),
-//				ResourceGroupName: pulumi.String(name),
+//				ResourceGroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewGatewayEndpoint(ctx, "default", &vpc.GatewayEndpointArgs{
 //				GatewayEndpointDescrption: pulumi.String("test-gateway-endpoint"),
-//				GatewayEndpointName:       pulumi.String(name),
+//				GatewayEndpointName:       pulumi.String(pulumi.String(name)),
 //				VpcId:                     defaultVpc.ID(),
 //				ResourceGroupId:           defaultRg.ID(),
-//				ServiceName:               pulumi.String(domain),
+//				ServiceName:               pulumi.String(pulumi.String(domain)),
 //				PolicyDocument: pulumi.String(`      {
 //	        \"Version\": \"1\",
 //	        \"Statement\": [{

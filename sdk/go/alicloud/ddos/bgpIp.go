@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			defaultDdosBgpInstance, err := ddos.NewDdosBgpInstance(ctx, "default", &ddos.DdosBgpInstanceArgs{
-//				Name:            pulumi.String(name),
+//				Name:            pulumi.String(pulumi.String(name)),
 //				BaseBandwidth:   pulumi.Int(20),
 //				Bandwidth:       pulumi.Int(-1),
 //				IpCount:         pulumi.Int(100),
@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			defaultEipAddress, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
-//				AddressName: pulumi.String(name),
+//				AddressName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -67,7 +67,7 @@ import (
 //			_, err = ddos.NewBgpIp(ctx, "default", &ddos.BgpIpArgs{
 //				InstanceId: defaultDdosBgpInstance.ID(),
 //				Ip:         defaultEipAddress.IpAddress,
-//				MemberUid:  pulumi.String(_default.Id),
+//				MemberUid:  pulumi.String(pulumi.String(_default.Id)),
 //			})
 //			if err != nil {
 //				return err

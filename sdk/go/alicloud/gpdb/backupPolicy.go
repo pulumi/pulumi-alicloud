@@ -84,10 +84,10 @@ import (
 //	    _ := index
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
-// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 // CidrBlock: pulumi.String(invokeCidrsubnet.Result),
-// ZoneId: pulumi.String(_default.Ids[0]),
-// VswitchName: pulumi.String(name),
+// ZoneId: pulumi.String(pulumi.String(_default.Ids[0])),
+// VswitchName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
@@ -114,18 +114,18 @@ import (
 // DbInstanceCategory: pulumi.String("HighAvailability"),
 // DbInstanceClass: pulumi.String("gpdb.group.segsdx1"),
 // DbInstanceMode: pulumi.String("StorageElastic"),
-// Description: pulumi.String(name),
+// Description: pulumi.String(pulumi.String(name)),
 // Engine: pulumi.String("gpdb"),
 // EngineVersion: pulumi.String("6.0"),
-// ZoneId: pulumi.String(_default.Ids[0]),
+// ZoneId: pulumi.String(pulumi.String(_default.Ids[0])),
 // InstanceNetworkType: pulumi.String("VPC"),
 // InstanceSpec: pulumi.String("2C16G"),
 // PaymentType: pulumi.String("PayAsYouGo"),
 // SegStorageType: pulumi.String("cloud_essd"),
 // SegNodeNum: pulumi.Int(4),
 // StorageSize: pulumi.Int(50),
-// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
-// VswitchId: pulumi.Any(vswitchId),
+// VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
+// VswitchId: pulumi.String(pulumi.Any(vswitchId)),
 // IpWhitelists: gpdb.InstanceIpWhitelistArray{
 // &gpdb.InstanceIpWhitelistArgs{
 // SecurityIpList: pulumi.String("127.0.0.1"),

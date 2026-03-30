@@ -63,7 +63,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ens.NewSecurityGroup(ctx, "default", &ens.SecurityGroupArgs{
 //				Description:       pulumi.String("InstanceSecurityGroupAttachment_Description"),
-//				SecurityGroupName: pulumi.String(name),
+//				SecurityGroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

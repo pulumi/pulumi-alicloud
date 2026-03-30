@@ -61,7 +61,7 @@ import (
 //				Duration:                pulumi.String("1"),
 //				Expression:              pulumi.String("node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10"),
 //				Message:                 pulumi.String("node available memory is less than 10%"),
-//				PrometheusAlertRuleName: pulumi.String(name),
+//				PrometheusAlertRuleName: pulumi.String(pulumi.String(name)),
 //				NotifyType:              pulumi.String("ALERT_MANAGER"),
 //			})
 //			if err != nil {

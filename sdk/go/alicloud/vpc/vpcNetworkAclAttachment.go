@@ -65,7 +65,7 @@ import (
 // %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
 // return invoke.Result, nil
 // }).(pulumi.StringPtrOutput)),
-// ZoneId: pulumi.String(_default.Zones[0].Id),
+// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 // })
 // if err != nil {
 // return err

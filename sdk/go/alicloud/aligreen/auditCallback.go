@@ -44,7 +44,7 @@ import (
 //			}
 //			_, err := aligreen.NewAuditCallback(ctx, "default", &aligreen.AuditCallbackArgs{
 //				CryptType:         pulumi.String("SM3"),
-//				AuditCallbackName: pulumi.String(name),
+//				AuditCallbackName: pulumi.String(pulumi.String(name)),
 //				Url:               pulumi.String("https://www.aliyun.com/"),
 //				CallbackTypes: pulumi.StringArray{
 //					pulumi.String("aliyunAudit"),

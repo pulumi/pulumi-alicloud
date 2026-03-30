@@ -34,7 +34,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstRdsCrossRegions", regions.Ids[0])
+//			ctx.Export("firstRdsCrossRegions", pulumi.Any(regions.Ids[0]))
 //			return nil
 //		})
 //	}

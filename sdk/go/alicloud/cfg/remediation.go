@@ -81,7 +81,7 @@ import (
 //				RiskLevel:              pulumi.Int(1),
 //				TagKeyScope:            pulumi.String("For"),
 //				TagValueScope:          pulumi.String("example"),
-//				RegionIdsScope:         pulumi.String(_default.Regions[0].Id),
+//				RegionIdsScope:         pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //				ConfigRuleTriggerTypes: pulumi.String("ConfigurationItemChangeNotification"),
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::OSS::Bucket"),

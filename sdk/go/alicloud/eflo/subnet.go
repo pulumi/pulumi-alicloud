@@ -52,15 +52,15 @@ import (
 //			}
 //			defaultVpd, err := eflo.NewVpd(ctx, "default", &eflo.VpdArgs{
 //				Cidr:            pulumi.String("10.0.0.0/8"),
-//				VpdName:         pulumi.String(name),
-//				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Groups[0].Id),
+//				VpdName:         pulumi.String(pulumi.String(name)),
+//				ResourceGroupId: pulumi.String(pulumi.String(defaultGetResourceGroups.Groups[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = eflo.NewSubnet(ctx, "default", &eflo.SubnetArgs{
-//				SubnetName: pulumi.String(name),
-//				ZoneId:     pulumi.String(_default.Zones[0].Id),
+//				SubnetName: pulumi.String(pulumi.String(name)),
+//				ZoneId:     pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				Cidr:       pulumi.String("10.0.0.0/16"),
 //				VpdId:      defaultVpd.ID(),
 //			})

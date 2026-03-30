@@ -41,8 +41,8 @@ import (
 //				name = param
 //			}
 //			_, err := servicecatalog.NewPortfolio(ctx, "default", &servicecatalog.PortfolioArgs{
-//				PortfolioName: pulumi.String(name),
-//				ProviderName:  pulumi.String(name),
+//				PortfolioName: pulumi.String(pulumi.String(name)),
+//				ProviderName:  pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstFcCustomDomainName", fcDomainsDs.Domains[0].DomainName)
+//			ctx.Export("firstFcCustomDomainName", pulumi.Any(fcDomainsDs.Domains[0].DomainName))
 //			return nil
 //		})
 //	}

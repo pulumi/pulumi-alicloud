@@ -43,8 +43,8 @@ import (
 //				name = param
 //			}
 //			createNameSpace, err := schedulerx.NewNamespace(ctx, "CreateNameSpace", &schedulerx.NamespaceArgs{
-//				NamespaceName: pulumi.String(name),
-//				Description:   pulumi.String(name),
+//				NamespaceName: pulumi.String(pulumi.String(name)),
+//				Description:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -72,14 +72,14 @@ import (
 //			json1 := string(tmpJSON1)
 //			_default, err := schedulerx.NewAppGroup(ctx, "default", &schedulerx.AppGroupArgs{
 //				MaxJobs:             pulumi.Int(100),
-//				MonitorContactsJson: pulumi.String(json0),
+//				MonitorContactsJson: pulumi.String(pulumi.String(json0)),
 //				DeleteJobs:          pulumi.Bool(false),
 //				AppType:             pulumi.Int(1),
 //				NamespaceSource:     pulumi.String("schedulerx"),
 //				GroupId:             pulumi.String("example-appgroup-pop-autoexample"),
 //				NamespaceName:       pulumi.String("default"),
-//				Description:         pulumi.String(name),
-//				MonitorConfigJson:   pulumi.String(json1),
+//				Description:         pulumi.String(pulumi.String(name)),
+//				MonitorConfigJson:   pulumi.String(pulumi.String(json1)),
 //				AppVersion:          pulumi.String("1"),
 //				AppName:             pulumi.String("example-appgroup-pop-autoexample"),
 //				Namespace:           createNameSpace.NamespaceUid,
@@ -93,9 +93,9 @@ import (
 //				Timezone:       pulumi.String("GTM+7"),
 //				Status:         pulumi.String("Enable"),
 //				MaxAttempt:     pulumi.Int(0),
-//				Description:    pulumi.String(name),
+//				Description:    pulumi.String(pulumi.String(name)),
 //				Parameters:     pulumi.String("hello word"),
-//				JobName:        pulumi.String(name),
+//				JobName:        pulumi.String(pulumi.String(name)),
 //				MaxConcurrency: pulumi.String("1"),
 //				TimeConfig: &schedulerx.JobTimeConfigArgs{
 //					DataOffset:     pulumi.Int(1),

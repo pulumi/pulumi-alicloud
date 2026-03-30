@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			_default, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
@@ -64,8 +64,8 @@ import (
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId:    pulumi.String(nameRegex.Connections[0].Id),
-//				VirtualBorderRouterName: pulumi.String(name),
+//				PhysicalConnectionId:    pulumi.String(pulumi.String(nameRegex.Connections[0].Id)),
+//				VirtualBorderRouterName: pulumi.String(pulumi.String(name)),
 //				VlanId:                  pulumi.Int(2420),
 //				MinRxInterval:           pulumi.Int(1000),
 //				MinTxInterval:           pulumi.Int(1000),
@@ -78,8 +78,8 @@ import (
 //				CenId:                              _default.ID(),
 //				VbrId:                              defaultVirtualBorderRouter.ID(),
 //				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
-//				TransitRouterAttachmentName:        pulumi.String(name),
-//				TransitRouterAttachmentDescription: pulumi.String(name),
+//				TransitRouterAttachmentName:        pulumi.String(pulumi.String(name)),
+//				TransitRouterAttachmentDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

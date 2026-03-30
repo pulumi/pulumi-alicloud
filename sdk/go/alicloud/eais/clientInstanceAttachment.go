@@ -87,14 +87,14 @@ import (
 //				return err
 //			}
 //			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       exampleNetwork.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-i"),
@@ -103,8 +103,8 @@ import (
 //				return err
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				SecurityGroupName: pulumi.String(name),
-//				Description:       pulumi.String(name),
+//				SecurityGroupName: pulumi.String(pulumi.String(name)),
+//				Description:       pulumi.String(pulumi.String(name)),
 //				VpcId:             exampleNetwork.ID(),
 //			})
 //			if err != nil {
@@ -113,22 +113,22 @@ import (
 //			exampleInstance, err := ecs.NewInstance(ctx, "example", &ecs.InstanceArgs{
 //				AvailabilityZone:        pulumi.String("cn-hangzhou-i"),
 //				VswitchId:               exampleSwitch.ID(),
-//				ImageId:                 pulumi.String(exampleGetImages.Images[0].Id),
-//				InstanceType:            pulumi.String(example.InstanceTypes[0].Id),
+//				ImageId:                 pulumi.String(pulumi.String(exampleGetImages.Images[0].Id)),
+//				InstanceType:            pulumi.String(pulumi.String(example.InstanceTypes[0].Id)),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //				SecurityGroups: pulumi.StringArray{
 //					exampleSecurityGroup.ID(),
 //				},
-//				InstanceName: pulumi.String(name),
+//				InstanceName: pulumi.String(pulumi.String(name)),
 //				UserData:     pulumi.String("echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			eais, err := eais.NewInstance(ctx, "eais", &eais.InstanceArgs{
-//				InstanceName:    pulumi.String(name),
+//				InstanceName:    pulumi.String(pulumi.String(name)),
 //				VswitchId:       exampleSwitch.ID(),
 //				SecurityGroupId: exampleSecurityGroup.ID(),
 //				InstanceType:    pulumi.String("eais.ei-a6.2xlarge"),

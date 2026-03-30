@@ -41,9 +41,9 @@ import (
 //				name = param
 //			}
 //			_, err := resourcemanager.NewSavedQuery(ctx, "default", &resourcemanager.SavedQueryArgs{
-//				Description:    pulumi.String(name),
+//				Description:    pulumi.String(pulumi.String(name)),
 //				Expression:     pulumi.String("select * from resources limit 1;"),
-//				SavedQueryName: pulumi.String(name),
+//				SavedQueryName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

@@ -42,8 +42,8 @@ import (
 //			}
 //			_default, err := dfs.NewAccessGroup(ctx, "default", &dfs.AccessGroupArgs{
 //				NetworkType:     pulumi.String("VPC"),
-//				AccessGroupName: pulumi.String(name),
-//				Description:     pulumi.String(name),
+//				AccessGroupName: pulumi.String(pulumi.String(name)),
+//				Description:     pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ import (
 //			_, err = dfs.NewAccessRule(ctx, "default", &dfs.AccessRuleArgs{
 //				NetworkSegment: pulumi.String("192.0.2.0/24"),
 //				AccessGroupId:  _default.ID(),
-//				Description:    pulumi.String(name),
+//				Description:    pulumi.String(pulumi.String(name)),
 //				RwAccessType:   pulumi.String("RDWR"),
 //				Priority:       pulumi.Int(10),
 //			})

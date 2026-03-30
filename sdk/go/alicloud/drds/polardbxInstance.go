@@ -51,16 +51,16 @@ import (
 //				return err
 //			}
 //			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName: pulumi.String(name),
+//				VpcName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VpcId:       example.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

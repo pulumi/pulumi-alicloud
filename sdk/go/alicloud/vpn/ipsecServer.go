@@ -70,21 +70,21 @@ import (
 //				return err
 //			}
 //			defaultGateway, err := vpn.NewGateway(ctx, "default", &vpn.GatewayArgs{
-//				VpnGatewayName:            pulumi.String(name),
-//				VpcId:                     pulumi.String(defaultGetNetworks.Ids[0]),
+//				VpnGatewayName:            pulumi.String(pulumi.String(name)),
+//				VpcId:                     pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //				Bandwidth:                 pulumi.Int(10),
 //				EnableSsl:                 pulumi.Bool(true),
-//				Description:               pulumi.String(name),
+//				Description:               pulumi.String(pulumi.String(name)),
 //				PaymentType:               pulumi.String("Subscription"),
-//				VswitchId:                 pulumi.String(default0.Ids[0]),
-//				DisasterRecoveryVswitchId: pulumi.String(default1.Ids[0]),
+//				VswitchId:                 pulumi.String(pulumi.String(default0.Ids[0])),
+//				DisasterRecoveryVswitchId: pulumi.String(pulumi.String(default1.Ids[0])),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpn.NewIpsecServer(ctx, "foo", &vpn.IpsecServerArgs{
 //				ClientIpPool:    pulumi.String("10.0.0.0/24"),
-//				IpsecServerName: pulumi.String(name),
+//				IpsecServerName: pulumi.String(pulumi.String(name)),
 //				LocalSubnet:     pulumi.String("192.168.0.0/24"),
 //				VpnGatewayId:    defaultGateway.ID(),
 //				PskEnabled:      pulumi.Bool(true),

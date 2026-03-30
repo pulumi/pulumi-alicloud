@@ -39,13 +39,13 @@ import (
 // oidcProviderName = param
 // }
 // defaultOidcProvider, err := ims.NewOidcProvider(ctx, "default", &ims.OidcProviderArgs{
-// Description: pulumi.String(oidcProviderName),
+// Description: pulumi.String(pulumi.String(oidcProviderName)),
 // IssuerUrl: pulumi.String("https://oauth.aliyun.com"),
 // Fingerprints: pulumi.StringArray{
 // pulumi.String("0BBFAB97059595E8D1EC48E89EB8657C0E5AAE71"),
 // },
 // IssuanceLimitTime: pulumi.Int(12),
-// OidcProviderName: pulumi.String(oidcProviderName),
+// OidcProviderName: pulumi.String(pulumi.String(oidcProviderName)),
 // ClientIds: pulumi.StringArray{
 // pulumi.String("123"),
 // pulumi.String("456"),

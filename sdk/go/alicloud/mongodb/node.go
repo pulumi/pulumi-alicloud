@@ -65,8 +65,8 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       _default.ID(),
-//				ZoneId:      pulumi.String(zoneId),
-//				CidrBlock:   pulumi.String(ipv4Cidr),
+//				ZoneId:      pulumi.String(pulumi.String(zoneId)),
+//				CidrBlock:   pulumi.String(pulumi.String(ipv4Cidr)),
 //				VswitchName: pulumi.String("tf-shanghai-B"),
 //			})
 //			if err != nil {
@@ -75,8 +75,8 @@ import (
 //			defaultShardingInstance, err := mongodb.NewShardingInstance(ctx, "default", &mongodb.ShardingInstanceArgs{
 //				EngineVersion:   pulumi.String("4.2"),
 //				VswitchId:       defaultSwitch.ID(),
-//				ZoneId:          pulumi.String(zoneId),
-//				Name:            pulumi.String(name),
+//				ZoneId:          pulumi.String(pulumi.String(zoneId)),
+//				Name:            pulumi.String(pulumi.String(name)),
 //				StorageType:     pulumi.String("cloud_auto"),
 //				ProvisionedIops: pulumi.Int(60),
 //				ConfigServerLists: mongodb.ShardingInstanceConfigServerListArray{

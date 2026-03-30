@@ -78,8 +78,8 @@ import (
 //				return err
 //			}
 //			_, err = actiontrail.NewTrail(ctx, "default", &actiontrail.TrailArgs{
-//				TrailName:       pulumi.String(name),
-//				SlsWriteRoleArn: pulumi.String(defaultGetRoles.Roles[0].Arn),
+//				TrailName:       pulumi.String(pulumi.String(name)),
+//				SlsWriteRoleArn: pulumi.String(pulumi.String(defaultGetRoles.Roles[0].Arn)),
 //				SlsProjectArn: defaultProject.ProjectName.ApplyT(func(projectName string) (string, error) {
 //					return fmt.Sprintf("acs:log:%v:%v:project/%v", _default.Regions[0].Id, defaultGetAccount.Id, projectName), nil
 //				}).(pulumi.StringOutput),

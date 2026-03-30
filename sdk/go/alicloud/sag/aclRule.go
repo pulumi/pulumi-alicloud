@@ -43,14 +43,14 @@ import (
 //				name = param
 //			}
 //			_default, err := sag.NewAcl(ctx, "default", &sag.AclArgs{
-//				Name: pulumi.String(name),
+//				Name: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sag.NewAclRule(ctx, "default", &sag.AclRuleArgs{
 //				AclId:           _default.ID(),
-//				Description:     pulumi.String(name),
+//				Description:     pulumi.String(pulumi.String(name)),
 //				Policy:          pulumi.String("accept"),
 //				IpProtocol:      pulumi.String("ALL"),
 //				Direction:       pulumi.String("in"),

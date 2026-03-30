@@ -42,7 +42,7 @@ import (
 //			}
 //			_, err = esa.NewOriginRule(ctx, "default", &esa.OriginRuleArgs{
 //				OriginSni:       pulumi.String("origin.example.com"),
-//				SiteId:          pulumi.Int(_default.Sites[0].Id),
+//				SiteId:          pulumi.String(pulumi.Int(_default.Sites[0].Id)),
 //				OriginHost:      pulumi.String("origin.example.com"),
 //				DnsRecord:       pulumi.String("tf.example.com"),
 //				SiteVersion:     pulumi.Int(0),

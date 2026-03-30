@@ -66,7 +66,7 @@ import (
 //			}
 //			_, err = vpc.NewIpamIpamPoolAllocation(ctx, "default", &vpc.IpamIpamPoolAllocationArgs{
 //				IpamPoolAllocationDescription: pulumi.String("init alloc desc"),
-//				IpamPoolAllocationName:        pulumi.String(name),
+//				IpamPoolAllocationName:        pulumi.String(pulumi.String(name)),
 //				Cidr:                          pulumi.String("10.0.0.0/20"),
 //				IpamPoolId:                    defaultIpamPoolCidr.IpamPoolId,
 //			})

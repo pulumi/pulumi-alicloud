@@ -43,8 +43,8 @@ import (
 //				name = param
 //			}
 //			defaultmaeTcE, err := servicecatalog.NewProduct(ctx, "defaultmaeTcE", &servicecatalog.ProductArgs{
-//				ProviderName: pulumi.String(name),
-//				ProductName:  pulumi.String(name),
+//				ProviderName: pulumi.String(pulumi.String(name)),
+//				ProductName:  pulumi.String(pulumi.String(name)),
 //				ProductType:  pulumi.String("Ros"),
 //			})
 //			if err != nil {
@@ -55,7 +55,7 @@ import (
 //				TemplateUrl:        pulumi.String("oss://servicecatalog-cn-hangzhou/1466115886172051/terraform/template/tpl-bp1x4v3r44u7u7/template.json"),
 //				Active:             pulumi.Bool(true),
 //				Description:        pulumi.String("产品版本测试"),
-//				ProductVersionName: pulumi.String(name),
+//				ProductVersionName: pulumi.String(pulumi.String(name)),
 //				ProductId:          defaultmaeTcE.ID(),
 //				TemplateType:       pulumi.String("RosTerraformTemplate"),
 //			})

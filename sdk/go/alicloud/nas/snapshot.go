@@ -51,7 +51,7 @@ import (
 //			defaultFileSystem, err := nas.NewFileSystem(ctx, "default", &nas.FileSystemArgs{
 //				FileSystemType: pulumi.String("extreme"),
 //				ProtocolType:   pulumi.String("NFS"),
-//				ZoneId:         pulumi.String(_default.Zones[0].ZoneId),
+//				ZoneId:         pulumi.String(pulumi.String(_default.Zones[0].ZoneId)),
 //				StorageType:    pulumi.String("standard"),
 //				Capacity:       pulumi.Int(100),
 //			})
@@ -60,9 +60,9 @@ import (
 //			}
 //			_, err = nas.NewSnapshot(ctx, "default", &nas.SnapshotArgs{
 //				FileSystemId:  defaultFileSystem.ID(),
-//				Description:   pulumi.String(name),
+//				Description:   pulumi.String(pulumi.String(name)),
 //				RetentionDays: pulumi.Int(20),
-//				SnapshotName:  pulumi.String(name),
+//				SnapshotName:  pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

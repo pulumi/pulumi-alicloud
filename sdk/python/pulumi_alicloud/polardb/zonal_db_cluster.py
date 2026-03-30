@@ -785,7 +785,7 @@ class ZonalDbCluster(pulumi.CustomResource):
             ens_region_id="tr-Istanbul-1",
             vpc_id=default.id,
             vswitch_id=default_vswitch.id,
-            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config if v != None}) for node, config in db_cluster_nodes_configs})
+            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config.items() if v != None}) for node, config in db_cluster_nodes_configs.items()})
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -879,7 +879,7 @@ class ZonalDbCluster(pulumi.CustomResource):
             ens_region_id="tr-Istanbul-1",
             vpc_id=default.id,
             vswitch_id=default_vswitch.id,
-            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config if v != None}) for node, config in db_cluster_nodes_configs})
+            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config.items() if v != None}) for node, config in db_cluster_nodes_configs.items()})
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

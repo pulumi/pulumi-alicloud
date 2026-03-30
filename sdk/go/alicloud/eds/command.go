@@ -58,14 +58,14 @@ import (
 //				return err
 //			}
 //			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "default", &eds.EcdPolicyGroupArgs{
-//				PolicyGroupName: pulumi.String(name),
+//				PolicyGroupName: pulumi.String(pulumi.String(name)),
 //				Clipboard:       pulumi.String("read"),
 //				LocalDrive:      pulumi.String("read"),
 //				UsbRedirect:     pulumi.String("off"),
 //				Watermark:       pulumi.String("off"),
 //				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
 //					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
-//						Description: pulumi.String(name),
+//						Description: pulumi.String(pulumi.String(name)),
 //						CidrIp:      pulumi.String("1.2.3.45/24"),
 //					},
 //				},
@@ -73,7 +73,7 @@ import (
 //					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
 //						Type:        pulumi.String("inflow"),
 //						Policy:      pulumi.String("accept"),
-//						Description: pulumi.String(name),
+//						Description: pulumi.String(pulumi.String(name)),
 //						PortRange:   pulumi.String("80/80"),
 //						IpProtocol:  pulumi.String("TCP"),
 //						Priority:    pulumi.String("1"),
@@ -97,8 +97,8 @@ import (
 //			defaultDesktop, err := eds.NewDesktop(ctx, "default", &eds.DesktopArgs{
 //				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
 //				PolicyGroupId: defaultEcdPolicyGroup.ID(),
-//				BundleId:      pulumi.String(_default.Bundles[0].Id),
-//				DesktopName:   pulumi.String(name),
+//				BundleId:      pulumi.String(pulumi.String(_default.Bundles[0].Id)),
+//				DesktopName:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

@@ -40,7 +40,7 @@ import (
 //				name = param
 //			}
 //			_, err := securitycenter.NewGroup(ctx, "example", &securitycenter.GroupArgs{
-//				GroupName: pulumi.String(name),
+//				GroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

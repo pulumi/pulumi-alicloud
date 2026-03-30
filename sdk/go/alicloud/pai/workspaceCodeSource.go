@@ -43,7 +43,7 @@ import (
 //			defaultgklBnM, err := pai.NewWorkspaceWorkspace(ctx, "defaultgklBnM", &pai.WorkspaceWorkspaceArgs{
 //				Description:   pulumi.String("for-pop-example"),
 //				DisplayName:   pulumi.String("CodeSourceTest_1732796227"),
-//				WorkspaceName: pulumi.String(name),
+//				WorkspaceName: pulumi.String(pulumi.String(name)),
 //				EnvTypes: pulumi.StringArray{
 //					pulumi.String("prod"),
 //				},

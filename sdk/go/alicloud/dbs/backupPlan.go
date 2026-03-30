@@ -89,8 +89,8 @@ import (
 //			vswitchId := defaultGetSwitches.Ids[0]
 //			_ := defaultGetZones.Ids[1]
 //			_, err = ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
-//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//				Name:  pulumi.String(pulumi.String(name)),
+//				VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //			})
 //			if err != nil {
 //				return err
@@ -99,10 +99,10 @@ import (
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
-//				InstanceType:          pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
-//				VswitchId:             pulumi.String(vswitchId),
-//				InstanceName:          pulumi.String(name),
+//				InstanceType:          pulumi.String(pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass)),
+//				InstanceStorage:       pulumi.Int(pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min)),
+//				VswitchId:             pulumi.String(pulumi.String(vswitchId)),
+//				InstanceName:          pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -134,7 +134,7 @@ import (
 //				return err
 //			}
 //			_, err = dbs.NewBackupPlan(ctx, "default", &dbs.BackupPlanArgs{
-//				BackupPlanName:             pulumi.String(name),
+//				BackupPlanName:             pulumi.String(pulumi.String(name)),
 //				PaymentType:                pulumi.String("PayAsYouGo"),
 //				InstanceClass:              pulumi.String("xlarge"),
 //				BackupMethod:               pulumi.String("logical"),
@@ -143,7 +143,7 @@ import (
 //				StorageRegion:              pulumi.String("cn-hangzhou"),
 //				InstanceType:               pulumi.String("RDS"),
 //				SourceEndpointInstanceType: pulumi.String("RDS"),
-//				ResourceGroupId:            pulumi.String(_default.Ids[0]),
+//				ResourceGroupId:            pulumi.String(pulumi.String(_default.Ids[0])),
 //				SourceEndpointRegion:       pulumi.String("cn-hangzhou"),
 //				SourceEndpointInstanceId:   defaultInstance.ID(),
 //				SourceEndpointUserName:     defaultAccountPrivilege.AccountName,

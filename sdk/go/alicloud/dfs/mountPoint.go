@@ -42,14 +42,14 @@ import (
 //				name = param
 //			}
 //			_default, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       _default.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-e"),
@@ -61,8 +61,8 @@ import (
 //				StorageType:                  pulumi.String("STANDARD"),
 //				ZoneId:                       pulumi.String("cn-hangzhou-e"),
 //				ProtocolType:                 pulumi.String("PANGU"),
-//				Description:                  pulumi.String(name),
-//				FileSystemName:               pulumi.String(name),
+//				Description:                  pulumi.String(pulumi.String(name)),
+//				FileSystemName:               pulumi.String(pulumi.String(name)),
 //				ThroughputMode:               pulumi.String("Provisioned"),
 //				SpaceCapacity:                pulumi.Int(1024),
 //				ProvisionedThroughputInMiBps: pulumi.Int(512),
@@ -71,15 +71,15 @@ import (
 //				return err
 //			}
 //			defaultAccessGroup, err := dfs.NewAccessGroup(ctx, "default", &dfs.AccessGroupArgs{
-//				AccessGroupName: pulumi.String(name),
-//				Description:     pulumi.String(name),
+//				AccessGroupName: pulumi.String(pulumi.String(name)),
+//				Description:     pulumi.String(pulumi.String(name)),
 //				NetworkType:     pulumi.String("VPC"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dfs.NewMountPoint(ctx, "default", &dfs.MountPointArgs{
-//				Description:   pulumi.String(name),
+//				Description:   pulumi.String(pulumi.String(name)),
 //				VpcId:         _default.ID(),
 //				FileSystemId:  defaultFileSystem.ID(),
 //				AccessGroupId: defaultAccessGroup.ID(),

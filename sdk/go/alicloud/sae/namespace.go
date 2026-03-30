@@ -57,8 +57,8 @@ import (
 //			}
 //			_, err = sae.NewNamespace(ctx, "example", &sae.NamespaceArgs{
 //				NamespaceId:             pulumi.Sprintf("%v:example%v", _default.Regions[0].Id, defaultInteger.Result),
-//				NamespaceName:           pulumi.String(name),
-//				NamespaceDescription:    pulumi.String(name),
+//				NamespaceName:           pulumi.String(pulumi.String(name)),
+//				NamespaceDescription:    pulumi.String(pulumi.String(name)),
 //				EnableMicroRegistration: pulumi.Bool(false),
 //			})
 //			if err != nil {

@@ -40,14 +40,14 @@ import (
 //				topic = param
 //			}
 //			_default, err := rocketmq.NewInstance(ctx, "default", &rocketmq.InstanceArgs{
-//				InstanceName: pulumi.String(name),
+//				InstanceName: pulumi.String(pulumi.String(name)),
 //				Remark:       pulumi.String("default_ons_instance_remark"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultTopic, err := rocketmq.NewTopic(ctx, "default", &rocketmq.TopicArgs{
-//				TopicName:   pulumi.String(topic),
+//				TopicName:   pulumi.String(pulumi.String(topic)),
 //				InstanceId:  _default.ID(),
 //				MessageType: pulumi.Int(0),
 //				Remark:      pulumi.String("dafault_ons_topic_remark"),
@@ -57,7 +57,7 @@ import (
 //			}
 //			topicsDs := rocketmq.GetTopicsOutput(ctx, rocketmq.GetTopicsOutputArgs{
 //				InstanceId: defaultTopic.InstanceId,
-//				NameRegex:  pulumi.String(topic),
+//				NameRegex:  pulumi.String(pulumi.String(topic)),
 //				OutputFile: pulumi.String("topics.txt"),
 //			}, nil)
 //			ctx.Export("firstTopicName", topicsDs.ApplyT(func(topicsDs rocketmq.GetTopicsResult) (*string, error) {

@@ -38,10 +38,10 @@ import (
 //				name = param
 //			}
 //			_default, err := oos.NewSecretParameter(ctx, "default", &oos.SecretParameterArgs{
-//				SecretParameterName: pulumi.String(name),
+//				SecretParameterName: pulumi.String(pulumi.String(name)),
 //				Value:               pulumi.String("tf-testacc-oos_secret_parameter"),
 //				Type:                pulumi.String("Secret"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //				Constraints: pulumi.String(`  {
 //	    \"AllowedValues\": [
 //	        \"tf-testacc-oos_secret_parameter\"

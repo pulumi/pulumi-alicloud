@@ -58,7 +58,7 @@ import (
 //			}
 //			createVswJ, err := vpc.NewSwitch(ctx, "create_vsw_j", &vpc.SwitchArgs{
 //				VpcId:     createVpc.ID(),
-//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//				ZoneId:    pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				CidrBlock: pulumi.String("172.16.1.0/24"),
 //			})
 //			if err != nil {
@@ -66,7 +66,7 @@ import (
 //			}
 //			createVswK, err := vpc.NewSwitch(ctx, "create_vsw_k", &vpc.SwitchArgs{
 //				VpcId:     createVpc.ID(),
-//				ZoneId:    pulumi.String(_default.Zones[1].Id),
+//				ZoneId:    pulumi.String(pulumi.String(_default.Zones[1].Id)),
 //				CidrBlock: pulumi.String("172.16.2.0/24"),
 //			})
 //			if err != nil {
@@ -85,7 +85,7 @@ import (
 //					},
 //				},
 //				LoadBalancerType: pulumi.String("Network"),
-//				LoadBalancerName: pulumi.String(name),
+//				LoadBalancerName: pulumi.String(pulumi.String(name)),
 //				VpcId:            createVpc.ID(),
 //				AddressType:      pulumi.String("Internet"),
 //			})
@@ -99,7 +99,7 @@ import (
 //				ServerGroupType:  pulumi.String("Instance"),
 //				VpcId:            createVpc.ID(),
 //				Protocol:         pulumi.String("TCPSSL"),
-//				ServerGroupName:  pulumi.String(name),
+//				ServerGroupName:  pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -76,14 +76,14 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				SecurityGroupName: pulumi.String(name),
+//				SecurityGroupName: pulumi.String(pulumi.String(name)),
 //				VpcId:             defaultNetwork.ID(),
 //			})
 //			if err != nil {
@@ -104,21 +104,21 @@ import (
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
 //				VswitchId:               defaultSwitch.ID(),
-//				ImageId:                 pulumi.String(defaultGetImages.Images[0].Id),
-//				InstanceType:            pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:                 pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+//				InstanceType:            pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
-//				InstanceName: pulumi.String(name),
+//				InstanceName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultCommand, err := ecs.NewCommand(ctx, "default", &ecs.CommandArgs{
-//				Name:            pulumi.String(name),
+//				Name:            pulumi.String(pulumi.String(name)),
 //				CommandContent:  pulumi.String("ZWNobyBoZWxsbyx7e25hbWV9fQ=="),
 //				Description:     pulumi.String("For Terraform Test"),
 //				Type:            pulumi.String("RunShellScript"),
