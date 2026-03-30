@@ -41,7 +41,7 @@ import (
 //				ProductCode:     pulumi.String("vpc"),
 //				QuotaCategory:   pulumi.String("FlowControl"),
 //				AliyunUids: pulumi.StringArray{
-//					pulumi.String(_default.Ids[0]),
+//					pulumi.String(pulumi.String(_default.Ids[0])),
 //				},
 //				DesireValue: pulumi.Float64(6),
 //				NoticeType:  pulumi.Int(0),

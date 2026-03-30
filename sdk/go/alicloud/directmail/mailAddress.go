@@ -46,7 +46,7 @@ import (
 //				domainName = param
 //			}
 //			example, err := directmail.NewDomain(ctx, "example", &directmail.DomainArgs{
-//				DomainName: pulumi.String(domainName),
+//				DomainName: pulumi.String(pulumi.String(domainName)),
 //			})
 //			if err != nil {
 //				return err

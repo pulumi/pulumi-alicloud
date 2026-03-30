@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_, err := ram.NewAccountAlias(ctx, "alias", &ram.AccountAliasArgs{
-//				AccountAlias: pulumi.String(name),
+//				AccountAlias: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

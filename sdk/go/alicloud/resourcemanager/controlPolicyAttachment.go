@@ -51,8 +51,8 @@ import (
 //				return err
 //			}
 //			defaultControlPolicy, err := resourcemanager.NewControlPolicy(ctx, "default", &resourcemanager.ControlPolicyArgs{
-//				ControlPolicyName: pulumi.String(name),
-//				Description:       pulumi.String(name),
+//				ControlPolicyName: pulumi.String(pulumi.String(name)),
+//				Description:       pulumi.String(pulumi.String(name)),
 //				EffectScope:       pulumi.String("RAM"),
 //				PolicyDocument: pulumi.String(`  {
 //	    \"Version\": \"1\",

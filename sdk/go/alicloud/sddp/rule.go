@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_, err := sddp.NewRule(ctx, "default", &sddp.RuleArgs{
-//				RuleName: pulumi.String(name),
+//				RuleName: pulumi.String(pulumi.String(name)),
 //				Category: pulumi.Int(2),
 //				Content: pulumi.String(`  [
 //	    {

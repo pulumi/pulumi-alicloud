@@ -53,17 +53,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -71,15 +71,15 @@ import (
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 //				AddressType:      pulumi.String("intranet"),
 //				VswitchId:        defaultSwitch.ID(),
-//				LoadBalancerName: pulumi.String(name),
+//				LoadBalancerName: pulumi.String(pulumi.String(name)),
 //				LoadBalancerSpec: pulumi.String("slb.s1.small"),
-//				MasterZoneId:     pulumi.String(_default.Zones[0].Id),
+//				MasterZoneId:     pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultAnycastEipAddress, err := eipanycast.NewAnycastEipAddress(ctx, "default", &eipanycast.AnycastEipAddressArgs{
-//				AnycastEipAddressName: pulumi.String(name),
+//				AnycastEipAddressName: pulumi.String(pulumi.String(name)),
 //				ServiceLocation:       pulumi.String("ChineseMainland"),
 //			})
 //			if err != nil {
@@ -94,7 +94,7 @@ import (
 //			_, err = eipanycast.NewAnycastEipAddressAttachment(ctx, "default", &eipanycast.AnycastEipAddressAttachmentArgs{
 //				BindInstanceId:       defaultApplicationLoadBalancer.ID(),
 //				BindInstanceType:     pulumi.String("SlbInstance"),
-//				BindInstanceRegionId: pulumi.String(defaultGetRegions.Regions[0].Id),
+//				BindInstanceRegionId: pulumi.String(pulumi.String(defaultGetRegions.Regions[0].Id)),
 //				AnycastId:            defaultAnycastEipAddress.ID(),
 //			})
 //			if err != nil {
@@ -155,7 +155,7 @@ import (
 //				return err
 //			}
 //			defaultVpc, err := vpc.NewNetwork(ctx, "defaultVpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
@@ -164,7 +164,7 @@ import (
 //			defaultVsw, err := vpc.NewSwitch(ctx, "defaultVsw", &vpc.SwitchArgs{
 //				VpcId:     defaultVpc.ID(),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
-//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//				ZoneId:    pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -176,9 +176,9 @@ import (
 //				return err
 //			}
 //			default9KDlN7, err := ecs.NewInstance(ctx, "default9KDlN7", &ecs.InstanceArgs{
-//				ImageId:      pulumi.String(defaultGetImages.Images[0].Id),
-//				InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
-//				InstanceName: pulumi.String(name),
+//				ImageId:      pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+//				InstanceType: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
+//				InstanceName: pulumi.String(pulumi.String(name)),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultuBsECI.ID(),
 //				},
@@ -229,7 +229,7 @@ import (
 //			defaultdsVsw2, err := vpc.NewSwitch(ctx, "defaultdsVsw2", &vpc.SwitchArgs{
 //				VpcId:     defaultVpc2.ID(),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
-//				ZoneId:    pulumi.String(default2.Zones[1].Id),
+//				ZoneId:    pulumi.String(pulumi.String(default2.Zones[1].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -241,9 +241,9 @@ import (
 //				return err
 //			}
 //			defaultEcs2, err := ecs.NewInstance(ctx, "defaultEcs2", &ecs.InstanceArgs{
-//				ImageId:      pulumi.String(default2GetImages.Images[0].Id),
-//				InstanceType: pulumi.String(default2GetInstanceTypes.InstanceTypes[0].Id),
-//				InstanceName: pulumi.String(name),
+//				ImageId:      pulumi.String(pulumi.String(default2GetImages.Images[0].Id)),
+//				InstanceType: pulumi.String(pulumi.String(default2GetInstanceTypes.InstanceTypes[0].Id)),
+//				InstanceName: pulumi.String(pulumi.String(name)),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultuBsECI2.ID(),
 //				},

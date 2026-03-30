@@ -43,7 +43,7 @@ import (
 //			_, err := esa.NewEdgeContainerApp(ctx, "default", &esa.EdgeContainerAppArgs{
 //				TargetPort:           pulumi.Int(3000),
 //				HealthCheckHost:      pulumi.String("example.com"),
-//				Remarks:              pulumi.String(name),
+//				Remarks:              pulumi.String(pulumi.String(name)),
 //				HealthCheckPort:      pulumi.Int(80),
 //				HealthCheckUri:       pulumi.String("/"),
 //				HealthCheckTimeout:   pulumi.Int(3),
@@ -53,7 +53,7 @@ import (
 //				ServicePort:          pulumi.Int(80),
 //				HealthCheckInterval:  pulumi.Int(5),
 //				HealthCheckSuccTimes: pulumi.Int(2),
-//				EdgeContainerAppName: pulumi.String(name),
+//				EdgeContainerAppName: pulumi.String(pulumi.String(name)),
 //				HealthCheckType:      pulumi.String("l7"),
 //			})
 //			if err != nil {

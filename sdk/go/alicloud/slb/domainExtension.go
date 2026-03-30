@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			domainExtensionNetwork, err := vpc.NewNetwork(ctx, "domain_extension", &vpc.NetworkArgs{
-//				VpcName: pulumi.String(slbDomainExtensionName),
+//				VpcName: pulumi.String(pulumi.String(slbDomainExtensionName)),
 //			})
 //			if err != nil {
 //				return err
@@ -56,14 +56,14 @@ import (
 //			domainExtensionSwitch, err := vpc.NewSwitch(ctx, "domain_extension", &vpc.SwitchArgs{
 //				VpcId:       domainExtensionNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(domainExtension.Zones[0].Id),
-//				VswitchName: pulumi.String(slbDomainExtensionName),
+//				ZoneId:      pulumi.String(pulumi.String(domainExtension.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(slbDomainExtensionName)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			instance, err := slb.NewApplicationLoadBalancer(ctx, "instance", &slb.ApplicationLoadBalancerArgs{
-//				LoadBalancerName: pulumi.String(slbDomainExtensionName),
+//				LoadBalancerName: pulumi.String(pulumi.String(slbDomainExtensionName)),
 //				AddressType:      pulumi.String("intranet"),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
 //				VswitchId:        domainExtensionSwitch.ID(),

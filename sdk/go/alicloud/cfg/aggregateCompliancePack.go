@@ -60,8 +60,8 @@ import (
 //						AccountType: pulumi.String("ResourceDirectory"),
 //					},
 //				},
-//				AggregatorName: pulumi.String(name),
-//				Description:    pulumi.String(name),
+//				AggregatorName: pulumi.String(pulumi.String(name)),
+//				Description:    pulumi.String(pulumi.String(name)),
 //				AggregatorType: pulumi.String("CUSTOM"),
 //			})
 //			if err != nil {
@@ -73,7 +73,7 @@ import (
 //				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
 //				SourceOwner:             pulumi.String("ALIYUN"),
 //				SourceIdentifier:        pulumi.String("contains-tag"),
-//				Description:             pulumi.String(name),
+//				Description:             pulumi.String(pulumi.String(name)),
 //				RiskLevel:               pulumi.Int(1),
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::ECS::Instance"),
@@ -87,9 +87,9 @@ import (
 //				return err
 //			}
 //			_, err = cfg.NewAggregateCompliancePack(ctx, "default", &cfg.AggregateCompliancePackArgs{
-//				AggregateCompliancePackName: pulumi.String(name),
+//				AggregateCompliancePackName: pulumi.String(pulumi.String(name)),
 //				AggregatorId:                defaultAggregator.ID(),
-//				Description:                 pulumi.String(name),
+//				Description:                 pulumi.String(pulumi.String(name)),
 //				RiskLevel:                   pulumi.Int(1),
 //				ConfigRuleIds: cfg.AggregateCompliancePackConfigRuleIdArray{
 //					&cfg.AggregateCompliancePackConfigRuleIdArgs{

@@ -44,7 +44,7 @@ import (
 //			_, err = esa.NewCertificate(ctx, "default", &esa.CertificateArgs{
 //				CreatedType: pulumi.String("free"),
 //				Domains:     pulumi.String("101.gositecdn.cn"),
-//				SiteId:      pulumi.Int(_default.Sites[0].Id),
+//				SiteId:      pulumi.String(pulumi.Int(_default.Sites[0].Id)),
 //				Type:        pulumi.String("lets_encrypt"),
 //			})
 //			if err != nil {

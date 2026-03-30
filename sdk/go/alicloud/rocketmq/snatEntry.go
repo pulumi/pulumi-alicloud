@@ -43,7 +43,7 @@ import (
 //				sagId = param
 //			}
 //			_, err := sag.NewSnatEntry(ctx, "default", &sag.SnatEntryArgs{
-//				SagId:     pulumi.String(sagId),
+//				SagId:     pulumi.String(pulumi.String(sagId)),
 //				CidrBlock: pulumi.String("192.168.7.0/24"),
 //				SnatIp:    pulumi.String("192.0.0.2"),
 //			})

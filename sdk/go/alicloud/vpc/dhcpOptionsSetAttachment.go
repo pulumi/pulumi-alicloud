@@ -41,15 +41,15 @@ import (
 //				name = param
 //			}
 //			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleDhcpOptionsSet, err := vpc.NewDhcpOptionsSet(ctx, "example", &vpc.DhcpOptionsSetArgs{
-//				DhcpOptionsSetName:        pulumi.String(name),
-//				DhcpOptionsSetDescription: pulumi.String(name),
+//				DhcpOptionsSetName:        pulumi.String(pulumi.String(name)),
+//				DhcpOptionsSetDescription: pulumi.String(pulumi.String(name)),
 //				DomainName:                pulumi.String("example.com"),
 //				DomainNameServers:         pulumi.String("100.100.2.136"),
 //			})

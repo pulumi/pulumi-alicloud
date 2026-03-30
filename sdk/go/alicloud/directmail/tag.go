@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_, err := directmail.NewTag(ctx, "example", &directmail.TagArgs{
-//				TagName: pulumi.String(name),
+//				TagName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

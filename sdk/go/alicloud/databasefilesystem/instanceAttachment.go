@@ -76,8 +76,8 @@ import (
 // return err
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-// Name: pulumi.String(name),
-// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// Name: pulumi.String(pulumi.String(name)),
+// VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 // })
 // if err != nil {
 // return err
@@ -87,22 +87,22 @@ import (
 // splat0 = append(splat0, val0.ID())
 // }
 // defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
-// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+// ImageId: pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+// InstanceType: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 // SecurityGroups: splat0,
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(10),
-// AvailabilityZone: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
+// AvailabilityZone: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0])),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_essd"),
-// VswitchId: pulumi.String(defaultGetSwitches.Ids[0]),
-// InstanceName: pulumi.String(name),
+// VswitchId: pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
+// InstanceName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = databasefilesystem.NewInstanceAttachment(ctx, "default", &databasefilesystem.InstanceAttachmentArgs{
-// InstanceId: pulumi.String(_default.Instances[0].Id),
+// InstanceId: pulumi.String(pulumi.String(_default.Instances[0].Id)),
 // EcsId: defaultInstance.ID(),
 // })
 // if err != nil {

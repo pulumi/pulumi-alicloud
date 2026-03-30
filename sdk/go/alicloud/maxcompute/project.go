@@ -43,8 +43,8 @@ import (
 //			}
 //			_, err := maxcompute.NewProject(ctx, "default", &maxcompute.ProjectArgs{
 //				DefaultQuota: pulumi.String("os_PayAsYouGoQuota"),
-//				ProjectName:  pulumi.String(name),
-//				Comment:      pulumi.String(name),
+//				ProjectName:  pulumi.String(pulumi.String(name)),
+//				Comment:      pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

@@ -56,15 +56,15 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
-//				ZoneId:      pulumi.String(_default.Zones[0].ZoneId),
+//				VswitchName: pulumi.String(pulumi.String(name)),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].ZoneId)),
 //				CidrBlock:   pulumi.String("10.10.0.0/20"),
 //				VpcId:       defaultNetwork.ID(),
 //			})
@@ -73,7 +73,7 @@ import (
 //			}
 //			_, err = vpc.NewNatGateway(ctx, "default", &vpc.NatGatewayArgs{
 //				VpcId:          defaultNetwork.ID(),
-//				NatGatewayName: pulumi.String(name),
+//				NatGatewayName: pulumi.String(pulumi.String(name)),
 //				PaymentType:    pulumi.String("PayAsYouGo"),
 //				VswitchId:      defaultSwitch.ID(),
 //				NatType:        pulumi.String("Enhanced"),
@@ -113,15 +113,15 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
-//				ZoneId:      pulumi.String(_default.Zones[0].ZoneId),
+//				VswitchName: pulumi.String(pulumi.String(name)),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].ZoneId)),
 //				CidrBlock:   pulumi.String("10.10.0.0/20"),
 //				VpcId:       defaultNetwork.ID(),
 //			})
@@ -130,7 +130,7 @@ import (
 //			}
 //			_, err = vpc.NewNatGateway(ctx, "default", &vpc.NatGatewayArgs{
 //				VpcId:          defaultNetwork.ID(),
-//				NatGatewayName: pulumi.String(name),
+//				NatGatewayName: pulumi.String(pulumi.String(name)),
 //				VswitchId:      defaultSwitch.ID(),
 //				NatType:        pulumi.String("Enhanced"),
 //			})

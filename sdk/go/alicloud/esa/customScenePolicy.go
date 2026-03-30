@@ -47,8 +47,8 @@ import (
 //				return err
 //			}
 //			defaultSite, err := esa.NewSite(ctx, "default", &esa.SiteArgs{
-//				SiteName:          pulumi.String(name),
-//				InstanceId:        pulumi.String(_default.Sites[0].InstanceId),
+//				SiteName:          pulumi.String(pulumi.String(name)),
+//				InstanceId:        pulumi.String(pulumi.String(_default.Sites[0].InstanceId)),
 //				Coverage:          pulumi.String("overseas"),
 //				AccessType:        pulumi.String("NS"),
 //				VersionManagement: pulumi.Bool(true),

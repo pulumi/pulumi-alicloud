@@ -48,8 +48,8 @@ import (
 //				return err
 //			}
 //			_, err = vod.NewEditingProject(ctx, "example", &vod.EditingProjectArgs{
-//				EditingProjectName: pulumi.String(name),
-//				Title:              pulumi.String(name),
+//				EditingProjectName: pulumi.String(pulumi.String(name)),
+//				Title:              pulumi.String(pulumi.String(name)),
 //				Timeline: pulumi.String(`  {
 //	    \"VideoTracks\":[
 //	      {
@@ -66,7 +66,7 @@ import (
 // `),
 //
 //				CoverUrl: pulumi.String("https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png"),
-//				Division: pulumi.String(_default.Regions[0].Id),
+//				Division: pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //			})
 //			if err != nil {
 //				return err

@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			defaultHoneypotNode, err := threatdetection.NewHoneypotNode(ctx, "default", &threatdetection.HoneypotNodeArgs{
-//				NodeName:          pulumi.String(name),
+//				NodeName:          pulumi.String(pulumi.String(name)),
 //				AvailableProbeNum: pulumi.Int(20),
 //				SecurityGroupProbeIpLists: pulumi.StringArray{
 //					pulumi.String("0.0.0.0/0"),
@@ -57,9 +57,9 @@ import (
 //				return err
 //			}
 //			_, err = threatdetection.NewHoneypotPreset(ctx, "default", &threatdetection.HoneypotPresetArgs{
-//				PresetName:        pulumi.String(name),
+//				PresetName:        pulumi.String(pulumi.String(name)),
 //				NodeId:            defaultHoneypotNode.ID(),
-//				HoneypotImageName: pulumi.String(_default.Images[0].HoneypotImageName),
+//				HoneypotImageName: pulumi.String(pulumi.String(_default.Images[0].HoneypotImageName)),
 //				Meta: &threatdetection.HoneypotPresetMetaArgs{
 //					PortraitOption: pulumi.Bool(true),
 //					Burp:           pulumi.String("open"),

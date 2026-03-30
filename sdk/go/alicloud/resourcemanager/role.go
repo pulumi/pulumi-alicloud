@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = resourcemanager.NewRole(ctx, "example", &resourcemanager.RoleArgs{
-//				RoleName: pulumi.String(name),
+//				RoleName: pulumi.String(pulumi.String(name)),
 //				AssumeRolePolicyDocument: pulumi.Sprintf(`     {
 //	          \"Statement\": [
 //	               {

@@ -40,8 +40,8 @@ import (
 //				name = param
 //			}
 //			_, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
-//				Description:     pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
+//				Description:     pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

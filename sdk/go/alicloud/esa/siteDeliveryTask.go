@@ -48,7 +48,7 @@ import (
 //			}
 //			resourceSiteHttpExample, err := esa.NewSite(ctx, "resource_Site_http_example", &esa.SiteArgs{
 //				SiteName:   pulumi.String("chenxin0116.site"),
-//				InstanceId: pulumi.String(_default.Sites[0].InstanceId),
+//				InstanceId: pulumi.String(pulumi.String(_default.Sites[0].InstanceId)),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),
 //			})

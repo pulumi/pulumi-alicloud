@@ -61,7 +61,7 @@ import (
 //				return err
 //			}
 //			exampleFileSystem, err := nas.NewFileSystem(ctx, "example", &nas.FileSystemArgs{
-//				Description:    pulumi.String(name),
+//				Description:    pulumi.String(pulumi.String(name)),
 //				StorageType:    pulumi.String("advance_100"),
 //				ZoneId:         pulumi.String("cn-beijing-i"),
 //				EncryptType:    pulumi.Int(0),

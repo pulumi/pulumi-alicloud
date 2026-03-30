@@ -44,7 +44,7 @@ import (
 //			}
 //			_, err := cms.NewSiteMonitor(ctx, "basic", &cms.SiteMonitorArgs{
 //				Address:  pulumi.String("https://www.alibabacloud.com"),
-//				TaskName: pulumi.String(name),
+//				TaskName: pulumi.String(pulumi.String(name)),
 //				TaskType: pulumi.String("HTTP"),
 //				Interval: pulumi.String("5"),
 //				IspCities: cms.SiteMonitorIspCityArray{

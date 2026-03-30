@@ -49,15 +49,15 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
-//				Description:     pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
+//				Description:     pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -66,16 +66,16 @@ import (
 //				InstanceId:            defaultInstance.ID(),
 //				ChildInstanceId:       defaultNetwork.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
+//				ChildInstanceRegionId: pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cen.NewPrivateZone(ctx, "default", &cen.PrivateZoneArgs{
 //				CenId:          defaultInstanceAttachment.InstanceId,
-//				AccessRegionId: pulumi.String(_default.Regions[0].Id),
+//				AccessRegionId: pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //				HostVpcId:      defaultNetwork.ID(),
-//				HostRegionId:   pulumi.String(_default.Regions[0].Id),
+//				HostRegionId:   pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //			})
 //			if err != nil {
 //				return err

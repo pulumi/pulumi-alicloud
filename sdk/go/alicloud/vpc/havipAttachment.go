@@ -65,48 +65,48 @@ import (
 //				return err
 //			}
 //			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleHaVipv2, err := vpc.NewHaVipv2(ctx, "example", &vpc.HaVipv2Args{
 //				VswitchId:   exampleSwitch.ID(),
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				SecurityGroupName: pulumi.String(name),
-//				Description:       pulumi.String(name),
+//				SecurityGroupName: pulumi.String(pulumi.String(name)),
+//				Description:       pulumi.String(pulumi.String(name)),
 //				VpcId:             exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleInstance, err := ecs.NewInstance(ctx, "example", &ecs.InstanceArgs{
-//				AvailabilityZone:        pulumi.String(_default.Zones[0].Id),
+//				AvailabilityZone:        pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				VswitchId:               exampleSwitch.ID(),
-//				ImageId:                 pulumi.String(example.Images[0].Id),
-//				InstanceType:            pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:                 pulumi.String(pulumi.String(example.Images[0].Id)),
+//				InstanceType:            pulumi.String(pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id)),
 //				InstanceChargeType:      pulumi.String("PostPaid"),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //				SecurityGroups: pulumi.StringArray{
 //					exampleSecurityGroup.ID(),
 //				},
-//				InstanceName:       pulumi.String(name),
+//				InstanceName:       pulumi.String(pulumi.String(name)),
 //				UserData:           pulumi.String("echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf"),
 //				SystemDiskCategory: pulumi.String("cloud_essd"),
 //			})

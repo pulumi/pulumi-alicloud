@@ -121,7 +121,7 @@ import (
 //				Retention:            pulumi.String("1"),
 //				InstanceName:         defaultInstance.Name,
 //				CrossAccountType:     pulumi.String("SELF_ACCOUNT"),
-//				CrossAccountUserId:   pulumi.String(_default.Id),
+//				CrossAccountUserId:   pulumi.Int(pulumi.String(_default.Id)),
 //				CrossAccountRoleName: defaultRole.ID(),
 //				OtsDetails: hbr.OtsBackupPlanOtsDetailArray{
 //					&hbr.OtsBackupPlanOtsDetailArgs{

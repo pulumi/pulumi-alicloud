@@ -58,7 +58,7 @@ import (
 //			createVPC, err := vpc.NewNetwork(ctx, "createVPC", &vpc.NetworkArgs{
 //				Description: pulumi.String("example"),
 //				CidrBlock:   pulumi.String("172.16.0.0/12"),
-//				VpcName:     pulumi.String(name),
+//				VpcName:     pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -67,8 +67,8 @@ import (
 //				Description: pulumi.String("example"),
 //				VpcId:       createVPC.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				VswitchName: pulumi.String(name),
-//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
+//				VswitchName: pulumi.String(pulumi.String(name)),
+//				ZoneId:      pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -81,9 +81,9 @@ import (
 //				},
 //				ServiceCode:     pulumi.String("rmq"),
 //				PaymentType:     pulumi.String("PayAsYouGo"),
-//				InstanceName:    pulumi.String(name),
+//				InstanceName:    pulumi.String(pulumi.String(name)),
 //				SubSeriesCode:   pulumi.String("cluster_ha"),
-//				ResourceGroupId: pulumi.String(_default.Ids[0]),
+//				ResourceGroupId: pulumi.String(pulumi.String(_default.Ids[0])),
 //				Remark:          pulumi.String("example"),
 //				IpWhitelists: pulumi.StringArray{
 //					pulumi.String("192.168.0.0/16"),

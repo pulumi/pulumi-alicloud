@@ -50,24 +50,24 @@ import (
 //				return err
 //			}
 //			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       example.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewHAVip(ctx, "example", &vpc.HAVipArgs{
 //				VswitchId:   exampleSwitch.ID(),
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

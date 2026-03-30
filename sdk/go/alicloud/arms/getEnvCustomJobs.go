@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			defaultEnvironment, err := arms.NewEnvironment(ctx, "default", &arms.EnvironmentArgs{
-//				BindResourceId:     pulumi.String(_default.Ids[0]),
+//				BindResourceId:     pulumi.String(pulumi.String(_default.Ids[0])),
 //				EnvironmentSubType: pulumi.String("ECS"),
 //				EnvironmentType:    pulumi.String("ECS"),
 //				EnvironmentName:    pulumi.Sprintf("%v-%v", name, defaultInteger.Result),

@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -72,8 +72,8 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -82,10 +82,10 @@ import (
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
-//				InstanceType:          pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass)),
+//				InstanceStorage:       pulumi.Int(pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min)),
 //				VswitchId:             defaultSwitch.ID(),
-//				InstanceName:          pulumi.String(name),
+//				InstanceName:          pulumi.String(pulumi.String(name)),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //			})
 //			if err != nil {
@@ -93,7 +93,7 @@ import (
 //			}
 //			_, err = rds.NewDatabase(ctx, "default", &rds.DatabaseArgs{
 //				InstanceId:   defaultInstance.ID(),
-//				DataBaseName: pulumi.String(name),
+//				DataBaseName: pulumi.String(pulumi.String(name)),
 //				CharacterSet: pulumi.String("utf8"),
 //			})
 //			if err != nil {

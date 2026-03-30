@@ -59,9 +59,9 @@ import (
 //				region = param
 //			}
 //			_, err := expressconnect.NewRouterGrantAssociation(ctx, "default", &expressconnect.RouterGrantAssociationArgs{
-//				EcrId:            pulumi.String(ecrId),
-//				InstanceRegionId: pulumi.String(region),
-//				InstanceId:       pulumi.String(vpcId),
+//				EcrId:            pulumi.String(pulumi.String(ecrId)),
+//				InstanceRegionId: pulumi.String(pulumi.String(region)),
+//				InstanceId:       pulumi.String(pulumi.String(vpcId)),
 //				EcrOwnerAliUid:   pulumi.String(ecrOwnerUid),
 //				InstanceType:     pulumi.String("VPC"),
 //			})

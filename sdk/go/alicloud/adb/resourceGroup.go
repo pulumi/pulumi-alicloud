@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
@@ -62,8 +62,8 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -74,19 +74,19 @@ import (
 //				DbClusterVersion:  pulumi.String("3.0"),
 //				DbNodeClass:       pulumi.String("E32"),
 //				DbNodeStorage:     pulumi.Int(100),
-//				Description:       pulumi.String(name),
+//				Description:       pulumi.String(pulumi.String(name)),
 //				ElasticIoResource: pulumi.Int(1),
 //				MaintainTime:      pulumi.String("04:00Z-05:00Z"),
 //				Mode:              pulumi.String("flexible"),
 //				PaymentType:       pulumi.String("PayAsYouGo"),
-//				ResourceGroupId:   pulumi.String(defaultGetResourceGroups.Ids[0]),
+//				ResourceGroupId:   pulumi.String(pulumi.String(defaultGetResourceGroups.Ids[0])),
 //				SecurityIps: pulumi.StringArray{
 //					pulumi.String("10.168.1.12"),
 //					pulumi.String("10.168.1.11"),
 //				},
 //				VpcId:     defaultNetwork.ID(),
 //				VswitchId: defaultSwitch.ID(),
-//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//				ZoneId:    pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("example"),

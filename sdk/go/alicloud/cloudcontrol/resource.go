@@ -50,7 +50,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			mqInstance, err := cloudcontrol.NewResource(ctx, "mq_instance", &cloudcontrol.ResourceArgs{
-//				DesireAttributes: pulumi.String(json0),
+//				DesireAttributes: pulumi.String(pulumi.String(json0)),
 //				Product:          pulumi.String("Ons"),
 //				ResourceCode:     pulumi.String("Instance"),
 //			})

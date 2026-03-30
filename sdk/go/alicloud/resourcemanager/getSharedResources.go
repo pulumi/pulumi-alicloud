@@ -59,14 +59,14 @@ import (
 // return err
 // }
 // defaultResourceShare, err := resourcemanager.NewResourceShare(ctx, "default", &resourcemanager.ResourceShareArgs{
-// ResourceShareName: pulumi.String(name),
+// ResourceShareName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
 // }
 // defaultSharedResource, err := resourcemanager.NewSharedResource(ctx, "default", &resourcemanager.SharedResourceArgs{
 // ResourceShareId: defaultResourceShare.ID(),
-// ResourceId: pulumi.String(defaultGetSwitches.Ids[0]),
+// ResourceId: pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 // ResourceType: pulumi.String("VSwitch"),
 // })
 // if err != nil {

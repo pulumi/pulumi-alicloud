@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -72,8 +72,8 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Ids[0]),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Ids[0])),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -81,11 +81,11 @@ import (
 //			defaultInstance, err := rds.NewInstance(ctx, "default", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
-//				InstanceType:          pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass)),
+//				InstanceStorage:       pulumi.Int(pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min)),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				Category:              pulumi.String("HighAvailability"),
-//				InstanceName:          pulumi.String(name),
+//				InstanceName:          pulumi.String(pulumi.String(name)),
 //				VswitchId:             defaultSwitch.ID(),
 //				DbInstanceStorageType: pulumi.String("local_ssd"),
 //			})
@@ -94,7 +94,7 @@ import (
 //			}
 //			_, err = rds.NewRdsInstanceCrossBackupPolicy(ctx, "default", &rds.RdsInstanceCrossBackupPolicyArgs{
 //				InstanceId:        defaultInstance.ID(),
-//				CrossBackupRegion: pulumi.String(regions.Ids[0]),
+//				CrossBackupRegion: pulumi.String(pulumi.String(regions.Ids[0])),
 //			})
 //			if err != nil {
 //				return err

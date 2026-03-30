@@ -57,13 +57,13 @@ import (
 //				return err
 //			}
 //			_default, err := log.NewProject(ctx, "default", &log.ProjectArgs{
-//				ProjectName: pulumi.String(name),
+//				ProjectName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
-//				LogstoreName: pulumi.String(name),
+//				LogstoreName: pulumi.String(pulumi.String(name)),
 //				ProjectName:  _default.ProjectName,
 //			})
 //			if err != nil {
@@ -72,14 +72,14 @@ import (
 //			_, err = cfg.NewDelivery(ctx, "default", &cfg.DeliveryArgs{
 //				ConfigurationItemChangeNotification: pulumi.Bool(true),
 //				NonCompliantNotification:            pulumi.Bool(true),
-//				DeliveryChannelName:                 pulumi.String(name),
+//				DeliveryChannelName:                 pulumi.String(pulumi.String(name)),
 //				DeliveryChannelTargetArn: pulumi.All(_default.ProjectName, defaultStore.LogstoreName).ApplyT(func(_args []interface{}) (string, error) {
 //					projectName := _args[0].(string)
 //					logstoreName := _args[1].(string)
 //					return fmt.Sprintf("acs:log:%v:%v:project/%v/logstore/%v", thisGetRegions.Ids[0], this.Id, projectName, logstoreName), nil
 //				}).(pulumi.StringOutput),
 //				DeliveryChannelType: pulumi.String("SLS"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

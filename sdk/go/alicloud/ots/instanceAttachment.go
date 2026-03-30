@@ -48,7 +48,7 @@ import (
 //			}
 //			defaultInstance, err := ots.NewInstance(ctx, "default", &ots.InstanceArgs{
 //				Name:        pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				AccessedBy:  pulumi.String("Vpc"),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
@@ -65,17 +65,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err

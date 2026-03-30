@@ -65,17 +65,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -88,15 +88,15 @@ import (
 //			}
 //			defaultNamespace, err := sae.NewNamespace(ctx, "default", &sae.NamespaceArgs{
 //				NamespaceId:             pulumi.Sprintf("%v:example%v", _default.Regions[0].Id, defaultInteger.Result),
-//				NamespaceName:           pulumi.String(name),
-//				NamespaceDescription:    pulumi.String(name),
+//				NamespaceName:           pulumi.String(pulumi.String(name)),
+//				NamespaceDescription:    pulumi.String(pulumi.String(name)),
 //				EnableMicroRegistration: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultApplication, err := sae.NewApplication(ctx, "default", &sae.ApplicationArgs{
-//				AppDescription:  pulumi.String(name),
+//				AppDescription:  pulumi.String(pulumi.String(name)),
 //				AppName:         pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				NamespaceId:     defaultNamespace.ID(),
 //				ImageUrl:        pulumi.Sprintf("registry-vpc.%v.aliyuncs.com/sae-demo-image/consumer:1.0", _default.Regions[0].Id),
@@ -113,7 +113,7 @@ import (
 //				return err
 //			}
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
-//				LoadBalancerName: pulumi.String(name),
+//				LoadBalancerName: pulumi.String(pulumi.String(name)),
 //				VswitchId:        defaultSwitch.ID(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
 //				AddressType:      pulumi.String("intranet"),

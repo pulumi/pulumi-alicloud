@@ -80,7 +80,7 @@ import (
 //			}
 //			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
 //				ProjectName:        defaultProject.ProjectName,
-//				LogstoreName:       pulumi.String(name),
+//				LogstoreName:       pulumi.String(pulumi.String(name)),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
 //				MaxSplitShardCount: pulumi.Int(60),
@@ -98,8 +98,8 @@ import (
 //						SlsRegion:   pulumi.String(defaultGetRegions.Regions[0].Id),
 //					},
 //				},
-//				SlsGroupDescription: pulumi.String(name),
-//				SlsGroupName:        pulumi.String(name),
+//				SlsGroupDescription: pulumi.String(pulumi.String(name)),
+//				SlsGroupName:        pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -124,9 +124,9 @@ import (
 //				return err
 //			}
 //			_, err = cms.NewHybridMonitorSlsTask(ctx, "default", &cms.HybridMonitorSlsTaskArgs{
-//				TaskName:          pulumi.String(name),
+//				TaskName:          pulumi.String(pulumi.String(name)),
 //				Namespace:         defaultNamespace.ID(),
-//				Description:       pulumi.String(name),
+//				Description:       pulumi.String(pulumi.String(name)),
 //				CollectInterval:   pulumi.Int(60),
 //				CollectTargetType: defaultSlsGroup.ID(),
 //				SlsProcessConfig: &cms.HybridMonitorSlsTaskSlsProcessConfigArgs{

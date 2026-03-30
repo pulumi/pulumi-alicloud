@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_, err := kms.NewSecret(ctx, "default", &kms.SecretArgs{
-//				SecretName:                 pulumi.String(name),
+//				SecretName:                 pulumi.String(pulumi.String(name)),
 //				SecretData:                 pulumi.String("Secret data"),
 //				VersionId:                  pulumi.String("v1"),
 //				ForceDeleteWithoutRecovery: pulumi.Bool(true),

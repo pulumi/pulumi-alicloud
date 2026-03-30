@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(myName),
+//				VpcName:   pulumi.String(pulumi.String(myName)),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -65,8 +65,8 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(myName),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(myName)),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +74,7 @@ import (
 //			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "default", &ess.ScalingGroupArgs{
 //				MinSize:          pulumi.Int(1),
 //				MaxSize:          pulumi.Int(1),
-//				ScalingGroupName: pulumi.String(myName),
+//				ScalingGroupName: pulumi.String(pulumi.String(myName)),
 //				RemovalPolicies: pulumi.StringArray{
 //					pulumi.String("OldestInstance"),
 //					pulumi.String("NewestInstance"),
@@ -90,7 +90,7 @@ import (
 //				Ids: pulumi.StringArray{
 //					defaultScalingGroup.ID(),
 //				},
-//				NameRegex: pulumi.String(myName),
+//				NameRegex: pulumi.String(pulumi.String(myName)),
 //			}, nil)
 //			ctx.Export("firstScalingGroup", scalinggroupsDs.ApplyT(func(scalinggroupsDs ess.GetScalingGroupsResult) (*string, error) {
 //				return &scalinggroupsDs.Groups[0].Id, nil

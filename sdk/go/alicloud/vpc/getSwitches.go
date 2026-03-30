@@ -40,16 +40,16 @@ import (
 //			}
 //			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-//				VswitchName:      pulumi.String(name),
+//				VswitchName:      pulumi.String(pulumi.String(name)),
 //				CidrBlock:        pulumi.String("172.16.0.0/24"),
 //				VpcId:            vpc.ID(),
-//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
+//				AvailabilityZone: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err

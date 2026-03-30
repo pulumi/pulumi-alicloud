@@ -52,7 +52,7 @@ import (
 //				regionId = param
 //			}
 //			defaultX7MgJO, err := vpc.NewNetwork(ctx, "defaultX7MgJO", &vpc.NetworkArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.0.0.0/8"),
 //				VpcName:     pulumi.String("amp-example-shanghai"),
 //			})
@@ -60,9 +60,9 @@ import (
 //				return err
 //			}
 //			default45mCzM, err := vpc.NewSwitch(ctx, "default45mCzM", &vpc.SwitchArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				VpcId:       defaultX7MgJO.ID(),
-//				ZoneId:      pulumi.String(zoneId),
+//				ZoneId:      pulumi.String(pulumi.String(zoneId)),
 //				CidrBlock:   pulumi.String("10.0.0.0/24"),
 //			})
 //			if err != nil {
@@ -72,7 +72,7 @@ import (
 //				PaymentType:              pulumi.String("PayAsYouGo"),
 //				TableEngineNodeCount:     pulumi.Int(2),
 //				InstanceStorage:          pulumi.String("80"),
-//				ZoneId:                   pulumi.String(zoneId),
+//				ZoneId:                   pulumi.String(pulumi.String(zoneId)),
 //				VswitchId:                default45mCzM.ID(),
 //				DiskCategory:             pulumi.String("cloud_efficiency"),
 //				TableEngineSpecification: pulumi.String("lindorm.g.xlarge"),

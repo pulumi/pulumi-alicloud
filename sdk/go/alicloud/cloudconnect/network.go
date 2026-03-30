@@ -43,8 +43,8 @@ import (
 //				name = param
 //			}
 //			_, err := cloudconnect.NewNetwork(ctx, "default", &cloudconnect.NetworkArgs{
-//				Name:        pulumi.String(name),
-//				Description: pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
 //				IsDefault:   pulumi.Bool(true),
 //			})

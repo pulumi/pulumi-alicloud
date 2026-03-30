@@ -37,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstProductCode", _default.ProductItems[0].Code)
+//			ctx.Export("firstProductCode", pulumi.Any(_default.ProductItems[0].Code))
 //			ctx.Export("productCodes", _default.Ids)
 //			return nil
 //		})

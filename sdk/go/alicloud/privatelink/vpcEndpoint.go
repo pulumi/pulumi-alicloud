@@ -52,20 +52,20 @@ import (
 //			defaultbFzA4a, err := vpc.NewNetwork(ctx, "defaultbFzA4a", &vpc.NetworkArgs{
 //				Description: pulumi.String("example-terraform"),
 //				CidrBlock:   pulumi.String("172.16.0.0/12"),
-//				VpcName:     pulumi.String(name),
+//				VpcName:     pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			default1FTFrP, err := ecs.NewSecurityGroup(ctx, "default1FTFrP", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: defaultbFzA4a.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ecs.NewSecurityGroup(ctx, "defaultjljY5S", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: defaultbFzA4a.ID(),
 //			})
 //			if err != nil {
@@ -91,15 +91,15 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = privatelink.NewVpcEndpoint(ctx, "default", &privatelink.VpcEndpointArgs{
-//				EndpointDescription:       pulumi.String(name),
-//				VpcEndpointName:           pulumi.String(name),
-//				ResourceGroupId:           pulumi.String(_default.Ids[0]),
+//				EndpointDescription:       pulumi.String(pulumi.String(name)),
+//				VpcEndpointName:           pulumi.String(pulumi.String(name)),
+//				ResourceGroupId:           pulumi.String(pulumi.String(_default.Ids[0])),
 //				EndpointType:              pulumi.String("Interface"),
 //				VpcId:                     defaultbFzA4a.ID(),
 //				ServiceName:               pulumi.String("com.aliyuncs.privatelink.ap-southeast-5.oss"),
 //				DryRun:                    pulumi.Bool(false),
 //				ZonePrivateIpAddressCount: pulumi.Int(1),
-//				PolicyDocument:            pulumi.String(json0),
+//				PolicyDocument:            pulumi.String(pulumi.String(json0)),
 //				SecurityGroupIds: pulumi.StringArray{
 //					default1FTFrP.ID(),
 //				},

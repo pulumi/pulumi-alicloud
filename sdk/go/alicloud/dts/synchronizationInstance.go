@@ -44,9 +44,9 @@ import (
 //			_, err = dts.NewSynchronizationInstance(ctx, "default", &dts.SynchronizationInstanceArgs{
 //				PaymentType:                   pulumi.String("PayAsYouGo"),
 //				SourceEndpointEngineName:      pulumi.String("MySQL"),
-//				SourceEndpointRegion:          pulumi.String(_default.Regions[0].Id),
+//				SourceEndpointRegion:          pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //				DestinationEndpointEngineName: pulumi.String("MySQL"),
-//				DestinationEndpointRegion:     pulumi.String(_default.Regions[0].Id),
+//				DestinationEndpointRegion:     pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //				InstanceClass:                 pulumi.String("small"),
 //				SyncArchitecture:              pulumi.String("oneway"),
 //			})

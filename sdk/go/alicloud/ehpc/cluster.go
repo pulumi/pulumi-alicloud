@@ -66,17 +66,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -97,27 +97,27 @@ import (
 //				return err
 //			}
 //			_, err = ehpc.NewCluster(ctx, "default", &ehpc.ClusterArgs{
-//				ClusterName:         pulumi.String(name),
+//				ClusterName:         pulumi.String(pulumi.String(name)),
 //				DeployMode:          pulumi.String("Simple"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //				HaEnable:            pulumi.Bool(false),
-//				ImageId:             pulumi.String(defaultGetImages.Images[0].Id),
+//				ImageId:             pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
 //				ImageOwnerAlias:     pulumi.String("system"),
 //				VolumeProtocol:      pulumi.String("nfs"),
 //				VolumeId:            defaultFileSystem.ID(),
 //				VolumeMountpoint:    defaultMountTarget.MountTargetDomain,
 //				ComputeCount:        pulumi.Int(1),
-//				ComputeInstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				ComputeInstanceType: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				LoginCount:          pulumi.Int(1),
-//				LoginInstanceType:   pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				LoginInstanceType:   pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				ManagerCount:        pulumi.Int(1),
-//				ManagerInstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				ManagerInstanceType: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				OsTag:               pulumi.String("CentOS_7.6_64"),
 //				SchedulerType:       pulumi.String("pbs"),
 //				Password:            pulumi.String("your-password123"),
 //				VswitchId:           defaultSwitch.ID(),
 //				VpcId:               defaultNetwork.ID(),
-//				ZoneId:              pulumi.String(_default.Zones[0].Id),
+//				ZoneId:              pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err

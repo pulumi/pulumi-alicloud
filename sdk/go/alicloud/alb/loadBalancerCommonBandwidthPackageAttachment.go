@@ -54,7 +54,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
@@ -97,9 +97,9 @@ import (
 //				VpcId:                defaultNetwork.ID(),
 //				AddressType:          pulumi.String("Internet"),
 //				AddressAllocatedMode: pulumi.String("Fixed"),
-//				LoadBalancerName:     pulumi.String(name),
+//				LoadBalancerName:     pulumi.String(pulumi.String(name)),
 //				LoadBalancerEdition:  pulumi.String("Basic"),
-//				ResourceGroupId:      pulumi.String(defaultGetResourceGroups.Groups[0].Id),
+//				ResourceGroupId:      pulumi.String(pulumi.String(defaultGetResourceGroups.Groups[0].Id)),
 //				LoadBalancerBillingConfig: &alb.LoadBalancerLoadBalancerBillingConfigArgs{
 //					PayType: pulumi.String("PayAsYouGo"),
 //				},

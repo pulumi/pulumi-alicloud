@@ -40,7 +40,7 @@ import (
 //				name = param
 //			}
 //			_, err := cloudsso.NewDirectory(ctx, "default", &cloudsso.DirectoryArgs{
-//				DirectoryName: pulumi.String(name),
+//				DirectoryName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

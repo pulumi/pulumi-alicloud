@@ -121,7 +121,7 @@ import (
 //						Weight:   pulumi.Int(20),
 //					},
 //				},
-//				EndpointGroupRegion: pulumi.String(region),
+//				EndpointGroupRegion: pulumi.String(pulumi.String(region)),
 //				ListenerId:          defaultListener.ID(),
 //			})
 //			if err != nil {

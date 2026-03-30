@@ -49,7 +49,7 @@ import (
 //				peerRegion = param
 //			}
 //			_default, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
@@ -88,12 +88,12 @@ import (
 //			defaultTransitRouterPeerAttachment, err := cen.NewTransitRouterPeerAttachment(ctx, "default", &cen.TransitRouterPeerAttachmentArgs{
 //				CenId:                              _default.ID(),
 //				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
-//				PeerTransitRouterRegionId:          pulumi.String(peerRegion),
+//				PeerTransitRouterRegionId:          pulumi.String(pulumi.String(peerRegion)),
 //				PeerTransitRouterId:                peer.TransitRouterId,
 //				CenBandwidthPackageId:              defaultBandwidthPackageAttachment.BandwidthPackageId,
 //				Bandwidth:                          pulumi.Int(5),
-//				TransitRouterAttachmentDescription: pulumi.String(name),
-//				TransitRouterAttachmentName:        pulumi.String(name),
+//				TransitRouterAttachmentDescription: pulumi.String(pulumi.String(name)),
+//				TransitRouterAttachmentName:        pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -101,8 +101,8 @@ import (
 //			defaultInterRegionTrafficQosPolicy, err := cen.NewInterRegionTrafficQosPolicy(ctx, "default", &cen.InterRegionTrafficQosPolicyArgs{
 //				TransitRouterId:                        defaultTransitRouter.TransitRouterId,
 //				TransitRouterAttachmentId:              defaultTransitRouterPeerAttachment.TransitRouterAttachmentId,
-//				InterRegionTrafficQosPolicyName:        pulumi.String(name),
-//				InterRegionTrafficQosPolicyDescription: pulumi.String(name),
+//				InterRegionTrafficQosPolicyName:        pulumi.String(pulumi.String(name)),
+//				InterRegionTrafficQosPolicyDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -114,7 +114,7 @@ import (
 //					pulumi.Int(1),
 //					pulumi.Int(2),
 //				},
-//				InterRegionTrafficQosQueueDescription: pulumi.String(name),
+//				InterRegionTrafficQosQueueDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstSecondaryIndexId", secondaryIndexDs.Indexs[0].Id)
+//			ctx.Export("firstSecondaryIndexId", pulumi.Any(secondaryIndexDs.Indexs[0].Id))
 //			return nil
 //		})
 //	}

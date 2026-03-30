@@ -43,10 +43,10 @@ import (
 //				name = param
 //			}
 //			_default, err := vpn.NewCustomerGateway(ctx, "default", &vpn.CustomerGatewayArgs{
-//				CustomerGatewayName: pulumi.String(name),
+//				CustomerGatewayName: pulumi.String(pulumi.String(name)),
 //				IpAddress:           pulumi.String("42.104.22.210"),
 //				Asn:                 pulumi.String("45014"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -90,7 +90,7 @@ import (
 //				},
 //				EnableDpd:          pulumi.Bool(true),
 //				EnableNatTraversal: pulumi.Bool(true),
-//				VpnAttachmentName:  pulumi.String(name),
+//				VpnAttachmentName:  pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -205,7 +205,7 @@ import (
 //				},
 //				RemoteSubnet:    pulumi.String("0.0.0.0/0"),
 //				NetworkType:     pulumi.String("public"),
-//				ResourceGroupId: pulumi.String(_default.Ids[0]),
+//				ResourceGroupId: pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err

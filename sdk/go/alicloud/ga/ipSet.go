@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			_, err = ga.NewIpSet(ctx, "example", &ga.IpSetArgs{
-//				AccelerateRegionId: pulumi.String(region),
+//				AccelerateRegionId: pulumi.String(pulumi.String(region)),
 //				Bandwidth:          pulumi.Int(5),
 //				AcceleratorId:      defaultBandwidthPackageAttachment.AcceleratorId,
 //			})

@@ -61,7 +61,7 @@ import (
 //				Description: pulumi.String("tf-example"),
 //				PlanCode:    pulumi.String("alpha.professional"),
 //				Period:      pulumi.Int(1),
-//				VswitchId:   pulumi.String(defaultGetSwitches.Ids[0]),
+//				VswitchId:   pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //			})
 //			if err != nil {
 //				return err

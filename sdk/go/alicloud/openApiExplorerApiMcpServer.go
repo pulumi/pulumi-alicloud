@@ -156,7 +156,7 @@ import (
 //								Key:   pulumi.String("a2"),
 //							},
 //						},
-//						ApiOverrideJson:   pulumi.String(json0),
+//						ApiOverrideJson:   pulumi.String(pulumi.String(json0)),
 //						Product:           pulumi.String("Ecs"),
 //						ExecuteCliCommand: pulumi.Bool(false),
 //					},
@@ -183,7 +183,7 @@ import (
 //				Name:                  pulumi.String("my-name"),
 //				Language:              pulumi.String("ZH_CN"),
 //				EnableAssumeRole:      pulumi.Bool(true),
-//				AssumeRoleExtraPolicy: pulumi.String(json1),
+//				AssumeRoleExtraPolicy: pulumi.String(pulumi.String(json1)),
 //				TerraformTools: alicloud.OpenApiExplorerApiMcpServerTerraformToolArray{
 //					&alicloud.OpenApiExplorerApiMcpServerTerraformToolArgs{
 //						Description:   pulumi.String("Terraform as tool example"),

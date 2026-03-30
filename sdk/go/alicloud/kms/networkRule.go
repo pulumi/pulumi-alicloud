@@ -47,7 +47,7 @@ import (
 //					pulumi.String("192.168.17.13"),
 //					pulumi.String("100.177.24.254"),
 //				},
-//				NetworkRuleName: pulumi.String(name),
+//				NetworkRuleName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

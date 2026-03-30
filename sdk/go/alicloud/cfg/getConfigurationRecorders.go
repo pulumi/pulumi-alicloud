@@ -33,7 +33,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("listOfResourceTypes", this.Recorders[0].ResourceTypes)
+//			ctx.Export("listOfResourceTypes", pulumi.Any(this.Recorders[0].ResourceTypes))
 //			return nil
 //		})
 //	}

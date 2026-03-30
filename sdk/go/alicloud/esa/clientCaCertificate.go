@@ -44,7 +44,7 @@ import (
 //			_, err = esa.NewClientCaCertificate(ctx, "default", &esa.ClientCaCertificateArgs{
 //				Certificate:      pulumi.String("-----BEGIN CERTIFICATE-----\n****-----END CERTIFICATE-----"),
 //				ClientCaCertName: pulumi.String("example"),
-//				SiteId:           pulumi.Int(_default.Sites[0].Id),
+//				SiteId:           pulumi.String(pulumi.Int(_default.Sites[0].Id)),
 //			})
 //			if err != nil {
 //				return err

@@ -83,7 +83,7 @@ import (
 //				key0 := index
 //				_ := index
 //				__res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
-//					VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//					VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //				})
 //				if err != nil {
 //					return err
@@ -103,13 +103,13 @@ import (
 //				key0 := index
 //				_ := index
 //				__res, err := bastionhost.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &bastionhost.InstanceArgs{
-//					Description: pulumi.String(name),
+//					Description: pulumi.String(pulumi.String(name)),
 //					LicenseCode: pulumi.String("bhah_ent_50_asset"),
 //					PlanCode:    pulumi.String("cloudbastion"),
 //					Storage:     pulumi.String("5"),
 //					Bandwidth:   pulumi.String("5"),
 //					Period:      pulumi.Int(1),
-//					VswitchId:   pulumi.String(defaultGetSwitches.Ids[0]),
+//					VswitchId:   pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //					SecurityGroupIds: pulumi.StringArray{
 //						defaultSecurityGroup[0].ID(),
 //					},
@@ -135,9 +135,9 @@ import (
 //				privateKey = param
 //			}
 //			_, err = bastionhost.NewHostShareKey(ctx, "default", &bastionhost.HostShareKeyArgs{
-//				HostShareKeyName: pulumi.String(name),
-//				InstanceId:       pulumi.String(instanceId),
-//				PrivateKey:       pulumi.String(privateKey),
+//				HostShareKeyName: pulumi.String(pulumi.String(name)),
+//				InstanceId:       pulumi.String(pulumi.String(instanceId)),
+//				PrivateKey:       pulumi.String(pulumi.String(privateKey)),
 //			})
 //			if err != nil {
 //				return err

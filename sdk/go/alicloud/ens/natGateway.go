@@ -47,17 +47,17 @@ import (
 //				ensRegionId = param
 //			}
 //			defaultObbrL7, err := ens.NewNetwork(ctx, "defaultObbrL7", &ens.NetworkArgs{
-//				NetworkName: pulumi.String(name),
-//				Description: pulumi.String(name),
+//				NetworkName: pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.0.0.0/8"),
-//				EnsRegionId: pulumi.String(ensRegionId),
+//				EnsRegionId: pulumi.String(pulumi.String(ensRegionId)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaulteFw783, err := ens.NewVswitch(ctx, "defaulteFw783", &ens.VswitchArgs{
 //				CidrBlock:   pulumi.String("10.0.8.0/24"),
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				EnsRegionId: defaultObbrL7.EnsRegionId,
 //				NetworkId:   defaultObbrL7.ID(),
 //			})
@@ -69,7 +69,7 @@ import (
 //				EnsRegionId:  defaulteFw783.EnsRegionId,
 //				NetworkId:    defaulteFw783.NetworkId,
 //				InstanceType: pulumi.String("enat.default"),
-//				NatName:      pulumi.String(name),
+//				NatName:      pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

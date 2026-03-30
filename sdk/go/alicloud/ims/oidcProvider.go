@@ -56,7 +56,7 @@ import (
 //					pulumi.String("123"),
 //					pulumi.String("456"),
 //				},
-//				Description: pulumi.String(oidcProviderName),
+//				Description: pulumi.String(pulumi.String(oidcProviderName)),
 //				IssuerUrl:   pulumi.String("https://oauth.aliyun.com"),
 //			})
 //			if err != nil {

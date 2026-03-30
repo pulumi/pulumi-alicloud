@@ -60,7 +60,7 @@ import (
 //			}
 //			_, err = resourcemanager.NewSharedTarget(ctx, "default", &resourcemanager.SharedTargetArgs{
 //				ResourceShareId: defaultResourceShare.ID(),
-//				TargetId:        pulumi.String(_default.Ids[0]),
+//				TargetId:        pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err

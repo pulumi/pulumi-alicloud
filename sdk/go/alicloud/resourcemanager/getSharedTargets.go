@@ -42,14 +42,14 @@ import (
 //				return err
 //			}
 //			defaultResourceShare, err := resourcemanager.NewResourceShare(ctx, "default", &resourcemanager.ResourceShareArgs{
-//				ResourceShareName: pulumi.String(name),
+//				ResourceShareName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSharedTarget, err := resourcemanager.NewSharedTarget(ctx, "default", &resourcemanager.SharedTargetArgs{
 //				ResourceShareId: defaultResourceShare.ID(),
-//				TargetId:        pulumi.String(_default.Ids[0]),
+//				TargetId:        pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err

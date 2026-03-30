@@ -40,7 +40,7 @@ import (
 //				name = param
 //			}
 //			_, err := datahub.NewProject(ctx, "example", &datahub.ProjectArgs{
-//				Name:    pulumi.String(name),
+//				Name:    pulumi.String(pulumi.String(name)),
 //				Comment: pulumi.String("created by terraform"),
 //			})
 //			if err != nil {

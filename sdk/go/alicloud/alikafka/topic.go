@@ -54,17 +54,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -83,7 +83,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			defaultInstance, err := alikafka.NewInstance(ctx, "default", &alikafka.InstanceArgs{
-//				Name:           pulumi.String(name),
+//				Name:           pulumi.String(pulumi.String(name)),
 //				PartitionNum:   pulumi.Int(50),
 //				DiskType:       pulumi.Int(1),
 //				DiskSize:       pulumi.Int(500),
@@ -93,7 +93,7 @@ import (
 //				ServiceVersion: pulumi.String("2.2.0"),
 //				VswitchId:      defaultSwitch.ID(),
 //				SecurityGroup:  defaultSecurityGroup.ID(),
-//				Config:         pulumi.String(json0),
+//				Config:         pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err
@@ -111,12 +111,12 @@ import (
 //			json1 := string(tmpJSON1)
 //			_, err = alikafka.NewTopic(ctx, "default", &alikafka.TopicArgs{
 //				InstanceId:   defaultInstance.ID(),
-//				Topic:        pulumi.String(name),
-//				Remark:       pulumi.String(name),
+//				Topic:        pulumi.String(pulumi.String(name)),
+//				Remark:       pulumi.String(pulumi.String(name)),
 //				LocalTopic:   pulumi.Bool(true),
 //				CompactTopic: pulumi.Bool(true),
 //				PartitionNum: pulumi.Int(18),
-//				Configs:      pulumi.String(json1),
+//				Configs:      pulumi.String(pulumi.String(json1)),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("example"),

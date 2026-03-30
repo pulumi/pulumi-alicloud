@@ -54,9 +54,9 @@ import (
 //			}
 //			_, err = adb.NewDBClusterLakeVersion(ctx, "default", &adb.DBClusterLakeVersionArgs{
 //				DbClusterVersion:           pulumi.String("5.0"),
-//				VpcId:                      pulumi.String(defaultGetNetworks.Ids[0]),
-//				VswitchId:                  pulumi.String(defaultGetSwitches.Ids[0]),
-//				ZoneId:                     pulumi.String(_default.Ids[0]),
+//				VpcId:                      pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
+//				VswitchId:                  pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
+//				ZoneId:                     pulumi.String(pulumi.String(_default.Ids[0])),
 //				ComputeResource:            pulumi.String("16ACU"),
 //				StorageResource:            pulumi.String("0ACU"),
 //				PaymentType:                pulumi.String("PayAsYouGo"),

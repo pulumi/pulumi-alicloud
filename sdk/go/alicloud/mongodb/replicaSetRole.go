@@ -51,14 +51,14 @@ import (
 //			zoneId := _default.Zones[index].Id
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:     defaultNetwork.ID(),
-//				ZoneId:    pulumi.String(zoneId),
+//				ZoneId:    pulumi.String(pulumi.String(zoneId)),
 //				CidrBlock: pulumi.String("10.0.0.0/24"),
 //			})
 //			if err != nil {
@@ -73,7 +73,7 @@ import (
 //				DbInstanceClass:   pulumi.String("mdb.shard.4x.large.d"),
 //				StorageEngine:     pulumi.String("WiredTiger"),
 //				NetworkType:       pulumi.String("VPC"),
-//				ZoneId:            pulumi.String(zoneId),
+//				ZoneId:            pulumi.String(pulumi.String(zoneId)),
 //			})
 //			if err != nil {
 //				return err

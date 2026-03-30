@@ -47,7 +47,7 @@ import (
 // }
 // defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
 // Description: pulumi.String("terraform example"),
-// ProjectName: pulumi.String(projectName),
+// ProjectName: pulumi.String(pulumi.String(projectName)),
 // })
 // if err != nil {
 // return err
@@ -57,7 +57,7 @@ import (
 // RetentionPeriod: pulumi.Int(30),
 // ShardCount: pulumi.Int(2),
 // ProjectName: defaultProject.ProjectName,
-// LogstoreName: pulumi.String(logstoreName),
+// LogstoreName: pulumi.String(pulumi.String(logstoreName)),
 // })
 // if err != nil {
 // return err
@@ -107,9 +107,9 @@ import (
 // pulumi.String("t"),
 // },
 // },
-// Keys: pulumi.String(json0),
+// Keys: pulumi.String(pulumi.String(json0)),
 // LogstoreName: defaultStore.LogstoreName,
-// ProjectName: pulumi.String(projectName),
+// ProjectName: pulumi.String(pulumi.String(projectName)),
 // })
 // if err != nil {
 // return err

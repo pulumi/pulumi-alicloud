@@ -41,9 +41,9 @@ import (
 //				name = param
 //			}
 //			_, err := pai.NewWorkspaceWorkspace(ctx, "default", &pai.WorkspaceWorkspaceArgs{
-//				Description:   pulumi.String(name),
-//				WorkspaceName: pulumi.String(name),
-//				DisplayName:   pulumi.String(name),
+//				Description:   pulumi.String(pulumi.String(name)),
+//				WorkspaceName: pulumi.String(pulumi.String(name)),
+//				DisplayName:   pulumi.String(pulumi.String(name)),
 //				EnvTypes: pulumi.StringArray{
 //					pulumi.String("prod"),
 //				},

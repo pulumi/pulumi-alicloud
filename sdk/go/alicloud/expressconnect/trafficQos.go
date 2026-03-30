@@ -42,8 +42,8 @@ import (
 //				name = param
 //			}
 //			_, err := expressconnect.NewTrafficQos(ctx, "createQos", &expressconnect.TrafficQosArgs{
-//				QosName:        pulumi.String(name),
-//				QosDescription: pulumi.String(name),
+//				QosName:        pulumi.String(pulumi.String(name)),
+//				QosDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

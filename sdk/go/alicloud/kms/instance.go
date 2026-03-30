@@ -53,7 +53,7 @@ import (
 //			}
 //			vpc_amp_instance_example, err := vpc.NewNetwork(ctx, "vpc-amp-instance-example", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -165,19 +165,19 @@ import (
 //				BindVpcs: kms.InstanceBindVpcArray{
 //					&kms.InstanceBindVpcArgs{
 //						VpcId:      shareVswitch.VpcId,
-//						RegionId:   pulumi.String(region),
+//						RegionId:   pulumi.String(pulumi.String(region)),
 //						VswitchId:  shareVswitch.ID(),
 //						VpcOwnerId: pulumi.String(current.Id),
 //					},
 //					&kms.InstanceBindVpcArgs{
 //						VpcId:      share_vswitch2.VpcId,
-//						RegionId:   pulumi.String(region),
+//						RegionId:   pulumi.String(pulumi.String(region)),
 //						VswitchId:  share_vswitch2.ID(),
 //						VpcOwnerId: pulumi.String(current.Id),
 //					},
 //					&kms.InstanceBindVpcArgs{
 //						VpcId:      share_vsw3.VpcId,
-//						RegionId:   pulumi.String(region),
+//						RegionId:   pulumi.String(pulumi.String(region)),
 //						VswitchId:  share_vsw3.ID(),
 //						VpcOwnerId: pulumi.String(current.Id),
 //					},
@@ -228,7 +228,7 @@ import (
 //			}
 //			vpc_amp_instance_example, err := vpc.NewNetwork(ctx, "vpc-amp-instance-example", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -336,19 +336,19 @@ import (
 //				BindVpcs: kms.InstanceBindVpcArray{
 //					&kms.InstanceBindVpcArgs{
 //						VpcId:      shareVswitch.VpcId,
-//						RegionId:   pulumi.String(region),
+//						RegionId:   pulumi.String(pulumi.String(region)),
 //						VswitchId:  shareVswitch.ID(),
 //						VpcOwnerId: pulumi.String(current.Id),
 //					},
 //					&kms.InstanceBindVpcArgs{
 //						VpcId:      share_vswitch2.VpcId,
-//						RegionId:   pulumi.String(region),
+//						RegionId:   pulumi.String(pulumi.String(region)),
 //						VswitchId:  share_vswitch2.ID(),
 //						VpcOwnerId: pulumi.String(current.Id),
 //					},
 //					&kms.InstanceBindVpcArgs{
 //						VpcId:      share_vsw3.VpcId,
-//						RegionId:   pulumi.String(region),
+//						RegionId:   pulumi.String(pulumi.String(region)),
 //						VswitchId:  share_vsw3.ID(),
 //						VpcOwnerId: pulumi.String(current.Id),
 //					},

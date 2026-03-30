@@ -59,7 +59,7 @@ import (
 //			}
 //			_, err = dcdn.NewWafRule(ctx, "example", &dcdn.WafRuleArgs{
 //				PolicyId: example.ID(),
-//				RuleName: pulumi.String(name),
+//				RuleName: pulumi.String(pulumi.String(name)),
 //				Conditions: dcdn.WafRuleConditionArray{
 //					&dcdn.WafRuleConditionArgs{
 //						Key:     pulumi.String("URI"),

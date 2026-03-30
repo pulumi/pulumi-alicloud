@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_, err := servicecatalog.NewProvisionedProduct(ctx, "default", &servicecatalog.ProvisionedProductArgs{
-//				ProvisionedProductName: pulumi.String(name),
+//				ProvisionedProductName: pulumi.String(pulumi.String(name)),
 //				StackRegionId:          pulumi.String("cn-hangzhou"),
 //				ProductVersionId:       pulumi.String("pv-bp1d7dxy2pcc1g"),
 //				ProductId:              pulumi.String("prod-bp1u3dkc282cwd"),
@@ -52,7 +52,7 @@ import (
 //				Parameters: servicecatalog.ProvisionedProductParameterArray{
 //					&servicecatalog.ProvisionedProductParameterArgs{
 //						ParameterKey:   pulumi.String("role_name"),
-//						ParameterValue: pulumi.String(name),
+//						ParameterValue: pulumi.String(pulumi.String(name)),
 //					},
 //				},
 //			})

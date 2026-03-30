@@ -64,8 +64,8 @@ import (
 //			_, err = vpc.NewPeerConnection(ctx, "default", &vpc.PeerConnectionArgs{
 //				PeerConnectionName: pulumi.String("terraform-example"),
 //				VpcId:              localVpc.ID(),
-//				AcceptingAliUid:    pulumi.String(_default.Id),
-//				AcceptingRegionId:  pulumi.String(acceptingRegion),
+//				AcceptingAliUid:    pulumi.Int(pulumi.String(_default.Id)),
+//				AcceptingRegionId:  pulumi.String(pulumi.String(acceptingRegion)),
 //				AcceptingVpcId:     acceptingVpc.ID(),
 //				Description:        pulumi.String("terraform-example"),
 //			})

@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstTransitRouterVbrAttachmentsVbrId", _default.TransitRouterAttachments[0].VbrId)
+//			ctx.Export("firstTransitRouterVbrAttachmentsVbrId", pulumi.Any(_default.TransitRouterAttachments[0].VbrId))
 //			return nil
 //		})
 //	}

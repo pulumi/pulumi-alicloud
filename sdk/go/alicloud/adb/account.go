@@ -60,17 +60,17 @@ import (
 //				DbClusterCategory: pulumi.String("MixedStorage"),
 //				Mode:              pulumi.String("flexible"),
 //				ComputeResource:   pulumi.String("8Core32GB"),
-//				VswitchId:         pulumi.String(defaultGetSwitches.Ids[0]),
-//				Description:       pulumi.String(name),
+//				VswitchId:         pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
+//				Description:       pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = adb.NewAccount(ctx, "default", &adb.AccountArgs{
 //				DbClusterId:        cluster.ID(),
-//				AccountName:        pulumi.String(name),
+//				AccountName:        pulumi.String(pulumi.String(name)),
 //				AccountPassword:    pulumi.String("tf_example123"),
-//				AccountDescription: pulumi.String(name),
+//				AccountDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

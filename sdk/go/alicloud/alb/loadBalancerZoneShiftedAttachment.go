@@ -45,7 +45,7 @@ import (
 //				name = param
 //			}
 //			albExampleTfVpc, err := vpc.NewNetwork(ctx, "alb_example_tf_vpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {

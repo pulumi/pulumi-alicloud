@@ -47,10 +47,10 @@ import (
 //			}
 //			_, err = arms.NewGrafanaWorkspace(ctx, "default", &arms.GrafanaWorkspaceArgs{
 //				GrafanaVersion:          pulumi.String("9.0.x"),
-//				Description:             pulumi.String(name),
-//				ResourceGroupId:         pulumi.String(_default.Ids[0]),
+//				Description:             pulumi.String(pulumi.String(name)),
+//				ResourceGroupId:         pulumi.String(pulumi.String(_default.Ids[0])),
 //				GrafanaWorkspaceEdition: pulumi.String("standard"),
-//				GrafanaWorkspaceName:    pulumi.String(name),
+//				GrafanaWorkspaceName:    pulumi.String(pulumi.String(name)),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("tf"),
 //					"For":     pulumi.String("example"),

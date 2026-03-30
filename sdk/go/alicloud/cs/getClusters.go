@@ -76,27 +76,27 @@ import (
 // }
 // default0, err := vpc.NewSwitch(ctx, "default0", &vpc.SwitchArgs{
 // VpcId: defaultNetwork.ID(),
-// CidrBlock: pulumi.String(vsw1Cidr),
-// ZoneId: pulumi.String(zone1),
+// CidrBlock: pulumi.String(pulumi.String(vsw1Cidr)),
+// ZoneId: pulumi.String(pulumi.String(zone1)),
 // })
 // if err != nil {
 // return err
 // }
 // default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
 // VpcId: defaultNetwork.ID(),
-// ZoneId: pulumi.String(zone2),
-// CidrBlock: pulumi.String(vsw2Cidr),
+// ZoneId: pulumi.String(pulumi.String(zone2)),
+// CidrBlock: pulumi.String(pulumi.String(vsw2Cidr)),
 // })
 // if err != nil {
 // return err
 // }
 // defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
-// PodCidr: pulumi.String(containerCidr),
+// PodCidr: pulumi.String(pulumi.String(containerCidr)),
 // VswitchIds: pulumi.StringArray{
 // default0.ID(),
 // default1.ID(),
 // },
-// ServiceCidr: pulumi.String(serviceCidr),
+// ServiceCidr: pulumi.String(pulumi.String(serviceCidr)),
 // SecurityGroupId: defaultSecurityGroup.ID(),
 // ClusterSpec: pulumi.String("ack.pro.small"),
 // })

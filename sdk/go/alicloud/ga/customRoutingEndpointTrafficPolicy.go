@@ -58,17 +58,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("192.168.192.0/24"),
-//				ZoneId:      pulumi.String(_default.Ids[0]),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err
@@ -91,7 +91,7 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      pulumi.String(defaultGetAccelerators.Accelerators[1].Id),
+//				AcceleratorId:      pulumi.String(pulumi.String(defaultGetAccelerators.Accelerators[1].Id)),
 //				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
@@ -113,9 +113,9 @@ import (
 //			defaultCustomRoutingEndpointGroup, err := ga.NewCustomRoutingEndpointGroup(ctx, "default", &ga.CustomRoutingEndpointGroupArgs{
 //				AcceleratorId:                  defaultListener.AcceleratorId,
 //				ListenerId:                     defaultListener.ID(),
-//				EndpointGroupRegion:            pulumi.String(defaultGetRegions.Regions[0].Id),
-//				CustomRoutingEndpointGroupName: pulumi.String(name),
-//				Description:                    pulumi.String(name),
+//				EndpointGroupRegion:            pulumi.String(pulumi.String(defaultGetRegions.Regions[0].Id)),
+//				CustomRoutingEndpointGroupName: pulumi.String(pulumi.String(name)),
+//				Description:                    pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

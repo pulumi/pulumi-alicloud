@@ -39,7 +39,7 @@ import (
 //				authorizedUserId = param
 //			}
 //			_, err := pvtz.NewUserVpcAuthorization(ctx, "example", &pvtz.UserVpcAuthorizationArgs{
-//				AuthorizedUserId: pulumi.Float64(authorizedUserId),
+//				AuthorizedUserId: pulumi.String(pulumi.Float64(authorizedUserId)),
 //				AuthChannel:      pulumi.String("RESOURCE_DIRECTORY"),
 //			})
 //			if err != nil {

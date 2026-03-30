@@ -42,7 +42,7 @@ import (
 //				name = param
 //			}
 //			_default, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
-//				AddressName:        pulumi.String(name),
+//				AddressName:        pulumi.String(pulumi.String(name)),
 //				Isp:                pulumi.String("BGP"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
 //				PaymentType:        pulumi.String("PayAsYouGo"),

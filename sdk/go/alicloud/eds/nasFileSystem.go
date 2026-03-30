@@ -58,9 +58,9 @@ import (
 //				return err
 //			}
 //			_, err = eds.NewNasFileSystem(ctx, "example", &eds.NasFileSystemArgs{
-//				NasFileSystemName: pulumi.String(name),
+//				NasFileSystemName: pulumi.String(pulumi.String(name)),
 //				OfficeSiteId:      defaultSimpleOfficeSite.ID(),
-//				Description:       pulumi.String(name),
+//				Description:       pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

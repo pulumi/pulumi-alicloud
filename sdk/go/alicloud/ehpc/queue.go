@@ -78,7 +78,7 @@ import (
 //			}
 //			queueMinimalExampleAccessGroup, err := nas.NewAccessGroup(ctx, "queue_minimal_example_access_group", &nas.AccessGroupArgs{
 //				AccessGroupType: pulumi.String("Vpc"),
-//				Description:     pulumi.String(name),
+//				Description:     pulumi.String(pulumi.String(name)),
 //				AccessGroupName: pulumi.String("StandardMountTarget"),
 //				FileSystemType:  pulumi.String("standard"),
 //			})

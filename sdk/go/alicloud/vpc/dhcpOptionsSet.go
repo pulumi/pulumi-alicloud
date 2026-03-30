@@ -46,9 +46,9 @@ import (
 //				domain = param
 //			}
 //			_, err := vpc.NewDhcpOptionsSet(ctx, "example", &vpc.DhcpOptionsSetArgs{
-//				DhcpOptionsSetName:        pulumi.String(name),
-//				DhcpOptionsSetDescription: pulumi.String(name),
-//				DomainName:                pulumi.String(domain),
+//				DhcpOptionsSetName:        pulumi.String(pulumi.String(name)),
+//				DhcpOptionsSetDescription: pulumi.String(pulumi.String(name)),
+//				DomainName:                pulumi.String(pulumi.String(domain)),
 //				DomainNameServers:         pulumi.String("100.100.2.136"),
 //			})
 //			if err != nil {

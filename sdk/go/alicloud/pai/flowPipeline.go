@@ -54,9 +54,9 @@ import (
 //				return err
 //			}
 //			defaultWjQD1e, err := pai.NewWorkspaceWorkspace(ctx, "defaultWjQD1e", &pai.WorkspaceWorkspaceArgs{
-//				Description:   pulumi.String(name),
-//				DisplayName:   pulumi.String(name),
-//				WorkspaceName: pulumi.String(name),
+//				Description:   pulumi.String(pulumi.String(name)),
+//				DisplayName:   pulumi.String(pulumi.String(name)),
+//				WorkspaceName: pulumi.String(pulumi.String(name)),
 //				EnvTypes: pulumi.StringArray{
 //					pulumi.String("dev"),
 //				},

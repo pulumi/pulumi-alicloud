@@ -48,23 +48,23 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].ZoneIds[0]),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].ZoneIds[0])),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
@@ -72,7 +72,7 @@ import (
 //			}
 //			defaultEipAddress, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
 //				Isp:         pulumi.String("BGP"),
-//				AddressName: pulumi.String(name),
+//				AddressName: pulumi.String(pulumi.String(name)),
 //				Netmode:     pulumi.String("public"),
 //				Bandwidth:   pulumi.String("1"),
 //				SecurityProtectionTypes: pulumi.StringArray{
@@ -90,7 +90,7 @@ import (
 //				return err
 //			}
 //			_, err = eci.NewImageCache(ctx, "default", &eci.ImageCacheArgs{
-//				ImageCacheName: pulumi.String(name),
+//				ImageCacheName: pulumi.String(pulumi.String(name)),
 //				Images: pulumi.StringArray{
 //					pulumi.Sprintf("registry-vpc.%v.aliyuncs.com/eci_open/nginx:alpine", defaultGetRegions.Regions[0].Id),
 //				},

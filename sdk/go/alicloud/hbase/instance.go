@@ -65,10 +65,10 @@ import (
 //				return err
 //			}
 //			_, err = hbase.NewInstance(ctx, "default", &hbase.InstanceArgs{
-//				Name:                 pulumi.String(name),
-//				ZoneId:               pulumi.String(_default.Zones[1].Id),
-//				VswitchId:            pulumi.String(defaultGetSwitches.Ids[0]),
-//				VpcId:                pulumi.String(defaultGetNetworks.Ids[0]),
+//				Name:                 pulumi.String(pulumi.String(name)),
+//				ZoneId:               pulumi.String(pulumi.String(_default.Zones[1].Id)),
+//				VswitchId:            pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
+//				VpcId:                pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //				Engine:               pulumi.String("hbaseue"),
 //				EngineVersion:        pulumi.String("2.0"),
 //				MasterInstanceType:   pulumi.String("hbase.sn2.2xlarge"),

@@ -55,9 +55,9 @@ import (
 //			example, err := ga.NewAccelerator(ctx, "example", &ga.AcceleratorArgs{
 //				Duration:          pulumi.Int(3),
 //				Spec:              pulumi.String("2"),
-//				AcceleratorName:   pulumi.String(name),
+//				AcceleratorName:   pulumi.String(pulumi.String(name)),
 //				AutoUseCoupon:     pulumi.Bool(false),
-//				Description:       pulumi.String(name),
+//				Description:       pulumi.String(pulumi.String(name)),
 //				AutoRenewDuration: pulumi.Int(2),
 //				RenewalStatus:     pulumi.String("AutoRenewal"),
 //			})
@@ -72,8 +72,8 @@ import (
 //				AutoPay:              pulumi.Bool(true),
 //				PaymentType:          pulumi.String("Subscription"),
 //				AutoUseCoupon:        pulumi.Bool(false),
-//				BandwidthPackageName: pulumi.String(name),
-//				Description:          pulumi.String(name),
+//				BandwidthPackageName: pulumi.String(pulumi.String(name)),
+//				Description:          pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -88,8 +88,8 @@ import (
 //			exampleListener, err := ga.NewListener(ctx, "example", &ga.ListenerArgs{
 //				AcceleratorId:  exampleBandwidthPackageAttachment.AcceleratorId,
 //				ClientAffinity: pulumi.String("SOURCE_IP"),
-//				Description:    pulumi.String(name),
-//				Name:           pulumi.String(name),
+//				Description:    pulumi.String(pulumi.String(name)),
+//				Name:           pulumi.String(pulumi.String(name)),
 //				Protocol:       pulumi.String("HTTP"),
 //				ProxyProtocol:  pulumi.Bool(true),
 //				PortRanges: ga.ListenerPortRangeArray{
@@ -119,14 +119,14 @@ import (
 //						EnableClientipPreservation: pulumi.Bool(true),
 //					},
 //				},
-//				EndpointGroupRegion:        pulumi.String(_default.Regions[0].Id),
+//				EndpointGroupRegion:        pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //				ListenerId:                 exampleListener.ID(),
-//				Description:                pulumi.String(name),
+//				Description:                pulumi.String(pulumi.String(name)),
 //				EndpointGroupType:          pulumi.String("virtual"),
 //				EndpointRequestProtocol:    pulumi.String("HTTPS"),
 //				HealthCheckIntervalSeconds: pulumi.Int(4),
 //				HealthCheckPath:            pulumi.String("/path"),
-//				Name:                       pulumi.String(name),
+//				Name:                       pulumi.String(pulumi.String(name)),
 //				ThresholdCount:             pulumi.Int(4),
 //				TrafficPercentage:          pulumi.Int(20),
 //				PortOverrides: &ga.EndpointGroupPortOverridesArgs{
@@ -174,7 +174,7 @@ import (
 //					},
 //				},
 //				Priority:           pulumi.Int(2),
-//				ForwardingRuleName: pulumi.String(name),
+//				ForwardingRuleName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

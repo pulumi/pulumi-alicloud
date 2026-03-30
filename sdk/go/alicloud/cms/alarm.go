@@ -67,33 +67,33 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
-//				InstanceName:     pulumi.String(name),
-//				ImageId:          pulumi.String(defaultGetImages.Images[0].Id),
-//				InstanceType:     pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				AvailabilityZone: pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				InstanceName:     pulumi.String(pulumi.String(name)),
+//				ImageId:          pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+//				InstanceType:     pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
@@ -103,13 +103,13 @@ import (
 //				return err
 //			}
 //			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
-//				AlarmContactGroupName: pulumi.String(name),
+//				AlarmContactGroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cms.NewAlarm(ctx, "default", &cms.AlarmArgs{
-//				Name:    pulumi.String(name),
+//				Name:    pulumi.String(pulumi.String(name)),
 //				Project: pulumi.String("acs_ecs_dashboard"),
 //				Metric:  pulumi.String("disk_writebytes"),
 //				Period:  pulumi.Int(900),

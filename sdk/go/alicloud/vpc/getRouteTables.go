@@ -36,15 +36,15 @@ import (
 // }
 // fooNetwork, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
 // CidrBlock: pulumi.String("172.16.0.0/12"),
-// VpcName: pulumi.String(name),
+// VpcName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
 // }
 // fooRouteTable, err := vpc.NewRouteTable(ctx, "foo", &vpc.RouteTableArgs{
 // VpcId: fooNetwork.ID(),
-// RouteTableName: pulumi.String(name),
-// Description: pulumi.String(name),
+// RouteTableName: pulumi.String(pulumi.String(name)),
+// Description: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err

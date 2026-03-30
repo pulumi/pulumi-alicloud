@@ -58,7 +58,7 @@ import (
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("OosSecretParameter"),
 //				},
-//				ResourceGroupId: pulumi.String(example.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(pulumi.String(example.Groups[0].Id)),
 //			})
 //			if err != nil {
 //				return err

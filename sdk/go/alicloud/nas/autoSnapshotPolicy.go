@@ -52,7 +52,7 @@ import (
 //					pulumi.String("3"),
 //					pulumi.String("4"),
 //				},
-//				AutoSnapshotPolicyName: pulumi.String(name),
+//				AutoSnapshotPolicyName: pulumi.String(pulumi.String(name)),
 //				FileSystemType:         pulumi.String("extreme"),
 //			})
 //			if err != nil {

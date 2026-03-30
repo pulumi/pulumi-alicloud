@@ -61,7 +61,7 @@ import (
 //			}
 //			defaulth2ghc1, err := gpdb.NewInstance(ctx, "defaulth2ghc1", &gpdb.InstanceArgs{
 //				InstanceSpec:        pulumi.String("2C8G"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //				SegNodeNum:          pulumi.Int(2),
 //				SegStorageType:      pulumi.String("cloud_essd"),
 //				InstanceNetworkType: pulumi.String("VPC"),
@@ -102,7 +102,7 @@ import (
 //			defaultcDQItu, err := gpdb.NewStreamingDataSource(ctx, "defaultcDQItu", &gpdb.StreamingDataSourceArgs{
 //				DbInstanceId:          defaulth2ghc1.ID(),
 //				DataSourceName:        pulumi.String("example"),
-//				DataSourceConfig:      pulumi.String(json0),
+//				DataSourceConfig:      pulumi.String(pulumi.String(json0)),
 //				DataSourceType:        pulumi.String("kafka"),
 //				DataSourceDescription: pulumi.String("example"),
 //				ServiceId:             default2dUszY.ServiceId,

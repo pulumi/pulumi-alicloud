@@ -44,8 +44,8 @@ import (
 //				return err
 //			}
 //			defaultRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "default", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        pulumi.String(_default.Ids[0]),
-//				Name:              pulumi.String(name),
+//				InstanceId:        pulumi.String(pulumi.String(_default.Ids[0])),
+//				Name:              pulumi.String(pulumi.String(name)),
 //				AutoCreate:        pulumi.Bool(true),
 //				DefaultVisibility: pulumi.String("PRIVATE"),
 //			})
@@ -55,9 +55,9 @@ import (
 //			defaultRegistryEnterpriseRepo, err := cs.NewRegistryEnterpriseRepo(ctx, "default", &cs.RegistryEnterpriseRepoArgs{
 //				InstanceId: defaultRegistryEnterpriseNamespace.InstanceId,
 //				Namespace:  defaultRegistryEnterpriseNamespace.Name,
-//				Name:       pulumi.String(name),
+//				Name:       pulumi.String(pulumi.String(name)),
 //				RepoType:   pulumi.String("PRIVATE"),
-//				Summary:    pulumi.String(name),
+//				Summary:    pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

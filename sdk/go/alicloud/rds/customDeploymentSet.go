@@ -43,7 +43,7 @@ import (
 //			}
 //			_, err := rds.NewCustomDeploymentSet(ctx, "default", &rds.CustomDeploymentSetArgs{
 //				OnUnableToRedeployFailedInstance: pulumi.String("CancelMembershipAndStart"),
-//				CustomDeploymentSetName:          pulumi.String(name),
+//				CustomDeploymentSetName:          pulumi.String(pulumi.String(name)),
 //				Description:                      pulumi.String("2024:11:19 1010:1111:0808"),
 //				GroupCount:                       pulumi.Int(3),
 //				Strategy:                         pulumi.String("Availability"),

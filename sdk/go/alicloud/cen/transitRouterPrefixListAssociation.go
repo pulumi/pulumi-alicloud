@@ -76,7 +76,7 @@ import (
 //				TransitRouterTableId: exampleTransitRouterRouteTable.TransitRouterRouteTableId,
 //				NextHop:              pulumi.String("BlackHole"),
 //				NextHopType:          pulumi.String("BlackHole"),
-//				OwnerUid:             pulumi.String(_default.Id),
+//				OwnerUid:             pulumi.Int(pulumi.String(_default.Id)),
 //			})
 //			if err != nil {
 //				return err

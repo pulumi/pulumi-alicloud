@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			_, err = ocean.NewBaseInstance(ctx, "default", &ocean.BaseInstanceArgs{
-//				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
+//				ResourceGroupId: pulumi.String(pulumi.String(defaultGetResourceGroups.Ids[0])),
 //				Zones: pulumi.StringArray{
 //					len(_default.Ids).ApplyT(func(length int) (string, error) {
 //						return _default.Ids[float64(length.ApplyT(func(__convert float64) (float64, error) {
@@ -75,7 +75,7 @@ import (
 //				InstanceClass:    pulumi.String("8C32G"),
 //				BackupRetainMode: pulumi.String("delete_all"),
 //				Series:           pulumi.String("normal"),
-//				InstanceName:     pulumi.String(name),
+//				InstanceName:     pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

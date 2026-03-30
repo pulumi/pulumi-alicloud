@@ -63,7 +63,7 @@ import (
 //			}
 //			defaulttuqTmM, err := gpdb.NewInstance(ctx, "defaulttuqTmM", &gpdb.InstanceArgs{
 //				InstanceSpec:        pulumi.String("2C8G"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //				SegNodeNum:          pulumi.Int(2),
 //				SegStorageType:      pulumi.String("cloud_essd"),
 //				InstanceNetworkType: pulumi.String("VPC"),
@@ -71,10 +71,10 @@ import (
 //				SslEnabled:          pulumi.Int(0),
 //				EngineVersion:       pulumi.String("6.0"),
 //				ZoneId:              pulumi.String("cn-beijing-h"),
-//				VswitchId:           pulumi.String(defaultGetSwitches.Ids[0]),
+//				VswitchId:           pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //				StorageSize:         pulumi.Int(50),
 //				MasterCu:            pulumi.Int(4),
-//				VpcId:               pulumi.String(defaultGetNetworks.Ids[0]),
+//				VpcId:               pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //				DbInstanceMode:      pulumi.String("StorageElastic"),
 //				Engine:              pulumi.String("gpdb"),
 //				DbInstanceCategory:  pulumi.String("Basic"),
@@ -93,7 +93,7 @@ import (
 //				return err
 //			}
 //			defaultRXkfKL, err := gpdb.NewExternalDataService(ctx, "defaultRXkfKL", &gpdb.ExternalDataServiceArgs{
-//				ServiceName:        pulumi.String(name),
+//				ServiceName:        pulumi.String(pulumi.String(name)),
 //				DbInstanceId:       defaulttuqTmM.ID(),
 //				ServiceDescription: pulumi.String("myexample"),
 //				ServiceSpec:        pulumi.String("8"),

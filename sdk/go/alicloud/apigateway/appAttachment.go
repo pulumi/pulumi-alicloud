@@ -43,16 +43,16 @@ import (
 //				name = param
 //			}
 //			example, err := apigateway.NewGroup(ctx, "example", &apigateway.GroupArgs{
-//				Name:        pulumi.String(name),
-//				Description: pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleApi, err := apigateway.NewApi(ctx, "example", &apigateway.ApiArgs{
 //				GroupId:         example.ID(),
-//				Name:            pulumi.String(name),
-//				Description:     pulumi.String(name),
+//				Name:            pulumi.String(pulumi.String(name)),
+//				Description:     pulumi.String(pulumi.String(name)),
 //				AuthType:        pulumi.String("APP"),
 //				ForceNonceCheck: pulumi.Bool(false),
 //				RequestConfig: &apigateway.ApiRequestConfigArgs{
@@ -88,8 +88,8 @@ import (
 //				return err
 //			}
 //			exampleApp, err := apigateway.NewApp(ctx, "example", &apigateway.AppArgs{
-//				Name:        pulumi.String(name),
-//				Description: pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

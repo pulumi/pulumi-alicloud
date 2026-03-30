@@ -76,15 +76,15 @@ import (
 //				zoneIdK = param
 //			}
 //			defaultp2mwWM, err := vpc.NewNetwork(ctx, "defaultp2mwWM", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String(vpcIpRange),
+//				CidrBlock: pulumi.String(pulumi.String(vpcIpRange)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultkCZhNu, err := vpc.NewSwitch(ctx, "defaultkCZhNu", &vpc.SwitchArgs{
 //				VpcId:     defaultp2mwWM.ID(),
-//				ZoneId:    pulumi.String(zoneIdI),
-//				CidrBlock: pulumi.String(vswIpRangeI),
+//				ZoneId:    pulumi.String(pulumi.String(zoneIdI)),
+//				CidrBlock: pulumi.String(pulumi.String(vswIpRangeI)),
 //			})
 //			if err != nil {
 //				return err

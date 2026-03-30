@@ -78,13 +78,13 @@ import (
 //				return err
 //			}
 //			_, err = hbr.NewRestoreJob(ctx, "nasJob", &hbr.RestoreJobArgs{
-//				SnapshotHash:       pulumi.String(nasSnapshots.Snapshots[0].SnapshotHash),
-//				VaultId:            pulumi.String(defaultGetNasBackupPlans.Plans[0].VaultId),
+//				SnapshotHash:       pulumi.String(pulumi.String(nasSnapshots.Snapshots[0].SnapshotHash)),
+//				VaultId:            pulumi.String(pulumi.String(defaultGetNasBackupPlans.Plans[0].VaultId)),
 //				SourceType:         pulumi.String("NAS"),
 //				RestoreType:        pulumi.String("NAS"),
-//				SnapshotId:         pulumi.String(nasSnapshots.Snapshots[0].SnapshotId),
-//				TargetFileSystemId: pulumi.String(defaultGetNasBackupPlans.Plans[0].FileSystemId),
-//				TargetCreateTime:   pulumi.String(defaultGetNasBackupPlans.Plans[0].CreateTime),
+//				SnapshotId:         pulumi.String(pulumi.String(nasSnapshots.Snapshots[0].SnapshotId)),
+//				TargetFileSystemId: pulumi.String(pulumi.String(defaultGetNasBackupPlans.Plans[0].FileSystemId)),
+//				TargetCreateTime:   pulumi.String(pulumi.String(defaultGetNasBackupPlans.Plans[0].CreateTime)),
 //				TargetPath:         pulumi.String("/"),
 //				Options:            pulumi.String("    {\\\"includes\\\":[], \\\"excludes\\\":[]}\n"),
 //			})
@@ -92,12 +92,12 @@ import (
 //				return err
 //			}
 //			_, err = hbr.NewRestoreJob(ctx, "ossJob", &hbr.RestoreJobArgs{
-//				SnapshotHash: pulumi.String(ossSnapshots.Snapshots[0].SnapshotHash),
-//				VaultId:      pulumi.String(defaultGetOssBackupPlans.Plans[0].VaultId),
+//				SnapshotHash: pulumi.String(pulumi.String(ossSnapshots.Snapshots[0].SnapshotHash)),
+//				VaultId:      pulumi.String(pulumi.String(defaultGetOssBackupPlans.Plans[0].VaultId)),
 //				SourceType:   pulumi.String("OSS"),
 //				RestoreType:  pulumi.String("OSS"),
-//				SnapshotId:   pulumi.String(ossSnapshots.Snapshots[0].SnapshotId),
-//				TargetBucket: pulumi.String(defaultGetOssBackupPlans.Plans[0].Bucket),
+//				SnapshotId:   pulumi.String(pulumi.String(ossSnapshots.Snapshots[0].SnapshotId)),
+//				TargetBucket: pulumi.String(pulumi.String(defaultGetOssBackupPlans.Plans[0].Bucket)),
 //				TargetPrefix: pulumi.String(""),
 //				Options:      pulumi.String("    {\\\"includes\\\":[], \\\"excludes\\\":[]}\n"),
 //			})
@@ -105,12 +105,12 @@ import (
 //				return err
 //			}
 //			_, err = hbr.NewRestoreJob(ctx, "ecsJob", &hbr.RestoreJobArgs{
-//				SnapshotHash:     pulumi.String(ecsSnapshots.Snapshots[0].SnapshotHash),
-//				VaultId:          pulumi.String(_default.Plans[0].VaultId),
+//				SnapshotHash:     pulumi.String(pulumi.String(ecsSnapshots.Snapshots[0].SnapshotHash)),
+//				VaultId:          pulumi.String(pulumi.String(_default.Plans[0].VaultId)),
 //				SourceType:       pulumi.String("ECS_FILE"),
 //				RestoreType:      pulumi.String("ECS_FILE"),
-//				SnapshotId:       pulumi.String(ecsSnapshots.Snapshots[0].SnapshotId),
-//				TargetInstanceId: pulumi.String(_default.Plans[0].InstanceId),
+//				SnapshotId:       pulumi.String(pulumi.String(ecsSnapshots.Snapshots[0].SnapshotId)),
+//				TargetInstanceId: pulumi.String(pulumi.String(_default.Plans[0].InstanceId)),
 //				TargetPath:       pulumi.String("/"),
 //			})
 //			if err != nil {

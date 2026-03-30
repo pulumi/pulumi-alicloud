@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = dms.NewEnterpriseWorkspace(ctx, "default", &dms.EnterpriseWorkspaceArgs{
-//				Description:   pulumi.String(name),
+//				Description:   pulumi.String(pulumi.String(name)),
 //				WorkspaceName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //				VpcId:         vpcCreate.ID(),
 //			})

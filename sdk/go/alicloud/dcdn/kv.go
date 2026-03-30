@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			defaultKvNamespace, err := dcdn.NewKvNamespace(ctx, "default", &dcdn.KvNamespaceArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				Namespace:   pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {

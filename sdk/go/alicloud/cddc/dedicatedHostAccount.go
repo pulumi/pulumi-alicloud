@@ -50,17 +50,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Ids[0]),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err
@@ -73,7 +73,7 @@ import (
 //				DiskAllocationRatio:    pulumi.Int(200),
 //				AllocationPolicy:       pulumi.String("Evenly"),
 //				HostReplacePolicy:      pulumi.String("Manual"),
-//				DedicatedHostGroupDesc: pulumi.String(name),
+//				DedicatedHostGroupDesc: pulumi.String(pulumi.String(name)),
 //				OpenPermission:         pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -88,10 +88,10 @@ import (
 //				return err
 //			}
 //			defaultDedicatedHost, err := cddc.NewDedicatedHost(ctx, "default", &cddc.DedicatedHostArgs{
-//				HostName:             pulumi.String(name),
+//				HostName:             pulumi.String(pulumi.String(name)),
 //				DedicatedHostGroupId: defaultDedicatedHostGroup.ID(),
-//				HostClass:            pulumi.String(defaultGetHostEcsLevelInfos.Infos[0].ResClassCode),
-//				ZoneId:               pulumi.String(_default.Ids[0]),
+//				HostClass:            pulumi.String(pulumi.String(defaultGetHostEcsLevelInfos.Infos[0].ResClassCode)),
+//				ZoneId:               pulumi.String(pulumi.String(_default.Ids[0])),
 //				VswitchId:            defaultSwitch.ID(),
 //				PaymentType:          pulumi.String("Subscription"),
 //				Tags: pulumi.StringMap{
@@ -103,7 +103,7 @@ import (
 //				return err
 //			}
 //			_, err = cddc.NewDedicatedHostAccount(ctx, "default", &cddc.DedicatedHostAccountArgs{
-//				AccountName:     pulumi.String(name),
+//				AccountName:     pulumi.String(pulumi.String(name)),
 //				AccountPassword: pulumi.String("Password1234"),
 //				DedicatedHostId: defaultDedicatedHost.DedicatedHostId,
 //				AccountType:     pulumi.String("Normal"),

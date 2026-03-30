@@ -57,9 +57,9 @@ import (
 // return err
 // }
 // vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// Description: pulumi.String(name),
+// Description: pulumi.String(pulumi.String(name)),
 // CidrBlock: pulumi.String("192.168.0.0/16"),
-// VpcName: pulumi.String(name),
+// VpcName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
@@ -73,10 +73,10 @@ import (
 // return err
 // }
 // vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-// Description: pulumi.String(name),
+// Description: pulumi.String(pulumi.String(name)),
 // VpcId: vpc.ID(),
-// VswitchName: pulumi.String(name),
-// ZoneId: pulumi.String(enhanced.Zones[0].ZoneId),
+// VswitchName: pulumi.String(pulumi.String(name)),
+// ZoneId: pulumi.String(pulumi.String(enhanced.Zones[0].ZoneId)),
 // CidrBlock: pulumi.String(vpc.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
 // %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
 // return invoke.Result, nil
@@ -86,7 +86,7 @@ import (
 // return err
 // }
 // _, err = ecs.NewSnapshotPolicy(ctx, "default", &ecs.SnapshotPolicyArgs{
-// Name: pulumi.String(name),
+// Name: pulumi.String(pulumi.String(name)),
 // RepeatWeekdays: pulumi.StringArray{
 // pulumi.String("1"),
 // pulumi.String("2"),

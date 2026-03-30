@@ -63,7 +63,7 @@ import (
 //				Host:                pulumi.String("1.1.1.1"),
 //				InstanceNumber:      pulumi.Int(1),
 //				Password:            pulumi.String("YouPassword123"),
-//				ResourceGroupId:     pulumi.String(example.Groups[0].Id),
+//				ResourceGroupId:     pulumi.String(pulumi.String(example.Groups[0].Id)),
 //				Sid:                 pulumi.String("HXE"),
 //				UseSsl:              pulumi.Bool(false),
 //				UserName:            pulumi.String("admin"),

@@ -48,23 +48,23 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].ZoneIds[0]),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].ZoneIds[0])),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
@@ -72,7 +72,7 @@ import (
 //			}
 //			defaultEipAddress, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
 //				Isp:         pulumi.String("BGP"),
-//				AddressName: pulumi.String(name),
+//				AddressName: pulumi.String(pulumi.String(name)),
 //				Netmode:     pulumi.String("public"),
 //				Bandwidth:   pulumi.String("1"),
 //				SecurityProtectionTypes: pulumi.StringArray{
@@ -89,11 +89,11 @@ import (
 //			}
 //			_, err = eci.NewVirtualNode(ctx, "default", &eci.VirtualNodeArgs{
 //				SecurityGroupId:     defaultSecurityGroup.ID(),
-//				VirtualNodeName:     pulumi.String(name),
+//				VirtualNodeName:     pulumi.String(pulumi.String(name)),
 //				VswitchId:           defaultSwitch.ID(),
 //				EnablePublicNetwork: pulumi.Bool(false),
 //				EipInstanceId:       defaultEipAddress.ID(),
-//				ResourceGroupId:     pulumi.String(defaultGetResourceGroups.Groups[0].Id),
+//				ResourceGroupId:     pulumi.String(pulumi.String(defaultGetResourceGroups.Groups[0].Id)),
 //				KubeConfig:          pulumi.String("kube_config"),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),

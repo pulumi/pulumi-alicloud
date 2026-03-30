@@ -70,7 +70,7 @@ import (
 //				Coverage:        pulumi.String("overseas"),
 //				AccessType:      pulumi.String("NS"),
 //				InstanceId:      defaultIEoDfU.ID(),
-//				ResourceGroupId: pulumi.String(_default.Ids[0]),
+//				ResourceGroupId: pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err

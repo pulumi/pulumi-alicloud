@@ -47,7 +47,7 @@ import (
 //				ZoneId:           pulumi.String("cn-hangzhou-i"),
 //				PerformanceLevel: pulumi.String("PL1"),
 //				Size:             pulumi.Int(20),
-//				DiskName:         pulumi.String(name),
+//				DiskName:         pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -58,7 +58,7 @@ import (
 //				Schedule: &ebs.EnterpriseSnapshotPolicyScheduleArgs{
 //					CronExpression: pulumi.String("0 0 0 1 * ?"),
 //				},
-//				EnterpriseSnapshotPolicyName: pulumi.String(name),
+//				EnterpriseSnapshotPolicyName: pulumi.String(pulumi.String(name)),
 //				TargetType:                   pulumi.String("DISK"),
 //				RetainRule: &ebs.EnterpriseSnapshotPolicyRetainRuleArgs{
 //					TimeInterval: pulumi.Int(120),

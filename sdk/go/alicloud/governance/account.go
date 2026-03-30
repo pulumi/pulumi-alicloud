@@ -66,9 +66,9 @@ import (
 //			}
 //			_, err = governance.NewAccount(ctx, "default", &governance.AccountArgs{
 //				AccountNamePrefix: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				FolderId:          pulumi.String(defaultGetFolders.Ids[0]),
-//				BaselineId:        pulumi.String(defaultGetBaselines.Ids[0]),
-//				PayerAccountId:    pulumi.String(_default.Id),
+//				FolderId:          pulumi.String(pulumi.String(defaultGetFolders.Ids[0])),
+//				BaselineId:        pulumi.String(pulumi.String(defaultGetBaselines.Ids[0])),
+//				PayerAccountId:    pulumi.Int(pulumi.String(_default.Id)),
 //				DisplayName:       pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //			})
 //			if err != nil {

@@ -43,7 +43,7 @@ import (
 //				name = param
 //			}
 //			_, err := resourcemanager.NewResourceShare(ctx, "example", &resourcemanager.ResourceShareArgs{
-//				ResourceShareName: pulumi.String(name),
+//				ResourceShareName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

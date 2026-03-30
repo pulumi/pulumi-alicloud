@@ -41,14 +41,14 @@ import (
 //				name = param
 //			}
 //			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
-//				TransitRouterName: pulumi.String(name),
+//				TransitRouterName: pulumi.String(pulumi.String(name)),
 //				CenId:             exampleInstance.ID(),
 //			})
 //			if err != nil {
@@ -77,8 +77,8 @@ import (
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId:    pulumi.String(example.Connections[0].Id),
-//				VirtualBorderRouterName: pulumi.String(name),
+//				PhysicalConnectionId:    pulumi.String(pulumi.String(example.Connections[0].Id)),
+//				VirtualBorderRouterName: pulumi.String(pulumi.String(name)),
 //				VlanId:                  vlanId.Id,
 //				MinRxInterval:           pulumi.Int(1000),
 //				MinTxInterval:           pulumi.Int(1000),
@@ -92,8 +92,8 @@ import (
 //				CenId:                              exampleInstance.ID(),
 //				TransitRouterId:                    exampleTransitRouter.TransitRouterId,
 //				AutoPublishRouteEnabled:            pulumi.Bool(true),
-//				TransitRouterAttachmentName:        pulumi.String(name),
-//				TransitRouterAttachmentDescription: pulumi.String(name),
+//				TransitRouterAttachmentName:        pulumi.String(pulumi.String(name)),
+//				TransitRouterAttachmentDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -102,8 +102,8 @@ import (
 //				TransitRouterRouteTableId:                   exampleTransitRouterRouteTable.TransitRouterRouteTableId,
 //				TransitRouterRouteEntryDestinationCidrBlock: pulumi.String("192.168.0.0/24"),
 //				TransitRouterRouteEntryNextHopType:          pulumi.String("Attachment"),
-//				TransitRouterRouteEntryName:                 pulumi.String(name),
-//				TransitRouterRouteEntryDescription:          pulumi.String(name),
+//				TransitRouterRouteEntryName:                 pulumi.String(pulumi.String(name)),
+//				TransitRouterRouteEntryDescription:          pulumi.String(pulumi.String(name)),
 //				TransitRouterRouteEntryNextHopId:            exampleTransitRouterVbrAttachment.TransitRouterAttachmentId,
 //			})
 //			if err != nil {

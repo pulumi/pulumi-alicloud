@@ -48,39 +48,39 @@ import (
 //			masterZone := _default.Resources[0].MasterZones[0]
 //			slaveZone := _default.Resources[0].SlaveZones[1]
 //			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleMaster, err := vpc.NewSwitch(ctx, "example_master", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
 //				VpcId:       example.ID(),
-//				ZoneId:      pulumi.String(masterZone),
+//				ZoneId:      pulumi.String(pulumi.String(masterZone)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSlave, err := vpc.NewSwitch(ctx, "example_slave", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
 //				VpcId:       example.ID(),
-//				ZoneId:      pulumi.String(slaveZone),
+//				ZoneId:      pulumi.String(pulumi.String(slaveZone)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
-//				TransitRouterName: pulumi.String(name),
+//				TransitRouterName: pulumi.String(pulumi.String(name)),
 //				CenId:             exampleInstance.ID(),
 //			})
 //			if err != nil {
@@ -100,8 +100,8 @@ import (
 //						VswitchId: exampleSlave.ID(),
 //					},
 //				},
-//				TransitRouterAttachmentName:        pulumi.String(name),
-//				TransitRouterAttachmentDescription: pulumi.String(name),
+//				TransitRouterAttachmentName:        pulumi.String(pulumi.String(name)),
+//				TransitRouterAttachmentDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

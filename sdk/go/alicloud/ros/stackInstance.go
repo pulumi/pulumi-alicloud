@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			defaultStackGroup, err := ros.NewStackGroup(ctx, "default", &ros.StackGroupArgs{
-//				StackGroupName: pulumi.String(name),
+//				StackGroupName: pulumi.String(pulumi.String(name)),
 //				TemplateBody:   pulumi.String("{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}"),
 //				Description:    pulumi.String("test for stack groups"),
 //				Parameters: ros.StackGroupParameterArray{
@@ -69,8 +69,8 @@ import (
 //			}
 //			_, err = ros.NewStackInstance(ctx, "example", &ros.StackInstanceArgs{
 //				StackGroupName:         defaultStackGroup.StackGroupName,
-//				StackInstanceAccountId: pulumi.String(this.Id),
-//				StackInstanceRegionId:  pulumi.String(_default.Regions[0].RegionId),
+//				StackInstanceAccountId: pulumi.String(pulumi.String(this.Id)),
+//				StackInstanceRegionId:  pulumi.String(pulumi.String(_default.Regions[0].RegionId)),
 //				OperationPreferences:   pulumi.String("{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}"),
 //				TimeoutInMinutes:       pulumi.String("60"),
 //				OperationDescription:   pulumi.String("tf-example"),

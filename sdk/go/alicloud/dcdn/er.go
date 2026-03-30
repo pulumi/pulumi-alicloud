@@ -41,8 +41,8 @@ import (
 //				name = param
 //			}
 //			_, err := dcdn.NewEr(ctx, "default", &dcdn.ErArgs{
-//				ErName:      pulumi.String(name),
-//				Description: pulumi.String(name),
+//				ErName:      pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //				EnvConf: &dcdn.ErEnvConfArgs{
 //					Staging: &dcdn.ErEnvConfStagingArgs{
 //						SpecName: pulumi.String("5ms"),

@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -61,21 +61,21 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: defaultSwitch.VpcId,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = eventbridge.NewConnection(ctx, "default", &eventbridge.ConnectionArgs{
-//				ConnectionName: pulumi.String(name),
+//				ConnectionName: pulumi.String(pulumi.String(name)),
 //				Description:    pulumi.String("test-connection-basic-pre"),
 //				NetworkParameters: &eventbridge.ConnectionNetworkParametersArgs{
 //					NetworkType:     pulumi.String("PublicNetwork"),

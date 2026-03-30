@@ -45,7 +45,7 @@ import (
 //			_, err := aligreen.NewCallback(ctx, "default", &aligreen.CallbackArgs{
 //				CallbackUrl:  pulumi.String("https://www.aliyun.com"),
 //				CryptType:    pulumi.Int(0),
-//				CallbackName: pulumi.String(name),
+//				CallbackName: pulumi.String(pulumi.String(name)),
 //				CallbackTypes: pulumi.StringArray{
 //					pulumi.String("machineScan"),
 //					pulumi.String("selfAudit"),

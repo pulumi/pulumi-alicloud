@@ -123,7 +123,7 @@ import (
 //			}
 //			var tmp3 pulumi.String
 //			if availabilityZone == "" {
-//				tmp3 = pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)
+//				tmp3 = pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId))
 //			} else {
 //				tmp3 = pulumi.Any(availabilityZone)
 //			}
@@ -183,37 +183,37 @@ import (
 //				return err
 //			}
 //			var tmp6 pulumi.String
-//			if dataDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
 //				tmp6 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp6 = pulumi.String("160")
 //			}
 //			var tmp7 pulumi.String
-//			if systemDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
 //				tmp7 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp7 = pulumi.String("160")
 //			}
 //			var tmp8 pulumi.String
-//			if dataDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
 //				tmp8 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp8 = pulumi.String("160")
 //			}
 //			var tmp9 pulumi.String
-//			if systemDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
 //				tmp9 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp9 = pulumi.String("160")
 //			}
 //			var tmp10 pulumi.String
-//			if dataDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
 //				tmp10 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp10 = pulumi.String("160")
 //			}
 //			var tmp11 pulumi.String
-//			if systemDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
 //				tmp11 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp11 = pulumi.String("160")
@@ -232,8 +232,8 @@ import (
 //			}
 //			_, err = emr.NewCluster(ctx, "default", &emr.ClusterArgs{
 //				Name:        pulumi.String("terraform-create-cluster-test"),
-//				EmrVer:      pulumi.String(_default.MainVersions[0].EmrVersion),
-//				ClusterType: pulumi.String(_default.MainVersions[0].ClusterTypes[0]),
+//				EmrVer:      pulumi.String(pulumi.String(_default.MainVersions[0].EmrVersion)),
+//				ClusterType: pulumi.String(pulumi.String(_default.MainVersions[0].ClusterTypes[0])),
 //				HostGroups: emr.ClusterHostGroupArray{
 //					&emr.ClusterHostGroupArgs{
 //						HostGroupName:   pulumi.String("master_group"),
@@ -270,7 +270,7 @@ import (
 //					},
 //				},
 //				HighAvailabilityEnable: pulumi.Bool(true),
-//				ZoneId:                 pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
+//				ZoneId:                 pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)),
 //				SecurityGroupId:        pulumi.String(tmp12),
 //				IsOpenPublicIp:         pulumi.Bool(true),
 //				ChargeType:             pulumi.String("PostPaid"),
@@ -399,7 +399,7 @@ import (
 //			}
 //			var tmp3 pulumi.String
 //			if availabilityZone == "" {
-//				tmp3 = pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)
+//				tmp3 = pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId))
 //			} else {
 //				tmp3 = pulumi.Any(availabilityZone)
 //			}
@@ -459,37 +459,37 @@ import (
 //				return err
 //			}
 //			var tmp6 pulumi.String
-//			if dataDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
 //				tmp6 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp6 = pulumi.String("160")
 //			}
 //			var tmp7 pulumi.String
-//			if systemDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
 //				tmp7 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp7 = pulumi.String("160")
 //			}
 //			var tmp8 pulumi.String
-//			if dataDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
 //				tmp8 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp8 = pulumi.String("160")
 //			}
 //			var tmp9 pulumi.String
-//			if systemDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
 //				tmp9 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp9 = pulumi.String("160")
 //			}
 //			var tmp10 pulumi.String
-//			if dataDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
 //				tmp10 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp10 = pulumi.String("160")
 //			}
 //			var tmp11 pulumi.String
-//			if systemDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
 //				tmp11 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp11 = pulumi.String("160")
@@ -508,8 +508,8 @@ import (
 //			}
 //			_, err = emr.NewCluster(ctx, "default", &emr.ClusterArgs{
 //				Name:        pulumi.String("terraform-resize-cluster-test"),
-//				EmrVer:      pulumi.String(_default.MainVersions[0].EmrVersion),
-//				ClusterType: pulumi.String(_default.MainVersions[0].ClusterTypes[0]),
+//				EmrVer:      pulumi.String(pulumi.String(_default.MainVersions[0].EmrVersion)),
+//				ClusterType: pulumi.String(pulumi.String(_default.MainVersions[0].ClusterTypes[0])),
 //				HostGroups: emr.ClusterHostGroupArray{
 //					&emr.ClusterHostGroupArgs{
 //						HostGroupName:   pulumi.String("master_group"),
@@ -546,7 +546,7 @@ import (
 //					},
 //				},
 //				HighAvailabilityEnable: pulumi.Bool(true),
-//				ZoneId:                 pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
+//				ZoneId:                 pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)),
 //				SecurityGroupId:        pulumi.String(tmp12),
 //				IsOpenPublicIp:         pulumi.Bool(true),
 //				ChargeType:             pulumi.String("PostPaid"),
@@ -673,7 +673,7 @@ import (
 //			}
 //			var tmp3 pulumi.String
 //			if availabilityZone == "" {
-//				tmp3 = pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)
+//				tmp3 = pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId))
 //			} else {
 //				tmp3 = pulumi.Any(availabilityZone)
 //			}
@@ -733,37 +733,37 @@ import (
 //				return err
 //			}
 //			var tmp6 pulumi.String
-//			if dataDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
 //				tmp6 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp6 = pulumi.String("160")
 //			}
 //			var tmp7 pulumi.String
-//			if systemDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
 //				tmp7 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp7 = pulumi.String("160")
 //			}
 //			var tmp8 pulumi.String
-//			if dataDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
 //				tmp8 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp8 = pulumi.String("160")
 //			}
 //			var tmp9 pulumi.String
-//			if systemDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
 //				tmp9 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp9 = pulumi.String("160")
 //			}
 //			var tmp10 pulumi.String
-//			if dataDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
 //				tmp10 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp10 = pulumi.String("160")
 //			}
 //			var tmp11 pulumi.String
-//			if systemDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
 //				tmp11 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp11 = pulumi.String("160")
@@ -782,8 +782,8 @@ import (
 //			}
 //			_, err = emr.NewCluster(ctx, "default", &emr.ClusterArgs{
 //				Name:        pulumi.String("terraform-resize-cluster-test"),
-//				EmrVer:      pulumi.String(_default.MainVersions[0].EmrVersion),
-//				ClusterType: pulumi.String(_default.MainVersions[0].ClusterTypes[0]),
+//				EmrVer:      pulumi.String(pulumi.String(_default.MainVersions[0].EmrVersion)),
+//				ClusterType: pulumi.String(pulumi.String(_default.MainVersions[0].ClusterTypes[0])),
 //				HostGroups: emr.ClusterHostGroupArray{
 //					&emr.ClusterHostGroupArgs{
 //						HostGroupName:   pulumi.String("master_group"),
@@ -820,7 +820,7 @@ import (
 //					},
 //				},
 //				HighAvailabilityEnable: pulumi.Bool(true),
-//				ZoneId:                 pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
+//				ZoneId:                 pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)),
 //				SecurityGroupId:        pulumi.String(tmp12),
 //				IsOpenPublicIp:         pulumi.Bool(true),
 //				ChargeType:             pulumi.String("PostPaid"),
@@ -939,7 +939,7 @@ import (
 //			}
 //			var tmp3 pulumi.String
 //			if availabilityZone == "" {
-//				tmp3 = pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)
+//				tmp3 = pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId))
 //			} else {
 //				tmp3 = pulumi.Any(availabilityZone)
 //			}
@@ -999,13 +999,13 @@ import (
 //				return err
 //			}
 //			var tmp6 pulumi.String
-//			if dataDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
 //				tmp6 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp6 = pulumi.String("160")
 //			}
 //			var tmp7 pulumi.String
-//			if systemDisk.Types[0].Min > 160 {
+//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
 //				tmp7 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp7 = pulumi.String("160")
@@ -1024,7 +1024,7 @@ import (
 //			}
 //			_, err = emr.NewCluster(ctx, "gateway", &emr.ClusterArgs{
 //				Name:        pulumi.String("terraform-gateway-cluster-test"),
-//				EmrVer:      pulumi.String(_default.MainVersions[0].EmrVersion),
+//				EmrVer:      pulumi.String(pulumi.String(_default.MainVersions[0].EmrVersion)),
 //				ClusterType: pulumi.String("GATEWAY"),
 //				HostGroups: emr.ClusterHostGroupArray{
 //					&emr.ClusterHostGroupArgs{
@@ -1040,7 +1040,7 @@ import (
 //					},
 //				},
 //				HighAvailabilityEnable: pulumi.Bool(true),
-//				ZoneId:                 pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
+//				ZoneId:                 pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)),
 //				SecurityGroupId:        pulumi.String(tmp8),
 //				IsOpenPublicIp:         pulumi.Bool(true),
 //				ChargeType:             pulumi.String("PostPaid"),

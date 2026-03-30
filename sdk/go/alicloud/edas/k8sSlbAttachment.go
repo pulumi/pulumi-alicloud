@@ -69,17 +69,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -101,7 +101,7 @@ import (
 //				return err
 //			}
 //			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
-//				NamePrefix:  pulumi.String(name),
+//				NamePrefix:  pulumi.String(pulumi.String(name)),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				WorkerVswitchIds: pulumi.StringArray{
 //					defaultSwitch.ID(),
@@ -115,13 +115,13 @@ import (
 //				return err
 //			}
 //			defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				Name:      pulumi.String(name),
+//				Name:      pulumi.String(pulumi.String(name)),
 //				ClusterId: defaultManagedKubernetes.ID(),
 //				VswitchIds: pulumi.StringArray{
 //					defaultSwitch.ID(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//					pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),
@@ -137,7 +137,7 @@ import (
 //				return err
 //			}
 //			defaultK8sApplication, err := edas.NewK8sApplication(ctx, "default", &edas.K8sApplicationArgs{
-//				ApplicationName:        pulumi.String(name),
+//				ApplicationName:        pulumi.String(pulumi.String(name)),
 //				ClusterId:              defaultK8sCluster.ID(),
 //				PackageType:            pulumi.String("FatJar"),
 //				PackageUrl:             pulumi.String("http://edas-bj.oss-cn-beijing.aliyuncs.com/prod/demo/SPRING_CLOUD_PROVIDER.jar"),
@@ -145,7 +145,7 @@ import (
 //				Replicas:               pulumi.Int(2),
 //				Readiness:              pulumi.String("{\"failureThreshold\": 3,\"initialDelaySeconds\": 5,\"successThreshold\": 1,\"timeoutSeconds\": 1,\"tcpSocket\":{\"port\":18081}}"),
 //				Liveness:               pulumi.String("{\"failureThreshold\": 3,\"initialDelaySeconds\": 5,\"successThreshold\": 1,\"timeoutSeconds\": 1,\"tcpSocket\":{\"port\":18081}}"),
-//				ApplicationDescriotion: pulumi.String(name),
+//				ApplicationDescriotion: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

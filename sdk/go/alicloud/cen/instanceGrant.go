@@ -75,7 +75,7 @@ import (
 //			_, err = cen.NewInstanceGrant(ctx, "child_account", &cen.InstanceGrantArgs{
 //				CenId:           example.ID(),
 //				ChildInstanceId: childAccountNetwork.ID(),
-//				CenOwnerId:      pulumi.String(yourAccount.Id),
+//				CenOwnerId:      pulumi.String(pulumi.String(yourAccount.Id)),
 //			})
 //			if err != nil {
 //				return err

@@ -43,9 +43,9 @@ import (
 //				name = param
 //			}
 //			_, err := servicecatalog.NewProduct(ctx, "default", &servicecatalog.ProductArgs{
-//				ProviderName: pulumi.String(name),
+//				ProviderName: pulumi.String(pulumi.String(name)),
 //				Description:  pulumi.String("desc"),
-//				ProductName:  pulumi.String(name),
+//				ProductName:  pulumi.String(pulumi.String(name)),
 //				ProductType:  pulumi.String("Ros"),
 //			})
 //			if err != nil {

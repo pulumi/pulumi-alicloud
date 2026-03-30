@@ -39,7 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.Clusters[0].ClusterName)
+//			ctx.Export("firstClusterName", pulumi.Any(clustersAlicloudAlikafkaConsumerGroups.Clusters[0].ClusterName))
 //			return nil
 //		})
 //	}

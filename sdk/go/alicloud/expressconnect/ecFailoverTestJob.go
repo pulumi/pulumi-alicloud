@@ -47,15 +47,15 @@ import (
 //				return err
 //			}
 //			_, err = expressconnect.NewEcFailoverTestJob(ctx, "default", &expressconnect.EcFailoverTestJobArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				JobType:     pulumi.String("StartNow"),
 //				ResourceIds: pulumi.StringArray{
-//					pulumi.String(_default.Ids[0]),
-//					pulumi.String(_default.Ids[1]),
+//					pulumi.String(pulumi.String(_default.Ids[0])),
+//					pulumi.String(pulumi.String(_default.Ids[1])),
 //				},
 //				JobDuration:           pulumi.Int(1),
 //				ResourceType:          pulumi.String("PHYSICALCONNECTION"),
-//				EcFailoverTestJobName: pulumi.String(name),
+//				EcFailoverTestJobName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_, err := iot.NewDeviceGroup(ctx, "example", &iot.DeviceGroupArgs{
-//				GroupName: pulumi.String(name),
+//				GroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			defaultVpc, err := vpc.NewNetwork(ctx, "defaultVpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {
@@ -58,7 +58,7 @@ import (
 //				VpcId:       defaultVpc.ID(),
 //				CidrBlock:   pulumi.String("10.0.0.0/20"),
 //				VswitchName: pulumi.Sprintf("%v1", name),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -66,9 +66,9 @@ import (
 //			_, err = vpc.NewVswitchCidrReservation(ctx, "default", &vpc.VswitchCidrReservationArgs{
 //				IpVersion:                  pulumi.String("IPv4"),
 //				VswitchId:                  defaultVSwitch.ID(),
-//				CidrReservationDescription: pulumi.String(name),
+//				CidrReservationDescription: pulumi.String(pulumi.String(name)),
 //				CidrReservationCidr:        pulumi.String("10.0.10.0/24"),
-//				VswitchCidrReservationName: pulumi.String(name),
+//				VswitchCidrReservationName: pulumi.String(pulumi.String(name)),
 //				CidrReservationType:        pulumi.String("Prefix"),
 //			})
 //			if err != nil {

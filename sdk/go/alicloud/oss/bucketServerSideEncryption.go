@@ -59,7 +59,7 @@ import (
 //			getKMS, err := kms.NewKey(ctx, "GetKMS", &kms.KeyArgs{
 //				Origin:              pulumi.String("Aliyun_KMS"),
 //				ProtectionLevel:     pulumi.String("SOFTWARE"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //				KeySpec:             pulumi.String("Aliyun_AES_256"),
 //				KeyUsage:            pulumi.String("ENCRYPT/DECRYPT"),
 //				AutomaticRotation:   pulumi.String("Disabled"),

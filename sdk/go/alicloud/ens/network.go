@@ -41,8 +41,8 @@ import (
 //				name = param
 //			}
 //			_, err := ens.NewNetwork(ctx, "default", &ens.NetworkArgs{
-//				NetworkName: pulumi.String(name),
-//				Description: pulumi.String(name),
+//				NetworkName: pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
 //				EnsRegionId: pulumi.String("cn-chenzhou-telecom_unicom_cmcc"),
 //			})

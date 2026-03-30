@@ -58,7 +58,7 @@ import (
 //				ScanScope:            pulumi.String("REPO"),
 //				TriggerType:          pulumi.String("MANUAL"),
 //				ScanType:             pulumi.String("VUL"),
-//				RuleName:             pulumi.String(name),
+//				RuleName:             pulumi.String(pulumi.String(name)),
 //				Namespaces: pulumi.StringArray{
 //					pulumi.String("aa"),
 //				},

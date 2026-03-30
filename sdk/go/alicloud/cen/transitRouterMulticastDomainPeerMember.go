@@ -41,14 +41,14 @@ import (
 //				name = param
 //			}
 //			_default, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultBandwidthPackage, err := cen.NewBandwidthPackage(ctx, "default", &cen.BandwidthPackageArgs{
 //				Bandwidth:               pulumi.Int(5),
-//				CenBandwidthPackageName: pulumi.String(name),
+//				CenBandwidthPackageName: pulumi.String(pulumi.String(name)),
 //				GeographicRegionAId:     pulumi.String("China"),
 //				GeographicRegionBId:     pulumi.String("China"),
 //			})
@@ -83,24 +83,24 @@ import (
 //				PeerTransitRouterRegionId:          pulumi.String("cn-qingdao"),
 //				CenBandwidthPackageId:              defaultBandwidthPackageAttachment.BandwidthPackageId,
 //				Bandwidth:                          pulumi.Int(5),
-//				TransitRouterAttachmentDescription: pulumi.String(name),
-//				TransitRouterAttachmentName:        pulumi.String(name),
+//				TransitRouterAttachmentDescription: pulumi.String(pulumi.String(name)),
+//				TransitRouterAttachmentName:        pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultTransitRouterMulticastDomain, err := cen.NewTransitRouterMulticastDomain(ctx, "default", &cen.TransitRouterMulticastDomainArgs{
 //				TransitRouterId:                         defaultTransitRouterPeerAttachment.TransitRouterId,
-//				TransitRouterMulticastDomainName:        pulumi.String(name),
-//				TransitRouterMulticastDomainDescription: pulumi.String(name),
+//				TransitRouterMulticastDomainName:        pulumi.String(pulumi.String(name)),
+//				TransitRouterMulticastDomainDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			peerTransitRouterMulticastDomain, err := cen.NewTransitRouterMulticastDomain(ctx, "peer", &cen.TransitRouterMulticastDomainArgs{
 //				TransitRouterId:                         defaultTransitRouterPeerAttachment.PeerTransitRouterId,
-//				TransitRouterMulticastDomainName:        pulumi.String(name),
-//				TransitRouterMulticastDomainDescription: pulumi.String(name),
+//				TransitRouterMulticastDomainName:        pulumi.String(pulumi.String(name)),
+//				TransitRouterMulticastDomainDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

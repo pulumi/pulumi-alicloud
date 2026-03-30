@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_, err := oos.NewPatchBaseline(ctx, "default", &oos.PatchBaselineArgs{
-//				PatchBaselineName: pulumi.String(name),
+//				PatchBaselineName: pulumi.String(pulumi.String(name)),
 //				OperationSystem:   pulumi.String("Windows"),
 //				ApprovalRules:     pulumi.String("{\"PatchRules\":[{\"EnableNonSecurity\":true,\"PatchFilterGroup\":[{\"Values\":[\"*\"],\"Key\":\"Product\"},{\"Values\":[\"Security\",\"Bugfix\"],\"Key\":\"Classification\"},{\"Values\":[\"Critical\",\"Important\"],\"Key\":\"Severity\"}],\"ApproveAfterDays\":7,\"ComplianceLevel\":\"Unspecified\"}]}"),
 //			})

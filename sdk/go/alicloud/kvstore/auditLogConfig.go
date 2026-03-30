@@ -51,26 +51,26 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstance, err := kvstore.NewInstance(ctx, "default", &kvstore.InstanceArgs{
-//				DbInstanceName:  pulumi.String(name),
+//				DbInstanceName:  pulumi.String(pulumi.String(name)),
 //				VswitchId:       defaultSwitch.ID(),
-//				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
-//				ZoneId:          pulumi.String(_default.Zones[0].Id),
+//				ResourceGroupId: pulumi.String(pulumi.String(defaultGetResourceGroups.Ids[0])),
+//				ZoneId:          pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				InstanceClass:   pulumi.String("redis.master.large.default"),
 //				InstanceType:    pulumi.String("Redis"),
 //				EngineVersion:   pulumi.String("5.0"),

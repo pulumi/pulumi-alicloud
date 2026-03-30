@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:    pulumi.String(name),
+//				VpcName:    pulumi.String(pulumi.String(name)),
 //				EnableIpv6: pulumi.Bool(true),
 //				CidrBlock:  pulumi.String("172.16.0.0/12"),
 //			})
@@ -76,28 +76,28 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:             defaultNetwork.ID(),
 //				CidrBlock:         pulumi.String("172.16.0.0/21"),
-//				ZoneId:            pulumi.String(_default.Zones[0].Id),
-//				VswitchName:       pulumi.String(name),
+//				ZoneId:            pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName:       pulumi.String(pulumi.String(name)),
 //				Ipv6CidrBlockMask: pulumi.Int(64),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:        pulumi.String(name),
-//				Description: pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //				VpcId:       defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-//				AvailabilityZone:        pulumi.String(_default.Zones[0].Id),
+//				AvailabilityZone:        pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				Ipv6AddressCount:        pulumi.Int(1),
-//				InstanceType:            pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				InstanceType:            pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
-//				ImageId:                 pulumi.String(defaultGetImages.Images[0].Id),
-//				InstanceName:            pulumi.String(name),
+//				ImageId:                 pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+//				InstanceName:            pulumi.String(pulumi.String(name)),
 //				VswitchId:               defaultSwitch.ID(),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
 //				SecurityGroups: pulumi.StringArray{
@@ -108,7 +108,7 @@ import (
 //				return err
 //			}
 //			defaultIpv6Gateway, err := vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
-//				Ipv6GatewayName: pulumi.String(name),
+//				Ipv6GatewayName: pulumi.String(pulumi.String(name)),
 //				VpcId:           defaultNetwork.ID(),
 //			})
 //			if err != nil {
@@ -131,8 +131,8 @@ import (
 //			}
 //			_, err = vpc.NewIpv6EgressRule(ctx, "default", &vpc.Ipv6EgressRuleArgs{
 //				InstanceId:         defaultIpv6InternetBandwidth.Ipv6AddressId,
-//				Ipv6EgressRuleName: pulumi.String(name),
-//				Description:        pulumi.String(name),
+//				Ipv6EgressRuleName: pulumi.String(pulumi.String(name)),
+//				Description:        pulumi.String(pulumi.String(name)),
 //				Ipv6GatewayId:      defaultIpv6InternetBandwidth.Ipv6GatewayId,
 //				InstanceType:       pulumi.String("Ipv6Address"),
 //			})

@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(myName),
+//				VpcName:   pulumi.String(pulumi.String(myName)),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -67,8 +67,8 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(myName),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(myName)),
 //			})
 //			if err != nil {
 //				return err
@@ -76,14 +76,14 @@ import (
 //			default2, err := vpc.NewSwitch(ctx, "default2", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.1.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				VswitchName: pulumi.Sprintf("%v-bar", name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(myName),
+//				Name:  pulumi.String(pulumi.String(myName)),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
@@ -92,7 +92,7 @@ import (
 //			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "default", &ess.ScalingGroupArgs{
 //				MinSize:          pulumi.Int(1),
 //				MaxSize:          pulumi.Int(1),
-//				ScalingGroupName: pulumi.String(myName),
+//				ScalingGroupName: pulumi.String(pulumi.String(myName)),
 //				DefaultCooldown:  pulumi.Int(200),
 //				RemovalPolicies: pulumi.StringArray{
 //					pulumi.String("OldestInstance"),
@@ -108,7 +108,7 @@ import (
 //			}
 //			_, err = ess.NewLifecycleHook(ctx, "default", &ess.LifecycleHookArgs{
 //				ScalingGroupId:       defaultScalingGroup.ID(),
-//				Name:                 pulumi.String(myName),
+//				Name:                 pulumi.String(pulumi.String(myName)),
 //				LifecycleTransition:  pulumi.String("SCALE_OUT"),
 //				HeartbeatTimeout:     pulumi.Int(400),
 //				NotificationMetadata: pulumi.String("example"),

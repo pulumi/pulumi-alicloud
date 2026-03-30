@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -75,8 +75,8 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -95,14 +95,14 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
-//				Name: pulumi.String(name),
+//				Name: pulumi.String(pulumi.String(name)),
 //				Document: pulumi.String(`    {
 //	        \"Statement\": [
 //	        {
@@ -210,8 +210,8 @@ import (
 //						SecurityGroupId:   defaultSecurityGroup.ID(),
 //					},
 //				},
-//				ResourceGroupId: pulumi.String(_default.Ids[0]),
-//				ClusterName:     pulumi.String(name),
+//				ResourceGroupId: pulumi.String(pulumi.String(_default.Ids[0])),
+//				ClusterName:     pulumi.String(pulumi.String(name)),
 //				PaymentType:     pulumi.String("PayAsYouGo"),
 //				ClusterType:     pulumi.String("DATAFLOW"),
 //			})

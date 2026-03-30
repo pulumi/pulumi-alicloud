@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_, err := cms.NewMetricRuleTemplate(ctx, "example", &cms.MetricRuleTemplateArgs{
-//				MetricRuleTemplateName: pulumi.String(name),
+//				MetricRuleTemplateName: pulumi.String(pulumi.String(name)),
 //				AlertTemplates: cms.MetricRuleTemplateAlertTemplateArray{
 //					&cms.MetricRuleTemplateAlertTemplateArgs{
 //						Category:   pulumi.String("ecs"),

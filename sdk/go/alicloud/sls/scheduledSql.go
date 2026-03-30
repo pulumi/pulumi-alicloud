@@ -95,7 +95,7 @@ import (
 //					ToTime:              pulumi.Int(0),
 //					DataFormat:          pulumi.String("log2log"),
 //				},
-//				ScheduledSqlName: pulumi.String(name),
+//				ScheduledSqlName: pulumi.String(pulumi.String(name)),
 //				Project:          defaultKIe4KV.ProjectName,
 //			})
 //			if err != nil {

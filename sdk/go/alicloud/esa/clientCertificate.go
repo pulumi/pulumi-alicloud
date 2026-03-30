@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = esa.NewClientCertificate(ctx, "default", &esa.ClientCertificateArgs{
-//				SiteId:       pulumi.Int(_default.Sites[0].Id),
+//				SiteId:       pulumi.String(pulumi.Int(_default.Sites[0].Id)),
 //				PkeyType:     pulumi.String("RSA"),
 //				ValidityDays: pulumi.String("365"),
 //			})

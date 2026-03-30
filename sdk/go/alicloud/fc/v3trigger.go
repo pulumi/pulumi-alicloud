@@ -60,7 +60,7 @@ import (
 //				Code: &fc.V3FunctionCodeArgs{
 //					ZipFile: pulumi.String("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA="),
 //				},
-//				FunctionName: pulumi.String(name),
+//				FunctionName: pulumi.String(pulumi.String(name)),
 //				Runtime:      pulumi.String("python3.9"),
 //				DiskSize:     pulumi.Int(512),
 //				LogConfig: &fc.V3FunctionLogConfigArgs{
@@ -90,10 +90,10 @@ import (
 //			json0 := string(tmpJSON0)
 //			_, err = fc.NewV3Trigger(ctx, "default", &fc.V3TriggerArgs{
 //				TriggerType:    pulumi.String("cdn_events"),
-//				TriggerName:    pulumi.String(name),
+//				TriggerName:    pulumi.String(pulumi.String(name)),
 //				Description:    pulumi.String("create"),
 //				Qualifier:      pulumi.String("LATEST"),
-//				TriggerConfig:  pulumi.String(json0),
+//				TriggerConfig:  pulumi.String(pulumi.String(json0)),
 //				SourceArn:      pulumi.Sprintf("acs:cdn:*:%v", current.Id),
 //				InvocationRole: pulumi.Sprintf("acs:ram::%v:role/aliyuncdneventnotificationrole", current.Id),
 //				FunctionName:   function.FunctionName,
@@ -145,7 +145,7 @@ import (
 //				Code: &fc.V3FunctionCodeArgs{
 //					ZipFile: pulumi.String("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA="),
 //				},
-//				FunctionName: pulumi.String(name),
+//				FunctionName: pulumi.String(pulumi.String(name)),
 //				Runtime:      pulumi.String("python3.9"),
 //				DiskSize:     pulumi.Int(512),
 //				LogConfig: &fc.V3FunctionLogConfigArgs{
@@ -172,17 +172,17 @@ import (
 //			json0 := string(tmpJSON0)
 //			_, err = fc.NewV3Trigger(ctx, "default", &fc.V3TriggerArgs{
 //				TriggerType:   pulumi.String("http"),
-//				TriggerName:   pulumi.String(name),
+//				TriggerName:   pulumi.String(pulumi.String(name)),
 //				Description:   pulumi.String("create"),
 //				Qualifier:     pulumi.String("LATEST"),
-//				TriggerConfig: pulumi.String(json0),
+//				TriggerConfig: pulumi.String(pulumi.String(json0)),
 //				FunctionName:  function.FunctionName,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("outputCalicloudFcv3TriggerInternet", alicloudFcv3Trigger.Default.HttpTrigger[0].UrlInternet)
-//			ctx.Export("outputCalicloudFcv3TriggerIntranet", alicloudFcv3Trigger.Default.HttpTrigger[0].UrlIntranet)
+//			ctx.Export("outputCalicloudFcv3TriggerInternet", pulumi.Any(alicloudFcv3Trigger.Default.HttpTrigger[0].UrlInternet))
+//			ctx.Export("outputCalicloudFcv3TriggerIntranet", pulumi.Any(alicloudFcv3Trigger.Default.HttpTrigger[0].UrlIntranet))
 //			return nil
 //		})
 //	}

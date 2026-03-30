@@ -42,7 +42,7 @@ import (
 //				name = param
 //			}
 //			_default, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
-//				Name: pulumi.String(name),
+//				Name: pulumi.String(pulumi.String(name)),
 //				Document: pulumi.String(`  {
 //	    \"Statement\": [
 //	      {
@@ -76,14 +76,14 @@ import (
 //
 //				RoleArn:     _default.Arn,
 //				Description: pulumi.String("Test for terraform fnf_flow."),
-//				Name:        pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
 //				Type:        pulumi.String("FDL"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = fnf.NewExecution(ctx, "default", &fnf.ExecutionArgs{
-//				ExecutionName: pulumi.String(name),
+//				ExecutionName: pulumi.String(pulumi.String(name)),
 //				FlowName:      defaultFlow.Name,
 //				Input:         pulumi.String("{\"wait\": 600}"),
 //			})

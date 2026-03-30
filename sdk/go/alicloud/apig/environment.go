@@ -92,10 +92,10 @@ import (
 //				return err
 //			}
 //			_, err = apig.NewEnvironment(ctx, "default", &apig.EnvironmentArgs{
-//				Description:     pulumi.String(name),
-//				EnvironmentName: pulumi.String(name),
+//				Description:     pulumi.String(pulumi.String(name)),
+//				EnvironmentName: pulumi.String(pulumi.String(name)),
 //				GatewayId:       defaultgateway.ID(),
-//				ResourceGroupId: pulumi.String(_default.Ids[1]),
+//				ResourceGroupId: pulumi.String(pulumi.String(_default.Ids[1])),
 //			})
 //			if err != nil {
 //				return err

@@ -46,7 +46,7 @@ import (
 // return err
 // }
 // defaultc5kxyC, err := cen.NewInstance(ctx, "defaultc5kxyC", &cen.InstanceArgs{
-// CenInstanceName: pulumi.String(name),
+// CenInstanceName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err

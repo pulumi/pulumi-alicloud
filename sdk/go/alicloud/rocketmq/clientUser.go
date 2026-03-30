@@ -47,10 +47,10 @@ import (
 //				sagId = param
 //			}
 //			_, err := sag.NewClientUser(ctx, "default", &sag.ClientUserArgs{
-//				SagId:     pulumi.String(sagId),
+//				SagId:     pulumi.String(pulumi.String(sagId)),
 //				Bandwidth: pulumi.Int(20),
 //				UserMail:  pulumi.String("tf-example@abc.com"),
-//				UserName:  pulumi.String(name),
+//				UserName:  pulumi.String(pulumi.String(name)),
 //				Password:  pulumi.String("example1234"),
 //				ClientIp:  pulumi.String("192.1.10.0"),
 //			})

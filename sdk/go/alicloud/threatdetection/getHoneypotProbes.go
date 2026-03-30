@@ -50,7 +50,7 @@ import (
 // HoneypotId: pulumi.String("4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05"),
 // },
 // },
-// DisplayName: pulumi.String(name),
+// DisplayName: pulumi.String(pulumi.String(name)),
 // Arp: pulumi.Bool(true),
 // })
 // if err != nil {
@@ -60,7 +60,7 @@ import (
 // Ids: pulumi.StringArray{
 // defaultHoneypotProbe.ID(),
 // },
-// DisplayName: pulumi.String(name),
+// DisplayName: pulumi.String(pulumi.String(name)),
 // ProbeType: pulumi.String("host_probe"),
 // EnableDetails: pulumi.Bool(true),
 // }, nil);

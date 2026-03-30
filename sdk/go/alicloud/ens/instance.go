@@ -67,7 +67,7 @@ import (
 //				Password:                pulumi.String("Example123456@@"),
 //				NetDistrictCode:         pulumi.String("100102"),
 //				InternetChargeType:      pulumi.String("95BandwidthByMonth"),
-//				InstanceName:            pulumi.String(name),
+//				InstanceName:            pulumi.String(pulumi.String(name)),
 //				InternetMaxBandwidthOut: pulumi.Int(100),
 //				EnsRegionId:             pulumi.String("cn-wuxi-telecom_unicom_cmcc-2"),
 //				SystemDisk: &ens.InstanceSystemDiskArgs{

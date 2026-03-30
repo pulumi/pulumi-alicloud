@@ -51,7 +51,7 @@ import (
 //				ExcludeResourceIdsScope: pulumi.String("example-resource_id"),
 //				RegionIdsScope:          pulumi.String("cn-hangzhou"),
 //				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
-//				ResourceGroupIdsScope:   pulumi.String(_default.Ids[0]),
+//				ResourceGroupIdsScope:   pulumi.String(pulumi.String(_default.Ids[0])),
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::RDS::DBInstance"),
 //				},

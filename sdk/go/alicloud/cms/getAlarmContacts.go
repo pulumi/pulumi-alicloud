@@ -39,7 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("first-contact", this.Contacts)
+//			ctx.Export("first-contact", pulumi.Any(this.Contacts))
 //			return nil
 //		})
 //	}

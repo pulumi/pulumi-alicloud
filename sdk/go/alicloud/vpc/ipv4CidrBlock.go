@@ -43,7 +43,7 @@ import (
 //				name = param
 //			}
 //			defaultvpc, err := vpc.NewNetwork(ctx, "defaultvpc", &vpc.NetworkArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

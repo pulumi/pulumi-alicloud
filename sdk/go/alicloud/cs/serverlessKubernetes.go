@@ -64,23 +64,23 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.2.0.0/21"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("10.2.1.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cs.NewServerlessKubernetes(ctx, "serverless", &cs.ServerlessKubernetesArgs{
-//				NamePrefix:  pulumi.String(name),
+//				NamePrefix:  pulumi.String(pulumi.String(name)),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				VpcId:       defaultNetwork.ID(),
 //				VswitchIds: pulumi.StringArray{

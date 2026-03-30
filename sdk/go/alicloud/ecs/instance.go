@@ -49,7 +49,7 @@ import (
 // }
 // // Create a new ECS instance for VPC
 // vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// VpcName: pulumi.String(name),
+// VpcName: pulumi.String(pulumi.String(name)),
 // CidrBlock: pulumi.String("172.16.0.0/16"),
 // })
 // if err != nil {
@@ -57,7 +57,7 @@ import (
 // }
 // // Create a new ECS instance for a VPC
 // group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
-// SecurityGroupName: pulumi.String(name),
+// SecurityGroupName: pulumi.String(pulumi.String(name)),
 // Description: pulumi.String("foo"),
 // VpcId: vpc.ID(),
 // })
@@ -83,8 +83,8 @@ import (
 // vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
 // VpcId: vpc.ID(),
 // CidrBlock: pulumi.String("172.16.0.0/24"),
-// ZoneId: pulumi.String(_default.Zones[0].Id),
-// VswitchName: pulumi.String(name),
+// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
+// VswitchName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
@@ -94,14 +94,14 @@ import (
 // splat0 = append(splat0, val0.ID())
 // }
 // _, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
-// AvailabilityZone: pulumi.String(_default.Zones[0].Id),
+// AvailabilityZone: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 // SecurityGroups: splat0,
-// InstanceType: pulumi.String(instanceType),
+// InstanceType: pulumi.String(pulumi.String(instanceType)),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// SystemDiskName: pulumi.String(name),
+// SystemDiskName: pulumi.String(pulumi.String(name)),
 // SystemDiskDescription: pulumi.String("test_foo_system_disk_description"),
-// ImageId: pulumi.String(imageId),
-// InstanceName: pulumi.String(name),
+// ImageId: pulumi.String(pulumi.String(imageId)),
+// InstanceName: pulumi.String(pulumi.String(name)),
 // VswitchId: vswitch.ID(),
 // InternetMaxBandwidthOut: pulumi.Int(10),
 // DataDisks: ecs.InstanceDataDiskArray{

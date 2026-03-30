@@ -54,14 +54,14 @@ import (
 //				return err
 //			}
 //			_, err = ebs.NewSolutionInstance(ctx, "default", &ebs.SolutionInstanceArgs{
-//				SolutionInstanceName: pulumi.String(name),
-//				ResourceGroupId:      pulumi.String(_default.Ids[0]),
+//				SolutionInstanceName: pulumi.String(pulumi.String(name)),
+//				ResourceGroupId:      pulumi.String(pulumi.String(_default.Ids[0])),
 //				Description:          pulumi.String("description"),
 //				SolutionId:           pulumi.String("mysql"),
 //				Parameters: ebs.SolutionInstanceParameterArray{
 //					&ebs.SolutionInstanceParameterArgs{
 //						ParameterKey:   pulumi.String("zoneId"),
-//						ParameterValue: pulumi.String(zoneId),
+//						ParameterValue: pulumi.String(pulumi.String(zoneId)),
 //					},
 //					&ebs.SolutionInstanceParameterArgs{
 //						ParameterKey:   pulumi.String("ecsType"),

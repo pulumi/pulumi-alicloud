@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_default, err := cas.NewServiceCertificate(ctx, "default", &cas.ServiceCertificateArgs{
-//				CertificateName: pulumi.String(name),
+//				CertificateName: pulumi.String(pulumi.String(name)),
 //				Cert: pulumi.String(`-----BEGIN CERTIFICATE-----
 //
 // MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD

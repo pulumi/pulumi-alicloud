@@ -34,7 +34,7 @@ import (
 //				return err
 //			}
 //			_, err = hbase.NewInstance(ctx, "hbase", &hbase.InstanceArgs{
-//				ZoneId: pulumi.String(zonesIds.Zones[0].Id),
+//				ZoneId: pulumi.String(pulumi.String(zonesIds.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err

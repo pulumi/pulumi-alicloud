@@ -58,24 +58,24 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:        pulumi.String(name),
-//				Description: pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //				VpcId:       defaultNetwork.ID(),
 //			})
 //			if err != nil {
@@ -94,11 +94,11 @@ import (
 //				key0 := index
 //				_ := index
 //				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &ecs.InstanceArgs{
-//					AvailabilityZone: pulumi.String(defaultGetZones.Zones[0].Id),
-//					InstanceName:     pulumi.String(name),
-//					HostName:         pulumi.String(name),
-//					ImageId:          pulumi.String(defaultGetImages.Images[0].Id),
-//					InstanceType:     pulumi.String(_default.InstanceTypes[0].Id),
+//					AvailabilityZone: pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
+//					InstanceName:     pulumi.String(pulumi.String(name)),
+//					HostName:         pulumi.String(pulumi.String(name)),
+//					ImageId:          pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+//					InstanceType:     pulumi.String(pulumi.String(_default.InstanceTypes[0].Id)),
 //					SecurityGroups: pulumi.StringArray{
 //						defaultSecurityGroup.ID(),
 //					},
@@ -115,7 +115,7 @@ import (
 //				key0 := index
 //				_ := index
 //				__res, err := ecs.NewEcsNetworkInterface(ctx, fmt.Sprintf("default-%v", key0), &ecs.EcsNetworkInterfaceArgs{
-//					NetworkInterfaceName: pulumi.String(name),
+//					NetworkInterfaceName: pulumi.String(pulumi.String(name)),
 //					VswitchId:            defaultSwitch.ID(),
 //					SecurityGroupIds: pulumi.StringArray{
 //						defaultSecurityGroup.ID(),
@@ -140,8 +140,8 @@ import (
 //				defaultEcsNetworkInterfaceAttachment = append(defaultEcsNetworkInterfaceAttachment, __res)
 //			}
 //			defaultTrafficMirrorFilter, err := vpc.NewTrafficMirrorFilter(ctx, "default", &vpc.TrafficMirrorFilterArgs{
-//				TrafficMirrorFilterName:        pulumi.String(name),
-//				TrafficMirrorFilterDescription: pulumi.String(name),
+//				TrafficMirrorFilterName:        pulumi.String(pulumi.String(name)),
+//				TrafficMirrorFilterDescription: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -149,8 +149,8 @@ import (
 //			_, err = vpc.NewTrafficMirrorSession(ctx, "default", &vpc.TrafficMirrorSessionArgs{
 //				Priority:                        pulumi.Int(1),
 //				VirtualNetworkId:                pulumi.Int(10),
-//				TrafficMirrorSessionDescription: pulumi.String(name),
-//				TrafficMirrorSessionName:        pulumi.String(name),
+//				TrafficMirrorSessionDescription: pulumi.String(pulumi.String(name)),
+//				TrafficMirrorSessionName:        pulumi.String(pulumi.String(name)),
 //				TrafficMirrorTargetId:           defaultEcsNetworkInterfaceAttachment[0].NetworkInterfaceId,
 //				TrafficMirrorSourceIds: pulumi.StringArray{
 //					defaultEcsNetworkInterfaceAttachment[1].NetworkInterfaceId,

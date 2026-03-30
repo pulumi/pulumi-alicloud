@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_, err := message.NewServiceQueue(ctx, "default", &message.ServiceQueueArgs{
-//				QueueName:              pulumi.String(name),
+//				QueueName:              pulumi.String(pulumi.String(name)),
 //				DelaySeconds:           pulumi.Int(2),
 //				PollingWaitSeconds:     pulumi.Int(2),
 //				MessageRetentionPeriod: pulumi.Int(566),

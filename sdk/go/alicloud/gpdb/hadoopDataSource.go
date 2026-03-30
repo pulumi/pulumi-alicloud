@@ -69,20 +69,20 @@ import (
 //				return err
 //			}
 //			defaultEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "default", &ecs.EcsKeyPairArgs{
-//				KeyPairName: pulumi.String(name),
+//				KeyPairName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
-//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//				Name:  pulumi.String(pulumi.String(name)),
+//				VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
-//				Name: pulumi.String(name),
+//				Name: pulumi.String(pulumi.String(name)),
 //				Document: pulumi.String(`    {
 //	        \"Statement\": [
 //	        {
@@ -202,8 +202,8 @@ import (
 //						SecurityGroupId:   defaultSecurityGroup.ID(),
 //					},
 //				},
-//				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
-//				ClusterName:     pulumi.String(name),
+//				ResourceGroupId: pulumi.String(pulumi.String(defaultGetResourceGroups.Ids[0])),
+//				ClusterName:     pulumi.String(pulumi.String(name)),
 //				PaymentType:     pulumi.String("PayAsYouGo"),
 //				ClusterType:     pulumi.String("DATAFLOW"),
 //			})
@@ -212,7 +212,7 @@ import (
 //			}
 //			defaultZoepvx, err := gpdb.NewInstance(ctx, "defaultZoepvx", &gpdb.InstanceArgs{
 //				InstanceSpec:        pulumi.String("2C8G"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //				SegNodeNum:          pulumi.Int(2),
 //				SegStorageType:      pulumi.String("cloud_essd"),
 //				InstanceNetworkType: pulumi.String("VPC"),
@@ -220,10 +220,10 @@ import (
 //				SslEnabled:          pulumi.Int(0),
 //				EngineVersion:       pulumi.String("6.0"),
 //				ZoneId:              pulumi.String("cn-beijing-h"),
-//				VswitchId:           pulumi.String(defaultGetSwitches.Ids[0]),
+//				VswitchId:           pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //				StorageSize:         pulumi.Int(50),
 //				MasterCu:            pulumi.Int(4),
-//				VpcId:               pulumi.String(defaultGetNetworks.Ids[0]),
+//				VpcId:               pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //				DbInstanceMode:      pulumi.String("StorageElastic"),
 //				Engine:              pulumi.String("gpdb"),
 //				DbInstanceCategory:  pulumi.String("Basic"),
@@ -232,9 +232,9 @@ import (
 //				return err
 //			}
 //			defaultyOxz1K, err := gpdb.NewExternalDataService(ctx, "defaultyOxz1K", &gpdb.ExternalDataServiceArgs{
-//				ServiceName:        pulumi.String(name),
+//				ServiceName:        pulumi.String(pulumi.String(name)),
 //				DbInstanceId:       defaultZoepvx.ID(),
-//				ServiceDescription: pulumi.String(name),
+//				ServiceDescription: pulumi.String(pulumi.String(name)),
 //				ServiceSpec:        pulumi.String("8"),
 //			})
 //			if err != nil {
@@ -246,7 +246,7 @@ import (
 //				YarnConf:              pulumi.String("aaa"),
 //				HiveConf:              pulumi.String("aaa"),
 //				HadoopCreateType:      pulumi.String("emr"),
-//				DataSourceDescription: pulumi.String(name),
+//				DataSourceDescription: pulumi.String(pulumi.String(name)),
 //				MapReduceConf:         pulumi.String("aaa"),
 //				DataSourceType:        pulumi.String("hive"),
 //				HadoopCoreConf:        pulumi.String("aaa"),

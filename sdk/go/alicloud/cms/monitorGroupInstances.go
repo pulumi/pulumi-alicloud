@@ -43,14 +43,14 @@ import (
 //				name = param
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "default", &cms.MonitorGroupArgs{
-//				MonitorGroupName: pulumi.String(name),
+//				MonitorGroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -66,7 +66,7 @@ import (
 //				Instances: cms.MonitorGroupInstancesInstanceArray{
 //					&cms.MonitorGroupInstancesInstanceArgs{
 //						InstanceId:   defaultNetwork.ID(),
-//						InstanceName: pulumi.String(name),
+//						InstanceName: pulumi.String(pulumi.String(name)),
 //						RegionId:     pulumi.String(_default.Regions[0].Id),
 //						Category:     pulumi.String("vpc"),
 //					},

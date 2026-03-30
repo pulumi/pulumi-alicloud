@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_, err := mhub.NewApp(ctx, "default", &mhub.AppArgs{
-//				AppName:     pulumi.String(name),
+//				AppName:     pulumi.String(pulumi.String(name)),
 //				ProductId:   pulumi.Any(defaultAlicloudMhubProduct.Id),
 //				PackageName: pulumi.String("com.test.android"),
 //				Type:        pulumi.String("2"),

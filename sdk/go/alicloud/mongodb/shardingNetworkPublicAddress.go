@@ -54,26 +54,26 @@ import (
 //			}).(pulumi.Float64Output)
 //			zoneId := _default.Zones[index].Id
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(zoneId),
+//				ZoneId:      pulumi.String(pulumi.String(zoneId)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultShardingInstance, err := mongodb.NewShardingInstance(ctx, "default", &mongodb.ShardingInstanceArgs{
-//				ZoneId:        pulumi.String(zoneId),
+//				ZoneId:        pulumi.String(pulumi.String(zoneId)),
 //				VswitchId:     defaultSwitch.ID(),
 //				EngineVersion: pulumi.String("4.2"),
-//				Name:          pulumi.String(name),
+//				Name:          pulumi.String(pulumi.String(name)),
 //				ShardLists: mongodb.ShardingInstanceShardListArray{
 //					&mongodb.ShardingInstanceShardListArgs{
 //						NodeClass:   pulumi.String("dds.shard.mid"),

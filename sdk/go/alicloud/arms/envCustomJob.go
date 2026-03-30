@@ -50,9 +50,9 @@ import (
 //				name = param
 //			}
 //			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("172.16.0.0/12"),
-//				VpcName:     pulumi.String(name),
+//				VpcName:     pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -69,7 +69,7 @@ import (
 //			_, err = arms.NewEnvCustomJob(ctx, "default", &arms.EnvCustomJobArgs{
 //				Status:           pulumi.String("run"),
 //				EnvironmentId:    env_ecs.ID(),
-//				EnvCustomJobName: pulumi.String(name),
+//				EnvCustomJobName: pulumi.String(pulumi.String(name)),
 //				ConfigYaml: pulumi.String(`scrape_configs:
 //   - job_name: job-demo1
 //     honor_timestamps: false

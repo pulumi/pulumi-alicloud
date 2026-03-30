@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("fnfExecutionId1", idsAlicloudFnFExecutions.Executions[0].Id)
+//			ctx.Export("fnfExecutionId1", pulumi.Any(idsAlicloudFnFExecutions.Executions[0].Id))
 //			return nil
 //		})
 //	}

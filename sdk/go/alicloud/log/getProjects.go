@@ -39,7 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstLogProjectId", example.Project[0].Id)
+//			ctx.Export("firstLogProjectId", pulumi.Any(example.Project[0].Id))
 //			return nil
 //		})
 //	}

@@ -59,8 +59,8 @@ import (
 //			}
 //			defaultNamespace, err := sae.NewNamespace(ctx, "default", &sae.NamespaceArgs{
 //				NamespaceId:             pulumi.Sprintf("%v:example%v", _default.Regions[0].Id, defaultInteger.Result),
-//				NamespaceName:           pulumi.String(name),
-//				NamespaceDescription:    pulumi.String(name),
+//				NamespaceName:           pulumi.String(pulumi.String(name)),
+//				NamespaceDescription:    pulumi.String(pulumi.String(name)),
 //				EnableMicroRegistration: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -75,8 +75,8 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = sae.NewConfigMap(ctx, "default", &sae.ConfigMapArgs{
-//				Data:        pulumi.String(json0),
-//				Name:        pulumi.String(name),
+//				Data:        pulumi.String(pulumi.String(json0)),
+//				Name:        pulumi.String(pulumi.String(name)),
 //				NamespaceId: defaultNamespace.NamespaceId,
 //			})
 //			if err != nil {

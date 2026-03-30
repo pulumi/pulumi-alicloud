@@ -48,17 +48,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := alikafka.NewInstance(ctx, "default", &alikafka.InstanceArgs{
-//				Name:           pulumi.String(name),
+//				Name:           pulumi.String(pulumi.String(name)),
 //				PartitionNum:   pulumi.Int(50),
 //				DiskType:       pulumi.Int(1),
 //				DiskSize:       pulumi.Int(500),
@@ -87,7 +87,7 @@ import (
 //			}
 //			defaultSaslUser, err := alikafka.NewSaslUser(ctx, "default", &alikafka.SaslUserArgs{
 //				InstanceId: defaultInstance.ID(),
-//				Username:   pulumi.String(name),
+//				Username:   pulumi.String(pulumi.String(name)),
 //				Password:   pulumi.String("YourPassword1234!"),
 //			})
 //			if err != nil {

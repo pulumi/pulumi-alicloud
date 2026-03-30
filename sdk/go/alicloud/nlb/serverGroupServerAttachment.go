@@ -49,15 +49,15 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultServerGroup, err := nlb.NewServerGroup(ctx, "default", &nlb.ServerGroupArgs{
-//				ResourceGroupId:        pulumi.String(_default.Ids[0]),
-//				ServerGroupName:        pulumi.String(name),
+//				ResourceGroupId:        pulumi.String(pulumi.String(_default.Ids[0])),
+//				ServerGroupName:        pulumi.String(pulumi.String(name)),
 //				ServerGroupType:        pulumi.String("Ip"),
 //				ConnectionDrainTimeout: pulumi.Int(10),
 //				ConnectionDrainEnabled: pulumi.Bool(true),
@@ -75,7 +75,7 @@ import (
 //			_, err = nlb.NewServerGroupServerAttachment(ctx, "default", &nlb.ServerGroupServerAttachmentArgs{
 //				ServerType:    pulumi.String("Ip"),
 //				ServerId:      pulumi.String("10.0.0.0"),
-//				Description:   pulumi.String(name),
+//				Description:   pulumi.String(pulumi.String(name)),
 //				Port:          pulumi.Int(80),
 //				ServerGroupId: defaultServerGroup.ID(),
 //				Weight:        pulumi.Int(100),

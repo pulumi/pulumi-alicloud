@@ -42,7 +42,7 @@ import (
 //			}
 //			_, err = threatdetection.NewWebLockConfig(ctx, "default", &threatdetection.WebLockConfigArgs{
 //				InclusiveFileType: pulumi.String("php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg"),
-//				Uuid:              pulumi.String(_default.Ids[0]),
+//				Uuid:              pulumi.String(pulumi.String(_default.Ids[0])),
 //				Mode:              pulumi.String("whitelist"),
 //				LocalBackupDir:    pulumi.String("/usr/local/aegis/bak"),
 //				Dir:               pulumi.String("/tmp/"),

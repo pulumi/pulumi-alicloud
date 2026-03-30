@@ -50,7 +50,7 @@ import (
 //				RenewPeriod:   pulumi.Int(1),
 //				RenewalStatus: pulumi.String("AutoRenewal"),
 //				InstanceType:  pulumi.String("Advanced"),
-//				InstanceName:  pulumi.String(name),
+//				InstanceName:  pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

@@ -67,7 +67,7 @@ import (
 //				ServiceCode:   pulumi.String("rmq"),
 //				SeriesCode:    pulumi.String("professional"),
 //				PaymentType:   pulumi.String("PayAsYouGo"),
-//				InstanceName:  pulumi.String(name),
+//				InstanceName:  pulumi.String(pulumi.String(name)),
 //				SubSeriesCode: pulumi.String("cluster_ha"),
 //				Remark:        pulumi.String("example"),
 //				Software: &rocketmq.RocketMQInstanceSoftwareArgs{

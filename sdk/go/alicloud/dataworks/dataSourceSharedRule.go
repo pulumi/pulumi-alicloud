@@ -60,7 +60,7 @@ import (
 //			}
 //			defaultQeRfvU, err := dataworks.NewProject(ctx, "defaultQeRfvU", &dataworks.ProjectArgs{
 //				Description:    pulumi.String("源项目"),
-//				ProjectName:    pulumi.String(name),
+//				ProjectName:    pulumi.String(pulumi.String(name)),
 //				DisplayName:    pulumi.String("shared_source2"),
 //				PaiTaskEnabled: pulumi.Bool(true),
 //			})
@@ -119,7 +119,7 @@ import (
 //			defaultvzu0wG, err := dataworks.NewDataSource(ctx, "defaultvzu0wG", &dataworks.DataSourceArgs{
 //				Type:                     pulumi.String("hive"),
 //				DataSourceName:           pulumi.String(invokeFormat1.Result),
-//				ConnectionProperties:     pulumi.String(json0),
+//				ConnectionProperties:     pulumi.String(pulumi.String(json0)),
 //				ProjectId:                defaultQeRfvU.ID(),
 //				ConnectionPropertiesMode: pulumi.String("UrlMode"),
 //			})

@@ -56,7 +56,7 @@ import (
 //			}
 //			resourceSiteOriginPoolTest, err := esa.NewSite(ctx, "resource_Site_OriginPool_test", &esa.SiteArgs{
 //				SiteName:   pulumi.Sprintf("gositecdn-%v.cn", defaultInteger.Result),
-//				InstanceId: pulumi.String(_default.Sites[0].InstanceId),
+//				InstanceId: pulumi.String(pulumi.String(_default.Sites[0].InstanceId)),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),
 //			})
@@ -73,7 +73,7 @@ import (
 //				HealthCheckUri:       pulumi.String("/"),
 //				HealthCheckTimeout:   pulumi.Int(3),
 //				HealthCheckSuccTimes: pulumi.Int(2),
-//				Remarks:              pulumi.String(name),
+//				Remarks:              pulumi.String(pulumi.String(name)),
 //				HealthCheckMethod:    pulumi.String("HEAD"),
 //				HealthCheckPort:      pulumi.Int(80),
 //				HealthCheckFailTimes: pulumi.Int(5),

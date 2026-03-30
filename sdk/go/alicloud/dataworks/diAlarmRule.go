@@ -43,9 +43,9 @@ import (
 //				name = param
 //			}
 //			defaulteNv8bu, err := dataworks.NewProject(ctx, "defaulteNv8bu", &dataworks.ProjectArgs{
-//				ProjectName:    pulumi.String(name),
-//				DisplayName:    pulumi.String(name),
-//				Description:    pulumi.String(name),
+//				ProjectName:    pulumi.String(pulumi.String(name)),
+//				DisplayName:    pulumi.String(pulumi.String(name)),
+//				Description:    pulumi.String(pulumi.String(name)),
 //				PaiTaskEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -169,7 +169,7 @@ import (
 //					InhibitionInterval: pulumi.Int(10),
 //				},
 //				DiJobId:         defaultUW8inp.DiJobId,
-//				DiAlarmRuleName: pulumi.String(name),
+//				DiAlarmRuleName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

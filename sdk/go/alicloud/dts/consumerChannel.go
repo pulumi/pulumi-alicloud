@@ -74,7 +74,7 @@ import (
 //				return err
 //			}
 //			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -83,14 +83,14 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(exampleGetZones.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(exampleGetZones.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
@@ -99,10 +99,10 @@ import (
 //			exampleInstance, err := rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
-//				InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass)),
+//				InstanceStorage:       pulumi.Int(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min)),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
-//				InstanceName:          pulumi.String(name),
+//				InstanceName:          pulumi.String(pulumi.String(name)),
 //				VswitchId:             exampleSwitch.ID(),
 //				MonitoringPeriod:      pulumi.Int(60),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
@@ -123,7 +123,7 @@ import (
 //			}
 //			exampleDatabase, err := rds.NewDatabase(ctx, "example", &rds.DatabaseArgs{
 //				InstanceId: exampleInstance.ID(),
-//				Name:       pulumi.String(name),
+//				Name:       pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -140,10 +140,10 @@ import (
 //				return err
 //			}
 //			exampleSubscriptionJob, err := dts.NewSubscriptionJob(ctx, "example", &dts.SubscriptionJobArgs{
-//				DtsJobName:                 pulumi.String(name),
+//				DtsJobName:                 pulumi.String(pulumi.String(name)),
 //				PaymentType:                pulumi.String("PayAsYouGo"),
 //				SourceEndpointEngineName:   pulumi.String("MySQL"),
-//				SourceEndpointRegion:       pulumi.String(example.Regions[0].Id),
+//				SourceEndpointRegion:       pulumi.String(pulumi.String(example.Regions[0].Id)),
 //				SourceEndpointInstanceType: pulumi.String("RDS"),
 //				SourceEndpointInstanceId:   exampleInstance.ID(),
 //				SourceEndpointDatabaseName: exampleDatabase.Name,
@@ -164,7 +164,7 @@ import (
 //			}
 //			_, err = dts.NewConsumerChannel(ctx, "example", &dts.ConsumerChannelArgs{
 //				DtsInstanceId:         exampleSubscriptionJob.DtsInstanceId,
-//				ConsumerGroupName:     pulumi.String(name),
+//				ConsumerGroupName:     pulumi.String(pulumi.String(name)),
 //				ConsumerGroupUserName: pulumi.String("example"),
 //				ConsumerGroupPassword: pulumi.String("example1234"),
 //			})

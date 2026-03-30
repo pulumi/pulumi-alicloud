@@ -75,17 +75,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -107,7 +107,7 @@ import (
 //				return err
 //			}
 //			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
-//				NamePrefix:  pulumi.String(name),
+//				NamePrefix:  pulumi.String(pulumi.String(name)),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				WorkerVswitchIds: pulumi.StringArray{
 //					defaultSwitch.ID(),
@@ -121,14 +121,14 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
+//				Name:  pulumi.String(pulumi.String(name)),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "default", &ess.ScalingGroupArgs{
-//				ScalingGroupName: pulumi.String(name),
+//				ScalingGroupName: pulumi.String(pulumi.String(name)),
 //				MinSize:          pulumi.Int(1),
 //				MaxSize:          pulumi.Int(1),
 //				VswitchIds: pulumi.StringArray{
@@ -144,8 +144,8 @@ import (
 //			}
 //			defaultScalingConfiguration, err := ess.NewScalingConfiguration(ctx, "default", &ess.ScalingConfigurationArgs{
 //				ScalingGroupId:  defaultScalingGroup.ID(),
-//				ImageId:         pulumi.String(defaultGetImages.Images[0].Id),
-//				InstanceType:    pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:         pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+//				InstanceType:    pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				SecurityGroupId: defaultSecurityGroup.ID(),
 //				ForceDelete:     pulumi.Bool(true),
 //				Active:          pulumi.Bool(true),

@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			source, err := cms.NewNamespace(ctx, "source", &cms.NamespaceArgs{
-//				Namespace: pulumi.String(name),
+//				Namespace: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -60,9 +60,9 @@ import (
 //			}
 //			_, err = cloudmonitor.NewServiceHybridDoubleWrite(ctx, "default", &cloudmonitor.ServiceHybridDoubleWriteArgs{
 //				SourceNamespace: source.ID(),
-//				SourceUserId:    pulumi.String(_default.Id),
+//				SourceUserId:    pulumi.String(pulumi.String(_default.Id)),
 //				Namespace:       defaultNamespace.ID(),
-//				UserId:          pulumi.String(_default.Id),
+//				UserId:          pulumi.String(pulumi.String(_default.Id)),
 //			})
 //			if err != nil {
 //				return err

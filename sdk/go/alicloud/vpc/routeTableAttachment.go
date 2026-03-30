@@ -43,7 +43,7 @@ import (
 //			}
 //			foo, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -57,15 +57,15 @@ import (
 //			fooSwitch, err := vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
 //				VpcId:       foo.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			fooRouteTable, err := vpc.NewRouteTable(ctx, "foo", &vpc.RouteTableArgs{
 //				VpcId:          foo.ID(),
-//				RouteTableName: pulumi.String(name),
+//				RouteTableName: pulumi.String(pulumi.String(name)),
 //				Description:    pulumi.String("route_table_attachment"),
 //			})
 //			if err != nil {

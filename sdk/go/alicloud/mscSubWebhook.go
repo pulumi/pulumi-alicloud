@@ -54,7 +54,7 @@ import (
 //			}
 //			_, err = alicloud.NewMscSubWebhook(ctx, "example", &alicloud.MscSubWebhookArgs{
 //				ServerUrl:   pulumi.String(invokeFormat.Result),
-//				WebhookName: pulumi.String(name),
+//				WebhookName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

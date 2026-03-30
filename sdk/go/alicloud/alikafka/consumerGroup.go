@@ -48,8 +48,8 @@ import (
 //				return err
 //			}
 //			_, err = alikafka.NewConsumerGroup(ctx, "default", &alikafka.ConsumerGroupArgs{
-//				InstanceId: pulumi.String(_default.Instances[0].Id),
-//				ConsumerId: pulumi.String(name),
+//				InstanceId: pulumi.String(pulumi.String(_default.Instances[0].Id)),
+//				ConsumerId: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

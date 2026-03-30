@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			_, err = rocketmq.NewTopic(ctx, "default", &rocketmq.TopicArgs{
-//				TopicName:   pulumi.String(topic),
+//				TopicName:   pulumi.String(pulumi.String(topic)),
 //				InstanceId:  defaultInstance.ID(),
 //				MessageType: pulumi.Int(0),
 //				Remark:      pulumi.String("dafault_ons_topic_remark"),

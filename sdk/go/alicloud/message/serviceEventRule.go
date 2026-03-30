@@ -55,7 +55,7 @@ import (
 //			}
 //			createTopic, err := message.NewServiceTopic(ctx, "CreateTopic", &message.ServiceTopicArgs{
 //				MaxMessageSize: pulumi.Int(65536),
-//				TopicName:      pulumi.String(topicName),
+//				TopicName:      pulumi.String(pulumi.String(topicName)),
 //				LoggingEnabled: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -67,7 +67,7 @@ import (
 //				MessageRetentionPeriod: pulumi.Int(566),
 //				MaximumMessageSize:     pulumi.Int(1123),
 //				VisibilityTimeout:      pulumi.Int(30),
-//				QueueName:              pulumi.String(queueName),
+//				QueueName:              pulumi.String(pulumi.String(queueName)),
 //				LoggingEnabled:         pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -112,7 +112,7 @@ import (
 //					EndpointValue: createSub.TopicName,
 //					EndpointType:  pulumi.String("topic"),
 //				},
-//				RuleName: pulumi.String(ruleName),
+//				RuleName: pulumi.String(pulumi.String(ruleName)),
 //			})
 //			if err != nil {
 //				return err

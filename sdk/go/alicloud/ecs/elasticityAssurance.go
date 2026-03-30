@@ -57,15 +57,15 @@ import (
 //				InstanceAmount: pulumi.Int(1),
 //				Description:    pulumi.String("before"),
 //				ZoneIds: pulumi.StringArray{
-//					pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
+//					pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0])),
 //				},
-//				PrivatePoolOptionsName:          pulumi.String(name),
+//				PrivatePoolOptionsName:          pulumi.String(pulumi.String(name)),
 //				Period:                          pulumi.Int(1),
 //				PrivatePoolOptionsMatchCriteria: pulumi.String("Open"),
-//				InstanceType:                    pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				InstanceType:                    pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				PeriodUnit:                      pulumi.String("Month"),
 //				AssuranceTimes:                  pulumi.String("Unlimited"),
-//				ResourceGroupId:                 pulumi.String(_default.Ids[0]),
+//				ResourceGroupId:                 pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err

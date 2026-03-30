@@ -41,8 +41,8 @@ import (
 //				name = param
 //			}
 //			_, err := resourcemanager.NewControlPolicy(ctx, "example", &resourcemanager.ControlPolicyArgs{
-//				ControlPolicyName: pulumi.String(name),
-//				Description:       pulumi.String(name),
+//				ControlPolicyName: pulumi.String(pulumi.String(name)),
+//				Description:       pulumi.String(pulumi.String(name)),
 //				EffectScope:       pulumi.String("RAM"),
 //				PolicyDocument: pulumi.String(`  {
 //	    \"Version\": \"1\",

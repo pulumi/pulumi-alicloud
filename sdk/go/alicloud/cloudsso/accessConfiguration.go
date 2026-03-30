@@ -45,12 +45,12 @@ import (
 //				return err
 //			}
 //			_, err = cloudsso.NewAccessConfiguration(ctx, "default", &cloudsso.AccessConfigurationArgs{
-//				DirectoryId:             pulumi.String(_default.Directories[0].Id),
-//				AccessConfigurationName: pulumi.String(name),
+//				DirectoryId:             pulumi.String(pulumi.String(_default.Directories[0].Id)),
+//				AccessConfigurationName: pulumi.String(pulumi.String(name)),
 //				PermissionPolicies: cloudsso.AccessConfigurationPermissionPolicyArray{
 //					&cloudsso.AccessConfigurationPermissionPolicyArgs{
 //						PermissionPolicyType: pulumi.String("Inline"),
-//						PermissionPolicyName: pulumi.String(name),
+//						PermissionPolicyName: pulumi.String(pulumi.String(name)),
 //						PermissionPolicyDocument: pulumi.String(`    {
 //	        \"Statement\":[
 //	      {

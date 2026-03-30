@@ -78,24 +78,24 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ecs.NewEcsImagePipeline(ctx, "default", &ecs.EcsImagePipelineArgs{
 //				AddAccounts: pulumi.StringArray{
-//					pulumi.String(defaultGetAccount.Id),
+//					pulumi.String(pulumi.String(defaultGetAccount.Id)),
 //				},
-//				BaseImage:               pulumi.String(defaultGetImages.Ids[0]),
+//				BaseImage:               pulumi.String(pulumi.String(defaultGetImages.Ids[0])),
 //				BaseImageType:           pulumi.String("IMAGE"),
 //				BuildContent:            pulumi.String("RUN yum update -y"),
 //				DeleteInstanceOnFailure: pulumi.Bool(false),
 //				ImageName:               pulumi.String("terraform-example"),
 //				Name:                    pulumi.String("terraform-example"),
 //				Description:             pulumi.String("terraform-example"),
-//				InstanceType:            pulumi.String(defaultGetInstanceTypes.Ids[0]),
-//				ResourceGroupId:         pulumi.String(_default.Groups[0].Id),
+//				InstanceType:            pulumi.String(pulumi.String(defaultGetInstanceTypes.Ids[0])),
+//				ResourceGroupId:         pulumi.String(pulumi.String(_default.Groups[0].Id)),
 //				InternetMaxBandwidthOut: pulumi.Int(20),
 //				SystemDiskSize:          pulumi.Int(40),
 //				ToRegionIds: pulumi.StringArray{

@@ -41,15 +41,15 @@ import (
 //				name = param
 //			}
 //			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
-//				Description:     pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
+//				Description:     pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
 //				CenId:             example.ID(),
-//				TransitRouterName: pulumi.String(name),
+//				TransitRouterName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

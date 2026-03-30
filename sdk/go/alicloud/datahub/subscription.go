@@ -39,14 +39,14 @@ import (
 //				name = param
 //			}
 //			example, err := datahub.NewProject(ctx, "example", &datahub.ProjectArgs{
-//				Name:    pulumi.String(name),
+//				Name:    pulumi.String(pulumi.String(name)),
 //				Comment: pulumi.String("created by terraform"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleTopic, err := datahub.NewTopic(ctx, "example", &datahub.TopicArgs{
-//				Name:        pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
 //				ProjectName: example.Name,
 //				RecordType:  pulumi.String("BLOB"),
 //				ShardCount:  pulumi.Int(3),

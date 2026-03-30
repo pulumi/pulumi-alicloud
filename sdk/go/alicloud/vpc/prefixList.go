@@ -42,7 +42,7 @@ import (
 //			}
 //			defaultRg, err := resourcemanager.NewResourceGroup(ctx, "defaultRg", &resourcemanager.ResourceGroupArgs{
 //				DisplayName:       pulumi.String("tf-testacc-chenyi"),
-//				ResourceGroupName: pulumi.String(name),
+//				ResourceGroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -59,7 +59,7 @@ import (
 //				ResourceGroupId:       defaultRg.ID(),
 //				PrefixListDescription: pulumi.String("test"),
 //				IpVersion:             pulumi.String("IPV4"),
-//				PrefixListName:        pulumi.String(name),
+//				PrefixListName:        pulumi.String(pulumi.String(name)),
 //				Entrys: vpc.PrefixListEntryArray{
 //					&vpc.PrefixListEntryArgs{
 //						Cidr:        pulumi.String("192.168.0.0/16"),

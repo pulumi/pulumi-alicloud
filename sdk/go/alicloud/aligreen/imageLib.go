@@ -43,7 +43,7 @@ import (
 //				name = param
 //			}
 //			defaultUalunB, err := aligreen.NewBizType(ctx, "defaultUalunB", &aligreen.BizTypeArgs{
-//				BizTypeName: pulumi.String(name),
+//				BizTypeName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ import (
 //				Category:     pulumi.String("BLACK"),
 //				Enable:       pulumi.Bool(true),
 //				Scene:        pulumi.String("PORN"),
-//				ImageLibName: pulumi.String(name),
+//				ImageLibName: pulumi.String(pulumi.String(name)),
 //				BizTypes: pulumi.StringArray{
 //					defaultUalunB.BizTypeName,
 //				},

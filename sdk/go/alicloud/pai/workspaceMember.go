@@ -51,7 +51,7 @@ import (
 //			}
 //			workspace, err := pai.NewWorkspaceWorkspace(ctx, "Workspace", &pai.WorkspaceWorkspaceArgs{
 //				Description:   pulumi.String("156"),
-//				DisplayName:   pulumi.String(name),
+//				DisplayName:   pulumi.String(pulumi.String(name)),
 //				WorkspaceName: pulumi.Sprintf("%v_%v", name, _default.Result),
 //				EnvTypes: pulumi.StringArray{
 //					pulumi.String("prod"),

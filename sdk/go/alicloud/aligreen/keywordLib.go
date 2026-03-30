@@ -62,7 +62,7 @@ import (
 //				Category:       pulumi.String("BLACK"),
 //				ResourceType:   pulumi.String("TEXT"),
 //				LibType:        pulumi.String("textKeyword"),
-//				KeywordLibName: pulumi.String(name),
+//				KeywordLibName: pulumi.String(pulumi.String(name)),
 //				MatchMode:      pulumi.String("fuzzy"),
 //				Language:       pulumi.String("cn"),
 //				BizTypes: pulumi.StringArray{

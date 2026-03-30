@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("crChartRepositoryId1", _default.Ids[0])
+//			ctx.Export("crChartRepositoryId1", pulumi.Any(_default.Ids[0]))
 //			return nil
 //		})
 //	}

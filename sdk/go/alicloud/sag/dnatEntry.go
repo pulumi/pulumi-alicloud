@@ -43,7 +43,7 @@ import (
 //				sagId = param
 //			}
 //			_, err := sag.NewDnatEntry(ctx, "default", &sag.DnatEntryArgs{
-//				SagId:        pulumi.String(sagId),
+//				SagId:        pulumi.String(pulumi.String(sagId)),
 //				Type:         pulumi.String("Intranet"),
 //				IpProtocol:   pulumi.String("any"),
 //				ExternalIp:   pulumi.String("172.32.0.2"),

@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			projectCreate01, err := log.NewProject(ctx, "project_create_01", &log.ProjectArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				ProjectName: pulumi.String(invokeFormat.Result),
 //			})
 //			if err != nil {
@@ -99,7 +99,7 @@ import (
 //				return err
 //			}
 //			update01, err := log.NewProject(ctx, "update_01", &log.ProjectArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				ProjectName: pulumi.String(invokeFormat2.Result),
 //			})
 //			if err != nil {
@@ -203,7 +203,7 @@ import (
 //				return err
 //			}
 //			projectCreate01, err := log.NewProject(ctx, "project_create_01", &log.ProjectArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				ProjectName: pulumi.String(invokeFormat.Result),
 //			})
 //			if err != nil {
@@ -239,7 +239,7 @@ import (
 //				return err
 //			}
 //			update01, err := log.NewProject(ctx, "update_01", &log.ProjectArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				ProjectName: pulumi.String(invokeFormat2.Result),
 //			})
 //			if err != nil {

@@ -115,13 +115,13 @@ import (
 //			}
 //			defaultInstance, err := kms.NewInstance(ctx, "default", &kms.InstanceArgs{
 //				ProductVersion: pulumi.String("3"),
-//				VpcId:          pulumi.String(_default.Ids[0]),
+//				VpcId:          pulumi.String(pulumi.String(_default.Ids[0])),
 //				ZoneIds: pulumi.StringArray{
-//					pulumi.String(defaultGetSwitches.Vswitches[0].ZoneId),
-//					pulumi.String(defaultGetSwitches.Vswitches[1].ZoneId),
+//					pulumi.String(pulumi.String(defaultGetSwitches.Vswitches[0].ZoneId)),
+//					pulumi.String(pulumi.String(defaultGetSwitches.Vswitches[1].ZoneId)),
 //				},
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.String(defaultGetSwitches.Ids[0]),
+//					pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //				},
 //				VpcNum:                   pulumi.Int(1),
 //				KeyNum:                   pulumi.Int(1000),
@@ -161,7 +161,7 @@ import (
 //					UserCmkInfo: &log.StoreEncryptConfUserCmkInfoArgs{
 //						CmkKeyId: exampleKey.ID(),
 //						Arn:      pulumi.Sprintf("acs:ram::%v:role/aliyunlogdefaultrole", example.Id),
-//						RegionId: pulumi.String(region),
+//						RegionId: pulumi.String(pulumi.String(region)),
 //					},
 //				},
 //			})

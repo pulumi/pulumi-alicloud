@@ -61,7 +61,7 @@ import (
 //				return err
 //			}
 //			exampleFileSystem, err := nas.NewFileSystem(ctx, "example", &nas.FileSystemArgs{
-//				Description:    pulumi.String(name),
+//				Description:    pulumi.String(pulumi.String(name)),
 //				StorageType:    pulumi.String("advance_100"),
 //				ZoneId:         pulumi.String("cn-beijing-i"),
 //				VpcId:          example.ID(),
@@ -94,7 +94,7 @@ import (
 //			}
 //			_, err = nas.NewProtocolMountTarget(ctx, "default", &nas.ProtocolMountTargetArgs{
 //				FsetId:            exampleFileset.FilesetId,
-//				Description:       pulumi.String(name),
+//				Description:       pulumi.String(pulumi.String(name)),
 //				VpcId:             example.ID(),
 //				VswitchId:         exampleSwitch.ID(),
 //				AccessGroupName:   pulumi.String("DEFAULT_VPC_GROUP_NAME"),

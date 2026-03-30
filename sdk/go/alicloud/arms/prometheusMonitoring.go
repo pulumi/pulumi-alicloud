@@ -59,7 +59,7 @@ import (
 // }
 // defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 // CidrBlock: pulumi.String("192.168.0.0/16"),
-// VpcName: pulumi.String(name),
+// VpcName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
@@ -78,14 +78,14 @@ import (
 // %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
 // return invoke.Result, nil
 // }).(pulumi.StringPtrOutput)),
-// ZoneId: pulumi.String(_default.Zones[0].Id),
-// VswitchName: pulumi.String(name),
+// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
+// VswitchName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = ecs.NewSnapshotPolicy(ctx, "default", &ecs.SnapshotPolicyArgs{
-// Name: pulumi.String(name),
+// Name: pulumi.String(pulumi.String(name)),
 // RepeatWeekdays: pulumi.StringArray{
 // pulumi.String("1"),
 // pulumi.String("2"),
@@ -111,7 +111,7 @@ import (
 // }, nil))), nil
 // }).(ecs.GetInstanceTypesResultOutput)
 // defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
-// Name: pulumi.String(name),
+// Name: pulumi.String(pulumi.String(name)),
 // ClusterSpec: pulumi.String("ack.pro.small"),
 // Version: pulumi.String("1.24.6-aliyun.1"),
 // NewNatGateway: pulumi.Bool(true),

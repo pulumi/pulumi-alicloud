@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("simpleApplicationServerPlanId1", ids.Plans[0].Id)
+//			ctx.Export("simpleApplicationServerPlanId1", pulumi.Any(ids.Plans[0].Id))
 //			return nil
 //		})
 //	}

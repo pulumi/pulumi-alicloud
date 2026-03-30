@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_default, err := ddos.NewDdosCooInstance(ctx, "default", &ddos.DdosCooInstanceArgs{
-//				Name:             pulumi.String(name),
+//				Name:             pulumi.String(pulumi.String(name)),
 //				Bandwidth:        pulumi.String("30"),
 //				BaseBandwidth:    pulumi.String("30"),
 //				ServiceBandwidth: pulumi.String("100"),

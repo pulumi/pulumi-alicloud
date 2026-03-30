@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
@@ -65,7 +65,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:     defaultNetwork.ID(),
 //				CidrBlock: pulumi.String("10.4.0.0/24"),
-//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//				ZoneId:    pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -87,11 +87,11 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
-//				InstanceName:     pulumi.String(name),
-//				HostName:         pulumi.String(name),
-//				ImageId:          pulumi.String(defaultGetImages.Images[0].Id),
-//				InstanceType:     pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				AvailabilityZone: pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				InstanceName:     pulumi.String(pulumi.String(name)),
+//				HostName:         pulumi.String(pulumi.String(name)),
+//				ImageId:          pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+//				InstanceType:     pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
@@ -107,11 +107,11 @@ import (
 //				return err
 //			}
 //			defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "default", &ecs.EcsDiskArgs{
-//				ZoneId:             pulumi.String(disk.Zones[0].Id),
+//				ZoneId:             pulumi.String(pulumi.String(disk.Zones[0].Id)),
 //				Category:           pulumi.String("cloud_efficiency"),
 //				DeleteAutoSnapshot: pulumi.Bool(true),
 //				Description:        pulumi.String("Test For Terraform"),
-//				DiskName:           pulumi.String(name),
+//				DiskName:           pulumi.String(pulumi.String(name)),
 //				EnableAutoSnapshot: pulumi.Bool(true),
 //				Encrypted:          pulumi.Bool(true),
 //				Size:               pulumi.Int(500),

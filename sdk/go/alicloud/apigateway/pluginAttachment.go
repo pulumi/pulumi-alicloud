@@ -45,16 +45,16 @@ import (
 //				name = param
 //			}
 //			example, err := apigateway.NewGroup(ctx, "example", &apigateway.GroupArgs{
-//				Name:        pulumi.String(name),
-//				Description: pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleApi, err := apigateway.NewApi(ctx, "example", &apigateway.ApiArgs{
 //				GroupId:         example.ID(),
-//				Name:            pulumi.String(name),
-//				Description:     pulumi.String(name),
+//				Name:            pulumi.String(pulumi.String(name)),
+//				Description:     pulumi.String(pulumi.String(name)),
 //				AuthType:        pulumi.String("APP"),
 //				ForceNonceCheck: pulumi.Bool(false),
 //				RequestConfig: &apigateway.ApiRequestConfigArgs{
@@ -104,7 +104,7 @@ import (
 //			examplePlugin, err := apigateway.NewPlugin(ctx, "example", &apigateway.PluginArgs{
 //				Description: pulumi.String("tf_example"),
 //				PluginName:  pulumi.String("tf_example"),
-//				PluginData:  pulumi.String(json0),
+//				PluginData:  pulumi.String(pulumi.String(json0)),
 //				PluginType:  pulumi.String("cors"),
 //			})
 //			if err != nil {

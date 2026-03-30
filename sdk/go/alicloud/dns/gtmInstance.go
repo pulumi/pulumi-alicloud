@@ -63,11 +63,11 @@ import (
 //				PublicCnameMode:      pulumi.String("SYSTEM_ASSIGN"),
 //				Ttl:                  pulumi.Int(60),
 //				CnameType:            pulumi.String("PUBLIC"),
-//				ResourceGroupId:      pulumi.String(_default.Groups[0].Id),
+//				ResourceGroupId:      pulumi.String(pulumi.String(_default.Groups[0].Id)),
 //				AlertGroups: pulumi.StringArray{
 //					defaultAlarmContactGroup.AlarmContactGroupName,
 //				},
-//				PublicUserDomainName: pulumi.String(domainName),
+//				PublicUserDomainName: pulumi.String(pulumi.String(domainName)),
 //				AlertConfigs: dns.GtmInstanceAlertConfigArray{
 //					&dns.GtmInstanceAlertConfigArgs{
 //						SmsNotice:      pulumi.Bool(true),

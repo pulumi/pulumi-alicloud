@@ -48,20 +48,20 @@ import (
 //			}
 //			defaultO8Hcfx, err := expressconnect.NewRouterExpressConnectRouter(ctx, "defaultO8Hcfx", &expressconnect.RouterExpressConnectRouterArgs{
 //				AlibabaSideAsn: pulumi.String(asn),
-//				EcrName:        pulumi.String(name),
+//				EcrName:        pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultQKBiay, err := cen.NewInstance(ctx, "defaultQKBiay", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultQa94Y1, err := cen.NewTransitRouter(ctx, "defaultQa94Y1", &cen.TransitRouterArgs{
 //				CenId:             defaultQKBiay.ID(),
-//				TransitRouterName: pulumi.String(name),
+//				TransitRouterName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -75,7 +75,7 @@ import (
 //				EcrId:                defaultO8Hcfx.ID(),
 //				CenId:                defaultQKBiay.ID(),
 //				TransitRouterId:      defaultQa94Y1.TransitRouterId,
-//				TransitRouterOwnerId: pulumi.String(current.Id),
+//				TransitRouterOwnerId: pulumi.Int(pulumi.String(current.Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -83,10 +83,10 @@ import (
 //			_, err = cen.NewTransitRouterEcrAttachment(ctx, "default", &cen.TransitRouterEcrAttachmentArgs{
 //				EcrId:                              defaultO8Hcfx.ID(),
 //				CenId:                              defaultedPu6c.CenId,
-//				TransitRouterEcrAttachmentName:     pulumi.String(name),
-//				TransitRouterAttachmentDescription: pulumi.String(name),
+//				TransitRouterEcrAttachmentName:     pulumi.String(pulumi.String(name)),
+//				TransitRouterAttachmentDescription: pulumi.String(pulumi.String(name)),
 //				TransitRouterId:                    defaultQa94Y1.TransitRouterId,
-//				EcrOwnerId:                         pulumi.String(current.Id),
+//				EcrOwnerId:                         pulumi.Int(pulumi.String(current.Id)),
 //			})
 //			if err != nil {
 //				return err

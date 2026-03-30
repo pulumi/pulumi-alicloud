@@ -55,7 +55,7 @@ import (
 //				PaymentType:          pulumi.String("PayAsYouGo"),
 //				BillingType:          pulumi.String("PayBy95"),
 //				Ratio:                pulumi.Int(30),
-//				BandwidthPackageName: pulumi.String(name),
+//				BandwidthPackageName: pulumi.String(pulumi.String(name)),
 //				AutoPay:              pulumi.Bool(true),
 //				AutoUseCoupon:        pulumi.Bool(true),
 //			})
@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      pulumi.String(_default.Ids[0]),
+//				AcceleratorId:      pulumi.String(pulumi.String(_default.Ids[0])),
 //				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
@@ -73,7 +73,7 @@ import (
 //				AcceleratorId:  defaultBandwidthPackageAttachment.AcceleratorId,
 //				ClientAffinity: pulumi.String("SOURCE_IP"),
 //				Protocol:       pulumi.String("UDP"),
-//				Name:           pulumi.String(name),
+//				Name:           pulumi.String(pulumi.String(name)),
 //				PortRanges: ga.ListenerPortRangeArray{
 //					&ga.ListenerPortRangeArgs{
 //						FromPort: pulumi.Int(60),
@@ -87,7 +87,7 @@ import (
 //			defaultEipAddress, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
 //				Bandwidth:          pulumi.String("10"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
-//				AddressName:        pulumi.String(name),
+//				AddressName:        pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -95,8 +95,8 @@ import (
 //			defaultEndpointGroup, err := ga.NewEndpointGroup(ctx, "default", &ga.EndpointGroupArgs{
 //				AcceleratorId:              defaultListener.AcceleratorId,
 //				ListenerId:                 defaultListener.ID(),
-//				Description:                pulumi.String(name),
-//				Name:                       pulumi.String(name),
+//				Description:                pulumi.String(pulumi.String(name)),
+//				Name:                       pulumi.String(pulumi.String(name)),
 //				ThresholdCount:             pulumi.Int(4),
 //				TrafficPercentage:          pulumi.Int(20),
 //				EndpointGroupRegion:        pulumi.String("cn-hangzhou"),

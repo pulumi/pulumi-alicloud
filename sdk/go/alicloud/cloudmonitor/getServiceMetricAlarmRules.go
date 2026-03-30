@@ -46,13 +46,13 @@ import (
 //				return err
 //			}
 //			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
-//				AlarmContactGroupName: pulumi.String(name),
+//				AlarmContactGroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultAlarm, err := cms.NewAlarm(ctx, "default", &cms.AlarmArgs{
-//				Name:        pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
 //				Project:     pulumi.String("acs_ecs_dashboard"),
 //				Metric:      pulumi.String("disk_writebytes"),
 //				Period:      pulumi.Int(900),

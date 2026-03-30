@@ -55,15 +55,15 @@ import (
 //				ZoneId:             pulumi.String("cn-hangzhou-b"),
 //				ProtocolType:       pulumi.String("PANGU"),
 //				DataRedundancyType: pulumi.String("LRS"),
-//				FileSystemName:     pulumi.String(name),
+//				FileSystemName:     pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dfs.NewVscMountPoint(ctx, "DefaultFsForRMCVscMp", &dfs.VscMountPointArgs{
 //				FileSystemId: defaultFileSystem.ID(),
-//				AliasPrefix:  pulumi.String(name),
-//				Description:  pulumi.String(name),
+//				AliasPrefix:  pulumi.String(pulumi.String(name)),
+//				Description:  pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
@@ -78,10 +78,10 @@ import (
 //			}
 //			defaultTransitRouterVpcAttachment, err := cen.NewTransitRouterVpcAttachment(ctx, "default", &cen.TransitRouterVpcAttachmentArgs{
 //				CenId:                              defaultInstance.ID(),
-//				VpcId:                              pulumi.String(defaultGetNetworks.Ids[0]),
+//				VpcId:                              pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
-//				TransitRouterAttachmentName:        pulumi.String(name),
-//				TransitRouterAttachmentDescription: pulumi.String(name),
+//				TransitRouterAttachmentName:        pulumi.String(pulumi.String(name)),
+//				TransitRouterAttachmentDescription: pulumi.String(pulumi.String(name)),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						VswitchId: pulumi.String(defaultMaster.Vswitches[0].Id),

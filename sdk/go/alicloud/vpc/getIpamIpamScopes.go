@@ -44,13 +44,13 @@ import (
 //				OperatingRegionLists: pulumi.StringArray{
 //					pulumi.String("cn-hangzhou"),
 //				},
-//				IpamName: pulumi.String(name),
+//				IpamName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultIpamIpamScope, err := vpc.NewIpamIpamScope(ctx, "default", &vpc.IpamIpamScopeArgs{
-//				IpamScopeName:        pulumi.String(name),
+//				IpamScopeName:        pulumi.String(pulumi.String(name)),
 //				IpamId:               defaultIpam.ID(),
 //				IpamScopeDescription: pulumi.String("This is a ipam scope."),
 //				IpamScopeType:        pulumi.String("private"),
@@ -63,7 +63,7 @@ import (
 //			}
 //			defaultGetIpamIpamScopes := defaultIpamIpamScope.IpamScopeName.ApplyT(func(ipamScopeName *string) (vpc.GetIpamIpamScopesResult, error) {
 //				return vpc.GetIpamIpamScopesResult(interface{}(vpc.GetIpamIpamScopes(ctx, &vpc.GetIpamIpamScopesArgs{
-//					IpamScopeName: pulumi.StringRef(pulumi.StringRef(ipamScopeName)),
+//					IpamScopeName: pulumi.StringRef(pulumi.StringRef(pulumi.String(ipamScopeName))),
 //				}, nil))), nil
 //			}).(vpc.GetIpamIpamScopesResultOutput)
 //			ctx.Export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.ApplyT(func(defaultGetIpamIpamScopes vpc.GetIpamIpamScopesResult) (*string, error) {

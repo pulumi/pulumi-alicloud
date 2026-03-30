@@ -41,14 +41,14 @@ import (
 //				name = param
 //			}
 //			_default, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
-//				AlarmContactGroupName: pulumi.String(name),
-//				Describe:              pulumi.String(name),
+//				AlarmContactGroupName: pulumi.String(pulumi.String(name)),
+//				Describe:              pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "default", &cms.MonitorGroupArgs{
-//				MonitorGroupName: pulumi.String(name),
+//				MonitorGroupName: pulumi.String(pulumi.String(name)),
 //				ContactGroups: pulumi.StringArray{
 //					_default.ID(),
 //				},
@@ -58,11 +58,11 @@ import (
 //			}
 //			_, err = cms.NewGroupMetricRule(ctx, "this", &cms.GroupMetricRuleArgs{
 //				GroupId:             defaultMonitorGroup.ID(),
-//				GroupMetricRuleName: pulumi.String(name),
+//				GroupMetricRuleName: pulumi.String(pulumi.String(name)),
 //				Category:            pulumi.String("ecs"),
 //				MetricName:          pulumi.String("cpu_total"),
 //				Namespace:           pulumi.String("acs_ecs_dashboard"),
-//				RuleId:              pulumi.String(name),
+//				RuleId:              pulumi.String(pulumi.String(name)),
 //				Period:              pulumi.Int(60),
 //				Interval:            pulumi.String("3600"),
 //				SilenceTime:         pulumi.Int(85800),

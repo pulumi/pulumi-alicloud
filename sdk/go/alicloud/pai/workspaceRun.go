@@ -42,9 +42,9 @@ import (
 //				name = param
 //			}
 //			defaultCAFUa9, err := pai.NewWorkspaceWorkspace(ctx, "defaultCAFUa9", &pai.WorkspaceWorkspaceArgs{
-//				Description:   pulumi.String(name),
-//				DisplayName:   pulumi.String(name),
-//				WorkspaceName: pulumi.String(name),
+//				Description:   pulumi.String(pulumi.String(name)),
+//				DisplayName:   pulumi.String(pulumi.String(name)),
+//				WorkspaceName: pulumi.String(pulumi.String(name)),
 //				EnvTypes: pulumi.StringArray{
 //					pulumi.String("prod"),
 //				},
@@ -73,7 +73,7 @@ import (
 //			_, err = pai.NewWorkspaceRun(ctx, "default", &pai.WorkspaceRunArgs{
 //				SourceType:   pulumi.String("TrainingService"),
 //				SourceId:     pulumi.String("759"),
-//				RunName:      pulumi.String(name),
+//				RunName:      pulumi.String(pulumi.String(name)),
 //				ExperimentId: defaultQRwWbv.ID(),
 //			})
 //			if err != nil {

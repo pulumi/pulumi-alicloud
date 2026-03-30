@@ -69,7 +69,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:    pulumi.String(name),
+//				VpcName:    pulumi.String(pulumi.String(name)),
 //				CidrBlock:  pulumi.String("172.16.0.0/16"),
 //				EnableIpv6: pulumi.Bool(true),
 //			})
@@ -77,17 +77,17 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewSwitch(ctx, "zone_a", &vpc.SwitchArgs{
-//				VswitchName:       pulumi.String(name),
+//				VswitchName:       pulumi.String(pulumi.String(name)),
 //				VpcId:             defaultNetwork.ID(),
 //				CidrBlock:         pulumi.String("172.16.0.0/24"),
-//				ZoneId:            pulumi.String(defaultGetZones.Zones[0].Id),
+//				ZoneId:            pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
 //				Ipv6CidrBlockMask: pulumi.Int(6),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "default", &expressconnect.VirtualBorderRouterArgs{
-//				PhysicalConnectionId: pulumi.String(nameRegex.Connections[0].Id),
+//				PhysicalConnectionId: pulumi.String(pulumi.String(nameRegex.Connections[0].Id)),
 //				VlanId:               pulumi.Int(1001),
 //				PeerGatewayIp:        pulumi.String("192.168.254.2"),
 //				PeeringSubnetMask:    pulumi.String("255.255.255.0"),
@@ -103,14 +103,14 @@ import (
 //				RouterId:                 defaultVirtualBorderRouter.ID(),
 //				Description:              pulumi.String("terraform-example"),
 //				AccessPointId:            pulumi.String("ap-cn-hangzhou-jg-B"),
-//				ResourceGroupId:          pulumi.String(_default.Ids[0]),
+//				ResourceGroupId:          pulumi.String(pulumi.String(_default.Ids[0])),
 //				Period:                   pulumi.Int(1),
 //				OppositeRouterId:         defaultNetwork.RouterId,
 //				Role:                     pulumi.String("InitiatingSide"),
 //				PaymentType:              pulumi.String("PayAsYouGo"),
 //				AutoPay:                  pulumi.Bool(true),
-//				OppositeInterfaceOwnerId: pulumi.String(this.Id),
-//				RouterInterfaceName:      pulumi.String(name),
+//				OppositeInterfaceOwnerId: pulumi.String(pulumi.String(this.Id)),
+//				RouterInterfaceName:      pulumi.String(pulumi.String(name)),
 //				FastLinkMode:             pulumi.Bool(true),
 //				OppositeRegionId:         pulumi.String("cn-hangzhou"),
 //				RouterType:               pulumi.String("VBR"),

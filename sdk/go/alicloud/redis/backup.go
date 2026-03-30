@@ -86,10 +86,10 @@ import (
 //	    _ := index
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
-// VpcId: pulumi.String(_default.Ids[0]),
+// VpcId: pulumi.String(pulumi.String(_default.Ids[0])),
 // CidrBlock: pulumi.String(invokeCidrsubnet.Result),
-// ZoneId: pulumi.String(zoneId),
-// VswitchName: pulumi.String(name),
+// ZoneId: pulumi.String(pulumi.String(zoneId)),
+// VswitchName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err
@@ -118,8 +118,8 @@ import (
 // InstanceType: pulumi.String("Redis"),
 // Password: pulumi.String("123456_tf"),
 // EngineVersion: pulumi.String("5.0"),
-// ZoneId: pulumi.String(zoneId),
-// VswitchId: pulumi.Any(vswitchId),
+// ZoneId: pulumi.String(pulumi.String(zoneId)),
+// VswitchId: pulumi.String(pulumi.Any(vswitchId)),
 // Period: pulumi.String("1"),
 // InstanceClass: pulumi.String("redis.shard.small.2.ce"),
 // })

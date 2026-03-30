@@ -40,8 +40,8 @@ import (
 //				name = param
 //			}
 //			_, err := esa.NewRoutine(ctx, "default", &esa.RoutineArgs{
-//				Description: pulumi.String(name),
-//				Name:        pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
+//				Name:        pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

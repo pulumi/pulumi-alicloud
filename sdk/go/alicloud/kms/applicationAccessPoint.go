@@ -42,7 +42,7 @@ import (
 //			}
 //			_, err := kms.NewApplicationAccessPoint(ctx, "default", &kms.ApplicationAccessPointArgs{
 //				Description:                pulumi.String("example aap"),
-//				ApplicationAccessPointName: pulumi.String(name),
+//				ApplicationAccessPointName: pulumi.String(pulumi.String(name)),
 //				Policies: pulumi.StringArray{
 //					pulumi.String("abc"),
 //					pulumi.String("efg"),

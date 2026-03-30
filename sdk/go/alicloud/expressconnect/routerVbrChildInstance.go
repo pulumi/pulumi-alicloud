@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			defaultydbbk3, err := expressconnect.NewVirtualBorderRouter(ctx, "defaultydbbk3", &expressconnect.VirtualBorderRouterArgs{
-//				PhysicalConnectionId: pulumi.String(nameRegex.Connections[0].Id),
+//				PhysicalConnectionId: pulumi.String(pulumi.String(nameRegex.Connections[0].Id)),
 //				VlanId:               pulumi.Int(1000),
 //				PeerGatewayIp:        pulumi.String("192.168.254.2"),
 //				PeeringSubnetMask:    pulumi.String("255.255.255.0"),
@@ -72,7 +72,7 @@ import (
 //				ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
 //				EcrId:                 defaultAAlhUy.ID(),
 //				ChildInstanceType:     pulumi.String("VBR"),
-//				ChildInstanceOwnerId:  pulumi.String(current.Id),
+//				ChildInstanceOwnerId:  pulumi.String(pulumi.String(current.Id)),
 //			})
 //			if err != nil {
 //				return err

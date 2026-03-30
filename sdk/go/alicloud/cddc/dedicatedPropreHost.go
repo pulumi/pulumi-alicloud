@@ -102,7 +102,7 @@ import (
 //	    _ := index
 //
 // __res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
-// VpcId: pulumi.String(defaultGetSwitches.Vswitches[0].VpcId),
+// VpcId: pulumi.String(pulumi.String(defaultGetSwitches.Vswitches[0].VpcId)),
 // Name: pulumi.String("tf-exampleacc-cddc-dedicated_propre_host"),
 // })
 // if err != nil {
@@ -193,7 +193,7 @@ import (
 //
 // __res, err := cddc.NewDedicatedHostGroup(ctx, fmt.Sprintf("default-%v", key0), &cddc.DedicatedHostGroupArgs{
 // Engine: pulumi.String("MySQL"),
-// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 // CpuAllocationRatio: pulumi.Int(101),
 // MemAllocationRatio: pulumi.Int(50),
 // DiskAllocationRatio: pulumi.Int(200),
@@ -272,14 +272,14 @@ import (
 // return &tmp7, nil
 // }).(pulumi.Interface{}PtrOutput)
 // _, err = cddc.NewDedicatedPropreHost(ctx, "default", &cddc.DedicatedPropreHostArgs{
-// VswitchId: pulumi.String(defaultGetSwitches.Ids[0]),
+// VswitchId: pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 // EcsInstanceName: pulumi.String("exampleTf"),
-// EcsDeploymentSetId: pulumi.Any(alicloudEcsDeploymentSetId),
+// EcsDeploymentSetId: pulumi.String(pulumi.Any(alicloudEcsDeploymentSetId)),
 // AutoRenew: pulumi.String("false"),
-// SecurityGroupId: pulumi.Any(alicloudSecurityGroupId),
-// DedicatedHostGroupId: pulumi.Any(dedicatedHostGroupId),
+// SecurityGroupId: pulumi.String(pulumi.Any(alicloudSecurityGroupId)),
+// DedicatedHostGroupId: pulumi.String(pulumi.Any(dedicatedHostGroupId)),
 // EcsHostName: pulumi.String("exampleTf"),
-// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 // EcsUniqueSuffix: pulumi.String("false"),
 // PasswordInherit: pulumi.String("false"),
 // Engine: pulumi.String("mysql"),

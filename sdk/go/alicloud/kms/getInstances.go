@@ -44,7 +44,7 @@ import (
 // }
 // vpc_amp_instance_example, err := vpc.NewNetwork(ctx, "vpc-amp-instance-example", &vpc.NetworkArgs{
 // CidrBlock: pulumi.String("172.16.0.0/12"),
-// VpcName: pulumi.String(name),
+// VpcName: pulumi.String(pulumi.String(name)),
 // })
 // if err != nil {
 // return err

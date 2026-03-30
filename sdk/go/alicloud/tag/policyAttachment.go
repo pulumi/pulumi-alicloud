@@ -46,8 +46,8 @@ import (
 //				return err
 //			}
 //			example, err := tag.NewPolicy(ctx, "example", &tag.PolicyArgs{
-//				PolicyName:    pulumi.String(name),
-//				PolicyDesc:    pulumi.String(name),
+//				PolicyName:    pulumi.String(pulumi.String(name)),
+//				PolicyDesc:    pulumi.String(pulumi.String(name)),
 //				UserType:      pulumi.String("USER"),
 //				PolicyContent: pulumi.String("\\t\\t{\\\"tags\\\":{\\\"CostCenter\\\":{\\\"tag_value\\\":{\\\"@@assign\\\":[\\\"Beijing\\\",\\\"Shanghai\\\"]},\\\"tag_key\\\":{\\\"@@assign\\\":\\\"CostCenter\\\"}}}}\n"),
 //			})
@@ -56,7 +56,7 @@ import (
 //			}
 //			_, err = tag.NewPolicyAttachment(ctx, "example", &tag.PolicyAttachmentArgs{
 //				PolicyId:   example.ID(),
-//				TargetId:   pulumi.String(_default.Id),
+//				TargetId:   pulumi.String(pulumi.String(_default.Id)),
 //				TargetType: pulumi.String("USER"),
 //			})
 //			if err != nil {

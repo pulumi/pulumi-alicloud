@@ -53,9 +53,9 @@ import (
 //				return err
 //			}
 //			_, err = bp.NewStudioApplication(ctx, "default", &bp.StudioApplicationArgs{
-//				ApplicationName: pulumi.String(name),
+//				ApplicationName: pulumi.String(pulumi.String(name)),
 //				TemplateId:      pulumi.String("YAUUQIYRSV1CMFGX"),
-//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(pulumi.String(_default.Groups[0].Id)),
 //				AreaId:          pulumi.String("cn-hangzhou"),
 //				Instances: bp.StudioApplicationInstanceArray{
 //					&bp.StudioApplicationInstanceArgs{

@@ -72,8 +72,8 @@ import (
 //				OsType:       pulumi.String("linux"),
 //				Platform:     pulumi.String("Ubuntu"),
 //				LicenseType:  pulumi.String("Auto"),
-//				ImageName:    pulumi.String(name),
-//				Description:  pulumi.String(name),
+//				ImageName:    pulumi.String(pulumi.String(name)),
+//				Description:  pulumi.String(pulumi.String(name)),
 //				DiskDeviceMappings: ecs.ImageImportDiskDeviceMappingArray{
 //					&ecs.ImageImportDiskDeviceMappingArgs{
 //						OssBucket:     defaultBucket.ID(),

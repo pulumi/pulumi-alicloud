@@ -60,7 +60,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Classes[0].ZoneId),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Classes[0].ZoneId)),
 //				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -69,7 +69,7 @@ import (
 //			dbcluster, err := polardb.NewCluster(ctx, "dbcluster", &polardb.ClusterArgs{
 //				DefaultTimeZone:  pulumi.String("SYSTEM"),
 //				CreationCategory: pulumi.String("Normal"),
-//				ZoneId:           pulumi.String(_default.Classes[0].ZoneId),
+//				ZoneId:           pulumi.String(pulumi.String(_default.Classes[0].ZoneId)),
 //				CreationOption:   pulumi.String("Normal"),
 //				DbVersion:        pulumi.String("14"),
 //				PayType:          pulumi.String("PostPaid"),
@@ -91,7 +91,7 @@ import (
 //			}
 //			database, err := polardb.NewDatabase(ctx, "database", &polardb.DatabaseArgs{
 //				CharacterSetName: pulumi.String("UTF8"),
-//				DbDescription:    pulumi.String(name),
+//				DbDescription:    pulumi.String(pulumi.String(name)),
 //				DbClusterId:      dbcluster.ID(),
 //				DbName:           pulumi.String("nzh"),
 //				AccountName:      account.DbClusterId,

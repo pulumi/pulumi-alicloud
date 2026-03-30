@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_, err := ens.NewKeyPair(ctx, "example", &ens.KeyPairArgs{
-//				KeyPairName: pulumi.String(name),
+//				KeyPairName: pulumi.String(pulumi.String(name)),
 //				Version:     pulumi.String("2017-11-10"),
 //			})
 //			if err != nil {

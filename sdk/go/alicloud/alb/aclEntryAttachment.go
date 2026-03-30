@@ -42,8 +42,8 @@ import (
 //				return err
 //			}
 //			defaultAcl, err := alb.NewAcl(ctx, "default", &alb.AclArgs{
-//				AclName:         pulumi.String(name),
-//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
+//				AclName:         pulumi.String(pulumi.String(name)),
+//				ResourceGroupId: pulumi.String(pulumi.String(_default.Groups[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ import (
 //			_, err = alb.NewAclEntryAttachment(ctx, "default", &alb.AclEntryAttachmentArgs{
 //				AclId:       defaultAcl.ID(),
 //				Entry:       pulumi.String("168.10.10.0/24"),
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

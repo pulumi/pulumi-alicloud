@@ -43,7 +43,7 @@ import (
 //				name = param
 //			}
 //			_, err := alb.NewHealthCheckTemplate(ctx, "example", &alb.HealthCheckTemplateArgs{
-//				HealthCheckTemplateName: pulumi.String(name),
+//				HealthCheckTemplateName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

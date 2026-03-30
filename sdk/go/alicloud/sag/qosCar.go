@@ -43,15 +43,15 @@ import (
 //				name = param
 //			}
 //			_default, err := sag.NewQos(ctx, "default", &sag.QosArgs{
-//				Name: pulumi.String(name),
+//				Name: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sag.NewQosCar(ctx, "default", &sag.QosCarArgs{
 //				QosId:             _default.ID(),
-//				Name:              pulumi.String(name),
-//				Description:       pulumi.String(name),
+//				Name:              pulumi.String(pulumi.String(name)),
+//				Description:       pulumi.String(pulumi.String(name)),
 //				Priority:          pulumi.Int(1),
 //				LimitType:         pulumi.String("Absolute"),
 //				MinBandwidthAbs:   pulumi.Int(10),

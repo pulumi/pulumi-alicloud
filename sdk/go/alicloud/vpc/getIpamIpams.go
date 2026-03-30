@@ -42,7 +42,7 @@ import (
 //			}
 //			defaultIpamIpam, err := vpc.NewIpamIpam(ctx, "default", &vpc.IpamIpamArgs{
 //				IpamDescription: pulumi.String("This is my first Ipam."),
-//				IpamName:        pulumi.String(name),
+//				IpamName:        pulumi.String(pulumi.String(name)),
 //				OperatingRegionLists: pulumi.StringArray{
 //					pulumi.String("cn-hangzhou"),
 //				},
@@ -57,7 +57,7 @@ import (
 //					Ids: []string{
 //						id,
 //					},
-//					NameRegex: pulumi.StringRef(pulumi.StringRef(ipamName)),
+//					NameRegex: pulumi.StringRef(pulumi.StringRef(pulumi.String(ipamName))),
 //					IpamName:  pulumi.StringRef(pulumi.StringRef(name)),
 //				}, nil))), nil
 //			}).(vpc.GetIpamIpamsResultOutput)

@@ -46,13 +46,13 @@ import (
 //			}
 //			_, err = wafv3.NewDefenseTemplate(ctx, "default", &wafv3.DefenseTemplateArgs{
 //				Status:                         pulumi.String("1"),
-//				InstanceId:                     pulumi.String(_default.Ids[0]),
-//				DefenseTemplateName:            pulumi.String(name),
+//				InstanceId:                     pulumi.String(pulumi.String(_default.Ids[0])),
+//				DefenseTemplateName:            pulumi.String(pulumi.String(name)),
 //				TemplateType:                   pulumi.String("user_custom"),
 //				TemplateOrigin:                 pulumi.String("custom"),
 //				DefenseScene:                   pulumi.String("antiscan"),
 //				ResourceManagerResourceGroupId: pulumi.String("example"),
-//				Description:                    pulumi.String(name),
+//				Description:                    pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

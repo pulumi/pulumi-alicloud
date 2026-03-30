@@ -35,7 +35,7 @@ import (
 // name = param
 // }
 // defaultAntiBruteForceRule, err := threatdetection.NewAntiBruteForceRule(ctx, "default", &threatdetection.AntiBruteForceRuleArgs{
-// AntiBruteForceRuleName: pulumi.String(name),
+// AntiBruteForceRuleName: pulumi.String(pulumi.String(name)),
 // ForbiddenTime: pulumi.Int(360),
 // UuidLists: pulumi.StringArray{
 // pulumi.String("7567806c-4ec5-4597-9543-7c9543381a13"),

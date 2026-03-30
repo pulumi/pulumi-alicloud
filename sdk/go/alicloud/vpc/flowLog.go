@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
@@ -79,14 +79,14 @@ import (
 //			}
 //			exampleProject, err := log.NewProject(ctx, "example", &log.ProjectArgs{
 //				ProjectName: pulumi.String(invokeSubstr.Result),
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleStore, err := log.NewStore(ctx, "example", &log.StoreArgs{
 //				ProjectName:        exampleProject.ProjectName,
-//				LogstoreName:       pulumi.String(name),
+//				LogstoreName:       pulumi.String(pulumi.String(name)),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
 //				MaxSplitShardCount: pulumi.Int(60),
@@ -96,15 +96,15 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewFlowLog(ctx, "example", &vpc.FlowLogArgs{
-//				FlowLogName:  pulumi.String(name),
+//				FlowLogName:  pulumi.String(pulumi.String(name)),
 //				LogStoreName: exampleStore.LogstoreName,
-//				Description:  pulumi.String(name),
+//				Description:  pulumi.String(pulumi.String(name)),
 //				TrafficPaths: pulumi.StringArray{
 //					pulumi.String("all"),
 //				},
 //				ProjectName:         exampleProject.ProjectName,
 //				ResourceType:        pulumi.String("VPC"),
-//				ResourceGroupId:     pulumi.String(_default.Ids[0]),
+//				ResourceGroupId:     pulumi.String(pulumi.String(_default.Ids[0])),
 //				ResourceId:          example.ID(),
 //				AggregationInterval: pulumi.String("1"),
 //				TrafficType:         pulumi.String("All"),

@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = oss.NewAccessPoint(ctx, "default", &oss.AccessPointArgs{
-//				AccessPointName: pulumi.String(name),
+//				AccessPointName: pulumi.String(pulumi.String(name)),
 //				Bucket:          createBucket.Bucket,
 //				VpcConfiguration: &oss.AccessPointVpcConfigurationArgs{
 //					VpcId: pulumi.String("vpc-abcexample"),

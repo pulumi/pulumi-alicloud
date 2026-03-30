@@ -55,7 +55,7 @@ import (
 //			}
 //			exampleAccessGroup, err := nas.NewAccessGroup(ctx, "example", &nas.AccessGroupArgs{
 //				AccessGroupType: pulumi.String("Vpc"),
-//				Description:     pulumi.String(name),
+//				Description:     pulumi.String(pulumi.String(name)),
 //				AccessGroupName: pulumi.String("StandardMountTarget"),
 //				FileSystemType:  pulumi.String("standard"),
 //			})
@@ -96,7 +96,7 @@ import (
 //				return err
 //			}
 //			exampleEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "example", &ecs.EcsKeyPairArgs{
-//				KeyPairName: pulumi.String(name),
+//				KeyPairName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -154,7 +154,7 @@ import (
 //				ClusterVswitchId: exampleSwitch.ID(),
 //				ClusterCategory:  pulumi.String("Standard"),
 //				SecurityGroupId:  exampleSecurityGroup.ID(),
-//				ClusterName:      pulumi.String(name),
+//				ClusterName:      pulumi.String(pulumi.String(name)),
 //				Manager: &ehpc.ClusterV2ManagerArgs{
 //					ManagerNode: &ehpc.ClusterV2ManagerManagerNodeArgs{
 //						SpotStrategy: pulumi.String("NoSpot"),

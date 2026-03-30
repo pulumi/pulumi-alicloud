@@ -52,17 +52,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Regions[0].ZoneIds[1].ZoneId),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Regions[0].ZoneIds[1].ZoneId)),
 //			})
 //			if err != nil {
 //				return err
@@ -87,7 +87,7 @@ import (
 //				AccountDescription: pulumi.String("tf-example-description"),
 //				AccountName:        pulumi.String("examplename"),
 //				AccountPassword:    pulumi.String("Example1234"),
-//				Type:               pulumi.String(_type),
+//				Type:               pulumi.String(pulumi.String(_type)),
 //			})
 //			if err != nil {
 //				return err

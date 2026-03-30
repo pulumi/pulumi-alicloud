@@ -70,19 +70,19 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//				VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = bastionhost.NewInstance(ctx, "default", &bastionhost.InstanceArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				LicenseCode: pulumi.String("bhah_ent_50_asset"),
 //				PlanCode:    pulumi.String("cloudbastion"),
 //				Storage:     pulumi.String("5"),
 //				Bandwidth:   pulumi.String("5"),
 //				Period:      pulumi.Int(1),
-//				VswitchId:   pulumi.String(defaultGetSwitches.Ids[0]),
+//				VswitchId:   pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //				SecurityGroupIds: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
@@ -139,13 +139,13 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//				VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = bastionhost.NewInstance(ctx, "default", &bastionhost.InstanceArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				LicenseCode: pulumi.String("bhah_ent_50_asset"),
 //				PlanCode:    pulumi.String("cloudbastion"),
 //				Storage:     pulumi.String("5"),
@@ -154,7 +154,7 @@ import (
 //				SecurityGroupIds: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
-//				VswitchId: pulumi.String(defaultGetSwitches.Ids[0]),
+//				VswitchId: pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //				AdAuthServers: bastionhost.InstanceAdAuthServerArray{
 //					&bastionhost.InstanceAdAuthServerArgs{
 //						Server:        pulumi.String("192.168.1.1"),

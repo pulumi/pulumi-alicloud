@@ -192,7 +192,7 @@ import (
 //						pulumi.String("sls"),
 //					},
 //				},
-//				AlertName:   pulumi.String(alertName),
+//				AlertName:   pulumi.String(pulumi.String(alertName)),
 //				ProjectName: defaultINsMgl.ProjectName,
 //			})
 //			if err != nil {

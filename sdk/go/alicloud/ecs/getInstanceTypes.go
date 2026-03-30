@@ -65,30 +65,30 @@ import (
 // return err
 // }
 // defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-// VpcName: pulumi.String(name),
+// VpcName: pulumi.String(pulumi.String(name)),
 // CidrBlock: pulumi.String("192.168.0.0/16"),
 // })
 // if err != nil {
 // return err
 // }
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-// VswitchName: pulumi.String(name),
+// VswitchName: pulumi.String(pulumi.String(name)),
 // VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("192.168.192.0/24"),
-// ZoneId: pulumi.String(_default.Zones[0].Id),
+// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 // })
 // if err != nil {
 // return err
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-// Name: pulumi.String(name),
+// Name: pulumi.String(pulumi.String(name)),
 // VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
-// NetworkInterfaceName: pulumi.String(name),
+// NetworkInterfaceName: pulumi.String(pulumi.String(name)),
 // VswitchId: defaultSwitch.ID(),
 // SecurityGroupIds: pulumi.StringArray{
 // defaultSecurityGroup.ID(),
@@ -108,13 +108,13 @@ import (
 //	    _ := index
 //
 // __res, err := ecs.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &ecs.InstanceArgs{
-// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
-// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
-// InstanceName: pulumi.String(name),
+// ImageId: pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+// InstanceType: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
+// InstanceName: pulumi.String(pulumi.String(name)),
 // SecurityGroups: splat0,
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(10),
-// AvailabilityZone: pulumi.String(_default.Zones[0].Id),
+// AvailabilityZone: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // VswitchId: defaultSwitch.ID(),

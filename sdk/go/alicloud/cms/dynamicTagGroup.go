@@ -41,19 +41,19 @@ import (
 //				name = param
 //			}
 //			_default, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
-//				AlarmContactGroupName: pulumi.String(name),
+//				AlarmContactGroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cms.NewDynamicTagGroup(ctx, "default", &cms.DynamicTagGroupArgs{
-//				TagKey: pulumi.String(name),
+//				TagKey: pulumi.String(pulumi.String(name)),
 //				ContactGroupLists: pulumi.StringArray{
 //					_default.ID(),
 //				},
 //				MatchExpresses: cms.DynamicTagGroupMatchExpressArray{
 //					&cms.DynamicTagGroupMatchExpressArgs{
-//						TagValue:              pulumi.String(name),
+//						TagValue:              pulumi.String(pulumi.String(name)),
 //						TagValueMatchFunction: pulumi.String("all"),
 //					},
 //				},

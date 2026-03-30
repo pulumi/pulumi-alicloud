@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("fileCrc64Checksum", defualt.Checksum)
+//			ctx.Export("fileCrc64Checksum", pulumi.Any(defualt.Checksum))
 //			return nil
 //		})
 //	}

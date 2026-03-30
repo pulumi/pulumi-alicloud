@@ -43,7 +43,7 @@ import (
 //				name = param
 //			}
 //			_, err := fc.NewV3LayerVersion(ctx, "default", &fc.V3LayerVersionArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				LayerName:   pulumi.String("FC3LayerResouceTest_ZIP_2024SepWed"),
 //				License:     pulumi.String("Apache2.0"),
 //				Acl:         pulumi.String("0"),

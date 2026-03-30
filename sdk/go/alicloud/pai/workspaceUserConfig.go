@@ -43,7 +43,7 @@ import (
 //			_, err := pai.NewWorkspaceUserConfig(ctx, "default", &pai.WorkspaceUserConfigArgs{
 //				CategoryName: pulumi.String("DataPrivacyConfig"),
 //				ConfigKey:    pulumi.String("customizePAIAssumedRole"),
-//				ConfigValue:  pulumi.String(name),
+//				ConfigValue:  pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

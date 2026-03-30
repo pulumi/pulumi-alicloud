@@ -46,8 +46,8 @@ import (
 //				return err
 //			}
 //			defaultNamespace, err := cms.NewNamespace(ctx, "default", &cms.NamespaceArgs{
-//				Description:   pulumi.String(name),
-//				Namespace:     pulumi.String(name),
+//				Description:   pulumi.String(pulumi.String(name)),
+//				Namespace:     pulumi.String(pulumi.String(name)),
 //				Specification: pulumi.String("cms.s1.large"),
 //			})
 //			if err != nil {
@@ -77,7 +77,7 @@ import (
 //
 // `),
 //
-//				TargetUserId: pulumi.String(_default.Id),
+//				TargetUserId: pulumi.String(pulumi.String(_default.Id)),
 //			})
 //			if err != nil {
 //				return err

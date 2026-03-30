@@ -88,7 +88,7 @@ import (
 // return &tmp1, nil
 // }).(pulumi.StringPtrOutput).ApplyT(func(value *string) (vpc.GetSwitchesResult, error) {
 // return vpc.GetSwitchesResult(interface{}(vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// VpcId: pulumi.StringRef(pulumi.StringRef(value)),
+// VpcId: pulumi.StringRef(pulumi.StringRef(pulumi.String(value))),
 // }, nil))), nil
 // }).(vpc.GetSwitchesResultOutput)
 // var tmp2 *string
@@ -128,7 +128,7 @@ import (
 // return &tmp2, nil
 // }).(pulumi.StringPtrOutput)),
 // CidrBlock: pulumi.String(invokeCidrsubnet.Result),
-// ZoneId: pulumi.String(_default.Zones[0].Id),
+// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 // })
 // if err != nil {
 // return err

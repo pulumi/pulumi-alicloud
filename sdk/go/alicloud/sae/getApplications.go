@@ -55,16 +55,16 @@ import (
 //			vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
 //				VpcId:       vpc.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultNamespace, err := sae.NewNamespace(ctx, "default", &sae.NamespaceArgs{
-//				NamespaceDescription: pulumi.String(name),
+//				NamespaceDescription: pulumi.String(pulumi.String(name)),
 //				NamespaceId:          pulumi.String("cn-hangzhou:tfacctest"),
-//				NamespaceName:        pulumi.String(name),
+//				NamespaceName:        pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

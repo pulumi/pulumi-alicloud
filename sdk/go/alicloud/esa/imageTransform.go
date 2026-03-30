@@ -42,7 +42,7 @@ import (
 //			}
 //			defaultSite, err := esa.NewSite(ctx, "default", &esa.SiteArgs{
 //				SiteName:   pulumi.String("imagetransform.tf.com"),
-//				InstanceId: pulumi.String(_default.Sites[0].InstanceId),
+//				InstanceId: pulumi.String(pulumi.String(_default.Sites[0].InstanceId)),
 //				Coverage:   pulumi.String("domestic"),
 //				AccessType: pulumi.String("NS"),
 //			})

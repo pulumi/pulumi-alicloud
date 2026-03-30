@@ -98,8 +98,8 @@ import (
 //				exampleVirtualBorderRouter = append(exampleVirtualBorderRouter, __res)
 //			}
 //			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
-//				Description:     pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
+//				Description:     pulumi.String(pulumi.String(name)),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
@@ -113,7 +113,7 @@ import (
 //					InstanceId:            exampleInstance.ID(),
 //					ChildInstanceId:       exampleVirtualBorderRouter[val0].ID(),
 //					ChildInstanceType:     pulumi.String("VBR"),
-//					ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
+//					ChildInstanceRegionId: pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //				})
 //				if err != nil {
 //					return err
@@ -123,8 +123,8 @@ import (
 //			_, err = vpc.NewVbrHa(ctx, "example", &vpc.VbrHaArgs{
 //				VbrId:       exampleInstanceAttachment[0].ChildInstanceId,
 //				PeerVbrId:   exampleInstanceAttachment[1].ChildInstanceId,
-//				VbrHaName:   pulumi.String(name),
-//				Description: pulumi.String(name),
+//				VbrHaName:   pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

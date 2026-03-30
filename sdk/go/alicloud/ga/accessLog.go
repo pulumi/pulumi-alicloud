@@ -121,7 +121,7 @@ import (
 //						Weight:   pulumi.Int(20),
 //					},
 //				},
-//				EndpointGroupRegion: pulumi.String(region),
+//				EndpointGroupRegion: pulumi.String(pulumi.String(region)),
 //				ListenerId:          defaultListener.ID(),
 //			})
 //			if err != nil {
@@ -133,7 +133,7 @@ import (
 //				EndpointGroupId: defaultEndpointGroup.ID(),
 //				SlsProjectName:  defaultProject.Name,
 //				SlsLogStoreName: defaultStore.Name,
-//				SlsRegionId:     pulumi.String(region),
+//				SlsRegionId:     pulumi.String(pulumi.String(region)),
 //			})
 //			if err != nil {
 //				return err

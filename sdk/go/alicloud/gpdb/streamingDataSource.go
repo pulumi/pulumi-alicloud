@@ -90,7 +90,7 @@ import (
 //			}
 //			default7mX6ld, err := gpdb.NewInstance(ctx, "default7mX6ld", &gpdb.InstanceArgs{
 //				InstanceSpec:        pulumi.String("2C8G"),
-//				Description:         pulumi.String(name),
+//				Description:         pulumi.String(pulumi.String(name)),
 //				SegNodeNum:          pulumi.Int(2),
 //				SegStorageType:      pulumi.String("cloud_essd"),
 //				InstanceNetworkType: pulumi.String("VPC"),
@@ -121,7 +121,7 @@ import (
 //			_, err = gpdb.NewStreamingDataSource(ctx, "default", &gpdb.StreamingDataSourceArgs{
 //				DbInstanceId:          default7mX6ld.ID(),
 //				DataSourceName:        pulumi.String("example-kafka3"),
-//				DataSourceConfig:      pulumi.String(kafka_config),
+//				DataSourceConfig:      pulumi.String(pulumi.String(kafka_config)),
 //				DataSourceType:        pulumi.String("kafka"),
 //				DataSourceDescription: pulumi.String("example-kafka"),
 //				ServiceId:             defaultwruvdv.ServiceId,

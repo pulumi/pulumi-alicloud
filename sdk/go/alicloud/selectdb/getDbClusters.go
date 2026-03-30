@@ -60,20 +60,20 @@ import (
 //			}
 //			defaultDbInstance, err := selectdb.NewDbInstance(ctx, "default", &selectdb.DbInstanceArgs{
 //				DbInstanceClass:       pulumi.String("selectdb.xlarge"),
-//				DbInstanceDescription: pulumi.String(name),
+//				DbInstanceDescription: pulumi.String(pulumi.String(name)),
 //				CacheSize:             pulumi.Int(200),
 //				PaymentType:           pulumi.String("PayAsYouGo"),
 //				EngineMinorVersion:    pulumi.String("3.0.12"),
-//				VpcId:                 pulumi.String(defaultGetSwitches.Vswitches[0].VpcId),
-//				ZoneId:                pulumi.String(defaultGetSwitches.Vswitches[0].ZoneId),
-//				VswitchId:             pulumi.String(defaultGetSwitches.Vswitches[0].Id),
+//				VpcId:                 pulumi.String(pulumi.String(defaultGetSwitches.Vswitches[0].VpcId)),
+//				ZoneId:                pulumi.String(pulumi.String(defaultGetSwitches.Vswitches[0].ZoneId)),
+//				VswitchId:             pulumi.String(pulumi.String(defaultGetSwitches.Vswitches[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultDbCluster, err := selectdb.NewDbCluster(ctx, "default", &selectdb.DbClusterArgs{
 //				DbInstanceId:         defaultDbInstance.ID(),
-//				DbClusterDescription: pulumi.String(name),
+//				DbClusterDescription: pulumi.String(pulumi.String(name)),
 //				DbClusterClass:       pulumi.String("selectdb.2xlarge"),
 //				CacheSize:            pulumi.Int(400),
 //				PaymentType:          pulumi.String("PayAsYouGo"),

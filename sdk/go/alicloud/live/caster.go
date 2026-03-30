@@ -43,7 +43,7 @@ import (
 //				name = param
 //			}
 //			_, err := live.NewCaster(ctx, "default", &live.CasterArgs{
-//				CasterName:  pulumi.String(name),
+//				CasterName:  pulumi.String(pulumi.String(name)),
 //				PaymentType: pulumi.String("PayAsYouGo"),
 //				NormType:    pulumi.Int(1),
 //			})

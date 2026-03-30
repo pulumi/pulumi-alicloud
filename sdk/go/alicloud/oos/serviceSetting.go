@@ -42,7 +42,7 @@ import (
 //				name = param
 //			}
 //			_default, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
-//				Bucket: pulumi.String(name),
+//				Bucket: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
-//				ProjectName: pulumi.String(name),
+//				ProjectName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

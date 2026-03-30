@@ -43,7 +43,7 @@ import (
 //			}
 //			defaultVpc, err := vpc.NewNetwork(ctx, "defaultVpc", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ import (
 //				VpcId:       defaultVpc.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-j"),
 //				CidrBlock:   pulumi.String("172.16.53.0/24"),
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -72,7 +72,7 @@ import (
 //					},
 //				},
 //				ZoneId:       defaultVSwitch.ZoneId,
-//				InstanceName: pulumi.String(name),
+//				InstanceName: pulumi.String(pulumi.String(name)),
 //				PaymentType:  pulumi.String("PayAsYouGo"),
 //			})
 //			if err != nil {

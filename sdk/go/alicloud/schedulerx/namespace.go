@@ -41,8 +41,8 @@ import (
 //				name = param
 //			}
 //			_, err := schedulerx.NewNamespace(ctx, "default", &schedulerx.NamespaceArgs{
-//				NamespaceName: pulumi.String(name),
-//				Description:   pulumi.String(name),
+//				NamespaceName: pulumi.String(pulumi.String(name)),
+//				Description:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err

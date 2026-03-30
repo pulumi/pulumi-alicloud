@@ -57,7 +57,7 @@ import (
 //			}
 //			defaultN80M7S, err := vpc.NewSwitch(ctx, "defaultN80M7S", &vpc.SwitchArgs{
 //				VpcId:       defaultILXuit.ID(),
-//				ZoneId:      pulumi.String(zoneId),
+//				ZoneId:      pulumi.String(pulumi.String(zoneId)),
 //				CidrBlock:   pulumi.String("172.16.1.0/24"),
 //				VswitchName: pulumi.String("milvus-example"),
 //			})
@@ -65,7 +65,7 @@ import (
 //				return err
 //			}
 //			_, err = alicloud.NewMilvusInstance(ctx, "default", &alicloud.MilvusInstanceArgs{
-//				ZoneId: pulumi.String(zoneId),
+//				ZoneId: pulumi.String(pulumi.String(zoneId)),
 //				VswitchIds: alicloud.MilvusInstanceVswitchIdArray{
 //					&alicloud.MilvusInstanceVswitchIdArgs{
 //						VswId:  defaultN80M7S.ID(),

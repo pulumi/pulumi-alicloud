@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:    pulumi.String(name),
+//				VpcName:    pulumi.String(pulumi.String(name)),
 //				CidrBlock:  pulumi.String("192.168.0.0/16"),
 //				EnableIpv6: pulumi.Bool(true),
 //			})
@@ -64,27 +64,27 @@ import (
 //				return err
 //			}
 //			zoneASwitch, err := vpc.NewSwitch(ctx, "zone_a", &vpc.SwitchArgs{
-//				VswitchName:       pulumi.String(name),
+//				VswitchName:       pulumi.String(pulumi.String(name)),
 //				VpcId:             defaultNetwork.ID(),
 //				CidrBlock:         pulumi.String("192.168.0.0/18"),
-//				ZoneId:            pulumi.String(defaultGetZones.Zones[0].Id),
+//				ZoneId:            pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
 //				Ipv6CidrBlockMask: pulumi.Int(6),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			zoneB, err := vpc.NewSwitch(ctx, "zone_b", &vpc.SwitchArgs{
-//				VswitchName:       pulumi.String(name),
+//				VswitchName:       pulumi.String(pulumi.String(name)),
 //				VpcId:             defaultNetwork.ID(),
 //				CidrBlock:         pulumi.String("192.168.128.0/18"),
-//				ZoneId:            pulumi.String(defaultGetZones.Zones[1].Id),
+//				ZoneId:            pulumi.String(pulumi.String(defaultGetZones.Zones[1].Id)),
 //				Ipv6CidrBlockMask: pulumi.Int(8),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultIpv6Gateway, err := vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
-//				Ipv6GatewayName: pulumi.String(name),
+//				Ipv6GatewayName: pulumi.String(pulumi.String(name)),
 //				VpcId:           defaultNetwork.ID(),
 //			})
 //			if err != nil {
@@ -105,8 +105,8 @@ import (
 //				AddressIpVersion:          pulumi.String("DualStack"),
 //				Ipv6AddressType:           pulumi.String("Internet"),
 //				BandwidthPackageId:        defaultCommonBandwithPackage.ID(),
-//				ResourceGroupId:           pulumi.String(_default.Groups[1].Id),
-//				LoadBalancerName:          pulumi.String(name),
+//				ResourceGroupId:           pulumi.String(pulumi.String(_default.Groups[1].Id)),
+//				LoadBalancerName:          pulumi.String(pulumi.String(name)),
 //				DeletionProtectionEnabled: pulumi.Bool(false),
 //				LoadBalancerBillingConfig: &alb.LoadBalancerLoadBalancerBillingConfigArgs{
 //					PayType: pulumi.String("PayAsYouGo"),

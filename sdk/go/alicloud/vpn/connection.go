@@ -59,7 +59,7 @@ import (
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -67,7 +67,7 @@ import (
 //			default0, err := vpc.NewSwitch(ctx, "default0", &vpc.SwitchArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
 //				VpcId:     defaultNetwork.ID(),
-//				ZoneId:    pulumi.String(_default.Ids[0]),
+//				ZoneId:    pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err
@@ -75,7 +75,7 @@ import (
 //			default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
 //				CidrBlock: pulumi.String("172.16.1.0/24"),
 //				VpcId:     defaultNetwork.ID(),
-//				ZoneId:    pulumi.String(_default.Ids[1]),
+//				ZoneId:    pulumi.String(pulumi.String(_default.Ids[1])),
 //			})
 //			if err != nil {
 //				return err
@@ -83,7 +83,7 @@ import (
 //			HA_VPN, err := vpn.NewGateway(ctx, "HA-VPN", &vpn.GatewayArgs{
 //				VpnType:                   pulumi.String("Normal"),
 //				DisasterRecoveryVswitchId: default1.ID(),
-//				VpnGatewayName:            pulumi.String(name),
+//				VpnGatewayName:            pulumi.String(pulumi.String(name)),
 //				VswitchId:                 default0.ID(),
 //				AutoPay:                   pulumi.Bool(true),
 //				VpcId:                     defaultNetwork.ID(),
@@ -99,7 +99,7 @@ import (
 //				Description:         pulumi.String("defaultCustomerGateway"),
 //				IpAddress:           pulumi.String("2.2.2.5"),
 //				Asn:                 pulumi.String("2224"),
-//				CustomerGatewayName: pulumi.String(name),
+//				CustomerGatewayName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -108,14 +108,14 @@ import (
 //				Description:         pulumi.String("changeCustomerGateway"),
 //				IpAddress:           pulumi.String("2.2.2.6"),
 //				Asn:                 pulumi.String("2225"),
-//				CustomerGatewayName: pulumi.String(name),
+//				CustomerGatewayName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpn.NewConnection(ctx, "default", &vpn.ConnectionArgs{
 //				VpnGatewayId:      HA_VPN.ID(),
-//				VpnConnectionName: pulumi.String(name),
+//				VpnConnectionName: pulumi.String(pulumi.String(name)),
 //				LocalSubnets: pulumi.StringArray{
 //					pulumi.String("3.0.0.0/24"),
 //				},

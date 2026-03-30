@@ -65,19 +65,19 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//				VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstance, err := bastionhost.NewInstance(ctx, "default", &bastionhost.InstanceArgs{
-//				Description: pulumi.String(name),
+//				Description: pulumi.String(pulumi.String(name)),
 //				LicenseCode: pulumi.String("bhah_ent_50_asset"),
 //				PlanCode:    pulumi.String("cloudbastion"),
 //				Storage:     pulumi.String("5"),
 //				Bandwidth:   pulumi.String("5"),
 //				Period:      pulumi.Int(1),
-//				VswitchId:   pulumi.String(defaultGetSwitches.Ids[0]),
+//				VswitchId:   pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //				SecurityGroupIds: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
@@ -87,7 +87,7 @@ import (
 //			}
 //			defaultHost, err := bastionhost.NewHost(ctx, "default", &bastionhost.HostArgs{
 //				InstanceId:         defaultInstance.ID(),
-//				HostName:           pulumi.String(name),
+//				HostName:           pulumi.String(pulumi.String(name)),
 //				ActiveAddressType:  pulumi.String("Private"),
 //				HostPrivateAddress: pulumi.String("172.16.0.10"),
 //				OsType:             pulumi.String("Linux"),
@@ -97,7 +97,7 @@ import (
 //				return err
 //			}
 //			defaultHostAccount, err := bastionhost.NewHostAccount(ctx, "default", &bastionhost.HostAccountArgs{
-//				HostAccountName: pulumi.String(name),
+//				HostAccountName: pulumi.String(pulumi.String(name)),
 //				HostId:          defaultHost.HostId,
 //				InstanceId:      defaultHost.InstanceId,
 //				ProtocolName:    pulumi.String("SSH"),
@@ -111,9 +111,9 @@ import (
 //				privateKey = param
 //			}
 //			defaultHostShareKey, err := bastionhost.NewHostShareKey(ctx, "default", &bastionhost.HostShareKeyArgs{
-//				HostShareKeyName: pulumi.String(name),
+//				HostShareKeyName: pulumi.String(pulumi.String(name)),
 //				InstanceId:       defaultInstance.ID(),
-//				PrivateKey:       pulumi.String(privateKey),
+//				PrivateKey:       pulumi.String(pulumi.String(privateKey)),
 //			})
 //			if err != nil {
 //				return err

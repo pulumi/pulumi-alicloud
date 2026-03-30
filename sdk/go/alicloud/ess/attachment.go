@@ -94,7 +94,7 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//				VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
 //			})
 //			if err != nil {
 //				return err
@@ -115,13 +115,13 @@ import (
 //			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "default", &ess.ScalingGroupArgs{
 //				MinSize:          pulumi.Int(0),
 //				MaxSize:          pulumi.Int(2),
-//				ScalingGroupName: pulumi.String(myName),
+//				ScalingGroupName: pulumi.String(pulumi.String(myName)),
 //				RemovalPolicies: pulumi.StringArray{
 //					pulumi.String("OldestInstance"),
 //					pulumi.String("NewestInstance"),
 //				},
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.String(defaultGetSwitches.Ids[0]),
+//					pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //				},
 //			})
 //			if err != nil {
@@ -129,8 +129,8 @@ import (
 //			}
 //			_, err = ess.NewScalingConfiguration(ctx, "default", &ess.ScalingConfigurationArgs{
 //				ScalingGroupId:     defaultScalingGroup.ID(),
-//				ImageId:            pulumi.String(defaultGetImages.Images[0].Id),
-//				InstanceType:       pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:            pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+//				InstanceType:       pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //				SecurityGroupId:    defaultSecurityGroup.ID(),
 //				SystemDiskCategory: pulumi.String("cloud_essd"),
 //				ForceDelete:        pulumi.Bool(true),
@@ -145,8 +145,8 @@ import (
 //				key0 := index
 //				_ := index
 //				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &ecs.InstanceArgs{
-//					ImageId:      pulumi.String(defaultGetImages.Images[0].Id),
-//					InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//					ImageId:      pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+//					InstanceType: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
 //					SecurityGroups: pulumi.StringArray{
 //						defaultSecurityGroup.ID(),
 //					},
@@ -154,8 +154,8 @@ import (
 //					InternetMaxBandwidthOut: pulumi.Int(10),
 //					InstanceChargeType:      pulumi.String("PostPaid"),
 //					SystemDiskCategory:      pulumi.String("cloud_essd"),
-//					VswitchId:               pulumi.String(defaultGetSwitches.Ids[0]),
-//					InstanceName:            pulumi.String(name),
+//					VswitchId:               pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
+//					InstanceName:            pulumi.String(pulumi.String(name)),
 //				})
 //				if err != nil {
 //					return err

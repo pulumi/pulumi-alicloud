@@ -53,7 +53,7 @@ import (
 //						ClientType:   pulumi.Int(4),
 //					},
 //				},
-//				SyntheticTaskName: pulumi.String(name),
+//				SyntheticTaskName: pulumi.String(pulumi.String(name)),
 //				CustomPeriod: &arms.SyntheticTaskCustomPeriodArgs{
 //					EndHour:   pulumi.Int(12),
 //					StartHour: pulumi.Int(11),
@@ -217,7 +217,7 @@ import (
 //					IsOpenTrace:     pulumi.Bool(true),
 //					TraceClientType: pulumi.Int(1),
 //				},
-//				ResourceGroupId: pulumi.String(_default.Ids[0]),
+//				ResourceGroupId: pulumi.String(pulumi.String(_default.Ids[0])),
 //			})
 //			if err != nil {
 //				return err

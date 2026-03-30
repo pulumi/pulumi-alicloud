@@ -45,7 +45,7 @@ import (
 //			_, err := live.NewDomain(ctx, "default", &live.DomainArgs{
 //				DomainType: pulumi.String("liveVideo"),
 //				Scope:      pulumi.String("overseas"),
-//				DomainName: pulumi.String(domainName),
+//				DomainName: pulumi.String(pulumi.String(domainName)),
 //				Region:     pulumi.String("cn-shanghai"),
 //			})
 //			if err != nil {

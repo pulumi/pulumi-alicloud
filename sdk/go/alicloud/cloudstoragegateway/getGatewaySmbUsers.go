@@ -55,7 +55,7 @@ import (
 //				GatewayClass:           pulumi.String("Standard"),
 //				Type:                   pulumi.String("File"),
 //				PaymentType:            pulumi.String("PayAsYouGo"),
-//				VswitchId:              pulumi.String(defaultGetSwitches.Ids[0]),
+//				VswitchId:              pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
 //				ReleaseAfterExpiration: pulumi.Bool(false),
 //				PublicNetworkBandwidth: pulumi.Int(40),
 //				StorageBundleId:        example.ID(),

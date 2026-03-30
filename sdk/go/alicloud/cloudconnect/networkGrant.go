@@ -56,8 +56,8 @@ import (
 //			//	  alias      = "cen_account"
 //			//	}
 //			_default, err := cloudconnect.NewNetwork(ctx, "default", &cloudconnect.NetworkArgs{
-//				Name:        pulumi.String(name),
-//				Description: pulumi.String(name),
+//				Name:        pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
 //				IsDefault:   pulumi.Bool(true),
 //			})
@@ -65,7 +65,7 @@ import (
 //				return err
 //			}
 //			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -73,7 +73,7 @@ import (
 //			_, err = cloudconnect.NewNetworkGrant(ctx, "default", &cloudconnect.NetworkGrantArgs{
 //				CcnId:  _default.ID(),
 //				CenId:  cen.ID(),
-//				CenUid: pulumi.Float64(anotherUid),
+//				CenUid: pulumi.String(pulumi.Float64(anotherUid)),
 //			})
 //			if err != nil {
 //				return err

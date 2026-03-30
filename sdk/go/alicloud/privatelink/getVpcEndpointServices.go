@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_default, err := privatelink.NewVpcEndpointService(ctx, "default", &privatelink.VpcEndpointServiceArgs{
-//				ServiceDescription:   pulumi.String(name),
+//				ServiceDescription:   pulumi.String(pulumi.String(name)),
 //				AutoAcceptConnection: pulumi.Bool(true),
 //			})
 //			if err != nil {

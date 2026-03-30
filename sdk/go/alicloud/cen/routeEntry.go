@@ -75,7 +75,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(example.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(example.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -88,10 +88,10 @@ import (
 //				return err
 //			}
 //			exampleInstance, err := ecs.NewInstance(ctx, "example", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(example.Zones[0].Id),
+//				AvailabilityZone: pulumi.String(pulumi.String(example.Zones[0].Id)),
 //				InstanceName:     pulumi.String("terraform-example"),
-//				ImageId:          pulumi.String(exampleGetImages.Images[0].Id),
-//				InstanceType:     pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:          pulumi.String(pulumi.String(exampleGetImages.Images[0].Id)),
+//				InstanceType:     pulumi.String(pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id)),
 //				SecurityGroups: pulumi.StringArray{
 //					exampleSecurityGroup.ID(),
 //				},
@@ -112,7 +112,7 @@ import (
 //				InstanceId:            exampleInstance2.ID(),
 //				ChildInstanceId:       exampleNetwork.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
+//				ChildInstanceRegionId: pulumi.String(pulumi.String(_default.Regions[0].Id)),
 //			})
 //			if err != nil {
 //				return err

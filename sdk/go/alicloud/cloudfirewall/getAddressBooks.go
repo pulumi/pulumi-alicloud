@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_default, err := cloudfirewall.NewAddressBook(ctx, "default", &cloudfirewall.AddressBookArgs{
-//				GroupName:     pulumi.String(name),
+//				GroupName:     pulumi.String(pulumi.String(name)),
 //				GroupType:     pulumi.String("ip"),
 //				Description:   pulumi.String("tf-description"),
 //				AutoAddTagEcs: pulumi.Int(0),

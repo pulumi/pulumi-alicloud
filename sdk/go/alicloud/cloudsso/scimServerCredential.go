@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudsso.NewScimServerCredential(ctx, "default", &cloudsso.ScimServerCredentialArgs{
-//				DirectoryId:          pulumi.String(_default.Directories[0].Id),
+//				DirectoryId:          pulumi.String(pulumi.String(_default.Directories[0].Id)),
 //				CredentialSecretFile: pulumi.String("./credential_secret_file.txt"),
 //			})
 //			if err != nil {

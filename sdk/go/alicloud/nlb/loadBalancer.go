@@ -51,33 +51,33 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(pulumi.String(defaultGetZones.Zones[0].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("10.4.1.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultGetZones.Zones[1].Id),
+//				ZoneId:      pulumi.String(pulumi.String(defaultGetZones.Zones[1].Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = nlb.NewLoadBalancer(ctx, "default", &nlb.LoadBalancerArgs{
-//				LoadBalancerName: pulumi.String(name),
-//				ResourceGroupId:  pulumi.String(_default.Ids[0]),
+//				LoadBalancerName: pulumi.String(pulumi.String(name)),
+//				ResourceGroupId:  pulumi.String(pulumi.String(_default.Ids[0])),
 //				LoadBalancerType: pulumi.String("Network"),
 //				AddressType:      pulumi.String("Internet"),
 //				AddressIpVersion: pulumi.String("Ipv4"),
@@ -138,7 +138,7 @@ import (
 //				zone = param
 //			}
 //			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				VpcName:    pulumi.String(name),
+//				VpcName:    pulumi.String(pulumi.String(name)),
 //				CidrBlock:  pulumi.String("10.2.0.0/16"),
 //				EnableIpv6: pulumi.Bool(true),
 //			})
@@ -163,14 +163,14 @@ import (
 //				vsw = append(vsw, __res)
 //			}
 //			_default, err := vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
-//				Ipv6GatewayName: pulumi.String(name),
+//				Ipv6GatewayName: pulumi.String(pulumi.String(name)),
 //				VpcId:           vpc.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = nlb.NewLoadBalancer(ctx, "nlb", &nlb.LoadBalancerArgs{
-//				LoadBalancerName: pulumi.String(name),
+//				LoadBalancerName: pulumi.String(pulumi.String(name)),
 //				LoadBalancerType: pulumi.String("Network"),
 //				AddressType:      pulumi.String("Intranet"),
 //				AddressIpVersion: pulumi.String("DualStack"),
