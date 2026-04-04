@@ -60,10 +60,33 @@ namespace Pulumi.AliCloud.Amqp
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = new AliCloud.Amqp.Instance("default", new()
+    ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultGetSecurityGroups = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
+    ///     {
+    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Amqp.Instance("default", new()
     ///     {
     ///         InstanceName = name,
     ///         PaymentType = "PayAsYouGo",
+    ///         VpcId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.VpcId),
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[1]),
+    ///         },
+    ///         SecurityGroupId = defaultGetSecurityGroups.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Ids[0]),
     ///         ServerlessChargeType = "onDemand",
     ///     });
     /// 
@@ -114,7 +137,7 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// Instance type. Valid values: 
+        /// Instance type. Valid values:
         /// - professional: professional Edition
         /// - enterprise: enterprise Edition
         /// - vip: Platinum Edition.
@@ -123,6 +146,12 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
+
+        /// <summary>
+        /// The Listener mode. Valid values: `TcpAndSsl`, `SslOnly`.
+        /// </summary>
+        [Output("listenerMode")]
+        public Output<string> ListenerMode { get; private set; } = null!;
 
         /// <summary>
         /// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
@@ -201,6 +230,12 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the security group. **NOTE:** From version 1.274.0, `SecurityGroupId` is required.
+        /// </summary>
+        [Output("securityGroupId")]
+        public Output<string?> SecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The billing type of the serverless instance. Value: onDemand.
         /// </summary>
         [Output("serverlessChargeType")]
@@ -235,6 +270,18 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         [Output("tracingStorageTime")]
         public Output<int> TracingStorageTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the VPC. **NOTE:** From version 1.274.0, `VpcId` is required.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string?> VpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// The IDs of the vSwitches with which the instance is associated. `VswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `VswitchIds` is required.
+        /// </summary>
+        [Output("vswitchIds")]
+        public Output<ImmutableArray<string>> VswitchIds { get; private set; } = null!;
 
 
         /// <summary>
@@ -301,7 +348,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Instance type. Valid values: 
+        /// Instance type. Valid values:
         /// - professional: professional Edition
         /// - enterprise: enterprise Edition
         /// - vip: Platinum Edition.
@@ -310,6 +357,12 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// The Listener mode. Valid values: `TcpAndSsl`, `SslOnly`.
+        /// </summary>
+        [Input("listenerMode")]
+        public Input<string>? ListenerMode { get; set; }
 
         /// <summary>
         /// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
@@ -388,6 +441,12 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
+        /// The ID of the security group. **NOTE:** From version 1.274.0, `SecurityGroupId` is required.
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
         /// The billing type of the serverless instance. Value: onDemand.
         /// </summary>
         [Input("serverlessChargeType")]
@@ -416,6 +475,24 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         [Input("tracingStorageTime")]
         public Input<int>? TracingStorageTime { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC. **NOTE:** From version 1.274.0, `VpcId` is required.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        [Input("vswitchIds")]
+        private InputList<string>? _vswitchIds;
+
+        /// <summary>
+        /// The IDs of the vSwitches with which the instance is associated. `VswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `VswitchIds` is required.
+        /// </summary>
+        public InputList<string> VswitchIds
+        {
+            get => _vswitchIds ?? (_vswitchIds = new InputList<string>());
+            set => _vswitchIds = value;
+        }
 
         public InstanceArgs()
         {
@@ -450,7 +527,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Instance type. Valid values: 
+        /// Instance type. Valid values:
         /// - professional: professional Edition
         /// - enterprise: enterprise Edition
         /// - vip: Platinum Edition.
@@ -459,6 +536,12 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// The Listener mode. Valid values: `TcpAndSsl`, `SslOnly`.
+        /// </summary>
+        [Input("listenerMode")]
+        public Input<string>? ListenerMode { get; set; }
 
         /// <summary>
         /// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
@@ -537,6 +620,12 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
+        /// The ID of the security group. **NOTE:** From version 1.274.0, `SecurityGroupId` is required.
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
         /// The billing type of the serverless instance. Value: onDemand.
         /// </summary>
         [Input("serverlessChargeType")]
@@ -571,6 +660,24 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         [Input("tracingStorageTime")]
         public Input<int>? TracingStorageTime { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC. **NOTE:** From version 1.274.0, `VpcId` is required.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        [Input("vswitchIds")]
+        private InputList<string>? _vswitchIds;
+
+        /// <summary>
+        /// The IDs of the vSwitches with which the instance is associated. `VswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `VswitchIds` is required.
+        /// </summary>
+        public InputList<string> VswitchIds
+        {
+            get => _vswitchIds ?? (_vswitchIds = new InputList<string>());
+            set => _vswitchIds = value;
+        }
 
         public InstanceState()
         {

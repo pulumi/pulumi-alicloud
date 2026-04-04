@@ -12,10 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a ADB Lake Account resource. Account of the DBClusterLakeVesion.
+// Provides a AnalyticDB for MySQL (ADB) Lake Account resource.
 //
-// For information about ADB Lake Account and how to use it, see [What is Lake Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createaccount).
-// For information about ADB Lake Account Privileges and how to use it, see [What are Lake Account Privileges](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-modifyaccountprivileges/).
+// Account of the DBClusterLakeVesion.
+//
+// For information about AnalyticDB for MySQL (ADB) Lake Account and how to use it, see [What is Lake Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-modifyaccountprivileges/).
 //
 // > **NOTE:** Available since v1.214.0.
 //
@@ -152,6 +153,8 @@ type LakeAccount struct {
 	AccountType pulumi.StringPtrOutput `pulumi:"accountType"`
 	// The DBCluster ID.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
+	// List of Alibaba Cloud RAM user IDs to bind.
+	RamUserLists pulumi.StringArrayOutput `pulumi:"ramUserLists"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -214,6 +217,8 @@ type lakeAccountState struct {
 	AccountType *string `pulumi:"accountType"`
 	// The DBCluster ID.
 	DbClusterId *string `pulumi:"dbClusterId"`
+	// List of Alibaba Cloud RAM user IDs to bind.
+	RamUserLists []string `pulumi:"ramUserLists"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 }
@@ -231,6 +236,8 @@ type LakeAccountState struct {
 	AccountType pulumi.StringPtrInput
 	// The DBCluster ID.
 	DbClusterId pulumi.StringPtrInput
+	// List of Alibaba Cloud RAM user IDs to bind.
+	RamUserLists pulumi.StringArrayInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 }
@@ -252,6 +259,8 @@ type lakeAccountArgs struct {
 	AccountType *string `pulumi:"accountType"`
 	// The DBCluster ID.
 	DbClusterId string `pulumi:"dbClusterId"`
+	// List of Alibaba Cloud RAM user IDs to bind.
+	RamUserLists []string `pulumi:"ramUserLists"`
 }
 
 // The set of arguments for constructing a LakeAccount resource.
@@ -268,6 +277,8 @@ type LakeAccountArgs struct {
 	AccountType pulumi.StringPtrInput
 	// The DBCluster ID.
 	DbClusterId pulumi.StringInput
+	// List of Alibaba Cloud RAM user IDs to bind.
+	RamUserLists pulumi.StringArrayInput
 }
 
 func (LakeAccountArgs) ElementType() reflect.Type {
@@ -385,6 +396,11 @@ func (o LakeAccountOutput) AccountType() pulumi.StringPtrOutput {
 // The DBCluster ID.
 func (o LakeAccountOutput) DbClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeAccount) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// List of Alibaba Cloud RAM user IDs to bind.
+func (o LakeAccountOutput) RamUserLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LakeAccount) pulumi.StringArrayOutput { return v.RamUserLists }).(pulumi.StringArrayOutput)
 }
 
 // The status of the resource.

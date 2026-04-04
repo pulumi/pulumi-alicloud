@@ -55,6 +55,11 @@ export const getSites: typeof import("./getSites").getSites = null as any;
 export const getSitesOutput: typeof import("./getSites").getSitesOutput = null as any;
 utilities.lazyLoad(exports, ["getSites","getSitesOutput"], () => require("./getSites"));
 
+export { GetWafRulesetsArgs, GetWafRulesetsResult, GetWafRulesetsOutputArgs } from "./getWafRulesets";
+export const getWafRulesets: typeof import("./getWafRulesets").getWafRulesets = null as any;
+export const getWafRulesetsOutput: typeof import("./getWafRulesets").getWafRulesetsOutput = null as any;
+utilities.lazyLoad(exports, ["getWafRulesets","getWafRulesetsOutput"], () => require("./getWafRulesets"));
+
 export { HttpIncomingRequestHeaderModificationRuleArgs, HttpIncomingRequestHeaderModificationRuleState } from "./httpIncomingRequestHeaderModificationRule";
 export type HttpIncomingRequestHeaderModificationRule = import("./httpIncomingRequestHeaderModificationRule").HttpIncomingRequestHeaderModificationRule;
 export const HttpIncomingRequestHeaderModificationRule: typeof import("./httpIncomingRequestHeaderModificationRule").HttpIncomingRequestHeaderModificationRule = null as any;

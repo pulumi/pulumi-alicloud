@@ -1356,7 +1356,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0+.
      * 
      * ## Example Usage
      * 
@@ -1405,7 +1405,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0+.
      * 
      * ## Example Usage
      * 
@@ -1454,7 +1454,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0+.
      * 
      * ## Example Usage
      * 
@@ -1503,7 +1503,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0+.
      * 
      * ## Example Usage
      * 
@@ -1552,7 +1552,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0+.
      * 
      * ## Example Usage
      * 
@@ -1601,7 +1601,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0+.
      * 
      * ## Example Usage
      * 
@@ -1650,7 +1650,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0+.
      * 
      * ## Example Usage
      * 

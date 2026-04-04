@@ -16,7 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a forward resource.
+ * Provides a Nat Gateway Forward Entry resource.
+ * 
+ * DNAT route table entry.
+ * 
+ * For information about Nat Gateway Forward Entry and how to use it, see [What is Forward Entry](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateForwardEntry).
  * 
  * &gt; **NOTE:** Available since v1.40.0.
  * 
@@ -39,10 +43,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.vpc.NatGateway;
  * import com.pulumi.alicloud.vpc.NatGatewayArgs;
- * import com.pulumi.alicloud.ecs.EipAddress;
- * import com.pulumi.alicloud.ecs.EipAddressArgs;
- * import com.pulumi.alicloud.ecs.EipAssociation;
- * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+ * import com.pulumi.alicloud.vpc.NatIp;
+ * import com.pulumi.alicloud.vpc.NatIpArgs;
  * import com.pulumi.alicloud.vpc.ForwardEntry;
  * import com.pulumi.alicloud.vpc.ForwardEntryArgs;
  * import java.util.List;
@@ -59,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("forward-entry-example-name");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
@@ -78,28 +80,27 @@ import javax.annotation.Nullable;
  * 
  *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()
  *             .vpcId(defaultNetwork.id())
- *             .internetChargeType("PayByLcu")
  *             .natGatewayName(name)
  *             .natType("Enhanced")
  *             .vswitchId(defaultSwitch.id())
+ *             .networkType("intranet")
  *             .build());
  * 
- *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
- *             .addressName(name)
- *             .build());
- * 
- *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()
- *             .allocationId(defaultEipAddress.id())
- *             .instanceId(defaultNatGateway.id())
+ *         var defaultNatIp = new NatIp("defaultNatIp", NatIpArgs.builder()
+ *             .natIp("172.16.0.66")
+ *             .natIpName(name)
+ *             .natGatewayId(defaultNatGateway.id())
+ *             .natIpCidr(defaultSwitch.cidrBlock())
  *             .build());
  * 
  *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()
  *             .forwardTableId(defaultNatGateway.forwardTableIds())
- *             .externalIp(defaultEipAddress.ipAddress())
+ *             .externalIp(defaultNatIp.natIp())
  *             .externalPort("80")
  *             .ipProtocol("tcp")
- *             .internalIp("172.16.0.3")
+ *             .internalIp("172.16.0.115")
  *             .internalPort("8080")
+ *             .forwardEntryName(name)
  *             .build());
  * 
  *     }
@@ -111,122 +112,134 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Forward Entry can be imported using the id, e.g.
+ * Nat Gateway Forward Entry can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:vpc/forwardEntry:ForwardEntry foo ftb-1aece3:fwd-232ce2
+ * $ pulumi import alicloud:vpc/forwardEntry:ForwardEntry example &lt;forward_table_id&gt;:&lt;forward_entry_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:vpc/forwardEntry:ForwardEntry")
 public class ForwardEntry extends com.pulumi.resources.CustomResource {
     /**
-     * The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
+     * When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
+     * - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
      * 
      */
     @Export(name="externalIp", refs={String.class}, tree="[0]")
     private Output<String> externalIp;
 
     /**
-     * @return The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
+     * @return When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
+     * - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
      * 
      */
     public Output<String> externalIp() {
         return this.externalIp;
     }
     /**
-     * The external port, valid value is 1~65535|any.
+     * The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
+     * - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
+     * - If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified by these parameters must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
      * 
      */
     @Export(name="externalPort", refs={String.class}, tree="[0]")
     private Output<String> externalPort;
 
     /**
-     * @return The external port, valid value is 1~65535|any.
+     * @return The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
+     * - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
+     * - If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified by these parameters must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
      * 
      */
     public Output<String> externalPort() {
         return this.externalPort;
     }
     /**
-     * The id of the forward entry on the server.
+     * (Available since v1.43.0) The id of the forward entry on the server.
      * 
      */
     @Export(name="forwardEntryId", refs={String.class}, tree="[0]")
     private Output<String> forwardEntryId;
 
     /**
-     * @return The id of the forward entry on the server.
+     * @return (Available since v1.43.0) The id of the forward entry on the server.
      * 
      */
     public Output<String> forwardEntryId() {
         return this.forwardEntryId;
     }
     /**
-     * The name of forward entry.
+     * The name of the DNAT entry.
      * 
      */
     @Export(name="forwardEntryName", refs={String.class}, tree="[0]")
     private Output<String> forwardEntryName;
 
     /**
-     * @return The name of forward entry.
+     * @return The name of the DNAT entry.
      * 
      */
     public Output<String> forwardEntryName() {
         return this.forwardEntryName;
     }
     /**
-     * The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forwardTableIds&#34;.
+     * The ID of the DNAT table to which the DNAT entry belongs.
      * 
      */
     @Export(name="forwardTableId", refs={String.class}, tree="[0]")
     private Output<String> forwardTableId;
 
     /**
-     * @return The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forwardTableIds&#34;.
+     * @return The ID of the DNAT table to which the DNAT entry belongs.
      * 
      */
     public Output<String> forwardTableId() {
         return this.forwardTableId;
     }
     /**
-     * The internal ip, must a private ip.
+     * The private IP address.
+     * - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
+     * - The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
      * 
      */
     @Export(name="internalIp", refs={String.class}, tree="[0]")
     private Output<String> internalIp;
 
     /**
-     * @return The internal ip, must a private ip.
+     * @return The private IP address.
+     * - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
+     * - The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
      * 
      */
     public Output<String> internalIp() {
         return this.internalIp;
     }
     /**
-     * The internal port, valid value is 1~65535|any.
+     * When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
+     * - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
      * 
      */
     @Export(name="internalPort", refs={String.class}, tree="[0]")
     private Output<String> internalPort;
 
     /**
-     * @return The internal port, valid value is 1~65535|any.
+     * @return When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
+     * - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
      * 
      */
     public Output<String> internalPort() {
         return this.internalPort;
     }
     /**
-     * The ip protocol, valid value is tcp|udp|any.
+     * The protocol type. Valid values:
      * 
      */
     @Export(name="ipProtocol", refs={String.class}, tree="[0]")
     private Output<String> ipProtocol;
 
     /**
-     * @return The ip protocol, valid value is tcp|udp|any.
+     * @return The protocol type. Valid values:
      * 
      */
     public Output<String> ipProtocol() {
@@ -236,10 +249,10 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;forward_entry_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -251,18 +264,14 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Specifies whether to remove limits on the port range. Default value is `false`.
-     * 
-     * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
+     * Specifies whether to enable port break. Valid values:
      * 
      */
     @Export(name="portBreak", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> portBreak;
 
     /**
-     * @return Specifies whether to remove limits on the port range. Default value is `false`.
-     * 
-     * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
+     * @return Specifies whether to enable port break. Valid values:
      * 
      */
     public Output<Optional<Boolean>> portBreak() {

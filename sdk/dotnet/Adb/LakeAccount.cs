@@ -10,10 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Adb
 {
     /// <summary>
-    /// Provides a ADB Lake Account resource. Account of the DBClusterLakeVesion.
+    /// Provides a AnalyticDB for MySQL (ADB) Lake Account resource.
     /// 
-    /// For information about ADB Lake Account and how to use it, see [What is Lake Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createaccount).
-    /// For information about ADB Lake Account Privileges and how to use it, see [What are Lake Account Privileges](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-modifyaccountprivileges/).
+    /// Account of the DBClusterLakeVesion.
+    /// 
+    /// For information about AnalyticDB for MySQL (ADB) Lake Account and how to use it, see [What is Lake Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-modifyaccountprivileges/).
     /// 
     /// &gt; **NOTE:** Available since v1.214.0.
     /// 
@@ -168,6 +169,12 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> DbClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// List of Alibaba Cloud RAM user IDs to bind.
+        /// </summary>
+        [Output("ramUserLists")]
+        public Output<ImmutableArray<string>> RamUserLists { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the resource.
         /// </summary>
         [Output("status")]
@@ -275,6 +282,18 @@ namespace Pulumi.AliCloud.Adb
         [Input("dbClusterId", required: true)]
         public Input<string> DbClusterId { get; set; } = null!;
 
+        [Input("ramUserLists")]
+        private InputList<string>? _ramUserLists;
+
+        /// <summary>
+        /// List of Alibaba Cloud RAM user IDs to bind.
+        /// </summary>
+        public InputList<string> RamUserLists
+        {
+            get => _ramUserLists ?? (_ramUserLists = new InputList<string>());
+            set => _ramUserLists = value;
+        }
+
         public LakeAccountArgs()
         {
         }
@@ -334,6 +353,18 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("dbClusterId")]
         public Input<string>? DbClusterId { get; set; }
+
+        [Input("ramUserLists")]
+        private InputList<string>? _ramUserLists;
+
+        /// <summary>
+        /// List of Alibaba Cloud RAM user IDs to bind.
+        /// </summary>
+        public InputList<string> RamUserLists
+        {
+            get => _ramUserLists ?? (_ramUserLists = new InputList<string>());
+            set => _ramUserLists = value;
+        }
 
         /// <summary>
         /// The status of the resource.

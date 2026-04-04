@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServerGroupsResult {
+    /**
+     * @return A list of Nlb Server Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetServerGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,15 +27,39 @@ public final class GetServerGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Server Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the resource group to which the security group belongs.
+     * 
+     */
     private @Nullable String resourceGroupId;
     private @Nullable List<String> serverGroupNames;
+    /**
+     * @return The type of the server group.
+     * 
+     */
     private @Nullable String serverGroupType;
+    /**
+     * @return The status of the server group.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetServerGroupsResult() {}
+    /**
+     * @return A list of Nlb Server Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetServerGroupsGroup> groups() {
         return this.groups;
     }
@@ -48,24 +76,44 @@ public final class GetServerGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Server Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the resource group to which the security group belongs.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
     public List<String> serverGroupNames() {
         return this.serverGroupNames == null ? List.of() : this.serverGroupNames;
     }
+    /**
+     * @return The type of the server group.
+     * 
+     */
     public Optional<String> serverGroupType() {
         return Optional.ofNullable(this.serverGroupType);
     }
+    /**
+     * @return The status of the server group.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

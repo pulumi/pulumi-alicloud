@@ -50,6 +50,21 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The ARN of the resource.
+     * 
+     */
+    @Import(name="propertiesResourceArn")
+    private @Nullable Output<String> propertiesResourceArn;
+
+    /**
+     * @return The ARN of the resource.
+     * 
+     */
+    public Optional<Output<String>> propertiesResourceArn() {
+        return Optional.ofNullable(this.propertiesResourceArn);
+    }
+
+    /**
      * Associated resource ARN.
      * 
      * &gt; **NOTE:**  This parameter is not available when the association type &#39;AssociationType&#39; is the resource consumer &#39;Target&#39;.
@@ -81,6 +96,21 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> resourceId() {
         return Optional.ofNullable(this.resourceId);
+    }
+
+    /**
+     * The property of the resource.
+     * 
+     */
+    @Import(name="resourceProperty")
+    private @Nullable Output<String> resourceProperty;
+
+    /**
+     * @return The property of the resource.
+     * 
+     */
+    public Optional<Output<String>> resourceProperty() {
+        return Optional.ofNullable(this.resourceProperty);
     }
 
     /**
@@ -133,8 +163,10 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
     private SharedResourceState(SharedResourceState $) {
         this.createTime = $.createTime;
         this.permissionName = $.permissionName;
+        this.propertiesResourceArn = $.propertiesResourceArn;
         this.resourceArn = $.resourceArn;
         this.resourceId = $.resourceId;
+        this.resourceProperty = $.resourceProperty;
         this.resourceShareId = $.resourceShareId;
         this.resourceType = $.resourceType;
         this.status = $.status;
@@ -205,6 +237,27 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param propertiesResourceArn The ARN of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder propertiesResourceArn(@Nullable Output<String> propertiesResourceArn) {
+            $.propertiesResourceArn = propertiesResourceArn;
+            return this;
+        }
+
+        /**
+         * @param propertiesResourceArn The ARN of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder propertiesResourceArn(String propertiesResourceArn) {
+            return propertiesResourceArn(Output.of(propertiesResourceArn));
+        }
+
+        /**
          * @param resourceArn Associated resource ARN.
          * 
          * &gt; **NOTE:**  This parameter is not available when the association type &#39;AssociationType&#39; is the resource consumer &#39;Target&#39;.
@@ -248,6 +301,27 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder resourceId(String resourceId) {
             return resourceId(Output.of(resourceId));
+        }
+
+        /**
+         * @param resourceProperty The property of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceProperty(@Nullable Output<String> resourceProperty) {
+            $.resourceProperty = resourceProperty;
+            return this;
+        }
+
+        /**
+         * @param resourceProperty The property of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceProperty(String resourceProperty) {
+            return resourceProperty(Output.of(resourceProperty));
         }
 
         /**

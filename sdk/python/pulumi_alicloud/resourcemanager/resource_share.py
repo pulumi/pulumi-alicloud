@@ -26,6 +26,7 @@ class ResourceShareArgs:
                  permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_arns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_properties: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
@@ -43,6 +44,7 @@ class ResourceShareArgs:
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]] resource_properties: A list of resource properties. See `resource_properties` below.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]] resources: List of shared resources. See `resources` below.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -60,6 +62,8 @@ class ResourceShareArgs:
             pulumi.set(__self__, "resource_arns", resource_arns)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resource_properties is not None:
+            pulumi.set(__self__, "resource_properties", resource_properties)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
         if tags is not None:
@@ -134,6 +138,18 @@ class ResourceShareArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceProperties")
+    def resource_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]]:
+        """
+        A list of resource properties. See `resource_properties` below.
+        """
+        return pulumi.get(self, "resource_properties")
+
+    @resource_properties.setter
+    def resource_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]]):
+        pulumi.set(self, "resource_properties", value)
+
+    @_builtins.property
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]]:
         """
@@ -182,6 +198,7 @@ class _ResourceShareState:
                  permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_arns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_properties: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]] = None,
                  resource_share_name: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_share_owner: Optional[pulumi.Input[_builtins.str]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]] = None,
@@ -202,6 +219,7 @@ class _ResourceShareState:
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]] resource_properties: A list of resource properties. See `resource_properties` below.
         :param pulumi.Input[_builtins.str] resource_share_name: The name of resource share.
         :param pulumi.Input[_builtins.str] resource_share_owner: The owner of resource share,  `Self` and `OtherAccounts`.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]] resources: List of shared resources. See `resources` below.
@@ -223,6 +241,8 @@ class _ResourceShareState:
             pulumi.set(__self__, "resource_arns", resource_arns)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resource_properties is not None:
+            pulumi.set(__self__, "resource_properties", resource_properties)
         if resource_share_name is not None:
             pulumi.set(__self__, "resource_share_name", resource_share_name)
         if resource_share_owner is not None:
@@ -301,6 +321,18 @@ class _ResourceShareState:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceProperties")
+    def resource_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]]:
+        """
+        A list of resource properties. See `resource_properties` below.
+        """
+        return pulumi.get(self, "resource_properties")
+
+    @resource_properties.setter
+    def resource_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]]):
+        pulumi.set(self, "resource_properties", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceShareName")
@@ -389,6 +421,7 @@ class ResourceShare(pulumi.CustomResource):
                  permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_arns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]]] = None,
                  resource_share_name: Optional[pulumi.Input[_builtins.str]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -414,7 +447,7 @@ class ResourceShare(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
         ```
 
@@ -441,6 +474,7 @@ class ResourceShare(pulumi.CustomResource):
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]] resource_properties: A list of resource properties. See `resource_properties` below.
         :param pulumi.Input[_builtins.str] resource_share_name: The name of resource share.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]] resources: List of shared resources. See `resources` below.
                
@@ -476,7 +510,7 @@ class ResourceShare(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
         ```
 
@@ -510,6 +544,7 @@ class ResourceShare(pulumi.CustomResource):
                  permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_arns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]]] = None,
                  resource_share_name: Optional[pulumi.Input[_builtins.str]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -527,6 +562,7 @@ class ResourceShare(pulumi.CustomResource):
             __props__.__dict__["permission_names"] = permission_names
             __props__.__dict__["resource_arns"] = resource_arns
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["resource_properties"] = resource_properties
             if resource_share_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_share_name'")
             __props__.__dict__["resource_share_name"] = resource_share_name
@@ -551,6 +587,7 @@ class ResourceShare(pulumi.CustomResource):
             permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             resource_arns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]]] = None,
             resource_share_name: Optional[pulumi.Input[_builtins.str]] = None,
             resource_share_owner: Optional[pulumi.Input[_builtins.str]] = None,
             resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
@@ -575,6 +612,7 @@ class ResourceShare(pulumi.CustomResource):
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]] resource_properties: A list of resource properties. See `resource_properties` below.
         :param pulumi.Input[_builtins.str] resource_share_name: The name of resource share.
         :param pulumi.Input[_builtins.str] resource_share_owner: The owner of resource share,  `Self` and `OtherAccounts`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]] resources: List of shared resources. See `resources` below.
@@ -595,6 +633,7 @@ class ResourceShare(pulumi.CustomResource):
         __props__.__dict__["permission_names"] = permission_names
         __props__.__dict__["resource_arns"] = resource_arns
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["resource_properties"] = resource_properties
         __props__.__dict__["resource_share_name"] = resource_share_name
         __props__.__dict__["resource_share_owner"] = resource_share_owner
         __props__.__dict__["resources"] = resources
@@ -648,6 +687,14 @@ class ResourceShare(pulumi.CustomResource):
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceProperties")
+    def resource_properties(self) -> pulumi.Output[Optional[Sequence['outputs.ResourceShareResourceProperty']]]:
+        """
+        A list of resource properties. See `resource_properties` below.
+        """
+        return pulumi.get(self, "resource_properties")
 
     @_builtins.property
     @pulumi.getter(name="resourceShareName")

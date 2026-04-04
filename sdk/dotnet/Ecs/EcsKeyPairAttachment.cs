@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Key Pair Attachment and how to use it, see [What is Key Pair Attachment](https://www.alibabacloud.com/help/en/doc-detail/51775.htm).
     /// 
-    /// &gt; **NOTE:** Available since v1.121.0+.
+    /// &gt; **NOTE:** Available since v1.121.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,75 +29,81 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AliCloud.GetZones.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = "Instance",
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var exampleGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         AvailabilityZone = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
-    ///     });
-    /// 
-    ///     var exampleGetImages = AliCloud.Ecs.GetImages.Invoke(new()
-    ///     {
-    ///         NameRegex = "^ubuntu_18.*64",
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         MostRecent = true,
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         VpcName = "terraform-example",
-    ///         CidrBlock = "172.17.3.0/24",
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
-    ///     {
-    ///         VswitchName = "terraform-example",
-    ///         CidrBlock = "172.17.3.0/24",
-    ///         VpcId = exampleNetwork.Id,
-    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
-    ///     {
-    ///         Name = "terraform-example",
-    ///         VpcId = exampleNetwork.Id,
-    ///     });
-    /// 
-    ///     var exampleInstance = new AliCloud.Ecs.Instance("example", new()
-    ///     {
-    ///         ImageId = exampleGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = exampleGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///         AvailabilityZone = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         SecurityGroups = new[]
-    ///         {
-    ///             exampleSecurityGroup.Id,
-    ///         },
-    ///         InstanceName = "terraform-example",
-    ///         InternetChargeType = "PayByBandwidth",
-    ///         VswitchId = exampleSwitch.Id,
-    ///     });
-    /// 
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var exampleEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("example", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
-    ///         KeyPairName = $"tf-example-{@default.Result}",
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
-    ///     var exampleEcsKeyPairAttachment = new AliCloud.Ecs.EcsKeyPairAttachment("example", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
-    ///         KeyPairName = exampleEcsKeyPair.KeyPairName,
+    ///         VswitchName = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "192.168.192.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         Name = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
+    ///     {
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             defaultSecurityGroup,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 10,
+    ///         AvailabilityZone = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+    ///         InstanceChargeType = "PostPaid",
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var defaultEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("default", new()
+    ///     {
+    ///         KeyPairName = $"{name}-{defaultInteger.Result}",
+    ///     });
+    /// 
+    ///     var defaultEcsKeyPairAttachment = new AliCloud.Ecs.EcsKeyPairAttachment("default", new()
+    ///     {
+    ///         KeyPairName = defaultEcsKeyPair.Id,
     ///         InstanceIds = new[]
     ///         {
-    ///             exampleInstance.Id,
+    ///             defaultInstance.Id,
     ///         },
     ///     });
     /// 
@@ -118,25 +124,27 @@ namespace Pulumi.AliCloud.Ecs
     public partial class EcsKeyPairAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        /// Specifies whether to make the key pair effective immediately. Valid values:
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The list of ECS instance's IDs.
+        /// The IDs of instances to which you want to bind the SSH key pair.
         /// </summary>
         [Output("instanceIds")]
         public Output<ImmutableArray<string>> InstanceIds { get; private set; } = null!;
 
         /// <summary>
-        /// New field 'key_pair_name' instead.
+        /// Field `KeyName` has been deprecated from provider version 1.121.0. New field `KeyPairName` instead.
+        /// 
+        /// &gt; **WARNING:**  If `Force` set to `True`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
         /// </summary>
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of key pair used to bind.
+        /// The name of the SSH key pair.
         /// </summary>
         [Output("keyPairName")]
         public Output<string> KeyPairName { get; private set; } = null!;
@@ -188,7 +196,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsKeyPairAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        /// Specifies whether to make the key pair effective immediately. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -197,7 +205,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _instanceIds;
 
         /// <summary>
-        /// The list of ECS instance's IDs.
+        /// The IDs of instances to which you want to bind the SSH key pair.
         /// </summary>
         public InputList<string> InstanceIds
         {
@@ -206,13 +214,15 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// New field 'key_pair_name' instead.
+        /// Field `KeyName` has been deprecated from provider version 1.121.0. New field `KeyPairName` instead.
+        /// 
+        /// &gt; **WARNING:**  If `Force` set to `True`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
         /// <summary>
-        /// The name of key pair used to bind.
+        /// The name of the SSH key pair.
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
@@ -226,7 +236,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsKeyPairAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        /// Specifies whether to make the key pair effective immediately. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -235,7 +245,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _instanceIds;
 
         /// <summary>
-        /// The list of ECS instance's IDs.
+        /// The IDs of instances to which you want to bind the SSH key pair.
         /// </summary>
         public InputList<string> InstanceIds
         {
@@ -244,13 +254,15 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// New field 'key_pair_name' instead.
+        /// Field `KeyName` has been deprecated from provider version 1.121.0. New field `KeyPairName` instead.
+        /// 
+        /// &gt; **WARNING:**  If `Force` set to `True`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
         /// <summary>
-        /// The name of key pair used to bind.
+        /// The name of the SSH key pair.
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }

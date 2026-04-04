@@ -297,6 +297,48 @@ public class CacheRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.includeHeader);
     }
     /**
+     * Processing pattern for the cache key.
+     * 
+     */
+    @Export(name="postBodyCacheKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> postBodyCacheKey;
+
+    /**
+     * @return Processing pattern for the cache key.
+     * 
+     */
+    public Output<Optional<String>> postBodyCacheKey() {
+        return Codegen.optional(this.postBodyCacheKey);
+    }
+    /**
+     * Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+     * 
+     */
+    @Export(name="postBodySizeLimit", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> postBodySizeLimit;
+
+    /**
+     * @return Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+     * 
+     */
+    public Output<Optional<String>> postBodySizeLimit() {
+        return Codegen.optional(this.postBodySizeLimit);
+    }
+    /**
+     * Toggle for the Post cache feature.
+     * 
+     */
+    @Export(name="postCache", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> postCache;
+
+    /**
+     * @return Toggle for the Post cache feature.
+     * 
+     */
+    public Output<Optional<String>> postCache() {
+        return Codegen.optional(this.postCache);
+    }
+    /**
      * Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
      * 
      */

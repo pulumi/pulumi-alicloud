@@ -24,6 +24,7 @@ class InstanceArgs:
                  edition: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 listener_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  max_connections: Optional[pulumi.Input[_builtins.int]] = None,
                  max_eip_tps: Optional[pulumi.Input[_builtins.str]] = None,
                  max_tps: Optional[pulumi.Input[_builtins.str]] = None,
@@ -35,11 +36,14 @@ class InstanceArgs:
                  renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  serverless_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_size: Optional[pulumi.Input[_builtins.str]] = None,
                  support_eip: Optional[pulumi.Input[_builtins.bool]] = None,
                  support_tracing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -49,12 +53,13 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
         :param pulumi.Input[_builtins.str] instance_name: The instance name.
-        :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values: 
+        :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values:
                - professional: professional Edition
                - enterprise: enterprise Edition
                - vip: Platinum Edition.
                - serverless: Serverless Edition.
                > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+        :param pulumi.Input[_builtins.str] listener_mode: The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
         :param pulumi.Input[_builtins.int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[_builtins.str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         :param pulumi.Input[_builtins.str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
@@ -68,11 +73,14 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] renewal_duration: The number of automatic renewal cycles.
         :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         :param pulumi.Input[_builtins.str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
+        :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
         :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
         :param pulumi.Input[_builtins.str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         :param pulumi.Input[_builtins.bool] support_eip: Whether to support public network.
         :param pulumi.Input[_builtins.bool] support_tracing: Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
         :param pulumi.Input[_builtins.int] tracing_storage_time: Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. **NOTE:** From version 1.274.0, `vpc_id` is required.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated. `vswitch_ids` only supports setting two values. **NOTE:** From version 1.274.0, `vswitch_ids` is required.
         """
         pulumi.set(__self__, "payment_type", payment_type)
         if auto_renew is not None:
@@ -83,6 +91,8 @@ class InstanceArgs:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if listener_mode is not None:
+            pulumi.set(__self__, "listener_mode", listener_mode)
         if max_connections is not None:
             pulumi.set(__self__, "max_connections", max_connections)
         if max_eip_tps is not None:
@@ -105,6 +115,8 @@ class InstanceArgs:
             pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if serverless_charge_type is not None:
             pulumi.set(__self__, "serverless_charge_type", serverless_charge_type)
         if storage_size is not None:
@@ -115,6 +127,10 @@ class InstanceArgs:
             pulumi.set(__self__, "support_tracing", support_tracing)
         if tracing_storage_time is not None:
             pulumi.set(__self__, "tracing_storage_time", tracing_storage_time)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
@@ -170,7 +186,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance type. Valid values: 
+        Instance type. Valid values:
         - professional: professional Edition
         - enterprise: enterprise Edition
         - vip: Platinum Edition.
@@ -182,6 +198,18 @@ class InstanceArgs:
     @instance_type.setter
     def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="listenerMode")
+    def listener_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
+        """
+        return pulumi.get(self, "listener_mode")
+
+    @listener_mode.setter
+    def listener_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "listener_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConnections")
@@ -318,6 +346,18 @@ class InstanceArgs:
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "security_group_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="serverlessChargeType")
     def serverless_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -377,6 +417,30 @@ class InstanceArgs:
     def tracing_storage_time(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "tracing_storage_time", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the VPC. **NOTE:** From version 1.274.0, `vpc_id` is required.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The IDs of the vSwitches with which the instance is associated. `vswitch_ids` only supports setting two values. **NOTE:** From version 1.274.0, `vswitch_ids` is required.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+    @vswitch_ids.setter
+    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "vswitch_ids", value)
+
 
 @pulumi.input_type
 class _InstanceState:
@@ -386,6 +450,7 @@ class _InstanceState:
                  edition: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 listener_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  max_connections: Optional[pulumi.Input[_builtins.int]] = None,
                  max_eip_tps: Optional[pulumi.Input[_builtins.str]] = None,
                  max_tps: Optional[pulumi.Input[_builtins.str]] = None,
@@ -398,12 +463,15 @@ class _InstanceState:
                  renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  serverless_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_size: Optional[pulumi.Input[_builtins.str]] = None,
                  support_eip: Optional[pulumi.Input[_builtins.bool]] = None,
                  support_tracing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -411,12 +479,13 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] create_time: OrderCreateTime.
         :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
         :param pulumi.Input[_builtins.str] instance_name: The instance name.
-        :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values: 
+        :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values:
                - professional: professional Edition
                - enterprise: enterprise Edition
                - vip: Platinum Edition.
                - serverless: Serverless Edition.
                > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+        :param pulumi.Input[_builtins.str] listener_mode: The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
         :param pulumi.Input[_builtins.int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[_builtins.str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         :param pulumi.Input[_builtins.str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
@@ -433,12 +502,15 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] renewal_duration: The number of automatic renewal cycles.
         :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         :param pulumi.Input[_builtins.str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
+        :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
         :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         :param pulumi.Input[_builtins.bool] support_eip: Whether to support public network.
         :param pulumi.Input[_builtins.bool] support_tracing: Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
         :param pulumi.Input[_builtins.int] tracing_storage_time: Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. **NOTE:** From version 1.274.0, `vpc_id` is required.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated. `vswitch_ids` only supports setting two values. **NOTE:** From version 1.274.0, `vswitch_ids` is required.
         """
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
@@ -450,6 +522,8 @@ class _InstanceState:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if listener_mode is not None:
+            pulumi.set(__self__, "listener_mode", listener_mode)
         if max_connections is not None:
             pulumi.set(__self__, "max_connections", max_connections)
         if max_eip_tps is not None:
@@ -474,6 +548,8 @@ class _InstanceState:
             pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if serverless_charge_type is not None:
             pulumi.set(__self__, "serverless_charge_type", serverless_charge_type)
         if status is not None:
@@ -486,6 +562,10 @@ class _InstanceState:
             pulumi.set(__self__, "support_tracing", support_tracing)
         if tracing_storage_time is not None:
             pulumi.set(__self__, "tracing_storage_time", tracing_storage_time)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
@@ -539,7 +619,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance type. Valid values: 
+        Instance type. Valid values:
         - professional: professional Edition
         - enterprise: enterprise Edition
         - vip: Platinum Edition.
@@ -551,6 +631,18 @@ class _InstanceState:
     @instance_type.setter
     def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="listenerMode")
+    def listener_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
+        """
+        return pulumi.get(self, "listener_mode")
+
+    @listener_mode.setter
+    def listener_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "listener_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConnections")
@@ -701,6 +793,18 @@ class _InstanceState:
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "security_group_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="serverlessChargeType")
     def serverless_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -772,6 +876,30 @@ class _InstanceState:
     def tracing_storage_time(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "tracing_storage_time", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the VPC. **NOTE:** From version 1.274.0, `vpc_id` is required.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The IDs of the vSwitches with which the instance is associated. `vswitch_ids` only supports setting two values. **NOTE:** From version 1.274.0, `vswitch_ids` is required.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+    @vswitch_ids.setter
+    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "vswitch_ids", value)
+
 
 @pulumi.type_token("alicloud:amqp/instance:Instance")
 class Instance(pulumi.CustomResource):
@@ -783,6 +911,7 @@ class Instance(pulumi.CustomResource):
                  edition: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 listener_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  max_connections: Optional[pulumi.Input[_builtins.int]] = None,
                  max_eip_tps: Optional[pulumi.Input[_builtins.str]] = None,
                  max_tps: Optional[pulumi.Input[_builtins.str]] = None,
@@ -795,11 +924,14 @@ class Instance(pulumi.CustomResource):
                  renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  serverless_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_size: Optional[pulumi.Input[_builtins.str]] = None,
                  support_eip: Optional[pulumi.Input[_builtins.bool]] = None,
                  support_tracing: Optional[pulumi.Input[_builtins.bool]] = None,
                  tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a RabbitMQ (AMQP) Instance resource.
@@ -844,9 +976,19 @@ class Instance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = alicloud.amqp.Instance("default",
+        default = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0])
+        default_get_security_groups = alicloud.ecs.get_security_groups(vpc_id=default.ids[0],
+            name_regex="default-NODELETING")
+        default_instance = alicloud.amqp.Instance("default",
             instance_name=name,
             payment_type="PayAsYouGo",
+            vpc_id=default_get_switches.vpc_id,
+            vswitch_ids=[
+                default_get_switches.ids[0],
+                default_get_switches.ids[1],
+            ],
+            security_group_id=default_get_security_groups.ids[0],
             serverless_charge_type="onDemand")
         ```
 
@@ -872,12 +1014,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
         :param pulumi.Input[_builtins.str] instance_name: The instance name.
-        :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values: 
+        :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values:
                - professional: professional Edition
                - enterprise: enterprise Edition
                - vip: Platinum Edition.
                - serverless: Serverless Edition.
                > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+        :param pulumi.Input[_builtins.str] listener_mode: The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
         :param pulumi.Input[_builtins.int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[_builtins.str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         :param pulumi.Input[_builtins.str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
@@ -894,11 +1037,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] renewal_duration: The number of automatic renewal cycles.
         :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         :param pulumi.Input[_builtins.str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
+        :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
         :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
         :param pulumi.Input[_builtins.str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         :param pulumi.Input[_builtins.bool] support_eip: Whether to support public network.
         :param pulumi.Input[_builtins.bool] support_tracing: Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
         :param pulumi.Input[_builtins.int] tracing_storage_time: Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. **NOTE:** From version 1.274.0, `vpc_id` is required.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated. `vswitch_ids` only supports setting two values. **NOTE:** From version 1.274.0, `vswitch_ids` is required.
         """
         ...
     @overload
@@ -949,9 +1095,19 @@ class Instance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = alicloud.amqp.Instance("default",
+        default = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0])
+        default_get_security_groups = alicloud.ecs.get_security_groups(vpc_id=default.ids[0],
+            name_regex="default-NODELETING")
+        default_instance = alicloud.amqp.Instance("default",
             instance_name=name,
             payment_type="PayAsYouGo",
+            vpc_id=default_get_switches.vpc_id,
+            vswitch_ids=[
+                default_get_switches.ids[0],
+                default_get_switches.ids[1],
+            ],
+            security_group_id=default_get_security_groups.ids[0],
             serverless_charge_type="onDemand")
         ```
 
@@ -991,6 +1147,7 @@ class Instance(pulumi.CustomResource):
                  edition: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 listener_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  max_connections: Optional[pulumi.Input[_builtins.int]] = None,
                  max_eip_tps: Optional[pulumi.Input[_builtins.str]] = None,
                  max_tps: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1003,11 +1160,14 @@ class Instance(pulumi.CustomResource):
                  renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  serverless_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_size: Optional[pulumi.Input[_builtins.str]] = None,
                  support_eip: Optional[pulumi.Input[_builtins.bool]] = None,
                  support_tracing: Optional[pulumi.Input[_builtins.bool]] = None,
                  tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1021,6 +1181,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["edition"] = edition
             __props__.__dict__["instance_name"] = instance_name
             __props__.__dict__["instance_type"] = instance_type
+            __props__.__dict__["listener_mode"] = listener_mode
             __props__.__dict__["max_connections"] = max_connections
             __props__.__dict__["max_eip_tps"] = max_eip_tps
             __props__.__dict__["max_tps"] = max_tps
@@ -1035,11 +1196,14 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["renewal_duration"] = renewal_duration
             __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
             __props__.__dict__["renewal_status"] = renewal_status
+            __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["serverless_charge_type"] = serverless_charge_type
             __props__.__dict__["storage_size"] = storage_size
             __props__.__dict__["support_eip"] = support_eip
             __props__.__dict__["support_tracing"] = support_tracing
             __props__.__dict__["tracing_storage_time"] = tracing_storage_time
+            __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["vswitch_ids"] = vswitch_ids
             __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
@@ -1057,6 +1221,7 @@ class Instance(pulumi.CustomResource):
             edition: Optional[pulumi.Input[_builtins.str]] = None,
             instance_name: Optional[pulumi.Input[_builtins.str]] = None,
             instance_type: Optional[pulumi.Input[_builtins.str]] = None,
+            listener_mode: Optional[pulumi.Input[_builtins.str]] = None,
             max_connections: Optional[pulumi.Input[_builtins.int]] = None,
             max_eip_tps: Optional[pulumi.Input[_builtins.str]] = None,
             max_tps: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1069,12 +1234,15 @@ class Instance(pulumi.CustomResource):
             renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
             renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
             renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
+            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             serverless_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             storage_size: Optional[pulumi.Input[_builtins.str]] = None,
             support_eip: Optional[pulumi.Input[_builtins.bool]] = None,
             support_tracing: Optional[pulumi.Input[_builtins.bool]] = None,
-            tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None) -> 'Instance':
+            tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None,
+            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+            vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1086,12 +1254,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] create_time: OrderCreateTime.
         :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
         :param pulumi.Input[_builtins.str] instance_name: The instance name.
-        :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values: 
+        :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values:
                - professional: professional Edition
                - enterprise: enterprise Edition
                - vip: Platinum Edition.
                - serverless: Serverless Edition.
                > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+        :param pulumi.Input[_builtins.str] listener_mode: The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
         :param pulumi.Input[_builtins.int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[_builtins.str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         :param pulumi.Input[_builtins.str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
@@ -1108,12 +1277,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] renewal_duration: The number of automatic renewal cycles.
         :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         :param pulumi.Input[_builtins.str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
+        :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
         :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         :param pulumi.Input[_builtins.bool] support_eip: Whether to support public network.
         :param pulumi.Input[_builtins.bool] support_tracing: Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
         :param pulumi.Input[_builtins.int] tracing_storage_time: Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. **NOTE:** From version 1.274.0, `vpc_id` is required.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated. `vswitch_ids` only supports setting two values. **NOTE:** From version 1.274.0, `vswitch_ids` is required.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1124,6 +1296,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["edition"] = edition
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["listener_mode"] = listener_mode
         __props__.__dict__["max_connections"] = max_connections
         __props__.__dict__["max_eip_tps"] = max_eip_tps
         __props__.__dict__["max_tps"] = max_tps
@@ -1136,12 +1309,15 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["renewal_duration"] = renewal_duration
         __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
         __props__.__dict__["renewal_status"] = renewal_status
+        __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["serverless_charge_type"] = serverless_charge_type
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_size"] = storage_size
         __props__.__dict__["support_eip"] = support_eip
         __props__.__dict__["support_tracing"] = support_tracing
         __props__.__dict__["tracing_storage_time"] = tracing_storage_time
+        __props__.__dict__["vpc_id"] = vpc_id
+        __props__.__dict__["vswitch_ids"] = vswitch_ids
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1180,7 +1356,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance type. Valid values: 
+        Instance type. Valid values:
         - professional: professional Edition
         - enterprise: enterprise Edition
         - vip: Platinum Edition.
@@ -1188,6 +1364,14 @@ class Instance(pulumi.CustomResource):
         > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
         """
         return pulumi.get(self, "instance_type")
+
+    @_builtins.property
+    @pulumi.getter(name="listenerMode")
+    def listener_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
+        """
+        return pulumi.get(self, "listener_mode")
 
     @_builtins.property
     @pulumi.getter(name="maxConnections")
@@ -1290,6 +1474,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "renewal_status")
 
     @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @_builtins.property
     @pulumi.getter(name="serverlessChargeType")
     def serverless_charge_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -1336,4 +1528,20 @@ class Instance(pulumi.CustomResource):
         Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
         """
         return pulumi.get(self, "tracing_storage_time")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the VPC. **NOTE:** From version 1.274.0, `vpc_id` is required.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The IDs of the vSwitches with which the instance is associated. `vswitch_ids` only supports setting two values. **NOTE:** From version 1.274.0, `vswitch_ids` is required.
+        """
+        return pulumi.get(self, "vswitch_ids")
 

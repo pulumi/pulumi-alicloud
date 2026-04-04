@@ -385,7 +385,7 @@ type NetworkAclEgressAclEntry struct {
 	// The description of the outbound rule.
 	// The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description *string `pulumi:"description"`
-	// The destination CIDR block.
+	// The destination CIDR block, or the prefix list instance ID.
 	DestinationCidrIp *string `pulumi:"destinationCidrIp"`
 	// The route entry type. Value
 	// custom custom rule
@@ -429,7 +429,7 @@ type NetworkAclEgressAclEntryArgs struct {
 	// The description of the outbound rule.
 	// The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The destination CIDR block.
+	// The destination CIDR block, or the prefix list instance ID.
 	DestinationCidrIp pulumi.StringPtrInput `pulumi:"destinationCidrIp"`
 	// The route entry type. Value
 	// custom custom rule
@@ -515,7 +515,7 @@ func (o NetworkAclEgressAclEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The destination CIDR block.
+// The destination CIDR block, or the prefix list instance ID.
 func (o NetworkAclEgressAclEntryOutput) DestinationCidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.DestinationCidrIp }).(pulumi.StringPtrOutput)
 }
@@ -911,7 +911,7 @@ type NetworkAclIngressAclEntry struct {
 	// - udp: User Datagram Protocol.
 	// - all: Supports all protocols.
 	Protocol *string `pulumi:"protocol"`
-	// The source CIDR block.
+	// The source CIDR block, or the prefix list instance ID.
 	SourceCidrIp *string `pulumi:"sourceCidrIp"`
 }
 
@@ -952,7 +952,7 @@ type NetworkAclIngressAclEntryArgs struct {
 	// - udp: User Datagram Protocol.
 	// - all: Supports all protocols.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// The source CIDR block.
+	// The source CIDR block, or the prefix list instance ID.
 	SourceCidrIp pulumi.StringPtrInput `pulumi:"sourceCidrIp"`
 }
 
@@ -1053,7 +1053,7 @@ func (o NetworkAclIngressAclEntryOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// The source CIDR block.
+// The source CIDR block, or the prefix list instance ID.
 func (o NetworkAclIngressAclEntryOutput) SourceCidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.SourceCidrIp }).(pulumi.StringPtrOutput)
 }

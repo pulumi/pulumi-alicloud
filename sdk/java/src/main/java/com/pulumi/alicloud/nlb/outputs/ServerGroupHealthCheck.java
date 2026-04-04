@@ -50,6 +50,13 @@ public final class ServerGroupHealthCheck {
      */
     private @Nullable List<String> healthCheckHttpCodes;
     /**
+     * @return The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+     * 
+     */
+    private @Nullable String healthCheckHttpVersion;
+    /**
      * @return The interval at which health checks are performed. Unit: seconds.
      * Valid values: `5` to `50`.
      * Default value: `10`.
@@ -146,6 +153,15 @@ public final class ServerGroupHealthCheck {
         return this.healthCheckHttpCodes == null ? List.of() : this.healthCheckHttpCodes;
     }
     /**
+     * @return The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+     * 
+     */
+    public Optional<String> healthCheckHttpVersion() {
+        return Optional.ofNullable(this.healthCheckHttpVersion);
+    }
+    /**
      * @return The interval at which health checks are performed. Unit: seconds.
      * Valid values: `5` to `50`.
      * Default value: `10`.
@@ -222,6 +238,7 @@ public final class ServerGroupHealthCheck {
         private @Nullable Boolean healthCheckEnabled;
         private @Nullable String healthCheckExp;
         private @Nullable List<String> healthCheckHttpCodes;
+        private @Nullable String healthCheckHttpVersion;
         private @Nullable Integer healthCheckInterval;
         private @Nullable String healthCheckReq;
         private @Nullable String healthCheckType;
@@ -238,6 +255,7 @@ public final class ServerGroupHealthCheck {
     	      this.healthCheckEnabled = defaults.healthCheckEnabled;
     	      this.healthCheckExp = defaults.healthCheckExp;
     	      this.healthCheckHttpCodes = defaults.healthCheckHttpCodes;
+    	      this.healthCheckHttpVersion = defaults.healthCheckHttpVersion;
     	      this.healthCheckInterval = defaults.healthCheckInterval;
     	      this.healthCheckReq = defaults.healthCheckReq;
     	      this.healthCheckType = defaults.healthCheckType;
@@ -285,6 +303,12 @@ public final class ServerGroupHealthCheck {
         }
         public Builder healthCheckHttpCodes(String... healthCheckHttpCodes) {
             return healthCheckHttpCodes(List.of(healthCheckHttpCodes));
+        }
+        @CustomType.Setter
+        public Builder healthCheckHttpVersion(@Nullable String healthCheckHttpVersion) {
+
+            this.healthCheckHttpVersion = healthCheckHttpVersion;
+            return this;
         }
         @CustomType.Setter
         public Builder healthCheckInterval(@Nullable Integer healthCheckInterval) {
@@ -336,6 +360,7 @@ public final class ServerGroupHealthCheck {
             _resultValue.healthCheckEnabled = healthCheckEnabled;
             _resultValue.healthCheckExp = healthCheckExp;
             _resultValue.healthCheckHttpCodes = healthCheckHttpCodes;
+            _resultValue.healthCheckHttpVersion = healthCheckHttpVersion;
             _resultValue.healthCheckInterval = healthCheckInterval;
             _resultValue.healthCheckReq = healthCheckReq;
             _resultValue.healthCheckType = healthCheckType;

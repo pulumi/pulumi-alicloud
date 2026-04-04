@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager;
 
 import com.pulumi.alicloud.resourcemanager.inputs.ResourceShareResourceArgs;
+import com.pulumi.alicloud.resourcemanager.inputs.ResourceShareResourcePropertyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -93,6 +94,21 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of resource properties. See `resourceProperties` below.
+     * 
+     */
+    @Import(name="resourceProperties")
+    private @Nullable Output<List<ResourceShareResourcePropertyArgs>> resourceProperties;
+
+    /**
+     * @return A list of resource properties. See `resourceProperties` below.
+     * 
+     */
+    public Optional<Output<List<ResourceShareResourcePropertyArgs>>> resourceProperties() {
+        return Optional.ofNullable(this.resourceProperties);
+    }
+
+    /**
      * The name of resource share.
      * 
      */
@@ -167,6 +183,7 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
         this.permissionNames = $.permissionNames;
         this.resourceArns = $.resourceArns;
         this.resourceGroupId = $.resourceGroupId;
+        this.resourceProperties = $.resourceProperties;
         this.resourceShareName = $.resourceShareName;
         this.resources = $.resources;
         this.tags = $.tags;
@@ -309,6 +326,37 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param resourceProperties A list of resource properties. See `resourceProperties` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceProperties(@Nullable Output<List<ResourceShareResourcePropertyArgs>> resourceProperties) {
+            $.resourceProperties = resourceProperties;
+            return this;
+        }
+
+        /**
+         * @param resourceProperties A list of resource properties. See `resourceProperties` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceProperties(List<ResourceShareResourcePropertyArgs> resourceProperties) {
+            return resourceProperties(Output.of(resourceProperties));
+        }
+
+        /**
+         * @param resourceProperties A list of resource properties. See `resourceProperties` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceProperties(ResourceShareResourcePropertyArgs... resourceProperties) {
+            return resourceProperties(List.of(resourceProperties));
         }
 
         /**

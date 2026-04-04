@@ -115,6 +115,8 @@ __all__ = [
     'WafRuleSharedMatchCriteriaCriteriaCriteriaArgsDict',
     'WaitingRoomHostNameAndPathArgs',
     'WaitingRoomHostNameAndPathArgsDict',
+    'GetWafRulesetsQueryArgsArgs',
+    'GetWafRulesetsQueryArgsArgsDict',
 ]
 
 class HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgsDict(TypedDict):
@@ -4628,5 +4630,94 @@ class WaitingRoomHostNameAndPathArgs:
     @subdomain.setter
     def subdomain(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "subdomain", value)
+
+
+class GetWafRulesetsQueryArgsArgsDict(TypedDict):
+    any_like: NotRequired[_builtins.str]
+    """
+    The fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+    """
+    desc: NotRequired[_builtins.bool]
+    """
+    Whether to sort in descending order. Valid values: `true`, `false`.
+    """
+    name_like: NotRequired[_builtins.str]
+    """
+    The fuzzy search for rule set name.
+    """
+    order_by: NotRequired[_builtins.str]
+    """
+    Specify the column to sort by.
+    """
+
+@pulumi.input_type
+class GetWafRulesetsQueryArgsArgs:
+    def __init__(__self__, *,
+                 any_like: Optional[_builtins.str] = None,
+                 desc: Optional[_builtins.bool] = None,
+                 name_like: Optional[_builtins.str] = None,
+                 order_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str any_like: The fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+        :param _builtins.bool desc: Whether to sort in descending order. Valid values: `true`, `false`.
+        :param _builtins.str name_like: The fuzzy search for rule set name.
+        :param _builtins.str order_by: Specify the column to sort by.
+        """
+        if any_like is not None:
+            pulumi.set(__self__, "any_like", any_like)
+        if desc is not None:
+            pulumi.set(__self__, "desc", desc)
+        if name_like is not None:
+            pulumi.set(__self__, "name_like", name_like)
+        if order_by is not None:
+            pulumi.set(__self__, "order_by", order_by)
+
+    @_builtins.property
+    @pulumi.getter(name="anyLike")
+    def any_like(self) -> Optional[_builtins.str]:
+        """
+        The fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+        """
+        return pulumi.get(self, "any_like")
+
+    @any_like.setter
+    def any_like(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "any_like", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def desc(self) -> Optional[_builtins.bool]:
+        """
+        Whether to sort in descending order. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "desc")
+
+    @desc.setter
+    def desc(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "desc", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameLike")
+    def name_like(self) -> Optional[_builtins.str]:
+        """
+        The fuzzy search for rule set name.
+        """
+        return pulumi.get(self, "name_like")
+
+    @name_like.setter
+    def name_like(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name_like", value)
+
+    @_builtins.property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[_builtins.str]:
+        """
+        Specify the column to sort by.
+        """
+        return pulumi.get(self, "order_by")
+
+    @order_by.setter
+    def order_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "order_by", value)
 
 

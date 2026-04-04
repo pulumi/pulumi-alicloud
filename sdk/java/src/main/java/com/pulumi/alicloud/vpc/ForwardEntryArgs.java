@@ -18,14 +18,16 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     public static final ForwardEntryArgs Empty = new ForwardEntryArgs();
 
     /**
-     * The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
+     * When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
+     * - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
      * 
      */
     @Import(name="externalIp", required=true)
     private Output<String> externalIp;
 
     /**
-     * @return The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
+     * @return When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
+     * - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
      * 
      */
     public Output<String> externalIp() {
@@ -33,14 +35,18 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The external port, valid value is 1~65535|any.
+     * The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
+     * - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
+     * - If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified by these parameters must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
      * 
      */
     @Import(name="externalPort", required=true)
     private Output<String> externalPort;
 
     /**
-     * @return The external port, valid value is 1~65535|any.
+     * @return The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
+     * - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
+     * - If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified by these parameters must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
      * 
      */
     public Output<String> externalPort() {
@@ -48,14 +54,14 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of forward entry.
+     * The name of the DNAT entry.
      * 
      */
     @Import(name="forwardEntryName")
     private @Nullable Output<String> forwardEntryName;
 
     /**
-     * @return The name of forward entry.
+     * @return The name of the DNAT entry.
      * 
      */
     public Optional<Output<String>> forwardEntryName() {
@@ -63,14 +69,14 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forwardTableIds&#34;.
+     * The ID of the DNAT table to which the DNAT entry belongs.
      * 
      */
     @Import(name="forwardTableId", required=true)
     private Output<String> forwardTableId;
 
     /**
-     * @return The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forwardTableIds&#34;.
+     * @return The ID of the DNAT table to which the DNAT entry belongs.
      * 
      */
     public Output<String> forwardTableId() {
@@ -78,14 +84,18 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The internal ip, must a private ip.
+     * The private IP address.
+     * - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
+     * - The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
      * 
      */
     @Import(name="internalIp", required=true)
     private Output<String> internalIp;
 
     /**
-     * @return The internal ip, must a private ip.
+     * @return The private IP address.
+     * - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
+     * - The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
      * 
      */
     public Output<String> internalIp() {
@@ -93,14 +103,16 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The internal port, valid value is 1~65535|any.
+     * When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
+     * - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
      * 
      */
     @Import(name="internalPort", required=true)
     private Output<String> internalPort;
 
     /**
-     * @return The internal port, valid value is 1~65535|any.
+     * @return When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
+     * - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
      * 
      */
     public Output<String> internalPort() {
@@ -108,14 +120,14 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ip protocol, valid value is tcp|udp|any.
+     * The protocol type. Valid values:
      * 
      */
     @Import(name="ipProtocol", required=true)
     private Output<String> ipProtocol;
 
     /**
-     * @return The ip protocol, valid value is tcp|udp|any.
+     * @return The protocol type. Valid values:
      * 
      */
     public Output<String> ipProtocol() {
@@ -126,10 +138,10 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
      * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;forward_entry_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -137,27 +149,23 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
      * @return Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;forward_entry_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * Specifies whether to remove limits on the port range. Default value is `false`.
-     * 
-     * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
+     * Specifies whether to enable port break. Valid values:
      * 
      */
     @Import(name="portBreak")
     private @Nullable Output<Boolean> portBreak;
 
     /**
-     * @return Specifies whether to remove limits on the port range. Default value is `false`.
-     * 
-     * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
+     * @return Specifies whether to enable port break. Valid values:
      * 
      */
     public Optional<Output<Boolean>> portBreak() {
@@ -197,7 +205,8 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalIp The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
+         * @param externalIp When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
+         * - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
          * 
          * @return builder
          * 
@@ -208,7 +217,8 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalIp The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
+         * @param externalIp When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
+         * - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
          * 
          * @return builder
          * 
@@ -218,7 +228,9 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalPort The external port, valid value is 1~65535|any.
+         * @param externalPort The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
+         * - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
+         * - If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified by these parameters must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
          * 
          * @return builder
          * 
@@ -229,7 +241,9 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalPort The external port, valid value is 1~65535|any.
+         * @param externalPort The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
+         * - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
+         * - If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified by these parameters must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
          * 
          * @return builder
          * 
@@ -239,7 +253,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardEntryName The name of forward entry.
+         * @param forwardEntryName The name of the DNAT entry.
          * 
          * @return builder
          * 
@@ -250,7 +264,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardEntryName The name of forward entry.
+         * @param forwardEntryName The name of the DNAT entry.
          * 
          * @return builder
          * 
@@ -260,7 +274,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardTableId The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forwardTableIds&#34;.
+         * @param forwardTableId The ID of the DNAT table to which the DNAT entry belongs.
          * 
          * @return builder
          * 
@@ -271,7 +285,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardTableId The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forwardTableIds&#34;.
+         * @param forwardTableId The ID of the DNAT table to which the DNAT entry belongs.
          * 
          * @return builder
          * 
@@ -281,7 +295,9 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internalIp The internal ip, must a private ip.
+         * @param internalIp The private IP address.
+         * - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
+         * - The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
          * 
          * @return builder
          * 
@@ -292,7 +308,9 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internalIp The internal ip, must a private ip.
+         * @param internalIp The private IP address.
+         * - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
+         * - The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
          * 
          * @return builder
          * 
@@ -302,7 +320,8 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internalPort The internal port, valid value is 1~65535|any.
+         * @param internalPort When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
+         * - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
          * 
          * @return builder
          * 
@@ -313,7 +332,8 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internalPort The internal port, valid value is 1~65535|any.
+         * @param internalPort When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
+         * - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
          * 
          * @return builder
          * 
@@ -323,7 +343,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipProtocol The ip protocol, valid value is tcp|udp|any.
+         * @param ipProtocol The protocol type. Valid values:
          * 
          * @return builder
          * 
@@ -334,7 +354,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipProtocol The ip protocol, valid value is tcp|udp|any.
+         * @param ipProtocol The protocol type. Valid values:
          * 
          * @return builder
          * 
@@ -349,10 +369,10 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;forward_entry_name&#39; instead.
+         * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -364,18 +384,16 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;forward_entry_name&#39; instead.
+         * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param portBreak Specifies whether to remove limits on the port range. Default value is `false`.
-         * 
-         * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
+         * @param portBreak Specifies whether to enable port break. Valid values:
          * 
          * @return builder
          * 
@@ -386,9 +404,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portBreak Specifies whether to remove limits on the port range. Default value is `false`.
-         * 
-         * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
+         * @param portBreak Specifies whether to enable port break. Valid values:
          * 
          * @return builder
          * 

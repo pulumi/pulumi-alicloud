@@ -65,6 +65,9 @@ class GetServerGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetServerGroupsGroupResult']:
+        """
+        A list of Nlb Server Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -88,6 +91,9 @@ class GetServerGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Server Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -98,6 +104,9 @@ class GetServerGroupsResult:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the resource group to which the security group belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
@@ -108,16 +117,25 @@ class GetServerGroupsResult:
     @_builtins.property
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the server group.
+        """
         return pulumi.get(self, "server_group_type")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the server group.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -152,7 +170,7 @@ def get_server_groups(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.186.0+.
+    > **NOTE:** Available since v1.186.0+.
 
     ## Example Usage
 
@@ -176,6 +194,7 @@ def get_server_groups(ids: Optional[Sequence[_builtins.str]] = None,
     :param Sequence[_builtins.str] server_group_names: The names of the server groups to be queried.
     :param _builtins.str server_group_type: The type of the server group. Valid values: `Instance`, `Ip`.
     :param _builtins.str status: The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -213,7 +232,7 @@ def get_server_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[_built
     """
     This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.186.0+.
+    > **NOTE:** Available since v1.186.0+.
 
     ## Example Usage
 
@@ -237,6 +256,7 @@ def get_server_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[_built
     :param Sequence[_builtins.str] server_group_names: The names of the server groups to be queried.
     :param _builtins.str server_group_type: The type of the server group. Valid values: `Instance`, `Ip`.
     :param _builtins.str status: The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids

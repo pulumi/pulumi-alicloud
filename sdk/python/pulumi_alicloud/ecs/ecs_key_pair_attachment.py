@@ -26,17 +26,19 @@ class EcsKeyPairAttachmentArgs:
         """
         The set of arguments for constructing a EcsKeyPairAttachment resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
-        :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
-        :param pulumi.Input[_builtins.str] key_name: New field 'key_pair_name' instead.
-        :param pulumi.Input[_builtins.str] key_pair_name: The name of key pair used to bind.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The IDs of instances to which you want to bind the SSH key pair.
+        :param pulumi.Input[_builtins.bool] force: Specifies whether to make the key pair effective immediately. Valid values:
+        :param pulumi.Input[_builtins.str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+               
+               > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of the SSH key pair.
         """
         pulumi.set(__self__, "instance_ids", instance_ids)
         if force is not None:
             pulumi.set(__self__, "force", force)
         if key_name is not None:
-            warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+            warnings.warn("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""key_name is deprecated: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if key_pair_name is not None:
@@ -46,7 +48,7 @@ class EcsKeyPairAttachmentArgs:
     @pulumi.getter(name="instanceIds")
     def instance_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The list of ECS instance's IDs.
+        The IDs of instances to which you want to bind the SSH key pair.
         """
         return pulumi.get(self, "instance_ids")
 
@@ -58,7 +60,7 @@ class EcsKeyPairAttachmentArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        Specifies whether to make the key pair effective immediately. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -68,10 +70,12 @@ class EcsKeyPairAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="keyName")
-    @_utilities.deprecated("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+    @_utilities.deprecated("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
     def key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        New field 'key_pair_name' instead.
+        Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+
+        > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
         """
         return pulumi.get(self, "key_name")
 
@@ -83,7 +87,7 @@ class EcsKeyPairAttachmentArgs:
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of key pair used to bind.
+        The name of the SSH key pair.
         """
         return pulumi.get(self, "key_pair_name")
 
@@ -102,18 +106,20 @@ class _EcsKeyPairAttachmentState:
         """
         Input properties used for looking up and filtering EcsKeyPairAttachment resources.
 
-        :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
-        :param pulumi.Input[_builtins.str] key_name: New field 'key_pair_name' instead.
-        :param pulumi.Input[_builtins.str] key_pair_name: The name of key pair used to bind.
+        :param pulumi.Input[_builtins.bool] force: Specifies whether to make the key pair effective immediately. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The IDs of instances to which you want to bind the SSH key pair.
+        :param pulumi.Input[_builtins.str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+               
+               > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of the SSH key pair.
         """
         if force is not None:
             pulumi.set(__self__, "force", force)
         if instance_ids is not None:
             pulumi.set(__self__, "instance_ids", instance_ids)
         if key_name is not None:
-            warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+            warnings.warn("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""key_name is deprecated: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if key_pair_name is not None:
@@ -123,7 +129,7 @@ class _EcsKeyPairAttachmentState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        Specifies whether to make the key pair effective immediately. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -135,7 +141,7 @@ class _EcsKeyPairAttachmentState:
     @pulumi.getter(name="instanceIds")
     def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of ECS instance's IDs.
+        The IDs of instances to which you want to bind the SSH key pair.
         """
         return pulumi.get(self, "instance_ids")
 
@@ -145,10 +151,12 @@ class _EcsKeyPairAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="keyName")
-    @_utilities.deprecated("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+    @_utilities.deprecated("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
     def key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        New field 'key_pair_name' instead.
+        Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+
+        > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
         """
         return pulumi.get(self, "key_name")
 
@@ -160,7 +168,7 @@ class _EcsKeyPairAttachmentState:
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of key pair used to bind.
+        The name of the SSH key pair.
         """
         return pulumi.get(self, "key_pair_name")
 
@@ -185,7 +193,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
 
         For information about ECS Key Pair Attachment and how to use it, see [What is Key Pair Attachment](https://www.alibabacloud.com/help/en/doc-detail/51775.htm).
 
-        > **NOTE:** Available since v1.121.0+.
+        > **NOTE:** Available since v1.121.0.
 
         ## Example Usage
 
@@ -196,38 +204,46 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        example = alicloud.get_zones(available_resource_creation="Instance")
-        example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
             owners="system")
-        example_network = alicloud.vpc.Network("example",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("example",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("example",
-            name="terraform-example",
-            vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("example",
-            image_id=example_get_images.images[0].id,
-            instance_type=example_get_instance_types.instance_types[0].id,
-            availability_zone=example.zones[0].id,
-            security_groups=[example_security_group.id],
-            instance_name="terraform-example",
-            internet_charge_type="PayByBandwidth",
-            vswitch_id=example_switch.id)
-        default = random.index.Integer("default",
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            image_id=default_get_images.images[0].id)
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("example", key_pair_name=f"tf-example-{default['result']}")
-        example_ecs_key_pair_attachment = alicloud.ecs.EcsKeyPairAttachment("example",
-            key_pair_name=example_ecs_key_pair.key_pair_name,
-            instance_ids=[example_instance.id])
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_switch.id,
+            instance_name=name)
+        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("default", key_pair_name=f"{name}-{default_integer['result']}")
+        default_ecs_key_pair_attachment = alicloud.ecs.EcsKeyPairAttachment("default",
+            key_pair_name=default_ecs_key_pair.id,
+            instance_ids=[default_instance.id])
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -243,10 +259,12 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
-        :param pulumi.Input[_builtins.str] key_name: New field 'key_pair_name' instead.
-        :param pulumi.Input[_builtins.str] key_pair_name: The name of key pair used to bind.
+        :param pulumi.Input[_builtins.bool] force: Specifies whether to make the key pair effective immediately. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The IDs of instances to which you want to bind the SSH key pair.
+        :param pulumi.Input[_builtins.str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+               
+               > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of the SSH key pair.
         """
         ...
     @overload
@@ -259,7 +277,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
 
         For information about ECS Key Pair Attachment and how to use it, see [What is Key Pair Attachment](https://www.alibabacloud.com/help/en/doc-detail/51775.htm).
 
-        > **NOTE:** Available since v1.121.0+.
+        > **NOTE:** Available since v1.121.0.
 
         ## Example Usage
 
@@ -270,38 +288,46 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        example = alicloud.get_zones(available_resource_creation="Instance")
-        example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
             owners="system")
-        example_network = alicloud.vpc.Network("example",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("example",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("example",
-            name="terraform-example",
-            vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("example",
-            image_id=example_get_images.images[0].id,
-            instance_type=example_get_instance_types.instance_types[0].id,
-            availability_zone=example.zones[0].id,
-            security_groups=[example_security_group.id],
-            instance_name="terraform-example",
-            internet_charge_type="PayByBandwidth",
-            vswitch_id=example_switch.id)
-        default = random.index.Integer("default",
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            image_id=default_get_images.images[0].id)
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("example", key_pair_name=f"tf-example-{default['result']}")
-        example_ecs_key_pair_attachment = alicloud.ecs.EcsKeyPairAttachment("example",
-            key_pair_name=example_ecs_key_pair.key_pair_name,
-            instance_ids=[example_instance.id])
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_switch.id,
+            instance_name=name)
+        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("default", key_pair_name=f"{name}-{default_integer['result']}")
+        default_ecs_key_pair_attachment = alicloud.ecs.EcsKeyPairAttachment("default",
+            key_pair_name=default_ecs_key_pair.id,
+            instance_ids=[default_instance.id])
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -370,10 +396,12 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
-        :param pulumi.Input[_builtins.str] key_name: New field 'key_pair_name' instead.
-        :param pulumi.Input[_builtins.str] key_pair_name: The name of key pair used to bind.
+        :param pulumi.Input[_builtins.bool] force: Specifies whether to make the key pair effective immediately. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The IDs of instances to which you want to bind the SSH key pair.
+        :param pulumi.Input[_builtins.str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+               
+               > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of the SSH key pair.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -389,7 +417,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        Specifies whether to make the key pair effective immediately. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -397,16 +425,18 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
     @pulumi.getter(name="instanceIds")
     def instance_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The list of ECS instance's IDs.
+        The IDs of instances to which you want to bind the SSH key pair.
         """
         return pulumi.get(self, "instance_ids")
 
     @_builtins.property
     @pulumi.getter(name="keyName")
-    @_utilities.deprecated("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+    @_utilities.deprecated("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
     def key_name(self) -> pulumi.Output[_builtins.str]:
         """
-        New field 'key_pair_name' instead.
+        Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+
+        > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
         """
         return pulumi.get(self, "key_name")
 
@@ -414,7 +444,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of key pair used to bind.
+        The name of the SSH key pair.
         """
         return pulumi.get(self, "key_pair_name")
 

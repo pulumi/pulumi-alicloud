@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.186.0+.
+ * > **NOTE:** Available since v1.186.0+.
  *
  * ## Example Usage
  *
@@ -74,6 +74,9 @@ export interface GetServerGroupsArgs {
      * The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
      */
     status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: {[key: string]: string};
 }
 
@@ -81,6 +84,9 @@ export interface GetServerGroupsArgs {
  * A collection of values returned by getServerGroups.
  */
 export interface GetServerGroupsResult {
+    /**
+     * A list of Nlb Server Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.nlb.GetServerGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -88,18 +94,33 @@ export interface GetServerGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Server Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the resource group to which the security group belongs.
+     */
     readonly resourceGroupId?: string;
     readonly serverGroupNames?: string[];
+    /**
+     * The type of the server group.
+     */
     readonly serverGroupType?: string;
+    /**
+     * The status of the server group.
+     */
     readonly status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.186.0+.
+ * > **NOTE:** Available since v1.186.0+.
  *
  * ## Example Usage
  *
@@ -164,5 +185,8 @@ export interface GetServerGroupsOutputArgs {
      * The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -25,49 +25,20 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const _default = alicloud.getZones({
- *     availableDiskCategory: "cloud_efficiency",
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultGetImages = alicloud.ecs.getImages({
- *     mostRecent: true,
- *     owners: "system",
- * });
- * const defaultGetInstanceTypes = Promise.all([_default, defaultGetImages]).then(([_default, defaultGetImages]) => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: _default.zones?.[0]?.id,
- *     imageId: defaultGetImages.images?.[0]?.id,
- * }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
+ * const _default = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     vswitchName: name,
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "192.168.192.0/24",
- *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * const defaultIpv4Gateway = new alicloud.vpc.Ipv4Gateway("default", {
+ *     ipv4GatewayName: name,
+ *     vpcId: _default.id,
+ *     enabled: true,
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     name: name,
- *     vpcId: defaultNetwork.id,
- * });
- * const defaultInstance = new alicloud.ecs.Instance("default", {
- *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
- *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
- *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
- *     internetChargeType: "PayByTraffic",
- *     internetMaxBandwidthOut: 10,
- *     availabilityZone: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.availabilityZones?.[0]),
- *     instanceChargeType: "PostPaid",
- *     systemDiskCategory: "cloud_efficiency",
- *     vswitchId: defaultSwitch.id,
- *     instanceName: name,
- * });
- * const foo = new alicloud.vpc.RouteEntry("foo", {
- *     routeTableId: defaultNetwork.routeTableId,
+ * const defaultRouteEntry = new alicloud.vpc.RouteEntry("default", {
+ *     routeTableId: _default.routeTableId,
  *     destinationCidrblock: "172.11.1.1/32",
- *     nexthopType: "Instance",
- *     nexthopId: defaultInstance.id,
+ *     nexthopType: "Ipv4Gateway",
+ *     nexthopId: defaultIpv4Gateway.id,
  * });
  * ```
  *

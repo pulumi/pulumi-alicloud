@@ -38,7 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -82,6 +82,8 @@ type ResourceShare struct {
 	ResourceArns pulumi.StringArrayOutput `pulumi:"resourceArns"`
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// A list of resource properties. See `resourceProperties` below.
+	ResourceProperties ResourceShareResourcePropertyArrayOutput `pulumi:"resourceProperties"`
 	// The name of resource share.
 	ResourceShareName pulumi.StringOutput `pulumi:"resourceShareName"`
 	// The owner of resource share,  `Self` and `OtherAccounts`.
@@ -149,6 +151,8 @@ type resourceShareState struct {
 	ResourceArns []string `pulumi:"resourceArns"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// A list of resource properties. See `resourceProperties` below.
+	ResourceProperties []ResourceShareResourceProperty `pulumi:"resourceProperties"`
 	// The name of resource share.
 	ResourceShareName *string `pulumi:"resourceShareName"`
 	// The owner of resource share,  `Self` and `OtherAccounts`.
@@ -184,6 +188,8 @@ type ResourceShareState struct {
 	ResourceArns pulumi.StringArrayInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
+	// A list of resource properties. See `resourceProperties` below.
+	ResourceProperties ResourceShareResourcePropertyArrayInput
 	// The name of resource share.
 	ResourceShareName pulumi.StringPtrInput
 	// The owner of resource share,  `Self` and `OtherAccounts`.
@@ -221,6 +227,8 @@ type resourceShareArgs struct {
 	ResourceArns []string `pulumi:"resourceArns"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// A list of resource properties. See `resourceProperties` below.
+	ResourceProperties []ResourceShareResourceProperty `pulumi:"resourceProperties"`
 	// The name of resource share.
 	ResourceShareName string `pulumi:"resourceShareName"`
 	// List of shared resources. See `resources` below.
@@ -251,6 +259,8 @@ type ResourceShareArgs struct {
 	ResourceArns pulumi.StringArrayInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
+	// A list of resource properties. See `resourceProperties` below.
+	ResourceProperties ResourceShareResourcePropertyArrayInput
 	// The name of resource share.
 	ResourceShareName pulumi.StringInput
 	// List of shared resources. See `resources` below.
@@ -381,6 +391,11 @@ func (o ResourceShareOutput) ResourceArns() pulumi.StringArrayOutput {
 // The ID of the resource group
 func (o ResourceShareOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceShare) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// A list of resource properties. See `resourceProperties` below.
+func (o ResourceShareOutput) ResourceProperties() ResourceShareResourcePropertyArrayOutput {
+	return o.ApplyT(func(v *ResourceShare) ResourceShareResourcePropertyArrayOutput { return v.ResourceProperties }).(ResourceShareResourcePropertyArrayOutput)
 }
 
 // The name of resource share.

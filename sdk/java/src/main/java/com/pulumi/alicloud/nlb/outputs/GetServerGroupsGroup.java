@@ -76,12 +76,12 @@ public final class GetServerGroupsGroup {
      */
     private String serverGroupName;
     /**
-     * @return The type of the server group.
+     * @return The type of the server group. Valid values: `Instance`, `Ip`.
      * 
      */
     private String serverGroupType;
     /**
-     * @return The status of the server group.
+     * @return The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
      * 
      */
     private String status;
@@ -182,14 +182,14 @@ public final class GetServerGroupsGroup {
         return this.serverGroupName;
     }
     /**
-     * @return The type of the server group.
+     * @return The type of the server group. Valid values: `Instance`, `Ip`.
      * 
      */
     public String serverGroupType() {
         return this.serverGroupType;
     }
     /**
-     * @return The status of the server group.
+     * @return The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
      * 
      */
     public String status() {

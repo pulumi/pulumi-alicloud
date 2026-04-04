@@ -67,6 +67,8 @@ __all__ = [
     'WafRuleSharedMatchCriteriaCriteriaCriteria',
     'WaitingRoomHostNameAndPath',
     'GetSitesSiteResult',
+    'GetWafRulesetsQueryArgsResult',
+    'GetWafRulesetsSetResult',
 ]
 
 @pulumi.output_type
@@ -3663,5 +3665,166 @@ class GetSitesSiteResult(dict):
         The status of the resource
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetWafRulesetsQueryArgsResult(dict):
+    def __init__(__self__, *,
+                 any_like: Optional[_builtins.str] = None,
+                 desc: Optional[_builtins.bool] = None,
+                 name_like: Optional[_builtins.str] = None,
+                 order_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str any_like: The fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+        :param _builtins.bool desc: Whether to sort in descending order. Valid values: `true`, `false`.
+        :param _builtins.str name_like: The fuzzy search for rule set name.
+        :param _builtins.str order_by: Specify the column to sort by.
+        """
+        if any_like is not None:
+            pulumi.set(__self__, "any_like", any_like)
+        if desc is not None:
+            pulumi.set(__self__, "desc", desc)
+        if name_like is not None:
+            pulumi.set(__self__, "name_like", name_like)
+        if order_by is not None:
+            pulumi.set(__self__, "order_by", order_by)
+
+    @_builtins.property
+    @pulumi.getter(name="anyLike")
+    def any_like(self) -> Optional[_builtins.str]:
+        """
+        The fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+        """
+        return pulumi.get(self, "any_like")
+
+    @_builtins.property
+    @pulumi.getter
+    def desc(self) -> Optional[_builtins.bool]:
+        """
+        Whether to sort in descending order. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "desc")
+
+    @_builtins.property
+    @pulumi.getter(name="nameLike")
+    def name_like(self) -> Optional[_builtins.str]:
+        """
+        The fuzzy search for rule set name.
+        """
+        return pulumi.get(self, "name_like")
+
+    @_builtins.property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[_builtins.str]:
+        """
+        Specify the column to sort by.
+        """
+        return pulumi.get(self, "order_by")
+
+
+@pulumi.output_type
+class GetWafRulesetsSetResult(dict):
+    def __init__(__self__, *,
+                 fields: Sequence[_builtins.str],
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 phase: _builtins.str,
+                 ruleset_id: _builtins.str,
+                 status: _builtins.str,
+                 target: _builtins.str,
+                 types: Sequence[_builtins.str],
+                 update_time: _builtins.str):
+        """
+        :param Sequence[_builtins.str] fields: The list of match objects.
+        :param _builtins.str id: The ID of the WAF Rule Set.
+        :param _builtins.str name: The name of the rule set.
+        :param _builtins.str phase: The WAF operation phase.
+        :param _builtins.str ruleset_id: The ID of the WAF rule set.
+        :param _builtins.str status: The status of the rule set. Valid values: `on`, `off`.
+        :param _builtins.str target: Protection target type in http_bot.
+        :param Sequence[_builtins.str] types: The list of rule types.
+        :param _builtins.str update_time: The last modification time of the rule set.
+        """
+        pulumi.set(__self__, "fields", fields)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "phase", phase)
+        pulumi.set(__self__, "ruleset_id", ruleset_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "types", types)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> Sequence[_builtins.str]:
+        """
+        The list of match objects.
+        """
+        return pulumi.get(self, "fields")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the WAF Rule Set.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the rule set.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def phase(self) -> _builtins.str:
+        """
+        The WAF operation phase.
+        """
+        return pulumi.get(self, "phase")
+
+    @_builtins.property
+    @pulumi.getter(name="rulesetId")
+    def ruleset_id(self) -> _builtins.str:
+        """
+        The ID of the WAF rule set.
+        """
+        return pulumi.get(self, "ruleset_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the rule set. Valid values: `on`, `off`.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> _builtins.str:
+        """
+        Protection target type in http_bot.
+        """
+        return pulumi.get(self, "target")
+
+    @_builtins.property
+    @pulumi.getter
+    def types(self) -> Sequence[_builtins.str]:
+        """
+        The list of rule types.
+        """
+        return pulumi.get(self, "types")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The last modification time of the rule set.
+        """
+        return pulumi.get(self, "update_time")
 
 

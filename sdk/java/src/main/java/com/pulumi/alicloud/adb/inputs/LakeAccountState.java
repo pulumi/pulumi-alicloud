@@ -108,6 +108,21 @@ public final class LakeAccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * List of Alibaba Cloud RAM user IDs to bind.
+     * 
+     */
+    @Import(name="ramUserLists")
+    private @Nullable Output<List<String>> ramUserLists;
+
+    /**
+     * @return List of Alibaba Cloud RAM user IDs to bind.
+     * 
+     */
+    public Optional<Output<List<String>>> ramUserLists() {
+        return Optional.ofNullable(this.ramUserLists);
+    }
+
+    /**
      * The status of the resource.
      * 
      */
@@ -131,6 +146,7 @@ public final class LakeAccountState extends com.pulumi.resources.ResourceArgs {
         this.accountPrivileges = $.accountPrivileges;
         this.accountType = $.accountType;
         this.dbClusterId = $.dbClusterId;
+        this.ramUserLists = $.ramUserLists;
         this.status = $.status;
     }
 
@@ -286,6 +302,37 @@ public final class LakeAccountState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dbClusterId(String dbClusterId) {
             return dbClusterId(Output.of(dbClusterId));
+        }
+
+        /**
+         * @param ramUserLists List of Alibaba Cloud RAM user IDs to bind.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ramUserLists(@Nullable Output<List<String>> ramUserLists) {
+            $.ramUserLists = ramUserLists;
+            return this;
+        }
+
+        /**
+         * @param ramUserLists List of Alibaba Cloud RAM user IDs to bind.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ramUserLists(List<String> ramUserLists) {
+            return ramUserLists(Output.of(ramUserLists));
+        }
+
+        /**
+         * @param ramUserLists List of Alibaba Cloud RAM user IDs to bind.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ramUserLists(String... ramUserLists) {
+            return ramUserLists(List.of(ramUserLists));
         }
 
         /**

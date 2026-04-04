@@ -70,6 +70,8 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -82,9 +84,34 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
-//				InstanceName:         pulumi.String(pulumi.String(name)),
-//				PaymentType:          pulumi.String("PayAsYouGo"),
+//			_default, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(_default.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSecurityGroups, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
+//				VpcId:     pulumi.StringRef(_default.Ids[0]),
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
+//				InstanceName: pulumi.String(pulumi.String(name)),
+//				PaymentType:  pulumi.String("PayAsYouGo"),
+//				VpcId:        pulumi.String(pulumi.String(defaultGetSwitches.VpcId)),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
+//					pulumi.String(pulumi.String(defaultGetSwitches.Ids[1])),
+//				},
+//				SecurityGroupId:      pulumi.String(pulumi.String(defaultGetSecurityGroups.Ids[0])),
 //				ServerlessChargeType: pulumi.String("onDemand"),
 //			})
 //			if err != nil {
@@ -129,6 +156,8 @@ type Instance struct {
 	// - serverless: Serverless Edition.
 	// > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
+	// The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+	ListenerMode pulumi.StringOutput `pulumi:"listenerMode"`
 	// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
 	MaxConnections pulumi.IntOutput `pulumi:"maxConnections"`
 	// Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
@@ -157,6 +186,8 @@ type Instance struct {
 	RenewalDurationUnit pulumi.StringOutput `pulumi:"renewalDurationUnit"`
 	// The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
+	// The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
 	// The billing type of the serverless instance. Value: onDemand.
 	ServerlessChargeType pulumi.StringPtrOutput `pulumi:"serverlessChargeType"`
 	// The status of the resource.
@@ -169,6 +200,10 @@ type Instance struct {
 	SupportTracing pulumi.BoolPtrOutput `pulumi:"supportTracing"`
 	// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
 	TracingStorageTime pulumi.IntOutput `pulumi:"tracingStorageTime"`
+	// The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
+	// The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -219,6 +254,8 @@ type instanceState struct {
 	// - serverless: Serverless Edition.
 	// > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
 	InstanceType *string `pulumi:"instanceType"`
+	// The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+	ListenerMode *string `pulumi:"listenerMode"`
 	// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
 	MaxConnections *int `pulumi:"maxConnections"`
 	// Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
@@ -247,6 +284,8 @@ type instanceState struct {
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
 	// The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
 	RenewalStatus *string `pulumi:"renewalStatus"`
+	// The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The billing type of the serverless instance. Value: onDemand.
 	ServerlessChargeType *string `pulumi:"serverlessChargeType"`
 	// The status of the resource.
@@ -259,6 +298,10 @@ type instanceState struct {
 	SupportTracing *bool `pulumi:"supportTracing"`
 	// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
 	TracingStorageTime *int `pulumi:"tracingStorageTime"`
+	// The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+	VpcId *string `pulumi:"vpcId"`
+	// The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+	VswitchIds []string `pulumi:"vswitchIds"`
 }
 
 type InstanceState struct {
@@ -277,6 +320,8 @@ type InstanceState struct {
 	// - serverless: Serverless Edition.
 	// > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
 	InstanceType pulumi.StringPtrInput
+	// The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+	ListenerMode pulumi.StringPtrInput
 	// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
 	MaxConnections pulumi.IntPtrInput
 	// Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
@@ -305,6 +350,8 @@ type InstanceState struct {
 	RenewalDurationUnit pulumi.StringPtrInput
 	// The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
 	RenewalStatus pulumi.StringPtrInput
+	// The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+	SecurityGroupId pulumi.StringPtrInput
 	// The billing type of the serverless instance. Value: onDemand.
 	ServerlessChargeType pulumi.StringPtrInput
 	// The status of the resource.
@@ -317,6 +364,10 @@ type InstanceState struct {
 	SupportTracing pulumi.BoolPtrInput
 	// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
 	TracingStorageTime pulumi.IntPtrInput
+	// The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+	VpcId pulumi.StringPtrInput
+	// The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+	VswitchIds pulumi.StringArrayInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -337,6 +388,8 @@ type instanceArgs struct {
 	// - serverless: Serverless Edition.
 	// > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
 	InstanceType *string `pulumi:"instanceType"`
+	// The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+	ListenerMode *string `pulumi:"listenerMode"`
 	// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
 	MaxConnections *int `pulumi:"maxConnections"`
 	// Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
@@ -365,6 +418,8 @@ type instanceArgs struct {
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
 	// The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
 	RenewalStatus *string `pulumi:"renewalStatus"`
+	// The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The billing type of the serverless instance. Value: onDemand.
 	ServerlessChargeType *string `pulumi:"serverlessChargeType"`
 	// Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
@@ -375,6 +430,10 @@ type instanceArgs struct {
 	SupportTracing *bool `pulumi:"supportTracing"`
 	// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
 	TracingStorageTime *int `pulumi:"tracingStorageTime"`
+	// The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+	VpcId *string `pulumi:"vpcId"`
+	// The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+	VswitchIds []string `pulumi:"vswitchIds"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -392,6 +451,8 @@ type InstanceArgs struct {
 	// - serverless: Serverless Edition.
 	// > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
 	InstanceType pulumi.StringPtrInput
+	// The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+	ListenerMode pulumi.StringPtrInput
 	// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
 	MaxConnections pulumi.IntPtrInput
 	// Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
@@ -420,6 +481,8 @@ type InstanceArgs struct {
 	RenewalDurationUnit pulumi.StringPtrInput
 	// The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
 	RenewalStatus pulumi.StringPtrInput
+	// The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+	SecurityGroupId pulumi.StringPtrInput
 	// The billing type of the serverless instance. Value: onDemand.
 	ServerlessChargeType pulumi.StringPtrInput
 	// Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
@@ -430,6 +493,10 @@ type InstanceArgs struct {
 	SupportTracing pulumi.BoolPtrInput
 	// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
 	TracingStorageTime pulumi.IntPtrInput
+	// The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+	VpcId pulumi.StringPtrInput
+	// The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+	VswitchIds pulumi.StringArrayInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -549,6 +616,11 @@ func (o InstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
+// The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+func (o InstanceOutput) ListenerMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ListenerMode }).(pulumi.StringOutput)
+}
+
 // The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
 func (o InstanceOutput) MaxConnections() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.MaxConnections }).(pulumi.IntOutput)
@@ -613,6 +685,11 @@ func (o InstanceOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
 }
 
+// The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+func (o InstanceOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
 // The billing type of the serverless instance. Value: onDemand.
 func (o InstanceOutput) ServerlessChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ServerlessChargeType }).(pulumi.StringPtrOutput)
@@ -641,6 +718,16 @@ func (o InstanceOutput) SupportTracing() pulumi.BoolPtrOutput {
 // Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
 func (o InstanceOutput) TracingStorageTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TracingStorageTime }).(pulumi.IntOutput)
+}
+
+// The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+func (o InstanceOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+func (o InstanceOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }

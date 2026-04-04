@@ -135,7 +135,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     /**
      * Package name.
      * 
-     * Chinese website account:
+     * For China site accounts:
      * 
      */
     @Import(name="planName")
@@ -144,7 +144,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     /**
      * @return Package name.
      * 
-     * Chinese website account:
+     * For China site accounts:
      * 
      */
     public Optional<Output<String>> planName() {
@@ -152,14 +152,14 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The plan status. , the plan is unavailable.
+     * The plan status.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The plan status. , the plan is unavailable.
+     * @return The plan status.
      * 
      */
     public Optional<Output<String>> status() {
@@ -382,7 +382,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         /**
          * @param planName Package name.
          * 
-         * Chinese website account:
+         * For China site accounts:
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         /**
          * @param planName Package name.
          * 
-         * Chinese website account:
+         * For China site accounts:
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The plan status. , the plan is unavailable.
+         * @param status The plan status.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The plan status. , the plan is unavailable.
+         * @param status The plan status.
          * 
          * @return builder
          * 

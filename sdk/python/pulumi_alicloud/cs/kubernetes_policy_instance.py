@@ -233,8 +233,8 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
         import pulumi_std as std
 
         config = pulumi.Config()
@@ -249,20 +249,14 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
             ]
         cluster_name = config.get("clusterName")
         if cluster_name is None:
-            cluster_name = "example-create-cluster"
+            cluster_name = "terraform-example-"
         pod_cidr = config.get("podCidr")
         if pod_cidr is None:
             pod_cidr = "172.16.0.0/16"
         service_cidr = config.get("serviceCidr")
         if service_cidr is None:
             service_cidr = "192.168.0.0/16"
-        policy_name = config.get("policyName")
-        if policy_name is None:
-            policy_name = "ACKPSPHostNetworkingPorts"
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
-        default = random.index.Integer("default",
-            max=99999,
-            min=10000)
         create_vpc = alicloud.vpc.Network("CreateVPC", cidr_block=vpc_cidr)
         # According to the vswitch cidr blocks to launch several vswitches
         create_v_switch = []
@@ -272,8 +266,8 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
                 cidr_block=vswitch_cidrs[range["value"]],
                 zone_id=enhanced.zones[range["value"]].zone_id))
         create_cluster = alicloud.cs.ManagedKubernetes("CreateCluster",
-            name=f"{cluster_name}-{default['result']}",
-            cluster_spec="ack.pro.small",
+            name_prefix=cluster_name,
+            cluster_spec="ack.standard",
             profile="Default",
             vswitch_ids=std.join_output(separator=",",
                 input=[__item.id for __item in create_v_switch]).apply(lambda invoke: std.split_output(separator=",",
@@ -303,15 +297,55 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
             maintenance_window={
                 "enable": False,
             })
-        default_kubernetes_policy_instance = alicloud.cs.KubernetesPolicyInstance("default",
+        base = alicloud.cs.KubernetesPolicyInstance("base",
             cluster_id=create_cluster.id,
-            policy_name=policy_name,
+            policy_name="ACKPSPReadOnlyRootFilesystem")
+        string = alicloud.cs.KubernetesPolicyInstance("string",
+            cluster_id=create_cluster.id,
+            policy_name="ACKPVSizeConstraint",
             action="deny",
+            parameters={
+                "maxSize": "60Gi",
+            })
+        int_bool = alicloud.cs.KubernetesPolicyInstance("int_bool",
+            cluster_id=create_cluster.id,
+            policy_name="ACKPSPHostNetworkingPorts",
             namespaces=["test"],
             parameters={
                 "hostNetwork": "true",
                 "min": "20",
                 "max": "200",
+            })
+        array = alicloud.cs.KubernetesPolicyInstance("array",
+            cluster_id=create_cluster.id,
+            policy_name="ACKAllowedRepos",
+            parameters={
+                "repos": json.dumps([
+                    "docker.io/library/nginx",
+                    "docker.io/library/redis",
+                ]),
+            })
+        object = alicloud.cs.KubernetesPolicyInstance("object",
+            cluster_id=create_cluster.id,
+            policy_name="ACKRequiredLabels",
+            action="warn",
+            namespaces=[
+                "test1",
+                "test2",
+                "test3",
+            ],
+            parameters={
+                "labels": json.dumps([
+                    {
+                        "key": "test",
+                        "allowedRegex": "^test.*$",
+                    },
+                    {
+                        "key": "env",
+                        "allowedRegex": "^(dev|prod)$",
+                        "optional": False,
+                    },
+                ]),
             })
         ```
 
@@ -353,8 +387,8 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
         import pulumi_std as std
 
         config = pulumi.Config()
@@ -369,20 +403,14 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
             ]
         cluster_name = config.get("clusterName")
         if cluster_name is None:
-            cluster_name = "example-create-cluster"
+            cluster_name = "terraform-example-"
         pod_cidr = config.get("podCidr")
         if pod_cidr is None:
             pod_cidr = "172.16.0.0/16"
         service_cidr = config.get("serviceCidr")
         if service_cidr is None:
             service_cidr = "192.168.0.0/16"
-        policy_name = config.get("policyName")
-        if policy_name is None:
-            policy_name = "ACKPSPHostNetworkingPorts"
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
-        default = random.index.Integer("default",
-            max=99999,
-            min=10000)
         create_vpc = alicloud.vpc.Network("CreateVPC", cidr_block=vpc_cidr)
         # According to the vswitch cidr blocks to launch several vswitches
         create_v_switch = []
@@ -392,8 +420,8 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
                 cidr_block=vswitch_cidrs[range["value"]],
                 zone_id=enhanced.zones[range["value"]].zone_id))
         create_cluster = alicloud.cs.ManagedKubernetes("CreateCluster",
-            name=f"{cluster_name}-{default['result']}",
-            cluster_spec="ack.pro.small",
+            name_prefix=cluster_name,
+            cluster_spec="ack.standard",
             profile="Default",
             vswitch_ids=std.join_output(separator=",",
                 input=[__item.id for __item in create_v_switch]).apply(lambda invoke: std.split_output(separator=",",
@@ -423,15 +451,55 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
             maintenance_window={
                 "enable": False,
             })
-        default_kubernetes_policy_instance = alicloud.cs.KubernetesPolicyInstance("default",
+        base = alicloud.cs.KubernetesPolicyInstance("base",
             cluster_id=create_cluster.id,
-            policy_name=policy_name,
+            policy_name="ACKPSPReadOnlyRootFilesystem")
+        string = alicloud.cs.KubernetesPolicyInstance("string",
+            cluster_id=create_cluster.id,
+            policy_name="ACKPVSizeConstraint",
             action="deny",
+            parameters={
+                "maxSize": "60Gi",
+            })
+        int_bool = alicloud.cs.KubernetesPolicyInstance("int_bool",
+            cluster_id=create_cluster.id,
+            policy_name="ACKPSPHostNetworkingPorts",
             namespaces=["test"],
             parameters={
                 "hostNetwork": "true",
                 "min": "20",
                 "max": "200",
+            })
+        array = alicloud.cs.KubernetesPolicyInstance("array",
+            cluster_id=create_cluster.id,
+            policy_name="ACKAllowedRepos",
+            parameters={
+                "repos": json.dumps([
+                    "docker.io/library/nginx",
+                    "docker.io/library/redis",
+                ]),
+            })
+        object = alicloud.cs.KubernetesPolicyInstance("object",
+            cluster_id=create_cluster.id,
+            policy_name="ACKRequiredLabels",
+            action="warn",
+            namespaces=[
+                "test1",
+                "test2",
+                "test3",
+            ],
+            parameters={
+                "labels": json.dumps([
+                    {
+                        "key": "test",
+                        "allowedRegex": "^test.*$",
+                    },
+                    {
+                        "key": "env",
+                        "allowedRegex": "^(dev|prod)$",
+                        "optional": False,
+                    },
+                ]),
             })
         ```
 
@@ -529,7 +597,7 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def action(self) -> pulumi.Output[_builtins.str]:
         """
         Policy Governance Implementation Actions
         """

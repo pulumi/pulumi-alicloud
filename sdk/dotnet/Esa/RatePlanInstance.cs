@@ -107,13 +107,13 @@ namespace Pulumi.AliCloud.Esa
         /// <summary>
         /// Package name.  
         /// 
-        /// Chinese website account:
+        /// For China site accounts:
         /// </summary>
         [Output("planName")]
         public Output<string?> PlanName { get; private set; } = null!;
 
         /// <summary>
-        /// The plan status. , the plan is unavailable.
+        /// The plan status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Esa
         /// <summary>
         /// Package name.  
         /// 
-        /// Chinese website account:
+        /// For China site accounts:
         /// </summary>
         [Input("planName")]
         public Input<string>? PlanName { get; set; }
@@ -285,13 +285,13 @@ namespace Pulumi.AliCloud.Esa
         /// <summary>
         /// Package name.  
         /// 
-        /// Chinese website account:
+        /// For China site accounts:
         /// </summary>
         [Input("planName")]
         public Input<string>? PlanName { get; set; }
 
         /// <summary>
-        /// The plan status. , the plan is unavailable.
+        /// The plan status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

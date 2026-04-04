@@ -41,6 +41,8 @@ __all__ = [
     'ResourceGroupRegionStatusArgsDict',
     'ResourceShareResourceArgs',
     'ResourceShareResourceArgsDict',
+    'ResourceShareResourcePropertyArgs',
+    'ResourceShareResourcePropertyArgsDict',
 ]
 
 class AutoGroupingRuleRuleContentArgsDict(TypedDict):
@@ -912,5 +914,54 @@ class ResourceShareResourceArgs:
     @resource_type.setter
     def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
+
+
+class ResourceShareResourcePropertyArgsDict(TypedDict):
+    property: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource property.
+    """
+    resource_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ARN of the resource.
+    """
+
+@pulumi.input_type
+class ResourceShareResourcePropertyArgs:
+    def __init__(__self__, *,
+                 property: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_arn: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] property: The resource property.
+        :param pulumi.Input[_builtins.str] resource_arn: The ARN of the resource.
+        """
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if resource_arn is not None:
+            pulumi.set(__self__, "resource_arn", resource_arn)
+
+    @_builtins.property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource property.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "property", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceArn")
+    def resource_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ARN of the resource.
+        """
+        return pulumi.get(self, "resource_arn")
+
+    @resource_arn.setter
+    def resource_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_arn", value)
 
 

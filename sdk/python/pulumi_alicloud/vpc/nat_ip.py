@@ -20,32 +20,27 @@ __all__ = ['NatIpArgs', 'NatIp']
 class NatIpArgs:
     def __init__(__self__, *,
                  nat_gateway_id: pulumi.Input[_builtins.str],
+                 nat_ip_cidr: pulumi.Input[_builtins.str],
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
                  nat_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip_description: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatIp resource.
 
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
-        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.
-        :param pulumi.Input[_builtins.str] nat_ip: The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
-        :param pulumi.Input[_builtins.str] nat_ip_cidr: NAT IP ADDRESS of the address segment.
-        :param pulumi.Input[_builtins.str] nat_ip_cidr_id: The ID of the CIDR block to which the NAT IP address belongs.
-        :param pulumi.Input[_builtins.str] nat_ip_description: NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
-        :param pulumi.Input[_builtins.str] nat_ip_name: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        :param pulumi.Input[_builtins.str] nat_ip_cidr: The CIDR block to which the NAT IP address belongs.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to only precheck the request. Valid values:
+        :param pulumi.Input[_builtins.str] nat_ip: The NAT IP address to be created.
+        :param pulumi.Input[_builtins.str] nat_ip_description: The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] nat_ip_name: The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         """
         pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
+        pulumi.set(__self__, "nat_ip_cidr", nat_ip_cidr)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
-        if nat_ip_cidr is not None:
-            pulumi.set(__self__, "nat_ip_cidr", nat_ip_cidr)
-        if nat_ip_cidr_id is not None:
-            pulumi.set(__self__, "nat_ip_cidr_id", nat_ip_cidr_id)
         if nat_ip_description is not None:
             pulumi.set(__self__, "nat_ip_description", nat_ip_description)
         if nat_ip_name is not None:
@@ -64,10 +59,22 @@ class NatIpArgs:
         pulumi.set(self, "nat_gateway_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="natIpCidr")
+    def nat_ip_cidr(self) -> pulumi.Input[_builtins.str]:
+        """
+        The CIDR block to which the NAT IP address belongs.
+        """
+        return pulumi.get(self, "nat_ip_cidr")
+
+    @nat_ip_cidr.setter
+    def nat_ip_cidr(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "nat_ip_cidr", value)
+
+    @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to check the validity of the request without actually making the request.
+        Specifies whether to only precheck the request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -79,7 +86,7 @@ class NatIpArgs:
     @pulumi.getter(name="natIp")
     def nat_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+        The NAT IP address to be created.
         """
         return pulumi.get(self, "nat_ip")
 
@@ -88,34 +95,10 @@ class NatIpArgs:
         pulumi.set(self, "nat_ip", value)
 
     @_builtins.property
-    @pulumi.getter(name="natIpCidr")
-    def nat_ip_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        NAT IP ADDRESS of the address segment.
-        """
-        return pulumi.get(self, "nat_ip_cidr")
-
-    @nat_ip_cidr.setter
-    def nat_ip_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "nat_ip_cidr", value)
-
-    @_builtins.property
-    @pulumi.getter(name="natIpCidrId")
-    def nat_ip_cidr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the CIDR block to which the NAT IP address belongs.
-        """
-        return pulumi.get(self, "nat_ip_cidr_id")
-
-    @nat_ip_cidr_id.setter
-    def nat_ip_cidr_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "nat_ip_cidr_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="natIpDescription")
     def nat_ip_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "nat_ip_description")
 
@@ -127,7 +110,7 @@ class NatIpArgs:
     @pulumi.getter(name="natIpName")
     def nat_ip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "nat_ip_name")
 
@@ -143,7 +126,6 @@ class _NatIpState:
                  nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip_description: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -151,15 +133,14 @@ class _NatIpState:
         """
         Input properties used for looking up and filtering NatIp resources.
 
-        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to only precheck the request. Valid values:
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
-        :param pulumi.Input[_builtins.str] nat_ip: The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
-        :param pulumi.Input[_builtins.str] nat_ip_cidr: NAT IP ADDRESS of the address segment.
-        :param pulumi.Input[_builtins.str] nat_ip_cidr_id: The ID of the CIDR block to which the NAT IP address belongs.
-        :param pulumi.Input[_builtins.str] nat_ip_description: NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        :param pulumi.Input[_builtins.str] nat_ip: The NAT IP address to be created.
+        :param pulumi.Input[_builtins.str] nat_ip_cidr: The CIDR block to which the NAT IP address belongs.
+        :param pulumi.Input[_builtins.str] nat_ip_description: The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] nat_ip_id: Ihe ID of the Nat Ip.
-        :param pulumi.Input[_builtins.str] nat_ip_name: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
-        :param pulumi.Input[_builtins.str] status: The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
+        :param pulumi.Input[_builtins.str] nat_ip_name: The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] status: The status of the NAT IP address.
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
@@ -169,8 +150,6 @@ class _NatIpState:
             pulumi.set(__self__, "nat_ip", nat_ip)
         if nat_ip_cidr is not None:
             pulumi.set(__self__, "nat_ip_cidr", nat_ip_cidr)
-        if nat_ip_cidr_id is not None:
-            pulumi.set(__self__, "nat_ip_cidr_id", nat_ip_cidr_id)
         if nat_ip_description is not None:
             pulumi.set(__self__, "nat_ip_description", nat_ip_description)
         if nat_ip_id is not None:
@@ -184,7 +163,7 @@ class _NatIpState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to check the validity of the request without actually making the request.
+        Specifies whether to only precheck the request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -208,7 +187,7 @@ class _NatIpState:
     @pulumi.getter(name="natIp")
     def nat_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+        The NAT IP address to be created.
         """
         return pulumi.get(self, "nat_ip")
 
@@ -220,7 +199,7 @@ class _NatIpState:
     @pulumi.getter(name="natIpCidr")
     def nat_ip_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        NAT IP ADDRESS of the address segment.
+        The CIDR block to which the NAT IP address belongs.
         """
         return pulumi.get(self, "nat_ip_cidr")
 
@@ -229,22 +208,10 @@ class _NatIpState:
         pulumi.set(self, "nat_ip_cidr", value)
 
     @_builtins.property
-    @pulumi.getter(name="natIpCidrId")
-    def nat_ip_cidr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the CIDR block to which the NAT IP address belongs.
-        """
-        return pulumi.get(self, "nat_ip_cidr_id")
-
-    @nat_ip_cidr_id.setter
-    def nat_ip_cidr_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "nat_ip_cidr_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="natIpDescription")
     def nat_ip_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "nat_ip_description")
 
@@ -268,7 +235,7 @@ class _NatIpState:
     @pulumi.getter(name="natIpName")
     def nat_ip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "nat_ip_name")
 
@@ -280,7 +247,7 @@ class _NatIpState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
+        The status of the NAT IP address.
         """
         return pulumi.get(self, "status")
 
@@ -299,14 +266,15 @@ class NatIp(pulumi.CustomResource):
                  nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip_description: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a VPC Nat Ip resource.
+        Provides a Nat Gateway Nat Ip resource.
 
-        For information about VPC Nat Ip and how to use it, see [What is Nat Ip](https://www.alibabacloud.com/help/doc-detail/281976.htm).
+        NAT IP address instance.
+
+        For information about Nat Gateway Nat Ip and how to use it, see [What is Nat Ip](https://www.alibabacloud.com/help/en/nat-gateway/developer-reference/api-vpc-2016-04-28-createnatip-natgws).
 
         > **NOTE:** Available since v1.136.0.
 
@@ -352,7 +320,7 @@ class NatIp(pulumi.CustomResource):
 
         ## Import
 
-        VPC Nat Ip can be imported using the id, e.g.
+        Nat Gateway Nat Ip can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
@@ -361,13 +329,12 @@ class NatIp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to only precheck the request. Valid values:
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
-        :param pulumi.Input[_builtins.str] nat_ip: The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
-        :param pulumi.Input[_builtins.str] nat_ip_cidr: NAT IP ADDRESS of the address segment.
-        :param pulumi.Input[_builtins.str] nat_ip_cidr_id: The ID of the CIDR block to which the NAT IP address belongs.
-        :param pulumi.Input[_builtins.str] nat_ip_description: NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
-        :param pulumi.Input[_builtins.str] nat_ip_name: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        :param pulumi.Input[_builtins.str] nat_ip: The NAT IP address to be created.
+        :param pulumi.Input[_builtins.str] nat_ip_cidr: The CIDR block to which the NAT IP address belongs.
+        :param pulumi.Input[_builtins.str] nat_ip_description: The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] nat_ip_name: The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         """
         ...
     @overload
@@ -376,9 +343,11 @@ class NatIp(pulumi.CustomResource):
                  args: NatIpArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Nat Ip resource.
+        Provides a Nat Gateway Nat Ip resource.
 
-        For information about VPC Nat Ip and how to use it, see [What is Nat Ip](https://www.alibabacloud.com/help/doc-detail/281976.htm).
+        NAT IP address instance.
+
+        For information about Nat Gateway Nat Ip and how to use it, see [What is Nat Ip](https://www.alibabacloud.com/help/en/nat-gateway/developer-reference/api-vpc-2016-04-28-createnatip-natgws).
 
         > **NOTE:** Available since v1.136.0.
 
@@ -424,7 +393,7 @@ class NatIp(pulumi.CustomResource):
 
         ## Import
 
-        VPC Nat Ip can be imported using the id, e.g.
+        Nat Gateway Nat Ip can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
@@ -450,7 +419,6 @@ class NatIp(pulumi.CustomResource):
                  nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip_description: Optional[pulumi.Input[_builtins.str]] = None,
                  nat_ip_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -467,8 +435,9 @@ class NatIp(pulumi.CustomResource):
                 raise TypeError("Missing required property 'nat_gateway_id'")
             __props__.__dict__["nat_gateway_id"] = nat_gateway_id
             __props__.__dict__["nat_ip"] = nat_ip
+            if nat_ip_cidr is None and not opts.urn:
+                raise TypeError("Missing required property 'nat_ip_cidr'")
             __props__.__dict__["nat_ip_cidr"] = nat_ip_cidr
-            __props__.__dict__["nat_ip_cidr_id"] = nat_ip_cidr_id
             __props__.__dict__["nat_ip_description"] = nat_ip_description
             __props__.__dict__["nat_ip_name"] = nat_ip_name
             __props__.__dict__["nat_ip_id"] = None
@@ -487,7 +456,6 @@ class NatIp(pulumi.CustomResource):
             nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
             nat_ip: Optional[pulumi.Input[_builtins.str]] = None,
             nat_ip_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_ip_cidr_id: Optional[pulumi.Input[_builtins.str]] = None,
             nat_ip_description: Optional[pulumi.Input[_builtins.str]] = None,
             nat_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
             nat_ip_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -499,15 +467,14 @@ class NatIp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to only precheck the request. Valid values:
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
-        :param pulumi.Input[_builtins.str] nat_ip: The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
-        :param pulumi.Input[_builtins.str] nat_ip_cidr: NAT IP ADDRESS of the address segment.
-        :param pulumi.Input[_builtins.str] nat_ip_cidr_id: The ID of the CIDR block to which the NAT IP address belongs.
-        :param pulumi.Input[_builtins.str] nat_ip_description: NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        :param pulumi.Input[_builtins.str] nat_ip: The NAT IP address to be created.
+        :param pulumi.Input[_builtins.str] nat_ip_cidr: The CIDR block to which the NAT IP address belongs.
+        :param pulumi.Input[_builtins.str] nat_ip_description: The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] nat_ip_id: Ihe ID of the Nat Ip.
-        :param pulumi.Input[_builtins.str] nat_ip_name: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
-        :param pulumi.Input[_builtins.str] status: The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
+        :param pulumi.Input[_builtins.str] nat_ip_name: The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] status: The status of the NAT IP address.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -517,7 +484,6 @@ class NatIp(pulumi.CustomResource):
         __props__.__dict__["nat_gateway_id"] = nat_gateway_id
         __props__.__dict__["nat_ip"] = nat_ip
         __props__.__dict__["nat_ip_cidr"] = nat_ip_cidr
-        __props__.__dict__["nat_ip_cidr_id"] = nat_ip_cidr_id
         __props__.__dict__["nat_ip_description"] = nat_ip_description
         __props__.__dict__["nat_ip_id"] = nat_ip_id
         __props__.__dict__["nat_ip_name"] = nat_ip_name
@@ -526,9 +492,9 @@ class NatIp(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> pulumi.Output[_builtins.bool]:
+    def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies whether to check the validity of the request without actually making the request.
+        Specifies whether to only precheck the request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -544,31 +510,23 @@ class NatIp(pulumi.CustomResource):
     @pulumi.getter(name="natIp")
     def nat_ip(self) -> pulumi.Output[_builtins.str]:
         """
-        The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+        The NAT IP address to be created.
         """
         return pulumi.get(self, "nat_ip")
 
     @_builtins.property
     @pulumi.getter(name="natIpCidr")
-    def nat_ip_cidr(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def nat_ip_cidr(self) -> pulumi.Output[_builtins.str]:
         """
-        NAT IP ADDRESS of the address segment.
+        The CIDR block to which the NAT IP address belongs.
         """
         return pulumi.get(self, "nat_ip_cidr")
-
-    @_builtins.property
-    @pulumi.getter(name="natIpCidrId")
-    def nat_ip_cidr_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The ID of the CIDR block to which the NAT IP address belongs.
-        """
-        return pulumi.get(self, "nat_ip_cidr_id")
 
     @_builtins.property
     @pulumi.getter(name="natIpDescription")
     def nat_ip_description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "nat_ip_description")
 
@@ -584,7 +542,7 @@ class NatIp(pulumi.CustomResource):
     @pulumi.getter(name="natIpName")
     def nat_ip_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "nat_ip_name")
 
@@ -592,7 +550,7 @@ class NatIp(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
+        The status of the NAT IP address.
         """
         return pulumi.get(self, "status")
 

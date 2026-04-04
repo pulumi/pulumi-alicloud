@@ -53,7 +53,7 @@ class DbClusterArgs:
                * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
         :param pulumi.Input[_builtins.str] db_cluster_network_type: The DBCluster network type. Valid values: `vpc`.
-        :param pulumi.Input[_builtins.str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+        :param pulumi.Input[_builtins.str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         :param pulumi.Input[_builtins.int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[_builtins.str] db_node_storage: The db node storage.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
@@ -159,7 +159,7 @@ class DbClusterArgs:
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> pulumi.Input[_builtins.str]:
         """
-        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -452,7 +452,7 @@ class _DbClusterState:
                * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
         :param pulumi.Input[_builtins.str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[_builtins.str] db_cluster_network_type: The DBCluster network type. Valid values: `vpc`.
-        :param pulumi.Input[_builtins.str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+        :param pulumi.Input[_builtins.str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         :param pulumi.Input[_builtins.int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[_builtins.str] db_node_storage: The db node storage.
         :param pulumi.Input[_builtins.str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
@@ -630,7 +630,7 @@ class _DbClusterState:
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -920,7 +920,7 @@ class DbCluster(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default_get_regions.regions[0].zone_ids[0].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("default",
-            db_cluster_version="23.8",
+            db_cluster_version="25.3",
             category="Basic",
             db_cluster_class="S8",
             db_cluster_network_type="vpc",
@@ -955,7 +955,7 @@ class DbCluster(pulumi.CustomResource):
                * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
         :param pulumi.Input[_builtins.str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[_builtins.str] db_cluster_network_type: The DBCluster network type. Valid values: `vpc`.
-        :param pulumi.Input[_builtins.str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+        :param pulumi.Input[_builtins.str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         :param pulumi.Input[_builtins.int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[_builtins.str] db_node_storage: The db node storage.
         :param pulumi.Input[_builtins.str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
@@ -1013,7 +1013,7 @@ class DbCluster(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default_get_regions.regions[0].zone_ids[0].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("default",
-            db_cluster_version="23.8",
+            db_cluster_version="25.3",
             category="Basic",
             db_cluster_class="S8",
             db_cluster_network_type="vpc",
@@ -1182,7 +1182,7 @@ class DbCluster(pulumi.CustomResource):
                * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
         :param pulumi.Input[_builtins.str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[_builtins.str] db_cluster_network_type: The DBCluster network type. Valid values: `vpc`.
-        :param pulumi.Input[_builtins.str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+        :param pulumi.Input[_builtins.str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         :param pulumi.Input[_builtins.int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[_builtins.str] db_node_storage: The db node storage.
         :param pulumi.Input[_builtins.str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
@@ -1306,7 +1306,7 @@ class DbCluster(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> pulumi.Output[_builtins.str]:
         """
-        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         """
         return pulumi.get(self, "db_cluster_version")
 

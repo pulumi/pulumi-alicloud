@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
  * import * as std from "@pulumi/std";
  *
  * const config = new pulumi.Config();
@@ -27,15 +26,10 @@ import * as utilities from "../utilities";
  *     "10.1.0.0/16",
  *     "10.2.0.0/16",
  * ];
- * const clusterName = config.get("clusterName") || "example-create-cluster";
+ * const clusterName = config.get("clusterName") || "terraform-example-";
  * const podCidr = config.get("podCidr") || "172.16.0.0/16";
  * const serviceCidr = config.get("serviceCidr") || "192.168.0.0/16";
- * const policyName = config.get("policyName") || "ACKPSPHostNetworkingPorts";
  * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
- * const _default = new random.index.Integer("default", {
- *     max: 99999,
- *     min: 10000,
- * });
  * const createVPC = new alicloud.vpc.Network("CreateVPC", {cidrBlock: vpcCidr});
  * // According to the vswitch cidr blocks to launch several vswitches
  * const createVSwitch: alicloud.vpc.Switch[] = [];
@@ -47,8 +41,8 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * const createCluster = new alicloud.cs.ManagedKubernetes("CreateCluster", {
- *     name: `${clusterName}-${_default.result}`,
- *     clusterSpec: "ack.pro.small",
+ *     namePrefix: clusterName,
+ *     clusterSpec: "ack.standard",
  *     profile: "Default",
  *     vswitchIds: std.joinOutput({
  *         separator: ",",
@@ -83,15 +77,59 @@ import * as utilities from "../utilities";
  *         enable: false,
  *     },
  * });
- * const defaultKubernetesPolicyInstance = new alicloud.cs.KubernetesPolicyInstance("default", {
+ * const base = new alicloud.cs.KubernetesPolicyInstance("base", {
  *     clusterId: createCluster.id,
- *     policyName: policyName,
+ *     policyName: "ACKPSPReadOnlyRootFilesystem",
+ * });
+ * const string = new alicloud.cs.KubernetesPolicyInstance("string", {
+ *     clusterId: createCluster.id,
+ *     policyName: "ACKPVSizeConstraint",
  *     action: "deny",
+ *     parameters: {
+ *         maxSize: "60Gi",
+ *     },
+ * });
+ * const intBool = new alicloud.cs.KubernetesPolicyInstance("int_bool", {
+ *     clusterId: createCluster.id,
+ *     policyName: "ACKPSPHostNetworkingPorts",
  *     namespaces: ["test"],
  *     parameters: {
  *         hostNetwork: "true",
  *         min: "20",
  *         max: "200",
+ *     },
+ * });
+ * const array = new alicloud.cs.KubernetesPolicyInstance("array", {
+ *     clusterId: createCluster.id,
+ *     policyName: "ACKAllowedRepos",
+ *     parameters: {
+ *         repos: JSON.stringify([
+ *             "docker.io/library/nginx",
+ *             "docker.io/library/redis",
+ *         ]),
+ *     },
+ * });
+ * const object = new alicloud.cs.KubernetesPolicyInstance("object", {
+ *     clusterId: createCluster.id,
+ *     policyName: "ACKRequiredLabels",
+ *     action: "warn",
+ *     namespaces: [
+ *         "test1",
+ *         "test2",
+ *         "test3",
+ *     ],
+ *     parameters: {
+ *         labels: JSON.stringify([
+ *             {
+ *                 key: "test",
+ *                 allowedRegex: "^test.*$",
+ *             },
+ *             {
+ *                 key: "env",
+ *                 allowedRegex: "^(dev|prod)$",
+ *                 optional: false,
+ *             },
+ *         ]),
  *     },
  * });
  * ```
@@ -137,7 +175,7 @@ export class KubernetesPolicyInstance extends pulumi.CustomResource {
     /**
      * Policy Governance Implementation Actions
      */
-    declare public readonly action: pulumi.Output<string | undefined>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * Target cluster ID
      */

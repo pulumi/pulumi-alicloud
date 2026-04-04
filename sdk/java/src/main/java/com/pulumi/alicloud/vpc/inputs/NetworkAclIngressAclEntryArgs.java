@@ -143,14 +143,14 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The source CIDR block.
+     * The source CIDR block, or the prefix list instance ID.
      * 
      */
     @Import(name="sourceCidrIp")
     private @Nullable Output<String> sourceCidrIp;
 
     /**
-     * @return The source CIDR block.
+     * @return The source CIDR block, or the prefix list instance ID.
      * 
      */
     public Optional<Output<String>> sourceCidrIp() {
@@ -358,7 +358,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sourceCidrIp The source CIDR block.
+         * @param sourceCidrIp The source CIDR block, or the prefix list instance ID.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sourceCidrIp The source CIDR block.
+         * @param sourceCidrIp The source CIDR block, or the prefix list instance ID.
          * 
          * @return builder
          * 

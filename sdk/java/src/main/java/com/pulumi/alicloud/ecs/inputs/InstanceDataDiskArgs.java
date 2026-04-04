@@ -49,14 +49,14 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The category of the disk:
+     * The category of the disk. Default value: `cloudEfficiency`. Valid values:
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The category of the disk:
+     * @return The category of the disk. Default value: `cloudEfficiency`. Valid values:
      * 
      */
     public Optional<Output<String>> category() {
@@ -312,7 +312,7 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category The category of the disk:
+         * @param category The category of the disk. Default value: `cloudEfficiency`. Valid values:
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category The category of the disk:
+         * @param category The category of the disk. Default value: `cloudEfficiency`. Valid values:
          * 
          * @return builder
          * 

@@ -16,9 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Nat Ip resource.
+ * Provides a Nat Gateway Nat Ip resource.
  * 
- * For information about VPC Nat Ip and how to use it, see [What is Nat Ip](https://www.alibabacloud.com/help/doc-detail/281976.htm).
+ * NAT IP address instance.
+ * 
+ * For information about Nat Gateway Nat Ip and how to use it, see [What is Nat Ip](https://www.alibabacloud.com/help/en/nat-gateway/developer-reference/api-vpc-2016-04-28-createnatip-natgws).
  * 
  * &gt; **NOTE:** Available since v1.136.0.
  * 
@@ -108,7 +110,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Nat Ip can be imported using the id, e.g.
+ * Nat Gateway Nat Ip can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/natIp:NatIp example &lt;nat_gateway_id&gt;:&lt;nat_ip_id&gt;
@@ -118,18 +120,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/natIp:NatIp")
 public class NatIp extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether to check the validity of the request without actually making the request.
+     * Specifies whether to only precheck the request. Valid values:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> dryRun;
+    private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Specifies whether to check the validity of the request without actually making the request.
+     * @return Specifies whether to only precheck the request. Valid values:
      * 
      */
-    public Output<Boolean> dryRun() {
-        return this.dryRun;
+    public Output<Optional<Boolean>> dryRun() {
+        return Codegen.optional(this.dryRun);
     }
     /**
      * The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
@@ -146,56 +148,42 @@ public class NatIp extends com.pulumi.resources.CustomResource {
         return this.natGatewayId;
     }
     /**
-     * The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+     * The NAT IP address to be created.
      * 
      */
     @Export(name="natIp", refs={String.class}, tree="[0]")
     private Output<String> natIp;
 
     /**
-     * @return The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+     * @return The NAT IP address to be created.
      * 
      */
     public Output<String> natIp() {
         return this.natIp;
     }
     /**
-     * NAT IP ADDRESS of the address segment.
+     * The CIDR block to which the NAT IP address belongs.
      * 
      */
     @Export(name="natIpCidr", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> natIpCidr;
+    private Output<String> natIpCidr;
 
     /**
-     * @return NAT IP ADDRESS of the address segment.
+     * @return The CIDR block to which the NAT IP address belongs.
      * 
      */
-    public Output<Optional<String>> natIpCidr() {
-        return Codegen.optional(this.natIpCidr);
+    public Output<String> natIpCidr() {
+        return this.natIpCidr;
     }
     /**
-     * The ID of the CIDR block to which the NAT IP address belongs.
-     * 
-     */
-    @Export(name="natIpCidrId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> natIpCidrId;
-
-    /**
-     * @return The ID of the CIDR block to which the NAT IP address belongs.
-     * 
-     */
-    public Output<Optional<String>> natIpCidrId() {
-        return Codegen.optional(this.natIpCidrId);
-    }
-    /**
-     * NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+     * The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="natIpDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> natIpDescription;
 
     /**
-     * @return NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+     * @return The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> natIpDescription() {
@@ -216,28 +204,28 @@ public class NatIp extends com.pulumi.resources.CustomResource {
         return this.natIpId;
     }
     /**
-     * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     * The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="natIpName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> natIpName;
 
     /**
-     * @return NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     * @return The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> natIpName() {
         return Codegen.optional(this.natIpName);
     }
     /**
-     * The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
+     * The status of the NAT IP address.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
+     * @return The status of the NAT IP address.
      * 
      */
     public Output<String> status() {

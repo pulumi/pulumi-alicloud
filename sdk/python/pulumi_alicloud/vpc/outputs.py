@@ -266,7 +266,7 @@ class NetworkAclEgressAclEntry(dict):
         """
         :param _builtins.str description: The description of the outbound rule.
                The description must be 1 to 256 characters in length and cannot start with http:// or https.
-        :param _builtins.str destination_cidr_ip: The destination CIDR block.
+        :param _builtins.str destination_cidr_ip: The destination CIDR block, or the prefix list instance ID.
         :param _builtins.str entry_type: The route entry type. Value
                custom custom rule
                system system rules
@@ -317,7 +317,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter(name="destinationCidrIp")
     def destination_cidr_ip(self) -> Optional[_builtins.str]:
         """
-        The destination CIDR block.
+        The destination CIDR block, or the prefix list instance ID.
         """
         return pulumi.get(self, "destination_cidr_ip")
 
@@ -656,7 +656,7 @@ class NetworkAclIngressAclEntry(dict):
                - tcp: Transmission Control Protocol.
                - udp: User Datagram Protocol.
                - all: Supports all protocols.
-        :param _builtins.str source_cidr_ip: The source CIDR block.
+        :param _builtins.str source_cidr_ip: The source CIDR block, or the prefix list instance ID.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -746,7 +746,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter(name="sourceCidrIp")
     def source_cidr_ip(self) -> Optional[_builtins.str]:
         """
-        The source CIDR block.
+        The source CIDR block, or the prefix list instance ID.
         """
         return pulumi.get(self, "source_cidr_ip")
 

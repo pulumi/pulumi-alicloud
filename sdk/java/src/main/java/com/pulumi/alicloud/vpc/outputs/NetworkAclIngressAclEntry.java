@@ -58,7 +58,7 @@ public final class NetworkAclIngressAclEntry {
      */
     private @Nullable String protocol;
     /**
-     * @return The source CIDR block.
+     * @return The source CIDR block, or the prefix list instance ID.
      * 
      */
     private @Nullable String sourceCidrIp;
@@ -125,7 +125,7 @@ public final class NetworkAclIngressAclEntry {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return The source CIDR block.
+     * @return The source CIDR block, or the prefix list instance ID.
      * 
      */
     public Optional<String> sourceCidrIp() {

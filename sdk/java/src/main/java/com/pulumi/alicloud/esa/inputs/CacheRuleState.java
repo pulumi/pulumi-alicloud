@@ -227,6 +227,51 @@ public final class CacheRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Processing pattern for the cache key.
+     * 
+     */
+    @Import(name="postBodyCacheKey")
+    private @Nullable Output<String> postBodyCacheKey;
+
+    /**
+     * @return Processing pattern for the cache key.
+     * 
+     */
+    public Optional<Output<String>> postBodyCacheKey() {
+        return Optional.ofNullable(this.postBodyCacheKey);
+    }
+
+    /**
+     * Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+     * 
+     */
+    @Import(name="postBodySizeLimit")
+    private @Nullable Output<String> postBodySizeLimit;
+
+    /**
+     * @return Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+     * 
+     */
+    public Optional<Output<String>> postBodySizeLimit() {
+        return Optional.ofNullable(this.postBodySizeLimit);
+    }
+
+    /**
+     * Toggle for the Post cache feature.
+     * 
+     */
+    @Import(name="postCache")
+    private @Nullable Output<String> postCache;
+
+    /**
+     * @return Toggle for the Post cache feature.
+     * 
+     */
+    public Optional<Output<String>> postCache() {
+        return Optional.ofNullable(this.postCache);
+    }
+
+    /**
      * Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
      * 
      */
@@ -442,6 +487,9 @@ public final class CacheRuleState extends com.pulumi.resources.ResourceArgs {
         this.edgeStatusCodeCacheTtl = $.edgeStatusCodeCacheTtl;
         this.includeCookie = $.includeCookie;
         this.includeHeader = $.includeHeader;
+        this.postBodyCacheKey = $.postBodyCacheKey;
+        this.postBodySizeLimit = $.postBodySizeLimit;
+        this.postCache = $.postCache;
         this.queryString = $.queryString;
         this.queryStringMode = $.queryStringMode;
         this.rule = $.rule;
@@ -767,6 +815,69 @@ public final class CacheRuleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder includeHeader(String includeHeader) {
             return includeHeader(Output.of(includeHeader));
+        }
+
+        /**
+         * @param postBodyCacheKey Processing pattern for the cache key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postBodyCacheKey(@Nullable Output<String> postBodyCacheKey) {
+            $.postBodyCacheKey = postBodyCacheKey;
+            return this;
+        }
+
+        /**
+         * @param postBodyCacheKey Processing pattern for the cache key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postBodyCacheKey(String postBodyCacheKey) {
+            return postBodyCacheKey(Output.of(postBodyCacheKey));
+        }
+
+        /**
+         * @param postBodySizeLimit Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postBodySizeLimit(@Nullable Output<String> postBodySizeLimit) {
+            $.postBodySizeLimit = postBodySizeLimit;
+            return this;
+        }
+
+        /**
+         * @param postBodySizeLimit Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postBodySizeLimit(String postBodySizeLimit) {
+            return postBodySizeLimit(Output.of(postBodySizeLimit));
+        }
+
+        /**
+         * @param postCache Toggle for the Post cache feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postCache(@Nullable Output<String> postCache) {
+            $.postCache = postCache;
+            return this;
+        }
+
+        /**
+         * @param postCache Toggle for the Post cache feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postCache(String postCache) {
+            return postCache(Output.of(postCache));
         }
 
         /**

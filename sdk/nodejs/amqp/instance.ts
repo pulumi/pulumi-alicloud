@@ -44,9 +44,25 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const _default = new alicloud.amqp.Instance("default", {
+ * const _default = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
+ *     vpcId: _default.ids?.[0],
+ * }));
+ * const defaultGetSecurityGroups = _default.then(_default => alicloud.ecs.getSecurityGroups({
+ *     vpcId: _default.ids?.[0],
+ *     nameRegex: "default-NODELETING",
+ * }));
+ * const defaultInstance = new alicloud.amqp.Instance("default", {
  *     instanceName: name,
  *     paymentType: "PayAsYouGo",
+ *     vpcId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vpcId),
+ *     vswitchIds: [
+ *         defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *         defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[1]),
+ *     ],
+ *     securityGroupId: defaultGetSecurityGroups.then(defaultGetSecurityGroups => defaultGetSecurityGroups.ids?.[0]),
  *     serverlessChargeType: "onDemand",
  * });
  * ```
@@ -112,7 +128,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly instanceName: pulumi.Output<string>;
     /**
-     * Instance type. Valid values: 
+     * Instance type. Valid values:
      * - professional: professional Edition
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
@@ -120,6 +136,10 @@ export class Instance extends pulumi.CustomResource {
      * > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
      */
     declare public readonly instanceType: pulumi.Output<string>;
+    /**
+     * The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+     */
+    declare public readonly listenerMode: pulumi.Output<string>;
     /**
      * The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
      */
@@ -173,6 +193,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly renewalStatus: pulumi.Output<string>;
     /**
+     * The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+     */
+    declare public readonly securityGroupId: pulumi.Output<string | undefined>;
+    /**
      * The billing type of the serverless instance. Value: onDemand.
      */
     declare public readonly serverlessChargeType: pulumi.Output<string | undefined>;
@@ -196,6 +220,14 @@ export class Instance extends pulumi.CustomResource {
      * Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
      */
     declare public readonly tracingStorageTime: pulumi.Output<number>;
+    /**
+     * The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+     */
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
+    /**
+     * The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+     */
+    declare public readonly vswitchIds: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -215,6 +247,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["edition"] = state?.edition;
             resourceInputs["instanceName"] = state?.instanceName;
             resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["listenerMode"] = state?.listenerMode;
             resourceInputs["maxConnections"] = state?.maxConnections;
             resourceInputs["maxEipTps"] = state?.maxEipTps;
             resourceInputs["maxTps"] = state?.maxTps;
@@ -227,12 +260,15 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["renewalDuration"] = state?.renewalDuration;
             resourceInputs["renewalDurationUnit"] = state?.renewalDurationUnit;
             resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
             resourceInputs["serverlessChargeType"] = state?.serverlessChargeType;
             resourceInputs["status"] = state?.status;
             resourceInputs["storageSize"] = state?.storageSize;
             resourceInputs["supportEip"] = state?.supportEip;
             resourceInputs["supportTracing"] = state?.supportTracing;
             resourceInputs["tracingStorageTime"] = state?.tracingStorageTime;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchIds"] = state?.vswitchIds;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if (args?.paymentType === undefined && !opts.urn) {
@@ -242,6 +278,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["edition"] = args?.edition;
             resourceInputs["instanceName"] = args?.instanceName;
             resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["listenerMode"] = args?.listenerMode;
             resourceInputs["maxConnections"] = args?.maxConnections;
             resourceInputs["maxEipTps"] = args?.maxEipTps;
             resourceInputs["maxTps"] = args?.maxTps;
@@ -254,11 +291,14 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["renewalDuration"] = args?.renewalDuration;
             resourceInputs["renewalDurationUnit"] = args?.renewalDurationUnit;
             resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
             resourceInputs["serverlessChargeType"] = args?.serverlessChargeType;
             resourceInputs["storageSize"] = args?.storageSize;
             resourceInputs["supportEip"] = args?.supportEip;
             resourceInputs["supportTracing"] = args?.supportTracing;
             resourceInputs["tracingStorageTime"] = args?.tracingStorageTime;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchIds"] = args?.vswitchIds;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -288,7 +328,7 @@ export interface InstanceState {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * Instance type. Valid values: 
+     * Instance type. Valid values:
      * - professional: professional Edition
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
@@ -296,6 +336,10 @@ export interface InstanceState {
      * > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
      */
     instanceType?: pulumi.Input<string>;
+    /**
+     * The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+     */
+    listenerMode?: pulumi.Input<string>;
     /**
      * The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
      */
@@ -349,6 +393,10 @@ export interface InstanceState {
      */
     renewalStatus?: pulumi.Input<string>;
     /**
+     * The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+     */
+    securityGroupId?: pulumi.Input<string>;
+    /**
      * The billing type of the serverless instance. Value: onDemand.
      */
     serverlessChargeType?: pulumi.Input<string>;
@@ -372,6 +420,14 @@ export interface InstanceState {
      * Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
      */
     tracingStorageTime?: pulumi.Input<number>;
+    /**
+     * The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+     */
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -391,7 +447,7 @@ export interface InstanceArgs {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * Instance type. Valid values: 
+     * Instance type. Valid values:
      * - professional: professional Edition
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
@@ -399,6 +455,10 @@ export interface InstanceArgs {
      * > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
      */
     instanceType?: pulumi.Input<string>;
+    /**
+     * The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+     */
+    listenerMode?: pulumi.Input<string>;
     /**
      * The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
      */
@@ -452,6 +512,10 @@ export interface InstanceArgs {
      */
     renewalStatus?: pulumi.Input<string>;
     /**
+     * The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+     */
+    securityGroupId?: pulumi.Input<string>;
+    /**
      * The billing type of the serverless instance. Value: onDemand.
      */
     serverlessChargeType?: pulumi.Input<string>;
@@ -471,4 +535,12 @@ export interface InstanceArgs {
      * Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
      */
     tracingStorageTime?: pulumi.Input<number>;
+    /**
+     * The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+     */
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

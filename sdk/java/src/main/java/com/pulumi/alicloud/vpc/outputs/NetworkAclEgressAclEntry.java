@@ -18,7 +18,7 @@ public final class NetworkAclEgressAclEntry {
      */
     private @Nullable String description;
     /**
-     * @return The destination CIDR block.
+     * @return The destination CIDR block, or the prefix list instance ID.
      * 
      */
     private @Nullable String destinationCidrIp;
@@ -76,7 +76,7 @@ public final class NetworkAclEgressAclEntry {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The destination CIDR block.
+     * @return The destination CIDR block, or the prefix list instance ID.
      * 
      */
     public Optional<String> destinationCidrIp() {

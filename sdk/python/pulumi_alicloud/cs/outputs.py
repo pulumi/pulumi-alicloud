@@ -5424,19 +5424,22 @@ class GetKubernetesAddonsAddonResult(dict):
                  current_version: _builtins.str,
                  name: _builtins.str,
                  next_version: _builtins.str,
-                 required: _builtins.bool):
+                 required: _builtins.bool,
+                 supported_actions: Sequence[_builtins.str]):
         """
         :param _builtins.str current_config: The current custom configuration of the addon. **Note:** Available in v1.166.0+
         :param _builtins.str current_version: The current version of addon, if this field is an empty string, it means that the addon is not installed.
         :param _builtins.str name: The name of addon.
         :param _builtins.str next_version: The next version of this addon can be upgraded to.
         :param _builtins.bool required: Whether the addon is a system addon.
+        :param Sequence[_builtins.str] supported_actions: (Available since v1.274.0) A set of actions supported by the addon, such as `Install`, `Upgrade`, `Modify`, `Uninstall`.
         """
         pulumi.set(__self__, "current_config", current_config)
         pulumi.set(__self__, "current_version", current_version)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "next_version", next_version)
         pulumi.set(__self__, "required", required)
+        pulumi.set(__self__, "supported_actions", supported_actions)
 
     @_builtins.property
     @pulumi.getter(name="currentConfig")
@@ -5477,6 +5480,14 @@ class GetKubernetesAddonsAddonResult(dict):
         Whether the addon is a system addon.
         """
         return pulumi.get(self, "required")
+
+    @_builtins.property
+    @pulumi.getter(name="supportedActions")
+    def supported_actions(self) -> Sequence[_builtins.str]:
+        """
+        (Available since v1.274.0) A set of actions supported by the addon, such as `Install`, `Upgrade`, `Modify`, `Uninstall`.
+        """
+        return pulumi.get(self, "supported_actions")
 
 
 @pulumi.output_type

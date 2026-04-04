@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()
- *             .dbClusterVersion("23.8")
+ *             .dbClusterVersion("25.3")
  *             .category("Basic")
  *             .dbClusterClass("S8")
  *             .dbClusterNetworkType("vpc")
@@ -231,14 +231,14 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.dbClusterNetworkType;
     }
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      * 
      */
     @Export(name="dbClusterVersion", refs={String.class}, tree="[0]")
     private Output<String> dbClusterVersion;
 
     /**
-     * @return The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+     * @return The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      * 
      */
     public Output<String> dbClusterVersion() {

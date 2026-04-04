@@ -62,11 +62,11 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         /// </summary>
         public readonly string ServerGroupName;
         /// <summary>
-        /// The type of the server group.
+        /// The type of the server group. Valid values: `Instance`, `Ip`.
         /// </summary>
         public readonly string ServerGroupType;
         /// <summary>
-        /// The status of the server group.
+        /// The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
         /// </summary>
         public readonly string Status;
         /// <summary>

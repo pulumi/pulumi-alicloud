@@ -17,10 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a ADB Lake Account resource. Account of the DBClusterLakeVesion.
+ * Provides a AnalyticDB for MySQL (ADB) Lake Account resource.
  * 
- * For information about ADB Lake Account and how to use it, see [What is Lake Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createaccount).
- * For information about ADB Lake Account Privileges and how to use it, see [What are Lake Account Privileges](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-modifyaccountprivileges/).
+ * Account of the DBClusterLakeVesion.
+ * 
+ * For information about AnalyticDB for MySQL (ADB) Lake Account and how to use it, see [What is Lake Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-modifyaccountprivileges/).
  * 
  * &gt; **NOTE:** Available since v1.214.0.
  * 
@@ -226,6 +227,20 @@ public class LakeAccount extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dbClusterId() {
         return this.dbClusterId;
+    }
+    /**
+     * List of Alibaba Cloud RAM user IDs to bind.
+     * 
+     */
+    @Export(name="ramUserLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> ramUserLists;
+
+    /**
+     * @return List of Alibaba Cloud RAM user IDs to bind.
+     * 
+     */
+    public Output<List<String>> ramUserLists() {
+        return this.ramUserLists;
     }
     /**
      * The status of the resource.

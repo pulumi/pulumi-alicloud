@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const example = new alicloud.resourcemanager.ResourceShare("example", {resourceShareName: name});
  * ```
  *
@@ -93,6 +93,10 @@ export class ResourceShare extends pulumi.CustomResource {
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
+     * A list of resource properties. See `resourceProperties` below.
+     */
+    declare public readonly resourceProperties: pulumi.Output<outputs.resourcemanager.ResourceShareResourceProperty[] | undefined>;
+    /**
      * The name of resource share.
      */
     declare public readonly resourceShareName: pulumi.Output<string>;
@@ -139,6 +143,7 @@ export class ResourceShare extends pulumi.CustomResource {
             resourceInputs["permissionNames"] = state?.permissionNames;
             resourceInputs["resourceArns"] = state?.resourceArns;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["resourceProperties"] = state?.resourceProperties;
             resourceInputs["resourceShareName"] = state?.resourceShareName;
             resourceInputs["resourceShareOwner"] = state?.resourceShareOwner;
             resourceInputs["resources"] = state?.resources;
@@ -154,6 +159,7 @@ export class ResourceShare extends pulumi.CustomResource {
             resourceInputs["permissionNames"] = args?.permissionNames;
             resourceInputs["resourceArns"] = args?.resourceArns;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["resourceProperties"] = args?.resourceProperties;
             resourceInputs["resourceShareName"] = args?.resourceShareName;
             resourceInputs["resources"] = args?.resources;
             resourceInputs["tags"] = args?.tags;
@@ -197,6 +203,10 @@ export interface ResourceShareState {
      * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A list of resource properties. See `resourceProperties` below.
+     */
+    resourceProperties?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResourceProperty>[]>;
     /**
      * The name of resource share.
      */
@@ -253,6 +263,10 @@ export interface ResourceShareArgs {
      * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A list of resource properties. See `resourceProperties` below.
+     */
+    resourceProperties?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResourceProperty>[]>;
     /**
      * The name of resource share.
      */

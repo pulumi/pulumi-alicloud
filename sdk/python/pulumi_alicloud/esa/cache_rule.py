@@ -33,6 +33,9 @@ class CacheRuleArgs:
                  edge_status_code_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  include_cookie: Optional[pulumi.Input[_builtins.str]] = None,
                  include_header: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_body_cache_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_body_size_limit: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_cache: Optional[pulumi.Input[_builtins.str]] = None,
                  query_string: Optional[pulumi.Input[_builtins.str]] = None,
                  query_string_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
@@ -62,6 +65,9 @@ class CacheRuleArgs:
         :param pulumi.Input[_builtins.str] edge_status_code_cache_ttl: Status code cache expiration time in seconds.
         :param pulumi.Input[_builtins.str] include_cookie: When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] include_header: When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[_builtins.str] post_body_cache_key: Processing pattern for the cache key.
+        :param pulumi.Input[_builtins.str] post_body_size_limit: Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+        :param pulumi.Input[_builtins.str] post_cache: Toggle for the Post cache feature.
         :param pulumi.Input[_builtins.str] query_string: Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] query_string_mode: The processing mode for query strings when generating the cache key. Possible values:
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -104,6 +110,12 @@ class CacheRuleArgs:
             pulumi.set(__self__, "include_cookie", include_cookie)
         if include_header is not None:
             pulumi.set(__self__, "include_header", include_header)
+        if post_body_cache_key is not None:
+            pulumi.set(__self__, "post_body_cache_key", post_body_cache_key)
+        if post_body_size_limit is not None:
+            pulumi.set(__self__, "post_body_size_limit", post_body_size_limit)
+        if post_cache is not None:
+            pulumi.set(__self__, "post_cache", post_cache)
         if query_string is not None:
             pulumi.set(__self__, "query_string", query_string)
         if query_string_mode is not None:
@@ -298,6 +310,42 @@ class CacheRuleArgs:
         pulumi.set(self, "include_header", value)
 
     @_builtins.property
+    @pulumi.getter(name="postBodyCacheKey")
+    def post_body_cache_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Processing pattern for the cache key.
+        """
+        return pulumi.get(self, "post_body_cache_key")
+
+    @post_body_cache_key.setter
+    def post_body_cache_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "post_body_cache_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="postBodySizeLimit")
+    def post_body_size_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+        """
+        return pulumi.get(self, "post_body_size_limit")
+
+    @post_body_size_limit.setter
+    def post_body_size_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "post_body_size_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="postCache")
+    def post_cache(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Toggle for the Post cache feature.
+        """
+        return pulumi.get(self, "post_cache")
+
+    @post_cache.setter
+    def post_cache(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "post_cache", value)
+
+    @_builtins.property
     @pulumi.getter(name="queryString")
     def query_string(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -461,6 +509,9 @@ class _CacheRuleState:
                  edge_status_code_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  include_cookie: Optional[pulumi.Input[_builtins.str]] = None,
                  include_header: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_body_cache_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_body_size_limit: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_cache: Optional[pulumi.Input[_builtins.str]] = None,
                  query_string: Optional[pulumi.Input[_builtins.str]] = None,
                  query_string_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
@@ -491,6 +542,9 @@ class _CacheRuleState:
         :param pulumi.Input[_builtins.str] edge_status_code_cache_ttl: Status code cache expiration time in seconds.
         :param pulumi.Input[_builtins.str] include_cookie: When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] include_header: When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[_builtins.str] post_body_cache_key: Processing pattern for the cache key.
+        :param pulumi.Input[_builtins.str] post_body_size_limit: Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+        :param pulumi.Input[_builtins.str] post_cache: Toggle for the Post cache feature.
         :param pulumi.Input[_builtins.str] query_string: Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] query_string_mode: The processing mode for query strings when generating the cache key. Possible values:
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -535,6 +589,12 @@ class _CacheRuleState:
             pulumi.set(__self__, "include_cookie", include_cookie)
         if include_header is not None:
             pulumi.set(__self__, "include_header", include_header)
+        if post_body_cache_key is not None:
+            pulumi.set(__self__, "post_body_cache_key", post_body_cache_key)
+        if post_body_size_limit is not None:
+            pulumi.set(__self__, "post_body_size_limit", post_body_size_limit)
+        if post_cache is not None:
+            pulumi.set(__self__, "post_cache", post_cache)
         if query_string is not None:
             pulumi.set(__self__, "query_string", query_string)
         if query_string_mode is not None:
@@ -731,6 +791,42 @@ class _CacheRuleState:
         pulumi.set(self, "include_header", value)
 
     @_builtins.property
+    @pulumi.getter(name="postBodyCacheKey")
+    def post_body_cache_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Processing pattern for the cache key.
+        """
+        return pulumi.get(self, "post_body_cache_key")
+
+    @post_body_cache_key.setter
+    def post_body_cache_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "post_body_cache_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="postBodySizeLimit")
+    def post_body_size_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+        """
+        return pulumi.get(self, "post_body_size_limit")
+
+    @post_body_size_limit.setter
+    def post_body_size_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "post_body_size_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="postCache")
+    def post_cache(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Toggle for the Post cache feature.
+        """
+        return pulumi.get(self, "post_cache")
+
+    @post_cache.setter
+    def post_cache(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "post_cache", value)
+
+    @_builtins.property
     @pulumi.getter(name="queryString")
     def query_string(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -908,6 +1004,9 @@ class CacheRule(pulumi.CustomResource):
                  edge_status_code_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  include_cookie: Optional[pulumi.Input[_builtins.str]] = None,
                  include_header: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_body_cache_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_body_size_limit: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_cache: Optional[pulumi.Input[_builtins.str]] = None,
                  query_string: Optional[pulumi.Input[_builtins.str]] = None,
                  query_string_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
@@ -992,6 +1091,9 @@ class CacheRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] edge_status_code_cache_ttl: Status code cache expiration time in seconds.
         :param pulumi.Input[_builtins.str] include_cookie: When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] include_header: When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[_builtins.str] post_body_cache_key: Processing pattern for the cache key.
+        :param pulumi.Input[_builtins.str] post_body_size_limit: Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+        :param pulumi.Input[_builtins.str] post_cache: Toggle for the Post cache feature.
         :param pulumi.Input[_builtins.str] query_string: Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] query_string_mode: The processing mode for query strings when generating the cache key. Possible values:
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -1097,6 +1199,9 @@ class CacheRule(pulumi.CustomResource):
                  edge_status_code_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  include_cookie: Optional[pulumi.Input[_builtins.str]] = None,
                  include_header: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_body_cache_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_body_size_limit: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_cache: Optional[pulumi.Input[_builtins.str]] = None,
                  query_string: Optional[pulumi.Input[_builtins.str]] = None,
                  query_string_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1132,6 +1237,9 @@ class CacheRule(pulumi.CustomResource):
             __props__.__dict__["edge_status_code_cache_ttl"] = edge_status_code_cache_ttl
             __props__.__dict__["include_cookie"] = include_cookie
             __props__.__dict__["include_header"] = include_header
+            __props__.__dict__["post_body_cache_key"] = post_body_cache_key
+            __props__.__dict__["post_body_size_limit"] = post_body_size_limit
+            __props__.__dict__["post_cache"] = post_cache
             __props__.__dict__["query_string"] = query_string
             __props__.__dict__["query_string_mode"] = query_string_mode
             __props__.__dict__["rule"] = rule
@@ -1172,6 +1280,9 @@ class CacheRule(pulumi.CustomResource):
             edge_status_code_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
             include_cookie: Optional[pulumi.Input[_builtins.str]] = None,
             include_header: Optional[pulumi.Input[_builtins.str]] = None,
+            post_body_cache_key: Optional[pulumi.Input[_builtins.str]] = None,
+            post_body_size_limit: Optional[pulumi.Input[_builtins.str]] = None,
+            post_cache: Optional[pulumi.Input[_builtins.str]] = None,
             query_string: Optional[pulumi.Input[_builtins.str]] = None,
             query_string_mode: Optional[pulumi.Input[_builtins.str]] = None,
             rule: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1206,6 +1317,9 @@ class CacheRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] edge_status_code_cache_ttl: Status code cache expiration time in seconds.
         :param pulumi.Input[_builtins.str] include_cookie: When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] include_header: When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[_builtins.str] post_body_cache_key: Processing pattern for the cache key.
+        :param pulumi.Input[_builtins.str] post_body_size_limit: Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+        :param pulumi.Input[_builtins.str] post_cache: Toggle for the Post cache feature.
         :param pulumi.Input[_builtins.str] query_string: Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] query_string_mode: The processing mode for query strings when generating the cache key. Possible values:
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -1240,6 +1354,9 @@ class CacheRule(pulumi.CustomResource):
         __props__.__dict__["edge_status_code_cache_ttl"] = edge_status_code_cache_ttl
         __props__.__dict__["include_cookie"] = include_cookie
         __props__.__dict__["include_header"] = include_header
+        __props__.__dict__["post_body_cache_key"] = post_body_cache_key
+        __props__.__dict__["post_body_size_limit"] = post_body_size_limit
+        __props__.__dict__["post_cache"] = post_cache
         __props__.__dict__["query_string"] = query_string
         __props__.__dict__["query_string_mode"] = query_string_mode
         __props__.__dict__["rule"] = rule
@@ -1366,6 +1483,30 @@ class CacheRule(pulumi.CustomResource):
         When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "include_header")
+
+    @_builtins.property
+    @pulumi.getter(name="postBodyCacheKey")
+    def post_body_cache_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Processing pattern for the cache key.
+        """
+        return pulumi.get(self, "post_body_cache_key")
+
+    @_builtins.property
+    @pulumi.getter(name="postBodySizeLimit")
+    def post_body_size_limit(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+        """
+        return pulumi.get(self, "post_body_size_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="postCache")
+    def post_cache(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Toggle for the Post cache feature.
+        """
+        return pulumi.get(self, "post_cache")
 
     @_builtins.property
     @pulumi.getter(name="queryString")

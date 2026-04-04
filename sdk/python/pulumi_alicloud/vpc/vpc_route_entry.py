@@ -394,39 +394,18 @@ class VPCRouteEntry(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_get_images = alicloud.ecs.get_images(most_recent=True,
-            owners="system")
-        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
-            image_id=default_get_images.images[0].id)
-        default_network = alicloud.vpc.Network("default",
+        default = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
-        default_switch = alicloud.vpc.Switch("default",
-            vswitch_name=name,
-            vpc_id=default_network.id,
-            cidr_block="192.168.192.0/24",
-            zone_id=default.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=name,
-            vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("default",
-            image_id=default_get_images.images[0].id,
-            instance_type=default_get_instance_types.instance_types[0].id,
-            security_groups=[__item.id for __item in [default_security_group]],
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=10,
-            availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
-            instance_charge_type="PostPaid",
-            system_disk_category="cloud_efficiency",
-            vswitch_id=default_switch.id,
-            instance_name=name)
-        foo = alicloud.vpc.RouteEntry("foo",
-            route_table_id=default_network.route_table_id,
+        default_ipv4_gateway = alicloud.vpc.Ipv4Gateway("default",
+            ipv4_gateway_name=name,
+            vpc_id=default.id,
+            enabled=True)
+        default_route_entry = alicloud.vpc.RouteEntry("default",
+            route_table_id=default.route_table_id,
             destination_cidrblock="172.11.1.1/32",
-            nexthop_type="Instance",
-            nexthop_id=default_instance.id)
+            nexthop_type="Ipv4Gateway",
+            nexthop_id=default_ipv4_gateway.id)
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -491,39 +470,18 @@ class VPCRouteEntry(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_get_images = alicloud.ecs.get_images(most_recent=True,
-            owners="system")
-        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
-            image_id=default_get_images.images[0].id)
-        default_network = alicloud.vpc.Network("default",
+        default = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
-        default_switch = alicloud.vpc.Switch("default",
-            vswitch_name=name,
-            vpc_id=default_network.id,
-            cidr_block="192.168.192.0/24",
-            zone_id=default.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=name,
-            vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("default",
-            image_id=default_get_images.images[0].id,
-            instance_type=default_get_instance_types.instance_types[0].id,
-            security_groups=[__item.id for __item in [default_security_group]],
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=10,
-            availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
-            instance_charge_type="PostPaid",
-            system_disk_category="cloud_efficiency",
-            vswitch_id=default_switch.id,
-            instance_name=name)
-        foo = alicloud.vpc.RouteEntry("foo",
-            route_table_id=default_network.route_table_id,
+        default_ipv4_gateway = alicloud.vpc.Ipv4Gateway("default",
+            ipv4_gateway_name=name,
+            vpc_id=default.id,
+            enabled=True)
+        default_route_entry = alicloud.vpc.RouteEntry("default",
+            route_table_id=default.route_table_id,
             destination_cidrblock="172.11.1.1/32",
-            nexthop_type="Instance",
-            nexthop_id=default_instance.id)
+            nexthop_type="Ipv4Gateway",
+            nexthop_id=default_ipv4_gateway.id)
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Key Pair Attachment and how to use it, see [What is Key Pair Attachment](https://www.alibabacloud.com/help/en/doc-detail/51775.htm).
  *
- * > **NOTE:** Available since v1.121.0+.
+ * > **NOTE:** Available since v1.121.0.
  *
  * ## Example Usage
  *
@@ -20,49 +20,55 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const example = alicloud.getZones({
- *     availableResourceCreation: "Instance",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
  * });
- * const exampleGetInstanceTypes = example.then(example => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: example.zones?.[0]?.id,
- *     cpuCoreCount: 1,
- *     memorySize: 2,
- * }));
- * const exampleGetImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_18.*64",
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     mostRecent: true,
  *     owners: "system",
  * });
- * const exampleNetwork = new alicloud.vpc.Network("example", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "172.17.3.0/24",
- * });
- * const exampleSwitch = new alicloud.vpc.Switch("example", {
- *     vswitchName: "terraform-example",
- *     cidrBlock: "172.17.3.0/24",
- *     vpcId: exampleNetwork.id,
- *     zoneId: example.then(example => example.zones?.[0]?.id),
- * });
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
- *     name: "terraform-example",
- *     vpcId: exampleNetwork.id,
- * });
- * const exampleInstance = new alicloud.ecs.Instance("example", {
- *     imageId: exampleGetImages.then(exampleGetImages => exampleGetImages.images?.[0]?.id),
- *     instanceType: exampleGetInstanceTypes.then(exampleGetInstanceTypes => exampleGetInstanceTypes.instanceTypes?.[0]?.id),
- *     availabilityZone: example.then(example => example.zones?.[0]?.id),
- *     securityGroups: [exampleSecurityGroup.id],
- *     instanceName: "terraform-example",
- *     internetChargeType: "PayByBandwidth",
- *     vswitchId: exampleSwitch.id,
- * });
- * const _default = new random.index.Integer("default", {
+ * const defaultGetInstanceTypes = Promise.all([_default, defaultGetImages]).then(([_default, defaultGetImages]) => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
+ *     imageId: defaultGetImages.images?.[0]?.id,
+ * }));
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const exampleEcsKeyPair = new alicloud.ecs.EcsKeyPair("example", {keyPairName: `tf-example-${_default.result}`});
- * const exampleEcsKeyPairAttachment = new alicloud.ecs.EcsKeyPairAttachment("example", {
- *     keyPairName: exampleEcsKeyPair.keyPairName,
- *     instanceIds: [exampleInstance.id],
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.192.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 10,
+ *     availabilityZone: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.availabilityZones?.[0]),
+ *     instanceChargeType: "PostPaid",
+ *     systemDiskCategory: "cloud_efficiency",
+ *     vswitchId: defaultSwitch.id,
+ *     instanceName: name,
+ * });
+ * const defaultEcsKeyPair = new alicloud.ecs.EcsKeyPair("default", {keyPairName: `${name}-${defaultInteger.result}`});
+ * const defaultEcsKeyPairAttachment = new alicloud.ecs.EcsKeyPairAttachment("default", {
+ *     keyPairName: defaultEcsKeyPair.id,
+ *     instanceIds: [defaultInstance.id],
  * });
  * ```
  *
@@ -105,21 +111,23 @@ export class EcsKeyPairAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * Specifies whether to make the key pair effective immediately. Valid values:
      */
     declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
-     * The list of ECS instance's IDs.
+     * The IDs of instances to which you want to bind the SSH key pair.
      */
     declare public readonly instanceIds: pulumi.Output<string[]>;
     /**
-     * New field 'key_pair_name' instead.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      *
-     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+     * > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
+     *
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     declare public readonly keyName: pulumi.Output<string>;
     /**
-     * The name of key pair used to bind.
+     * The name of the SSH key pair.
      */
     declare public readonly keyPairName: pulumi.Output<string>;
 
@@ -160,21 +168,23 @@ export class EcsKeyPairAttachment extends pulumi.CustomResource {
  */
 export interface EcsKeyPairAttachmentState {
     /**
-     * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * Specifies whether to make the key pair effective immediately. Valid values:
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The list of ECS instance's IDs.
+     * The IDs of instances to which you want to bind the SSH key pair.
      */
     instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * New field 'key_pair_name' instead.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      *
-     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+     * > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
+     *
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     keyName?: pulumi.Input<string>;
     /**
-     * The name of key pair used to bind.
+     * The name of the SSH key pair.
      */
     keyPairName?: pulumi.Input<string>;
 }
@@ -184,21 +194,23 @@ export interface EcsKeyPairAttachmentState {
  */
 export interface EcsKeyPairAttachmentArgs {
     /**
-     * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * Specifies whether to make the key pair effective immediately. Valid values:
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The list of ECS instance's IDs.
+     * The IDs of instances to which you want to bind the SSH key pair.
      */
     instanceIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * New field 'key_pair_name' instead.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      *
-     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+     * > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
+     *
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     keyName?: pulumi.Input<string>;
     /**
-     * The name of key pair used to bind.
+     * The name of the SSH key pair.
      */
     keyPairName?: pulumi.Input<string>;
 }

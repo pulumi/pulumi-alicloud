@@ -16,7 +16,7 @@ import (
 //
 // For information about ECS Key Pair Attachment and how to use it, see [What is Key Pair Attachment](https://www.alibabacloud.com/help/en/doc-detail/51775.htm).
 //
-// > **NOTE:** Available since v1.121.0+.
+// > **NOTE:** Available since v1.121.0.
 //
 // ## Example Usage
 //
@@ -32,95 +32,105 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("Instance"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(example.Zones[0].Id),
-//				CpuCoreCount:     pulumi.IntRef(1),
-//				MemorySize:       pulumi.Float64Ref(2),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex: pulumi.StringRef("^ubuntu_18.*64"),
-//				Owners:    pulumi.StringRef("system"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("terraform-example"),
-//				CidrBlock: pulumi.String("172.17.3.0/24"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String("terraform-example"),
-//				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(pulumi.String(example.Zones[0].Id)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String("terraform-example"),
-//				VpcId: exampleNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleInstance, err := ecs.NewInstance(ctx, "example", &ecs.InstanceArgs{
-//				ImageId:          pulumi.String(pulumi.String(exampleGetImages.Images[0].Id)),
-//				InstanceType:     pulumi.String(pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id)),
-//				AvailabilityZone: pulumi.String(pulumi.String(example.Zones[0].Id)),
-//				SecurityGroups: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
-//				},
-//				InstanceName:       pulumi.String("terraform-example"),
-//				InternetChargeType: pulumi.String("PayByBandwidth"),
-//				VswitchId:          exampleSwitch.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Min: 10000,
-//				Max: 99999,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "example", &ecs.EcsKeyPairArgs{
-//				KeyPairName: pulumi.Sprintf("tf-example-%v", _default.Result),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewEcsKeyPairAttachment(ctx, "example", &ecs.EcsKeyPairAttachmentArgs{
-//				KeyPairName: exampleEcsKeyPair.KeyPairName,
-//				InstanceIds: pulumi.StringArray{
-//					exampleInstance.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+// MostRecent: pulumi.BoolRef(true),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
+// ImageId: pulumi.StringRef(defaultGetImages.Images[0].Id),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+// Min: 10000,
+// Max: 99999,
+// })
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+// VpcName: pulumi.String(pulumi.String(name)),
+// CidrBlock: pulumi.String("192.168.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+// VswitchName: pulumi.String(pulumi.String(name)),
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String("192.168.192.0/24"),
+// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(pulumi.String(name)),
+// VpcId: defaultNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
+// defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
+// ImageId: pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
+// InstanceType: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
+// SecurityGroups: splat0,
+// InternetChargeType: pulumi.String("PayByTraffic"),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// AvailabilityZone: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0])),
+// InstanceChargeType: pulumi.String("PostPaid"),
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// VswitchId: defaultSwitch.ID(),
+// InstanceName: pulumi.String(pulumi.String(name)),
+// })
+// if err != nil {
+// return err
+// }
+// defaultEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "default", &ecs.EcsKeyPairArgs{
+// KeyPairName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = ecs.NewEcsKeyPairAttachment(ctx, "default", &ecs.EcsKeyPairAttachmentArgs{
+// KeyPairName: defaultEcsKeyPair.ID(),
+// InstanceIds: pulumi.StringArray{
+// defaultInstance.ID(),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // 📚 Need more examples? VIEW MORE EXAMPLES
@@ -135,15 +145,17 @@ import (
 type EcsKeyPairAttachment struct {
 	pulumi.CustomResourceState
 
-	// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+	// Specifies whether to make the key pair effective immediately. Valid values:
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// The list of ECS instance's IDs.
+	// The IDs of instances to which you want to bind the SSH key pair.
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
-	// New field 'key_pair_name' instead.
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
+	//
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName pulumi.StringOutput `pulumi:"keyName"`
-	// The name of key pair used to bind.
+	// The name of the SSH key pair.
 	KeyPairName pulumi.StringOutput `pulumi:"keyPairName"`
 }
 
@@ -180,28 +192,32 @@ func GetEcsKeyPairAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsKeyPairAttachment resources.
 type ecsKeyPairAttachmentState struct {
-	// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+	// Specifies whether to make the key pair effective immediately. Valid values:
 	Force *bool `pulumi:"force"`
-	// The list of ECS instance's IDs.
+	// The IDs of instances to which you want to bind the SSH key pair.
 	InstanceIds []string `pulumi:"instanceIds"`
-	// New field 'key_pair_name' instead.
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
+	//
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName *string `pulumi:"keyName"`
-	// The name of key pair used to bind.
+	// The name of the SSH key pair.
 	KeyPairName *string `pulumi:"keyPairName"`
 }
 
 type EcsKeyPairAttachmentState struct {
-	// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+	// Specifies whether to make the key pair effective immediately. Valid values:
 	Force pulumi.BoolPtrInput
-	// The list of ECS instance's IDs.
+	// The IDs of instances to which you want to bind the SSH key pair.
 	InstanceIds pulumi.StringArrayInput
-	// New field 'key_pair_name' instead.
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
+	//
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName pulumi.StringPtrInput
-	// The name of key pair used to bind.
+	// The name of the SSH key pair.
 	KeyPairName pulumi.StringPtrInput
 }
 
@@ -210,29 +226,33 @@ func (EcsKeyPairAttachmentState) ElementType() reflect.Type {
 }
 
 type ecsKeyPairAttachmentArgs struct {
-	// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+	// Specifies whether to make the key pair effective immediately. Valid values:
 	Force *bool `pulumi:"force"`
-	// The list of ECS instance's IDs.
+	// The IDs of instances to which you want to bind the SSH key pair.
 	InstanceIds []string `pulumi:"instanceIds"`
-	// New field 'key_pair_name' instead.
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
+	//
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName *string `pulumi:"keyName"`
-	// The name of key pair used to bind.
+	// The name of the SSH key pair.
 	KeyPairName *string `pulumi:"keyPairName"`
 }
 
 // The set of arguments for constructing a EcsKeyPairAttachment resource.
 type EcsKeyPairAttachmentArgs struct {
-	// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+	// Specifies whether to make the key pair effective immediately. Valid values:
 	Force pulumi.BoolPtrInput
-	// The list of ECS instance's IDs.
+	// The IDs of instances to which you want to bind the SSH key pair.
 	InstanceIds pulumi.StringArrayInput
-	// New field 'key_pair_name' instead.
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
+	//
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName pulumi.StringPtrInput
-	// The name of key pair used to bind.
+	// The name of the SSH key pair.
 	KeyPairName pulumi.StringPtrInput
 }
 
@@ -323,24 +343,26 @@ func (o EcsKeyPairAttachmentOutput) ToEcsKeyPairAttachmentOutputWithContext(ctx 
 	return o
 }
 
-// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+// Specifies whether to make the key pair effective immediately. Valid values:
 func (o EcsKeyPairAttachmentOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsKeyPairAttachment) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// The list of ECS instance's IDs.
+// The IDs of instances to which you want to bind the SSH key pair.
 func (o EcsKeyPairAttachmentOutput) InstanceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EcsKeyPairAttachment) pulumi.StringArrayOutput { return v.InstanceIds }).(pulumi.StringArrayOutput)
 }
 
-// New field 'key_pair_name' instead.
+// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 //
-// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+// > **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
+//
+// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 func (o EcsKeyPairAttachmentOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsKeyPairAttachment) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// The name of key pair used to bind.
+// The name of the SSH key pair.
 func (o EcsKeyPairAttachmentOutput) KeyPairName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsKeyPairAttachment) pulumi.StringOutput { return v.KeyPairName }).(pulumi.StringOutput)
 }

@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly bool? BurstingEnabled;
         /// <summary>
-        /// The category of the disk:
+        /// The category of the disk. Default value: `CloudEfficiency`. Valid values:
         /// </summary>
         public readonly string? Category;
         /// <summary>

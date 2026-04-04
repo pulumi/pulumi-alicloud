@@ -29,6 +29,7 @@ __all__ = [
     'MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties',
     'ResourceGroupRegionStatus',
     'ResourceShareResource',
+    'ResourceShareResourceProperty',
     'GetAccountDeletionCheckTaskAbandonAbleCheckResult',
     'GetAccountDeletionCheckTaskNotAllowReasonResult',
     'GetAccountsAccountResult',
@@ -847,6 +848,54 @@ class ResourceShareResource(dict):
         > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
         """
         return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class ResourceShareResourceProperty(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceArn":
+            suggest = "resource_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceShareResourceProperty. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceShareResourceProperty.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceShareResourceProperty.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 property: Optional[_builtins.str] = None,
+                 resource_arn: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str property: The resource property.
+        :param _builtins.str resource_arn: The ARN of the resource.
+        """
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if resource_arn is not None:
+            pulumi.set(__self__, "resource_arn", resource_arn)
+
+    @_builtins.property
+    @pulumi.getter
+    def property(self) -> Optional[_builtins.str]:
+        """
+        The resource property.
+        """
+        return pulumi.get(self, "property")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceArn")
+    def resource_arn(self) -> Optional[_builtins.str]:
+        """
+        The ARN of the resource.
+        """
+        return pulumi.get(self, "resource_arn")
 
 
 @pulumi.output_type

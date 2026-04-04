@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -100,6 +101,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> instanceType() {
         return Optional.ofNullable(this.instanceType);
+    }
+
+    /**
+     * The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+     * 
+     */
+    @Import(name="listenerMode")
+    private @Nullable Output<String> listenerMode;
+
+    /**
+     * @return The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+     * 
+     */
+    public Optional<Output<String>> listenerMode() {
+        return Optional.ofNullable(this.listenerMode);
     }
 
     /**
@@ -291,6 +307,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+     * 
+     */
+    @Import(name="securityGroupId")
+    private @Nullable Output<String> securityGroupId;
+
+    /**
+     * @return The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+     * 
+     */
+    public Optional<Output<String>> securityGroupId() {
+        return Optional.ofNullable(this.securityGroupId);
+    }
+
+    /**
      * The billing type of the serverless instance. Value: onDemand.
      * 
      */
@@ -380,6 +411,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tracingStorageTime);
     }
 
+    /**
+     * The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
+     * The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+     * 
+     */
+    @Import(name="vswitchIds")
+    private @Nullable Output<List<String>> vswitchIds;
+
+    /**
+     * @return The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+     * 
+     */
+    public Optional<Output<List<String>>> vswitchIds() {
+        return Optional.ofNullable(this.vswitchIds);
+    }
+
     private InstanceState() {}
 
     private InstanceState(InstanceState $) {
@@ -388,6 +449,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.edition = $.edition;
         this.instanceName = $.instanceName;
         this.instanceType = $.instanceType;
+        this.listenerMode = $.listenerMode;
         this.maxConnections = $.maxConnections;
         this.maxEipTps = $.maxEipTps;
         this.maxTps = $.maxTps;
@@ -400,12 +462,15 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.renewalDuration = $.renewalDuration;
         this.renewalDurationUnit = $.renewalDurationUnit;
         this.renewalStatus = $.renewalStatus;
+        this.securityGroupId = $.securityGroupId;
         this.serverlessChargeType = $.serverlessChargeType;
         this.status = $.status;
         this.storageSize = $.storageSize;
         this.supportEip = $.supportEip;
         this.supportTracing = $.supportTracing;
         this.tracingStorageTime = $.tracingStorageTime;
+        this.vpcId = $.vpcId;
+        this.vswitchIds = $.vswitchIds;
     }
 
     public static Builder builder() {
@@ -539,6 +604,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceType(String instanceType) {
             return instanceType(Output.of(instanceType));
+        }
+
+        /**
+         * @param listenerMode The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder listenerMode(@Nullable Output<String> listenerMode) {
+            $.listenerMode = listenerMode;
+            return this;
+        }
+
+        /**
+         * @param listenerMode The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder listenerMode(String listenerMode) {
+            return listenerMode(Output.of(listenerMode));
         }
 
         /**
@@ -802,6 +888,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param securityGroupId The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupId(@Nullable Output<String> securityGroupId) {
+            $.securityGroupId = securityGroupId;
+            return this;
+        }
+
+        /**
+         * @param securityGroupId The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupId(String securityGroupId) {
+            return securityGroupId(Output.of(securityGroupId));
+        }
+
+        /**
          * @param serverlessChargeType The billing type of the serverless instance. Value: onDemand.
          * 
          * @return builder
@@ -925,6 +1032,58 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tracingStorageTime(Integer tracingStorageTime) {
             return tracingStorageTime(Output.of(tracingStorageTime));
+        }
+
+        /**
+         * @param vpcId The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
+        }
+
+        /**
+         * @param vswitchIds The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchIds(@Nullable Output<List<String>> vswitchIds) {
+            $.vswitchIds = vswitchIds;
+            return this;
+        }
+
+        /**
+         * @param vswitchIds The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchIds(List<String> vswitchIds) {
+            return vswitchIds(Output.of(vswitchIds));
+        }
+
+        /**
+         * @param vswitchIds The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchIds(String... vswitchIds) {
+            return vswitchIds(List.of(vswitchIds));
         }
 
         public InstanceState build() {

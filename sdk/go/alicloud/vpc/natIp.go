@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Nat Ip resource.
+// Provides a Nat Gateway Nat Ip resource.
 //
-// For information about VPC Nat Ip and how to use it, see [What is Nat Ip](https://www.alibabacloud.com/help/doc-detail/281976.htm).
+// NAT IP address instance.
+//
+// For information about Nat Gateway Nat Ip and how to use it, see [What is Nat Ip](https://www.alibabacloud.com/help/en/nat-gateway/developer-reference/api-vpc-2016-04-28-createnatip-natgws).
 //
 // > **NOTE:** Available since v1.136.0.
 //
@@ -98,7 +100,7 @@ import (
 //
 // ## Import
 //
-// VPC Nat Ip can be imported using the id, e.g.
+// Nat Gateway Nat Ip can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
@@ -106,23 +108,21 @@ import (
 type NatIp struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether to check the validity of the request without actually making the request.
-	DryRun pulumi.BoolOutput `pulumi:"dryRun"`
+	// Specifies whether to only precheck the request. Valid values:
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	NatGatewayId pulumi.StringOutput `pulumi:"natGatewayId"`
-	// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+	// The NAT IP address to be created.
 	NatIp pulumi.StringOutput `pulumi:"natIp"`
-	// NAT IP ADDRESS of the address segment.
-	NatIpCidr pulumi.StringPtrOutput `pulumi:"natIpCidr"`
-	// The ID of the CIDR block to which the NAT IP address belongs.
-	NatIpCidrId pulumi.StringPtrOutput `pulumi:"natIpCidrId"`
-	// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+	// The CIDR block to which the NAT IP address belongs.
+	NatIpCidr pulumi.StringOutput `pulumi:"natIpCidr"`
+	// The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
 	NatIpDescription pulumi.StringPtrOutput `pulumi:"natIpDescription"`
 	// Ihe ID of the Nat Ip.
 	NatIpId pulumi.StringOutput `pulumi:"natIpId"`
-	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+	// The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
 	NatIpName pulumi.StringPtrOutput `pulumi:"natIpName"`
-	// The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
+	// The status of the NAT IP address.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -135,6 +135,9 @@ func NewNatIp(ctx *pulumi.Context,
 
 	if args.NatGatewayId == nil {
 		return nil, errors.New("invalid value for required argument 'NatGatewayId'")
+	}
+	if args.NatIpCidr == nil {
+		return nil, errors.New("invalid value for required argument 'NatIpCidr'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NatIp
@@ -159,44 +162,40 @@ func GetNatIp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NatIp resources.
 type natIpState struct {
-	// Specifies whether to check the validity of the request without actually making the request.
+	// Specifies whether to only precheck the request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	NatGatewayId *string `pulumi:"natGatewayId"`
-	// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+	// The NAT IP address to be created.
 	NatIp *string `pulumi:"natIp"`
-	// NAT IP ADDRESS of the address segment.
+	// The CIDR block to which the NAT IP address belongs.
 	NatIpCidr *string `pulumi:"natIpCidr"`
-	// The ID of the CIDR block to which the NAT IP address belongs.
-	NatIpCidrId *string `pulumi:"natIpCidrId"`
-	// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+	// The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
 	NatIpDescription *string `pulumi:"natIpDescription"`
 	// Ihe ID of the Nat Ip.
 	NatIpId *string `pulumi:"natIpId"`
-	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+	// The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
 	NatIpName *string `pulumi:"natIpName"`
-	// The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
+	// The status of the NAT IP address.
 	Status *string `pulumi:"status"`
 }
 
 type NatIpState struct {
-	// Specifies whether to check the validity of the request without actually making the request.
+	// Specifies whether to only precheck the request. Valid values:
 	DryRun pulumi.BoolPtrInput
 	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	NatGatewayId pulumi.StringPtrInput
-	// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+	// The NAT IP address to be created.
 	NatIp pulumi.StringPtrInput
-	// NAT IP ADDRESS of the address segment.
+	// The CIDR block to which the NAT IP address belongs.
 	NatIpCidr pulumi.StringPtrInput
-	// The ID of the CIDR block to which the NAT IP address belongs.
-	NatIpCidrId pulumi.StringPtrInput
-	// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+	// The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
 	NatIpDescription pulumi.StringPtrInput
 	// Ihe ID of the Nat Ip.
 	NatIpId pulumi.StringPtrInput
-	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+	// The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
 	NatIpName pulumi.StringPtrInput
-	// The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
+	// The status of the NAT IP address.
 	Status pulumi.StringPtrInput
 }
 
@@ -205,37 +204,33 @@ func (NatIpState) ElementType() reflect.Type {
 }
 
 type natIpArgs struct {
-	// Specifies whether to check the validity of the request without actually making the request.
+	// Specifies whether to only precheck the request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	NatGatewayId string `pulumi:"natGatewayId"`
-	// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+	// The NAT IP address to be created.
 	NatIp *string `pulumi:"natIp"`
-	// NAT IP ADDRESS of the address segment.
-	NatIpCidr *string `pulumi:"natIpCidr"`
-	// The ID of the CIDR block to which the NAT IP address belongs.
-	NatIpCidrId *string `pulumi:"natIpCidrId"`
-	// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+	// The CIDR block to which the NAT IP address belongs.
+	NatIpCidr string `pulumi:"natIpCidr"`
+	// The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
 	NatIpDescription *string `pulumi:"natIpDescription"`
-	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+	// The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
 	NatIpName *string `pulumi:"natIpName"`
 }
 
 // The set of arguments for constructing a NatIp resource.
 type NatIpArgs struct {
-	// Specifies whether to check the validity of the request without actually making the request.
+	// Specifies whether to only precheck the request. Valid values:
 	DryRun pulumi.BoolPtrInput
 	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	NatGatewayId pulumi.StringInput
-	// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+	// The NAT IP address to be created.
 	NatIp pulumi.StringPtrInput
-	// NAT IP ADDRESS of the address segment.
-	NatIpCidr pulumi.StringPtrInput
-	// The ID of the CIDR block to which the NAT IP address belongs.
-	NatIpCidrId pulumi.StringPtrInput
-	// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+	// The CIDR block to which the NAT IP address belongs.
+	NatIpCidr pulumi.StringInput
+	// The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
 	NatIpDescription pulumi.StringPtrInput
-	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+	// The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
 	NatIpName pulumi.StringPtrInput
 }
 
@@ -326,9 +321,9 @@ func (o NatIpOutput) ToNatIpOutputWithContext(ctx context.Context) NatIpOutput {
 	return o
 }
 
-// Specifies whether to check the validity of the request without actually making the request.
-func (o NatIpOutput) DryRun() pulumi.BoolOutput {
-	return o.ApplyT(func(v *NatIp) pulumi.BoolOutput { return v.DryRun }).(pulumi.BoolOutput)
+// Specifies whether to only precheck the request. Valid values:
+func (o NatIpOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NatIp) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
 // The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
@@ -336,22 +331,17 @@ func (o NatIpOutput) NatGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatIp) pulumi.StringOutput { return v.NatGatewayId }).(pulumi.StringOutput)
 }
 
-// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+// The NAT IP address to be created.
 func (o NatIpOutput) NatIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatIp) pulumi.StringOutput { return v.NatIp }).(pulumi.StringOutput)
 }
 
-// NAT IP ADDRESS of the address segment.
-func (o NatIpOutput) NatIpCidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NatIp) pulumi.StringPtrOutput { return v.NatIpCidr }).(pulumi.StringPtrOutput)
+// The CIDR block to which the NAT IP address belongs.
+func (o NatIpOutput) NatIpCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatIp) pulumi.StringOutput { return v.NatIpCidr }).(pulumi.StringOutput)
 }
 
-// The ID of the CIDR block to which the NAT IP address belongs.
-func (o NatIpOutput) NatIpCidrId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NatIp) pulumi.StringPtrOutput { return v.NatIpCidrId }).(pulumi.StringPtrOutput)
-}
-
-// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+// The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
 func (o NatIpOutput) NatIpDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NatIp) pulumi.StringPtrOutput { return v.NatIpDescription }).(pulumi.StringPtrOutput)
 }
@@ -361,12 +351,12 @@ func (o NatIpOutput) NatIpId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatIp) pulumi.StringOutput { return v.NatIpId }).(pulumi.StringOutput)
 }
 
-// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+// The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
 func (o NatIpOutput) NatIpName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NatIp) pulumi.StringPtrOutput { return v.NatIpName }).(pulumi.StringPtrOutput)
 }
 
-// The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
+// The status of the NAT IP address.
 func (o NatIpOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatIp) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -23,9 +23,9 @@ namespace Pulumi.AliCloud.CS
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -37,17 +37,10 @@ namespace Pulumi.AliCloud.CS
     ///         "10.1.0.0/16",
     ///         "10.2.0.0/16",
     ///     };
-    ///     var clusterName = config.Get("clusterName") ?? "example-create-cluster";
+    ///     var clusterName = config.Get("clusterName") ?? "terraform-example-";
     ///     var podCidr = config.Get("podCidr") ?? "172.16.0.0/16";
     ///     var serviceCidr = config.Get("serviceCidr") ?? "192.168.0.0/16";
-    ///     var policyName = config.Get("policyName") ?? "ACKPSPHostNetworkingPorts";
     ///     var enhanced = AliCloud.Vpc.GetEnhancedNatAvailableZones.Invoke();
-    /// 
-    ///     var @default = new Random.Index.Integer("default", new()
-    ///     {
-    ///         Max = 99999,
-    ///         Min = 10000,
-    ///     });
     /// 
     ///     var createVPC = new AliCloud.Vpc.Network("CreateVPC", new()
     ///     {
@@ -68,8 +61,8 @@ namespace Pulumi.AliCloud.CS
     ///     }
     ///     var createCluster = new AliCloud.CS.ManagedKubernetes("CreateCluster", new()
     ///     {
-    ///         Name = $"{clusterName}-{@default.Result}",
-    ///         ClusterSpec = "ack.pro.small",
+    ///         NamePrefix = clusterName,
+    ///         ClusterSpec = "ack.standard",
     ///         Profile = "Default",
     ///         VswitchIds = Std.Join.Invoke(new()
     ///         {
@@ -114,11 +107,27 @@ namespace Pulumi.AliCloud.CS
     ///         },
     ///     });
     /// 
-    ///     var defaultKubernetesPolicyInstance = new AliCloud.CS.KubernetesPolicyInstance("default", new()
+    ///     var @base = new AliCloud.CS.KubernetesPolicyInstance("base", new()
     ///     {
     ///         ClusterId = createCluster.Id,
-    ///         PolicyName = policyName,
+    ///         PolicyName = "ACKPSPReadOnlyRootFilesystem",
+    ///     });
+    /// 
+    ///     var @string = new AliCloud.CS.KubernetesPolicyInstance("string", new()
+    ///     {
+    ///         ClusterId = createCluster.Id,
+    ///         PolicyName = "ACKPVSizeConstraint",
     ///         Action = "deny",
+    ///         Parameters = 
+    ///         {
+    ///             { "maxSize", "60Gi" },
+    ///         },
+    ///     });
+    /// 
+    ///     var intBool = new AliCloud.CS.KubernetesPolicyInstance("int_bool", new()
+    ///     {
+    ///         ClusterId = createCluster.Id,
+    ///         PolicyName = "ACKPSPHostNetworkingPorts",
     ///         Namespaces = new[]
     ///         {
     ///             "test",
@@ -128,6 +137,50 @@ namespace Pulumi.AliCloud.CS
     ///             { "hostNetwork", "true" },
     ///             { "min", "20" },
     ///             { "max", "200" },
+    ///         },
+    ///     });
+    /// 
+    ///     var array = new AliCloud.CS.KubernetesPolicyInstance("array", new()
+    ///     {
+    ///         ClusterId = createCluster.Id,
+    ///         PolicyName = "ACKAllowedRepos",
+    ///         Parameters = 
+    ///         {
+    ///             { "repos", JsonSerializer.Serialize(new[]
+    ///             {
+    ///                 "docker.io/library/nginx",
+    ///                 "docker.io/library/redis",
+    ///             }) },
+    ///         },
+    ///     });
+    /// 
+    ///     var @object = new AliCloud.CS.KubernetesPolicyInstance("object", new()
+    ///     {
+    ///         ClusterId = createCluster.Id,
+    ///         PolicyName = "ACKRequiredLabels",
+    ///         Action = "warn",
+    ///         Namespaces = new[]
+    ///         {
+    ///             "test1",
+    ///             "test2",
+    ///             "test3",
+    ///         },
+    ///         Parameters = 
+    ///         {
+    ///             { "labels", JsonSerializer.Serialize(new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["key"] = "test",
+    ///                     ["allowedRegex"] = "^test.*$",
+    ///                 },
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["key"] = "env",
+    ///                     ["allowedRegex"] = "^(dev|prod)$",
+    ///                     ["optional"] = false,
+    ///                 },
+    ///             }) },
     ///         },
     ///     });
     /// 
@@ -151,7 +204,7 @@ namespace Pulumi.AliCloud.CS
         /// Policy Governance Implementation Actions
         /// </summary>
         [Output("action")]
-        public Output<string?> Action { get; private set; } = null!;
+        public Output<string> Action { get; private set; } = null!;
 
         /// <summary>
         /// Target cluster ID

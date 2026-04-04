@@ -29,95 +29,47 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-// AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
-// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// MostRecent: pulumi.BoolRef(true),
-// Owners: pulumi.StringRef("system"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
-// ImageId: pulumi.StringRef(defaultGetImages.Images[0].Id),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-// VpcName: pulumi.String(pulumi.String(name)),
-// CidrBlock: pulumi.String("192.168.0.0/16"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-// VswitchName: pulumi.String(pulumi.String(name)),
-// VpcId: defaultNetwork.ID(),
-// CidrBlock: pulumi.String("192.168.192.0/24"),
-// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
-// })
-// if err != nil {
-// return err
-// }
-// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-// Name: pulumi.String(pulumi.String(name)),
-// VpcId: defaultNetwork.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// var splat0 pulumi.StringArray
-// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
-// splat0 = append(splat0, val0.ID())
-// }
-// defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-// ImageId: pulumi.String(pulumi.String(defaultGetImages.Images[0].Id)),
-// InstanceType: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id)),
-// SecurityGroups: splat0,
-// InternetChargeType: pulumi.String("PayByTraffic"),
-// InternetMaxBandwidthOut: pulumi.Int(10),
-// AvailabilityZone: pulumi.String(pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0])),
-// InstanceChargeType: pulumi.String("PostPaid"),
-// SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// VswitchId: defaultSwitch.ID(),
-// InstanceName: pulumi.String(pulumi.String(name)),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = vpc.NewRouteEntry(ctx, "foo", &vpc.RouteEntryArgs{
-// RouteTableId: defaultNetwork.RouteTableId,
-// DestinationCidrblock: pulumi.String("172.11.1.1/32"),
-// NexthopType: pulumi.String("Instance"),
-// NexthopId: defaultInstance.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(pulumi.String(name)),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultIpv4Gateway, err := vpc.NewIpv4Gateway(ctx, "default", &vpc.Ipv4GatewayArgs{
+//				Ipv4GatewayName: pulumi.String(pulumi.String(name)),
+//				VpcId:           _default.ID(),
+//				Enabled:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewRouteEntry(ctx, "default", &vpc.RouteEntryArgs{
+//				RouteTableId:         _default.RouteTableId,
+//				DestinationCidrblock: pulumi.String("172.11.1.1/32"),
+//				NexthopType:          pulumi.String("Ipv4Gateway"),
+//				NexthopId:            defaultIpv4Gateway.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // 📚 Need more examples? VIEW MORE EXAMPLES

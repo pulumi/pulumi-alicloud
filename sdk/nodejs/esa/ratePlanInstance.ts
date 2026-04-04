@@ -106,11 +106,11 @@ export class RatePlanInstance extends pulumi.CustomResource {
     /**
      * Package name.  
      *
-     * Chinese website account:
+     * For China site accounts:
      */
     declare public readonly planName: pulumi.Output<string | undefined>;
     /**
-     * The plan status. , the plan is unavailable.
+     * The plan status.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -203,11 +203,11 @@ export interface RatePlanInstanceState {
     /**
      * Package name.  
      *
-     * Chinese website account:
+     * For China site accounts:
      */
     planName?: pulumi.Input<string>;
     /**
-     * The plan status. , the plan is unavailable.
+     * The plan status.
      */
     status?: pulumi.Input<string>;
     /**
@@ -252,7 +252,7 @@ export interface RatePlanInstanceArgs {
     /**
      * Package name.  
      *
-     * Chinese website account:
+     * For China site accounts:
      */
     planName?: pulumi.Input<string>;
     /**

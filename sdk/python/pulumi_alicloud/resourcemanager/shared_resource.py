@@ -21,8 +21,10 @@ class SharedResourceArgs:
     def __init__(__self__, *,
                  resource_share_id: pulumi.Input[_builtins.str],
                  permission_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 properties_resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_property: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SharedResource resource.
@@ -31,19 +33,25 @@ class SharedResourceArgs:
         :param pulumi.Input[_builtins.str] permission_name: The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] properties_resource_arn: The ARN of the resource.
         :param pulumi.Input[_builtins.str] resource_arn: Associated resource ARN.
                
                > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
+        :param pulumi.Input[_builtins.str] resource_property: The property of the resource.
         :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource.
         """
         pulumi.set(__self__, "resource_share_id", resource_share_id)
         if permission_name is not None:
             pulumi.set(__self__, "permission_name", permission_name)
+        if properties_resource_arn is not None:
+            pulumi.set(__self__, "properties_resource_arn", properties_resource_arn)
         if resource_arn is not None:
             pulumi.set(__self__, "resource_arn", resource_arn)
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
+        if resource_property is not None:
+            pulumi.set(__self__, "resource_property", resource_property)
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
 
@@ -74,6 +82,18 @@ class SharedResourceArgs:
         pulumi.set(self, "permission_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="propertiesResourceArn")
+    def properties_resource_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ARN of the resource.
+        """
+        return pulumi.get(self, "properties_resource_arn")
+
+    @properties_resource_arn.setter
+    def properties_resource_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "properties_resource_arn", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceArn")
     def resource_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -100,6 +120,18 @@ class SharedResourceArgs:
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceProperty")
+    def resource_property(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The property of the resource.
+        """
+        return pulumi.get(self, "resource_property")
+
+    @resource_property.setter
+    def resource_property(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_property", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -117,8 +149,10 @@ class _SharedResourceState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  permission_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 properties_resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_property: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
@@ -129,10 +163,12 @@ class _SharedResourceState:
         :param pulumi.Input[_builtins.str] permission_name: The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] properties_resource_arn: The ARN of the resource.
         :param pulumi.Input[_builtins.str] resource_arn: Associated resource ARN.
                
                > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
+        :param pulumi.Input[_builtins.str] resource_property: The property of the resource.
         :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
         :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource.
         :param pulumi.Input[_builtins.str] status: The association status.
@@ -141,10 +177,14 @@ class _SharedResourceState:
             pulumi.set(__self__, "create_time", create_time)
         if permission_name is not None:
             pulumi.set(__self__, "permission_name", permission_name)
+        if properties_resource_arn is not None:
+            pulumi.set(__self__, "properties_resource_arn", properties_resource_arn)
         if resource_arn is not None:
             pulumi.set(__self__, "resource_arn", resource_arn)
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
+        if resource_property is not None:
+            pulumi.set(__self__, "resource_property", resource_property)
         if resource_share_id is not None:
             pulumi.set(__self__, "resource_share_id", resource_share_id)
         if resource_type is not None:
@@ -179,6 +219,18 @@ class _SharedResourceState:
         pulumi.set(self, "permission_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="propertiesResourceArn")
+    def properties_resource_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ARN of the resource.
+        """
+        return pulumi.get(self, "properties_resource_arn")
+
+    @properties_resource_arn.setter
+    def properties_resource_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "properties_resource_arn", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceArn")
     def resource_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -203,6 +255,18 @@ class _SharedResourceState:
     @resource_id.setter
     def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceProperty")
+    def resource_property(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The property of the resource.
+        """
+        return pulumi.get(self, "resource_property")
+
+    @resource_property.setter
+    def resource_property(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_property", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceShareId")
@@ -248,8 +312,10 @@ class SharedResource(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  permission_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 properties_resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_property: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -308,10 +374,12 @@ class SharedResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] permission_name: The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] properties_resource_arn: The ARN of the resource.
         :param pulumi.Input[_builtins.str] resource_arn: Associated resource ARN.
                
                > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
+        :param pulumi.Input[_builtins.str] resource_property: The property of the resource.
         :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
         :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource.
         """
@@ -387,8 +455,10 @@ class SharedResource(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  permission_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 properties_resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_property: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -401,8 +471,10 @@ class SharedResource(pulumi.CustomResource):
             __props__ = SharedResourceArgs.__new__(SharedResourceArgs)
 
             __props__.__dict__["permission_name"] = permission_name
+            __props__.__dict__["properties_resource_arn"] = properties_resource_arn
             __props__.__dict__["resource_arn"] = resource_arn
             __props__.__dict__["resource_id"] = resource_id
+            __props__.__dict__["resource_property"] = resource_property
             if resource_share_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_share_id'")
             __props__.__dict__["resource_share_id"] = resource_share_id
@@ -421,8 +493,10 @@ class SharedResource(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             permission_name: Optional[pulumi.Input[_builtins.str]] = None,
+            properties_resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
             resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
             resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_property: Optional[pulumi.Input[_builtins.str]] = None,
             resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_type: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None) -> 'SharedResource':
@@ -437,10 +511,12 @@ class SharedResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] permission_name: The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] properties_resource_arn: The ARN of the resource.
         :param pulumi.Input[_builtins.str] resource_arn: Associated resource ARN.
                
                > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
+        :param pulumi.Input[_builtins.str] resource_property: The property of the resource.
         :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
         :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource.
         :param pulumi.Input[_builtins.str] status: The association status.
@@ -451,8 +527,10 @@ class SharedResource(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["permission_name"] = permission_name
+        __props__.__dict__["properties_resource_arn"] = properties_resource_arn
         __props__.__dict__["resource_arn"] = resource_arn
         __props__.__dict__["resource_id"] = resource_id
+        __props__.__dict__["resource_property"] = resource_property
         __props__.__dict__["resource_share_id"] = resource_share_id
         __props__.__dict__["resource_type"] = resource_type
         __props__.__dict__["status"] = status
@@ -477,6 +555,14 @@ class SharedResource(pulumi.CustomResource):
         return pulumi.get(self, "permission_name")
 
     @_builtins.property
+    @pulumi.getter(name="propertiesResourceArn")
+    def properties_resource_arn(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ARN of the resource.
+        """
+        return pulumi.get(self, "properties_resource_arn")
+
+    @_builtins.property
     @pulumi.getter(name="resourceArn")
     def resource_arn(self) -> pulumi.Output[_builtins.str]:
         """
@@ -493,6 +579,14 @@ class SharedResource(pulumi.CustomResource):
         The ID of the shared resource.
         """
         return pulumi.get(self, "resource_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceProperty")
+    def resource_property(self) -> pulumi.Output[_builtins.str]:
+        """
+        The property of the resource.
+        """
+        return pulumi.get(self, "resource_property")
 
     @_builtins.property
     @pulumi.getter(name="resourceShareId")

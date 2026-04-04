@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.186.0+.
+        /// &gt; **NOTE:** Available since v1.186.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.186.0+.
+        /// &gt; **NOTE:** Available since v1.186.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.186.0+.
+        /// &gt; **NOTE:** Available since v1.186.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -176,6 +176,10 @@ namespace Pulumi.AliCloud.Nlb
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -246,6 +250,10 @@ namespace Pulumi.AliCloud.Nlb
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -262,6 +270,9 @@ namespace Pulumi.AliCloud.Nlb
     [OutputType]
     public sealed class GetServerGroupsResult
     {
+        /// <summary>
+        /// A list of Nlb Server Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -269,12 +280,27 @@ namespace Pulumi.AliCloud.Nlb
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Server Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the resource group to which the security group belongs.
+        /// </summary>
         public readonly string? ResourceGroupId;
         public readonly ImmutableArray<string> ServerGroupNames;
+        /// <summary>
+        /// The type of the server group.
+        /// </summary>
         public readonly string? ServerGroupType;
+        /// <summary>
+        /// The status of the server group.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

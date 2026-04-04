@@ -26,7 +26,8 @@ class LakeAccountArgs:
                  db_cluster_id: pulumi.Input[_builtins.str],
                  account_description: Optional[pulumi.Input[_builtins.str]] = None,
                  account_privileges: Optional[pulumi.Input[Sequence[pulumi.Input['LakeAccountAccountPrivilegeArgs']]]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 ram_user_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a LakeAccount resource.
 
@@ -36,6 +37,7 @@ class LakeAccountArgs:
         :param pulumi.Input[_builtins.str] account_description: The description of the account.
         :param pulumi.Input[Sequence[pulumi.Input['LakeAccountAccountPrivilegeArgs']]] account_privileges: List of permissions granted. See `account_privileges` below.
         :param pulumi.Input[_builtins.str] account_type: The type of the account.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ram_user_lists: List of Alibaba Cloud RAM user IDs to bind.
         """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_password", account_password)
@@ -46,6 +48,8 @@ class LakeAccountArgs:
             pulumi.set(__self__, "account_privileges", account_privileges)
         if account_type is not None:
             pulumi.set(__self__, "account_type", account_type)
+        if ram_user_lists is not None:
+            pulumi.set(__self__, "ram_user_lists", ram_user_lists)
 
     @_builtins.property
     @pulumi.getter(name="accountName")
@@ -119,6 +123,18 @@ class LakeAccountArgs:
     def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="ramUserLists")
+    def ram_user_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of Alibaba Cloud RAM user IDs to bind.
+        """
+        return pulumi.get(self, "ram_user_lists")
+
+    @ram_user_lists.setter
+    def ram_user_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ram_user_lists", value)
+
 
 @pulumi.input_type
 class _LakeAccountState:
@@ -129,6 +145,7 @@ class _LakeAccountState:
                  account_privileges: Optional[pulumi.Input[Sequence[pulumi.Input['LakeAccountAccountPrivilegeArgs']]]] = None,
                  account_type: Optional[pulumi.Input[_builtins.str]] = None,
                  db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ram_user_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LakeAccount resources.
@@ -139,6 +156,7 @@ class _LakeAccountState:
         :param pulumi.Input[Sequence[pulumi.Input['LakeAccountAccountPrivilegeArgs']]] account_privileges: List of permissions granted. See `account_privileges` below.
         :param pulumi.Input[_builtins.str] account_type: The type of the account.
         :param pulumi.Input[_builtins.str] db_cluster_id: The DBCluster ID.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ram_user_lists: List of Alibaba Cloud RAM user IDs to bind.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         """
         if account_description is not None:
@@ -153,6 +171,8 @@ class _LakeAccountState:
             pulumi.set(__self__, "account_type", account_type)
         if db_cluster_id is not None:
             pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        if ram_user_lists is not None:
+            pulumi.set(__self__, "ram_user_lists", ram_user_lists)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -229,6 +249,18 @@ class _LakeAccountState:
         pulumi.set(self, "db_cluster_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="ramUserLists")
+    def ram_user_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of Alibaba Cloud RAM user IDs to bind.
+        """
+        return pulumi.get(self, "ram_user_lists")
+
+    @ram_user_lists.setter
+    def ram_user_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ram_user_lists", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -253,12 +285,14 @@ class LakeAccount(pulumi.CustomResource):
                  account_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]]] = None,
                  account_type: Optional[pulumi.Input[_builtins.str]] = None,
                  db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ram_user_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides a ADB Lake Account resource. Account of the DBClusterLakeVesion.
+        Provides a AnalyticDB for MySQL (ADB) Lake Account resource.
 
-        For information about ADB Lake Account and how to use it, see [What is Lake Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createaccount).
-        For information about ADB Lake Account Privileges and how to use it, see [What are Lake Account Privileges](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-modifyaccountprivileges/).
+        Account of the DBClusterLakeVesion.
+
+        For information about AnalyticDB for MySQL (ADB) Lake Account and how to use it, see [What is Lake Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-modifyaccountprivileges/).
 
         > **NOTE:** Available since v1.214.0.
 
@@ -349,6 +383,7 @@ class LakeAccount(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]] account_privileges: List of permissions granted. See `account_privileges` below.
         :param pulumi.Input[_builtins.str] account_type: The type of the account.
         :param pulumi.Input[_builtins.str] db_cluster_id: The DBCluster ID.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ram_user_lists: List of Alibaba Cloud RAM user IDs to bind.
         """
         ...
     @overload
@@ -357,10 +392,11 @@ class LakeAccount(pulumi.CustomResource):
                  args: LakeAccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a ADB Lake Account resource. Account of the DBClusterLakeVesion.
+        Provides a AnalyticDB for MySQL (ADB) Lake Account resource.
 
-        For information about ADB Lake Account and how to use it, see [What is Lake Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createaccount).
-        For information about ADB Lake Account Privileges and how to use it, see [What are Lake Account Privileges](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-modifyaccountprivileges/).
+        Account of the DBClusterLakeVesion.
+
+        For information about AnalyticDB for MySQL (ADB) Lake Account and how to use it, see [What is Lake Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-modifyaccountprivileges/).
 
         > **NOTE:** Available since v1.214.0.
 
@@ -464,6 +500,7 @@ class LakeAccount(pulumi.CustomResource):
                  account_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]]] = None,
                  account_type: Optional[pulumi.Input[_builtins.str]] = None,
                  db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ram_user_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -485,6 +522,7 @@ class LakeAccount(pulumi.CustomResource):
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__.__dict__["db_cluster_id"] = db_cluster_id
+            __props__.__dict__["ram_user_lists"] = ram_user_lists
             __props__.__dict__["status"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -504,6 +542,7 @@ class LakeAccount(pulumi.CustomResource):
             account_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]]] = None,
             account_type: Optional[pulumi.Input[_builtins.str]] = None,
             db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+            ram_user_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None) -> 'LakeAccount':
         """
         Get an existing LakeAccount resource's state with the given name, id, and optional extra
@@ -518,6 +557,7 @@ class LakeAccount(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]] account_privileges: List of permissions granted. See `account_privileges` below.
         :param pulumi.Input[_builtins.str] account_type: The type of the account.
         :param pulumi.Input[_builtins.str] db_cluster_id: The DBCluster ID.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ram_user_lists: List of Alibaba Cloud RAM user IDs to bind.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -530,6 +570,7 @@ class LakeAccount(pulumi.CustomResource):
         __props__.__dict__["account_privileges"] = account_privileges
         __props__.__dict__["account_type"] = account_type
         __props__.__dict__["db_cluster_id"] = db_cluster_id
+        __props__.__dict__["ram_user_lists"] = ram_user_lists
         __props__.__dict__["status"] = status
         return LakeAccount(resource_name, opts=opts, __props__=__props__)
 
@@ -580,6 +621,14 @@ class LakeAccount(pulumi.CustomResource):
         The DBCluster ID.
         """
         return pulumi.get(self, "db_cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ramUserLists")
+    def ram_user_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        List of Alibaba Cloud RAM user IDs to bind.
+        """
+        return pulumi.get(self, "ram_user_lists")
 
     @_builtins.property
     @pulumi.getter
