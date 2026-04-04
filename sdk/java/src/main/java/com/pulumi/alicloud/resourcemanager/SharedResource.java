@@ -141,6 +141,20 @@ public class SharedResource extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.permissionName);
     }
     /**
+     * The ARN of the resource.
+     * 
+     */
+    @Export(name="propertiesResourceArn", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> propertiesResourceArn;
+
+    /**
+     * @return The ARN of the resource.
+     * 
+     */
+    public Output<Optional<String>> propertiesResourceArn() {
+        return Codegen.optional(this.propertiesResourceArn);
+    }
+    /**
      * Associated resource ARN.
      * 
      * &gt; **NOTE:**  This parameter is not available when the association type &#39;AssociationType&#39; is the resource consumer &#39;Target&#39;.
@@ -171,6 +185,20 @@ public class SharedResource extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceId() {
         return this.resourceId;
+    }
+    /**
+     * The property of the resource.
+     * 
+     */
+    @Export(name="resourceProperty", refs={String.class}, tree="[0]")
+    private Output<String> resourceProperty;
+
+    /**
+     * @return The property of the resource.
+     * 
+     */
+    public Output<String> resourceProperty() {
+        return this.resourceProperty;
     }
     /**
      * The ID of the resource share.

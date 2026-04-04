@@ -925,6 +925,7 @@
         "esa/edgeContainerApp.ts",
         "esa/edgeContainerAppRecord.ts",
         "esa/getSites.ts",
+        "esa/getWafRulesets.ts",
         "esa/httpIncomingRequestHeaderModificationRule.ts",
         "esa/httpIncomingResponseHeaderModificationRule.ts",
         "esa/httpRequestHeaderModificationRule.ts",

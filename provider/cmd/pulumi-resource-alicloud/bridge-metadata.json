@@ -85,6 +85,9 @@
                                 }
                             }
                         }
+                    },
+                    "ram_user_list": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -615,7 +618,12 @@
                 "current": "alicloud:amqp/exchange:Exchange"
             },
             "alicloud_amqp_instance": {
-                "current": "alicloud:amqp/instance:Instance"
+                "current": "alicloud:amqp/instance:Instance",
+                "fields": {
+                    "vswitch_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_amqp_queue": {
                 "current": "alicloud:amqp/queue:Queue"
@@ -9412,6 +9420,9 @@
                     "resource_arns": {
                         "maxItemsOne": false
                     },
+                    "resource_properties": {
+                        "maxItemsOne": false
+                    },
                     "resources": {
                         "maxItemsOne": false
                     },
@@ -15118,7 +15129,14 @@
                 "current": "alicloud:cs/getKubernetesAddons:getKubernetesAddons",
                 "fields": {
                     "addons": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "supported_actions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "ids": {
                         "maxItemsOne": false
@@ -17754,6 +17772,33 @@
                     },
                     "sites": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_esa_waf_rulesets": {
+                "current": "alicloud:esa/getWafRulesets:getWafRulesets",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    },
+                    "query_args": {
+                        "maxItemsOne": true
+                    },
+                    "sets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "fields": {
+                                    "maxItemsOne": false
+                                },
+                                "types": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },

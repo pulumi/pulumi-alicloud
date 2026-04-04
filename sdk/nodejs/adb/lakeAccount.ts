@@ -7,10 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ADB Lake Account resource. Account of the DBClusterLakeVesion.
+ * Provides a AnalyticDB for MySQL (ADB) Lake Account resource.
  *
- * For information about ADB Lake Account and how to use it, see [What is Lake Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createaccount).
- * For information about ADB Lake Account Privileges and how to use it, see [What are Lake Account Privileges](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-modifyaccountprivileges/).
+ * Account of the DBClusterLakeVesion.
+ *
+ * For information about AnalyticDB for MySQL (ADB) Lake Account and how to use it, see [What is Lake Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-modifyaccountprivileges/).
  *
  * > **NOTE:** Available since v1.214.0.
  *
@@ -149,6 +150,10 @@ export class LakeAccount extends pulumi.CustomResource {
      */
     declare public readonly dbClusterId: pulumi.Output<string>;
     /**
+     * List of Alibaba Cloud RAM user IDs to bind.
+     */
+    declare public readonly ramUserLists: pulumi.Output<string[]>;
+    /**
      * The status of the resource.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
@@ -172,6 +177,7 @@ export class LakeAccount extends pulumi.CustomResource {
             resourceInputs["accountPrivileges"] = state?.accountPrivileges;
             resourceInputs["accountType"] = state?.accountType;
             resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["ramUserLists"] = state?.ramUserLists;
             resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as LakeAccountArgs | undefined;
@@ -190,6 +196,7 @@ export class LakeAccount extends pulumi.CustomResource {
             resourceInputs["accountPrivileges"] = args?.accountPrivileges;
             resourceInputs["accountType"] = args?.accountType;
             resourceInputs["dbClusterId"] = args?.dbClusterId;
+            resourceInputs["ramUserLists"] = args?.ramUserLists;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -228,6 +235,10 @@ export interface LakeAccountState {
      */
     dbClusterId?: pulumi.Input<string>;
     /**
+     * List of Alibaba Cloud RAM user IDs to bind.
+     */
+    ramUserLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The status of the resource.
      */
     status?: pulumi.Input<string>;
@@ -261,4 +272,8 @@ export interface LakeAccountArgs {
      * The DBCluster ID.
      */
     dbClusterId: pulumi.Input<string>;
+    /**
+     * List of Alibaba Cloud RAM user IDs to bind.
+     */
+    ramUserLists?: pulumi.Input<pulumi.Input<string>[]>;
 }

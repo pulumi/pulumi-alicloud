@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.ResourceShareState;
 import com.pulumi.alicloud.resourcemanager.outputs.ResourceShareResource;
+import com.pulumi.alicloud.resourcemanager.outputs.ResourceShareResourceProperty;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -54,7 +55,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var example = new ResourceShare("example", ResourceShareArgs.builder()
  *             .resourceShareName(name)
  *             .build());
@@ -158,6 +159,20 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
+    }
+    /**
+     * A list of resource properties. See `resourceProperties` below.
+     * 
+     */
+    @Export(name="resourceProperties", refs={List.class,ResourceShareResourceProperty.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ResourceShareResourceProperty>> resourceProperties;
+
+    /**
+     * @return A list of resource properties. See `resourceProperties` below.
+     * 
+     */
+    public Output<Optional<List<ResourceShareResourceProperty>>> resourceProperties() {
+        return Codegen.optional(this.resourceProperties);
     }
     /**
      * The name of resource share.

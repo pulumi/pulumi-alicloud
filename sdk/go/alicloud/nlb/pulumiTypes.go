@@ -769,6 +769,10 @@ type ServerGroupHealthCheck struct {
 	//
 	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HealthCheckHttpCodes []string `pulumi:"healthCheckHttpCodes"`
+	// The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+	//
+	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+	HealthCheckHttpVersion *string `pulumi:"healthCheckHttpVersion"`
 	// The interval at which health checks are performed. Unit: seconds.
 	// Valid values: `5` to `50`.
 	// Default value: `10`.
@@ -826,6 +830,10 @@ type ServerGroupHealthCheckArgs struct {
 	//
 	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HealthCheckHttpCodes pulumi.StringArrayInput `pulumi:"healthCheckHttpCodes"`
+	// The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+	//
+	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+	HealthCheckHttpVersion pulumi.StringPtrInput `pulumi:"healthCheckHttpVersion"`
 	// The interval at which health checks are performed. Unit: seconds.
 	// Valid values: `5` to `50`.
 	// Default value: `10`.
@@ -966,6 +974,13 @@ func (o ServerGroupHealthCheckOutput) HealthCheckHttpCodes() pulumi.StringArrayO
 	return o.ApplyT(func(v ServerGroupHealthCheck) []string { return v.HealthCheckHttpCodes }).(pulumi.StringArrayOutput)
 }
 
+// The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+//
+// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+func (o ServerGroupHealthCheckOutput) HealthCheckHttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupHealthCheck) *string { return v.HealthCheckHttpVersion }).(pulumi.StringPtrOutput)
+}
+
 // The interval at which health checks are performed. Unit: seconds.
 // Valid values: `5` to `50`.
 // Default value: `10`.
@@ -1100,6 +1115,18 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckHttpCodes() pulumi.StringArr
 		}
 		return v.HealthCheckHttpCodes
 	}).(pulumi.StringArrayOutput)
+}
+
+// The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+//
+// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+func (o ServerGroupHealthCheckPtrOutput) HealthCheckHttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckHttpVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 // The interval at which health checks are performed. Unit: seconds.
@@ -2331,9 +2358,9 @@ type GetServerGroupsGroup struct {
 	ServerCount int `pulumi:"serverCount"`
 	// The name of the server group.
 	ServerGroupName string `pulumi:"serverGroupName"`
-	// The type of the server group.
+	// The type of the server group. Valid values: `Instance`, `Ip`.
 	ServerGroupType string `pulumi:"serverGroupType"`
-	// The status of the server group.
+	// The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -2377,9 +2404,9 @@ type GetServerGroupsGroupArgs struct {
 	ServerCount pulumi.IntInput `pulumi:"serverCount"`
 	// The name of the server group.
 	ServerGroupName pulumi.StringInput `pulumi:"serverGroupName"`
-	// The type of the server group.
+	// The type of the server group. Valid values: `Instance`, `Ip`.
 	ServerGroupType pulumi.StringInput `pulumi:"serverGroupType"`
-	// The status of the server group.
+	// The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -2498,12 +2525,12 @@ func (o GetServerGroupsGroupOutput) ServerGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) string { return v.ServerGroupName }).(pulumi.StringOutput)
 }
 
-// The type of the server group.
+// The type of the server group. Valid values: `Instance`, `Ip`.
 func (o GetServerGroupsGroupOutput) ServerGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) string { return v.ServerGroupType }).(pulumi.StringOutput)
 }
 
-// The status of the server group.
+// The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
 func (o GetServerGroupsGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2549,6 +2576,8 @@ type GetServerGroupsGroupHealthCheck struct {
 	HealthCheckEnabled bool `pulumi:"healthCheckEnabled"`
 	// The HTTP status codes returned for health checks.
 	HealthCheckHttpCodes []string `pulumi:"healthCheckHttpCodes"`
+	// (Available since v1.274.0) The HTTP protocol version for health checks.
+	HealthCheckHttpVersion string `pulumi:"healthCheckHttpVersion"`
 	// The interval between two consecutive health checks.
 	HealthCheckInterval int `pulumi:"healthCheckInterval"`
 	// The protocol that is used for health checks.
@@ -2585,6 +2614,8 @@ type GetServerGroupsGroupHealthCheckArgs struct {
 	HealthCheckEnabled pulumi.BoolInput `pulumi:"healthCheckEnabled"`
 	// The HTTP status codes returned for health checks.
 	HealthCheckHttpCodes pulumi.StringArrayInput `pulumi:"healthCheckHttpCodes"`
+	// (Available since v1.274.0) The HTTP protocol version for health checks.
+	HealthCheckHttpVersion pulumi.StringInput `pulumi:"healthCheckHttpVersion"`
 	// The interval between two consecutive health checks.
 	HealthCheckInterval pulumi.IntInput `pulumi:"healthCheckInterval"`
 	// The protocol that is used for health checks.
@@ -2673,6 +2704,11 @@ func (o GetServerGroupsGroupHealthCheckOutput) HealthCheckEnabled() pulumi.BoolO
 // The HTTP status codes returned for health checks.
 func (o GetServerGroupsGroupHealthCheckOutput) HealthCheckHttpCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupHealthCheck) []string { return v.HealthCheckHttpCodes }).(pulumi.StringArrayOutput)
+}
+
+// (Available since v1.274.0) The HTTP protocol version for health checks.
+func (o GetServerGroupsGroupHealthCheckOutput) HealthCheckHttpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerGroupsGroupHealthCheck) string { return v.HealthCheckHttpVersion }).(pulumi.StringOutput)
 }
 
 // The interval between two consecutive health checks.

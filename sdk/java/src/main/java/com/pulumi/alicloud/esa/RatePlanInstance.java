@@ -190,7 +190,7 @@ public class RatePlanInstance extends com.pulumi.resources.CustomResource {
     /**
      * Package name.
      * 
-     * Chinese website account:
+     * For China site accounts:
      * 
      */
     @Export(name="planName", refs={String.class}, tree="[0]")
@@ -199,21 +199,21 @@ public class RatePlanInstance extends com.pulumi.resources.CustomResource {
     /**
      * @return Package name.
      * 
-     * Chinese website account:
+     * For China site accounts:
      * 
      */
     public Output<Optional<String>> planName() {
         return Codegen.optional(this.planName);
     }
     /**
-     * The plan status. , the plan is unavailable.
+     * The plan status.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The plan status. , the plan is unavailable.
+     * @return The plan status.
      * 
      */
     public Output<String> status() {

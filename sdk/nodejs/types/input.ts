@@ -9487,7 +9487,7 @@ export namespace ecs {
          */
         burstingEnabled?: pulumi.Input<boolean>;
         /**
-         * The category of the disk:
+         * The category of the disk. Default value: `cloudEfficiency`. Valid values:
          */
         category?: pulumi.Input<string>;
         /**
@@ -11850,6 +11850,44 @@ export namespace ens {
 }
 
 export namespace esa {
+    export interface GetWafRulesetsQueryArgs {
+        /**
+         * The fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+         */
+        anyLike?: string;
+        /**
+         * Whether to sort in descending order. Valid values: `true`, `false`.
+         */
+        desc?: boolean;
+        /**
+         * The fuzzy search for rule set name.
+         */
+        nameLike?: string;
+        /**
+         * Specify the column to sort by.
+         */
+        orderBy?: string;
+    }
+
+    export interface GetWafRulesetsQueryArgsArgs {
+        /**
+         * The fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+         */
+        anyLike?: pulumi.Input<string>;
+        /**
+         * Whether to sort in descending order. Valid values: `true`, `false`.
+         */
+        desc?: pulumi.Input<boolean>;
+        /**
+         * The fuzzy search for rule set name.
+         */
+        nameLike?: pulumi.Input<string>;
+        /**
+         * Specify the column to sort by.
+         */
+        orderBy?: pulumi.Input<string>;
+    }
+
     export interface HttpIncomingRequestHeaderModificationRuleRequestHeaderModification {
         /**
          * Request Header Name.
@@ -17438,6 +17476,12 @@ export namespace nlb {
          */
         healthCheckHttpCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+         *
+         * > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+         */
+        healthCheckHttpVersion?: pulumi.Input<string>;
+        /**
          * The interval at which health checks are performed. Unit: seconds.
          * Valid values: `5` to `50`.
          * Default value: `10`.
@@ -19978,6 +20022,17 @@ export namespace resourcemanager {
          * > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
          */
         resourceType?: pulumi.Input<string>;
+    }
+
+    export interface ResourceShareResourceProperty {
+        /**
+         * The resource property.
+         */
+        property?: pulumi.Input<string>;
+        /**
+         * The ARN of the resource.
+         */
+        resourceArn?: pulumi.Input<string>;
     }
 }
 
@@ -22727,7 +22782,7 @@ export namespace vpc {
          */
         description?: pulumi.Input<string>;
         /**
-         * The destination CIDR block.
+         * The destination CIDR block, or the prefix list instance ID.
          */
         destinationCidrIp?: pulumi.Input<string>;
         /**
@@ -22872,7 +22927,7 @@ export namespace vpc {
          */
         protocol?: pulumi.Input<string>;
         /**
-         * The source CIDR block.
+         * The source CIDR block, or the prefix list instance ID.
          */
         sourceCidrIp?: pulumi.Input<string>;
     }

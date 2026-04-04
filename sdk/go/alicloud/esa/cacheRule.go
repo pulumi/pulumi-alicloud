@@ -116,6 +116,12 @@ type CacheRule struct {
 	IncludeCookie pulumi.StringPtrOutput `pulumi:"includeCookie"`
 	// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
 	IncludeHeader pulumi.StringPtrOutput `pulumi:"includeHeader"`
+	// Processing pattern for the cache key.
+	PostBodyCacheKey pulumi.StringPtrOutput `pulumi:"postBodyCacheKey"`
+	// Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+	PostBodySizeLimit pulumi.StringPtrOutput `pulumi:"postBodySizeLimit"`
+	// Toggle for the Post cache feature.
+	PostCache pulumi.StringPtrOutput `pulumi:"postCache"`
 	// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
 	QueryString pulumi.StringPtrOutput `pulumi:"queryString"`
 	// The processing mode for query strings when generating the cache key. Possible values:
@@ -207,6 +213,12 @@ type cacheRuleState struct {
 	IncludeCookie *string `pulumi:"includeCookie"`
 	// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
 	IncludeHeader *string `pulumi:"includeHeader"`
+	// Processing pattern for the cache key.
+	PostBodyCacheKey *string `pulumi:"postBodyCacheKey"`
+	// Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+	PostBodySizeLimit *string `pulumi:"postBodySizeLimit"`
+	// Toggle for the Post cache feature.
+	PostCache *string `pulumi:"postCache"`
 	// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
 	QueryString *string `pulumi:"queryString"`
 	// The processing mode for query strings when generating the cache key. Possible values:
@@ -266,6 +278,12 @@ type CacheRuleState struct {
 	IncludeCookie pulumi.StringPtrInput
 	// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
 	IncludeHeader pulumi.StringPtrInput
+	// Processing pattern for the cache key.
+	PostBodyCacheKey pulumi.StringPtrInput
+	// Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+	PostBodySizeLimit pulumi.StringPtrInput
+	// Toggle for the Post cache feature.
+	PostCache pulumi.StringPtrInput
 	// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
 	QueryString pulumi.StringPtrInput
 	// The processing mode for query strings when generating the cache key. Possible values:
@@ -327,6 +345,12 @@ type cacheRuleArgs struct {
 	IncludeCookie *string `pulumi:"includeCookie"`
 	// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
 	IncludeHeader *string `pulumi:"includeHeader"`
+	// Processing pattern for the cache key.
+	PostBodyCacheKey *string `pulumi:"postBodyCacheKey"`
+	// Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+	PostBodySizeLimit *string `pulumi:"postBodySizeLimit"`
+	// Toggle for the Post cache feature.
+	PostCache *string `pulumi:"postCache"`
 	// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
 	QueryString *string `pulumi:"queryString"`
 	// The processing mode for query strings when generating the cache key. Possible values:
@@ -385,6 +409,12 @@ type CacheRuleArgs struct {
 	IncludeCookie pulumi.StringPtrInput
 	// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
 	IncludeHeader pulumi.StringPtrInput
+	// Processing pattern for the cache key.
+	PostBodyCacheKey pulumi.StringPtrInput
+	// Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+	PostBodySizeLimit pulumi.StringPtrInput
+	// Toggle for the Post cache feature.
+	PostCache pulumi.StringPtrInput
 	// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
 	QueryString pulumi.StringPtrInput
 	// The processing mode for query strings when generating the cache key. Possible values:
@@ -570,6 +600,21 @@ func (o CacheRuleOutput) IncludeCookie() pulumi.StringPtrOutput {
 // When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
 func (o CacheRuleOutput) IncludeHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.IncludeHeader }).(pulumi.StringPtrOutput)
+}
+
+// Processing pattern for the cache key.
+func (o CacheRuleOutput) PostBodyCacheKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.PostBodyCacheKey }).(pulumi.StringPtrOutput)
+}
+
+// Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+func (o CacheRuleOutput) PostBodySizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.PostBodySizeLimit }).(pulumi.StringPtrOutput)
+}
+
+// Toggle for the Post cache feature.
+func (o CacheRuleOutput) PostCache() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.PostCache }).(pulumi.StringPtrOutput)
 }
 
 // Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.

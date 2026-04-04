@@ -43,6 +43,12 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         /// </summary>
         public readonly ImmutableArray<string> HealthCheckHttpCodes;
         /// <summary>
+        /// The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+        /// 
+        /// &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+        /// </summary>
+        public readonly string? HealthCheckHttpVersion;
+        /// <summary>
         /// The interval at which health checks are performed. Unit: seconds.
         /// Valid values: `5` to `50`.
         /// Default value: `10`.
@@ -97,6 +103,8 @@ namespace Pulumi.AliCloud.Nlb.Outputs
 
             ImmutableArray<string> healthCheckHttpCodes,
 
+            string? healthCheckHttpVersion,
+
             int? healthCheckInterval,
 
             string? healthCheckReq,
@@ -117,6 +125,7 @@ namespace Pulumi.AliCloud.Nlb.Outputs
             HealthCheckEnabled = healthCheckEnabled;
             HealthCheckExp = healthCheckExp;
             HealthCheckHttpCodes = healthCheckHttpCodes;
+            HealthCheckHttpVersion = healthCheckHttpVersion;
             HealthCheckInterval = healthCheckInterval;
             HealthCheckReq = healthCheckReq;
             HealthCheckType = healthCheckType;

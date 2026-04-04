@@ -1701,7 +1701,7 @@ class InstanceDataDiskArgsDict(TypedDict):
     """
     category: NotRequired[pulumi.Input[_builtins.str]]
     """
-    The category of the disk:
+    The category of the disk. Default value: `cloud_efficiency`. Valid values:
     """
     delete_with_instance: NotRequired[pulumi.Input[_builtins.bool]]
     """
@@ -1770,7 +1770,7 @@ class InstanceDataDiskArgs:
                - ephemeral_ssd: [5, 800]
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature for the system disk. Valid values:
-        :param pulumi.Input[_builtins.str] category: The category of the disk:
+        :param pulumi.Input[_builtins.str] category: The category of the disk. Default value: `cloud_efficiency`. Valid values:
         :param pulumi.Input[_builtins.bool] delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
         :param pulumi.Input[_builtins.str] description: The description of the data disk.
         :param pulumi.Input[_builtins.str] device: The mount point of the data disk.
@@ -1857,7 +1857,7 @@ class InstanceDataDiskArgs:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The category of the disk:
+        The category of the disk. Default value: `cloud_efficiency`. Valid values:
         """
         return pulumi.get(self, "category")
 

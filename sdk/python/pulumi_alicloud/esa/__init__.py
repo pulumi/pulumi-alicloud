@@ -16,6 +16,7 @@ from .custom_scene_policy import *
 from .edge_container_app import *
 from .edge_container_app_record import *
 from .get_sites import *
+from .get_waf_rulesets import *
 from .http_incoming_request_header_modification_rule import *
 from .http_incoming_response_header_modification_rule import *
 from .http_request_header_modification_rule import *

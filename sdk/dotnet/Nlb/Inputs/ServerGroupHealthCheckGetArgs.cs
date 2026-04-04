@@ -60,6 +60,14 @@ namespace Pulumi.AliCloud.Nlb.Inputs
         }
 
         /// <summary>
+        /// The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+        /// 
+        /// &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+        /// </summary>
+        [Input("healthCheckHttpVersion")]
+        public Input<string>? HealthCheckHttpVersion { get; set; }
+
+        /// <summary>
         /// The interval at which health checks are performed. Unit: seconds.
         /// Valid values: `5` to `50`.
         /// Default value: `10`.

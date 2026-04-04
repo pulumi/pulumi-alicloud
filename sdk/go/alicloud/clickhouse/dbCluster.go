@@ -73,7 +73,7 @@ import (
 //				return err
 //			}
 //			_, err = clickhouse.NewDbCluster(ctx, "default", &clickhouse.DbClusterArgs{
-//				DbClusterVersion:     pulumi.String("23.8"),
+//				DbClusterVersion:     pulumi.String("25.3"),
 //				Category:             pulumi.String("Basic"),
 //				DbClusterClass:       pulumi.String("S8"),
 //				DbClusterNetworkType: pulumi.String("vpc"),
@@ -124,7 +124,7 @@ type DbCluster struct {
 	DbClusterDescription pulumi.StringOutput `pulumi:"dbClusterDescription"`
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType pulumi.StringOutput `pulumi:"dbClusterNetworkType"`
-	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
 	DbClusterVersion pulumi.StringOutput `pulumi:"dbClusterVersion"`
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount pulumi.IntOutput `pulumi:"dbNodeGroupCount"`
@@ -237,7 +237,7 @@ type dbClusterState struct {
 	DbClusterDescription *string `pulumi:"dbClusterDescription"`
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType *string `pulumi:"dbClusterNetworkType"`
-	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount *int `pulumi:"dbNodeGroupCount"`
@@ -297,7 +297,7 @@ type DbClusterState struct {
 	DbClusterDescription pulumi.StringPtrInput
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType pulumi.StringPtrInput
-	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
 	DbClusterVersion pulumi.StringPtrInput
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount pulumi.IntPtrInput
@@ -359,7 +359,7 @@ type dbClusterArgs struct {
 	DbClusterDescription *string `pulumi:"dbClusterDescription"`
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType string `pulumi:"dbClusterNetworkType"`
-	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
 	DbClusterVersion string `pulumi:"dbClusterVersion"`
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount int `pulumi:"dbNodeGroupCount"`
@@ -414,7 +414,7 @@ type DbClusterArgs struct {
 	DbClusterDescription pulumi.StringPtrInput
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType pulumi.StringInput
-	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
 	DbClusterVersion pulumi.StringInput
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount pulumi.IntInput
@@ -580,7 +580,7 @@ func (o DbClusterOutput) DbClusterNetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.DbClusterNetworkType }).(pulumi.StringOutput)
 }
 
-// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
 func (o DbClusterOutput) DbClusterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.DbClusterVersion }).(pulumi.StringOutput)
 }

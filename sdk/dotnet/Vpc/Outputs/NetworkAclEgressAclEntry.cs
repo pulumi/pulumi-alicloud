@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The destination CIDR block.
+        /// The destination CIDR block, or the prefix list instance ID.
         /// </summary>
         public readonly string? DestinationCidrIp;
         /// <summary>

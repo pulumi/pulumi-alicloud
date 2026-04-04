@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.186.0+.
+// > **NOTE:** Available since v1.186.0+.
 //
 // ## Example Usage
 //
@@ -73,24 +73,31 @@ type GetServerGroupsArgs struct {
 	// The type of the server group. Valid values: `Instance`, `Ip`.
 	ServerGroupType *string `pulumi:"serverGroupType"`
 	// The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
-	Status *string           `pulumi:"status"`
-	Tags   map[string]string `pulumi:"tags"`
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getServerGroups.
 type GetServerGroupsResult struct {
+	// A list of Nlb Server Groups. Each element contains the following attributes:
 	Groups []GetServerGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string            `pulumi:"id"`
-	Ids              []string          `pulumi:"ids"`
-	NameRegex        *string           `pulumi:"nameRegex"`
-	Names            []string          `pulumi:"names"`
-	OutputFile       *string           `pulumi:"outputFile"`
-	ResourceGroupId  *string           `pulumi:"resourceGroupId"`
-	ServerGroupNames []string          `pulumi:"serverGroupNames"`
-	ServerGroupType  *string           `pulumi:"serverGroupType"`
-	Status           *string           `pulumi:"status"`
-	Tags             map[string]string `pulumi:"tags"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Server Group names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The ID of the resource group to which the security group belongs.
+	ResourceGroupId  *string  `pulumi:"resourceGroupId"`
+	ServerGroupNames []string `pulumi:"serverGroupNames"`
+	// The type of the server group.
+	ServerGroupType *string `pulumi:"serverGroupType"`
+	// The status of the server group.
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetServerGroupsOutput(ctx *pulumi.Context, args GetServerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetServerGroupsResultOutput {
@@ -118,7 +125,8 @@ type GetServerGroupsOutputArgs struct {
 	ServerGroupType pulumi.StringPtrInput `pulumi:"serverGroupType"`
 	// The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.StringMapInput `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetServerGroupsOutputArgs) ElementType() reflect.Type {
@@ -140,6 +148,7 @@ func (o GetServerGroupsResultOutput) ToGetServerGroupsResultOutputWithContext(ct
 	return o
 }
 
+// A list of Nlb Server Groups. Each element contains the following attributes:
 func (o GetServerGroupsResultOutput) Groups() GetServerGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) []GetServerGroupsGroup { return v.Groups }).(GetServerGroupsGroupArrayOutput)
 }
@@ -157,6 +166,7 @@ func (o GetServerGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Server Group names.
 func (o GetServerGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -165,6 +175,7 @@ func (o GetServerGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the resource group to which the security group belongs.
 func (o GetServerGroupsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
@@ -173,14 +184,17 @@ func (o GetServerGroupsResultOutput) ServerGroupNames() pulumi.StringArrayOutput
 	return o.ApplyT(func(v GetServerGroupsResult) []string { return v.ServerGroupNames }).(pulumi.StringArrayOutput)
 }
 
+// The type of the server group.
 func (o GetServerGroupsResultOutput) ServerGroupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) *string { return v.ServerGroupType }).(pulumi.StringPtrOutput)
 }
 
+// The status of the server group.
 func (o GetServerGroupsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A mapping of tags to assign to the resource.
 func (o GetServerGroupsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

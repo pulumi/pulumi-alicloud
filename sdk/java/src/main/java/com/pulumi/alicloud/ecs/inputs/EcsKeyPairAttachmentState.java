@@ -18,14 +18,14 @@ public final class EcsKeyPairAttachmentState extends com.pulumi.resources.Resour
     public static final EcsKeyPairAttachmentState Empty = new EcsKeyPairAttachmentState();
 
     /**
-     * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * Specifies whether to make the key pair effective immediately. Valid values:
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * @return Specifies whether to make the key pair effective immediately. Valid values:
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -33,14 +33,14 @@ public final class EcsKeyPairAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The list of ECS instance&#39;s IDs.
+     * The IDs of instances to which you want to bind the SSH key pair.
      * 
      */
     @Import(name="instanceIds")
     private @Nullable Output<List<String>> instanceIds;
 
     /**
-     * @return The list of ECS instance&#39;s IDs.
+     * @return The IDs of instances to which you want to bind the SSH key pair.
      * 
      */
     public Optional<Output<List<String>>> instanceIds() {
@@ -48,37 +48,41 @@ public final class EcsKeyPairAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * New field &#39;key_pair_name&#39; instead.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * 
+     * &gt; **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
      * 
      * @deprecated
-     * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
     @Import(name="keyName")
     private @Nullable Output<String> keyName;
 
     /**
-     * @return New field &#39;key_pair_name&#39; instead.
+     * @return Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * 
+     * &gt; **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
      * 
      * @deprecated
-     * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
     public Optional<Output<String>> keyName() {
         return Optional.ofNullable(this.keyName);
     }
 
     /**
-     * The name of key pair used to bind.
+     * The name of the SSH key pair.
      * 
      */
     @Import(name="keyPairName")
     private @Nullable Output<String> keyPairName;
 
     /**
-     * @return The name of key pair used to bind.
+     * @return The name of the SSH key pair.
      * 
      */
     public Optional<Output<String>> keyPairName() {
@@ -113,7 +117,7 @@ public final class EcsKeyPairAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param force Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+         * @param force Specifies whether to make the key pair effective immediately. Valid values:
          * 
          * @return builder
          * 
@@ -124,7 +128,7 @@ public final class EcsKeyPairAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param force Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+         * @param force Specifies whether to make the key pair effective immediately. Valid values:
          * 
          * @return builder
          * 
@@ -134,7 +138,7 @@ public final class EcsKeyPairAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param instanceIds The list of ECS instance&#39;s IDs.
+         * @param instanceIds The IDs of instances to which you want to bind the SSH key pair.
          * 
          * @return builder
          * 
@@ -145,7 +149,7 @@ public final class EcsKeyPairAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param instanceIds The list of ECS instance&#39;s IDs.
+         * @param instanceIds The IDs of instances to which you want to bind the SSH key pair.
          * 
          * @return builder
          * 
@@ -155,7 +159,7 @@ public final class EcsKeyPairAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param instanceIds The list of ECS instance&#39;s IDs.
+         * @param instanceIds The IDs of instances to which you want to bind the SSH key pair.
          * 
          * @return builder
          * 
@@ -165,36 +169,40 @@ public final class EcsKeyPairAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param keyName New field &#39;key_pair_name&#39; instead.
+         * @param keyName Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+         * 
+         * &gt; **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+         * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
          * 
          */
-        @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+        @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
         public Builder keyName(@Nullable Output<String> keyName) {
             $.keyName = keyName;
             return this;
         }
 
         /**
-         * @param keyName New field &#39;key_pair_name&#39; instead.
+         * @param keyName Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+         * 
+         * &gt; **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+         * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
          * 
          */
-        @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+        @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
         public Builder keyName(String keyName) {
             return keyName(Output.of(keyName));
         }
 
         /**
-         * @param keyPairName The name of key pair used to bind.
+         * @param keyPairName The name of the SSH key pair.
          * 
          * @return builder
          * 
@@ -205,7 +213,7 @@ public final class EcsKeyPairAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param keyPairName The name of key pair used to bind.
+         * @param keyPairName The name of the SSH key pair.
          * 
          * @return builder
          * 

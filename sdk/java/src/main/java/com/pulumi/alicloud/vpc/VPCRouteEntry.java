@@ -37,19 +37,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
- * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.ecs.SecurityGroup;
- * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
- * import com.pulumi.alicloud.ecs.Instance;
- * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.vpc.Ipv4Gateway;
+ * import com.pulumi.alicloud.vpc.Ipv4GatewayArgs;
  * import com.pulumi.alicloud.vpc.RouteEntry;
  * import com.pulumi.alicloud.vpc.RouteEntryArgs;
  * import java.util.List;
@@ -67,56 +58,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory("cloud_efficiency")
- *             .availableResourceCreation("VSwitch")
- *             .build());
- * 
- *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .mostRecent(true)
- *             .owners("system")
- *             .build());
- * 
- *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(default_.zones()[0].id())
- *             .imageId(defaultGetImages.images()[0].id())
- *             .build());
- * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vswitchName(name)
- *             .vpcId(defaultNetwork.id())
- *             .cidrBlock("192.168.192.0/24")
- *             .zoneId(default_.zones()[0].id())
+ *         var defaultIpv4Gateway = new Ipv4Gateway("defaultIpv4Gateway", Ipv4GatewayArgs.builder()
+ *             .ipv4GatewayName(name)
+ *             .vpcId(default_.id())
+ *             .enabled(true)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .name(name)
- *             .vpcId(defaultNetwork.id())
- *             .build());
- * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .imageId(defaultGetImages.images()[0].id())
- *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
- *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
- *             .internetChargeType("PayByTraffic")
- *             .internetMaxBandwidthOut(10)
- *             .availabilityZone(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
- *             .instanceChargeType("PostPaid")
- *             .systemDiskCategory("cloud_efficiency")
- *             .vswitchId(defaultSwitch.id())
- *             .instanceName(name)
- *             .build());
- * 
- *         var foo = new RouteEntry("foo", RouteEntryArgs.builder()
- *             .routeTableId(defaultNetwork.routeTableId())
+ *         var defaultRouteEntry = new RouteEntry("defaultRouteEntry", RouteEntryArgs.builder()
+ *             .routeTableId(default_.routeTableId())
  *             .destinationCidrblock("172.11.1.1/32")
- *             .nexthopType("Instance")
- *             .nexthopId(defaultInstance.id())
+ *             .nexthopType("Ipv4Gateway")
+ *             .nexthopId(defaultIpv4Gateway.id())
  *             .build());
  * 
  *     }

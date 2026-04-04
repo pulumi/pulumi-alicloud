@@ -8887,6 +8887,369 @@ func (o GetSitesSiteArrayOutput) Index(i pulumi.IntInput) GetSitesSiteOutput {
 	}).(GetSitesSiteOutput)
 }
 
+type GetWafRulesetsQueryArgs struct {
+	// The fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+	AnyLike *string `pulumi:"anyLike"`
+	// Whether to sort in descending order. Valid values: `true`, `false`.
+	Desc *bool `pulumi:"desc"`
+	// The fuzzy search for rule set name.
+	NameLike *string `pulumi:"nameLike"`
+	// Specify the column to sort by.
+	OrderBy *string `pulumi:"orderBy"`
+}
+
+// GetWafRulesetsQueryArgsInput is an input type that accepts GetWafRulesetsQueryArgsArgs and GetWafRulesetsQueryArgsOutput values.
+// You can construct a concrete instance of `GetWafRulesetsQueryArgsInput` via:
+//
+//	GetWafRulesetsQueryArgsArgs{...}
+type GetWafRulesetsQueryArgsInput interface {
+	pulumi.Input
+
+	ToGetWafRulesetsQueryArgsOutput() GetWafRulesetsQueryArgsOutput
+	ToGetWafRulesetsQueryArgsOutputWithContext(context.Context) GetWafRulesetsQueryArgsOutput
+}
+
+type GetWafRulesetsQueryArgsArgs struct {
+	// The fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+	AnyLike pulumi.StringPtrInput `pulumi:"anyLike"`
+	// Whether to sort in descending order. Valid values: `true`, `false`.
+	Desc pulumi.BoolPtrInput `pulumi:"desc"`
+	// The fuzzy search for rule set name.
+	NameLike pulumi.StringPtrInput `pulumi:"nameLike"`
+	// Specify the column to sort by.
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+}
+
+func (GetWafRulesetsQueryArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesetsQueryArgs)(nil)).Elem()
+}
+
+func (i GetWafRulesetsQueryArgsArgs) ToGetWafRulesetsQueryArgsOutput() GetWafRulesetsQueryArgsOutput {
+	return i.ToGetWafRulesetsQueryArgsOutputWithContext(context.Background())
+}
+
+func (i GetWafRulesetsQueryArgsArgs) ToGetWafRulesetsQueryArgsOutputWithContext(ctx context.Context) GetWafRulesetsQueryArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesetsQueryArgsOutput)
+}
+
+func (i GetWafRulesetsQueryArgsArgs) ToGetWafRulesetsQueryArgsPtrOutput() GetWafRulesetsQueryArgsPtrOutput {
+	return i.ToGetWafRulesetsQueryArgsPtrOutputWithContext(context.Background())
+}
+
+func (i GetWafRulesetsQueryArgsArgs) ToGetWafRulesetsQueryArgsPtrOutputWithContext(ctx context.Context) GetWafRulesetsQueryArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesetsQueryArgsOutput).ToGetWafRulesetsQueryArgsPtrOutputWithContext(ctx)
+}
+
+// GetWafRulesetsQueryArgsPtrInput is an input type that accepts GetWafRulesetsQueryArgsArgs, GetWafRulesetsQueryArgsPtr and GetWafRulesetsQueryArgsPtrOutput values.
+// You can construct a concrete instance of `GetWafRulesetsQueryArgsPtrInput` via:
+//
+//	        GetWafRulesetsQueryArgsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWafRulesetsQueryArgsPtrInput interface {
+	pulumi.Input
+
+	ToGetWafRulesetsQueryArgsPtrOutput() GetWafRulesetsQueryArgsPtrOutput
+	ToGetWafRulesetsQueryArgsPtrOutputWithContext(context.Context) GetWafRulesetsQueryArgsPtrOutput
+}
+
+type getWafRulesetsQueryArgsPtrType GetWafRulesetsQueryArgsArgs
+
+func GetWafRulesetsQueryArgsPtr(v *GetWafRulesetsQueryArgsArgs) GetWafRulesetsQueryArgsPtrInput {
+	return (*getWafRulesetsQueryArgsPtrType)(v)
+}
+
+func (*getWafRulesetsQueryArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWafRulesetsQueryArgs)(nil)).Elem()
+}
+
+func (i *getWafRulesetsQueryArgsPtrType) ToGetWafRulesetsQueryArgsPtrOutput() GetWafRulesetsQueryArgsPtrOutput {
+	return i.ToGetWafRulesetsQueryArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *getWafRulesetsQueryArgsPtrType) ToGetWafRulesetsQueryArgsPtrOutputWithContext(ctx context.Context) GetWafRulesetsQueryArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesetsQueryArgsPtrOutput)
+}
+
+type GetWafRulesetsQueryArgsOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesetsQueryArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesetsQueryArgs)(nil)).Elem()
+}
+
+func (o GetWafRulesetsQueryArgsOutput) ToGetWafRulesetsQueryArgsOutput() GetWafRulesetsQueryArgsOutput {
+	return o
+}
+
+func (o GetWafRulesetsQueryArgsOutput) ToGetWafRulesetsQueryArgsOutputWithContext(ctx context.Context) GetWafRulesetsQueryArgsOutput {
+	return o
+}
+
+func (o GetWafRulesetsQueryArgsOutput) ToGetWafRulesetsQueryArgsPtrOutput() GetWafRulesetsQueryArgsPtrOutput {
+	return o.ToGetWafRulesetsQueryArgsPtrOutputWithContext(context.Background())
+}
+
+func (o GetWafRulesetsQueryArgsOutput) ToGetWafRulesetsQueryArgsPtrOutputWithContext(ctx context.Context) GetWafRulesetsQueryArgsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWafRulesetsQueryArgs) *GetWafRulesetsQueryArgs {
+		return &v
+	}).(GetWafRulesetsQueryArgsPtrOutput)
+}
+
+// The fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+func (o GetWafRulesetsQueryArgsOutput) AnyLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWafRulesetsQueryArgs) *string { return v.AnyLike }).(pulumi.StringPtrOutput)
+}
+
+// Whether to sort in descending order. Valid values: `true`, `false`.
+func (o GetWafRulesetsQueryArgsOutput) Desc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetWafRulesetsQueryArgs) *bool { return v.Desc }).(pulumi.BoolPtrOutput)
+}
+
+// The fuzzy search for rule set name.
+func (o GetWafRulesetsQueryArgsOutput) NameLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWafRulesetsQueryArgs) *string { return v.NameLike }).(pulumi.StringPtrOutput)
+}
+
+// Specify the column to sort by.
+func (o GetWafRulesetsQueryArgsOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWafRulesetsQueryArgs) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
+}
+
+type GetWafRulesetsQueryArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesetsQueryArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWafRulesetsQueryArgs)(nil)).Elem()
+}
+
+func (o GetWafRulesetsQueryArgsPtrOutput) ToGetWafRulesetsQueryArgsPtrOutput() GetWafRulesetsQueryArgsPtrOutput {
+	return o
+}
+
+func (o GetWafRulesetsQueryArgsPtrOutput) ToGetWafRulesetsQueryArgsPtrOutputWithContext(ctx context.Context) GetWafRulesetsQueryArgsPtrOutput {
+	return o
+}
+
+func (o GetWafRulesetsQueryArgsPtrOutput) Elem() GetWafRulesetsQueryArgsOutput {
+	return o.ApplyT(func(v *GetWafRulesetsQueryArgs) GetWafRulesetsQueryArgs {
+		if v != nil {
+			return *v
+		}
+		var ret GetWafRulesetsQueryArgs
+		return ret
+	}).(GetWafRulesetsQueryArgsOutput)
+}
+
+// The fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+func (o GetWafRulesetsQueryArgsPtrOutput) AnyLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWafRulesetsQueryArgs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AnyLike
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to sort in descending order. Valid values: `true`, `false`.
+func (o GetWafRulesetsQueryArgsPtrOutput) Desc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetWafRulesetsQueryArgs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Desc
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The fuzzy search for rule set name.
+func (o GetWafRulesetsQueryArgsPtrOutput) NameLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWafRulesetsQueryArgs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameLike
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the column to sort by.
+func (o GetWafRulesetsQueryArgsPtrOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWafRulesetsQueryArgs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrderBy
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetWafRulesetsSet struct {
+	// The list of match objects.
+	Fields []string `pulumi:"fields"`
+	// The ID of the WAF Rule Set.
+	Id string `pulumi:"id"`
+	// The name of the rule set.
+	Name string `pulumi:"name"`
+	// The WAF operation phase.
+	Phase string `pulumi:"phase"`
+	// The ID of the WAF rule set.
+	RulesetId string `pulumi:"rulesetId"`
+	// The status of the rule set. Valid values: `on`, `off`.
+	Status string `pulumi:"status"`
+	// Protection target type in http_bot.
+	Target string `pulumi:"target"`
+	// The list of rule types.
+	Types []string `pulumi:"types"`
+	// The last modification time of the rule set.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetWafRulesetsSetInput is an input type that accepts GetWafRulesetsSetArgs and GetWafRulesetsSetOutput values.
+// You can construct a concrete instance of `GetWafRulesetsSetInput` via:
+//
+//	GetWafRulesetsSetArgs{...}
+type GetWafRulesetsSetInput interface {
+	pulumi.Input
+
+	ToGetWafRulesetsSetOutput() GetWafRulesetsSetOutput
+	ToGetWafRulesetsSetOutputWithContext(context.Context) GetWafRulesetsSetOutput
+}
+
+type GetWafRulesetsSetArgs struct {
+	// The list of match objects.
+	Fields pulumi.StringArrayInput `pulumi:"fields"`
+	// The ID of the WAF Rule Set.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the rule set.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The WAF operation phase.
+	Phase pulumi.StringInput `pulumi:"phase"`
+	// The ID of the WAF rule set.
+	RulesetId pulumi.StringInput `pulumi:"rulesetId"`
+	// The status of the rule set. Valid values: `on`, `off`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Protection target type in http_bot.
+	Target pulumi.StringInput `pulumi:"target"`
+	// The list of rule types.
+	Types pulumi.StringArrayInput `pulumi:"types"`
+	// The last modification time of the rule set.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetWafRulesetsSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesetsSet)(nil)).Elem()
+}
+
+func (i GetWafRulesetsSetArgs) ToGetWafRulesetsSetOutput() GetWafRulesetsSetOutput {
+	return i.ToGetWafRulesetsSetOutputWithContext(context.Background())
+}
+
+func (i GetWafRulesetsSetArgs) ToGetWafRulesetsSetOutputWithContext(ctx context.Context) GetWafRulesetsSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesetsSetOutput)
+}
+
+// GetWafRulesetsSetArrayInput is an input type that accepts GetWafRulesetsSetArray and GetWafRulesetsSetArrayOutput values.
+// You can construct a concrete instance of `GetWafRulesetsSetArrayInput` via:
+//
+//	GetWafRulesetsSetArray{ GetWafRulesetsSetArgs{...} }
+type GetWafRulesetsSetArrayInput interface {
+	pulumi.Input
+
+	ToGetWafRulesetsSetArrayOutput() GetWafRulesetsSetArrayOutput
+	ToGetWafRulesetsSetArrayOutputWithContext(context.Context) GetWafRulesetsSetArrayOutput
+}
+
+type GetWafRulesetsSetArray []GetWafRulesetsSetInput
+
+func (GetWafRulesetsSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafRulesetsSet)(nil)).Elem()
+}
+
+func (i GetWafRulesetsSetArray) ToGetWafRulesetsSetArrayOutput() GetWafRulesetsSetArrayOutput {
+	return i.ToGetWafRulesetsSetArrayOutputWithContext(context.Background())
+}
+
+func (i GetWafRulesetsSetArray) ToGetWafRulesetsSetArrayOutputWithContext(ctx context.Context) GetWafRulesetsSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesetsSetArrayOutput)
+}
+
+type GetWafRulesetsSetOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesetsSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesetsSet)(nil)).Elem()
+}
+
+func (o GetWafRulesetsSetOutput) ToGetWafRulesetsSetOutput() GetWafRulesetsSetOutput {
+	return o
+}
+
+func (o GetWafRulesetsSetOutput) ToGetWafRulesetsSetOutputWithContext(ctx context.Context) GetWafRulesetsSetOutput {
+	return o
+}
+
+// The list of match objects.
+func (o GetWafRulesetsSetOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWafRulesetsSet) []string { return v.Fields }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the WAF Rule Set.
+func (o GetWafRulesetsSetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesetsSet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the rule set.
+func (o GetWafRulesetsSetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesetsSet) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The WAF operation phase.
+func (o GetWafRulesetsSetOutput) Phase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesetsSet) string { return v.Phase }).(pulumi.StringOutput)
+}
+
+// The ID of the WAF rule set.
+func (o GetWafRulesetsSetOutput) RulesetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesetsSet) string { return v.RulesetId }).(pulumi.StringOutput)
+}
+
+// The status of the rule set. Valid values: `on`, `off`.
+func (o GetWafRulesetsSetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesetsSet) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Protection target type in http_bot.
+func (o GetWafRulesetsSetOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesetsSet) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The list of rule types.
+func (o GetWafRulesetsSetOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWafRulesetsSet) []string { return v.Types }).(pulumi.StringArrayOutput)
+}
+
+// The last modification time of the rule set.
+func (o GetWafRulesetsSetOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesetsSet) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetWafRulesetsSetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesetsSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafRulesetsSet)(nil)).Elem()
+}
+
+func (o GetWafRulesetsSetArrayOutput) ToGetWafRulesetsSetArrayOutput() GetWafRulesetsSetArrayOutput {
+	return o
+}
+
+func (o GetWafRulesetsSetArrayOutput) ToGetWafRulesetsSetArrayOutputWithContext(ctx context.Context) GetWafRulesetsSetArrayOutput {
+	return o
+}
+
+func (o GetWafRulesetsSetArrayOutput) Index(i pulumi.IntInput) GetWafRulesetsSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWafRulesetsSet {
+		return vs[0].([]GetWafRulesetsSet)[vs[1].(int)]
+	}).(GetWafRulesetsSetOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationInput)(nil)).Elem(), HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayInput)(nil)).Elem(), HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArray{})
@@ -8990,6 +9353,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomHostNameAndPathArrayInput)(nil)).Elem(), WaitingRoomHostNameAndPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteInput)(nil)).Elem(), GetSitesSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteArrayInput)(nil)).Elem(), GetSitesSiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesetsQueryArgsInput)(nil)).Elem(), GetWafRulesetsQueryArgsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesetsQueryArgsPtrInput)(nil)).Elem(), GetWafRulesetsQueryArgsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesetsSetInput)(nil)).Elem(), GetWafRulesetsSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesetsSetArrayInput)(nil)).Elem(), GetWafRulesetsSetArray{})
 	pulumi.RegisterOutputType(HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput{})
 	pulumi.RegisterOutputType(HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput{})
 	pulumi.RegisterOutputType(HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput{})
@@ -9092,4 +9459,8 @@ func init() {
 	pulumi.RegisterOutputType(WaitingRoomHostNameAndPathArrayOutput{})
 	pulumi.RegisterOutputType(GetSitesSiteOutput{})
 	pulumi.RegisterOutputType(GetSitesSiteArrayOutput{})
+	pulumi.RegisterOutputType(GetWafRulesetsQueryArgsOutput{})
+	pulumi.RegisterOutputType(GetWafRulesetsQueryArgsPtrOutput{})
+	pulumi.RegisterOutputType(GetWafRulesetsSetOutput{})
+	pulumi.RegisterOutputType(GetWafRulesetsSetArrayOutput{})
 }

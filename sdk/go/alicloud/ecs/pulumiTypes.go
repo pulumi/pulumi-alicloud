@@ -2489,7 +2489,7 @@ type InstanceDataDisk struct {
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
 	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
 	BurstingEnabled *bool `pulumi:"burstingEnabled"`
-	// The category of the disk:
+	// The category of the disk. Default value: `cloudEfficiency`. Valid values:
 	Category *string `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
@@ -2539,7 +2539,7 @@ type InstanceDataDiskArgs struct {
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
 	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
 	BurstingEnabled pulumi.BoolPtrInput `pulumi:"burstingEnabled"`
-	// The category of the disk:
+	// The category of the disk. Default value: `cloudEfficiency`. Valid values:
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
@@ -2634,7 +2634,7 @@ func (o InstanceDataDiskOutput) BurstingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *bool { return v.BurstingEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The category of the disk:
+// The category of the disk. Default value: `cloudEfficiency`. Valid values:
 func (o InstanceDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }

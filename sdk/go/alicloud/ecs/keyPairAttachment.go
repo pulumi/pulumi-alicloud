@@ -26,7 +26,7 @@ type KeyPairAttachment struct {
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
 	// The name of key pair used to bind.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName     pulumi.StringOutput `pulumi:"keyName"`
 	KeyPairName pulumi.StringOutput `pulumi:"keyPairName"`
 }
@@ -70,7 +70,7 @@ type keyPairAttachmentState struct {
 	InstanceIds []string `pulumi:"instanceIds"`
 	// The name of key pair used to bind.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName     *string `pulumi:"keyName"`
 	KeyPairName *string `pulumi:"keyPairName"`
 }
@@ -82,7 +82,7 @@ type KeyPairAttachmentState struct {
 	InstanceIds pulumi.StringArrayInput
 	// The name of key pair used to bind.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName     pulumi.StringPtrInput
 	KeyPairName pulumi.StringPtrInput
 }
@@ -98,7 +98,7 @@ type keyPairAttachmentArgs struct {
 	InstanceIds []string `pulumi:"instanceIds"`
 	// The name of key pair used to bind.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName     *string `pulumi:"keyName"`
 	KeyPairName *string `pulumi:"keyPairName"`
 }
@@ -111,7 +111,7 @@ type KeyPairAttachmentArgs struct {
 	InstanceIds pulumi.StringArrayInput
 	// The name of key pair used to bind.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName     pulumi.StringPtrInput
 	KeyPairName pulumi.StringPtrInput
 }
@@ -215,7 +215,7 @@ func (o KeyPairAttachmentOutput) InstanceIds() pulumi.StringArrayOutput {
 
 // The name of key pair used to bind.
 //
-// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 func (o KeyPairAttachmentOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyPairAttachment) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
 }

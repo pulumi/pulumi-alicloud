@@ -501,6 +501,12 @@ class ServerGroupHealthCheckArgsDict(TypedDict):
 
     > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
     """
+    health_check_http_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+
+    > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+    """
     health_check_interval: NotRequired[pulumi.Input[_builtins.int]]
     """
     The interval at which health checks are performed. Unit: seconds.
@@ -551,6 +557,7 @@ class ServerGroupHealthCheckArgs:
                  health_check_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  health_check_exp: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check_http_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 health_check_http_version: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
                  health_check_req: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -568,6 +575,9 @@ class ServerGroupHealthCheckArgs:
         :param pulumi.Input[_builtins.bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param pulumi.Input[_builtins.str] health_check_exp: health check response character string. The value contains a maximum of 512 characters
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] health_check_http_codes: The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\\_2xx` (default), `http\\_3xx`, `http\\_4xx`, and `http\\_5xx`.
+               
+               > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+        :param pulumi.Input[_builtins.str] health_check_http_version: The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
                
                > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
         :param pulumi.Input[_builtins.int] health_check_interval: The interval at which health checks are performed. Unit: seconds.
@@ -602,6 +612,8 @@ class ServerGroupHealthCheckArgs:
             pulumi.set(__self__, "health_check_exp", health_check_exp)
         if health_check_http_codes is not None:
             pulumi.set(__self__, "health_check_http_codes", health_check_http_codes)
+        if health_check_http_version is not None:
+            pulumi.set(__self__, "health_check_http_version", health_check_http_version)
         if health_check_interval is not None:
             pulumi.set(__self__, "health_check_interval", health_check_interval)
         if health_check_req is not None:
@@ -693,6 +705,20 @@ class ServerGroupHealthCheckArgs:
     @health_check_http_codes.setter
     def health_check_http_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "health_check_http_codes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckHttpVersion")
+    def health_check_http_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+
+        > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+        """
+        return pulumi.get(self, "health_check_http_version")
+
+    @health_check_http_version.setter
+    def health_check_http_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "health_check_http_version", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckInterval")

@@ -411,6 +411,8 @@ class ServerGroupHealthCheck(dict):
             suggest = "health_check_exp"
         elif key == "healthCheckHttpCodes":
             suggest = "health_check_http_codes"
+        elif key == "healthCheckHttpVersion":
+            suggest = "health_check_http_version"
         elif key == "healthCheckInterval":
             suggest = "health_check_interval"
         elif key == "healthCheckReq":
@@ -444,6 +446,7 @@ class ServerGroupHealthCheck(dict):
                  health_check_enabled: Optional[_builtins.bool] = None,
                  health_check_exp: Optional[_builtins.str] = None,
                  health_check_http_codes: Optional[Sequence[_builtins.str]] = None,
+                 health_check_http_version: Optional[_builtins.str] = None,
                  health_check_interval: Optional[_builtins.int] = None,
                  health_check_req: Optional[_builtins.str] = None,
                  health_check_type: Optional[_builtins.str] = None,
@@ -461,6 +464,9 @@ class ServerGroupHealthCheck(dict):
         :param _builtins.bool health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param _builtins.str health_check_exp: health check response character string. The value contains a maximum of 512 characters
         :param Sequence[_builtins.str] health_check_http_codes: The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\\_2xx` (default), `http\\_3xx`, `http\\_4xx`, and `http\\_5xx`.
+               
+               > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+        :param _builtins.str health_check_http_version: The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
                
                > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
         :param _builtins.int health_check_interval: The interval at which health checks are performed. Unit: seconds.
@@ -495,6 +501,8 @@ class ServerGroupHealthCheck(dict):
             pulumi.set(__self__, "health_check_exp", health_check_exp)
         if health_check_http_codes is not None:
             pulumi.set(__self__, "health_check_http_codes", health_check_http_codes)
+        if health_check_http_version is not None:
+            pulumi.set(__self__, "health_check_http_version", health_check_http_version)
         if health_check_interval is not None:
             pulumi.set(__self__, "health_check_interval", health_check_interval)
         if health_check_req is not None:
@@ -562,6 +570,16 @@ class ServerGroupHealthCheck(dict):
         > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_http_codes")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckHttpVersion")
+    def health_check_http_version(self) -> Optional[_builtins.str]:
+        """
+        The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+
+        > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+        """
+        return pulumi.get(self, "health_check_http_version")
 
     @_builtins.property
     @pulumi.getter(name="healthCheckInterval")
@@ -1433,8 +1451,8 @@ class GetServerGroupsGroupResult(dict):
         :param _builtins.str scheduler: The routing algorithm.
         :param _builtins.int server_count: The number of server groups associated with the NLB instance.
         :param _builtins.str server_group_name: The name of the server group.
-        :param _builtins.str server_group_type: The type of the server group.
-        :param _builtins.str status: The status of the server group.
+        :param _builtins.str server_group_type: The type of the server group. Valid values: `Instance`, `Ip`.
+        :param _builtins.str status: The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
         :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         :param _builtins.str vpc_id: The ID of the VPC to which the server group belongs.
         """
@@ -1555,7 +1573,7 @@ class GetServerGroupsGroupResult(dict):
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> _builtins.str:
         """
-        The type of the server group.
+        The type of the server group. Valid values: `Instance`, `Ip`.
         """
         return pulumi.get(self, "server_group_type")
 
@@ -1563,7 +1581,7 @@ class GetServerGroupsGroupResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the server group.
+        The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
         """
         return pulumi.get(self, "status")
 
@@ -1592,6 +1610,7 @@ class GetServerGroupsGroupHealthCheckResult(dict):
                  health_check_domain: _builtins.str,
                  health_check_enabled: _builtins.bool,
                  health_check_http_codes: Sequence[_builtins.str],
+                 health_check_http_version: _builtins.str,
                  health_check_interval: _builtins.int,
                  health_check_type: _builtins.str,
                  health_check_url: _builtins.str,
@@ -1604,6 +1623,7 @@ class GetServerGroupsGroupHealthCheckResult(dict):
         :param _builtins.str health_check_domain: The domain name that is used for health checks.
         :param _builtins.bool health_check_enabled: Specifies whether to enable health checks.
         :param Sequence[_builtins.str] health_check_http_codes: The HTTP status codes returned for health checks.
+        :param _builtins.str health_check_http_version: (Available since v1.274.0) The HTTP protocol version for health checks.
         :param _builtins.int health_check_interval: The interval between two consecutive health checks.
         :param _builtins.str health_check_type: The protocol that is used for health checks.
         :param _builtins.str health_check_url: The path to which health check requests are sent.
@@ -1616,6 +1636,7 @@ class GetServerGroupsGroupHealthCheckResult(dict):
         pulumi.set(__self__, "health_check_domain", health_check_domain)
         pulumi.set(__self__, "health_check_enabled", health_check_enabled)
         pulumi.set(__self__, "health_check_http_codes", health_check_http_codes)
+        pulumi.set(__self__, "health_check_http_version", health_check_http_version)
         pulumi.set(__self__, "health_check_interval", health_check_interval)
         pulumi.set(__self__, "health_check_type", health_check_type)
         pulumi.set(__self__, "health_check_url", health_check_url)
@@ -1662,6 +1683,14 @@ class GetServerGroupsGroupHealthCheckResult(dict):
         The HTTP status codes returned for health checks.
         """
         return pulumi.get(self, "health_check_http_codes")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckHttpVersion")
+    def health_check_http_version(self) -> _builtins.str:
+        """
+        (Available since v1.274.0) The HTTP protocol version for health checks.
+        """
+        return pulumi.get(self, "health_check_http_version")
 
     @_builtins.property
     @pulumi.getter(name="healthCheckInterval")

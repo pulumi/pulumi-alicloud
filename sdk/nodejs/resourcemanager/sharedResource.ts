@@ -96,6 +96,10 @@ export class SharedResource extends pulumi.CustomResource {
      */
     declare public readonly permissionName: pulumi.Output<string | undefined>;
     /**
+     * The ARN of the resource.
+     */
+    declare public readonly propertiesResourceArn: pulumi.Output<string | undefined>;
+    /**
      * Associated resource ARN.
      *
      * > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
@@ -105,6 +109,10 @@ export class SharedResource extends pulumi.CustomResource {
      * The ID of the shared resource.
      */
     declare public readonly resourceId: pulumi.Output<string>;
+    /**
+     * The property of the resource.
+     */
+    declare public readonly resourceProperty: pulumi.Output<string>;
     /**
      * The ID of the resource share.
      */
@@ -133,8 +141,10 @@ export class SharedResource extends pulumi.CustomResource {
             const state = argsOrState as SharedResourceState | undefined;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["permissionName"] = state?.permissionName;
+            resourceInputs["propertiesResourceArn"] = state?.propertiesResourceArn;
             resourceInputs["resourceArn"] = state?.resourceArn;
             resourceInputs["resourceId"] = state?.resourceId;
+            resourceInputs["resourceProperty"] = state?.resourceProperty;
             resourceInputs["resourceShareId"] = state?.resourceShareId;
             resourceInputs["resourceType"] = state?.resourceType;
             resourceInputs["status"] = state?.status;
@@ -144,8 +154,10 @@ export class SharedResource extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceShareId'");
             }
             resourceInputs["permissionName"] = args?.permissionName;
+            resourceInputs["propertiesResourceArn"] = args?.propertiesResourceArn;
             resourceInputs["resourceArn"] = args?.resourceArn;
             resourceInputs["resourceId"] = args?.resourceId;
+            resourceInputs["resourceProperty"] = args?.resourceProperty;
             resourceInputs["resourceShareId"] = args?.resourceShareId;
             resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -171,6 +183,10 @@ export interface SharedResourceState {
      */
     permissionName?: pulumi.Input<string>;
     /**
+     * The ARN of the resource.
+     */
+    propertiesResourceArn?: pulumi.Input<string>;
+    /**
      * Associated resource ARN.
      *
      * > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
@@ -180,6 +196,10 @@ export interface SharedResourceState {
      * The ID of the shared resource.
      */
     resourceId?: pulumi.Input<string>;
+    /**
+     * The property of the resource.
+     */
+    resourceProperty?: pulumi.Input<string>;
     /**
      * The ID of the resource share.
      */
@@ -205,6 +225,10 @@ export interface SharedResourceArgs {
      */
     permissionName?: pulumi.Input<string>;
     /**
+     * The ARN of the resource.
+     */
+    propertiesResourceArn?: pulumi.Input<string>;
+    /**
      * Associated resource ARN.
      *
      * > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
@@ -214,6 +238,10 @@ export interface SharedResourceArgs {
      * The ID of the shared resource.
      */
     resourceId?: pulumi.Input<string>;
+    /**
+     * The property of the resource.
+     */
+    resourceProperty?: pulumi.Input<string>;
     /**
      * The ID of the resource share.
      */

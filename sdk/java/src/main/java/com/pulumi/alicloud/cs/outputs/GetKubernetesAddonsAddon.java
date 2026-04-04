@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -36,6 +37,11 @@ public final class GetKubernetesAddonsAddon {
      * 
      */
     private Boolean required;
+    /**
+     * @return (Available since v1.274.0) A set of actions supported by the addon, such as `Install`, `Upgrade`, `Modify`, `Uninstall`.
+     * 
+     */
+    private List<String> supportedActions;
 
     private GetKubernetesAddonsAddon() {}
     /**
@@ -73,6 +79,13 @@ public final class GetKubernetesAddonsAddon {
     public Boolean required() {
         return this.required;
     }
+    /**
+     * @return (Available since v1.274.0) A set of actions supported by the addon, such as `Install`, `Upgrade`, `Modify`, `Uninstall`.
+     * 
+     */
+    public List<String> supportedActions() {
+        return this.supportedActions;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -88,6 +101,7 @@ public final class GetKubernetesAddonsAddon {
         private String name;
         private String nextVersion;
         private Boolean required;
+        private List<String> supportedActions;
         public Builder() {}
         public Builder(GetKubernetesAddonsAddon defaults) {
     	      Objects.requireNonNull(defaults);
@@ -96,6 +110,7 @@ public final class GetKubernetesAddonsAddon {
     	      this.name = defaults.name;
     	      this.nextVersion = defaults.nextVersion;
     	      this.required = defaults.required;
+    	      this.supportedActions = defaults.supportedActions;
         }
 
         @CustomType.Setter
@@ -138,6 +153,17 @@ public final class GetKubernetesAddonsAddon {
             this.required = required;
             return this;
         }
+        @CustomType.Setter
+        public Builder supportedActions(List<String> supportedActions) {
+            if (supportedActions == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesAddonsAddon", "supportedActions");
+            }
+            this.supportedActions = supportedActions;
+            return this;
+        }
+        public Builder supportedActions(String... supportedActions) {
+            return supportedActions(List.of(supportedActions));
+        }
         public GetKubernetesAddonsAddon build() {
             final var _resultValue = new GetKubernetesAddonsAddon();
             _resultValue.currentConfig = currentConfig;
@@ -145,6 +171,7 @@ public final class GetKubernetesAddonsAddon {
             _resultValue.name = name;
             _resultValue.nextVersion = nextVersion;
             _resultValue.required = required;
+            _resultValue.supportedActions = supportedActions;
             return _resultValue;
         }
     }

@@ -6,7 +6,10 @@ package com.pulumi.alicloud.esa;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
 import com.pulumi.alicloud.esa.inputs.GetSitesPlainArgs;
+import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
+import com.pulumi.alicloud.esa.inputs.GetWafRulesetsPlainArgs;
 import com.pulumi.alicloud.esa.outputs.GetSitesResult;
+import com.pulumi.alicloud.esa.outputs.GetWafRulesetsResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -490,5 +493,355 @@ public final class EsaFunctions {
      */
     public static CompletableFuture<GetSitesResult> getSitesPlain(GetSitesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:esa/getSites:getSites", TypeShape.of(GetSitesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ESA Waf Rulesets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.274.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.WafRuleset;
+     * import com.pulumi.alicloud.esa.WafRulesetArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultWafRuleset = new WafRuleset("defaultWafRuleset", WafRulesetArgs.builder()
+     *             .siteId(default_.sites()[0].siteId())
+     *             .phase("http_custom")
+     *             .siteVersion(0)
+     *             .name(name)
+     *             .build());
+     * 
+     *         final var ids = Output.tuple(defaultWafRuleset.id(), defaultWafRuleset.siteId(), defaultWafRuleset.phase(), defaultWafRuleset.siteVersion()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var siteId = values.t2;
+     *             var phase = values.t3;
+     *             var siteVersion = values.t4;
+     *             return EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
+     *                 .ids(id)
+     *                 .siteId(siteId)
+     *                 .phase(phase)
+     *                 .siteVersion(siteVersion)
+     *                 .build());
+     *         });
+     * 
+     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWafRulesetsResult> getWafRulesets(GetWafRulesetsArgs args) {
+        return getWafRulesets(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ESA Waf Rulesets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.274.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.WafRuleset;
+     * import com.pulumi.alicloud.esa.WafRulesetArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultWafRuleset = new WafRuleset("defaultWafRuleset", WafRulesetArgs.builder()
+     *             .siteId(default_.sites()[0].siteId())
+     *             .phase("http_custom")
+     *             .siteVersion(0)
+     *             .name(name)
+     *             .build());
+     * 
+     *         final var ids = Output.tuple(defaultWafRuleset.id(), defaultWafRuleset.siteId(), defaultWafRuleset.phase(), defaultWafRuleset.siteVersion()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var siteId = values.t2;
+     *             var phase = values.t3;
+     *             var siteVersion = values.t4;
+     *             return EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
+     *                 .ids(id)
+     *                 .siteId(siteId)
+     *                 .phase(phase)
+     *                 .siteVersion(siteVersion)
+     *                 .build());
+     *         });
+     * 
+     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWafRulesetsResult> getWafRulesetsPlain(GetWafRulesetsPlainArgs args) {
+        return getWafRulesetsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ESA Waf Rulesets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.274.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.WafRuleset;
+     * import com.pulumi.alicloud.esa.WafRulesetArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultWafRuleset = new WafRuleset("defaultWafRuleset", WafRulesetArgs.builder()
+     *             .siteId(default_.sites()[0].siteId())
+     *             .phase("http_custom")
+     *             .siteVersion(0)
+     *             .name(name)
+     *             .build());
+     * 
+     *         final var ids = Output.tuple(defaultWafRuleset.id(), defaultWafRuleset.siteId(), defaultWafRuleset.phase(), defaultWafRuleset.siteVersion()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var siteId = values.t2;
+     *             var phase = values.t3;
+     *             var siteVersion = values.t4;
+     *             return EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
+     *                 .ids(id)
+     *                 .siteId(siteId)
+     *                 .phase(phase)
+     *                 .siteVersion(siteVersion)
+     *                 .build());
+     *         });
+     * 
+     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWafRulesetsResult> getWafRulesets(GetWafRulesetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:esa/getWafRulesets:getWafRulesets", TypeShape.of(GetWafRulesetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ESA Waf Rulesets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.274.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.WafRuleset;
+     * import com.pulumi.alicloud.esa.WafRulesetArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultWafRuleset = new WafRuleset("defaultWafRuleset", WafRulesetArgs.builder()
+     *             .siteId(default_.sites()[0].siteId())
+     *             .phase("http_custom")
+     *             .siteVersion(0)
+     *             .name(name)
+     *             .build());
+     * 
+     *         final var ids = Output.tuple(defaultWafRuleset.id(), defaultWafRuleset.siteId(), defaultWafRuleset.phase(), defaultWafRuleset.siteVersion()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var siteId = values.t2;
+     *             var phase = values.t3;
+     *             var siteVersion = values.t4;
+     *             return EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
+     *                 .ids(id)
+     *                 .siteId(siteId)
+     *                 .phase(phase)
+     *                 .siteVersion(siteVersion)
+     *                 .build());
+     *         });
+     * 
+     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWafRulesetsResult> getWafRulesets(GetWafRulesetsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:esa/getWafRulesets:getWafRulesets", TypeShape.of(GetWafRulesetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ESA Waf Rulesets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.274.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.WafRuleset;
+     * import com.pulumi.alicloud.esa.WafRulesetArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultWafRuleset = new WafRuleset("defaultWafRuleset", WafRulesetArgs.builder()
+     *             .siteId(default_.sites()[0].siteId())
+     *             .phase("http_custom")
+     *             .siteVersion(0)
+     *             .name(name)
+     *             .build());
+     * 
+     *         final var ids = Output.tuple(defaultWafRuleset.id(), defaultWafRuleset.siteId(), defaultWafRuleset.phase(), defaultWafRuleset.siteVersion()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var siteId = values.t2;
+     *             var phase = values.t3;
+     *             var siteVersion = values.t4;
+     *             return EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
+     *                 .ids(id)
+     *                 .siteId(siteId)
+     *                 .phase(phase)
+     *                 .siteVersion(siteVersion)
+     *                 .build());
+     *         });
+     * 
+     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWafRulesetsResult> getWafRulesetsPlain(GetWafRulesetsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:esa/getWafRulesets:getWafRulesets", TypeShape.of(GetWafRulesetsResult.class), args, Utilities.withVersion(options));
     }
 }

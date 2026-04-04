@@ -34,8 +34,8 @@ class KeyPairAttachmentArgs:
         if force is not None:
             pulumi.set(__self__, "force", force)
         if key_name is not None:
-            warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+            warnings.warn("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""key_name is deprecated: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if key_pair_name is not None:
@@ -67,7 +67,7 @@ class KeyPairAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="keyName")
-    @_utilities.deprecated("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+    @_utilities.deprecated("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
     def key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The name of key pair used to bind.
@@ -107,8 +107,8 @@ class _KeyPairAttachmentState:
         if instance_ids is not None:
             pulumi.set(__self__, "instance_ids", instance_ids)
         if key_name is not None:
-            warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+            warnings.warn("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""key_name is deprecated: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if key_pair_name is not None:
@@ -140,7 +140,7 @@ class _KeyPairAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="keyName")
-    @_utilities.deprecated("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+    @_utilities.deprecated("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
     def key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The name of key pair used to bind.
@@ -287,7 +287,7 @@ class KeyPairAttachment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="keyName")
-    @_utilities.deprecated("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+    @_utilities.deprecated("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
     def key_name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of key pair used to bind.

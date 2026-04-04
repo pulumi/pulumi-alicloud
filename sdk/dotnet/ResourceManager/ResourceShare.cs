@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var example = new AliCloud.ResourceManager.ResourceShare("example", new()
     ///     {
     ///         ResourceShareName = name,
@@ -88,6 +88,12 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of resource properties. See `ResourceProperties` below.
+        /// </summary>
+        [Output("resourceProperties")]
+        public Output<ImmutableArray<Outputs.ResourceShareResourceProperty>> ResourceProperties { get; private set; } = null!;
 
         /// <summary>
         /// The name of resource share.
@@ -217,6 +223,18 @@ namespace Pulumi.AliCloud.ResourceManager
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("resourceProperties")]
+        private InputList<Inputs.ResourceShareResourcePropertyArgs>? _resourceProperties;
+
+        /// <summary>
+        /// A list of resource properties. See `ResourceProperties` below.
+        /// </summary>
+        public InputList<Inputs.ResourceShareResourcePropertyArgs> ResourceProperties
+        {
+            get => _resourceProperties ?? (_resourceProperties = new InputList<Inputs.ResourceShareResourcePropertyArgs>());
+            set => _resourceProperties = value;
+        }
+
         /// <summary>
         /// The name of resource share.
         /// </summary>
@@ -318,6 +336,18 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("resourceProperties")]
+        private InputList<Inputs.ResourceShareResourcePropertyGetArgs>? _resourceProperties;
+
+        /// <summary>
+        /// A list of resource properties. See `ResourceProperties` below.
+        /// </summary>
+        public InputList<Inputs.ResourceShareResourcePropertyGetArgs> ResourceProperties
+        {
+            get => _resourceProperties ?? (_resourceProperties = new InputList<Inputs.ResourceShareResourcePropertyGetArgs>());
+            set => _resourceProperties = value;
+        }
 
         /// <summary>
         /// The name of resource share.

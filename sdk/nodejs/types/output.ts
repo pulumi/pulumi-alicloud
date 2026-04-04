@@ -16234,6 +16234,10 @@ export namespace cs {
          * Whether the addon is a system addon.
          */
         required: boolean;
+        /**
+         * (Available since v1.274.0) A set of actions supported by the addon, such as `Install`, `Upgrade`, `Modify`, `Uninstall`.
+         */
+        supportedActions: string[];
     }
 
     export interface GetKubernetesClustersCluster {
@@ -28669,7 +28673,7 @@ export namespace ecs {
          */
         burstingEnabled?: boolean;
         /**
-         * The category of the disk:
+         * The category of the disk. Default value: `cloudEfficiency`. Valid values:
          */
         category?: string;
         /**
@@ -33477,6 +33481,64 @@ export namespace esa {
          * The status of the resource
          */
         status: string;
+    }
+
+    export interface GetWafRulesetsQueryArgs {
+        /**
+         * The fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+         */
+        anyLike?: string;
+        /**
+         * Whether to sort in descending order. Valid values: `true`, `false`.
+         */
+        desc?: boolean;
+        /**
+         * The fuzzy search for rule set name.
+         */
+        nameLike?: string;
+        /**
+         * Specify the column to sort by.
+         */
+        orderBy?: string;
+    }
+
+    export interface GetWafRulesetsSet {
+        /**
+         * The list of match objects.
+         */
+        fields: string[];
+        /**
+         * The ID of the WAF Rule Set.
+         */
+        id: string;
+        /**
+         * The name of the rule set.
+         */
+        name: string;
+        /**
+         * The WAF operation phase.
+         */
+        phase: string;
+        /**
+         * The ID of the WAF rule set.
+         */
+        rulesetId: string;
+        /**
+         * The status of the rule set. Valid values: `on`, `off`.
+         */
+        status: string;
+        /**
+         * Protection target type in http_bot.
+         */
+        target: string;
+        /**
+         * The list of rule types.
+         */
+        types: string[];
+        /**
+         * The last modification time of the rule set.
+         */
+        updateTime: string;
     }
 
     export interface HttpIncomingRequestHeaderModificationRuleRequestHeaderModification {
@@ -47128,11 +47190,11 @@ export namespace nlb {
          */
         serverGroupName: string;
         /**
-         * The type of the server group.
+         * The type of the server group. Valid values: `Instance`, `Ip`.
          */
         serverGroupType: string;
         /**
-         * The status of the server group.
+         * The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
          */
         status: string;
         /**
@@ -47166,6 +47228,10 @@ export namespace nlb {
          * The HTTP status codes returned for health checks.
          */
         healthCheckHttpCodes: string[];
+        /**
+         * (Available since v1.274.0) The HTTP protocol version for health checks.
+         */
+        healthCheckHttpVersion: string;
         /**
          * The interval between two consecutive health checks.
          */
@@ -47335,6 +47401,12 @@ export namespace nlb {
          * > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          */
         healthCheckHttpCodes: string[];
+        /**
+         * The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+         *
+         * > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+         */
+        healthCheckHttpVersion: string;
         /**
          * The interval at which health checks are performed. Unit: seconds.
          * Valid values: `5` to `50`.
@@ -53717,6 +53789,17 @@ export namespace resourcemanager {
          * > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
          */
         resourceType?: string;
+    }
+
+    export interface ResourceShareResourceProperty {
+        /**
+         * The resource property.
+         */
+        property?: string;
+        /**
+         * The ARN of the resource.
+         */
+        resourceArn?: string;
     }
 
 }
@@ -63880,7 +63963,7 @@ export namespace vpc {
          */
         description?: string;
         /**
-         * The destination CIDR block.
+         * The destination CIDR block, or the prefix list instance ID.
          */
         destinationCidrIp?: string;
         /**
@@ -64025,7 +64108,7 @@ export namespace vpc {
          */
         protocol?: string;
         /**
-         * The source CIDR block.
+         * The source CIDR block, or the prefix list instance ID.
          */
         sourceCidrIp?: string;
     }

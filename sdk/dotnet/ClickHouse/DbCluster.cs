@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.ClickHouse
     /// 
     ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("default", new()
     ///     {
-    ///         DbClusterVersion = "23.8",
+    ///         DbClusterVersion = "25.3",
     ///         Category = "Basic",
     ///         DbClusterClass = "S8",
     ///         DbClusterNetworkType = "vpc",
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> DbClusterNetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `DbClusterVersion` can be set to `22.8.5.29`.
+        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `DbClusterVersion` can be set to `22.8.5.29`.
         /// </summary>
         [Output("dbClusterVersion")]
         public Output<string> DbClusterVersion { get; private set; } = null!;
@@ -345,7 +345,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string> DbClusterNetworkType { get; set; } = null!;
 
         /// <summary>
-        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `DbClusterVersion` can be set to `22.8.5.29`.
+        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `DbClusterVersion` can be set to `22.8.5.29`.
         /// </summary>
         [Input("dbClusterVersion", required: true)]
         public Input<string> DbClusterVersion { get; set; } = null!;
@@ -518,7 +518,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? DbClusterNetworkType { get; set; }
 
         /// <summary>
-        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `DbClusterVersion` can be set to `22.8.5.29`.
+        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `DbClusterVersion` can be set to `22.8.5.29`.
         /// </summary>
         [Input("dbClusterVersion")]
         public Input<string>? DbClusterVersion { get; set; }

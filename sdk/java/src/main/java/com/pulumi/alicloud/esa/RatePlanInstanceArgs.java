@@ -105,7 +105,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     /**
      * Package name.
      * 
-     * Chinese website account:
+     * For China site accounts:
      * 
      */
     @Import(name="planName")
@@ -114,7 +114,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return Package name.
      * 
-     * Chinese website account:
+     * For China site accounts:
      * 
      */
     public Optional<Output<String>> planName() {
@@ -292,7 +292,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param planName Package name.
          * 
-         * Chinese website account:
+         * For China site accounts:
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param planName Package name.
          * 
-         * Chinese website account:
+         * For China site accounts:
          * 
          * @return builder
          * 

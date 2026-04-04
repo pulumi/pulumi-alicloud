@@ -41,7 +41,7 @@ class RatePlanInstanceArgs:
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] plan_name: Package name.  
                
-               Chinese website account:
+               For China site accounts:
         :param pulumi.Input[_builtins.str] type: The DNS setup option for the website. Valid values:
                - `NS`
                - `CNAME`
@@ -134,7 +134,7 @@ class RatePlanInstanceArgs:
         """
         Package name.  
 
-        Chinese website account:
+        For China site accounts:
         """
         return pulumi.get(self, "plan_name")
 
@@ -189,8 +189,8 @@ class _RatePlanInstanceState:
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] plan_name: Package name.  
                
-               Chinese website account:
-        :param pulumi.Input[_builtins.str] status: The plan status. , the plan is unavailable.
+               For China site accounts:
+        :param pulumi.Input[_builtins.str] status: The plan status.
         :param pulumi.Input[_builtins.str] type: The DNS setup option for the website. Valid values:
                - `NS`
                - `CNAME`
@@ -313,7 +313,7 @@ class _RatePlanInstanceState:
         """
         Package name.  
 
-        Chinese website account:
+        For China site accounts:
         """
         return pulumi.get(self, "plan_name")
 
@@ -325,7 +325,7 @@ class _RatePlanInstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The plan status. , the plan is unavailable.
+        The plan status.
         """
         return pulumi.get(self, "status")
 
@@ -418,7 +418,7 @@ class RatePlanInstance(pulumi.CustomResource):
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] plan_name: Package name.  
                
-               Chinese website account:
+               For China site accounts:
         :param pulumi.Input[_builtins.str] type: The DNS setup option for the website. Valid values:
                - `NS`
                - `CNAME`
@@ -553,8 +553,8 @@ class RatePlanInstance(pulumi.CustomResource):
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] plan_name: Package name.  
                
-               Chinese website account:
-        :param pulumi.Input[_builtins.str] status: The plan status. , the plan is unavailable.
+               For China site accounts:
+        :param pulumi.Input[_builtins.str] status: The plan status.
         :param pulumi.Input[_builtins.str] type: The DNS setup option for the website. Valid values:
                - `NS`
                - `CNAME`
@@ -644,7 +644,7 @@ class RatePlanInstance(pulumi.CustomResource):
         """
         Package name.  
 
-        Chinese website account:
+        For China site accounts:
         """
         return pulumi.get(self, "plan_name")
 
@@ -652,7 +652,7 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The plan status. , the plan is unavailable.
+        The plan status.
         """
         return pulumi.get(self, "status")
 

@@ -12,7 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a forward resource.
+// Provides a Nat Gateway Forward Entry resource.
+//
+// DNAT route table entry.
+//
+// For information about Nat Gateway Forward Entry and how to use it, see [What is Forward Entry](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateForwardEntry).
 //
 // > **NOTE:** Available since v1.40.0.
 //
@@ -26,7 +30,6 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -36,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "forward-entry-example-name"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -63,35 +66,32 @@ import (
 //				return err
 //			}
 //			defaultNatGateway, err := vpc.NewNatGateway(ctx, "default", &vpc.NatGatewayArgs{
-//				VpcId:              defaultNetwork.ID(),
-//				InternetChargeType: pulumi.String("PayByLcu"),
-//				NatGatewayName:     pulumi.String(pulumi.String(name)),
-//				NatType:            pulumi.String("Enhanced"),
-//				VswitchId:          defaultSwitch.ID(),
+//				VpcId:          defaultNetwork.ID(),
+//				NatGatewayName: pulumi.String(pulumi.String(name)),
+//				NatType:        pulumi.String("Enhanced"),
+//				VswitchId:      defaultSwitch.ID(),
+//				NetworkType:    pulumi.String("intranet"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
-//				AddressName: pulumi.String(pulumi.String(name)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewEipAssociation(ctx, "default", &ecs.EipAssociationArgs{
-//				AllocationId: defaultEipAddress.ID(),
-//				InstanceId:   defaultNatGateway.ID(),
+//			defaultNatIp, err := vpc.NewNatIp(ctx, "default", &vpc.NatIpArgs{
+//				NatIp:        pulumi.String("172.16.0.66"),
+//				NatIpName:    pulumi.String(pulumi.String(name)),
+//				NatGatewayId: defaultNatGateway.ID(),
+//				NatIpCidr:    defaultSwitch.CidrBlock,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewForwardEntry(ctx, "default", &vpc.ForwardEntryArgs{
-//				ForwardTableId: defaultNatGateway.ForwardTableIds,
-//				ExternalIp:     defaultEipAddress.IpAddress,
-//				ExternalPort:   pulumi.String("80"),
-//				IpProtocol:     pulumi.String("tcp"),
-//				InternalIp:     pulumi.String("172.16.0.3"),
-//				InternalPort:   pulumi.String("8080"),
+//				ForwardTableId:   defaultNatGateway.ForwardTableIds,
+//				ExternalIp:       defaultNatIp.NatIp,
+//				ExternalPort:     pulumi.String("80"),
+//				IpProtocol:       pulumi.String("tcp"),
+//				InternalIp:       pulumi.String("172.16.0.115"),
+//				InternalPort:     pulumi.String("8080"),
+//				ForwardEntryName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
@@ -106,37 +106,41 @@ import (
 //
 // ## Import
 //
-// Forward Entry can be imported using the id, e.g.
+// Nat Gateway Forward Entry can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:vpc/forwardEntry:ForwardEntry foo ftb-1aece3:fwd-232ce2
+// $ pulumi import alicloud:vpc/forwardEntry:ForwardEntry example <forward_table_id>:<forward_entry_id>
 // ```
 type ForwardEntry struct {
 	pulumi.CustomResourceState
 
-	// The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+	// When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
+	// - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
 	ExternalIp pulumi.StringOutput `pulumi:"externalIp"`
-	// The external port, valid value is 1~65535|any.
+	// The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
+	// - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
+	// - If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified by these parameters must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
 	ExternalPort pulumi.StringOutput `pulumi:"externalPort"`
-	// The id of the forward entry on the server.
+	// (Available since v1.43.0) The id of the forward entry on the server.
 	ForwardEntryId pulumi.StringOutput `pulumi:"forwardEntryId"`
-	// The name of forward entry.
+	// The name of the DNAT entry.
 	ForwardEntryName pulumi.StringOutput `pulumi:"forwardEntryName"`
-	// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
+	// The ID of the DNAT table to which the DNAT entry belongs.
 	ForwardTableId pulumi.StringOutput `pulumi:"forwardTableId"`
-	// The internal ip, must a private ip.
+	// The private IP address.
+	// - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
+	// - The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
 	InternalIp pulumi.StringOutput `pulumi:"internalIp"`
-	// The internal port, valid value is 1~65535|any.
+	// When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
+	// - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
 	InternalPort pulumi.StringOutput `pulumi:"internalPort"`
-	// The ip protocol, valid value is tcp|udp|any.
+	// The protocol type. Valid values:
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
 	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies whether to remove limits on the port range. Default value is `false`.
-	//
-	// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
+	// Specifies whether to enable port break. Valid values:
 	PortBreak pulumi.BoolPtrOutput `pulumi:"portBreak"`
 	// (Available since v1.119.1) The status of forward entry.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -190,58 +194,66 @@ func GetForwardEntry(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ForwardEntry resources.
 type forwardEntryState struct {
-	// The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+	// When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
+	// - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
 	ExternalIp *string `pulumi:"externalIp"`
-	// The external port, valid value is 1~65535|any.
+	// The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
+	// - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
+	// - If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified by these parameters must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
 	ExternalPort *string `pulumi:"externalPort"`
-	// The id of the forward entry on the server.
+	// (Available since v1.43.0) The id of the forward entry on the server.
 	ForwardEntryId *string `pulumi:"forwardEntryId"`
-	// The name of forward entry.
+	// The name of the DNAT entry.
 	ForwardEntryName *string `pulumi:"forwardEntryName"`
-	// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
+	// The ID of the DNAT table to which the DNAT entry belongs.
 	ForwardTableId *string `pulumi:"forwardTableId"`
-	// The internal ip, must a private ip.
+	// The private IP address.
+	// - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
+	// - The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
 	InternalIp *string `pulumi:"internalIp"`
-	// The internal port, valid value is 1~65535|any.
+	// When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
+	// - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
 	InternalPort *string `pulumi:"internalPort"`
-	// The ip protocol, valid value is tcp|udp|any.
+	// The protocol type. Valid values:
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	Name *string `pulumi:"name"`
-	// Specifies whether to remove limits on the port range. Default value is `false`.
-	//
-	// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
+	// Specifies whether to enable port break. Valid values:
 	PortBreak *bool `pulumi:"portBreak"`
 	// (Available since v1.119.1) The status of forward entry.
 	Status *string `pulumi:"status"`
 }
 
 type ForwardEntryState struct {
-	// The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+	// When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
+	// - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
 	ExternalIp pulumi.StringPtrInput
-	// The external port, valid value is 1~65535|any.
+	// The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
+	// - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
+	// - If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified by these parameters must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
 	ExternalPort pulumi.StringPtrInput
-	// The id of the forward entry on the server.
+	// (Available since v1.43.0) The id of the forward entry on the server.
 	ForwardEntryId pulumi.StringPtrInput
-	// The name of forward entry.
+	// The name of the DNAT entry.
 	ForwardEntryName pulumi.StringPtrInput
-	// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
+	// The ID of the DNAT table to which the DNAT entry belongs.
 	ForwardTableId pulumi.StringPtrInput
-	// The internal ip, must a private ip.
+	// The private IP address.
+	// - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
+	// - The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
 	InternalIp pulumi.StringPtrInput
-	// The internal port, valid value is 1~65535|any.
+	// When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
+	// - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
 	InternalPort pulumi.StringPtrInput
-	// The ip protocol, valid value is tcp|udp|any.
+	// The protocol type. Valid values:
 	IpProtocol pulumi.StringPtrInput
 	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	Name pulumi.StringPtrInput
-	// Specifies whether to remove limits on the port range. Default value is `false`.
-	//
-	// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
+	// Specifies whether to enable port break. Valid values:
 	PortBreak pulumi.BoolPtrInput
 	// (Available since v1.119.1) The status of forward entry.
 	Status pulumi.StringPtrInput
@@ -252,53 +264,61 @@ func (ForwardEntryState) ElementType() reflect.Type {
 }
 
 type forwardEntryArgs struct {
-	// The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+	// When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
+	// - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
 	ExternalIp string `pulumi:"externalIp"`
-	// The external port, valid value is 1~65535|any.
+	// The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
+	// - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
+	// - If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified by these parameters must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
 	ExternalPort string `pulumi:"externalPort"`
-	// The name of forward entry.
+	// The name of the DNAT entry.
 	ForwardEntryName *string `pulumi:"forwardEntryName"`
-	// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
+	// The ID of the DNAT table to which the DNAT entry belongs.
 	ForwardTableId string `pulumi:"forwardTableId"`
-	// The internal ip, must a private ip.
+	// The private IP address.
+	// - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
+	// - The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
 	InternalIp string `pulumi:"internalIp"`
-	// The internal port, valid value is 1~65535|any.
+	// When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
+	// - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
 	InternalPort string `pulumi:"internalPort"`
-	// The ip protocol, valid value is tcp|udp|any.
+	// The protocol type. Valid values:
 	IpProtocol string `pulumi:"ipProtocol"`
 	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	Name *string `pulumi:"name"`
-	// Specifies whether to remove limits on the port range. Default value is `false`.
-	//
-	// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
+	// Specifies whether to enable port break. Valid values:
 	PortBreak *bool `pulumi:"portBreak"`
 }
 
 // The set of arguments for constructing a ForwardEntry resource.
 type ForwardEntryArgs struct {
-	// The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+	// When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
+	// - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
 	ExternalIp pulumi.StringInput
-	// The external port, valid value is 1~65535|any.
+	// The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
+	// - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
+	// - If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified by these parameters must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
 	ExternalPort pulumi.StringInput
-	// The name of forward entry.
+	// The name of the DNAT entry.
 	ForwardEntryName pulumi.StringPtrInput
-	// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
+	// The ID of the DNAT table to which the DNAT entry belongs.
 	ForwardTableId pulumi.StringInput
-	// The internal ip, must a private ip.
+	// The private IP address.
+	// - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
+	// - The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
 	InternalIp pulumi.StringInput
-	// The internal port, valid value is 1~65535|any.
+	// When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
+	// - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
 	InternalPort pulumi.StringInput
-	// The ip protocol, valid value is tcp|udp|any.
+	// The protocol type. Valid values:
 	IpProtocol pulumi.StringInput
 	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	Name pulumi.StringPtrInput
-	// Specifies whether to remove limits on the port range. Default value is `false`.
-	//
-	// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
+	// Specifies whether to enable port break. Valid values:
 	PortBreak pulumi.BoolPtrInput
 }
 
@@ -389,56 +409,60 @@ func (o ForwardEntryOutput) ToForwardEntryOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+// When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
+// - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
 func (o ForwardEntryOutput) ExternalIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.ExternalIp }).(pulumi.StringOutput)
 }
 
-// The external port, valid value is 1~65535|any.
+// The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
+// - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
+// - If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified by these parameters must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
 func (o ForwardEntryOutput) ExternalPort() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.ExternalPort }).(pulumi.StringOutput)
 }
 
-// The id of the forward entry on the server.
+// (Available since v1.43.0) The id of the forward entry on the server.
 func (o ForwardEntryOutput) ForwardEntryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.ForwardEntryId }).(pulumi.StringOutput)
 }
 
-// The name of forward entry.
+// The name of the DNAT entry.
 func (o ForwardEntryOutput) ForwardEntryName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.ForwardEntryName }).(pulumi.StringOutput)
 }
 
-// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
+// The ID of the DNAT table to which the DNAT entry belongs.
 func (o ForwardEntryOutput) ForwardTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.ForwardTableId }).(pulumi.StringOutput)
 }
 
-// The internal ip, must a private ip.
+// The private IP address.
+// - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
+// - The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
 func (o ForwardEntryOutput) InternalIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.InternalIp }).(pulumi.StringOutput)
 }
 
-// The internal port, valid value is 1~65535|any.
+// When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
+// - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
 func (o ForwardEntryOutput) InternalPort() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.InternalPort }).(pulumi.StringOutput)
 }
 
-// The ip protocol, valid value is tcp|udp|any.
+// The protocol type. Valid values:
 func (o ForwardEntryOutput) IpProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
 // Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 //
-// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
+// Deprecated: Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 func (o ForwardEntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies whether to remove limits on the port range. Default value is `false`.
-//
-// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
+// Specifies whether to enable port break. Valid values:
 func (o ForwardEntryOutput) PortBreak() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ForwardEntry) pulumi.BoolPtrOutput { return v.PortBreak }).(pulumi.BoolPtrOutput)
 }

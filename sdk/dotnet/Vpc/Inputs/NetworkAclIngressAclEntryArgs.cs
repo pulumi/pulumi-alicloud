@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The source CIDR block.
+        /// The source CIDR block, or the prefix list instance ID.
         /// </summary>
         [Input("sourceCidrIp")]
         public Input<string>? SourceCidrIp { get; set; }

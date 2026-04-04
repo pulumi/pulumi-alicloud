@@ -18,14 +18,14 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
     public static final NatIpArgs Empty = new NatIpArgs();
 
     /**
-     * Specifies whether to check the validity of the request without actually making the request.
+     * Specifies whether to only precheck the request. Valid values:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Specifies whether to check the validity of the request without actually making the request.
+     * @return Specifies whether to only precheck the request. Valid values:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -48,14 +48,14 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+     * The NAT IP address to be created.
      * 
      */
     @Import(name="natIp")
     private @Nullable Output<String> natIp;
 
     /**
-     * @return The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+     * @return The NAT IP address to be created.
      * 
      */
     public Optional<Output<String>> natIp() {
@@ -63,44 +63,29 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * NAT IP ADDRESS of the address segment.
+     * The CIDR block to which the NAT IP address belongs.
      * 
      */
-    @Import(name="natIpCidr")
-    private @Nullable Output<String> natIpCidr;
+    @Import(name="natIpCidr", required=true)
+    private Output<String> natIpCidr;
 
     /**
-     * @return NAT IP ADDRESS of the address segment.
+     * @return The CIDR block to which the NAT IP address belongs.
      * 
      */
-    public Optional<Output<String>> natIpCidr() {
-        return Optional.ofNullable(this.natIpCidr);
+    public Output<String> natIpCidr() {
+        return this.natIpCidr;
     }
 
     /**
-     * The ID of the CIDR block to which the NAT IP address belongs.
-     * 
-     */
-    @Import(name="natIpCidrId")
-    private @Nullable Output<String> natIpCidrId;
-
-    /**
-     * @return The ID of the CIDR block to which the NAT IP address belongs.
-     * 
-     */
-    public Optional<Output<String>> natIpCidrId() {
-        return Optional.ofNullable(this.natIpCidrId);
-    }
-
-    /**
-     * NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+     * The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="natIpDescription")
     private @Nullable Output<String> natIpDescription;
 
     /**
-     * @return NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+     * @return The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> natIpDescription() {
@@ -108,14 +93,14 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     * The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="natIpName")
     private @Nullable Output<String> natIpName;
 
     /**
-     * @return NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     * @return The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> natIpName() {
@@ -129,7 +114,6 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
         this.natGatewayId = $.natGatewayId;
         this.natIp = $.natIp;
         this.natIpCidr = $.natIpCidr;
-        this.natIpCidrId = $.natIpCidrId;
         this.natIpDescription = $.natIpDescription;
         this.natIpName = $.natIpName;
     }
@@ -153,7 +137,7 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to check the validity of the request without actually making the request.
+         * @param dryRun Specifies whether to only precheck the request. Valid values:
          * 
          * @return builder
          * 
@@ -164,7 +148,7 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to check the validity of the request without actually making the request.
+         * @param dryRun Specifies whether to only precheck the request. Valid values:
          * 
          * @return builder
          * 
@@ -195,7 +179,7 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natIp The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+         * @param natIp The NAT IP address to be created.
          * 
          * @return builder
          * 
@@ -206,7 +190,7 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natIp The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+         * @param natIp The NAT IP address to be created.
          * 
          * @return builder
          * 
@@ -216,18 +200,18 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natIpCidr NAT IP ADDRESS of the address segment.
+         * @param natIpCidr The CIDR block to which the NAT IP address belongs.
          * 
          * @return builder
          * 
          */
-        public Builder natIpCidr(@Nullable Output<String> natIpCidr) {
+        public Builder natIpCidr(Output<String> natIpCidr) {
             $.natIpCidr = natIpCidr;
             return this;
         }
 
         /**
-         * @param natIpCidr NAT IP ADDRESS of the address segment.
+         * @param natIpCidr The CIDR block to which the NAT IP address belongs.
          * 
          * @return builder
          * 
@@ -237,28 +221,7 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natIpCidrId The ID of the CIDR block to which the NAT IP address belongs.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder natIpCidrId(@Nullable Output<String> natIpCidrId) {
-            $.natIpCidrId = natIpCidrId;
-            return this;
-        }
-
-        /**
-         * @param natIpCidrId The ID of the CIDR block to which the NAT IP address belongs.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder natIpCidrId(String natIpCidrId) {
-            return natIpCidrId(Output.of(natIpCidrId));
-        }
-
-        /**
-         * @param natIpDescription NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+         * @param natIpDescription The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -269,7 +232,7 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natIpDescription NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+         * @param natIpDescription The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -279,7 +242,7 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natIpName NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+         * @param natIpName The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -290,7 +253,7 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natIpName NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+         * @param natIpName The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -302,6 +265,9 @@ public final class NatIpArgs extends com.pulumi.resources.ResourceArgs {
         public NatIpArgs build() {
             if ($.natGatewayId == null) {
                 throw new MissingRequiredPropertyException("NatIpArgs", "natGatewayId");
+            }
+            if ($.natIpCidr == null) {
+                throw new MissingRequiredPropertyException("NatIpArgs", "natIpCidr");
             }
             return $;
         }

@@ -146,6 +146,18 @@ export class CacheRule extends pulumi.CustomResource {
      */
     declare public readonly includeHeader: pulumi.Output<string | undefined>;
     /**
+     * Processing pattern for the cache key.
+     */
+    declare public readonly postBodyCacheKey: pulumi.Output<string | undefined>;
+    /**
+     * Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+     */
+    declare public readonly postBodySizeLimit: pulumi.Output<string | undefined>;
+    /**
+     * Toggle for the Post cache feature.
+     */
+    declare public readonly postCache: pulumi.Output<string | undefined>;
+    /**
      * Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
      */
     declare public readonly queryString: pulumi.Output<string | undefined>;
@@ -227,6 +239,9 @@ export class CacheRule extends pulumi.CustomResource {
             resourceInputs["edgeStatusCodeCacheTtl"] = state?.edgeStatusCodeCacheTtl;
             resourceInputs["includeCookie"] = state?.includeCookie;
             resourceInputs["includeHeader"] = state?.includeHeader;
+            resourceInputs["postBodyCacheKey"] = state?.postBodyCacheKey;
+            resourceInputs["postBodySizeLimit"] = state?.postBodySizeLimit;
+            resourceInputs["postCache"] = state?.postCache;
             resourceInputs["queryString"] = state?.queryString;
             resourceInputs["queryStringMode"] = state?.queryStringMode;
             resourceInputs["rule"] = state?.rule;
@@ -258,6 +273,9 @@ export class CacheRule extends pulumi.CustomResource {
             resourceInputs["edgeStatusCodeCacheTtl"] = args?.edgeStatusCodeCacheTtl;
             resourceInputs["includeCookie"] = args?.includeCookie;
             resourceInputs["includeHeader"] = args?.includeHeader;
+            resourceInputs["postBodyCacheKey"] = args?.postBodyCacheKey;
+            resourceInputs["postBodySizeLimit"] = args?.postBodySizeLimit;
+            resourceInputs["postCache"] = args?.postCache;
             resourceInputs["queryString"] = args?.queryString;
             resourceInputs["queryStringMode"] = args?.queryStringMode;
             resourceInputs["rule"] = args?.rule;
@@ -338,6 +356,18 @@ export interface CacheRuleState {
      * When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
      */
     includeHeader?: pulumi.Input<string>;
+    /**
+     * Processing pattern for the cache key.
+     */
+    postBodyCacheKey?: pulumi.Input<string>;
+    /**
+     * Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+     */
+    postBodySizeLimit?: pulumi.Input<string>;
+    /**
+     * Toggle for the Post cache feature.
+     */
+    postCache?: pulumi.Input<string>;
     /**
      * Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
      */
@@ -450,6 +480,18 @@ export interface CacheRuleArgs {
      * When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
      */
     includeHeader?: pulumi.Input<string>;
+    /**
+     * Processing pattern for the cache key.
+     */
+    postBodyCacheKey?: pulumi.Input<string>;
+    /**
+     * Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+     */
+    postBodySizeLimit?: pulumi.Input<string>;
+    /**
+     * Toggle for the Post cache feature.
+     */
+    postCache?: pulumi.Input<string>;
     /**
      * Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
      */

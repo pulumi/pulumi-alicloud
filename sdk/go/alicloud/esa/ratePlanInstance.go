@@ -90,9 +90,9 @@ type RatePlanInstance struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Package name.
 	//
-	// Chinese website account:
+	// For China site accounts:
 	PlanName pulumi.StringPtrOutput `pulumi:"planName"`
-	// The plan status. , the plan is unavailable.
+	// The plan status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The DNS setup option for the website. Valid values:
 	// - `NS`
@@ -153,9 +153,9 @@ type ratePlanInstanceState struct {
 	Period *int `pulumi:"period"`
 	// Package name.
 	//
-	// Chinese website account:
+	// For China site accounts:
 	PlanName *string `pulumi:"planName"`
-	// The plan status. , the plan is unavailable.
+	// The plan status.
 	Status *string `pulumi:"status"`
 	// The DNS setup option for the website. Valid values:
 	// - `NS`
@@ -187,9 +187,9 @@ type RatePlanInstanceState struct {
 	Period pulumi.IntPtrInput
 	// Package name.
 	//
-	// Chinese website account:
+	// For China site accounts:
 	PlanName pulumi.StringPtrInput
-	// The plan status. , the plan is unavailable.
+	// The plan status.
 	Status pulumi.StringPtrInput
 	// The DNS setup option for the website. Valid values:
 	// - `NS`
@@ -221,7 +221,7 @@ type ratePlanInstanceArgs struct {
 	Period *int `pulumi:"period"`
 	// Package name.
 	//
-	// Chinese website account:
+	// For China site accounts:
 	PlanName *string `pulumi:"planName"`
 	// The DNS setup option for the website. Valid values:
 	// - `NS`
@@ -250,7 +250,7 @@ type RatePlanInstanceArgs struct {
 	Period pulumi.IntPtrInput
 	// Package name.
 	//
-	// Chinese website account:
+	// For China site accounts:
 	PlanName pulumi.StringPtrInput
 	// The DNS setup option for the website. Valid values:
 	// - `NS`
@@ -389,12 +389,12 @@ func (o RatePlanInstanceOutput) Period() pulumi.IntPtrOutput {
 
 // Package name.
 //
-// Chinese website account:
+// For China site accounts:
 func (o RatePlanInstanceOutput) PlanName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringPtrOutput { return v.PlanName }).(pulumi.StringPtrOutput)
 }
 
-// The plan status. , the plan is unavailable.
+// The plan status.
 func (o RatePlanInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

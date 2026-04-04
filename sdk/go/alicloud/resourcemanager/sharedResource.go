@@ -110,12 +110,16 @@ type SharedResource struct {
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PermissionName pulumi.StringPtrOutput `pulumi:"permissionName"`
+	// The ARN of the resource.
+	PropertiesResourceArn pulumi.StringPtrOutput `pulumi:"propertiesResourceArn"`
 	// Associated resource ARN.
 	//
 	// > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
 	ResourceArn pulumi.StringOutput `pulumi:"resourceArn"`
 	// The ID of the shared resource.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
+	// The property of the resource.
+	ResourceProperty pulumi.StringOutput `pulumi:"resourceProperty"`
 	// The ID of the resource share.
 	ResourceShareId pulumi.StringOutput `pulumi:"resourceShareId"`
 	// The type of the shared resource.
@@ -163,12 +167,16 @@ type sharedResourceState struct {
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PermissionName *string `pulumi:"permissionName"`
+	// The ARN of the resource.
+	PropertiesResourceArn *string `pulumi:"propertiesResourceArn"`
 	// Associated resource ARN.
 	//
 	// > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
 	ResourceArn *string `pulumi:"resourceArn"`
 	// The ID of the shared resource.
 	ResourceId *string `pulumi:"resourceId"`
+	// The property of the resource.
+	ResourceProperty *string `pulumi:"resourceProperty"`
 	// The ID of the resource share.
 	ResourceShareId *string `pulumi:"resourceShareId"`
 	// The type of the shared resource.
@@ -184,12 +192,16 @@ type SharedResourceState struct {
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PermissionName pulumi.StringPtrInput
+	// The ARN of the resource.
+	PropertiesResourceArn pulumi.StringPtrInput
 	// Associated resource ARN.
 	//
 	// > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
 	ResourceArn pulumi.StringPtrInput
 	// The ID of the shared resource.
 	ResourceId pulumi.StringPtrInput
+	// The property of the resource.
+	ResourceProperty pulumi.StringPtrInput
 	// The ID of the resource share.
 	ResourceShareId pulumi.StringPtrInput
 	// The type of the shared resource.
@@ -207,12 +219,16 @@ type sharedResourceArgs struct {
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PermissionName *string `pulumi:"permissionName"`
+	// The ARN of the resource.
+	PropertiesResourceArn *string `pulumi:"propertiesResourceArn"`
 	// Associated resource ARN.
 	//
 	// > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
 	ResourceArn *string `pulumi:"resourceArn"`
 	// The ID of the shared resource.
 	ResourceId *string `pulumi:"resourceId"`
+	// The property of the resource.
+	ResourceProperty *string `pulumi:"resourceProperty"`
 	// The ID of the resource share.
 	ResourceShareId string `pulumi:"resourceShareId"`
 	// The type of the shared resource.
@@ -225,12 +241,16 @@ type SharedResourceArgs struct {
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PermissionName pulumi.StringPtrInput
+	// The ARN of the resource.
+	PropertiesResourceArn pulumi.StringPtrInput
 	// Associated resource ARN.
 	//
 	// > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
 	ResourceArn pulumi.StringPtrInput
 	// The ID of the shared resource.
 	ResourceId pulumi.StringPtrInput
+	// The property of the resource.
+	ResourceProperty pulumi.StringPtrInput
 	// The ID of the resource share.
 	ResourceShareId pulumi.StringInput
 	// The type of the shared resource.
@@ -336,6 +356,11 @@ func (o SharedResourceOutput) PermissionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SharedResource) pulumi.StringPtrOutput { return v.PermissionName }).(pulumi.StringPtrOutput)
 }
 
+// The ARN of the resource.
+func (o SharedResourceOutput) PropertiesResourceArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedResource) pulumi.StringPtrOutput { return v.PropertiesResourceArn }).(pulumi.StringPtrOutput)
+}
+
 // Associated resource ARN.
 //
 // > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
@@ -346,6 +371,11 @@ func (o SharedResourceOutput) ResourceArn() pulumi.StringOutput {
 // The ID of the shared resource.
 func (o SharedResourceOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The property of the resource.
+func (o SharedResourceOutput) ResourceProperty() pulumi.StringOutput {
+	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceProperty }).(pulumi.StringOutput)
 }
 
 // The ID of the resource share.

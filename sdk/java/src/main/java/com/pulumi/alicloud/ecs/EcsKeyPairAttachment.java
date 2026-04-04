@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECS Key Pair Attachment and how to use it, see [What is Key Pair Attachment](https://www.alibabacloud.com/help/en/doc-detail/51775.htm).
  * 
- * &gt; **NOTE:** Available since v1.121.0+.
+ * &gt; **NOTE:** Available since v1.121.0.
  * 
  * ## Example Usage
  * 
@@ -37,8 +37,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -47,8 +49,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
- * import com.pulumi.random.Integer;
- * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ecs.EcsKeyPair;
  * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
  * import com.pulumi.alicloud.ecs.EcsKeyPairAttachment;
@@ -66,60 +66,66 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation("Instance")
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(example.zones()[0].id())
- *             .cpuCoreCount(1)
- *             .memorySize(2)
- *             .build());
- * 
- *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex("^ubuntu_18.*64")
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
+ *             .mostRecent(true)
  *             .owners("system")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
- *             .vpcName("terraform-example")
- *             .cidrBlock("172.17.3.0/24")
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
+ *             .imageId(defaultGetImages.images()[0].id())
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
- *             .vswitchName("terraform-example")
- *             .cidrBlock("172.17.3.0/24")
- *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.zones()[0].id())
- *             .build());
- * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
- *             .name("terraform-example")
- *             .vpcId(exampleNetwork.id())
- *             .build());
- * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
- *             .imageId(exampleGetImages.images()[0].id())
- *             .instanceType(exampleGetInstanceTypes.instanceTypes()[0].id())
- *             .availabilityZone(example.zones()[0].id())
- *             .securityGroups(exampleSecurityGroup.id())
- *             .instanceName("terraform-example")
- *             .internetChargeType("PayByBandwidth")
- *             .vswitchId(exampleSwitch.id())
- *             .build());
- * 
- *         var default_ = new Integer("default", IntegerArgs.builder()
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var exampleEcsKeyPair = new EcsKeyPair("exampleEcsKeyPair", EcsKeyPairArgs.builder()
- *             .keyPairName(String.format("tf-example-%s", default_.result()))
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var exampleEcsKeyPairAttachment = new EcsKeyPairAttachment("exampleEcsKeyPairAttachment", EcsKeyPairAttachmentArgs.builder()
- *             .keyPairName(exampleEcsKeyPair.keyPairName())
- *             .instanceIds(exampleInstance.id())
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("192.168.192.0/24")
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .name(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
+ *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+ *             .internetChargeType("PayByTraffic")
+ *             .internetMaxBandwidthOut(10)
+ *             .availabilityZone(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+ *             .instanceChargeType("PostPaid")
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .vswitchId(defaultSwitch.id())
+ *             .instanceName(name)
+ *             .build());
+ * 
+ *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+ *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .build());
+ * 
+ *         var defaultEcsKeyPairAttachment = new EcsKeyPairAttachment("defaultEcsKeyPairAttachment", EcsKeyPairAttachmentArgs.builder()
+ *             .keyPairName(defaultEcsKeyPair.id())
+ *             .instanceIds(defaultInstance.id())
  *             .build());
  * 
  *     }
@@ -141,60 +147,64 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment")
 public class EcsKeyPairAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * Specifies whether to make the key pair effective immediately. Valid values:
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * @return Specifies whether to make the key pair effective immediately. Valid values:
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * The list of ECS instance&#39;s IDs.
+     * The IDs of instances to which you want to bind the SSH key pair.
      * 
      */
     @Export(name="instanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceIds;
 
     /**
-     * @return The list of ECS instance&#39;s IDs.
+     * @return The IDs of instances to which you want to bind the SSH key pair.
      * 
      */
     public Output<List<String>> instanceIds() {
         return this.instanceIds;
     }
     /**
-     * New field &#39;key_pair_name&#39; instead.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * 
+     * &gt; **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
      * 
      * @deprecated
-     * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
     @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output<String> keyName;
 
     /**
-     * @return New field &#39;key_pair_name&#39; instead.
+     * @return Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * 
+     * &gt; **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
      * 
      */
     public Output<String> keyName() {
         return this.keyName;
     }
     /**
-     * The name of key pair used to bind.
+     * The name of the SSH key pair.
      * 
      */
     @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output<String> keyPairName;
 
     /**
-     * @return The name of key pair used to bind.
+     * @return The name of the SSH key pair.
      * 
      */
     public Output<String> keyPairName() {

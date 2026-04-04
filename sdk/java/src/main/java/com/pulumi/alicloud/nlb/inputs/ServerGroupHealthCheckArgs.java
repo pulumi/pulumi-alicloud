@@ -119,6 +119,25 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+     * 
+     */
+    @Import(name="healthCheckHttpVersion")
+    private @Nullable Output<String> healthCheckHttpVersion;
+
+    /**
+     * @return The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+     * 
+     */
+    public Optional<Output<String>> healthCheckHttpVersion() {
+        return Optional.ofNullable(this.healthCheckHttpVersion);
+    }
+
+    /**
      * The interval at which health checks are performed. Unit: seconds.
      * Valid values: `5` to `50`.
      * Default value: `10`.
@@ -256,6 +275,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         this.healthCheckEnabled = $.healthCheckEnabled;
         this.healthCheckExp = $.healthCheckExp;
         this.healthCheckHttpCodes = $.healthCheckHttpCodes;
+        this.healthCheckHttpVersion = $.healthCheckHttpVersion;
         this.healthCheckInterval = $.healthCheckInterval;
         this.healthCheckReq = $.healthCheckReq;
         this.healthCheckType = $.healthCheckType;
@@ -429,6 +449,31 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
          */
         public Builder healthCheckHttpCodes(String... healthCheckHttpCodes) {
             return healthCheckHttpCodes(List.of(healthCheckHttpCodes));
+        }
+
+        /**
+         * @param healthCheckHttpVersion The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckHttpVersion(@Nullable Output<String> healthCheckHttpVersion) {
+            $.healthCheckHttpVersion = healthCheckHttpVersion;
+            return this;
+        }
+
+        /**
+         * @param healthCheckHttpVersion The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckHttpVersion(String healthCheckHttpVersion) {
+            return healthCheckHttpVersion(Output.of(healthCheckHttpVersion));
         }
 
         /**

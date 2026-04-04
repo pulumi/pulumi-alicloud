@@ -99,6 +99,12 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string?> PermissionName { get; private set; } = null!;
 
         /// <summary>
+        /// The ARN of the resource.
+        /// </summary>
+        [Output("propertiesResourceArn")]
+        public Output<string?> PropertiesResourceArn { get; private set; } = null!;
+
+        /// <summary>
         /// Associated resource ARN.
         /// 
         /// &gt; **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
@@ -111,6 +117,12 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The property of the resource.
+        /// </summary>
+        [Output("resourceProperty")]
+        public Output<string> ResourceProperty { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource share.
@@ -185,6 +197,12 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? PermissionName { get; set; }
 
         /// <summary>
+        /// The ARN of the resource.
+        /// </summary>
+        [Input("propertiesResourceArn")]
+        public Input<string>? PropertiesResourceArn { get; set; }
+
+        /// <summary>
         /// Associated resource ARN.
         /// 
         /// &gt; **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
@@ -197,6 +215,12 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
+
+        /// <summary>
+        /// The property of the resource.
+        /// </summary>
+        [Input("resourceProperty")]
+        public Input<string>? ResourceProperty { get; set; }
 
         /// <summary>
         /// The ID of the resource share.
@@ -233,6 +257,12 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? PermissionName { get; set; }
 
         /// <summary>
+        /// The ARN of the resource.
+        /// </summary>
+        [Input("propertiesResourceArn")]
+        public Input<string>? PropertiesResourceArn { get; set; }
+
+        /// <summary>
         /// Associated resource ARN.
         /// 
         /// &gt; **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
@@ -245,6 +275,12 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
+
+        /// <summary>
+        /// The property of the resource.
+        /// </summary>
+        [Input("resourceProperty")]
+        public Input<string>? ResourceProperty { get; set; }
 
         /// <summary>
         /// The ID of the resource share.

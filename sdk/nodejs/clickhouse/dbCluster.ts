@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     zoneId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.zoneIds?.[0]?.zoneId),
  * });
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("default", {
- *     dbClusterVersion: "23.8",
+ *     dbClusterVersion: "25.3",
  *     category: "Basic",
  *     dbClusterClass: "S8",
  *     dbClusterNetworkType: "vpc",
@@ -126,7 +126,7 @@ export class DbCluster extends pulumi.CustomResource {
      */
     declare public readonly dbClusterNetworkType: pulumi.Output<string>;
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      */
     declare public readonly dbClusterVersion: pulumi.Output<string>;
     /**
@@ -341,7 +341,7 @@ export interface DbClusterState {
      */
     dbClusterNetworkType?: pulumi.Input<string>;
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      */
     dbClusterVersion?: pulumi.Input<string>;
     /**
@@ -454,7 +454,7 @@ export interface DbClusterArgs {
      */
     dbClusterNetworkType: pulumi.Input<string>;
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      */
     dbClusterVersion: pulumi.Input<string>;
     /**

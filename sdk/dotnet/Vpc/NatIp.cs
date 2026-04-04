@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Nat Ip resource.
+    /// Provides a Nat Gateway Nat Ip resource.
     /// 
-    /// For information about VPC Nat Ip and how to use it, see [What is Nat Ip](https://www.alibabacloud.com/help/doc-detail/281976.htm).
+    /// NAT IP address instance.
+    /// 
+    /// For information about Nat Gateway Nat Ip and how to use it, see [What is Nat Ip](https://www.alibabacloud.com/help/en/nat-gateway/developer-reference/api-vpc-2016-04-28-createnatip-natgws).
     /// 
     /// &gt; **NOTE:** Available since v1.136.0.
     /// 
@@ -82,7 +84,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// VPC Nat Ip can be imported using the id, e.g.
+    /// Nat Gateway Nat Ip can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/natIp:NatIp example &lt;nat_gateway_id&gt;:&lt;nat_ip_id&gt;
@@ -92,10 +94,10 @@ namespace Pulumi.AliCloud.Vpc
     public partial class NatIp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to check the validity of the request without actually making the request.
+        /// Specifies whether to only precheck the request. Valid values:
         /// </summary>
         [Output("dryRun")]
-        public Output<bool> DryRun { get; private set; } = null!;
+        public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
@@ -104,25 +106,19 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> NatGatewayId { get; private set; } = null!;
 
         /// <summary>
-        /// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+        /// The NAT IP address to be created.
         /// </summary>
         [Output("natIp")]
         public Output<string> NatIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// NAT IP ADDRESS of the address segment.
+        /// The CIDR block to which the NAT IP address belongs.
         /// </summary>
         [Output("natIpCidr")]
-        public Output<string?> NatIpCidr { get; private set; } = null!;
+        public Output<string> NatIpCidr { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the CIDR block to which the NAT IP address belongs.
-        /// </summary>
-        [Output("natIpCidrId")]
-        public Output<string?> NatIpCidrId { get; private set; } = null!;
-
-        /// <summary>
-        /// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        /// The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         /// </summary>
         [Output("natIpDescription")]
         public Output<string?> NatIpDescription { get; private set; } = null!;
@@ -134,13 +130,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> NatIpId { get; private set; } = null!;
 
         /// <summary>
-        /// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        /// The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("natIpName")]
         public Output<string?> NatIpName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
+        /// The status of the NAT IP address.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -192,7 +188,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NatIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to check the validity of the request without actually making the request.
+        /// Specifies whether to only precheck the request. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -204,31 +200,25 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> NatGatewayId { get; set; } = null!;
 
         /// <summary>
-        /// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+        /// The NAT IP address to be created.
         /// </summary>
         [Input("natIp")]
         public Input<string>? NatIpAddress { get; set; }
 
         /// <summary>
-        /// NAT IP ADDRESS of the address segment.
+        /// The CIDR block to which the NAT IP address belongs.
         /// </summary>
-        [Input("natIpCidr")]
-        public Input<string>? NatIpCidr { get; set; }
+        [Input("natIpCidr", required: true)]
+        public Input<string> NatIpCidr { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the CIDR block to which the NAT IP address belongs.
-        /// </summary>
-        [Input("natIpCidrId")]
-        public Input<string>? NatIpCidrId { get; set; }
-
-        /// <summary>
-        /// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        /// The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         /// </summary>
         [Input("natIpDescription")]
         public Input<string>? NatIpDescription { get; set; }
 
         /// <summary>
-        /// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        /// The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("natIpName")]
         public Input<string>? NatIpName { get; set; }
@@ -242,7 +232,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NatIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to check the validity of the request without actually making the request.
+        /// Specifies whether to only precheck the request. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -254,25 +244,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? NatGatewayId { get; set; }
 
         /// <summary>
-        /// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+        /// The NAT IP address to be created.
         /// </summary>
         [Input("natIp")]
         public Input<string>? NatIpAddress { get; set; }
 
         /// <summary>
-        /// NAT IP ADDRESS of the address segment.
+        /// The CIDR block to which the NAT IP address belongs.
         /// </summary>
         [Input("natIpCidr")]
         public Input<string>? NatIpCidr { get; set; }
 
         /// <summary>
-        /// The ID of the CIDR block to which the NAT IP address belongs.
-        /// </summary>
-        [Input("natIpCidrId")]
-        public Input<string>? NatIpCidrId { get; set; }
-
-        /// <summary>
-        /// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        /// The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         /// </summary>
         [Input("natIpDescription")]
         public Input<string>? NatIpDescription { get; set; }
@@ -284,13 +268,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? NatIpId { get; set; }
 
         /// <summary>
-        /// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        /// The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("natIpName")]
         public Input<string>? NatIpName { get; set; }
 
         /// <summary>
-        /// The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
+        /// The status of the NAT IP address.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

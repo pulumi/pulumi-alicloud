@@ -163,6 +163,24 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> IncludeHeader { get; private set; } = null!;
 
         /// <summary>
+        /// Processing pattern for the cache key.
+        /// </summary>
+        [Output("postBodyCacheKey")]
+        public Output<string?> PostBodyCacheKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+        /// </summary>
+        [Output("postBodySizeLimit")]
+        public Output<string?> PostBodySizeLimit { get; private set; } = null!;
+
+        /// <summary>
+        /// Toggle for the Post cache feature.
+        /// </summary>
+        [Output("postCache")]
+        public Output<string?> PostCache { get; private set; } = null!;
+
+        /// <summary>
         /// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         /// </summary>
         [Output("queryString")]
@@ -367,6 +385,24 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? IncludeHeader { get; set; }
 
         /// <summary>
+        /// Processing pattern for the cache key.
+        /// </summary>
+        [Input("postBodyCacheKey")]
+        public Input<string>? PostBodyCacheKey { get; set; }
+
+        /// <summary>
+        /// Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+        /// </summary>
+        [Input("postBodySizeLimit")]
+        public Input<string>? PostBodySizeLimit { get; set; }
+
+        /// <summary>
+        /// Toggle for the Post cache feature.
+        /// </summary>
+        [Input("postCache")]
+        public Input<string>? PostCache { get; set; }
+
+        /// <summary>
         /// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         /// </summary>
         [Input("queryString")]
@@ -537,6 +573,24 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("includeHeader")]
         public Input<string>? IncludeHeader { get; set; }
+
+        /// <summary>
+        /// Processing pattern for the cache key.
+        /// </summary>
+        [Input("postBodyCacheKey")]
+        public Input<string>? PostBodyCacheKey { get; set; }
+
+        /// <summary>
+        /// Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
+        /// </summary>
+        [Input("postBodySizeLimit")]
+        public Input<string>? PostBodySizeLimit { get; set; }
+
+        /// <summary>
+        /// Toggle for the Post cache feature.
+        /// </summary>
+        [Input("postCache")]
+        public Input<string>? PostCache { get; set; }
 
         /// <summary>
         /// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.

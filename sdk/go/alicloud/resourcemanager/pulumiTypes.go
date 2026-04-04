@@ -2188,6 +2188,112 @@ func (o ResourceShareResourceArrayOutput) Index(i pulumi.IntInput) ResourceShare
 	}).(ResourceShareResourceOutput)
 }
 
+type ResourceShareResourceProperty struct {
+	// The resource property.
+	Property *string `pulumi:"property"`
+	// The ARN of the resource.
+	ResourceArn *string `pulumi:"resourceArn"`
+}
+
+// ResourceShareResourcePropertyInput is an input type that accepts ResourceShareResourcePropertyArgs and ResourceShareResourcePropertyOutput values.
+// You can construct a concrete instance of `ResourceShareResourcePropertyInput` via:
+//
+//	ResourceShareResourcePropertyArgs{...}
+type ResourceShareResourcePropertyInput interface {
+	pulumi.Input
+
+	ToResourceShareResourcePropertyOutput() ResourceShareResourcePropertyOutput
+	ToResourceShareResourcePropertyOutputWithContext(context.Context) ResourceShareResourcePropertyOutput
+}
+
+type ResourceShareResourcePropertyArgs struct {
+	// The resource property.
+	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The ARN of the resource.
+	ResourceArn pulumi.StringPtrInput `pulumi:"resourceArn"`
+}
+
+func (ResourceShareResourcePropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceShareResourceProperty)(nil)).Elem()
+}
+
+func (i ResourceShareResourcePropertyArgs) ToResourceShareResourcePropertyOutput() ResourceShareResourcePropertyOutput {
+	return i.ToResourceShareResourcePropertyOutputWithContext(context.Background())
+}
+
+func (i ResourceShareResourcePropertyArgs) ToResourceShareResourcePropertyOutputWithContext(ctx context.Context) ResourceShareResourcePropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceShareResourcePropertyOutput)
+}
+
+// ResourceShareResourcePropertyArrayInput is an input type that accepts ResourceShareResourcePropertyArray and ResourceShareResourcePropertyArrayOutput values.
+// You can construct a concrete instance of `ResourceShareResourcePropertyArrayInput` via:
+//
+//	ResourceShareResourcePropertyArray{ ResourceShareResourcePropertyArgs{...} }
+type ResourceShareResourcePropertyArrayInput interface {
+	pulumi.Input
+
+	ToResourceShareResourcePropertyArrayOutput() ResourceShareResourcePropertyArrayOutput
+	ToResourceShareResourcePropertyArrayOutputWithContext(context.Context) ResourceShareResourcePropertyArrayOutput
+}
+
+type ResourceShareResourcePropertyArray []ResourceShareResourcePropertyInput
+
+func (ResourceShareResourcePropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceShareResourceProperty)(nil)).Elem()
+}
+
+func (i ResourceShareResourcePropertyArray) ToResourceShareResourcePropertyArrayOutput() ResourceShareResourcePropertyArrayOutput {
+	return i.ToResourceShareResourcePropertyArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceShareResourcePropertyArray) ToResourceShareResourcePropertyArrayOutputWithContext(ctx context.Context) ResourceShareResourcePropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceShareResourcePropertyArrayOutput)
+}
+
+type ResourceShareResourcePropertyOutput struct{ *pulumi.OutputState }
+
+func (ResourceShareResourcePropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceShareResourceProperty)(nil)).Elem()
+}
+
+func (o ResourceShareResourcePropertyOutput) ToResourceShareResourcePropertyOutput() ResourceShareResourcePropertyOutput {
+	return o
+}
+
+func (o ResourceShareResourcePropertyOutput) ToResourceShareResourcePropertyOutputWithContext(ctx context.Context) ResourceShareResourcePropertyOutput {
+	return o
+}
+
+// The resource property.
+func (o ResourceShareResourcePropertyOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceShareResourceProperty) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the resource.
+func (o ResourceShareResourcePropertyOutput) ResourceArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceShareResourceProperty) *string { return v.ResourceArn }).(pulumi.StringPtrOutput)
+}
+
+type ResourceShareResourcePropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceShareResourcePropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceShareResourceProperty)(nil)).Elem()
+}
+
+func (o ResourceShareResourcePropertyArrayOutput) ToResourceShareResourcePropertyArrayOutput() ResourceShareResourcePropertyArrayOutput {
+	return o
+}
+
+func (o ResourceShareResourcePropertyArrayOutput) ToResourceShareResourcePropertyArrayOutputWithContext(ctx context.Context) ResourceShareResourcePropertyArrayOutput {
+	return o
+}
+
+func (o ResourceShareResourcePropertyArrayOutput) Index(i pulumi.IntInput) ResourceShareResourcePropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceShareResourceProperty {
+		return vs[0].([]ResourceShareResourceProperty)[vs[1].(int)]
+	}).(ResourceShareResourcePropertyOutput)
+}
+
 type GetAccountDeletionCheckTaskAbandonAbleCheck struct {
 	// The ID of the check item.
 	CheckId string `pulumi:"checkId"`
@@ -4798,6 +4904,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupRegionStatusArrayInput)(nil)).Elem(), ResourceGroupRegionStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceShareResourceInput)(nil)).Elem(), ResourceShareResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceShareResourceArrayInput)(nil)).Elem(), ResourceShareResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceShareResourcePropertyInput)(nil)).Elem(), ResourceShareResourcePropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceShareResourcePropertyArrayInput)(nil)).Elem(), ResourceShareResourcePropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountDeletionCheckTaskAbandonAbleCheckInput)(nil)).Elem(), GetAccountDeletionCheckTaskAbandonAbleCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountDeletionCheckTaskAbandonAbleCheckArrayInput)(nil)).Elem(), GetAccountDeletionCheckTaskAbandonAbleCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountDeletionCheckTaskNotAllowReasonInput)(nil)).Elem(), GetAccountDeletionCheckTaskNotAllowReasonArgs{})
@@ -4860,6 +4968,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusArrayOutput{})
 	pulumi.RegisterOutputType(ResourceShareResourceOutput{})
 	pulumi.RegisterOutputType(ResourceShareResourceArrayOutput{})
+	pulumi.RegisterOutputType(ResourceShareResourcePropertyOutput{})
+	pulumi.RegisterOutputType(ResourceShareResourcePropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountDeletionCheckTaskAbandonAbleCheckOutput{})
 	pulumi.RegisterOutputType(GetAccountDeletionCheckTaskAbandonAbleCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountDeletionCheckTaskNotAllowReasonOutput{})

@@ -36,8 +36,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.vpc.VpcFunctions;
  * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
- * import com.pulumi.random.Integer;
- * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -53,6 +51,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.std.inputs.SplitArgs;
  * import com.pulumi.alicloud.cs.KubernetesPolicyInstance;
  * import com.pulumi.alicloud.cs.KubernetesPolicyInstanceArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import com.pulumi.codegen.internal.KeyedValue;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -72,16 +71,10 @@ import javax.annotation.Nullable;
  *         final var vswitchCidrs = config.get("vswitchCidrs").orElse(List.of(        
  *             "10.1.0.0/16",
  *             "10.2.0.0/16"));
- *         final var clusterName = config.get("clusterName").orElse("example-create-cluster");
+ *         final var clusterName = config.get("clusterName").orElse("terraform-example-");
  *         final var podCidr = config.get("podCidr").orElse("172.16.0.0/16");
  *         final var serviceCidr = config.get("serviceCidr").orElse("192.168.0.0/16");
- *         final var policyName = config.get("policyName").orElse("ACKPSPHostNetworkingPorts");
  *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
- *             .build());
- * 
- *         var default_ = new Integer("default", IntegerArgs.builder()
- *             .max(99999)
- *             .min(10000)
  *             .build());
  * 
  *         var createVPC = new Network("createVPC", NetworkArgs.builder()
@@ -99,8 +92,8 @@ import javax.annotation.Nullable;
  *         
  * }
  *         var createCluster = new ManagedKubernetes("createCluster", ManagedKubernetesArgs.builder()
- *             .name(String.format("%s-%s", clusterName,default_.result()))
- *             .clusterSpec("ack.pro.small")
+ *             .namePrefix(clusterName)
+ *             .clusterSpec("ack.standard")
  *             .profile("Default")
  *             .vswitchIds(StdFunctions.join(JoinArgs.builder()
  *                 .separator(",")
@@ -135,16 +128,59 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultKubernetesPolicyInstance = new KubernetesPolicyInstance("defaultKubernetesPolicyInstance", KubernetesPolicyInstanceArgs.builder()
+ *         var base = new KubernetesPolicyInstance("base", KubernetesPolicyInstanceArgs.builder()
  *             .clusterId(createCluster.id())
- *             .policyName(policyName)
+ *             .policyName("ACKPSPReadOnlyRootFilesystem")
+ *             .build());
+ * 
+ *         var string = new KubernetesPolicyInstance("string", KubernetesPolicyInstanceArgs.builder()
+ *             .clusterId(createCluster.id())
+ *             .policyName("ACKPVSizeConstraint")
  *             .action("deny")
+ *             .parameters(Map.of("maxSize", "60Gi"))
+ *             .build());
+ * 
+ *         var intBool = new KubernetesPolicyInstance("intBool", KubernetesPolicyInstanceArgs.builder()
+ *             .clusterId(createCluster.id())
+ *             .policyName("ACKPSPHostNetworkingPorts")
  *             .namespaces("test")
  *             .parameters(Map.ofEntries(
  *                 Map.entry("hostNetwork", "true"),
  *                 Map.entry("min", "20"),
  *                 Map.entry("max", "200")
  *             ))
+ *             .build());
+ * 
+ *         var array = new KubernetesPolicyInstance("array", KubernetesPolicyInstanceArgs.builder()
+ *             .clusterId(createCluster.id())
+ *             .policyName("ACKAllowedRepos")
+ *             .parameters(Map.of("repos", serializeJson(
+ *                 jsonArray(
+ *                     "docker.io/library/nginx", 
+ *                     "docker.io/library/redis"
+ *                 ))))
+ *             .build());
+ * 
+ *         var object = new KubernetesPolicyInstance("object", KubernetesPolicyInstanceArgs.builder()
+ *             .clusterId(createCluster.id())
+ *             .policyName("ACKRequiredLabels")
+ *             .action("warn")
+ *             .namespaces(            
+ *                 "test1",
+ *                 "test2",
+ *                 "test3")
+ *             .parameters(Map.of("labels", serializeJson(
+ *                 jsonArray(
+ *                     jsonObject(
+ *                         jsonProperty("key", "test"),
+ *                         jsonProperty("allowedRegex", "^test.*$")
+ *                     ), 
+ *                     jsonObject(
+ *                         jsonProperty("key", "env"),
+ *                         jsonProperty("allowedRegex", "^(dev|prod)$"),
+ *                         jsonProperty("optional", false)
+ *                     )
+ *                 ))))
  *             .build());
  * 
  *     }
@@ -170,14 +206,14 @@ public class KubernetesPolicyInstance extends com.pulumi.resources.CustomResourc
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> action;
+    private Output<String> action;
 
     /**
      * @return Policy Governance Implementation Actions
      * 
      */
-    public Output<Optional<String>> action() {
-        return Codegen.optional(this.action);
+    public Output<String> action() {
+        return this.action;
     }
     /**
      * Target cluster ID

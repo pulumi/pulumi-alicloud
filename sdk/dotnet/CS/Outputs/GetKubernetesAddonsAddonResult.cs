@@ -33,6 +33,10 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// Whether the addon is a system addon.
         /// </summary>
         public readonly bool Required;
+        /// <summary>
+        /// (Available since v1.274.0) A set of actions supported by the addon, such as `Install`, `Upgrade`, `Modify`, `Uninstall`.
+        /// </summary>
+        public readonly ImmutableArray<string> SupportedActions;
 
         [OutputConstructor]
         private GetKubernetesAddonsAddonResult(
@@ -44,13 +48,16 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string nextVersion,
 
-            bool required)
+            bool required,
+
+            ImmutableArray<string> supportedActions)
         {
             CurrentConfig = currentConfig;
             CurrentVersion = currentVersion;
             Name = name;
             NextVersion = nextVersion;
             Required = required;
+            SupportedActions = supportedActions;
         }
     }
 }

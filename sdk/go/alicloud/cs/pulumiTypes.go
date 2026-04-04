@@ -10316,6 +10316,8 @@ type GetKubernetesAddonsAddon struct {
 	NextVersion string `pulumi:"nextVersion"`
 	// Whether the addon is a system addon.
 	Required bool `pulumi:"required"`
+	// (Available since v1.274.0) A set of actions supported by the addon, such as `Install`, `Upgrade`, `Modify`, `Uninstall`.
+	SupportedActions []string `pulumi:"supportedActions"`
 }
 
 // GetKubernetesAddonsAddonInput is an input type that accepts GetKubernetesAddonsAddonArgs and GetKubernetesAddonsAddonOutput values.
@@ -10340,6 +10342,8 @@ type GetKubernetesAddonsAddonArgs struct {
 	NextVersion pulumi.StringInput `pulumi:"nextVersion"`
 	// Whether the addon is a system addon.
 	Required pulumi.BoolInput `pulumi:"required"`
+	// (Available since v1.274.0) A set of actions supported by the addon, such as `Install`, `Upgrade`, `Modify`, `Uninstall`.
+	SupportedActions pulumi.StringArrayInput `pulumi:"supportedActions"`
 }
 
 func (GetKubernetesAddonsAddonArgs) ElementType() reflect.Type {
@@ -10416,6 +10420,11 @@ func (o GetKubernetesAddonsAddonOutput) NextVersion() pulumi.StringOutput {
 // Whether the addon is a system addon.
 func (o GetKubernetesAddonsAddonOutput) Required() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKubernetesAddonsAddon) bool { return v.Required }).(pulumi.BoolOutput)
+}
+
+// (Available since v1.274.0) A set of actions supported by the addon, such as `Install`, `Upgrade`, `Modify`, `Uninstall`.
+func (o GetKubernetesAddonsAddonOutput) SupportedActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesAddonsAddon) []string { return v.SupportedActions }).(pulumi.StringArrayOutput)
 }
 
 type GetKubernetesAddonsAddonArrayOutput struct{ *pulumi.OutputState }

@@ -13,6 +13,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -79,6 +80,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
  * import com.pulumi.alicloud.amqp.Instance;
  * import com.pulumi.alicloud.amqp.InstanceArgs;
  * import java.util.List;
@@ -96,9 +102,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Instance("default", InstanceArgs.builder()
+ *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("default-NODELETING")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(default_.ids()[0])
+ *             .build());
+ * 
+ *         final var defaultGetSecurityGroups = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+ *             .vpcId(default_.ids()[0])
+ *             .nameRegex("default-NODELETING")
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .instanceName(name)
  *             .paymentType("PayAsYouGo")
+ *             .vpcId(defaultGetSwitches.vpcId())
+ *             .vswitchIds(            
+ *                 defaultGetSwitches.ids()[0],
+ *                 defaultGetSwitches.ids()[1])
+ *             .securityGroupId(defaultGetSecurityGroups.ids()[0])
  *             .serverlessChargeType("onDemand")
  *             .build());
  * 
@@ -205,6 +229,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> instanceType() {
         return this.instanceType;
+    }
+    /**
+     * The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+     * 
+     */
+    @Export(name="listenerMode", refs={String.class}, tree="[0]")
+    private Output<String> listenerMode;
+
+    /**
+     * @return The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
+     * 
+     */
+    public Output<String> listenerMode() {
+        return this.listenerMode;
     }
     /**
      * The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
@@ -383,6 +421,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.renewalStatus;
     }
     /**
+     * The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+     * 
+     */
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> securityGroupId;
+
+    /**
+     * @return The ID of the security group. **NOTE:** From version 1.274.0, `securityGroupId` is required.
+     * 
+     */
+    public Output<Optional<String>> securityGroupId() {
+        return Codegen.optional(this.securityGroupId);
+    }
+    /**
      * The billing type of the serverless instance. Value: onDemand.
      * 
      */
@@ -465,6 +517,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> tracingStorageTime() {
         return this.tracingStorageTime;
+    }
+    /**
+     * The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+     * 
+     */
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vpcId;
+
+    /**
+     * @return The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
+     * 
+     */
+    public Output<Optional<String>> vpcId() {
+        return Codegen.optional(this.vpcId);
+    }
+    /**
+     * The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+     * 
+     */
+    @Export(name="vswitchIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> vswitchIds;
+
+    /**
+     * @return The IDs of the vSwitches with which the instance is associated. `vswitchIds` only supports setting two values. **NOTE:** From version 1.274.0, `vswitchIds` is required.
+     * 
+     */
+    public Output<Optional<List<String>>> vswitchIds() {
+        return Codegen.optional(this.vswitchIds);
     }
 
     /**

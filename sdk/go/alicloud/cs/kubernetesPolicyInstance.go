@@ -35,7 +35,7 @@ type KubernetesPolicyInstance struct {
 	pulumi.CustomResourceState
 
 	// Policy Governance Implementation Actions
-	Action pulumi.StringPtrOutput `pulumi:"action"`
+	Action pulumi.StringOutput `pulumi:"action"`
 	// Target cluster ID
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// Rule Instance Name
@@ -232,8 +232,8 @@ func (o KubernetesPolicyInstanceOutput) ToKubernetesPolicyInstanceOutputWithCont
 }
 
 // Policy Governance Implementation Actions
-func (o KubernetesPolicyInstanceOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesPolicyInstance) pulumi.StringPtrOutput { return v.Action }).(pulumi.StringPtrOutput)
+func (o KubernetesPolicyInstanceOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesPolicyInstance) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
 // Target cluster ID

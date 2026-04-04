@@ -108,6 +108,21 @@ public final class LakeAccountArgs extends com.pulumi.resources.ResourceArgs {
         return this.dbClusterId;
     }
 
+    /**
+     * List of Alibaba Cloud RAM user IDs to bind.
+     * 
+     */
+    @Import(name="ramUserLists")
+    private @Nullable Output<List<String>> ramUserLists;
+
+    /**
+     * @return List of Alibaba Cloud RAM user IDs to bind.
+     * 
+     */
+    public Optional<Output<List<String>>> ramUserLists() {
+        return Optional.ofNullable(this.ramUserLists);
+    }
+
     private LakeAccountArgs() {}
 
     private LakeAccountArgs(LakeAccountArgs $) {
@@ -117,6 +132,7 @@ public final class LakeAccountArgs extends com.pulumi.resources.ResourceArgs {
         this.accountPrivileges = $.accountPrivileges;
         this.accountType = $.accountType;
         this.dbClusterId = $.dbClusterId;
+        this.ramUserLists = $.ramUserLists;
     }
 
     public static Builder builder() {
@@ -271,6 +287,37 @@ public final class LakeAccountArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dbClusterId(String dbClusterId) {
             return dbClusterId(Output.of(dbClusterId));
+        }
+
+        /**
+         * @param ramUserLists List of Alibaba Cloud RAM user IDs to bind.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ramUserLists(@Nullable Output<List<String>> ramUserLists) {
+            $.ramUserLists = ramUserLists;
+            return this;
+        }
+
+        /**
+         * @param ramUserLists List of Alibaba Cloud RAM user IDs to bind.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ramUserLists(List<String> ramUserLists) {
+            return ramUserLists(Output.of(ramUserLists));
+        }
+
+        /**
+         * @param ramUserLists List of Alibaba Cloud RAM user IDs to bind.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ramUserLists(String... ramUserLists) {
+            return ramUserLists(List.of(ramUserLists));
         }
 
         public LakeAccountArgs build() {

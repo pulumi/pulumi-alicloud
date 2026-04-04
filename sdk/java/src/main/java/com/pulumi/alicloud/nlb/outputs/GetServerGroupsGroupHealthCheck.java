@@ -39,6 +39,11 @@ public final class GetServerGroupsGroupHealthCheck {
      */
     private List<String> healthCheckHttpCodes;
     /**
+     * @return (Available since v1.274.0) The HTTP protocol version for health checks.
+     * 
+     */
+    private String healthCheckHttpVersion;
+    /**
      * @return The interval between two consecutive health checks.
      * 
      */
@@ -106,6 +111,13 @@ public final class GetServerGroupsGroupHealthCheck {
         return this.healthCheckHttpCodes;
     }
     /**
+     * @return (Available since v1.274.0) The HTTP protocol version for health checks.
+     * 
+     */
+    public String healthCheckHttpVersion() {
+        return this.healthCheckHttpVersion;
+    }
+    /**
      * @return The interval between two consecutive health checks.
      * 
      */
@@ -162,6 +174,7 @@ public final class GetServerGroupsGroupHealthCheck {
         private String healthCheckDomain;
         private Boolean healthCheckEnabled;
         private List<String> healthCheckHttpCodes;
+        private String healthCheckHttpVersion;
         private Integer healthCheckInterval;
         private String healthCheckType;
         private String healthCheckUrl;
@@ -176,6 +189,7 @@ public final class GetServerGroupsGroupHealthCheck {
     	      this.healthCheckDomain = defaults.healthCheckDomain;
     	      this.healthCheckEnabled = defaults.healthCheckEnabled;
     	      this.healthCheckHttpCodes = defaults.healthCheckHttpCodes;
+    	      this.healthCheckHttpVersion = defaults.healthCheckHttpVersion;
     	      this.healthCheckInterval = defaults.healthCheckInterval;
     	      this.healthCheckType = defaults.healthCheckType;
     	      this.healthCheckUrl = defaults.healthCheckUrl;
@@ -226,6 +240,14 @@ public final class GetServerGroupsGroupHealthCheck {
         }
         public Builder healthCheckHttpCodes(String... healthCheckHttpCodes) {
             return healthCheckHttpCodes(List.of(healthCheckHttpCodes));
+        }
+        @CustomType.Setter
+        public Builder healthCheckHttpVersion(String healthCheckHttpVersion) {
+            if (healthCheckHttpVersion == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupHealthCheck", "healthCheckHttpVersion");
+            }
+            this.healthCheckHttpVersion = healthCheckHttpVersion;
+            return this;
         }
         @CustomType.Setter
         public Builder healthCheckInterval(Integer healthCheckInterval) {
@@ -282,6 +304,7 @@ public final class GetServerGroupsGroupHealthCheck {
             _resultValue.healthCheckDomain = healthCheckDomain;
             _resultValue.healthCheckEnabled = healthCheckEnabled;
             _resultValue.healthCheckHttpCodes = healthCheckHttpCodes;
+            _resultValue.healthCheckHttpVersion = healthCheckHttpVersion;
             _resultValue.healthCheckInterval = healthCheckInterval;
             _resultValue.healthCheckType = healthCheckType;
             _resultValue.healthCheckUrl = healthCheckUrl;
