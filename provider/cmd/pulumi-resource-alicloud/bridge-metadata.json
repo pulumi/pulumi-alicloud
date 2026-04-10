@@ -9027,6 +9027,9 @@
             "alicloud_rds_custom_disk": {
                 "current": "alicloud:rds/customDisk:CustomDisk"
             },
+            "alicloud_rds_custom_disk_attachment": {
+                "current": "alicloud:rds/customDiskAttachment:CustomDiskAttachment"
+            },
             "alicloud_rds_db_instance_endpoint": {
                 "current": "alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint",
                 "fields": {
