@@ -144,8 +144,10 @@ export class Custom extends pulumi.CustomResource {
     declare public readonly createMode: pulumi.Output<string | undefined>;
     /**
      * Data disk See `dataDisk` below.
+     *
+     * ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
      */
-    declare public readonly dataDisks: pulumi.Output<outputs.rds.CustomDataDisk[] | undefined>;
+    declare public readonly dataDisks: pulumi.Output<outputs.rds.CustomDataDisk[]>;
     /**
      * The ID of the deployment set.
      */
@@ -391,6 +393,8 @@ export interface CustomState {
     createMode?: pulumi.Input<string>;
     /**
      * Data disk See `dataDisk` below.
+     *
+     * ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.rds.CustomDataDisk>[]>;
     /**
@@ -544,6 +548,8 @@ export interface CustomArgs {
     createMode?: pulumi.Input<string>;
     /**
      * Data disk See `dataDisk` below.
+     *
+     * ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.rds.CustomDataDisk>[]>;
     /**

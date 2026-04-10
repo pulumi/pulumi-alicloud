@@ -7579,6 +7579,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "rds/customDiskAttachment",
+  "fqn": "pulumi_alicloud.rds",
+  "classes": {
+   "alicloud:rds/customDiskAttachment:CustomDiskAttachment": "CustomDiskAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "rds/database",
   "fqn": "pulumi_alicloud.rds",
   "classes": {

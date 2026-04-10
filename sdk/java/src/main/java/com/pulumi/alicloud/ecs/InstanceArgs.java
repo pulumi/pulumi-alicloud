@@ -26,24 +26,24 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public ip address for an instance.
+     * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      * 
      * @deprecated
-     * Field &#39;allocate_public_ip&#39; has been deprecated from provider version 1.6.1. Setting &#39;internet_max_bandwidth_out&#39; larger than 0 will allocate public ip for instance.
+     * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      * 
      */
-    @Deprecated /* Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance. */
+    @Deprecated /* Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance. */
     @Import(name="allocatePublicIp")
     private @Nullable Output<Boolean> allocatePublicIp;
 
     /**
-     * @return It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public ip address for an instance.
+     * @return Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      * 
      * @deprecated
-     * Field &#39;allocate_public_ip&#39; has been deprecated from provider version 1.6.1. Setting &#39;internet_max_bandwidth_out&#39; larger than 0 will allocate public ip for instance.
+     * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      * 
      */
-    @Deprecated /* Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance. */
+    @Deprecated /* Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance. */
     public Optional<Output<Boolean>> allocatePublicIp() {
         return Optional.ofNullable(this.allocatePublicIp);
     }
@@ -104,40 +104,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The options of cpu. See `cpuOptions` below.
      * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
-     * 
      */
     @Import(name="cpuOptions")
     private @Nullable Output<InstanceCpuOptionsArgs> cpuOptions;
 
     /**
      * @return The options of cpu. See `cpuOptions` below.
-     * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Optional<Output<InstanceCpuOptionsArgs>> cpuOptions() {
@@ -938,16 +910,52 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead.
+     * 
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
+     * 
+     * @deprecated
+     * Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
      * 
      */
+    @Deprecated /* Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead. */
     @Import(name="roleName")
     private @Nullable Output<String> roleName;
 
     /**
-     * @return The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+     * @return The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead.
+     * 
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
+     * 
+     * @deprecated
+     * Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
      * 
      */
+    @Deprecated /* Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead. */
     public Optional<Output<String>> roleName() {
         return Optional.ofNullable(this.roleName);
     }
@@ -1029,6 +1037,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> spotDuration() {
         return Optional.ofNullable(this.spotDuration);
+    }
+
+    /**
+     * The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+     * - `Terminate`: The instance is released.
+     * - `Stop`: The instance is stopped in economical mode.
+     * 
+     */
+    @Import(name="spotInterruptionBehavior")
+    private @Nullable Output<String> spotInterruptionBehavior;
+
+    /**
+     * @return The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+     * - `Terminate`: The instance is released.
+     * - `Stop`: The instance is stopped in economical mode.
+     * 
+     */
+    public Optional<Output<String>> spotInterruptionBehavior() {
+        return Optional.ofNullable(this.spotInterruptionBehavior);
     }
 
     /**
@@ -1437,6 +1464,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.securityEnhancementStrategy = $.securityEnhancementStrategy;
         this.securityGroups = $.securityGroups;
         this.spotDuration = $.spotDuration;
+        this.spotInterruptionBehavior = $.spotInterruptionBehavior;
         this.spotPriceLimit = $.spotPriceLimit;
         this.spotStrategy = $.spotStrategy;
         this.status = $.status;
@@ -1479,30 +1507,30 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allocatePublicIp It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public ip address for an instance.
+         * @param allocatePublicIp Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;allocate_public_ip&#39; has been deprecated from provider version 1.6.1. Setting &#39;internet_max_bandwidth_out&#39; larger than 0 will allocate public ip for instance.
+         * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
          * 
          */
-        @Deprecated /* Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance. */
+        @Deprecated /* Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance. */
         public Builder allocatePublicIp(@Nullable Output<Boolean> allocatePublicIp) {
             $.allocatePublicIp = allocatePublicIp;
             return this;
         }
 
         /**
-         * @param allocatePublicIp It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public ip address for an instance.
+         * @param allocatePublicIp Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;allocate_public_ip&#39; has been deprecated from provider version 1.6.1. Setting &#39;internet_max_bandwidth_out&#39; larger than 0 will allocate public ip for instance.
+         * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
          * 
          */
-        @Deprecated /* Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance. */
+        @Deprecated /* Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance. */
         public Builder allocatePublicIp(Boolean allocatePublicIp) {
             return allocatePublicIp(Output.of(allocatePublicIp));
         }
@@ -1581,20 +1609,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param cpuOptions The options of cpu. See `cpuOptions` below.
          * 
-         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-         * 
-         * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
-         * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-         * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-         * 
-         * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
-         * 
          * @return builder
          * 
          */
@@ -1605,20 +1619,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cpuOptions The options of cpu. See `cpuOptions` below.
-         * 
-         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-         * 
-         * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
-         * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-         * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-         * 
-         * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
          * 
          * @return builder
          * 
@@ -2735,22 +2735,58 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleName The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+         * @param roleName The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead.
+         * 
+         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+         * 
+         * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
+         * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+         * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+         * 
+         * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
+         * 
          */
+        @Deprecated /* Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead. */
         public Builder roleName(@Nullable Output<String> roleName) {
             $.roleName = roleName;
             return this;
         }
 
         /**
-         * @param roleName The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+         * @param roleName The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead.
+         * 
+         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+         * 
+         * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
+         * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+         * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+         * 
+         * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
+         * 
          */
+        @Deprecated /* Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead. */
         public Builder roleName(String roleName) {
             return roleName(Output.of(roleName));
         }
@@ -2882,6 +2918,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder spotDuration(Integer spotDuration) {
             return spotDuration(Output.of(spotDuration));
+        }
+
+        /**
+         * @param spotInterruptionBehavior The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+         * - `Terminate`: The instance is released.
+         * - `Stop`: The instance is stopped in economical mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotInterruptionBehavior(@Nullable Output<String> spotInterruptionBehavior) {
+            $.spotInterruptionBehavior = spotInterruptionBehavior;
+            return this;
+        }
+
+        /**
+         * @param spotInterruptionBehavior The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+         * - `Terminate`: The instance is released.
+         * - `Stop`: The instance is stopped in economical mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotInterruptionBehavior(String spotInterruptionBehavior) {
+            return spotInterruptionBehavior(Output.of(spotInterruptionBehavior));
         }
 
         /**

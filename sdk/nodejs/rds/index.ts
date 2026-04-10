@@ -45,6 +45,11 @@ export type CustomDisk = import("./customDisk").CustomDisk;
 export const CustomDisk: typeof import("./customDisk").CustomDisk = null as any;
 utilities.lazyLoad(exports, ["CustomDisk"], () => require("./customDisk"));
 
+export { CustomDiskAttachmentArgs, CustomDiskAttachmentState } from "./customDiskAttachment";
+export type CustomDiskAttachment = import("./customDiskAttachment").CustomDiskAttachment;
+export const CustomDiskAttachment: typeof import("./customDiskAttachment").CustomDiskAttachment = null as any;
+utilities.lazyLoad(exports, ["CustomDiskAttachment"], () => require("./customDiskAttachment"));
+
 export { DatabaseArgs, DatabaseState } from "./database";
 export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
@@ -231,6 +236,8 @@ const _module = {
                 return new CustomDeploymentSet(name, <any>undefined, { urn })
             case "alicloud:rds/customDisk:CustomDisk":
                 return new CustomDisk(name, <any>undefined, { urn })
+            case "alicloud:rds/customDiskAttachment:CustomDiskAttachment":
+                return new CustomDiskAttachment(name, <any>undefined, { urn })
             case "alicloud:rds/database:Database":
                 return new Database(name, <any>undefined, { urn })
             case "alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint":
@@ -280,6 +287,7 @@ pulumi.runtime.registerResourceModule("alicloud", "rds/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/custom", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/customDeploymentSet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/customDisk", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/customDiskAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/database", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/dbInstanceEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/dbInstanceEndpointAddress", _module)

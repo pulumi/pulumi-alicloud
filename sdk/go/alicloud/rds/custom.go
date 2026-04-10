@@ -184,6 +184,8 @@ type Custom struct {
 	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
 	CreateMode pulumi.StringPtrOutput `pulumi:"createMode"`
 	// Data disk See `dataDisk` below.
+	//
+	// ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
 	DataDisks CustomDataDiskArrayOutput `pulumi:"dataDisks"`
 	// The ID of the deployment set.
 	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
@@ -301,6 +303,8 @@ type customState struct {
 	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
 	CreateMode *string `pulumi:"createMode"`
 	// Data disk See `dataDisk` below.
+	//
+	// ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
 	DataDisks []CustomDataDisk `pulumi:"dataDisks"`
 	// The ID of the deployment set.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
@@ -383,6 +387,8 @@ type CustomState struct {
 	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
 	CreateMode pulumi.StringPtrInput
 	// Data disk See `dataDisk` below.
+	//
+	// ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
 	DataDisks CustomDataDiskArrayInput
 	// The ID of the deployment set.
 	DeploymentSetId pulumi.StringPtrInput
@@ -469,6 +475,8 @@ type customArgs struct {
 	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
 	CreateMode *string `pulumi:"createMode"`
 	// Data disk See `dataDisk` below.
+	//
+	// ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
 	DataDisks []CustomDataDisk `pulumi:"dataDisks"`
 	// The ID of the deployment set.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
@@ -550,6 +558,8 @@ type CustomArgs struct {
 	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
 	CreateMode pulumi.StringPtrInput
 	// Data disk See `dataDisk` below.
+	//
+	// ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
 	DataDisks CustomDataDiskArrayInput
 	// The ID of the deployment set.
 	DeploymentSetId pulumi.StringPtrInput
@@ -731,6 +741,8 @@ func (o CustomOutput) CreateMode() pulumi.StringPtrOutput {
 }
 
 // Data disk See `dataDisk` below.
+//
+// ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
 func (o CustomOutput) DataDisks() CustomDataDiskArrayOutput {
 	return o.ApplyT(func(v *Custom) CustomDataDiskArrayOutput { return v.DataDisks }).(CustomDataDiskArrayOutput)
 }

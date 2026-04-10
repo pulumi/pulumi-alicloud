@@ -230,16 +230,20 @@ public class Custom extends com.pulumi.resources.CustomResource {
     /**
      * Data disk See `dataDisk` below.
      * 
+     * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+     * 
      */
     @Export(name="dataDisks", refs={List.class,CustomDataDisk.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<CustomDataDisk>> dataDisks;
+    private Output<List<CustomDataDisk>> dataDisks;
 
     /**
      * @return Data disk See `dataDisk` below.
      * 
+     * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+     * 
      */
-    public Output<Optional<List<CustomDataDisk>>> dataDisks() {
-        return Codegen.optional(this.dataDisks);
+    public Output<List<CustomDataDisk>> dataDisks() {
+        return this.dataDisks;
     }
     /**
      * The ID of the deployment set.

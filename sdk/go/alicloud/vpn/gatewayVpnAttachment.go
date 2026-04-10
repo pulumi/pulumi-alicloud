@@ -52,45 +52,59 @@ import (
 //				return err
 //			}
 //			_, err = vpn.NewGatewayVpnAttachment(ctx, "default", &vpn.GatewayVpnAttachmentArgs{
-//				CustomerGatewayId: _default.ID(),
+//				VpnAttachmentName: pulumi.String(pulumi.String(name)),
 //				NetworkType:       pulumi.String("public"),
 //				LocalSubnet:       pulumi.String("0.0.0.0/0"),
 //				RemoteSubnet:      pulumi.String("0.0.0.0/0"),
 //				EffectImmediately: pulumi.Bool(false),
-//				IkeConfig: &vpn.GatewayVpnAttachmentIkeConfigArgs{
-//					IkeAuthAlg:  pulumi.String("md5"),
-//					IkeEncAlg:   pulumi.String("des"),
-//					IkeVersion:  pulumi.String("ikev2"),
-//					IkeMode:     pulumi.String("main"),
-//					IkeLifetime: pulumi.Int(86400),
-//					Psk:         pulumi.String("tf-testvpn2"),
-//					IkePfs:      pulumi.String("group1"),
-//					RemoteId:    pulumi.String("testbob2"),
-//					LocalId:     pulumi.String("testalice2"),
+//				TunnelOptionsSpecifications: vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArray{
+//					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
+//						TunnelIndex:        pulumi.Int(1),
+//						CustomerGatewayId:  _default.ID(),
+//						EnableDpd:          pulumi.Bool(true),
+//						EnableNatTraversal: pulumi.Bool(true),
+//						TunnelIkeConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{
+//							IkeVersion:  pulumi.String("ikev2"),
+//							IkeMode:     pulumi.String("main"),
+//							IkeAuthAlg:  pulumi.String("sha256"),
+//							IkeEncAlg:   pulumi.String("aes"),
+//							IkePfs:      pulumi.String("group2"),
+//							IkeLifetime: pulumi.Int(86400),
+//							Psk:         pulumi.String("tf-example-psk1"),
+//							LocalId:     pulumi.String("42.104.22.210"),
+//							RemoteId:    pulumi.String("42.104.22.210"),
+//						},
+//						TunnelIpsecConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{
+//							IpsecAuthAlg:  pulumi.String("sha256"),
+//							IpsecEncAlg:   pulumi.String("aes"),
+//							IpsecPfs:      pulumi.String("group2"),
+//							IpsecLifetime: pulumi.Int(86400),
+//						},
+//					},
+//					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
+//						TunnelIndex:        pulumi.Int(2),
+//						CustomerGatewayId:  _default.ID(),
+//						EnableDpd:          pulumi.Bool(true),
+//						EnableNatTraversal: pulumi.Bool(true),
+//						TunnelIkeConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{
+//							IkeVersion:  pulumi.String("ikev2"),
+//							IkeMode:     pulumi.String("main"),
+//							IkeAuthAlg:  pulumi.String("sha256"),
+//							IkeEncAlg:   pulumi.String("aes"),
+//							IkePfs:      pulumi.String("group2"),
+//							IkeLifetime: pulumi.Int(86400),
+//							Psk:         pulumi.String("tf-example-psk2"),
+//							LocalId:     pulumi.String("42.104.22.210"),
+//							RemoteId:    pulumi.String("42.104.22.210"),
+//						},
+//						TunnelIpsecConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{
+//							IpsecAuthAlg:  pulumi.String("sha256"),
+//							IpsecEncAlg:   pulumi.String("aes"),
+//							IpsecPfs:      pulumi.String("group2"),
+//							IpsecLifetime: pulumi.Int(86400),
+//						},
+//					},
 //				},
-//				IpsecConfig: &vpn.GatewayVpnAttachmentIpsecConfigArgs{
-//					IpsecPfs:      pulumi.String("group5"),
-//					IpsecEncAlg:   pulumi.String("des"),
-//					IpsecAuthAlg:  pulumi.String("md5"),
-//					IpsecLifetime: pulumi.Int(86400),
-//				},
-//				BgpConfig: &vpn.GatewayVpnAttachmentBgpConfigArgs{
-//					Enable:     pulumi.Bool(true),
-//					LocalAsn:   pulumi.Int(45014),
-//					TunnelCidr: pulumi.String("169.254.11.0/30"),
-//					LocalBgpIp: pulumi.String("169.254.11.1"),
-//				},
-//				HealthCheckConfig: &vpn.GatewayVpnAttachmentHealthCheckConfigArgs{
-//					Enable:   pulumi.Bool(true),
-//					Sip:      pulumi.String("192.168.1.1"),
-//					Dip:      pulumi.String("10.0.0.1"),
-//					Interval: pulumi.Int(10),
-//					Retry:    pulumi.Int(10),
-//					Policy:   pulumi.String("revoke_route"),
-//				},
-//				EnableDpd:          pulumi.Bool(true),
-//				EnableNatTraversal: pulumi.Bool(true),
-//				VpnAttachmentName:  pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
 //				return err
