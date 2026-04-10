@@ -31,105 +31,106 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-// Max: 99999,
-// Min: 10000,
-// })
-// if err != nil {
-// return err
-// }
-// cfg := config.New(ctx, "")
-// name := "tfaccsls62147";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// projectName := "project-for-logtail-terraform";
-// if param := cfg.Get("projectName"); param != ""{
-// projectName = param
-// }
-// defaultuA28zS, err := log.NewProject(ctx, "defaultuA28zS", &log.ProjectArgs{
-// ProjectName: pulumi.String(pulumi.String(projectName)),
-// })
-// if err != nil {
-// return err
-// }
-// tmpJSON0, err := json.Marshal(map[string]interface{}{
-// "adjustTimezone": false,
-// "delayAlarmBytes": 0,
-// "delaySkipBytes": 0,
-// "discardNonUtf8": false,
-// "discardUnmatch": true,
-// "dockerFile": false,
-// "enableRawLog": false,
-// "enableTag": false,
-// "fileEncoding": "utf8",
-// "filePattern": "access*.log",
-// "filterKey": []string{
-// "key1",
-// },
-// "filterRegex": []string{
-// "regex1",
-// },
-// "key": []string{
-// "key1",
-// "key2",
-// },
-// "localStorage": true,
-// "logBeginRegex": ".*",
-// "logPath": "/var/log/httpd",
-// "logTimezone": "",
-// "logType": "common_reg_log",
-// "maxDepth": 1000,
-// "maxSendRate": -1,
-// "mergeType": "topic",
-// "preserve": true,
-// "preserveDepth": 0,
-// "priority": 0,
-// "regex": "(w+)(s+)",
-// "sendRateExpire": 0,
-// "sensitive_keys": []interface{}{
-// },
-// "tailExisted": false,
-// "timeFormat": "%Y/%m/%d %H:%M:%S",
-// "timeKey": "time",
-// "topicFormat": "none",
-// })
-// if err != nil {
-// return err
-// }
-// json0 := string(tmpJSON0)
-// defaultLogtailConfig, err := sls.NewLogtailConfig(ctx, "default", &sls.LogtailConfigArgs{
-// ProjectName: defaultuA28zS.ProjectName,
-// OutputDetail: &sls.LogtailConfigOutputDetailArgs{
-// Endpoint: pulumi.String("cn-hangzhou-intranet.log.aliyuncs.com"),
-// Region: pulumi.String("cn-hangzhou"),
-// LogstoreName: pulumi.String("example"),
-// },
-// OutputType: pulumi.String("LogService"),
-// InputDetail: pulumi.String(pulumi.String(json0)),
-// LogtailConfigName: pulumi.String("tfaccsls62147"),
-// InputType: pulumi.String("file"),
-// })
-// if err != nil {
-// return err
-// }
-// _default := defaultLogtailConfig.LogtailConfigName.ApplyT(func(logtailConfigName string) (sls.GetLogtailConfigsResult, error) {
-// return sls.GetLogtailConfigsResult(interface{}(sls.GetLogtailConfigs(ctx, &sls.GetLogtailConfigsArgs{
-// LogtailConfigName: pulumi.StringRef(pulumi.StringRef(logtailConfigName)),
-// LogstoreName: "example",
-// ProjectName: projectName,
-// Offset: 0,
-// Size: 100,
-// }, nil))), nil
-// }).(sls.GetLogtailConfigsResultOutput)
-// ctx.Export("alicloudSlsLogtailConfigExampleId", _default.ApplyT(func(_default sls.GetLogtailConfigsResult) (*string, error) {
-// return &default.Configs[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			name := "tfaccsls62147"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			projectName := "project-for-logtail-terraform"
+//			if param := cfg.Get("projectName"); param != "" {
+//				projectName = param
+//			}
+//			defaultuA28zS, err := log.NewProject(ctx, "defaultuA28zS", &log.ProjectArgs{
+//				ProjectName: pulumi.String(pulumi.String(projectName)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"adjustTimezone":  false,
+//				"delayAlarmBytes": 0,
+//				"delaySkipBytes":  0,
+//				"discardNonUtf8":  false,
+//				"discardUnmatch":  true,
+//				"dockerFile":      false,
+//				"enableRawLog":    false,
+//				"enableTag":       false,
+//				"fileEncoding":    "utf8",
+//				"filePattern":     "access*.log",
+//				"filterKey": []string{
+//					"key1",
+//				},
+//				"filterRegex": []string{
+//					"regex1",
+//				},
+//				"key": []string{
+//					"key1",
+//					"key2",
+//				},
+//				"localStorage":   true,
+//				"logBeginRegex":  ".*",
+//				"logPath":        "/var/log/httpd",
+//				"logTimezone":    "",
+//				"logType":        "common_reg_log",
+//				"maxDepth":       1000,
+//				"maxSendRate":    -1,
+//				"mergeType":      "topic",
+//				"preserve":       true,
+//				"preserveDepth":  0,
+//				"priority":       0,
+//				"regex":          "(w+)(s+)",
+//				"sendRateExpire": 0,
+//				"sensitive_keys": []interface{}{},
+//				"tailExisted":    false,
+//				"timeFormat":     "%Y/%m/%d %H:%M:%S",
+//				"timeKey":        "time",
+//				"topicFormat":    "none",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			defaultLogtailConfig, err := sls.NewLogtailConfig(ctx, "default", &sls.LogtailConfigArgs{
+//				ProjectName: defaultuA28zS.ProjectName,
+//				OutputDetail: &sls.LogtailConfigOutputDetailArgs{
+//					Endpoint:     pulumi.String("cn-hangzhou-intranet.log.aliyuncs.com"),
+//					Region:       pulumi.String("cn-hangzhou"),
+//					LogstoreName: pulumi.String("example"),
+//				},
+//				OutputType:        pulumi.String("LogService"),
+//				InputDetail:       pulumi.String(pulumi.String(json0)),
+//				LogtailConfigName: pulumi.String("tfaccsls62147"),
+//				InputType:         pulumi.String("file"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := defaultLogtailConfig.LogtailConfigName.ApplyT(func(logtailConfigName string) (sls.GetLogtailConfigsResult, error) {
+//				return sls.GetLogtailConfigsResult(interface{}(sls.GetLogtailConfigs(ctx, &sls.GetLogtailConfigsArgs{
+//					LogtailConfigName: pulumi.StringRef(pulumi.StringRef(logtailConfigName)),
+//					LogstoreName:      "example",
+//					ProjectName:       projectName,
+//					Offset:            0,
+//					Size:              100,
+//				}, nil))), nil
+//			}).(sls.GetLogtailConfigsResultOutput)
+//			ctx.Export("alicloudSlsLogtailConfigExampleId", _default.ApplyT(func(_default sls.GetLogtailConfigsResult) (*string, error) {
+//				return &_default.Configs[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetLogtailConfigs(ctx *pulumi.Context, args *GetLogtailConfigsArgs, opts ...pulumi.InvokeOption) (*GetLogtailConfigsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

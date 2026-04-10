@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Lindorm
     /// 
     ///     var zoneId = "cn-hangzhou-h";
     /// 
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

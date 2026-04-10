@@ -150,7 +150,7 @@ def get_scaling_rules(ids: Optional[Sequence[_builtins.str]] = None,
     name = config.get("name")
     if name is None:
         name = "terraform-ex"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     my_name = f"{name}-{default_integer['result']}"
@@ -231,7 +231,7 @@ def get_scaling_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[_built
     name = config.get("name")
     if name is None:
         name = "terraform-ex"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     my_name = f"{name}-{default_integer['result']}"

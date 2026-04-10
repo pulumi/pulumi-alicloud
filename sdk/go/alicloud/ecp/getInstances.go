@@ -47,7 +47,8 @@ import (
 //					return __convert - 1, nil
 //				}).(pulumi.Float64Output))]), nil
 //			}).(ecp.GetZonesZoneOutput).ApplyT(func(obj ecp.GetZonesZone) (*string, error) {
-//				return obj.ZoneId, nil
+//				val := obj.ZoneId
+//				return &val, nil
 //			}).(pulumi.StringPtrOutput)
 //			instanceTypeCountSize := len(defaultGetInstanceTypes.InstanceTypes)
 //			_ = instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
@@ -55,7 +56,8 @@ import (
 //					return __convert - 1, nil
 //				}).(pulumi.Float64Output))]), nil
 //			}).(ecp.GetInstanceTypesInstanceTypeOutput).ApplyT(func(obj ecp.GetInstanceTypesInstanceType) (*string, error) {
-//				return obj.InstanceType, nil
+//				val := obj.InstanceType
+//				return &val, nil
 //			}).(pulumi.StringPtrOutput)
 //			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("default-NODELETING"),
@@ -96,7 +98,8 @@ import (
 //						return __convert - 1, nil
 //					}).(pulumi.Float64Output))]), nil
 //				}).(ecp.GetInstanceTypesInstanceTypeOutput).ApplyT(func(obj ecp.GetInstanceTypesInstanceType) (*string, error) {
-//					return obj.InstanceType, nil
+//					val := obj.InstanceType
+//					return &val, nil
 //				}).(pulumi.StringPtrOutput)),
 //				PaymentType: pulumi.String("PayAsYouGo"),
 //			})

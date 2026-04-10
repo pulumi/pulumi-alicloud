@@ -671,7 +671,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         resource_http_basic_configuration_set_example = alicloud.esa.Site("resource_HttpBasicConfiguration_set_example",
@@ -773,7 +773,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         resource_http_basic_configuration_set_example = alicloud.esa.Site("resource_HttpBasicConfiguration_set_example",

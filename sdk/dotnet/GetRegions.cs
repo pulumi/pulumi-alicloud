@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var currentRegionDs = AliCloud.GetRegions.Invoke(new()
+        ///     var currentRegionDs = AliCloud.Index.GetRegions.Invoke(new()
         ///     {
         ///         Current = true,
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var currentRegionDs = AliCloud.GetRegions.Invoke(new()
+        ///     var currentRegionDs = AliCloud.Index.GetRegions.Invoke(new()
         ///     {
         ///         Current = true,
         ///     });
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var currentRegionDs = AliCloud.GetRegions.Invoke(new()
+        ///     var currentRegionDs = AliCloud.Index.GetRegions.Invoke(new()
         ///     {
         ///         Current = true,
         ///     });

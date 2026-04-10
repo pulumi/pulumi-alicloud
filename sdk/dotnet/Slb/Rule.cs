@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Slb
     /// {
     ///     var config = new Config();
     ///     var slbRuleName = config.Get("slbRuleName") ?? "terraform-example";
-    ///     var rule = AliCloud.GetZones.Invoke(new()
+    ///     var rule = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",

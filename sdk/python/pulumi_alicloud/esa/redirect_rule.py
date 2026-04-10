@@ -462,7 +462,7 @@ class RedirectRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         resource_site_redirect_rule_example = alicloud.esa.Site("resource_Site_RedirectRule_example",
@@ -553,7 +553,7 @@ class RedirectRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         resource_site_redirect_rule_example = alicloud.esa.Site("resource_Site_RedirectRule_example",

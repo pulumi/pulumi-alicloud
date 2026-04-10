@@ -224,11 +224,11 @@ class ExpressSync(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.get_regions(current=True)
-        default_uuid = random.index.Uuid("default")
+        default_uuid = random.Uuid("default")
         default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
                 search='-',
                 replace='').result}",
@@ -333,11 +333,11 @@ class ExpressSync(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.get_regions(current=True)
-        default_uuid = random.index.Uuid("default")
+        default_uuid = random.Uuid("default")
         default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
                 search='-',
                 replace='').result}",

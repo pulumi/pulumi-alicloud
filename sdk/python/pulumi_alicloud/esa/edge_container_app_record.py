@@ -175,7 +175,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
         if name is None:
             name = "terraform.com"
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         resource_site_origin_pool_test = alicloud.esa.Site("resource_Site_OriginPool_test",
@@ -248,7 +248,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
         if name is None:
             name = "terraform.com"
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         resource_site_origin_pool_test = alicloud.esa.Site("resource_Site_OriginPool_test",

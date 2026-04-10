@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var defaultGetPhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {

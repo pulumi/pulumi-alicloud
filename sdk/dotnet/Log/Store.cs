@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Log
     ///     var config = new Config();
     ///     // The region of kms key.
     ///     var region = config.Get("region") ?? "cn-hangzhou";
-    ///     var example = AliCloud.GetAccount.Invoke();
+    ///     var example = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {

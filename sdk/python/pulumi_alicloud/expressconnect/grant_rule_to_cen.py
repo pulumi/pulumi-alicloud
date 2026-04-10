@@ -175,7 +175,7 @@ class GrantRuleToCen(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.get_account()
         default_get_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=2999,
             min=1)
         default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
@@ -240,7 +240,7 @@ class GrantRuleToCen(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.get_account()
         default_get_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=2999,
             min=1)
         default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",

@@ -465,7 +465,7 @@ class EventSourceV2(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_event_bus = alicloud.eventbridge.EventBus("default", event_bus_name=f"{name}-{default['result']}")
@@ -544,7 +544,7 @@ class EventSourceV2(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_event_bus = alicloud.eventbridge.EventBus("default", event_bus_name=f"{name}-{default['result']}")

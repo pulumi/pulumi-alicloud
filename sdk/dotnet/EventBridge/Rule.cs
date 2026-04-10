@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.EventBridge
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var defaultEventBus = new AliCloud.EventBridge.EventBus("default", new()
     ///     {
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.EventBridge
     ///         Name = name,
     ///     });
     /// 
-    ///     var mnsEndpointA = Std.Format.Invoke(new()
+    ///     var mnsEndpointA = Std.Index.Format.Invoke(new()
     ///     {
     ///         Input = "acs:mns:cn-hangzhou:%s:queues/%s",
     ///         Args = new[]
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.EventBridge
     ///         },
     ///     }).Apply(invoke =&gt; invoke.Result);
     /// 
-    ///     var fnfEndpoint = Std.Format.Invoke(new()
+    ///     var fnfEndpoint = Std.Index.Format.Invoke(new()
     ///     {
     ///         Input = "acs:fnf:cn-hangzhou:%s:flow/${flow}",
     ///         Args = new[]

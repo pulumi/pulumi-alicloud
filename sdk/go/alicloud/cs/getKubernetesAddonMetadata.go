@@ -92,7 +92,7 @@ import (
 //			}
 //			clusterId := defaultManagedKubernetes.ID()
 //			defaultGetKubernetesAddonMetadata := cs.GetKubernetesAddonMetadataOutput(ctx, cs.GetKubernetesAddonMetadataOutputArgs{
-//				ClusterId: pulumi.String(clusterId),
+//				ClusterId: clusterId,
 //				Name:      pulumi.String("nginx-ingress-controller"),
 //				Version:   pulumi.String("v1.1.2-aliyun.2"),
 //			}, nil)

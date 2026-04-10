@@ -476,7 +476,7 @@ class AdConnectorDirectory(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             zone_id=default.ids[0],
             vswitch_name=name)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_ad_connector_directory = alicloud.eds.AdConnectorDirectory("default",
@@ -555,7 +555,7 @@ class AdConnectorDirectory(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             zone_id=default.ids[0],
             vswitch_name=name)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_ad_connector_directory = alicloud.eds.AdConnectorDirectory("default",

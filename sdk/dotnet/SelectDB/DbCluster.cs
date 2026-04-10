@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.SelectDB
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

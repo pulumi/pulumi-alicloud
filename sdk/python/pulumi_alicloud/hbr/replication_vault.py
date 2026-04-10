@@ -324,7 +324,7 @@ class ReplicationVault(pulumi.CustomResource):
         if source_region is None:
             source_region = "cn-hangzhou"
         default = alicloud.hbr.get_replication_vault_regions()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_vault = alicloud.hbr.Vault("default", vault_name=f"terraform-example-{default_integer['result']}")
@@ -386,7 +386,7 @@ class ReplicationVault(pulumi.CustomResource):
         if source_region is None:
             source_region = "cn-hangzhou"
         default = alicloud.hbr.get_replication_vault_regions()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_vault = alicloud.hbr.Vault("default", vault_name=f"terraform-example-{default_integer['result']}")

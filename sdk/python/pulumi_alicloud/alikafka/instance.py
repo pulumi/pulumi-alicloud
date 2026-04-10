@@ -1320,7 +1320,7 @@ class Instance(pulumi.CustomResource):
         instance_name = config.get("instanceName")
         if instance_name is None:
             instance_name = "terraform-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.get_zones(available_resource_creation="VSwitch")
@@ -1443,7 +1443,7 @@ class Instance(pulumi.CustomResource):
         instance_name = config.get("instanceName")
         if instance_name is None:
             instance_name = "terraform-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.get_zones(available_resource_creation="VSwitch")

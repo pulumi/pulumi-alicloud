@@ -348,7 +348,7 @@ class QuotaAlarm(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_quota_alarm = alicloud.quotas.QuotaAlarm("default",
@@ -413,7 +413,7 @@ class QuotaAlarm(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_quota_alarm = alicloud.quotas.QuotaAlarm("default",

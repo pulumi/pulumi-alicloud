@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var resources = AliCloud.GetZones.Invoke(new()
+        ///     var resources = AliCloud.Index.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "KVStore",
         ///     });
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var resources = AliCloud.GetZones.Invoke(new()
+        ///     var resources = AliCloud.Index.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "KVStore",
         ///     });
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var resources = AliCloud.GetZones.Invoke(new()
+        ///     var resources = AliCloud.Index.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "KVStore",
         ///     });

@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

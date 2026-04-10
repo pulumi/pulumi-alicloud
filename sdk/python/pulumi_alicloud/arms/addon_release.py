@@ -270,7 +270,7 @@ class AddonRelease(pulumi.CustomResource):
         import pulumi_random as random
         import pulumi_std as std
 
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         config = pulumi.Config()
@@ -390,7 +390,7 @@ class AddonRelease(pulumi.CustomResource):
         import pulumi_random as random
         import pulumi_std as std
 
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         config = pulumi.Config()

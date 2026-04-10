@@ -588,7 +588,7 @@ class FlowLog(pulumi.CustomResource):
         example = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        example_uuid = random.index.Uuid("example")
+        example_uuid = random.Uuid("example")
         example_project = alicloud.log.Project("example",
             project_name=std.substr(input=f"tf-example-{std.replace(text=example_uuid['result'],
                     search='-',
@@ -684,7 +684,7 @@ class FlowLog(pulumi.CustomResource):
         example = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        example_uuid = random.index.Uuid("example")
+        example_uuid = random.Uuid("example")
         example_project = alicloud.log.Project("example",
             project_name=std.substr(input=f"tf-example-{std.replace(text=example_uuid['result'],
                     search='-',

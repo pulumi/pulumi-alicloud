@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var direction = config.Get("direction") ?? "out";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     ///     var port = new AliCloud.CloudFirewall.AddressBook("port", new()
     ///     {
-    ///         Description = Std.Format.Invoke(new()
+    ///         Description = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s%s",
     ///             Args = new[]
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///                 "port",
     ///             },
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         GroupName = Std.Format.Invoke(new()
+    ///         GroupName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s%s",
     ///             Args = new[]
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     ///     var port_update = new AliCloud.CloudFirewall.AddressBook("port-update", new()
     ///     {
-    ///         Description = Std.Format.Invoke(new()
+    ///         Description = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s%s",
     ///             Args = new[]
@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///                 "port-update",
     ///             },
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         GroupName = Std.Format.Invoke(new()
+    ///         GroupName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s%s",
     ///             Args = new[]
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     ///     var domain = new AliCloud.CloudFirewall.AddressBook("domain", new()
     ///     {
-    ///         Description = Std.Format.Invoke(new()
+    ///         Description = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s%s",
     ///             Args = new[]
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///                 "domain",
     ///             },
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         GroupName = Std.Format.Invoke(new()
+    ///         GroupName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s%s",
     ///             Args = new[]

@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Ess
     /// 
     ///     var myName = $"{name}-{defaultInteger.Result}";
     /// 
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",

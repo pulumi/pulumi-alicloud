@@ -978,7 +978,7 @@ class Site(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="basic")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_site = alicloud.esa.Site("default",
@@ -1069,7 +1069,7 @@ class Site(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="basic")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_site = alicloud.esa.Site("default",

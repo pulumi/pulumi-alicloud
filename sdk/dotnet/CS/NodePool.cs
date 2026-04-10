@@ -104,13 +104,13 @@ namespace Pulumi.AliCloud.CS
     ///             defaultSwitch.Id,
     ///         },
     ///         NewNatGateway = true,
-    ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+    ///         PodCidr = Std.Index.Cidrsubnet.Invoke(new()
     ///         {
     ///             Input = "10.0.0.0/8",
     ///             Newbits = 8,
     ///             Netnum = 36,
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+    ///         ServiceCidr = Std.Index.Cidrsubnet.Invoke(new()
     ///         {
     ///             Input = "172.16.0.0/16",
     ///             Newbits = 4,
@@ -524,7 +524,7 @@ namespace Pulumi.AliCloud.CS
     ///     };
     ///     // The name prefix used to create managed kubernetes cluster.
     ///     var k8sNamePrefix = config.Get("k8sNamePrefix") ?? "tf-ack-hangzhou";
-    ///     var k8sNameTerway = Std.Join.Invoke(new()
+    ///     var k8sNameTerway = Std.Index.Join.Invoke(new()
     ///     {
     ///         Separator = "-",
     ///         Input = new[]
@@ -532,7 +532,7 @@ namespace Pulumi.AliCloud.CS
     ///             k8sNamePrefix,
     ///             "terway",
     ///         },
-    ///     }).Apply(invoke =&gt; Std.Substr.Invoke(new()
+    ///     }).Apply(invoke =&gt; Std.Index.Substr.Invoke(new()
     ///     {
     ///         Input = invoke.Result,
     ///         Offset = 0,
@@ -577,19 +577,19 @@ namespace Pulumi.AliCloud.CS
     ///         {
     ///             return new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
     ///             {
-    ///                 Name = Std.Lookup.Invoke(new()
+    ///                 Name = Std.Index.Lookup.Invoke(new()
     ///                 {
     ///                     Map = entry.Value,
     ///                     Key = "name",
     ///                     Default = clusterAddons,
     ///                 }).Apply(invoke =&gt; invoke.Result),
-    ///                 Config = Std.Lookup.Invoke(new()
+    ///                 Config = Std.Index.Lookup.Invoke(new()
     ///                 {
     ///                     Map = entry.Value,
     ///                     Key = "config",
     ///                     Default = clusterAddons,
     ///                 }).Apply(invoke =&gt; invoke.Result),
-    ///                 Disabled = Std.Lookup.Invoke(new()
+    ///                 Disabled = Std.Index.Lookup.Invoke(new()
     ///                 {
     ///                     Map = entry.Value,
     ///                     Key = "disabled",
@@ -599,20 +599,20 @@ namespace Pulumi.AliCloud.CS
     ///         }).ToList(),
     ///         Name = k8sNameTerway,
     ///         ClusterSpec = clusterSpec,
-    ///         VswitchIds = Std.Join.Invoke(new()
+    ///         VswitchIds = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,
     ///         })).Apply(invoke =&gt; invoke.Result),
-    ///         PodVswitchIds = Std.Join.Invoke(new()
+    ///         PodVswitchIds = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = terwayVswitches.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,
@@ -653,11 +653,11 @@ namespace Pulumi.AliCloud.CS
     ///     {
     ///         NodePoolName = nodepoolName,
     ///         ClusterId = defaultManagedKubernetes.Id,
-    ///         VswitchIds = Std.Join.Invoke(new()
+    ///         VswitchIds = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,
@@ -756,11 +756,11 @@ namespace Pulumi.AliCloud.CS
     ///     {
     ///         NodePoolName = "upgrade_nodepool",
     ///         ClusterId = defaultManagedKubernetes.Id,
-    ///         VswitchIds = Std.Join.Invoke(new()
+    ///         VswitchIds = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,

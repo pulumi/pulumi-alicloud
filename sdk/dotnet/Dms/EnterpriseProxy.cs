@@ -30,9 +30,9 @@ namespace Pulumi.AliCloud.Dms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var current = AliCloud.GetAccount.Invoke();
+    ///     var current = AliCloud.Index.GetAccount.Invoke();
     /// 
-    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

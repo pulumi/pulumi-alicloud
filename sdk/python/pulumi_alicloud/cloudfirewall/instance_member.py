@@ -190,7 +190,7 @@ class InstanceMember(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "AliyunTerraform"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_account = alicloud.resourcemanager.Account("default", display_name=f"{name}-{default['result']}")
@@ -241,7 +241,7 @@ class InstanceMember(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "AliyunTerraform"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_account = alicloud.resourcemanager.Account("default", display_name=f"{name}-{default['result']}")

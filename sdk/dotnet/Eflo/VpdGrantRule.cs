@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Eflo
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var defaultEr = new AliCloud.Eflo.Er("default", new()
     ///     {

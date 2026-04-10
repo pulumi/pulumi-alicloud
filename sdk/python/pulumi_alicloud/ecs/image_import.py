@@ -334,7 +334,7 @@ class ImageImport(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-image-import-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_bucket = alicloud.oss.Bucket("default", bucket=f"{name}-{default['result']}")
@@ -413,7 +413,7 @@ class ImageImport(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-image-import-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_bucket = alicloud.oss.Bucket("default", bucket=f"{name}-{default['result']}")

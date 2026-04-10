@@ -92,7 +92,8 @@ import (
 // Description: pulumi.String("terraform-example"),
 // PrimaryIpAddress: pulumi.String(defaultSwitch.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrhostResult, error) {
 // %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrhostResultOutput).ApplyT(func(invoke std.CidrhostResult) (*string, error) {
-// return invoke.Result, nil
+// val := invoke.Result
+// return &val, nil
 // }).(pulumi.StringPtrOutput)),
 // Tags: pulumi.StringMap{
 // "Created": pulumi.String("TF"),

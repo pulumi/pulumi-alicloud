@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Vpn
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var spec = config.Get("spec") ?? "20";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

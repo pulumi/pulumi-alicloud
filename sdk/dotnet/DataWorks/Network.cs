@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.DataWorks
     ///         Description = name,
     ///         VpcId = default5Bia4h.Id,
     ///         ZoneId = "cn-beijing-g",
-    ///         VswitchName = Std.Format.Invoke(new()
+    ///         VswitchName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s1",
     ///             Args = new[]
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.DataWorks
     ///     var defaulte4zhaL = new AliCloud.Vpc.Network("defaulte4zhaL", new()
     ///     {
     ///         Description = name,
-    ///         VpcName = Std.Format.Invoke(new()
+    ///         VpcName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s3",
     ///             Args = new[]
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.DataWorks
     ///         Description = name,
     ///         VpcId = defaulte4zhaL.Id,
     ///         ZoneId = "cn-beijing-g",
-    ///         VswitchName = Std.Format.Invoke(new()
+    ///         VswitchName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s4",
     ///             Args = new[]

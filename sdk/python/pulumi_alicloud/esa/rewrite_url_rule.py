@@ -422,7 +422,7 @@ class RewriteUrlRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         resource_rewrite_url_rule_site_example = alicloud.esa.Site("resource_RewriteUrlRule_Site_example",
@@ -502,7 +502,7 @@ class RewriteUrlRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         resource_rewrite_url_rule_site_example = alicloud.esa.Site("resource_RewriteUrlRule_Site_example",

@@ -29,188 +29,190 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// description := "Created by Terraform";
-// if param := cfg.Get("description"); param != ""{
-// description = param
-// }
-// firewallName := "tf-example";
-// if param := cfg.Get("firewallName"); param != ""{
-// firewallName = param
-// }
-// trAttachmentMasterCidr := "192.168.3.192/26";
-// if param := cfg.Get("trAttachmentMasterCidr"); param != ""{
-// trAttachmentMasterCidr = param
-// }
-// firewallSubnetCidr := "192.168.3.0/25";
-// if param := cfg.Get("firewallSubnetCidr"); param != ""{
-// firewallSubnetCidr = param
-// }
-// region := "cn-hangzhou";
-// if param := cfg.Get("region"); param != ""{
-// region = param
-// }
-// trAttachmentSlaveCidr := "192.168.3.128/26";
-// if param := cfg.Get("trAttachmentSlaveCidr"); param != ""{
-// trAttachmentSlaveCidr = param
-// }
-// firewallVpcCidr := "192.168.3.0/24";
-// if param := cfg.Get("firewallVpcCidr"); param != ""{
-// firewallVpcCidr = param
-// }
-// zone1 := "cn-hangzhou-h";
-// if param := cfg.Get("zone1"); param != ""{
-// zone1 = param
-// }
-// firewallNameUpdate := "tf-example-1";
-// if param := cfg.Get("firewallNameUpdate"); param != ""{
-// firewallNameUpdate = param
-// }
-// zone2 := "cn-hangzhou-i";
-// if param := cfg.Get("zone2"); param != ""{
-// zone2 = param
-// }
-// cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
-// Description: pulumi.String("terraform example"),
-// CenInstanceName: pulumi.String("Cen_Terraform_example01"),
-// })
-// if err != nil {
-// return err
-// }
-// tr, err := cen.NewTransitRouter(ctx, "tr", &cen.TransitRouterArgs{
-// SupportMulticast: pulumi.Bool(false),
-// TransitRouterName: pulumi.String("CEN_TR_Terraform"),
-// TransitRouterDescription: pulumi.String("tr-created-by-terraform"),
-// CenId: cen.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// vpc1, err := vpc.NewNetwork(ctx, "vpc1", &vpc.NetworkArgs{
-// Description: pulumi.String("created by terraform"),
-// CidrBlock: pulumi.String("192.168.1.0/24"),
-// VpcName: pulumi.String("vpc1-Terraform"),
-// })
-// if err != nil {
-// return err
-// }
-// vpc1vsw1, err := vpc.NewSwitch(ctx, "vpc1vsw1", &vpc.SwitchArgs{
-// CidrBlock: pulumi.String("192.168.1.0/25"),
-// VswitchName: pulumi.String("vpc1-vsw1"),
-// VpcId: vpc1.ID(),
-// ZoneId: pulumi.String(pulumi.String(zone1)),
-// })
-// if err != nil {
-// return err
-// }
-// vpc1vsw2, err := vpc.NewSwitch(ctx, "vpc1vsw2", &vpc.SwitchArgs{
-// VpcId: vpc1.ID(),
-// CidrBlock: pulumi.String("192.168.1.128/26"),
-// VswitchName: pulumi.String("vpc1-vsw2"),
-// ZoneId: pulumi.String(pulumi.String(zone2)),
-// })
-// if err != nil {
-// return err
-// }
-// vpc2, err := vpc.NewNetwork(ctx, "vpc2", &vpc.NetworkArgs{
-// Description: pulumi.String("created by terraform"),
-// CidrBlock: pulumi.String("192.168.2.0/24"),
-// VpcName: pulumi.String("vpc2-Terraform"),
-// })
-// if err != nil {
-// return err
-// }
-// vpc2vsw1, err := vpc.NewSwitch(ctx, "vpc2vsw1", &vpc.SwitchArgs{
-// CidrBlock: pulumi.String("192.168.2.0/25"),
-// VswitchName: pulumi.String("vpc2-vsw1"),
-// VpcId: vpc2.ID(),
-// ZoneId: pulumi.String(pulumi.String(zone1)),
-// })
-// if err != nil {
-// return err
-// }
-// vpc2vsw2, err := vpc.NewSwitch(ctx, "vpc2vsw2", &vpc.SwitchArgs{
-// CidrBlock: pulumi.String("192.168.2.128/26"),
-// VswitchName: pulumi.String("vpc2-vsw2"),
-// VpcId: vpc2.ID(),
-// ZoneId: pulumi.String(pulumi.String(zone2)),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = cen.NewTransitRouterVpcAttachment(ctx, "tr-vpc1", &cen.TransitRouterVpcAttachmentArgs{
-// AutoPublishRouteEnabled: pulumi.Bool(false),
-// ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
-// &cen.TransitRouterVpcAttachmentZoneMappingArgs{
-// VswitchId: vpc1vsw1.ID(),
-// ZoneId: vpc1vsw1.ZoneId,
-// },
-// &cen.TransitRouterVpcAttachmentZoneMappingArgs{
-// ZoneId: vpc1vsw2.ZoneId,
-// VswitchId: vpc1vsw2.ID(),
-// },
-// },
-// VpcId: vpc1.ID(),
-// CenId: cen.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = cen.NewTransitRouterVpcAttachment(ctx, "tr-vpc2", &cen.TransitRouterVpcAttachmentArgs{
-// AutoPublishRouteEnabled: pulumi.Bool(false),
-// VpcId: vpc2.ID(),
-// ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
-// &cen.TransitRouterVpcAttachmentZoneMappingArgs{
-// VswitchId: vpc2vsw1.ID(),
-// ZoneId: vpc2vsw1.ZoneId,
-// },
-// &cen.TransitRouterVpcAttachmentZoneMappingArgs{
-// VswitchId: vpc2vsw2.ID(),
-// ZoneId: vpc2vsw2.ZoneId,
-// },
-// },
-// CenId: cen.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// defaultVpcCenTrFirewall, err := cloudfirewall.NewVpcCenTrFirewall(ctx, "default", &cloudfirewall.VpcCenTrFirewallArgs{
-// FirewallDescription: pulumi.String("VpcCenTrFirewall created by terraform"),
-// RegionNo: pulumi.String(pulumi.String(region)),
-// RouteMode: pulumi.String("managed"),
-// CenId: cen.ID(),
-// FirewallVpcCidr: pulumi.String(pulumi.String(firewallVpcCidr)),
-// TransitRouterId: tr.TransitRouterId,
-// TrAttachmentMasterCidr: pulumi.String(pulumi.String(trAttachmentMasterCidr)),
-// FirewallName: pulumi.String(pulumi.String(firewallName)),
-// FirewallSubnetCidr: pulumi.String(pulumi.String(firewallSubnetCidr)),
-// TrAttachmentSlaveCidr: pulumi.String(pulumi.String(trAttachmentSlaveCidr)),
-// })
-// if err != nil {
-// return err
-// }
-// _default := cloudfirewall.GetVpcCenTrFirewallsOutput(ctx, cloudfirewall.GetVpcCenTrFirewallsOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultVpcCenTrFirewall.ID(),
-// },
-// CenId: cen.ID(),
-// FirewallName: pulumi.String(pulumi.String(firewallName)),
-// RegionNo: pulumi.String(pulumi.String(region)),
-// RouteMode: pulumi.String("managed"),
-// TransitRouterId: tr.TransitRouterId,
-// }, nil);
-// ctx.Export("alicloudCloudFirewallVpcCenTrFirewallExampleId", _default.ApplyT(func(_default cloudfirewall.GetVpcCenTrFirewallsResult) (*string, error) {
-// return &default.Firewalls[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			description := "Created by Terraform"
+//			if param := cfg.Get("description"); param != "" {
+//				description = param
+//			}
+//			firewallName := "tf-example"
+//			if param := cfg.Get("firewallName"); param != "" {
+//				firewallName = param
+//			}
+//			trAttachmentMasterCidr := "192.168.3.192/26"
+//			if param := cfg.Get("trAttachmentMasterCidr"); param != "" {
+//				trAttachmentMasterCidr = param
+//			}
+//			firewallSubnetCidr := "192.168.3.0/25"
+//			if param := cfg.Get("firewallSubnetCidr"); param != "" {
+//				firewallSubnetCidr = param
+//			}
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			trAttachmentSlaveCidr := "192.168.3.128/26"
+//			if param := cfg.Get("trAttachmentSlaveCidr"); param != "" {
+//				trAttachmentSlaveCidr = param
+//			}
+//			firewallVpcCidr := "192.168.3.0/24"
+//			if param := cfg.Get("firewallVpcCidr"); param != "" {
+//				firewallVpcCidr = param
+//			}
+//			zone1 := "cn-hangzhou-h"
+//			if param := cfg.Get("zone1"); param != "" {
+//				zone1 = param
+//			}
+//			firewallNameUpdate := "tf-example-1"
+//			if param := cfg.Get("firewallNameUpdate"); param != "" {
+//				firewallNameUpdate = param
+//			}
+//			zone2 := "cn-hangzhou-i"
+//			if param := cfg.Get("zone2"); param != "" {
+//				zone2 = param
+//			}
+//			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+//				Description:     pulumi.String("terraform example"),
+//				CenInstanceName: pulumi.String("Cen_Terraform_example01"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tr, err := cen.NewTransitRouter(ctx, "tr", &cen.TransitRouterArgs{
+//				SupportMulticast:         pulumi.Bool(false),
+//				TransitRouterName:        pulumi.String("CEN_TR_Terraform"),
+//				TransitRouterDescription: pulumi.String("tr-created-by-terraform"),
+//				CenId:                    cen.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpc1, err := vpc.NewNetwork(ctx, "vpc1", &vpc.NetworkArgs{
+//				Description: pulumi.String("created by terraform"),
+//				CidrBlock:   pulumi.String("192.168.1.0/24"),
+//				VpcName:     pulumi.String("vpc1-Terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpc1vsw1, err := vpc.NewSwitch(ctx, "vpc1vsw1", &vpc.SwitchArgs{
+//				CidrBlock:   pulumi.String("192.168.1.0/25"),
+//				VswitchName: pulumi.String("vpc1-vsw1"),
+//				VpcId:       vpc1.ID(),
+//				ZoneId:      pulumi.String(pulumi.String(zone1)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpc1vsw2, err := vpc.NewSwitch(ctx, "vpc1vsw2", &vpc.SwitchArgs{
+//				VpcId:       vpc1.ID(),
+//				CidrBlock:   pulumi.String("192.168.1.128/26"),
+//				VswitchName: pulumi.String("vpc1-vsw2"),
+//				ZoneId:      pulumi.String(pulumi.String(zone2)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpc2, err := vpc.NewNetwork(ctx, "vpc2", &vpc.NetworkArgs{
+//				Description: pulumi.String("created by terraform"),
+//				CidrBlock:   pulumi.String("192.168.2.0/24"),
+//				VpcName:     pulumi.String("vpc2-Terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpc2vsw1, err := vpc.NewSwitch(ctx, "vpc2vsw1", &vpc.SwitchArgs{
+//				CidrBlock:   pulumi.String("192.168.2.0/25"),
+//				VswitchName: pulumi.String("vpc2-vsw1"),
+//				VpcId:       vpc2.ID(),
+//				ZoneId:      pulumi.String(pulumi.String(zone1)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpc2vsw2, err := vpc.NewSwitch(ctx, "vpc2vsw2", &vpc.SwitchArgs{
+//				CidrBlock:   pulumi.String("192.168.2.128/26"),
+//				VswitchName: pulumi.String("vpc2-vsw2"),
+//				VpcId:       vpc2.ID(),
+//				ZoneId:      pulumi.String(pulumi.String(zone2)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTransitRouterVpcAttachment(ctx, "tr-vpc1", &cen.TransitRouterVpcAttachmentArgs{
+//				AutoPublishRouteEnabled: pulumi.Bool(false),
+//				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						VswitchId: vpc1vsw1.ID(),
+//						ZoneId:    vpc1vsw1.ZoneId,
+//					},
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						ZoneId:    vpc1vsw2.ZoneId,
+//						VswitchId: vpc1vsw2.ID(),
+//					},
+//				},
+//				VpcId: vpc1.ID(),
+//				CenId: cen.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTransitRouterVpcAttachment(ctx, "tr-vpc2", &cen.TransitRouterVpcAttachmentArgs{
+//				AutoPublishRouteEnabled: pulumi.Bool(false),
+//				VpcId:                   vpc2.ID(),
+//				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						VswitchId: vpc2vsw1.ID(),
+//						ZoneId:    vpc2vsw1.ZoneId,
+//					},
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						VswitchId: vpc2vsw2.ID(),
+//						ZoneId:    vpc2vsw2.ZoneId,
+//					},
+//				},
+//				CenId: cen.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultVpcCenTrFirewall, err := cloudfirewall.NewVpcCenTrFirewall(ctx, "default", &cloudfirewall.VpcCenTrFirewallArgs{
+//				FirewallDescription:    pulumi.String("VpcCenTrFirewall created by terraform"),
+//				RegionNo:               pulumi.String(pulumi.String(region)),
+//				RouteMode:              pulumi.String("managed"),
+//				CenId:                  cen.ID(),
+//				FirewallVpcCidr:        pulumi.String(pulumi.String(firewallVpcCidr)),
+//				TransitRouterId:        tr.TransitRouterId,
+//				TrAttachmentMasterCidr: pulumi.String(pulumi.String(trAttachmentMasterCidr)),
+//				FirewallName:           pulumi.String(pulumi.String(firewallName)),
+//				FirewallSubnetCidr:     pulumi.String(pulumi.String(firewallSubnetCidr)),
+//				TrAttachmentSlaveCidr:  pulumi.String(pulumi.String(trAttachmentSlaveCidr)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := cloudfirewall.GetVpcCenTrFirewallsOutput(ctx, cloudfirewall.GetVpcCenTrFirewallsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultVpcCenTrFirewall.ID(),
+//				},
+//				CenId:           cen.ID(),
+//				FirewallName:    pulumi.String(pulumi.String(firewallName)),
+//				RegionNo:        pulumi.String(pulumi.String(region)),
+//				RouteMode:       pulumi.String("managed"),
+//				TransitRouterId: tr.TransitRouterId,
+//			}, nil)
+//			ctx.Export("alicloudCloudFirewallVpcCenTrFirewallExampleId", _default.ApplyT(func(_default cloudfirewall.GetVpcCenTrFirewallsResult) (*string, error) {
+//				return &_default.Firewalls[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetVpcCenTrFirewalls(ctx *pulumi.Context, args *GetVpcCenTrFirewallsArgs, opts ...pulumi.InvokeOption) (*GetVpcCenTrFirewallsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

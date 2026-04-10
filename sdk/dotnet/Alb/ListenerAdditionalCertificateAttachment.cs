@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Alb
     ///         defaultSwitch.Add(new AliCloud.Vpc.Switch($"default-{range.Value}", new()
     ///         {
     ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = Std.Format.Invoke(new()
+    ///             CidrBlock = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "10.4.%d.0/24",
     ///                 Args = new[]
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Alb
     ///                 },
     ///             }).Apply(invoke =&gt; invoke.Result),
     ///             ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id),
-    ///             VswitchName = Std.Format.Invoke(new()
+    ///             VswitchName = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = $"{name}_%d",
     ///                 Args = new[]
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Alb
     ///         var range = new { Value = rangeIndex };
     ///         defaultServiceCertificate.Add(new AliCloud.Cas.ServiceCertificate($"default-{range.Value}", new()
     ///         {
-    ///             CertificateName = Std.Join.Invoke(new()
+    ///             CertificateName = Std.Index.Join.Invoke(new()
     ///             {
     ///                 Separator = "-",
     ///                 Input = new[]
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Alb
     ///         },
     ///         Certificates = new AliCloud.Alb.Inputs.ListenerCertificatesArgs
     ///         {
-    ///             CertificateId = Std.Join.Invoke(new()
+    ///             CertificateId = Std.Index.Join.Invoke(new()
     ///             {
     ///                 Separator = "",
     ///                 Input = new[]
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.Alb
     /// 
     ///     var defaultListenerAdditionalCertificateAttachment = new AliCloud.Alb.ListenerAdditionalCertificateAttachment("default", new()
     ///     {
-    ///         CertificateId = Std.Join.Invoke(new()
+    ///         CertificateId = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = "",
     ///             Input = new[]

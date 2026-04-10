@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Pai
     ///         Description = name,
     ///         SourceId = "d-xxxxx_v1",
     ///         Uri = "oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/",
-    ///         DatasetName = Std.Format.Invoke(new()
+    ///         DatasetName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s1",
     ///             Args = new[]

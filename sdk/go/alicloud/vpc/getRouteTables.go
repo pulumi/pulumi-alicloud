@@ -27,40 +27,42 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "route-tables-datasource-example-name";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// fooNetwork, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
-// CidrBlock: pulumi.String("172.16.0.0/12"),
-// VpcName: pulumi.String(pulumi.String(name)),
-// })
-// if err != nil {
-// return err
-// }
-// fooRouteTable, err := vpc.NewRouteTable(ctx, "foo", &vpc.RouteTableArgs{
-// VpcId: fooNetwork.ID(),
-// RouteTableName: pulumi.String(pulumi.String(name)),
-// Description: pulumi.String(pulumi.String(name)),
-// })
-// if err != nil {
-// return err
-// }
-// foo := vpc.GetRouteTablesOutput(ctx, vpc.GetRouteTablesOutputArgs{
-// Ids: pulumi.StringArray{
-// fooRouteTable.ID(),
-// },
-// RouteTableType: pulumi.String("Custom"),
-// }, nil);
-// ctx.Export("routeTableIds", foo.ApplyT(func(foo vpc.GetRouteTablesResult) (interface{}, error) {
-// return foo.Ids, nil
-// }).(pulumi.Interface{}Output))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "route-tables-datasource-example-name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(pulumi.String(name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooRouteTable, err := vpc.NewRouteTable(ctx, "foo", &vpc.RouteTableArgs{
+//				VpcId:          fooNetwork.ID(),
+//				RouteTableName: pulumi.String(pulumi.String(name)),
+//				Description:    pulumi.String(pulumi.String(name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foo := vpc.GetRouteTablesOutput(ctx, vpc.GetRouteTablesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					fooRouteTable.ID(),
+//				},
+//				RouteTableType: pulumi.String("Custom"),
+//			}, nil)
+//			ctx.Export("routeTableIds", foo.ApplyT(func(foo vpc.GetRouteTablesResult) (interface{}, error) {
+//				return foo.Ids, nil
+//			}).(pulumi.AnyOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRouteTables(ctx *pulumi.Context, args *GetRouteTablesArgs, opts ...pulumi.InvokeOption) (*GetRouteTablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

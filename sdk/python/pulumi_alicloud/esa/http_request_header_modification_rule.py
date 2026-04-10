@@ -332,7 +332,7 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         site = alicloud.esa.Site("site",
@@ -412,7 +412,7 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         site = alicloud.esa.Site("site",

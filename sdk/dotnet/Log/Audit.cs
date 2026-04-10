@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var example = new AliCloud.Log.Audit("example", new()
     ///     {
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var example = new AliCloud.Log.Audit("example", new()
     ///     {
@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var example = new AliCloud.Log.Audit("example", new()
     ///     {
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var example = new AliCloud.Log.Audit("example", new()
     ///     {

@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Mse
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create resource
-    ///     var example = AliCloud.GetZones.Invoke(new()
+    ///     var example = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

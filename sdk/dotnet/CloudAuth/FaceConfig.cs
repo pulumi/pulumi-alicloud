@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.CloudAuth
     /// 
     ///     var example = new AliCloud.CloudAuth.FaceConfig("example", new()
     ///     {
-    ///         BizName = Std.Format.Invoke(new()
+    ///         BizName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s-biz",
     ///             Args = new[]
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.CloudAuth
     ///                 name,
     ///             },
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         BizType = Std.Format.Invoke(new()
+    ///         BizType = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "type-%s",
     ///             Args = new[]

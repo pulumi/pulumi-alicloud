@@ -28,29 +28,31 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// defaultRule, err := sddp.NewRule(ctx, "default", &sddp.RuleArgs{
-// Category: pulumi.Int(0),
-// Content: pulumi.String("content"),
-// RuleName: pulumi.String("rule_name"),
-// RiskLevelId: pulumi.String("4"),
-// ProductCode: pulumi.String("ODPS"),
-// })
-// if err != nil {
-// return err
-// }
-// _default := sddp.GetRulesOutput(ctx, sddp.GetRulesOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultRule.ID(),
-// },
-// }, nil);
-// ctx.Export("sddpRuleId", _default.ApplyT(func(_default sddp.GetRulesResult) (*string, error) {
-// return &default.Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultRule, err := sddp.NewRule(ctx, "default", &sddp.RuleArgs{
+//				Category:    pulumi.Int(0),
+//				Content:     pulumi.String("content"),
+//				RuleName:    pulumi.String("rule_name"),
+//				RiskLevelId: pulumi.String("4"),
+//				ProductCode: pulumi.String("ODPS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := sddp.GetRulesOutput(ctx, sddp.GetRulesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultRule.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("sddpRuleId", _default.ApplyT(func(_default sddp.GetRulesResult) (*string, error) {
+//				return &_default.Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRules(ctx *pulumi.Context, args *GetRulesArgs, opts ...pulumi.InvokeOption) (*GetRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

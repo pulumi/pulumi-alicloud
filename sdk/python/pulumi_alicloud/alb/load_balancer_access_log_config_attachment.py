@@ -176,7 +176,7 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=100000,
             max=999999)
         alb_example_tf_vpc = alicloud.vpc.Network("alb_example_tf_vpc",
@@ -276,7 +276,7 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=100000,
             max=999999)
         alb_example_tf_vpc = alicloud.vpc.Network("alb_example_tf_vpc",

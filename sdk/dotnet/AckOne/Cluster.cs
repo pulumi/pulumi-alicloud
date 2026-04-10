@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.AckOne
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

@@ -148,7 +148,8 @@ import (
 //						defaultDatabase.Name,
 //					},
 //				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//					return invoke.Result, nil
+//					val := invoke.Result
+//					return &val, nil
 //				}).(pulumi.StringPtrOutput)),
 //				ResourceType:    pulumi.String("RDS"),
 //				UserName:        defaultDatabase.Name,

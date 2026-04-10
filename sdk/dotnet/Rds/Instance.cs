@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Rds
     ///         exampleSwitch.Add(new AliCloud.Vpc.Switch($"example-{range.Value}", new()
     ///         {
     ///             VpcId = exampleNetwork.Id,
-    ///             CidrBlock = Std.Format.Invoke(new()
+    ///             CidrBlock = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "172.16.%d.0/24",
     ///                 Args = new[]
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Rds
     ///                 },
     ///             }).Apply(invoke =&gt; invoke.Result),
     ///             ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id,
-    ///             VswitchName = Std.Format.Invoke(new()
+    ///             VswitchName = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "terraform_example_%d",
     ///                 Args = new[]
@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.Rds
     ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = "terraform-example",
-    ///         VswitchId = Std.Join.Invoke(new()
+    ///         VswitchId = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = exampleSwitch.Select(__item =&gt; __item.Id).ToList(),
@@ -309,7 +309,7 @@ namespace Pulumi.AliCloud.Rds
     ///         exampleSwitch.Add(new AliCloud.Vpc.Switch($"example-{range.Value}", new()
     ///         {
     ///             VpcId = exampleNetwork.Id,
-    ///             CidrBlock = Std.Format.Invoke(new()
+    ///             CidrBlock = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "172.16.%d.0/24",
     ///                 Args = new[]
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.Rds
     ///                 },
     ///             }).Apply(invoke =&gt; invoke.Result),
     ///             ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id,
-    ///             VswitchName = Std.Format.Invoke(new()
+    ///             VswitchName = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "%s_%d",
     ///                 Args = new[]
@@ -344,7 +344,7 @@ namespace Pulumi.AliCloud.Rds
     ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = name,
-    ///         VswitchId = Std.Join.Invoke(new()
+    ///         VswitchId = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = exampleSwitch.Select(__item =&gt; __item.Id).ToList(),
@@ -401,7 +401,7 @@ namespace Pulumi.AliCloud.Rds
     ///         exampleSwitch.Add(new AliCloud.Vpc.Switch($"example-{range.Value}", new()
     ///         {
     ///             VpcId = exampleNetwork.Id,
-    ///             CidrBlock = Std.Format.Invoke(new()
+    ///             CidrBlock = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "172.16.%d.0/24",
     ///                 Args = new[]
@@ -410,7 +410,7 @@ namespace Pulumi.AliCloud.Rds
     ///                 },
     ///             }).Apply(invoke =&gt; invoke.Result),
     ///             ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id,
-    ///             VswitchName = Std.Format.Invoke(new()
+    ///             VswitchName = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "%s_%d",
     ///                 Args = new[]
@@ -436,7 +436,7 @@ namespace Pulumi.AliCloud.Rds
     ///         InstanceStorage = 20,
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = name,
-    ///         VswitchId = Std.Join.Invoke(new()
+    ///         VswitchId = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = exampleSwitch.Select(__item =&gt; __item.Id).ToList(),
@@ -648,7 +648,7 @@ namespace Pulumi.AliCloud.Rds
     ///         InstanceName = name,
     ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
     ///         ZoneIdSlaveA = example.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
-    ///         VswitchId = Std.Join.Invoke(new()
+    ///         VswitchId = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = new[]

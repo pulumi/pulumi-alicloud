@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Compute
     ///     var name = config.Get("name") ?? "tfexample";
     ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",

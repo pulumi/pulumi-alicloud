@@ -296,7 +296,8 @@ import (
 // Separator: pulumi.String(","),
 // Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:56,17-36),
 // }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-// return invoke.Result, nil
+// val := invoke.Result
+// return &val, nil
 // }).(pulumi.StringPtrOutput)),
 // MonitoringPeriod: pulumi.Int(60),
 // DbInstanceStorageType: pulumi.String("cloud_essd"),
@@ -421,7 +422,8 @@ import (
 // Separator: pulumi.String(","),
 // Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:61,17-36),
 // }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-// return invoke.Result, nil
+// val := invoke.Result
+// return &val, nil
 // }).(pulumi.StringPtrOutput)),
 // MonitoringPeriod: pulumi.Int(60),
 // DbInstanceStorageType: pulumi.String("cloud_essd"),
@@ -541,7 +543,8 @@ import (
 // Separator: pulumi.String(","),
 // Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:59,17-36),
 // }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-// return invoke.Result, nil
+// val := invoke.Result
+// return &val, nil
 // }).(pulumi.StringPtrOutput)),
 // MonitoringPeriod: pulumi.Int(60),
 // DbInstanceStorageType: pulumi.String("local_ssd"),
@@ -803,7 +806,8 @@ import (
 //						exampleSwitch.ID(),
 //					},
 //				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//					return invoke.Result, nil
+//					val := invoke.Result
+//					return &val, nil
 //				}).(pulumi.StringPtrOutput)),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				Category:              pulumi.String("serverless_ha"),

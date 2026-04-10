@@ -173,7 +173,8 @@ import (
 //								pulumi.String(pulumi.String(region)),
 //							},
 //						}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//							return invoke.Result, nil
+//							val := invoke.Result
+//							return &val, nil
 //						}).(pulumi.StringPtrOutput),
 //					},
 //				},
@@ -190,7 +191,8 @@ import (
 //						pulumi.String(pulumi.String(region)),
 //					},
 //				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//					return invoke.Result, nil
+//					val := invoke.Result
+//					return &val, nil
 //				}).(pulumi.StringPtrOutput)),
 //				Domain:        pulumi.String(pulumi.String(domain)),
 //				AcceleratorId: defaultListener.AcceleratorId,

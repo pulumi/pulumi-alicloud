@@ -170,7 +170,7 @@ class AccessGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_access_group = alicloud.dfs.AccessGroup("default",
@@ -217,7 +217,7 @@ class AccessGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_access_group = alicloud.dfs.AccessGroup("default",

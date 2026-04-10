@@ -311,7 +311,7 @@ class Alert(pulumi.CustomResource):
         project_name = config.get("projectName")
         if project_name is None:
             project_name = "terraform-alert-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_ins_mgl = alicloud.log.Project("defaultINsMgl",
@@ -496,7 +496,7 @@ class Alert(pulumi.CustomResource):
         project_name = config.get("projectName")
         if project_name is None:
             project_name = "terraform-alert-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_ins_mgl = alicloud.log.Project("defaultINsMgl",

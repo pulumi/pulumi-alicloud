@@ -156,7 +156,7 @@ def get_roles(ids: Optional[Sequence[_builtins.str]] = None,
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default = random.index.Integer("default",
+    default = random.Integer("default",
         min=10000,
         max=99999)
     default_role = alicloud.ram.Role("default",
@@ -239,7 +239,7 @@ def get_roles_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default = random.index.Integer("default",
+    default = random.Integer("default",
         min=10000,
         max=99999)
     default_role = alicloud.ram.Role("default",

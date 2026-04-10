@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "vswitchDatasourceName";
-        ///     var @default = AliCloud.GetZones.Invoke();
+        ///     var @default = AliCloud.Index.GetZones.Invoke();
         /// 
         ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
         ///     {
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "vswitchDatasourceName";
-        ///     var @default = AliCloud.GetZones.Invoke();
+        ///     var @default = AliCloud.Index.GetZones.Invoke();
         /// 
         ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
         ///     {
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "vswitchDatasourceName";
-        ///     var @default = AliCloud.GetZones.Invoke();
+        ///     var @default = AliCloud.Index.GetZones.Invoke();
         /// 
         ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
         ///     {

@@ -55,14 +55,14 @@ namespace Pulumi.AliCloud.ResourceManager
     ///     });
     /// 
     ///     // Get Alicloud Account Id
-    ///     var exampleGetAccount = AliCloud.GetAccount.Invoke();
+    ///     var exampleGetAccount = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     // Attach the custom policy to resource group
     ///     var examplePolicyAttachment = new AliCloud.ResourceManager.PolicyAttachment("example", new()
     ///     {
     ///         PolicyName = examplePolicy.PolicyName,
     ///         PolicyType = "Custom",
-    ///         PrincipalName = Std.Format.Invoke(new()
+    ///         PrincipalName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s@%s.onaliyun.com",
     ///             Args = new[]

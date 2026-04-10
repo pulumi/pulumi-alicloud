@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Eais
     ///     var ecsType = config.Get("ecsType") ?? "ecs.g7.large";
     ///     var region = config.Get("region") ?? "cn-hangzhou";
     ///     var category = config.Get("category") ?? "ei";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

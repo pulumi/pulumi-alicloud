@@ -269,7 +269,7 @@ class AccessLog(pulumi.CustomResource):
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         default_project = alicloud.log.Project("default", name=f"terraform-example-{default['result']}")
@@ -367,7 +367,7 @@ class AccessLog(pulumi.CustomResource):
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         default_project = alicloud.log.Project("default", name=f"terraform-example-{default['result']}")

@@ -28,52 +28,54 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// projectName := "project-for-machine-group-terraform";
-// if param := cfg.Get("projectName"); param != ""{
-// projectName = param
-// }
-// _, err := log.NewProject(ctx, "defaultyJqrue", &log.ProjectArgs{
-// Description: pulumi.String("for terraform example"),
-// Name: pulumi.String(pulumi.String(projectName)),
-// })
-// if err != nil {
-// return err
-// }
-// defaultMachineGroup, err := sls.NewMachineGroup(ctx, "default", &sls.MachineGroupArgs{
-// GroupName: pulumi.String("group1"),
-// ProjectName: pulumi.String(pulumi.String(projectName)),
-// MachineIdentifyType: pulumi.String("ip"),
-// GroupAttribute: &sls.MachineGroupGroupAttributeArgs{
-// GroupTopic: pulumi.String("example"),
-// ExternalName: pulumi.String("example"),
-// },
-// MachineLists: pulumi.StringArray{
-// pulumi.String("192.168.1.1"),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// _default := sls.GetMachineGroupsOutput(ctx, sls.GetMachineGroupsOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultMachineGroup.ID(),
-// },
-// GroupName: pulumi.String("group1"),
-// ProjectName: pulumi.String(pulumi.String(projectName)),
-// }, nil);
-// ctx.Export("alicloudSlsMachineGroupExampleId", _default.ApplyT(func(_default sls.GetMachineGroupsResult) (*string, error) {
-// return &default.Groups[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			projectName := "project-for-machine-group-terraform"
+//			if param := cfg.Get("projectName"); param != "" {
+//				projectName = param
+//			}
+//			_, err := log.NewProject(ctx, "defaultyJqrue", &log.ProjectArgs{
+//				Description: pulumi.String("for terraform example"),
+//				Name:        pulumi.String(pulumi.String(projectName)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMachineGroup, err := sls.NewMachineGroup(ctx, "default", &sls.MachineGroupArgs{
+//				GroupName:           pulumi.String("group1"),
+//				ProjectName:         pulumi.String(pulumi.String(projectName)),
+//				MachineIdentifyType: pulumi.String("ip"),
+//				GroupAttribute: &sls.MachineGroupGroupAttributeArgs{
+//					GroupTopic:   pulumi.String("example"),
+//					ExternalName: pulumi.String("example"),
+//				},
+//				MachineLists: pulumi.StringArray{
+//					pulumi.String("192.168.1.1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := sls.GetMachineGroupsOutput(ctx, sls.GetMachineGroupsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultMachineGroup.ID(),
+//				},
+//				GroupName:   pulumi.String("group1"),
+//				ProjectName: pulumi.String(pulumi.String(projectName)),
+//			}, nil)
+//			ctx.Export("alicloudSlsMachineGroupExampleId", _default.ApplyT(func(_default sls.GetMachineGroupsResult) (*string, error) {
+//				return &_default.Groups[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetMachineGroups(ctx *pulumi.Context, args *GetMachineGroupsArgs, opts ...pulumi.InvokeOption) (*GetMachineGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

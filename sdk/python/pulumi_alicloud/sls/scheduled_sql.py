@@ -307,7 +307,7 @@ class ScheduledSql(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_k_ie4_kv = alicloud.log.Project("defaultKIe4KV",
@@ -403,7 +403,7 @@ class ScheduledSql(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_k_ie4_kv = alicloud.log.Project("defaultKIe4KV",

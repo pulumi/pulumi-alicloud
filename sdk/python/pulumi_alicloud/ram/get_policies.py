@@ -192,7 +192,7 @@ def get_policies(enable_details: Optional[_builtins.bool] = None,
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default = random.index.Integer("default",
+    default = random.Integer("default",
         min=10000,
         max=99999)
     default_policy = alicloud.ram.Policy("default",
@@ -283,7 +283,7 @@ def get_policies_output(enable_details: Optional[pulumi.Input[Optional[_builtins
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default = random.index.Integer("default",
+    default = random.Integer("default",
         min=10000,
         max=99999)
     default_policy = alicloud.ram.Policy("default",

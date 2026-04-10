@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Alb
         ///         defaultSwitch.Add(new AliCloud.Vpc.Switch($"default-{range.Value}", new()
         ///         {
         ///             VpcId = defaultNetwork.Id,
-        ///             CidrBlock = Std.Format.Invoke(new()
+        ///             CidrBlock = Std.Index.Format.Invoke(new()
         ///             {
         ///                 Input = "10.4.%d.0/24",
         ///                 Args = new[]
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Alb
         ///                 },
         ///             }).Apply(invoke =&gt; invoke.Result),
         ///             ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id),
-        ///             VswitchName = Std.Format.Invoke(new()
+        ///             VswitchName = Std.Index.Format.Invoke(new()
         ///             {
         ///                 Input = $"{name}_%d",
         ///                 Args = new[]
@@ -241,7 +241,7 @@ namespace Pulumi.AliCloud.Alb
         ///         defaultSwitch.Add(new AliCloud.Vpc.Switch($"default-{range.Value}", new()
         ///         {
         ///             VpcId = defaultNetwork.Id,
-        ///             CidrBlock = Std.Format.Invoke(new()
+        ///             CidrBlock = Std.Index.Format.Invoke(new()
         ///             {
         ///                 Input = "10.4.%d.0/24",
         ///                 Args = new[]
@@ -250,7 +250,7 @@ namespace Pulumi.AliCloud.Alb
         ///                 },
         ///             }).Apply(invoke =&gt; invoke.Result),
         ///             ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id),
-        ///             VswitchName = Std.Format.Invoke(new()
+        ///             VswitchName = Std.Index.Format.Invoke(new()
         ///             {
         ///                 Input = $"{name}_%d",
         ///                 Args = new[]
@@ -434,7 +434,7 @@ namespace Pulumi.AliCloud.Alb
         ///         defaultSwitch.Add(new AliCloud.Vpc.Switch($"default-{range.Value}", new()
         ///         {
         ///             VpcId = defaultNetwork.Id,
-        ///             CidrBlock = Std.Format.Invoke(new()
+        ///             CidrBlock = Std.Index.Format.Invoke(new()
         ///             {
         ///                 Input = "10.4.%d.0/24",
         ///                 Args = new[]
@@ -443,7 +443,7 @@ namespace Pulumi.AliCloud.Alb
         ///                 },
         ///             }).Apply(invoke =&gt; invoke.Result),
         ///             ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id),
-        ///             VswitchName = Std.Format.Invoke(new()
+        ///             VswitchName = Std.Index.Format.Invoke(new()
         ///             {
         ///                 Input = $"{name}_%d",
         ///                 Args = new[]

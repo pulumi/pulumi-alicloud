@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.BastionHost
     ///     var name = config.Get("name") ?? "tf_example";
     ///     var @default = AliCloud.BastionHost.GetInstances.Invoke();
     /// 
-    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

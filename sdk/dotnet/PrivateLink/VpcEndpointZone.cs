@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.PrivateLink
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var example = AliCloud.GetZones.Invoke(new()
+    ///     var example = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

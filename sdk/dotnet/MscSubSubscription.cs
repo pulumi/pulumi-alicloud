@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.MscSubSubscription("example", new()
+    ///     var example = new AliCloud.Index.MscSubSubscription("example", new()
     ///     {
     ///         ItemName = "Notifications of Product Expiration",
     ///         SmsStatus = 1,

@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -47,12 +47,12 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// 
     ///     var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("default", new()
     ///     {
-    ///         StorageBundleName = Std.Replace.Invoke(new()
+    ///         StorageBundleName = Std.Index.Replace.Invoke(new()
     ///         {
     ///             Text = defaultUuid.Result,
     ///             Search = "-",
     ///             Replace = "",
-    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Substr.Invoke(new()
     ///         {
     ///             Input = $"tf-example-{invoke.Result}",
     ///             Offset = 0,
@@ -62,12 +62,12 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// 
     ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
-    ///         BucketName = Std.Replace.Invoke(new()
+    ///         BucketName = Std.Index.Replace.Invoke(new()
     ///         {
     ///             Text = defaultUuid.Result,
     ///             Search = "-",
     ///             Replace = "",
-    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Substr.Invoke(new()
     ///         {
     ///             Input = $"tf-example-{invoke.Result}",
     ///             Offset = 0,

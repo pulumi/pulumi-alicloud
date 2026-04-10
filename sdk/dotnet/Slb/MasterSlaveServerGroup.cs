@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var msServerGroup = AliCloud.GetZones.Invoke(new()
+    ///     var msServerGroup = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",

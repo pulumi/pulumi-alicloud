@@ -223,7 +223,7 @@ class EndpointAclPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000000,
             max=99999999)
         default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
@@ -289,7 +289,7 @@ class EndpointAclPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000000,
             max=99999999)
         default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",

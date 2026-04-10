@@ -275,7 +275,7 @@ class Chain(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=100000,
             max=999999)
         default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
@@ -459,7 +459,7 @@ class Chain(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=100000,
             max=999999)
         default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",

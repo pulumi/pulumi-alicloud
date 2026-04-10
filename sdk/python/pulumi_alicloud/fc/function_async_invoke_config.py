@@ -325,7 +325,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
 
         default = alicloud.get_account()
         default_get_regions = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_role = alicloud.ram.Role("default",
@@ -455,7 +455,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
 
         default = alicloud.get_account()
         default_get_regions = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_role = alicloud.ram.Role("default",

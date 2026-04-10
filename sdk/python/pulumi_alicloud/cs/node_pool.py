@@ -2946,7 +2946,7 @@ class NodePool(pulumi.CustomResource):
         import pulumi_random as random
         import pulumi_std as std
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         config = pulumi.Config()
@@ -3644,7 +3644,7 @@ class NodePool(pulumi.CustomResource):
         import pulumi_random as random
         import pulumi_std as std
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         config = pulumi.Config()

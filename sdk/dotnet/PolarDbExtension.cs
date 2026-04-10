@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud
     ///         AccountName = account.DbClusterId,
     ///     });
     /// 
-    ///     var defaultPolarDbExtension = new AliCloud.PolarDbExtension("default", new()
+    ///     var defaultPolarDbExtension = new AliCloud.Index.PolarDbExtension("default", new()
     ///     {
     ///         ExtensionName = "postgres_fdw",
     ///         DbClusterId = dbcluster.Id,

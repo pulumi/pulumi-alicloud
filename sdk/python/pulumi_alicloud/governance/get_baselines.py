@@ -125,7 +125,7 @@ def get_baselines(ids: Optional[Sequence[_builtins.str]] = None,
     name = config.get("name")
     if name is None:
         name = "terraform_example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     item_password_policy = config.get("itemPasswordPolicy")
@@ -204,7 +204,7 @@ def get_baselines_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.
     name = config.get("name")
     if name is None:
         name = "terraform_example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     item_password_policy = config.get("itemPasswordPolicy")

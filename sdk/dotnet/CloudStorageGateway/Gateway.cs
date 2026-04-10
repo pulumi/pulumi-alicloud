@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.GetZones.Invoke();
+    ///     var @default = AliCloud.Index.GetZones.Invoke();
     /// 
     ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {

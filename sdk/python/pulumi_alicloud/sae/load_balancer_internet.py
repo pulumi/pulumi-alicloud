@@ -177,7 +177,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")
@@ -269,7 +269,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")

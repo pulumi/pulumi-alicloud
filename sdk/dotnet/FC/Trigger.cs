@@ -32,9 +32,9 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
-    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -191,9 +191,9 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
-    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -310,7 +310,7 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
@@ -462,9 +462,9 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
-    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

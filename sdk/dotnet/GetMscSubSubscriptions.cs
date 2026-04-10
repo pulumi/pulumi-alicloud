@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.GetMscSubSubscriptions.Invoke();
+        ///     var @default = AliCloud.Index.GetMscSubSubscriptions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.GetMscSubSubscriptions.Invoke();
+        ///     var @default = AliCloud.Index.GetMscSubSubscriptions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.GetMscSubSubscriptions.Invoke();
+        ///     var @default = AliCloud.Index.GetMscSubSubscriptions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

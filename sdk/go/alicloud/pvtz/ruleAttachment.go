@@ -98,7 +98,8 @@ import (
 // VpcId: defaultNetwork[2].ID(),
 // CidrBlock: pulumi.String(defaultNetwork[2].CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
 // %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-// return invoke.Result, nil
+// val := invoke.Result
+// return &val, nil
 // }).(pulumi.StringPtrOutput)),
 // ZoneId: pulumi.String(_default.Zones[val0].ZoneId),
 // })

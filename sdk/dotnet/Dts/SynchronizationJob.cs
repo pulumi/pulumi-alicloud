@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Dts
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var example = AliCloud.GetRegions.Invoke(new()
+    ///     var example = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Dts
     ///             InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
     ///             InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
     ///             InstanceChargeType = "Postpaid",
-    ///             InstanceName = Std.Format.Invoke(new()
+    ///             InstanceName = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "%s_%d",
     ///                 Args = new[]
@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Dts
     ///         exampleRdsAccount.Add(new AliCloud.Rds.RdsAccount($"example-{range.Value}", new()
     ///         {
     ///             DbInstanceId = exampleInstance[range.Value].Id,
-    ///             AccountName = Std.Format.Invoke(new()
+    ///             AccountName = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "example_name_%d",
     ///                 Args = new[]
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Dts
     ///                     range.Value + 1,
     ///                 },
     ///             }).Apply(invoke =&gt; invoke.Result),
-    ///             AccountPassword = Std.Format.Invoke(new()
+    ///             AccountPassword = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "example_password_%d",
     ///                 Args = new[]
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.Dts
     ///         exampleDatabase.Add(new AliCloud.Rds.Database($"example-{range.Value}", new()
     ///         {
     ///             InstanceId = exampleInstance[range.Value].Id,
-    ///             Name = Std.Format.Invoke(new()
+    ///             Name = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "%s_%d",
     ///                 Args = new[]

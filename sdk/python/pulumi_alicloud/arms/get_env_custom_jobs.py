@@ -134,7 +134,7 @@ def get_env_custom_jobs(environment_id: Optional[_builtins.str] = None,
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
@@ -211,7 +211,7 @@ def get_env_custom_jobs_output(environment_id: Optional[pulumi.Input[_builtins.s
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")

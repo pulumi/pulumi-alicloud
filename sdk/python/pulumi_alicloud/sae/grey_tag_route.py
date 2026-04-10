@@ -226,7 +226,7 @@ class GreyTagRoute(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default = alicloud.get_regions(current=True)
@@ -334,7 +334,7 @@ class GreyTagRoute(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default = alicloud.get_regions(current=True)

@@ -28,27 +28,29 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// defaultConfig, err := sddp.NewConfig(ctx, "default", &sddp.ConfigArgs{
-// Code: pulumi.String("access_failed_cnt"),
-// Value: pulumi.String("10"),
-// })
-// if err != nil {
-// return err
-// }
-// _default := sddp.GetConfigsOutput(ctx, sddp.GetConfigsOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultConfig.ID(),
-// },
-// OutputFile: pulumi.String("./t.json"),
-// }, nil);
-// ctx.Export("sddpConfigId", _default.ApplyT(func(_default sddp.GetConfigsResult) (interface{}, error) {
-// return _default.Ids, nil
-// }).(pulumi.Interface{}Output))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultConfig, err := sddp.NewConfig(ctx, "default", &sddp.ConfigArgs{
+//				Code:  pulumi.String("access_failed_cnt"),
+//				Value: pulumi.String("10"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := sddp.GetConfigsOutput(ctx, sddp.GetConfigsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultConfig.ID(),
+//				},
+//				OutputFile: pulumi.String("./t.json"),
+//			}, nil)
+//			ctx.Export("sddpConfigId", _default.ApplyT(func(_default sddp.GetConfigsResult) (interface{}, error) {
+//				return _default.Ids, nil
+//			}).(pulumi.AnyOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetConfigs(ctx *pulumi.Context, args *GetConfigsArgs, opts ...pulumi.InvokeOption) (*GetConfigsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

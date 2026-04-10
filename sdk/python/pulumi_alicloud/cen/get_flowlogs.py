@@ -289,7 +289,7 @@ def get_flowlogs(cen_id: Optional[_builtins.str] = None,
     name = config.get("name")
     if name is None:
         name = "tf-example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     defaultc5kxy_c = alicloud.cen.Instance("defaultc5kxyC", cen_instance_name=name)
@@ -411,7 +411,7 @@ def get_flowlogs_output(cen_id: Optional[pulumi.Input[Optional[_builtins.str]]] 
     name = config.get("name")
     if name is None:
         name = "tf-example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     defaultc5kxy_c = alicloud.cen.Instance("defaultc5kxyC", cen_instance_name=name)

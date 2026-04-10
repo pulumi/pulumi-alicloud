@@ -358,7 +358,7 @@ class KeywordLib(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_mn8s_vk = alicloud.aligreen.BizType("defaultMn8sVK",
@@ -428,7 +428,7 @@ class KeywordLib(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_mn8s_vk = alicloud.aligreen.BizType("defaultMn8sVK",

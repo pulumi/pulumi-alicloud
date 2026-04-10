@@ -32,9 +32,9 @@ namespace Pulumi.AliCloud.Cms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
-    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -43,12 +43,12 @@ namespace Pulumi.AliCloud.Cms
     /// 
     ///     var defaultProject = new AliCloud.Log.Project("default", new()
     ///     {
-    ///         ProjectName = Std.Replace.Invoke(new()
+    ///         ProjectName = Std.Index.Replace.Invoke(new()
     ///         {
     ///             Text = defaultUuid.Result,
     ///             Search = "-",
     ///             Replace = "",
-    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Substr.Invoke(new()
     ///         {
     ///             Input = $"tf-example-{invoke.Result}",
     ///             Offset = 0,

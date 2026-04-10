@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.CS
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

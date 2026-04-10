@@ -128,7 +128,7 @@ class UserPermission(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.servicemesh.get_versions(edition="Default")
@@ -202,7 +202,7 @@ class UserPermission(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.servicemesh.get_versions(edition="Default")

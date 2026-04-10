@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Das
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tfexample";
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var defaultGetNodeClasses = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
     ///     {

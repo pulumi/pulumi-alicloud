@@ -471,7 +471,7 @@ class VvpInstance(pulumi.CustomResource):
         zone_id = config.get("zoneId")
         if zone_id is None:
             zone_id = "cn-hangzhou-i"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.get_zones(available_resource_creation="VSwitch")
@@ -553,7 +553,7 @@ class VvpInstance(pulumi.CustomResource):
         zone_id = config.get("zoneId")
         if zone_id is None:
             zone_id = "cn-hangzhou-i"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.get_zones(available_resource_creation="VSwitch")

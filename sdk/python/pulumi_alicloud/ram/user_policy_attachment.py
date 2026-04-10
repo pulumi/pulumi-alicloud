@@ -168,7 +168,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
             comments="yoyoyo")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         policy = alicloud.ram.Policy("policy",
@@ -245,7 +245,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
             comments="yoyoyo")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         policy = alicloud.ram.Policy("policy",

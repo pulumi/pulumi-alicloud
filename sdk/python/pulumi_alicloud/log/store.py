@@ -643,7 +643,7 @@ class Store(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
@@ -671,7 +671,7 @@ class Store(pulumi.CustomResource):
         if region is None:
             region = "cn-hangzhou"
         example = alicloud.get_account()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
@@ -774,7 +774,7 @@ class Store(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
@@ -802,7 +802,7 @@ class Store(pulumi.CustomResource):
         if region is None:
             region = "cn-hangzhou"
         example = alicloud.get_account()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")

@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

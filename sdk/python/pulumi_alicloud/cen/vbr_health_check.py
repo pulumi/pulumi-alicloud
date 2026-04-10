@@ -332,7 +332,7 @@ class VbrHealthCheck(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.get_regions(current=True)
         default_get_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.index.Integer("vlan_id",
+        vlan_id = random.Integer("vlan_id",
             max=2999,
             min=1)
         example = alicloud.expressconnect.VirtualBorderRouter("example",
@@ -416,7 +416,7 @@ class VbrHealthCheck(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.get_regions(current=True)
         default_get_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.index.Integer("vlan_id",
+        vlan_id = random.Integer("vlan_id",
             max=2999,
             min=1)
         example = alicloud.expressconnect.VirtualBorderRouter("example",

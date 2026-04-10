@@ -176,7 +176,7 @@ class V3FunctionVersion(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Uuid("default")
+        default = random.Uuid("default")
         function = alicloud.fc.V3Function("function",
             memory_size=512,
             cpu=0.5,
@@ -239,7 +239,7 @@ class V3FunctionVersion(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Uuid("default")
+        default = random.Uuid("default")
         function = alicloud.fc.V3Function("function",
             memory_size=512,
             cpu=0.5,

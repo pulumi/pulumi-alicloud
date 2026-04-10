@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = new AliCloud.OpenApiExplorerApiMcpServer("default", new()
+    ///     var @default = new AliCloud.Index.OpenApiExplorerApiMcpServer("default", new()
     ///     {
     ///         SystemTools = new[]
     ///         {

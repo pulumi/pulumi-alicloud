@@ -246,7 +246,7 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=100000,
             max=999999)
         default = alicloud.get_zones(available_resource_creation="VSwitch")
@@ -320,7 +320,7 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=100000,
             max=999999)
         default = alicloud.get_zones(available_resource_creation="VSwitch")

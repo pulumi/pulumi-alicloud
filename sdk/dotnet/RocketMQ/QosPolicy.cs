@@ -53,17 +53,17 @@ namespace Pulumi.AliCloud.RocketMQ
     ///         SourcePortRange = "-1/-1",
     ///         DestCidr = "10.10.0.0/24",
     ///         DestPortRange = "-1/-1",
-    ///         StartTime = Std.Replace.Invoke(new()
+    ///         StartTime = Std.Index.Replace.Invoke(new()
     ///         {
     ///             Text = example.Rfc3339,
     ///             Search = "Z",
     ///             Replace = "+0800",
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         EndTime = Std.Timeadd.Invoke(new()
+    ///         EndTime = Std.Index.Timeadd.Invoke(new()
     ///         {
     ///             Duration = example.Rfc3339,
     ///             Timestamp = "24h",
-    ///         }).Apply(invoke =&gt; Std.Replace.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Replace.Invoke(new()
     ///         {
     ///             Text = invoke.Result,
     ///             Search = "Z",

@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Vpn
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Vpn
     ///         Name = name,
     ///         VpnGatewayId = defaultGateway.Id,
     ///         ClientIpPool = "192.168.0.0/16",
-    ///         LocalSubnet = Std.Cidrsubnet.Invoke(new()
+    ///         LocalSubnet = Std.Index.Cidrsubnet.Invoke(new()
     ///         {
     ///             Input = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.CidrBlock),
     ///             Newbits = 8,

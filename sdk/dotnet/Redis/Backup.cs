@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Redis
     ///         vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new()
     ///         {
     ///             VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
-    ///             CidrBlock = @default.Apply(@default =&gt; Std.Cidrsubnet.Invoke(new()
+    ///             CidrBlock = @default.Apply(@default =&gt; Std.Index.Cidrsubnet.Invoke(new()
     ///             {
     ///                 Input = @default.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.CidrBlock),
     ///                 Newbits = 8,
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Redis
     ///             VswitchName = name,
     ///         }));
     ///     }
-    ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, Std.Concat.Invoke(new()
+    ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, Std.Index.Concat.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {

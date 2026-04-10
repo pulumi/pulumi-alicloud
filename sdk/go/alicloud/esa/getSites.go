@@ -27,47 +27,49 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// defaultIEoDfU, err := esa.NewRatePlanInstance(ctx, "defaultIEoDfU", &esa.RatePlanInstanceArgs{
-// Type: pulumi.String("NS"),
-// AutoRenew: pulumi.Bool(true),
-// Period: pulumi.Int(1),
-// PaymentType: pulumi.String("Subscription"),
-// Coverage: pulumi.String("overseas"),
-// AutoPay: pulumi.Bool(true),
-// PlanName: pulumi.String("basic"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultSite, err := esa.NewSite(ctx, "default", &esa.SiteArgs{
-// SiteName: pulumi.String("bcd.com"),
-// Coverage: pulumi.String("overseas"),
-// AccessType: pulumi.String("NS"),
-// InstanceId: defaultIEoDfU.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// _default := esa.GetSitesOutput(ctx, esa.GetSitesOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultSite.ID(),
-// },
-// NameRegex: defaultSite.SiteName,
-// SiteName: pulumi.String("bcd.com"),
-// }, nil);
-// ctx.Export("alicloudEsaSiteExampleId", _default.ApplyT(func(_default esa.GetSitesResult) (*int, error) {
-// return &default.Sites[0].Id, nil
-// }).(pulumi.IntPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultIEoDfU, err := esa.NewRatePlanInstance(ctx, "defaultIEoDfU", &esa.RatePlanInstanceArgs{
+//				Type:        pulumi.String("NS"),
+//				AutoRenew:   pulumi.Bool(true),
+//				Period:      pulumi.Int(1),
+//				PaymentType: pulumi.String("Subscription"),
+//				Coverage:    pulumi.String("overseas"),
+//				AutoPay:     pulumi.Bool(true),
+//				PlanName:    pulumi.String("basic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSite, err := esa.NewSite(ctx, "default", &esa.SiteArgs{
+//				SiteName:   pulumi.String("bcd.com"),
+//				Coverage:   pulumi.String("overseas"),
+//				AccessType: pulumi.String("NS"),
+//				InstanceId: defaultIEoDfU.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := esa.GetSitesOutput(ctx, esa.GetSitesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultSite.ID(),
+//				},
+//				NameRegex: defaultSite.SiteName,
+//				SiteName:  pulumi.String("bcd.com"),
+//			}, nil)
+//			ctx.Export("alicloudEsaSiteExampleId", _default.ApplyT(func(_default esa.GetSitesResult) (*int, error) {
+//				return &_default.Sites[0].Id, nil
+//			}).(pulumi.IntPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSites(ctx *pulumi.Context, args *GetSitesArgs, opts ...pulumi.InvokeOption) (*GetSitesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

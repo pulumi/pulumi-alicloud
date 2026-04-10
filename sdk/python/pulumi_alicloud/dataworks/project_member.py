@@ -179,7 +179,7 @@ class ProjectMember(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        randint = random.index.Integer("randint",
+        randint = random.Integer("randint",
             max=999,
             min=1)
         default_kc_tr_b2 = alicloud.ram.User("defaultKCTrB2",
@@ -249,7 +249,7 @@ class ProjectMember(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        randint = random.index.Integer("randint",
+        randint = random.Integer("randint",
             max=999,
             min=1)
         default_kc_tr_b2 = alicloud.ram.User("defaultKCTrB2",

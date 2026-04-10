@@ -602,7 +602,7 @@ class VpcCenTrFirewall(pulumi.CustomResource):
             cen_id=cen.id,
             transit_router_id=tr.transit_router_id,
             opts = pulumi.ResourceOptions(depends_on=[foo]))
-        wait10_minutes = time.index.Sleep("wait_10_minutes", create_duration=10m,
+        wait10_minutes = time.Sleep("wait_10_minutes", create_duration=10m,
         opts = pulumi.ResourceOptions(depends_on=[tr_vpc1]))
         default_vpc_cen_tr_firewall = alicloud.cloudfirewall.VpcCenTrFirewall("default",
             cen_id=tr_vpc1.cen_id,
@@ -748,7 +748,7 @@ class VpcCenTrFirewall(pulumi.CustomResource):
             cen_id=cen.id,
             transit_router_id=tr.transit_router_id,
             opts = pulumi.ResourceOptions(depends_on=[foo]))
-        wait10_minutes = time.index.Sleep("wait_10_minutes", create_duration=10m,
+        wait10_minutes = time.Sleep("wait_10_minutes", create_duration=10m,
         opts = pulumi.ResourceOptions(depends_on=[tr_vpc1]))
         default_vpc_cen_tr_firewall = alicloud.cloudfirewall.VpcCenTrFirewall("default",
             cen_id=tr_vpc1.cen_id,

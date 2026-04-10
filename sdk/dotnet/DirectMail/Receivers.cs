@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.DirectMail
     ///     var name = config.Get("name") ?? "tfexample";
     ///     var example = new AliCloud.DirectMail.Receivers("example", new()
     ///     {
-    ///         ReceiversAlias = Std.Format.Invoke(new()
+    ///         ReceiversAlias = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s@onaliyun.com",
     ///             Args = new[]

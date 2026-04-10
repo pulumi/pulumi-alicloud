@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ddos
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var defaultDdosBgpInstance = new AliCloud.Ddos.DdosBgpInstance("default", new()
     ///     {

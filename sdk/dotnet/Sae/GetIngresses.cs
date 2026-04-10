@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Sae
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "example_value";
-        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.Index.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.Sae
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "example_value";
-        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.Index.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
@@ -238,7 +238,7 @@ namespace Pulumi.AliCloud.Sae
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "example_value";
-        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.Index.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });

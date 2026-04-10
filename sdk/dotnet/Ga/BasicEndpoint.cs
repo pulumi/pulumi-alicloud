@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ga
     ///     var config = new Config();
     ///     var region = config.Get("region") ?? "cn-shenzhen";
     ///     var endpointRegion = config.Get("endpointRegion") ?? "cn-hangzhou";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

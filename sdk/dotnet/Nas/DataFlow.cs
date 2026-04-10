@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Nas
     ///         Description = "terraform-example",
     ///         FileSystemId = exampleFileSystem.Id,
     ///         SourceSecurityType = "SSL",
-    ///         SourceStorage = Std.Join.Invoke(new()
+    ///         SourceStorage = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = "",
     ///             Input = new[]

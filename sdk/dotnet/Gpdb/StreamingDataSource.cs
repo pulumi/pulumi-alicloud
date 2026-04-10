@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Gpdb
     ///     ""topic"": ""ziyuan_example""
     /// }
     /// ";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

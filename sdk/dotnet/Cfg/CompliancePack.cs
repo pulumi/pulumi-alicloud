@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cfg
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example-config-name";
-    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

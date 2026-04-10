@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.DirectMail
     /// 
     ///     var exampleMailAddress = new AliCloud.DirectMail.MailAddress("example", new()
     ///     {
-    ///         AccountName = Std.Format.Invoke(new()
+    ///         AccountName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s@%s",
     ///             Args = new[]

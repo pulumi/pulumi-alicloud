@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Dts
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var example = AliCloud.GetRegions.Invoke(new()
+    ///     var example = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

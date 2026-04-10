@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Kms
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var current = AliCloud.GetAccount.Invoke();
+        ///     var current = AliCloud.Index.GetAccount.Invoke();
         /// 
         ///     var vpc_amp_instance_example = new AliCloud.Vpc.Network("vpc-amp-instance-example", new()
         ///     {
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Kms
         ///     var shareVPC = new AliCloud.Vpc.Network("shareVPC", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
-        ///         VpcName = Std.Format.Invoke(new()
+        ///         VpcName = Std.Index.Format.Invoke(new()
         ///         {
         ///             Input = "%s3",
         ///             Args = new[]
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Kms
         ///     var share_VPC2 = new AliCloud.Vpc.Network("share-VPC2", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
-        ///         VpcName = Std.Format.Invoke(new()
+        ///         VpcName = Std.Index.Format.Invoke(new()
         ///         {
         ///             Input = "%s5",
         ///             Args = new[]
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Kms
         ///     var share_VPC3 = new AliCloud.Vpc.Network("share-VPC3", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
-        ///         VpcName = Std.Format.Invoke(new()
+        ///         VpcName = Std.Index.Format.Invoke(new()
         ///         {
         ///             Input = "%s7",
         ///             Args = new[]
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.Kms
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var current = AliCloud.GetAccount.Invoke();
+        ///     var current = AliCloud.Index.GetAccount.Invoke();
         /// 
         ///     var vpc_amp_instance_example = new AliCloud.Vpc.Network("vpc-amp-instance-example", new()
         ///     {
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.Kms
         ///     var shareVPC = new AliCloud.Vpc.Network("shareVPC", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
-        ///         VpcName = Std.Format.Invoke(new()
+        ///         VpcName = Std.Index.Format.Invoke(new()
         ///         {
         ///             Input = "%s3",
         ///             Args = new[]
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.Kms
         ///     var share_VPC2 = new AliCloud.Vpc.Network("share-VPC2", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
-        ///         VpcName = Std.Format.Invoke(new()
+        ///         VpcName = Std.Index.Format.Invoke(new()
         ///         {
         ///             Input = "%s5",
         ///             Args = new[]
@@ -260,7 +260,7 @@ namespace Pulumi.AliCloud.Kms
         ///     var share_VPC3 = new AliCloud.Vpc.Network("share-VPC3", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
-        ///         VpcName = Std.Format.Invoke(new()
+        ///         VpcName = Std.Index.Format.Invoke(new()
         ///         {
         ///             Input = "%s7",
         ///             Args = new[]
@@ -361,7 +361,7 @@ namespace Pulumi.AliCloud.Kms
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var current = AliCloud.GetAccount.Invoke();
+        ///     var current = AliCloud.Index.GetAccount.Invoke();
         /// 
         ///     var vpc_amp_instance_example = new AliCloud.Vpc.Network("vpc-amp-instance-example", new()
         ///     {
@@ -386,7 +386,7 @@ namespace Pulumi.AliCloud.Kms
         ///     var shareVPC = new AliCloud.Vpc.Network("shareVPC", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
-        ///         VpcName = Std.Format.Invoke(new()
+        ///         VpcName = Std.Index.Format.Invoke(new()
         ///         {
         ///             Input = "%s3",
         ///             Args = new[]
@@ -406,7 +406,7 @@ namespace Pulumi.AliCloud.Kms
         ///     var share_VPC2 = new AliCloud.Vpc.Network("share-VPC2", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
-        ///         VpcName = Std.Format.Invoke(new()
+        ///         VpcName = Std.Index.Format.Invoke(new()
         ///         {
         ///             Input = "%s5",
         ///             Args = new[]
@@ -426,7 +426,7 @@ namespace Pulumi.AliCloud.Kms
         ///     var share_VPC3 = new AliCloud.Vpc.Network("share-VPC3", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
-        ///         VpcName = Std.Format.Invoke(new()
+        ///         VpcName = Std.Index.Format.Invoke(new()
         ///         {
         ///             Input = "%s7",
         ///             Args = new[]

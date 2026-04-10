@@ -193,7 +193,7 @@ class ConfigMap(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_namespace = alicloud.sae.Namespace("default",
@@ -256,7 +256,7 @@ class ConfigMap(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_namespace = alicloud.sae.Namespace("default",

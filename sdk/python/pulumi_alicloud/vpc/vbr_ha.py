@@ -289,7 +289,7 @@ class VbrHa(pulumi.CustomResource):
             name = "tf-example"
         default = alicloud.get_regions(current=True)
         example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.index.Integer("vlan_id",
+        vlan_id = random.Integer("vlan_id",
             max=2999,
             min=1)
         example_virtual_border_router = []
@@ -376,7 +376,7 @@ class VbrHa(pulumi.CustomResource):
             name = "tf-example"
         default = alicloud.get_regions(current=True)
         example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.index.Integer("vlan_id",
+        vlan_id = random.Integer("vlan_id",
             max=2999,
             min=1)
         example_virtual_border_router = []

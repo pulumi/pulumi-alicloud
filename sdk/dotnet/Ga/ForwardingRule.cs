@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ga
     ///     var config = new Config();
     ///     var region = config.Get("region") ?? "cn-hangzhou";
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

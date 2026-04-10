@@ -63,13 +63,13 @@ namespace Pulumi.AliCloud.AckOne
     ///             defaultSwitch.Id,
     ///         },
     ///         NewNatGateway = true,
-    ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+    ///         PodCidr = Std.Index.Cidrsubnet.Invoke(new()
     ///         {
     ///             Input = "10.0.0.0/8",
     ///             Newbits = 8,
     ///             Netnum = 36,
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+    ///         ServiceCidr = Std.Index.Cidrsubnet.Invoke(new()
     ///         {
     ///             Input = "172.16.0.0/16",
     ///             Newbits = 4,

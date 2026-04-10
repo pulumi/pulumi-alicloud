@@ -68,7 +68,8 @@ import (
 //						return __convert - 1, nil
 //					}).(pulumi.Float64Output))]), nil
 //				}).(alicloud.GetZonesZoneOutput).ApplyT(func(obj alicloud.GetZonesZone) (*string, error) {
-//					return obj.Id, nil
+//					val := obj.Id
+//					return &val, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {

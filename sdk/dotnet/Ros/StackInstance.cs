@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ros
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @this = AliCloud.GetAccount.Invoke();
+    ///     var @this = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var @default = AliCloud.Ros.GetRegions.Invoke();
     /// 

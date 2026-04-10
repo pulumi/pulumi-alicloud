@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Cms
     ///         MonitorGroupName = name,
     ///     });
     /// 
-    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

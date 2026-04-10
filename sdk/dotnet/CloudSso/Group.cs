@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.CloudSso
     ///             DirectoryName = name,
     ///         }));
     ///     }
-    ///     var directoryId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length, @default, Std.Concat.Invoke(new()
+    ///     var directoryId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length, @default, Std.Index.Concat.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {

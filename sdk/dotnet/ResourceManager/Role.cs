@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tfexample";
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var example = new AliCloud.ResourceManager.Role("example", new()
     ///     {

@@ -105,7 +105,7 @@ class Domain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.directmail.Domain("example", domain_name=f"alicloud-provider-{default['result']}.online")
@@ -148,7 +148,7 @@ class Domain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.directmail.Domain("example", domain_name=f"alicloud-provider-{default['result']}.online")

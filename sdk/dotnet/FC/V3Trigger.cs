@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.FC
     ///         },
     ///     });
     /// 
-    ///     var current = AliCloud.GetAccount.Invoke();
+    ///     var current = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var @default = new AliCloud.FC.V3Trigger("default", new()
     ///     {
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.FC
     ///         },
     ///     });
     /// 
-    ///     var current = AliCloud.GetAccount.Invoke();
+    ///     var current = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var @default = new AliCloud.FC.V3Trigger("default", new()
     ///     {

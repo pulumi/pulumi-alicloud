@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultMscSubContract = new AliCloud.MscSubContract("default", new()
+        ///     var defaultMscSubContract = new AliCloud.Index.MscSubContract("default", new()
         ///     {
         ///         ContactName = "example_value",
         ///         Position = "CEO",
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud
         ///         Mobile = "153xxxxx906",
         ///     });
         /// 
-        ///     var @default = AliCloud.GetMscSubContactVerificationMessage.Invoke(new()
+        ///     var @default = AliCloud.Index.GetMscSubContactVerificationMessage.Invoke(new()
         ///     {
         ///         ContactId = defaultMscSubContract.Id,
         ///         Type = 1,
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultMscSubContract = new AliCloud.MscSubContract("default", new()
+        ///     var defaultMscSubContract = new AliCloud.Index.MscSubContract("default", new()
         ///     {
         ///         ContactName = "example_value",
         ///         Position = "CEO",
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud
         ///         Mobile = "153xxxxx906",
         ///     });
         /// 
-        ///     var @default = AliCloud.GetMscSubContactVerificationMessage.Invoke(new()
+        ///     var @default = AliCloud.Index.GetMscSubContactVerificationMessage.Invoke(new()
         ///     {
         ///         ContactId = defaultMscSubContract.Id,
         ///         Type = 1,
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultMscSubContract = new AliCloud.MscSubContract("default", new()
+        ///     var defaultMscSubContract = new AliCloud.Index.MscSubContract("default", new()
         ///     {
         ///         ContactName = "example_value",
         ///         Position = "CEO",
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud
         ///         Mobile = "153xxxxx906",
         ///     });
         /// 
-        ///     var @default = AliCloud.GetMscSubContactVerificationMessage.Invoke(new()
+        ///     var @default = AliCloud.Index.GetMscSubContactVerificationMessage.Invoke(new()
         ///     {
         ///         ContactId = defaultMscSubContract.Id,
         ///         Type = 1,

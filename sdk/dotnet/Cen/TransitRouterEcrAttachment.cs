@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Cen
     ///         TransitRouterName = name,
     ///     });
     /// 
-    ///     var current = AliCloud.GetAccount.Invoke();
+    ///     var current = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var defaultedPu6c = new AliCloud.ExpressConnect.RouterTrAssociation("defaultedPu6c", new()
     ///     {

@@ -117,7 +117,8 @@ import (
 //						exampleBucket.Bucket,
 //					},
 //				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//					return invoke.Result, nil
+//					val := invoke.Result
+//					return &val, nil
 //				}).(pulumi.StringPtrOutput)),
 //				Throughput: pulumi.Int(600),
 //			})

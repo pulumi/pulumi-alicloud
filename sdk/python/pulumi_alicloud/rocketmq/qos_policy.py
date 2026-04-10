@@ -427,7 +427,7 @@ class QosPolicy(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.sag.Qos("default", name=name)
-        example = time.index.Static("example")
+        example = time.Static("example")
         default_qos_policy = alicloud.sag.QosPolicy("default",
             qos_id=default.id,
             name=name,
@@ -503,7 +503,7 @@ class QosPolicy(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.sag.Qos("default", name=name)
-        example = time.index.Static("example")
+        example = time.Static("example")
         default_qos_policy = alicloud.sag.QosPolicy("default",
             qos_id=default.id,
             name=name,

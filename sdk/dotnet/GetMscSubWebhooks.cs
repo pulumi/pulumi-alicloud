@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.GetMscSubWebhooks.Invoke(new()
+        ///     var ids = AliCloud.Index.GetMscSubWebhooks.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud
         ///         },
         ///     });
         /// 
-        ///     var nameRegex = AliCloud.GetMscSubWebhooks.Invoke(new()
+        ///     var nameRegex = AliCloud.Index.GetMscSubWebhooks.Invoke(new()
         ///     {
         ///         NameRegex = "^my-Webhook",
         ///     });
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.GetMscSubWebhooks.Invoke(new()
+        ///     var ids = AliCloud.Index.GetMscSubWebhooks.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud
         ///         },
         ///     });
         /// 
-        ///     var nameRegex = AliCloud.GetMscSubWebhooks.Invoke(new()
+        ///     var nameRegex = AliCloud.Index.GetMscSubWebhooks.Invoke(new()
         ///     {
         ///         NameRegex = "^my-Webhook",
         ///     });
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.GetMscSubWebhooks.Invoke(new()
+        ///     var ids = AliCloud.Index.GetMscSubWebhooks.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud
         ///         },
         ///     });
         /// 
-        ///     var nameRegex = AliCloud.GetMscSubWebhooks.Invoke(new()
+        ///     var nameRegex = AliCloud.Index.GetMscSubWebhooks.Invoke(new()
         ///     {
         ///         NameRegex = "^my-Webhook",
         ///     });

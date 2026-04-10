@@ -165,7 +165,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         group = alicloud.ram.Group("group",
             group_name="groupName",
             comments="this is a group comments.")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         policy = alicloud.ram.Policy("policy",
@@ -239,7 +239,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         group = alicloud.ram.Group("group",
             group_name="groupName",
             comments="this is a group comments.")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         policy = alicloud.ram.Policy("policy",

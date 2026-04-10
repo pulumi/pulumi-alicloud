@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Pvtz
     ///         Status = "NORMAL",
     ///     });
     /// 
-    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Pvtz
     ///         defaultSwitch.Add(new AliCloud.Vpc.Switch($"default-{range.Value}", new()
     ///         {
     ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = defaultNetwork.CidrBlock.Apply(cidrBlock =&gt; Std.Cidrsubnet.Invoke(new()
+    ///             CidrBlock = defaultNetwork.CidrBlock.Apply(cidrBlock =&gt; Std.Index.Cidrsubnet.Invoke(new()
     ///             {
     ///                 Input = cidrBlock,
     ///                 Newbits = 8,

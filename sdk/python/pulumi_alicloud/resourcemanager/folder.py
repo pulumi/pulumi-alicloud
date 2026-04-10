@@ -177,7 +177,7 @@ class Folder(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
@@ -228,7 +228,7 @@ class Folder(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")

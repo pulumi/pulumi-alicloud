@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AliCloud.GetAccount.Invoke();
+    ///     var current = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var roles = AliCloud.Ram.GetRoles.Invoke(new()
     ///     {

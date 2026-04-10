@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Ram
     ///     var name = config.Get("name") ?? "tfexample";
     ///     var @group = new AliCloud.Ram.Group("group", new()
     ///     {
-    ///         Name = Std.Format.Invoke(new()
+    ///         Name = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%sgroup",
     ///             Args = new[]
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ram
     /// 
     ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
-    ///         Name = Std.Format.Invoke(new()
+    ///         Name = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%suser",
     ///             Args = new[]
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Ram
     /// 
     ///     var user1 = new AliCloud.Ram.User("user1", new()
     ///     {
-    ///         Name = Std.Format.Invoke(new()
+    ///         Name = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%suser1",
     ///             Args = new[]

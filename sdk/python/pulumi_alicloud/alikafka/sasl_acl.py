@@ -454,7 +454,7 @@ class SaslAcl(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.get_zones(available_resource_creation="VSwitch")
@@ -572,7 +572,7 @@ class SaslAcl(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.get_zones(available_resource_creation="VSwitch")

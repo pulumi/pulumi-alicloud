@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Cfg
     ///         DeliveryChannelName = "channel_name",
     ///         DeliveryChannelAssumeRoleArn = "acs:ram::11827252********:role/aliyunserviceroleforconfig",
     ///         DeliveryChannelType = "MNS",
-    ///         DeliveryChannelTargetArn = Std.Format.Invoke(new()
+    ///         DeliveryChannelTargetArn = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "acs:oss:cn-shanghai:11827252********:/topics/%s",
     ///             Args = new[]

@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Eci
     ///         PaymentType = "PayAsYouGo",
     ///     });
     /// 
-    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var defaultbpR5Uk = new AliCloud.Cen.Instance("defaultbpR5Uk", new()
     ///     {

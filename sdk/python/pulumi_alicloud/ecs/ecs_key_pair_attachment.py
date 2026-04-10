@@ -215,7 +215,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             image_id=default_get_images.images[0].id)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_network = alicloud.vpc.Network("default",
@@ -299,7 +299,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             image_id=default_get_images.images[0].id)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_network = alicloud.vpc.Network("default",

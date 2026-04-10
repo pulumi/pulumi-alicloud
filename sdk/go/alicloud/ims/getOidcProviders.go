@@ -27,44 +27,46 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// oidcProviderName := "amp-resource-example-oidc-provider";
-// if param := cfg.Get("oidcProviderName"); param != ""{
-// oidcProviderName = param
-// }
-// defaultOidcProvider, err := ims.NewOidcProvider(ctx, "default", &ims.OidcProviderArgs{
-// Description: pulumi.String(pulumi.String(oidcProviderName)),
-// IssuerUrl: pulumi.String("https://oauth.aliyun.com"),
-// Fingerprints: pulumi.StringArray{
-// pulumi.String("0BBFAB97059595E8D1EC48E89EB8657C0E5AAE71"),
-// },
-// IssuanceLimitTime: pulumi.Int(12),
-// OidcProviderName: pulumi.String(pulumi.String(oidcProviderName)),
-// ClientIds: pulumi.StringArray{
-// pulumi.String("123"),
-// pulumi.String("456"),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// _default := ims.GetOidcProvidersOutput(ctx, ims.GetOidcProvidersOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultOidcProvider.ID(),
-// },
-// }, nil);
-// ctx.Export("alicloudImsOidcProviderExampleId", _default.ApplyT(func(_default ims.GetOidcProvidersResult) (*string, error) {
-// return &default.Providers[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			oidcProviderName := "amp-resource-example-oidc-provider"
+//			if param := cfg.Get("oidcProviderName"); param != "" {
+//				oidcProviderName = param
+//			}
+//			defaultOidcProvider, err := ims.NewOidcProvider(ctx, "default", &ims.OidcProviderArgs{
+//				Description: pulumi.String(pulumi.String(oidcProviderName)),
+//				IssuerUrl:   pulumi.String("https://oauth.aliyun.com"),
+//				Fingerprints: pulumi.StringArray{
+//					pulumi.String("0BBFAB97059595E8D1EC48E89EB8657C0E5AAE71"),
+//				},
+//				IssuanceLimitTime: pulumi.Int(12),
+//				OidcProviderName:  pulumi.String(pulumi.String(oidcProviderName)),
+//				ClientIds: pulumi.StringArray{
+//					pulumi.String("123"),
+//					pulumi.String("456"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := ims.GetOidcProvidersOutput(ctx, ims.GetOidcProvidersOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultOidcProvider.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("alicloudImsOidcProviderExampleId", _default.ApplyT(func(_default ims.GetOidcProvidersResult) (*string, error) {
+//				return &_default.Providers[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetOidcProviders(ctx *pulumi.Context, args *GetOidcProvidersArgs, opts ...pulumi.InvokeOption) (*GetOidcProvidersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

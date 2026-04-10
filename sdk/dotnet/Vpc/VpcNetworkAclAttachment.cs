@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = defaultNetwork.CidrBlock.Apply(cidrBlock =&gt; Std.Cidrsubnet.Invoke(new()
+    ///         CidrBlock = defaultNetwork.CidrBlock.Apply(cidrBlock =&gt; Std.Index.Cidrsubnet.Invoke(new()
     ///         {
     ///             Input = cidrBlock,
     ///             Newbits = 8,

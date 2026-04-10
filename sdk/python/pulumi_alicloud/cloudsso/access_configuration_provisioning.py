@@ -235,7 +235,7 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
             [__item.id for __item in default_directory],
             [""],
         ]).result[0])
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_user = alicloud.cloudsso.User("default",
@@ -309,7 +309,7 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
             [__item.id for __item in default_directory],
             [""],
         ]).result[0])
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_user = alicloud.cloudsso.User("default",

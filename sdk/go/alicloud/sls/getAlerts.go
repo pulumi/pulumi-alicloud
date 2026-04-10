@@ -28,168 +28,170 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// alertName := "openapi-terraform-alert";
-// if param := cfg.Get("alertName"); param != ""{
-// alertName = param
-// }
-// projectName := "terraform-alert-example";
-// if param := cfg.Get("projectName"); param != ""{
-// projectName = param
-// }
-// defaultINsMgl, err := log.NewProject(ctx, "defaultINsMgl", &log.ProjectArgs{
-// Description: pulumi.String("terraform-alert-example"),
-// Name: pulumi.String("terraform-alert-example"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultAlert, err := sls.NewAlert(ctx, "default", &sls.AlertArgs{
-// Configuration: &sls.AlertConfigurationArgs{
-// Type: pulumi.String("tpl"),
-// Version: pulumi.String("2"),
-// QueryLists: sls.AlertConfigurationQueryListArray{
-// &sls.AlertConfigurationQueryListArgs{
-// Query: pulumi.String("* | select *"),
-// TimeSpanType: pulumi.String("Relative"),
-// Start: pulumi.String("-15m"),
-// End: pulumi.String("now"),
-// StoreType: pulumi.String("log"),
-// Project: defaultINsMgl.ID(),
-// Store: pulumi.String("alert"),
-// Region: pulumi.String("cn-beijing"),
-// PowerSqlMode: pulumi.String("disable"),
-// ChartTitle: pulumi.String("wkb-chart"),
-// DashboardId: pulumi.String("wkb-dashboard"),
-// Ui: pulumi.String("{}"),
-// RoleArn: pulumi.String("acs:ram::1654218965343050:role/aliyunslsalertmonitorrole"),
-// },
-// &sls.AlertConfigurationQueryListArgs{
-// StoreType: pulumi.String("meta"),
-// Store: pulumi.String("user.rds_ip_whitelist"),
-// },
-// &sls.AlertConfigurationQueryListArgs{
-// StoreType: pulumi.String("meta"),
-// Store: pulumi.String("myexample1"),
-// },
-// },
-// GroupConfiguration: &sls.AlertConfigurationGroupConfigurationArgs{
-// Type: pulumi.String("no_group"),
-// Fields: pulumi.StringArray{
-// pulumi.String("a"),
-// pulumi.String("b"),
-// },
-// },
-// JoinConfigurations: sls.AlertConfigurationJoinConfigurationArray{
-// &sls.AlertConfigurationJoinConfigurationArgs{
-// Type: pulumi.String("no_join"),
-// Condition: pulumi.String("aa"),
-// },
-// &sls.AlertConfigurationJoinConfigurationArgs{
-// Type: pulumi.String("cross_join"),
-// Condition: pulumi.String("qqq"),
-// },
-// &sls.AlertConfigurationJoinConfigurationArgs{
-// Type: pulumi.String("inner_join"),
-// Condition: pulumi.String("fefefe"),
-// },
-// },
-// SeverityConfigurations: sls.AlertConfigurationSeverityConfigurationArray{
-// &sls.AlertConfigurationSeverityConfigurationArgs{
-// Severity: pulumi.Int(6),
-// EvalCondition: &sls.AlertConfigurationSeverityConfigurationEvalConditionArgs{
-// Condition: pulumi.String("__count__ > 1"),
-// CountCondition: pulumi.String("cnt > 0"),
-// },
-// },
-// },
-// Labels: sls.AlertConfigurationLabelArray{
-// &sls.AlertConfigurationLabelArgs{
-// Key: pulumi.String("a"),
-// Value: pulumi.String("b"),
-// },
-// },
-// Annotations: sls.AlertConfigurationAnnotationArray{
-// &sls.AlertConfigurationAnnotationArgs{
-// Key: pulumi.String("x"),
-// Value: pulumi.String("y"),
-// },
-// },
-// AutoAnnotation: pulumi.Bool(true),
-// SendResolved: pulumi.Bool(false),
-// Threshold: pulumi.Int(1),
-// NoDataFire: pulumi.Bool(false),
-// SinkEventStore: &sls.AlertConfigurationSinkEventStoreArgs{
-// Enabled: pulumi.Bool(true),
-// Endpoint: pulumi.String("cn-shanghai-intranet.log.aliyuncs.com"),
-// Project: pulumi.String("wkb-wangren"),
-// EventStore: pulumi.String("alert"),
-// RoleArn: pulumi.String("acs:ram::1654218965343050:role/aliyunlogetlrole"),
-// },
-// SinkCms: &sls.AlertConfigurationSinkCmsArgs{
-// Enabled: pulumi.Bool(false),
-// },
-// SinkAlerthub: &sls.AlertConfigurationSinkAlerthubArgs{
-// Enabled: pulumi.Bool(false),
-// },
-// TemplateConfiguration: &sls.AlertConfigurationTemplateConfigurationArgs{
-// TemplateId: pulumi.String("sls.app.ack.autoscaler.cluster_unhealthy"),
-// Type: pulumi.String("sys"),
-// Version: pulumi.String("1.0"),
-// Lang: pulumi.String("cn"),
-// },
-// ConditionConfiguration: &sls.AlertConfigurationConditionConfigurationArgs{
-// Condition: pulumi.String("cnt > 3"),
-// CountCondition: pulumi.String("__count__ < 3"),
-// },
-// PolicyConfiguration: &sls.AlertConfigurationPolicyConfigurationArgs{
-// AlertPolicyId: pulumi.String("sls.builtin.dynamic"),
-// ActionPolicyId: pulumi.String("wkb-action"),
-// RepeatInterval: pulumi.String("1m"),
-// },
-// Dashboard: pulumi.String("internal-alert"),
-// MuteUntil: pulumi.Int(0),
-// NoDataSeverity: pulumi.Int(6),
-// Tags: pulumi.StringArray{
-// pulumi.String("wkb"),
-// pulumi.String("wangren"),
-// pulumi.String("sls"),
-// },
-// },
-// AlertName: pulumi.String(pulumi.String(alertName)),
-// ProjectName: defaultINsMgl.ID(),
-// Schedule: &sls.AlertScheduleArgs{
-// Type: pulumi.String("Cron"),
-// RunImmdiately: pulumi.Bool(true),
-// TimeZone: pulumi.String("+0800"),
-// Delay: pulumi.Int(10),
-// CronExpression: pulumi.String("0/5 * * * *"),
-// },
-// DisplayName: pulumi.String("openapi-terraform"),
-// Description: pulumi.String("create alert"),
-// })
-// if err != nil {
-// return err
-// }
-// _default := sls.GetAlertsOutput(ctx, sls.GetAlertsOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultAlert.ID(),
-// },
-// NameRegex: defaultAlert.AlertName,
-// ProjectName: defaultINsMgl.ID(),
-// }, nil);
-// ctx.Export("alicloudSlsAlertExampleId", _default.ApplyT(func(_default sls.GetAlertsResult) (*string, error) {
-// return &default.Alerts[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			alertName := "openapi-terraform-alert"
+//			if param := cfg.Get("alertName"); param != "" {
+//				alertName = param
+//			}
+//			projectName := "terraform-alert-example"
+//			if param := cfg.Get("projectName"); param != "" {
+//				projectName = param
+//			}
+//			defaultINsMgl, err := log.NewProject(ctx, "defaultINsMgl", &log.ProjectArgs{
+//				Description: pulumi.String("terraform-alert-example"),
+//				Name:        pulumi.String("terraform-alert-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAlert, err := sls.NewAlert(ctx, "default", &sls.AlertArgs{
+//				Configuration: &sls.AlertConfigurationArgs{
+//					Type:    pulumi.String("tpl"),
+//					Version: pulumi.String("2"),
+//					QueryLists: sls.AlertConfigurationQueryListArray{
+//						&sls.AlertConfigurationQueryListArgs{
+//							Query:        pulumi.String("* | select *"),
+//							TimeSpanType: pulumi.String("Relative"),
+//							Start:        pulumi.String("-15m"),
+//							End:          pulumi.String("now"),
+//							StoreType:    pulumi.String("log"),
+//							Project:      defaultINsMgl.ID(),
+//							Store:        pulumi.String("alert"),
+//							Region:       pulumi.String("cn-beijing"),
+//							PowerSqlMode: pulumi.String("disable"),
+//							ChartTitle:   pulumi.String("wkb-chart"),
+//							DashboardId:  pulumi.String("wkb-dashboard"),
+//							Ui:           pulumi.String("{}"),
+//							RoleArn:      pulumi.String("acs:ram::1654218965343050:role/aliyunslsalertmonitorrole"),
+//						},
+//						&sls.AlertConfigurationQueryListArgs{
+//							StoreType: pulumi.String("meta"),
+//							Store:     pulumi.String("user.rds_ip_whitelist"),
+//						},
+//						&sls.AlertConfigurationQueryListArgs{
+//							StoreType: pulumi.String("meta"),
+//							Store:     pulumi.String("myexample1"),
+//						},
+//					},
+//					GroupConfiguration: &sls.AlertConfigurationGroupConfigurationArgs{
+//						Type: pulumi.String("no_group"),
+//						Fields: pulumi.StringArray{
+//							pulumi.String("a"),
+//							pulumi.String("b"),
+//						},
+//					},
+//					JoinConfigurations: sls.AlertConfigurationJoinConfigurationArray{
+//						&sls.AlertConfigurationJoinConfigurationArgs{
+//							Type:      pulumi.String("no_join"),
+//							Condition: pulumi.String("aa"),
+//						},
+//						&sls.AlertConfigurationJoinConfigurationArgs{
+//							Type:      pulumi.String("cross_join"),
+//							Condition: pulumi.String("qqq"),
+//						},
+//						&sls.AlertConfigurationJoinConfigurationArgs{
+//							Type:      pulumi.String("inner_join"),
+//							Condition: pulumi.String("fefefe"),
+//						},
+//					},
+//					SeverityConfigurations: sls.AlertConfigurationSeverityConfigurationArray{
+//						&sls.AlertConfigurationSeverityConfigurationArgs{
+//							Severity: pulumi.Int(6),
+//							EvalCondition: &sls.AlertConfigurationSeverityConfigurationEvalConditionArgs{
+//								Condition:      pulumi.String("__count__ > 1"),
+//								CountCondition: pulumi.String("cnt > 0"),
+//							},
+//						},
+//					},
+//					Labels: sls.AlertConfigurationLabelArray{
+//						&sls.AlertConfigurationLabelArgs{
+//							Key:   pulumi.String("a"),
+//							Value: pulumi.String("b"),
+//						},
+//					},
+//					Annotations: sls.AlertConfigurationAnnotationArray{
+//						&sls.AlertConfigurationAnnotationArgs{
+//							Key:   pulumi.String("x"),
+//							Value: pulumi.String("y"),
+//						},
+//					},
+//					AutoAnnotation: pulumi.Bool(true),
+//					SendResolved:   pulumi.Bool(false),
+//					Threshold:      pulumi.Int(1),
+//					NoDataFire:     pulumi.Bool(false),
+//					SinkEventStore: &sls.AlertConfigurationSinkEventStoreArgs{
+//						Enabled:    pulumi.Bool(true),
+//						Endpoint:   pulumi.String("cn-shanghai-intranet.log.aliyuncs.com"),
+//						Project:    pulumi.String("wkb-wangren"),
+//						EventStore: pulumi.String("alert"),
+//						RoleArn:    pulumi.String("acs:ram::1654218965343050:role/aliyunlogetlrole"),
+//					},
+//					SinkCms: &sls.AlertConfigurationSinkCmsArgs{
+//						Enabled: pulumi.Bool(false),
+//					},
+//					SinkAlerthub: &sls.AlertConfigurationSinkAlerthubArgs{
+//						Enabled: pulumi.Bool(false),
+//					},
+//					TemplateConfiguration: &sls.AlertConfigurationTemplateConfigurationArgs{
+//						TemplateId: pulumi.String("sls.app.ack.autoscaler.cluster_unhealthy"),
+//						Type:       pulumi.String("sys"),
+//						Version:    pulumi.String("1.0"),
+//						Lang:       pulumi.String("cn"),
+//					},
+//					ConditionConfiguration: &sls.AlertConfigurationConditionConfigurationArgs{
+//						Condition:      pulumi.String("cnt > 3"),
+//						CountCondition: pulumi.String("__count__ < 3"),
+//					},
+//					PolicyConfiguration: &sls.AlertConfigurationPolicyConfigurationArgs{
+//						AlertPolicyId:  pulumi.String("sls.builtin.dynamic"),
+//						ActionPolicyId: pulumi.String("wkb-action"),
+//						RepeatInterval: pulumi.String("1m"),
+//					},
+//					Dashboard:      pulumi.String("internal-alert"),
+//					MuteUntil:      pulumi.Int(0),
+//					NoDataSeverity: pulumi.Int(6),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("wkb"),
+//						pulumi.String("wangren"),
+//						pulumi.String("sls"),
+//					},
+//				},
+//				AlertName:   pulumi.String(pulumi.String(alertName)),
+//				ProjectName: defaultINsMgl.ID(),
+//				Schedule: &sls.AlertScheduleArgs{
+//					Type:           pulumi.String("Cron"),
+//					RunImmdiately:  pulumi.Bool(true),
+//					TimeZone:       pulumi.String("+0800"),
+//					Delay:          pulumi.Int(10),
+//					CronExpression: pulumi.String("0/5 * * * *"),
+//				},
+//				DisplayName: pulumi.String("openapi-terraform"),
+//				Description: pulumi.String("create alert"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := sls.GetAlertsOutput(ctx, sls.GetAlertsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlert.ID(),
+//				},
+//				NameRegex:   defaultAlert.AlertName,
+//				ProjectName: defaultINsMgl.ID(),
+//			}, nil)
+//			ctx.Export("alicloudSlsAlertExampleId", _default.ApplyT(func(_default sls.GetAlertsResult) (*string, error) {
+//				return &_default.Alerts[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAlerts(ctx *pulumi.Context, args *GetAlertsArgs, opts ...pulumi.InvokeOption) (*GetAlertsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

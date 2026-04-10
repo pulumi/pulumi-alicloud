@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Vpc
     ///         CidrBlock = "192.168.0.0/24",
     ///     });
     /// 
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

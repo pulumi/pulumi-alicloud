@@ -141,7 +141,7 @@ class Snapshot(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.simpleapplicationserver.get_images(platform="Linux")
@@ -201,7 +201,7 @@ class Snapshot(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.simpleapplicationserver.get_images(platform="Linux")

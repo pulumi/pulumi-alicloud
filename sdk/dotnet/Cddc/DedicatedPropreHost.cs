@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Cddc
     ///             OpenPermission = true,
     ///         }));
     ///     }
-    ///     var alicloudSecurityGroupId = Output.Tuple(defaultGetSecurityGroups.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Ids).Length, defaultGetSecurityGroups, Std.Concat.Invoke(new()
+    ///     var alicloudSecurityGroupId = Output.Tuple(defaultGetSecurityGroups.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Ids).Length, defaultGetSecurityGroups, Std.Index.Concat.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {
@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.Cddc
     ///         return length &gt; 0 ? defaultGetSecurityGroups.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Ids[0]) : invoke.Result[0];
     ///     });
     /// 
-    ///     var alicloudEcsDeploymentSetId = Output.Tuple(defaultGetEcsDeploymentSets.Apply(getEcsDeploymentSetsResult =&gt; getEcsDeploymentSetsResult.Ids).Length, defaultGetEcsDeploymentSets, Std.Concat.Invoke(new()
+    ///     var alicloudEcsDeploymentSetId = Output.Tuple(defaultGetEcsDeploymentSets.Apply(getEcsDeploymentSetsResult =&gt; getEcsDeploymentSetsResult.Ids).Length, defaultGetEcsDeploymentSets, Std.Index.Concat.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Cddc
     ///         return length &gt; 0 ? defaultGetEcsDeploymentSets.Apply(getEcsDeploymentSetsResult =&gt; getEcsDeploymentSetsResult.Sets[0]?.DeploymentSetId) : invoke.Result[0];
     ///     });
     /// 
-    ///     var alicloudKeyPairId = Output.Tuple(defaultGetKeyPairs.Apply(getKeyPairsResult =&gt; getKeyPairsResult.Ids).Length, defaultGetKeyPairs, Std.Concat.Invoke(new()
+    ///     var alicloudKeyPairId = Output.Tuple(defaultGetKeyPairs.Apply(getKeyPairsResult =&gt; getKeyPairsResult.Ids).Length, defaultGetKeyPairs, Std.Index.Concat.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {
@@ -187,7 +187,7 @@ namespace Pulumi.AliCloud.Cddc
     ///         return length &gt; 0 ? defaultGetKeyPairs.Apply(getKeyPairsResult =&gt; getKeyPairsResult.Ids[0]) : invoke.Result[0];
     ///     });
     /// 
-    ///     var dedicatedHostGroupId = Output.Tuple(defaultGetDedicatedHostGroups.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult.Ids).Length, defaultGetDedicatedHostGroups, Std.Concat.Invoke(new()
+    ///     var dedicatedHostGroupId = Output.Tuple(defaultGetDedicatedHostGroups.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult.Ids).Length, defaultGetDedicatedHostGroups, Std.Index.Concat.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {

@@ -175,7 +175,7 @@ class Image(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
@@ -257,7 +257,7 @@ class Image(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",

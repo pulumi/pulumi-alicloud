@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.CS
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
@@ -60,13 +60,13 @@ namespace Pulumi.AliCloud.CS
     ///             defaultSwitch.Id,
     ///         },
     ///         NewNatGateway = false,
-    ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+    ///         PodCidr = Std.Index.Cidrsubnet.Invoke(new()
     ///         {
     ///             Input = "10.0.0.0/8",
     ///             Newbits = 8,
     ///             Netnum = 36,
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+    ///         ServiceCidr = Std.Index.Cidrsubnet.Invoke(new()
     ///         {
     ///             Input = "172.16.0.0/16",
     ///             Newbits = 4,

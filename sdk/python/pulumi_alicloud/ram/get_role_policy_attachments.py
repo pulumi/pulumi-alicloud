@@ -131,7 +131,7 @@ def get_role_policy_attachments(ids: Optional[Sequence[_builtins.str]] = None,
         }
     \"\"\",
         description="this is a role test.")
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     policy = alicloud.ram.Policy("policy",
@@ -220,7 +220,7 @@ def get_role_policy_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
         }
     \"\"\",
         description="this is a role test.")
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     policy = alicloud.ram.Policy("policy",

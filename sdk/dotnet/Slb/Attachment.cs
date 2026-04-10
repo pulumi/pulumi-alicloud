@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Slb
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "slb-attachment-example";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",
