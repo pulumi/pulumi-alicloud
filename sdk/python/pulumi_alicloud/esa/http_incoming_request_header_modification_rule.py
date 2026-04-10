@@ -324,7 +324,7 @@ class HttpIncomingRequestHeaderModificationRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         resource_http_incoming_request_header_modification_rule_example = alicloud.esa.RatePlanInstance("resource_HttpIncomingRequestHeaderModificationRule_example",
@@ -418,7 +418,7 @@ class HttpIncomingRequestHeaderModificationRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         resource_http_incoming_request_header_modification_rule_example = alicloud.esa.RatePlanInstance("resource_HttpIncomingRequestHeaderModificationRule_example",

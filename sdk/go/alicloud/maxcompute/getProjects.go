@@ -27,31 +27,33 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "tf_example_acc";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// defaultProject, err := maxcompute.NewProject(ctx, "default", &maxcompute.ProjectArgs{
-// DefaultQuota: pulumi.String("默认后付费Quota"),
-// ProjectName: pulumi.String(pulumi.String(name)),
-// Comment: pulumi.String(pulumi.String(name)),
-// ProductType: pulumi.String("PayAsYouGo"),
-// })
-// if err != nil {
-// return err
-// }
-// _default := maxcompute.GetProjectsOutput(ctx, maxcompute.GetProjectsOutputArgs{
-// NameRegex: defaultProject.ProjectName,
-// }, nil);
-// ctx.Export("alicloudMaxcomputeProjectExampleId", _default.ApplyT(func(_default maxcompute.GetProjectsResult) (*string, error) {
-// return &default.Projects[0].ProjectName, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example_acc"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultProject, err := maxcompute.NewProject(ctx, "default", &maxcompute.ProjectArgs{
+//				DefaultQuota: pulumi.String("默认后付费Quota"),
+//				ProjectName:  pulumi.String(pulumi.String(name)),
+//				Comment:      pulumi.String(pulumi.String(name)),
+//				ProductType:  pulumi.String("PayAsYouGo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := maxcompute.GetProjectsOutput(ctx, maxcompute.GetProjectsOutputArgs{
+//				NameRegex: defaultProject.ProjectName,
+//			}, nil)
+//			ctx.Export("alicloudMaxcomputeProjectExampleId", _default.ApplyT(func(_default maxcompute.GetProjectsResult) (*string, error) {
+//				return &_default.Projects[0].ProjectName, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

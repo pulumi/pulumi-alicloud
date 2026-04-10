@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.Index.GetZones.Invoke(new()
         ///     {
         ///         AvailableDiskCategory = "cloud_efficiency",
         ///         AvailableResourceCreation = "VSwitch",
@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.Index.GetZones.Invoke(new()
         ///     {
         ///         AvailableDiskCategory = "cloud_efficiency",
         ///         AvailableResourceCreation = "VSwitch",
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.Index.GetZones.Invoke(new()
         ///     {
         ///         AvailableDiskCategory = "cloud_efficiency",
         ///         AvailableResourceCreation = "VSwitch",

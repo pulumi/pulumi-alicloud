@@ -193,7 +193,7 @@ class VscMountPoint(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_file_system = alicloud.dfs.FileSystem("default",
@@ -253,7 +253,7 @@ class VscMountPoint(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_file_system = alicloud.dfs.FileSystem("default",

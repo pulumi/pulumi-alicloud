@@ -424,7 +424,7 @@ class AccessPoint(pulumi.CustomResource):
         if azone is None:
             azone = "cn-hangzhou-g"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         defaultky_vc70 = alicloud.vpc.Network("defaultkyVC70",
@@ -515,7 +515,7 @@ class AccessPoint(pulumi.CustomResource):
         if azone is None:
             azone = "cn-hangzhou-g"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         defaultky_vc70 = alicloud.vpc.Network("defaultkyVC70",

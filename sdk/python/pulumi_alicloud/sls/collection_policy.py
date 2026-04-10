@@ -370,7 +370,7 @@ class CollectionPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         project_create01 = alicloud.log.Project("project_create_01",
@@ -442,7 +442,7 @@ class CollectionPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example-on-single-bucket"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         project_create01 = alicloud.log.Project("project_create_01",
@@ -549,7 +549,7 @@ class CollectionPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         project_create01 = alicloud.log.Project("project_create_01",
@@ -621,7 +621,7 @@ class CollectionPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example-on-single-bucket"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         project_create01 = alicloud.log.Project("project_create_01",

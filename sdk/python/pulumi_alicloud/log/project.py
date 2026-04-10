@@ -319,7 +319,7 @@ class Project(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
@@ -338,7 +338,7 @@ class Project(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         example_policy = alicloud.log.Project("example_policy",
@@ -419,7 +419,7 @@ class Project(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
@@ -438,7 +438,7 @@ class Project(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         example_policy = alicloud.log.Project("example_policy",

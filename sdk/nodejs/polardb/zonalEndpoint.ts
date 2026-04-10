@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     ensRegionId: "tr-Istanbul-1",
  *     vpcId: _default.id,
  *     vswitchId: defaultVswitch.id,
- *     dbClusterNodesConfigs: Object.entries(dbClusterNodesConfigs).reduce((__obj, [node, config]) => ({ ...__obj, [node]: JSON.stringify(Object.entries(config).filter(([k, v]) => v != null).reduce((__obj, [k, v]) => ({ ...__obj, [k]: v }))) })),
+ *     dbClusterNodesConfigs: Object.entries(dbClusterNodesConfigs).reduce((__obj, [node, config]) => ({ ...__obj, [node]: JSON.stringify(Object.entries(config).filter(([k, v]) => v != null).reduce((__obj, [k, v]) => ({ ...__obj, [k]: v }), {})) }), {}),
  * });
  * const defaultZonalEndpoint = new alicloud.polardb.ZonalEndpoint("default", {
  *     dbClusterId: defaultZonalDbCluster.id,

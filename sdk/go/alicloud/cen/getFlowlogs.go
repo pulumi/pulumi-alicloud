@@ -31,75 +31,77 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "tf-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-// Min: 10000,
-// Max: 99999,
-// })
-// if err != nil {
-// return err
-// }
-// defaultc5kxyC, err := cen.NewInstance(ctx, "defaultc5kxyC", &cen.InstanceArgs{
-// CenInstanceName: pulumi.String(pulumi.String(name)),
-// })
-// if err != nil {
-// return err
-// }
-// defaultVw2U9u, err := cen.NewTransitRouter(ctx, "defaultVw2U9u", &cen.TransitRouterArgs{
-// CenId: defaultc5kxyC.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
-// ProjectName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-// Description: pulumi.String("terraform-example"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
-// ProjectName: defaultProject.ProjectName,
-// LogstoreName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-// ShardCount: pulumi.Int(3),
-// AutoSplit: pulumi.Bool(true),
-// MaxSplitShardCount: pulumi.Int(60),
-// AppendMeta: pulumi.Bool(true),
-// })
-// if err != nil {
-// return err
-// }
-// defaultFlowLog, err := cen.NewFlowLog(ctx, "default", &cen.FlowLogArgs{
-// ProjectName: defaultStore.ProjectName,
-// FlowLogName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-// LogFormatString: pulumi.String("${srcaddr}${dstaddr}${bytes}"),
-// CenId: defaultc5kxyC.ID(),
-// LogStoreName: defaultStore.LogstoreName,
-// Interval: pulumi.Int(600),
-// Status: pulumi.String("Active"),
-// TransitRouterId: defaultVw2U9u.TransitRouterId,
-// Description: pulumi.String("flowlog-resource-example-1"),
-// })
-// if err != nil {
-// return err
-// }
-// _default := cen.GetFlowlogsOutput(ctx, cen.GetFlowlogsOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultFlowLog.ID(),
-// },
-// }, nil);
-// ctx.Export("firstCenFlowlogId", _default.ApplyT(func(_default cen.GetFlowlogsResult) (*string, error) {
-// return &default.Flowlogs[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultc5kxyC, err := cen.NewInstance(ctx, "defaultc5kxyC", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(pulumi.String(name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultVw2U9u, err := cen.NewTransitRouter(ctx, "defaultVw2U9u", &cen.TransitRouterArgs{
+//				CenId: defaultc5kxyC.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
+//				ProjectName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//				Description: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
+//				ProjectName:        defaultProject.ProjectName,
+//				LogstoreName:       pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFlowLog, err := cen.NewFlowLog(ctx, "default", &cen.FlowLogArgs{
+//				ProjectName:     defaultStore.ProjectName,
+//				FlowLogName:     pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//				LogFormatString: pulumi.String("${srcaddr}${dstaddr}${bytes}"),
+//				CenId:           defaultc5kxyC.ID(),
+//				LogStoreName:    defaultStore.LogstoreName,
+//				Interval:        pulumi.Int(600),
+//				Status:          pulumi.String("Active"),
+//				TransitRouterId: defaultVw2U9u.TransitRouterId,
+//				Description:     pulumi.String("flowlog-resource-example-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := cen.GetFlowlogsOutput(ctx, cen.GetFlowlogsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultFlowLog.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("firstCenFlowlogId", _default.ApplyT(func(_default cen.GetFlowlogsResult) (*string, error) {
+//				return &_default.Flowlogs[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetFlowlogs(ctx *pulumi.Context, args *GetFlowlogsArgs, opts ...pulumi.InvokeOption) (*GetFlowlogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

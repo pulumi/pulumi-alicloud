@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     ///                 var id = values.Item3;
     ///                 return length &gt; 0 ? defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]) : id;
     ///             }),
-    ///             CidrBlock = Std.Cidrsubnet.Invoke(new()
+    ///             CidrBlock = Std.Index.Cidrsubnet.Invoke(new()
     ///             {
     ///                 Input = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.CidrBlock),
     ///                 Newbits = 8,

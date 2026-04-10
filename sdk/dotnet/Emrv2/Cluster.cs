@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Emrv2
     ///         Status = "Enabled",
     ///     });
     /// 
-    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableInstanceType = "ecs.g7.xlarge",
     ///     });

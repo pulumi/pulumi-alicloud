@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Message
     ///         SubscriptionName = "RDK-example-sub",
     ///         FilterTag = "important",
     ///         TopicName = createTopic.TopicName,
-    ///         Endpoint = Std.Format.Invoke(new()
+    ///         Endpoint = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "acs:mns:cn-hangzhou:1511928242963727:/queues/%s",
     ///             Args = new[]

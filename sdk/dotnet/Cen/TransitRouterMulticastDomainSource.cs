@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Cen
     ///             defaultSecurityGroup.Id,
     ///         },
     ///         Description = "Basic test",
-    ///         PrimaryIpAddress = defaultMaster.CidrBlock.Apply(cidrBlock =&gt; Std.Cidrhost.Invoke(new()
+    ///         PrimaryIpAddress = defaultMaster.CidrBlock.Apply(cidrBlock =&gt; Std.Index.Cidrhost.Invoke(new()
     ///         {
     ///             Input = cidrBlock,
     ///             Host = 100,

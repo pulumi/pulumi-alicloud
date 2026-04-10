@@ -46,25 +46,25 @@ namespace Pulumi.AliCloud.CS.Inputs
         ///         {
         ///             return new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
         ///             {
-        ///                 Name = Std.Lookup.Invoke(new()
+        ///                 Name = Std.Index.Lookup.Invoke(new()
         ///                 {
         ///                     Map = entry.Value,
         ///                     Key = "name",
         ///                     Default = clusterAddons,
         ///                 }).Apply(invoke =&gt; invoke.Result),
-        ///                 Config = Std.Lookup.Invoke(new()
+        ///                 Config = Std.Index.Lookup.Invoke(new()
         ///                 {
         ///                     Map = entry.Value,
         ///                     Key = "config",
         ///                     Default = clusterAddons,
         ///                 }).Apply(invoke =&gt; invoke.Result),
-        ///                 Version = Std.Lookup.Invoke(new()
+        ///                 Version = Std.Index.Lookup.Invoke(new()
         ///                 {
         ///                     Map = entry.Value,
         ///                     Key = "version",
         ///                     Default = clusterAddons,
         ///                 }).Apply(invoke =&gt; invoke.Result),
-        ///                 Disabled = Std.Lookup.Invoke(new()
+        ///                 Disabled = Std.Index.Lookup.Invoke(new()
         ///                 {
         ///                     Map = entry.Value,
         ///                     Key = "disabled",

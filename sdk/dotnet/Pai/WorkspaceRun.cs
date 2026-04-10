@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Pai
     ///     {
     ///         Accessibility = "PRIVATE",
     ///         ArtifactUri = "oss://example.oss-cn-hangzhou.aliyuncs.com/example/",
-    ///         ExperimentName = Std.Format.Invoke(new()
+    ///         ExperimentName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s1",
     ///             Args = new[]

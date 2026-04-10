@@ -32,9 +32,9 @@ namespace Pulumi.AliCloud.Cfg
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example-sls";
-    ///     var @this = AliCloud.GetAccount.Invoke();
+    ///     var @this = AliCloud.Index.GetAccount.Invoke();
     /// 
-    ///     var thisGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var thisGetRegions = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

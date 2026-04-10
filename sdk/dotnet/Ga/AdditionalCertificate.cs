@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Ga
     ///         var range = new { Value = rangeIndex };
     ///         defaultServiceCertificate.Add(new AliCloud.Cas.ServiceCertificate($"default-{range.Value}", new()
     ///         {
-    ///             CertificateName = Std.Join.Invoke(new()
+    ///             CertificateName = Std.Index.Join.Invoke(new()
     ///             {
     ///                 Separator = "-",
     ///                 Input = new[]
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Ga
     ///         {
     ///             new AliCloud.Ga.Inputs.ListenerCertificateArgs
     ///             {
-    ///                 Id = Std.Join.Invoke(new()
+    ///                 Id = Std.Index.Join.Invoke(new()
     ///                 {
     ///                     Separator = "-",
     ///                     Input = new[]
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     ///     var defaultAdditionalCertificate = new AliCloud.Ga.AdditionalCertificate("default", new()
     ///     {
-    ///         CertificateId = Std.Join.Invoke(new()
+    ///         CertificateId = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = "-",
     ///             Input = new[]

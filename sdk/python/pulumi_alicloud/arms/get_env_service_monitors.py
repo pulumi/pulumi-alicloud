@@ -137,7 +137,7 @@ def get_env_service_monitors(environment_id: Optional[_builtins.str] = None,
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
@@ -274,7 +274,7 @@ def get_env_service_monitors_output(environment_id: Optional[pulumi.Input[_built
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     enhanced = alicloud.vpc.get_enhanced_nat_available_zones()

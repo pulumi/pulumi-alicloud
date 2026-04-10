@@ -668,7 +668,7 @@ class ChangeSet(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.ros.ChangeSet("example",
@@ -733,7 +733,7 @@ class ChangeSet(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.ros.ChangeSet("example",

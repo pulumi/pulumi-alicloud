@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.DataWorks
     ///     var defaultasjsH5 = new AliCloud.DataWorks.Project("defaultasjsH5", new()
     ///     {
     ///         Description = "目标空间",
-    ///         ProjectName = Std.Format.Invoke(new()
+    ///         ProjectName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s1",
     ///             Args = new[]
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.DataWorks
     ///     var defaultvzu0wG = new AliCloud.DataWorks.DataSource("defaultvzu0wG", new()
     ///     {
     ///         Type = "hive",
-    ///         DataSourceName = Std.Format.Invoke(new()
+    ///         DataSourceName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s2",
     ///             Args = new[]

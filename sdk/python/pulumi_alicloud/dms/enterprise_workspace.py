@@ -173,7 +173,7 @@ class EnterpriseWorkspace(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform_example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         vpc_create = alicloud.vpc.Network("vpc_create",
@@ -230,7 +230,7 @@ class EnterpriseWorkspace(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform_example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         vpc_create = alicloud.vpc.Network("vpc_create",

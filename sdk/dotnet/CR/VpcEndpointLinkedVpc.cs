@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.CR
     ///         Max = 999999,
     ///     });
     /// 
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

@@ -181,7 +181,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
             }
         \"\"\",
             description="this is a role test.")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         policy = alicloud.ram.Policy("policy",
@@ -271,7 +271,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
             }
         \"\"\",
             description="this is a role test.")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         policy = alicloud.ram.Policy("policy",

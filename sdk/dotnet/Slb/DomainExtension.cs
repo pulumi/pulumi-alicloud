@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Slb
     /// {
     ///     var config = new Config();
     ///     var slbDomainExtensionName = config.Get("slbDomainExtensionName") ?? "forDomainExtension";
-    ///     var domainExtension = AliCloud.GetZones.Invoke(new()
+    ///     var domainExtension = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

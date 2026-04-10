@@ -29,92 +29,94 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// zone1 := "cn-hangzhou-k";
-// if param := cfg.Get("zone1"); param != ""{
-// zone1 = param
-// }
-// zone2 := "cn-hangzhou-g";
-// if param := cfg.Get("zone2"); param != ""{
-// zone2 = param
-// }
-// vsw1Cidr := "10.1.0.0/24";
-// if param := cfg.Get("vsw1Cidr"); param != ""{
-// vsw1Cidr = param
-// }
-// vsw2Cidr := "10.1.1.0/24";
-// if param := cfg.Get("vsw2Cidr"); param != ""{
-// vsw2Cidr = param
-// }
-// containerCidr := "172.17.3.0/24";
-// if param := cfg.Get("containerCidr"); param != ""{
-// containerCidr = param
-// }
-// serviceCidr := "172.17.2.0/24";
-// if param := cfg.Get("serviceCidr"); param != ""{
-// serviceCidr = param
-// }
-// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-// CidrBlock: pulumi.String("10.0.0.0/8"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-// VpcId: defaultNetwork.ID(),
-// SecurityGroupName: pulumi.String("tf-example-security-group"),
-// SecurityGroupType: pulumi.String("normal"),
-// })
-// if err != nil {
-// return err
-// }
-// default0, err := vpc.NewSwitch(ctx, "default0", &vpc.SwitchArgs{
-// VpcId: defaultNetwork.ID(),
-// CidrBlock: pulumi.String(pulumi.String(vsw1Cidr)),
-// ZoneId: pulumi.String(pulumi.String(zone1)),
-// })
-// if err != nil {
-// return err
-// }
-// default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
-// VpcId: defaultNetwork.ID(),
-// ZoneId: pulumi.String(pulumi.String(zone2)),
-// CidrBlock: pulumi.String(pulumi.String(vsw2Cidr)),
-// })
-// if err != nil {
-// return err
-// }
-// defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
-// PodCidr: pulumi.String(pulumi.String(containerCidr)),
-// VswitchIds: pulumi.StringArray{
-// default0.ID(),
-// default1.ID(),
-// },
-// ServiceCidr: pulumi.String(pulumi.String(serviceCidr)),
-// SecurityGroupId: defaultSecurityGroup.ID(),
-// ClusterSpec: pulumi.String("ack.pro.small"),
-// })
-// if err != nil {
-// return err
-// }
-// _default := cs.GetClustersOutput(ctx, cs.GetClustersOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultManagedKubernetes.ID(),
-// },
-// NameRegex: defaultManagedKubernetes.Name,
-// }, nil);
-// ctx.Export("alicloudCsManagedKubernetesExampleId", _default.ApplyT(func(_default cs.GetClustersResult) (*string, error) {
-// return &default.Clusters[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			zone1 := "cn-hangzhou-k"
+//			if param := cfg.Get("zone1"); param != "" {
+//				zone1 = param
+//			}
+//			zone2 := "cn-hangzhou-g"
+//			if param := cfg.Get("zone2"); param != "" {
+//				zone2 = param
+//			}
+//			vsw1Cidr := "10.1.0.0/24"
+//			if param := cfg.Get("vsw1Cidr"); param != "" {
+//				vsw1Cidr = param
+//			}
+//			vsw2Cidr := "10.1.1.0/24"
+//			if param := cfg.Get("vsw2Cidr"); param != "" {
+//				vsw2Cidr = param
+//			}
+//			containerCidr := "172.17.3.0/24"
+//			if param := cfg.Get("containerCidr"); param != "" {
+//				containerCidr = param
+//			}
+//			serviceCidr := "172.17.2.0/24"
+//			if param := cfg.Get("serviceCidr"); param != "" {
+//				serviceCidr = param
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				VpcId:             defaultNetwork.ID(),
+//				SecurityGroupName: pulumi.String("tf-example-security-group"),
+//				SecurityGroupType: pulumi.String("normal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default0, err := vpc.NewSwitch(ctx, "default0", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String(pulumi.String(vsw1Cidr)),
+//				ZoneId:    pulumi.String(pulumi.String(zone1)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				ZoneId:    pulumi.String(pulumi.String(zone2)),
+//				CidrBlock: pulumi.String(pulumi.String(vsw2Cidr)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
+//				PodCidr: pulumi.String(pulumi.String(containerCidr)),
+//				VswitchIds: pulumi.StringArray{
+//					default0.ID(),
+//					default1.ID(),
+//				},
+//				ServiceCidr:     pulumi.String(pulumi.String(serviceCidr)),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				ClusterSpec:     pulumi.String("ack.pro.small"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := cs.GetClustersOutput(ctx, cs.GetClustersOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultManagedKubernetes.ID(),
+//				},
+//				NameRegex: defaultManagedKubernetes.Name,
+//			}, nil)
+//			ctx.Export("alicloudCsManagedKubernetesExampleId", _default.ApplyT(func(_default cs.GetClustersResult) (*string, error) {
+//				return &_default.Clusters[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

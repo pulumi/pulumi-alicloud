@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud
     ///         VswitchName = "milvus-example",
     ///     });
     /// 
-    ///     var @default = new AliCloud.MilvusInstance("default", new()
+    ///     var @default = new AliCloud.Index.MilvusInstance("default", new()
     ///     {
     ///         ZoneId = zoneId,
     ///         VswitchIds = new[]

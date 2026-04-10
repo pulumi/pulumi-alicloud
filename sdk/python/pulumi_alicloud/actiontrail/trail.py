@@ -682,7 +682,7 @@ class Trail(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.get_regions(current=True)
         default_get_account = alicloud.get_account()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_project = alicloud.log.Project("default",
@@ -756,7 +756,7 @@ class Trail(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.get_regions(current=True)
         default_get_account = alicloud.get_account()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_project = alicloud.log.Project("default",

@@ -344,7 +344,7 @@ class V3ProvisionConfig(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_project = alicloud.log.Project("default",
@@ -357,7 +357,7 @@ class V3ProvisionConfig(pulumi.CustomResource):
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        wait10_minutes = time.index.Sleep("wait_10_minutes", create_duration=10m,
+        wait10_minutes = time.Sleep("wait_10_minutes", create_duration=10m,
         opts = pulumi.ResourceOptions(depends_on=[default_store]))
         function = alicloud.fc.V3Function("function",
             memory_size=512,
@@ -489,7 +489,7 @@ class V3ProvisionConfig(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_project = alicloud.log.Project("default",
@@ -502,7 +502,7 @@ class V3ProvisionConfig(pulumi.CustomResource):
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        wait10_minutes = time.index.Sleep("wait_10_minutes", create_duration=10m,
+        wait10_minutes = time.Sleep("wait_10_minutes", create_duration=10m,
         opts = pulumi.ResourceOptions(depends_on=[default_store]))
         function = alicloud.fc.V3Function("function",
             memory_size=512,

@@ -32,9 +32,9 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///     var name = config.Get("name") ?? "tfexample";
     ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var @this = AliCloud.GetAccount.Invoke();
+    ///     var @this = AliCloud.Index.GetAccount.Invoke();
     /// 
-    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

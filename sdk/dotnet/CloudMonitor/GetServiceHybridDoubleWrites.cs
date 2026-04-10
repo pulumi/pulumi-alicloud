@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.CloudMonitor
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.GetAccount.Invoke();
+        ///     var @default = AliCloud.Index.GetAccount.Invoke();
         /// 
         ///     var source = new AliCloud.Cms.Namespace("source", new()
         ///     {
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.CloudMonitor
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.GetAccount.Invoke();
+        ///     var @default = AliCloud.Index.GetAccount.Invoke();
         /// 
         ///     var source = new AliCloud.Cms.Namespace("source", new()
         ///     {
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.CloudMonitor
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.GetAccount.Invoke();
+        ///     var @default = AliCloud.Index.GetAccount.Invoke();
         /// 
         ///     var source = new AliCloud.Cms.Namespace("source", new()
         ///     {

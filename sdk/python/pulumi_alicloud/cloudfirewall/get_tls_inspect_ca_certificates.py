@@ -134,7 +134,7 @@ def get_tls_inspect_ca_certificates(ca_cert_id: Optional[_builtins.str] = None,
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default_cloud_firewall_tls_inspect_ca_certificate = alicloud.index.CloudFirewallTlsInspectCaCertificate("default")
+    default_cloud_firewall_tls_inspect_ca_certificate = alicloud.CloudFirewallTlsInspectCaCertificate("default")
     default = alicloud.cloudfirewall.get_tls_inspect_ca_certificates(ids=[default_cloud_firewall_tls_inspect_ca_certificate["id"]])
     pulumi.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default.certificates[0].id)
     ```
@@ -184,7 +184,7 @@ def get_tls_inspect_ca_certificates_output(ca_cert_id: Optional[pulumi.Input[Opt
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default_cloud_firewall_tls_inspect_ca_certificate = alicloud.index.CloudFirewallTlsInspectCaCertificate("default")
+    default_cloud_firewall_tls_inspect_ca_certificate = alicloud.CloudFirewallTlsInspectCaCertificate("default")
     default = alicloud.cloudfirewall.get_tls_inspect_ca_certificates(ids=[default_cloud_firewall_tls_inspect_ca_certificate["id"]])
     pulumi.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default.certificates[0].id)
     ```

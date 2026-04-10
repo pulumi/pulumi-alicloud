@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         NameRegex = "default",
     ///     });
     /// 
-    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
     ///     });
     /// 
-    ///     var defaultGetAccount = AliCloud.GetAccount.Invoke();
+    ///     var defaultGetAccount = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {

@@ -28,69 +28,71 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// defaulthhAPo6, err := log.NewProject(ctx, "defaulthhAPo6", &log.ProjectArgs{
-// Description: pulumi.String("terraform-etl-example-813"),
-// ProjectName: pulumi.String("terraform-etl-example-330"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultzWKLkp, err := log.NewStore(ctx, "defaultzWKLkp", &log.StoreArgs{
-// HotTtl: pulumi.Int(8),
-// RetentionPeriod: pulumi.Int(30),
-// ShardCount: pulumi.Int(2),
-// ProjectName: defaulthhAPo6.ID(),
-// LogstoreName: pulumi.String("example"),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = sls.NewEtl(ctx, "default", &sls.EtlArgs{
-// Project: defaulthhAPo6.ID(),
-// Description: pulumi.String("etl-1740472705-185721"),
-// Configuration: &sls.EtlConfigurationArgs{
-// Script: pulumi.String("* | extend a=1"),
-// Lang: pulumi.String("SPL"),
-// RoleArn: pulumi.String(pulumi.String(name)),
-// Sinks: sls.EtlConfigurationSinkArray{
-// &sls.EtlConfigurationSinkArgs{
-// Name: pulumi.String("11111"),
-// Endpoint: pulumi.String("cn-hangzhou-intranet.log.aliyuncs.com"),
-// Project: pulumi.String("gy-hangzhou-huolang-1"),
-// Logstore: pulumi.String("gy-rm2"),
-// Datasets: pulumi.StringArray{
-// pulumi.String("__UNNAMED__"),
-// },
-// RoleArn: pulumi.String(pulumi.String(name)),
-// },
-// },
-// Logstore: defaultzWKLkp.LogstoreName,
-// FromTime: pulumi.Int(1706771697),
-// ToTime: pulumi.Int(1738394097),
-// },
-// JobName: pulumi.String("etl-1740472705-185721"),
-// DisplayName: pulumi.String("etl-1740472705-185721"),
-// })
-// if err != nil {
-// return err
-// }
-// _default := sls.GetEtlsOutput(ctx, sls.GetEtlsOutputArgs{
-// Logstore: defaultzWKLkp.Name,
-// Project: defaulthhAPo6.ID(),
-// }, nil);
-// ctx.Export("alicloudSlsEtlExampleId", _default.ApplyT(func(_default sls.GetEtlsResult) (*string, error) {
-// return &default.Etls[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaulthhAPo6, err := log.NewProject(ctx, "defaulthhAPo6", &log.ProjectArgs{
+//				Description: pulumi.String("terraform-etl-example-813"),
+//				ProjectName: pulumi.String("terraform-etl-example-330"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultzWKLkp, err := log.NewStore(ctx, "defaultzWKLkp", &log.StoreArgs{
+//				HotTtl:          pulumi.Int(8),
+//				RetentionPeriod: pulumi.Int(30),
+//				ShardCount:      pulumi.Int(2),
+//				ProjectName:     defaulthhAPo6.ID(),
+//				LogstoreName:    pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sls.NewEtl(ctx, "default", &sls.EtlArgs{
+//				Project:     defaulthhAPo6.ID(),
+//				Description: pulumi.String("etl-1740472705-185721"),
+//				Configuration: &sls.EtlConfigurationArgs{
+//					Script:  pulumi.String("* | extend a=1"),
+//					Lang:    pulumi.String("SPL"),
+//					RoleArn: pulumi.String(pulumi.String(name)),
+//					Sinks: sls.EtlConfigurationSinkArray{
+//						&sls.EtlConfigurationSinkArgs{
+//							Name:     pulumi.String("11111"),
+//							Endpoint: pulumi.String("cn-hangzhou-intranet.log.aliyuncs.com"),
+//							Project:  pulumi.String("gy-hangzhou-huolang-1"),
+//							Logstore: pulumi.String("gy-rm2"),
+//							Datasets: pulumi.StringArray{
+//								pulumi.String("__UNNAMED__"),
+//							},
+//							RoleArn: pulumi.String(pulumi.String(name)),
+//						},
+//					},
+//					Logstore: defaultzWKLkp.LogstoreName,
+//					FromTime: pulumi.Int(1706771697),
+//					ToTime:   pulumi.Int(1738394097),
+//				},
+//				JobName:     pulumi.String("etl-1740472705-185721"),
+//				DisplayName: pulumi.String("etl-1740472705-185721"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := sls.GetEtlsOutput(ctx, sls.GetEtlsOutputArgs{
+//				Logstore: defaultzWKLkp.Name,
+//				Project:  defaulthhAPo6.ID(),
+//			}, nil)
+//			ctx.Export("alicloudSlsEtlExampleId", _default.ApplyT(func(_default sls.GetEtlsResult) (*string, error) {
+//				return &_default.Etls[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetEtls(ctx *pulumi.Context, args *GetEtlsArgs, opts ...pulumi.InvokeOption) (*GetEtlsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

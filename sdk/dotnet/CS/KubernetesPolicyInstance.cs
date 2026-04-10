@@ -64,11 +64,11 @@ namespace Pulumi.AliCloud.CS
     ///         NamePrefix = clusterName,
     ///         ClusterSpec = "ack.standard",
     ///         Profile = "Default",
-    ///         VswitchIds = Std.Join.Invoke(new()
+    ///         VswitchIds = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = createVSwitch.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,

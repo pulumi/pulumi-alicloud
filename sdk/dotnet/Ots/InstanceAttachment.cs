@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Ots
     ///         },
     ///     });
     /// 
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

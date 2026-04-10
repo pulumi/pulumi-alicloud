@@ -1253,7 +1253,7 @@ class V3Function(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Uuid("default")
+        default = random.Uuid("default")
         default_bucket = alicloud.oss.Bucket("default", bucket=f"{name}-{default['result']}")
         default_bucket_object = alicloud.oss.BucketObject("default",
             bucket=default_bucket.bucket,
@@ -1389,7 +1389,7 @@ class V3Function(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Uuid("default")
+        default = random.Uuid("default")
         default_bucket = alicloud.oss.Bucket("default", bucket=f"{name}-{default['result']}")
         default_bucket_object = alicloud.oss.BucketObject("default",
             bucket=default_bucket.bucket,

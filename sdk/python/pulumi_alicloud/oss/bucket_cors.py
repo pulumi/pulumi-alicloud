@@ -160,7 +160,7 @@ class BucketCors(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Uuid("default")
+        default = random.Uuid("default")
         create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
             bucket=f"{name}-{default['result']}")
@@ -222,7 +222,7 @@ class BucketCors(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Uuid("default")
+        default = random.Uuid("default")
         create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
             bucket=f"{name}-{default['result']}")

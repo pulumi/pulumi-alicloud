@@ -68,7 +68,8 @@ import (
 //			_ = pulumi.All(len(_default.Accelerators), defaultAccelerator[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
 //				length := _args[0].(int)
 //				id := _args[1].(string)
-//				return &tmp1, nil
+//				val := tmp1
+//				return &val, nil
 //			}).(pulumi.StringPtrOutput)
 //			defaultGetDomains, err := ga.GetDomains(ctx, &ga.GetDomainsArgs{
 //				AcceleratorId: pulumi.StringRef(acceleratorIdLocals),

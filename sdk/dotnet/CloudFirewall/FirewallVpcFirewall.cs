@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AliCloud.GetAccount.Invoke();
+    ///     var current = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var @default = new AliCloud.CloudFirewall.FirewallVpcFirewall("default", new()
     ///     {

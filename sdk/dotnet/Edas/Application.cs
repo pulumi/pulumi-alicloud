@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Edas
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

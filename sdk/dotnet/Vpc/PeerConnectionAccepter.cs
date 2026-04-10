@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Vpc
     ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
-    ///     var accepting = AliCloud.GetAccount.Invoke();
+    ///     var accepting = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var @default = new AliCloud.Vpc.PeerConnection("default", new()
     ///     {

@@ -444,7 +444,7 @@ class NetworkOptimization(pulumi.CustomResource):
         import pulumi_random as random
 
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_site = alicloud.esa.Site("default",
@@ -515,7 +515,7 @@ class NetworkOptimization(pulumi.CustomResource):
         import pulumi_random as random
 
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_site = alicloud.esa.Site("default",

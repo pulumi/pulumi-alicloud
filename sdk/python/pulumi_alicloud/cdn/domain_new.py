@@ -404,7 +404,7 @@ class DomainNew(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_domain_new = alicloud.cdn.DomainNew("default",
@@ -468,7 +468,7 @@ class DomainNew(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_domain_new = alicloud.cdn.DomainNew("default",

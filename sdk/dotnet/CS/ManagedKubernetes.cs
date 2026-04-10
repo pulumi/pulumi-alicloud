@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.CS
     ///         var range = new { Value = rangeIndex };
     ///         vswitches.Add(new AliCloud.Vpc.Switch($"vswitches-{range.Value}", new()
     ///         {
-    ///             VpcId = vpcId == "" ? Std.Join.Invoke(new()
+    ///             VpcId = vpcId == "" ? Std.Index.Join.Invoke(new()
     ///             {
     ///                 Separator = "",
     ///                 Input = vpc.Select(__item =&gt; __item.Id).ToList(),
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.CS
     ///         var range = new { Value = rangeIndex };
     ///         terwayVswitches.Add(new AliCloud.Vpc.Switch($"terway_vswitches-{range.Value}", new()
     ///         {
-    ///             VpcId = vpcId == "" ? Std.Join.Invoke(new()
+    ///             VpcId = vpcId == "" ? Std.Index.Join.Invoke(new()
     ///             {
     ///                 Separator = "",
     ///                 Input = vpc.Select(__item =&gt; __item.Id).ToList(),
@@ -130,36 +130,36 @@ namespace Pulumi.AliCloud.CS
     ///     {
     ///         Name = name,
     ///         ClusterSpec = "ack.pro.small",
-    ///         VswitchIds = vswitchIds.Length &gt; 0 ? Std.Join.Invoke(new()
+    ///         VswitchIds = vswitchIds.Length &gt; 0 ? Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = vswitchIds,
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result) : vswitchCidrs.Length &lt; 1 ? new[] {} : Std.Join.Invoke(new()
+    ///         })).Apply(invoke =&gt; invoke.Result) : vswitchCidrs.Length &lt; 1 ? new[] {} : Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,
     ///         })).Apply(invoke =&gt; invoke.Result),
-    ///         PodVswitchIds = terwayVswitchIds.Length &gt; 0 ? Std.Join.Invoke(new()
+    ///         PodVswitchIds = terwayVswitchIds.Length &gt; 0 ? Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = terwayVswitchIds,
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result) : terwayVswitchCidrs.Length &lt; 1 ? new[] {} : Std.Join.Invoke(new()
+    ///         })).Apply(invoke =&gt; invoke.Result) : terwayVswitchCidrs.Length &lt; 1 ? new[] {} : Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = terwayVswitches.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,

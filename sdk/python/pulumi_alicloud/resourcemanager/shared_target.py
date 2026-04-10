@@ -158,7 +158,7 @@ class SharedTarget(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.resourcemanager.get_accounts()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_resource_share = alicloud.resourcemanager.ResourceShare("default", resource_share_name=f"{name}-{default_integer['result']}")
@@ -210,7 +210,7 @@ class SharedTarget(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.resourcemanager.get_accounts()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_resource_share = alicloud.resourcemanager.ResourceShare("default", resource_share_name=f"{name}-{default_integer['result']}")

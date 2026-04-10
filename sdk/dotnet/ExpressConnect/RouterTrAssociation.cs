@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///         CenId = default418DC9.Id,
     ///     });
     /// 
-    ///     var current = AliCloud.GetAccount.Invoke();
+    ///     var current = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var @default = new AliCloud.ExpressConnect.RouterTrAssociation("default", new()
     ///     {

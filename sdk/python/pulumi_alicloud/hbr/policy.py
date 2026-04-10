@@ -211,7 +211,7 @@ class Policy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         defaultyk84_hc = alicloud.hbr.Vault("defaultyk84Hc",
@@ -274,7 +274,7 @@ class Policy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         defaultyk84_hc = alicloud.hbr.Vault("defaultyk84Hc",

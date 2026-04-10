@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         Description = "pipelineExecution-start",
     ///         VpcId = pipelineExecution_vpc.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         VswitchName = Std.Format.Invoke(new()
+    ///         VswitchName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s1",
     ///             Args = new[]

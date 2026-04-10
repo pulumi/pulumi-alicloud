@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///         Min = 1,
     ///     });
     /// 
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var exampleVirtualPhysicalConnection = new AliCloud.ExpressConnect.VirtualPhysicalConnection("example", new()
     ///     {

@@ -673,7 +673,7 @@ import (
 //				Function: defaultFunction.Name,
 //				Name:     pulumi.String("terraform-example-mns"),
 //				Type:     pulumi.String("eventbridge"),
-//				Config:   pulumi.String(json1),
+//				Config:   json1,
 //			})
 //			if err != nil {
 //				return err

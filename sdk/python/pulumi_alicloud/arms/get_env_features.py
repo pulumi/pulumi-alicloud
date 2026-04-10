@@ -137,7 +137,7 @@ def get_env_features(environment_id: Optional[_builtins.str] = None,
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
@@ -251,7 +251,7 @@ def get_env_features_output(environment_id: Optional[pulumi.Input[_builtins.str]
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     enhanced = alicloud.vpc.get_enhanced_nat_available_zones()

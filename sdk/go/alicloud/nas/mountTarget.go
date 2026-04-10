@@ -49,7 +49,8 @@ import (
 //					return __convert - 1, nil
 //				}).(pulumi.Float64Output))]), nil
 //			}).(nas.GetZonesZoneOutput).ApplyT(func(obj nas.GetZonesZone) (*string, error) {
-//				return obj.ZoneId, nil
+//				val := obj.ZoneId
+//				return &val, nil
 //			}).(pulumi.StringPtrOutput)
 //			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),

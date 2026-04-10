@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Dts
     ///         Status = "OK",
     ///     });
     /// 
-    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

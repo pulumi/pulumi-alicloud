@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Sls
     ///     var defaulteyHJsO = new AliCloud.Log.Project("defaulteyHJsO", new()
     ///     {
     ///         Description = "terraform-oss-example-910",
-    ///         ProjectName = Std.Format.Invoke(new()
+    ///         ProjectName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s1%s",
     ///             Args = new[]
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Sls
     ///         RetentionPeriod = 30,
     ///         ShardCount = 2,
     ///         ProjectName = defaulteyHJsO.ProjectName,
-    ///         LogstoreName = Std.Format.Invoke(new()
+    ///         LogstoreName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s1%s",
     ///             Args = new[]
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Sls
     /// 
     ///     var defaultiwj0xO = new AliCloud.Oss.Bucket("defaultiwj0xO", new()
     ///     {
-    ///         BucketName = Std.Format.Invoke(new()
+    ///         BucketName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s1%s",
     ///             Args = new[]

@@ -76,7 +76,8 @@ import (
 // ZoneId: pulumi.String(pulumi.String(enhanced.Zones[0].ZoneId)),
 // CidrBlock: pulumi.String(vpc.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
 // %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-// return invoke.Result, nil
+// val := invoke.Result
+// return &val, nil
 // }).(pulumi.StringPtrOutput)),
 // })
 // if err != nil {
@@ -138,7 +139,7 @@ import (
 // },
 // InstanceTypes: pulumi.StringArray{
 // pulumi.String(_default.ApplyT(func(_default ecs.GetInstanceTypesResult) (*string, error) {
-// return &default.InstanceTypes[0].Id, nil
+// return &_default.InstanceTypes[0].Id, nil
 // }).(pulumi.StringPtrOutput)),
 // },
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),

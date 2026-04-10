@@ -419,7 +419,7 @@ class BucketReplication(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_src = alicloud.oss.Bucket("bucket_src", bucket=f"example-src-{default['result']}")
@@ -541,7 +541,7 @@ class BucketReplication(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_src = alicloud.oss.Bucket("bucket_src", bucket=f"example-src-{default['result']}")

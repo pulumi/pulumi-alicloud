@@ -247,7 +247,7 @@ class PrometheusMonitoring(pulumi.CustomResource):
             service_cidr="172.23.0.0/16",
             pod_cidr="10.95.0.0/16",
             worker_vswitch_ids=[vswitch.id])
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=f"{name}-{default_integer['result']}")
@@ -373,7 +373,7 @@ class PrometheusMonitoring(pulumi.CustomResource):
             service_cidr="172.23.0.0/16",
             pod_cidr="10.95.0.0/16",
             worker_vswitch_ids=[vswitch.id])
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=f"{name}-{default_integer['result']}")

@@ -143,7 +143,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_control_policy = alicloud.resourcemanager.ControlPolicy("default",
@@ -220,7 +220,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_control_policy = alicloud.resourcemanager.ControlPolicy("default",

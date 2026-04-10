@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///         AlibabaSideAsn = 65532,
     ///     });
     /// 
-    ///     var current = AliCloud.GetAccount.Invoke();
+    ///     var current = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var @default = new AliCloud.ExpressConnect.RouterVbrChildInstance("default", new()
     ///     {

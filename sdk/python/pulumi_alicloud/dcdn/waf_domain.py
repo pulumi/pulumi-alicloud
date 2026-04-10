@@ -126,7 +126,7 @@ class WafDomain(pulumi.CustomResource):
         domain_name = config.get("domainName")
         if domain_name is None:
             domain_name = "tf-example.com"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.dcdn.Domain("example",
@@ -186,7 +186,7 @@ class WafDomain(pulumi.CustomResource):
         domain_name = config.get("domainName")
         if domain_name is None:
             domain_name = "tf-example.com"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.dcdn.Domain("example",

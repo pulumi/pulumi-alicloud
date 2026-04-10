@@ -179,7 +179,7 @@ class ImageExport(pulumi.CustomResource):
             instance_type=default_get_instance_types.ids[0],
             image_id=default_get_images.ids[0],
             internet_max_bandwidth_out=10)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_image = alicloud.ecs.Image("default",
@@ -249,7 +249,7 @@ class ImageExport(pulumi.CustomResource):
             instance_type=default_get_instance_types.ids[0],
             image_id=default_get_images.ids[0],
             internet_max_bandwidth_out=10)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_image = alicloud.ecs.Image("default",

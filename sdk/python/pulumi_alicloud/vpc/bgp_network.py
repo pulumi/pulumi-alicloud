@@ -175,7 +175,7 @@ class BgpNetwork(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=1,
             max=2999)
         default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
@@ -237,7 +237,7 @@ class BgpNetwork(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=1,
             max=2999)
         default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",

@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Adb
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "adbClusterconfig";
     ///     var creation = config.Get("creation") ?? "ADB";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = creation,
     ///     });

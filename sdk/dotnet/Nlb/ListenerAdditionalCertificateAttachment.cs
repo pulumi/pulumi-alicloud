@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Nlb
     /// IX3OTy5aL4Ue8nBip3bVw+V/9L9xhmXbex6IMwwvrWI4OfMt6ECifQ==
     /// -----END CERTIFICATE-----
     /// ",
-    ///         CertificateName = Std.Join.Invoke(new()
+    ///         CertificateName = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = "-",
     ///             Input = new[]
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Nlb
     /// DUBTxOAvSYfXTtI90EAxEG/bJJyOm5LqoiA=
     /// -----END CERTIFICATE-----
     /// ",
-    ///         CertificateName = Std.Join.Invoke(new()
+    ///         CertificateName = Std.Index.Join.Invoke(new()
     ///         {
     ///             Separator = "-",
     ///             Input = new[]

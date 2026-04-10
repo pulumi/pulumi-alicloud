@@ -142,7 +142,7 @@ class FlowPipeline(pulumi.CustomResource):
         if name is None:
             name = "terraform_example"
         default = alicloud.get_account()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_wj_qd1e = alicloud.pai.WorkspaceWorkspace("defaultWjQD1e",
@@ -289,7 +289,7 @@ class FlowPipeline(pulumi.CustomResource):
         if name is None:
             name = "terraform_example"
         default = alicloud.get_account()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_wj_qd1e = alicloud.pai.WorkspaceWorkspace("defaultWjQD1e",

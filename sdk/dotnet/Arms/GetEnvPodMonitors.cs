@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Arms
         ///         VpcId = vpc.Id,
         ///         VswitchName = $"{name}-{defaultInteger.Result}",
         ///         ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
-        ///         CidrBlock = vpc.CidrBlock.Apply(cidrBlock =&gt; Std.Cidrsubnet.Invoke(new()
+        ///         CidrBlock = vpc.CidrBlock.Apply(cidrBlock =&gt; Std.Index.Cidrsubnet.Invoke(new()
         ///         {
         ///             Input = cidrBlock,
         ///             Newbits = 8,
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Arms
         ///         VpcId = vpc.Id,
         ///         VswitchName = $"{name}-{defaultInteger.Result}",
         ///         ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
-        ///         CidrBlock = vpc.CidrBlock.Apply(cidrBlock =&gt; Std.Cidrsubnet.Invoke(new()
+        ///         CidrBlock = vpc.CidrBlock.Apply(cidrBlock =&gt; Std.Index.Cidrsubnet.Invoke(new()
         ///         {
         ///             Input = cidrBlock,
         ///             Newbits = 8,
@@ -401,7 +401,7 @@ namespace Pulumi.AliCloud.Arms
         ///         VpcId = vpc.Id,
         ///         VswitchName = $"{name}-{defaultInteger.Result}",
         ///         ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
-        ///         CidrBlock = vpc.CidrBlock.Apply(cidrBlock =&gt; Std.Cidrsubnet.Invoke(new()
+        ///         CidrBlock = vpc.CidrBlock.Apply(cidrBlock =&gt; Std.Index.Cidrsubnet.Invoke(new()
         ///         {
         ///             Input = cidrBlock,
         ///             Newbits = 8,

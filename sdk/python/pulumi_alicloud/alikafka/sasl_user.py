@@ -312,7 +312,7 @@ class SaslUser(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_instance = alicloud.alikafka.Instance("default",
@@ -396,7 +396,7 @@ class SaslUser(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_instance = alicloud.alikafka.Instance("default",

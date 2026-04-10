@@ -521,7 +521,7 @@ class Account(pulumi.CustomResource):
         display_name = config.get("displayName")
         if display_name is None:
             display_name = "EAccount"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.resourcemanager.get_folders()
@@ -593,7 +593,7 @@ class Account(pulumi.CustomResource):
         display_name = config.get("displayName")
         if display_name is None:
             display_name = "EAccount"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.resourcemanager.get_folders()

@@ -124,7 +124,7 @@ def get_scaling_groups(ids: Optional[Sequence[_builtins.str]] = None,
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     my_name = f"{name}-{default_integer['result']}"
@@ -191,7 +191,7 @@ def get_scaling_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[_buil
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     my_name = f"{name}-{default_integer['result']}"

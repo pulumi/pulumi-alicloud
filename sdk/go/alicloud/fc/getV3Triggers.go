@@ -29,73 +29,75 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-exampleTriggerResourceAPI";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// functionName := "terraform-exampleTriggerResourceAPI";
-// if param := cfg.Get("functionName"); param != ""{
-// functionName = param
-// }
-// triggerName := "exampleTrigger_HTTP";
-// if param := cfg.Get("triggerName"); param != ""{
-// triggerName = param
-// }
-// function, err := fc.NewV3Function(ctx, "function", &fc.V3FunctionArgs{
-// MemorySize: pulumi.Int(512),
-// Cpu: pulumi.Float64(0.5),
-// Handler: pulumi.String("index.Handler"),
-// Code: &fc.V3FunctionCodeArgs{
-// ZipFile: pulumi.String("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA="),
-// },
-// FunctionName: pulumi.String(pulumi.String(name)),
-// Runtime: pulumi.String("python3.9"),
-// DiskSize: pulumi.Int(512),
-// LogConfig: &fc.V3FunctionLogConfigArgs{
-// LogBeginRule: pulumi.String("None"),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// tmpJSON0, err := json.Marshal(map[string]interface{}{
-// "authType": "anonymous",
-// "methods": []string{
-// "GET",
-// "POST",
-// },
-// })
-// if err != nil {
-// return err
-// }
-// json0 := string(tmpJSON0)
-// defaultV3Trigger, err := fc.NewV3Trigger(ctx, "default", &fc.V3TriggerArgs{
-// FunctionName: function.FunctionName,
-// TriggerType: pulumi.String("http"),
-// TriggerName: pulumi.String("tf-exampleacceu-central-1fcv3trigger28547"),
-// Description: pulumi.String("create"),
-// Qualifier: pulumi.String("LATEST"),
-// TriggerConfig: pulumi.String(pulumi.String(json0)),
-// })
-// if err != nil {
-// return err
-// }
-// _default := fc.GetV3TriggersOutput(ctx, fc.GetV3TriggersOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultV3Trigger.ID(),
-// },
-// NameRegex: defaultV3Trigger.TriggerName,
-// FunctionName: pulumi.String(pulumi.String(functionName)),
-// }, nil);
-// ctx.Export("alicloudFcv3TriggerExampleId", _default.ApplyT(func(_default fc.GetV3TriggersResult) (*string, error) {
-// return &default.Triggers[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-exampleTriggerResourceAPI"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			functionName := "terraform-exampleTriggerResourceAPI"
+//			if param := cfg.Get("functionName"); param != "" {
+//				functionName = param
+//			}
+//			triggerName := "exampleTrigger_HTTP"
+//			if param := cfg.Get("triggerName"); param != "" {
+//				triggerName = param
+//			}
+//			function, err := fc.NewV3Function(ctx, "function", &fc.V3FunctionArgs{
+//				MemorySize: pulumi.Int(512),
+//				Cpu:        pulumi.Float64(0.5),
+//				Handler:    pulumi.String("index.Handler"),
+//				Code: &fc.V3FunctionCodeArgs{
+//					ZipFile: pulumi.String("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA="),
+//				},
+//				FunctionName: pulumi.String(pulumi.String(name)),
+//				Runtime:      pulumi.String("python3.9"),
+//				DiskSize:     pulumi.Int(512),
+//				LogConfig: &fc.V3FunctionLogConfigArgs{
+//					LogBeginRule: pulumi.String("None"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"authType": "anonymous",
+//				"methods": []string{
+//					"GET",
+//					"POST",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			defaultV3Trigger, err := fc.NewV3Trigger(ctx, "default", &fc.V3TriggerArgs{
+//				FunctionName:  function.FunctionName,
+//				TriggerType:   pulumi.String("http"),
+//				TriggerName:   pulumi.String("tf-exampleacceu-central-1fcv3trigger28547"),
+//				Description:   pulumi.String("create"),
+//				Qualifier:     pulumi.String("LATEST"),
+//				TriggerConfig: pulumi.String(pulumi.String(json0)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := fc.GetV3TriggersOutput(ctx, fc.GetV3TriggersOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultV3Trigger.ID(),
+//				},
+//				NameRegex:    defaultV3Trigger.TriggerName,
+//				FunctionName: pulumi.String(pulumi.String(functionName)),
+//			}, nil)
+//			ctx.Export("alicloudFcv3TriggerExampleId", _default.ApplyT(func(_default fc.GetV3TriggersResult) (*string, error) {
+//				return &_default.Triggers[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetV3Triggers(ctx *pulumi.Context, args *GetV3TriggersArgs, opts ...pulumi.InvokeOption) (*GetV3TriggersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

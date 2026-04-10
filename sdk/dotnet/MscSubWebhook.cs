@@ -30,9 +30,9 @@ namespace Pulumi.AliCloud
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tfexample";
     ///     var token = config.Get("token") ?? "abcd****";
-    ///     var example = new AliCloud.MscSubWebhook("example", new()
+    ///     var example = new AliCloud.Index.MscSubWebhook("example", new()
     ///     {
-    ///         ServerUrl = Std.Format.Invoke(new()
+    ///         ServerUrl = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "https://oapi.dingtalk.com/robot/send?access_token=%s",
     ///             Args = new[]

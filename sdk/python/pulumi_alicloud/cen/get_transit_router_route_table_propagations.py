@@ -141,7 +141,7 @@ def get_transit_router_route_table_propagations(ids: Optional[Sequence[_builtins
     if name is None:
         name = "terraform-example"
     default = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=1,
         max=2999)
     default_instance = alicloud.cen.Instance("default",
@@ -225,7 +225,7 @@ def get_transit_router_route_table_propagations_output(ids: Optional[pulumi.Inpu
     if name is None:
         name = "terraform-example"
     default = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=1,
         max=2999)
     default_instance = alicloud.cen.Instance("default",

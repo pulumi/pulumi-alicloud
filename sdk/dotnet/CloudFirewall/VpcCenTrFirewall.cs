@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///     var zone2 = config.Get("zone2") ?? "cn-hangzhou-i";
     ///     var @default = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
     /// 
-    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

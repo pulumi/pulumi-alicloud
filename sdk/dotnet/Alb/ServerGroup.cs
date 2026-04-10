@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Alb
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var example = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var exampleGetZones = AliCloud.GetZones.Invoke(new()
+    ///     var exampleGetZones = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
     ///     });

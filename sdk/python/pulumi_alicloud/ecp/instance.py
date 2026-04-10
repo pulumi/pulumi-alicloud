@@ -628,7 +628,7 @@ class Instance(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.ecp.get_zones()
         default_get_instance_types = alicloud.ecp.get_instance_types()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_network = alicloud.vpc.Network("default",
@@ -719,7 +719,7 @@ class Instance(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.ecp.get_zones()
         default_get_instance_types = alicloud.ecp.get_instance_types()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_network = alicloud.vpc.Network("default",

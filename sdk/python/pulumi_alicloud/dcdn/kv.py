@@ -157,7 +157,7 @@ class Kv(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_kv_namespace = alicloud.dcdn.KvNamespace("default",
@@ -212,7 +212,7 @@ class Kv(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_kv_namespace = alicloud.dcdn.KvNamespace("default",

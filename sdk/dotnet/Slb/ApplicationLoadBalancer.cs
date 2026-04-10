@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Slb
     /// {
     ///     var config = new Config();
     ///     var slbLoadBalancerName = config.Get("slbLoadBalancerName") ?? "forSlbLoadBalancer";
-    ///     var loadBalancer = AliCloud.GetZones.Invoke(new()
+    ///     var loadBalancer = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

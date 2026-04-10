@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Hbr
     ///         Force = true,
     ///     });
     /// 
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var example = new AliCloud.Hbr.OtsBackupPlan("example", new()
     ///     {

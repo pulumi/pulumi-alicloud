@@ -254,7 +254,7 @@ class CustomDomain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         default_project = alicloud.log.Project("default", name=f"example-value-{default['result']}")
@@ -376,7 +376,7 @@ class CustomDomain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         default_project = alicloud.log.Project("default", name=f"example-value-{default['result']}")

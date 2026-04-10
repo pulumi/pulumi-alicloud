@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///         Status = "OK",
     ///     });
     /// 
-    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

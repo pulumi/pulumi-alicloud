@@ -250,7 +250,8 @@ import (
 //							pulumi.String("-cn-hangzhou"),
 //						},
 //					}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//						return invoke.Result, nil
+//						val := invoke.Result
+//						return &val, nil
 //					}).(pulumi.StringPtrOutput),
 //				},
 //			})
@@ -265,7 +266,8 @@ import (
 //						pulumi.String("-cn-hangzhou"),
 //					},
 //				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//					return invoke.Result, nil
+//					val := invoke.Result
+//					return &val, nil
 //				}).(pulumi.StringPtrOutput)),
 //				ListenerId: defaultListener.ID(),
 //			})

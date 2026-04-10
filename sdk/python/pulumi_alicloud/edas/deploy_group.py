@@ -139,7 +139,7 @@ class DeployGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.get_regions(current=True)
@@ -201,7 +201,7 @@ class DeployGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.get_regions(current=True)

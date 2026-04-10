@@ -164,7 +164,7 @@ def get_environments(environment_type: Optional[_builtins.str] = None,
         name = "terraform-example"
     default = alicloud.resourcemanager.get_resource_groups(status="OK")
     default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     default_environment = alicloud.arms.Environment("default",
@@ -236,7 +236,7 @@ def get_environments_output(environment_type: Optional[pulumi.Input[Optional[_bu
         name = "terraform-example"
     default = alicloud.resourcemanager.get_resource_groups(status="OK")
     default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     default_environment = alicloud.arms.Environment("default",

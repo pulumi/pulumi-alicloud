@@ -596,7 +596,7 @@ class Cluster(pulumi.CustomResource):
             cidr_block="172.16.0.0/21",
             zone_id=default_get_zones.zones[0].id,
             vswitch_name=name)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_ecs_key_pair = alicloud.ecs.EcsKeyPair("default", key_pair_name=f"{name}-{default_integer['result']}")
@@ -765,7 +765,7 @@ class Cluster(pulumi.CustomResource):
             cidr_block="172.16.0.0/21",
             zone_id=default_get_zones.zones[0].id,
             vswitch_name=name)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_ecs_key_pair = alicloud.ecs.EcsKeyPair("default", key_pair_name=f"{name}-{default_integer['result']}")

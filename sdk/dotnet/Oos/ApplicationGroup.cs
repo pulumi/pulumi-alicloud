@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Oos
     ///         },
     ///     });
     /// 
-    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

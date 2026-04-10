@@ -223,7 +223,7 @@ class ChartRepository(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=100000,
             max=999999)
         example = alicloud.cr.RegistryEnterpriseInstance("example",
@@ -287,7 +287,7 @@ class ChartRepository(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=100000,
             max=999999)
         example = alicloud.cr.RegistryEnterpriseInstance("example",

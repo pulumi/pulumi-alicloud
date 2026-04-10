@@ -128,7 +128,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.dcdn.Domain("example",
@@ -199,7 +199,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.dcdn.Domain("example",

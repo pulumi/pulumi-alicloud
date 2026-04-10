@@ -128,7 +128,7 @@ def get_site_monitors(ids: Optional[Sequence[_builtins.str]] = None,
     name = config.get("name")
     if name is None:
         name = "tf_example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     default_site_monitor = alicloud.cms.SiteMonitor("default",
@@ -203,7 +203,7 @@ def get_site_monitors_output(ids: Optional[pulumi.Input[Optional[Sequence[_built
     name = config.get("name")
     if name is None:
         name = "tf_example"
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         min=10000,
         max=99999)
     default_site_monitor = alicloud.cms.SiteMonitor("default",

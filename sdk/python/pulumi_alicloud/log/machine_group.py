@@ -217,7 +217,7 @@ class MachineGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
@@ -277,7 +277,7 @@ class MachineGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",

@@ -30,100 +30,102 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// logstoreName := "logstore-example-1";
-// if param := cfg.Get("logstoreName"); param != ""{
-// logstoreName = param
-// }
-// projectName := "project-for-index-terraform-example-1";
-// if param := cfg.Get("projectName"); param != ""{
-// projectName = param
-// }
-// defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
-// Description: pulumi.String("terraform example"),
-// ProjectName: pulumi.String(pulumi.String(projectName)),
-// })
-// if err != nil {
-// return err
-// }
-// defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
-// HotTtl: pulumi.Int(7),
-// RetentionPeriod: pulumi.Int(30),
-// ShardCount: pulumi.Int(2),
-// ProjectName: defaultProject.ProjectName,
-// LogstoreName: pulumi.String(pulumi.String(logstoreName)),
-// })
-// if err != nil {
-// return err
-// }
-// tmpJSON0, err := json.Marshal(map[string]interface{}{
-// "example": map[string]interface{}{
-// "caseSensitive": false,
-// "token": []string{
-// "\n",
-// "	",
-// ",",
-// " ",
-// ";",
-// "\"",
-// "'",
-// "(",
-// ")",
-// "{",
-// "}",
-// "[",
-// "]",
-// "<",
-// ">",
-// "?",
-// "/",
-// "#",
-// ":",
-// },
-// "type": "text",
-// "doc_value": false,
-// "alias": "",
-// "chn": false,
-// },
-// })
-// if err != nil {
-// return err
-// }
-// json0 := string(tmpJSON0)
-// _, err = sls.NewIndex(ctx, "default", &sls.IndexArgs{
-// Line: &sls.IndexLineArgs{
-// Chn: pulumi.Bool(true),
-// CaseSensitive: pulumi.Bool(true),
-// Tokens: pulumi.StringArray{
-// pulumi.String("a"),
-// },
-// ExcludeKeys: pulumi.StringArray{
-// pulumi.String("t"),
-// },
-// },
-// Keys: pulumi.String(pulumi.String(json0)),
-// LogstoreName: defaultStore.LogstoreName,
-// ProjectName: pulumi.String(pulumi.String(projectName)),
-// })
-// if err != nil {
-// return err
-// }
-// _default := sls.GetIndexsOutput(ctx, sls.GetIndexsOutputArgs{
-// LogstoreName: defaultStore.LogstoreName,
-// ProjectName: defaultProject.ProjectName,
-// }, nil);
-// ctx.Export("alicloudSlsIndexExampleId", _default.ApplyT(func(_default sls.GetIndexsResult) (*string, error) {
-// return &default.Indexs[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			logstoreName := "logstore-example-1"
+//			if param := cfg.Get("logstoreName"); param != "" {
+//				logstoreName = param
+//			}
+//			projectName := "project-for-index-terraform-example-1"
+//			if param := cfg.Get("projectName"); param != "" {
+//				projectName = param
+//			}
+//			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
+//				Description: pulumi.String("terraform example"),
+//				ProjectName: pulumi.String(pulumi.String(projectName)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
+//				HotTtl:          pulumi.Int(7),
+//				RetentionPeriod: pulumi.Int(30),
+//				ShardCount:      pulumi.Int(2),
+//				ProjectName:     defaultProject.ProjectName,
+//				LogstoreName:    pulumi.String(pulumi.String(logstoreName)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"example": map[string]interface{}{
+//					"caseSensitive": false,
+//					"token": []string{
+//						"\n",
+//						"	",
+//						",",
+//						" ",
+//						";",
+//						"\"",
+//						"'",
+//						"(",
+//						")",
+//						"{",
+//						"}",
+//						"[",
+//						"]",
+//						"<",
+//						">",
+//						"?",
+//						"/",
+//						"#",
+//						":",
+//					},
+//					"type":      "text",
+//					"doc_value": false,
+//					"alias":     "",
+//					"chn":       false,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = sls.NewIndex(ctx, "default", &sls.IndexArgs{
+//				Line: &sls.IndexLineArgs{
+//					Chn:           pulumi.Bool(true),
+//					CaseSensitive: pulumi.Bool(true),
+//					Tokens: pulumi.StringArray{
+//						pulumi.String("a"),
+//					},
+//					ExcludeKeys: pulumi.StringArray{
+//						pulumi.String("t"),
+//					},
+//				},
+//				Keys:         pulumi.String(pulumi.String(json0)),
+//				LogstoreName: defaultStore.LogstoreName,
+//				ProjectName:  pulumi.String(pulumi.String(projectName)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := sls.GetIndexsOutput(ctx, sls.GetIndexsOutputArgs{
+//				LogstoreName: defaultStore.LogstoreName,
+//				ProjectName:  defaultProject.ProjectName,
+//			}, nil)
+//			ctx.Export("alicloudSlsIndexExampleId", _default.ApplyT(func(_default sls.GetIndexsResult) (*string, error) {
+//				return &_default.Indexs[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetIndexs(ctx *pulumi.Context, args *GetIndexsArgs, opts ...pulumi.InvokeOption) (*GetIndexsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

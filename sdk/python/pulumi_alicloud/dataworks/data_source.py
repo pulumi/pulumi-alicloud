@@ -351,7 +351,7 @@ class DataSource(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        randint = random.index.Integer("randint",
+        randint = random.Integer("randint",
             max=999,
             min=1)
         default = alicloud.resourcemanager.get_resource_groups()
@@ -435,7 +435,7 @@ class DataSource(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        randint = random.index.Integer("randint",
+        randint = random.Integer("randint",
             max=999,
             min=1)
         default = alicloud.resourcemanager.get_resource_groups()

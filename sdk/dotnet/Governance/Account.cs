@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Governance
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var defaultGetBaselines = AliCloud.Governance.GetBaselines.Invoke();
     /// 

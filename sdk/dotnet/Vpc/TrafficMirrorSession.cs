@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Vpc
     ///         InstanceTypeFamily = "ecs.g7",
     ///     });
     /// 
-    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
     ///         AvailableInstanceType = @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),

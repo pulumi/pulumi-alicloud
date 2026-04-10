@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ga
     ///     var config = new Config();
     ///     var region = config.Get("region") ?? "cn-hangzhou";
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.GetZones.Invoke();
+    ///     var @default = AliCloud.Index.GetZones.Invoke();
     /// 
     ///     var defaultGetAccelerators = AliCloud.Ga.GetAccelerators.Invoke(new()
     ///     {
@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Ga
     ///         Ratio = 30,
     ///     });
     /// 
-    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

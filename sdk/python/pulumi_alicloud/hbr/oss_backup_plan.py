@@ -422,7 +422,7 @@ class OssBackupPlan(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         default_vault = alicloud.hbr.Vault("default", vault_name=f"terraform-example-{default['result']}")
@@ -489,7 +489,7 @@ class OssBackupPlan(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         default_vault = alicloud.hbr.Vault("default", vault_name=f"terraform-example-{default['result']}")

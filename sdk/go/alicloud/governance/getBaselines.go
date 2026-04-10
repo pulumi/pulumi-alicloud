@@ -30,77 +30,79 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform_example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-// Min: 10000,
-// Max: 99999,
-// })
-// if err != nil {
-// return err
-// }
-// itemPasswordPolicy := "ACS-BP_ACCOUNT_FACTORY_RAM_USER_PASSWORD_POLICY";
-// if param := cfg.Get("itemPasswordPolicy"); param != ""{
-// itemPasswordPolicy = param
-// }
-// itemServices := "ACS-BP_ACCOUNT_FACTORY_SUBSCRIBE_SERVICES";
-// if param := cfg.Get("itemServices"); param != ""{
-// itemServices = param
-// }
-// itemRamSecurity := "ACS-BP_ACCOUNT_FACTORY_RAM_SECURITY_PREFERENCE";
-// if param := cfg.Get("itemRamSecurity"); param != ""{
-// itemRamSecurity = param
-// }
-// tmpJSON0, err := json.Marshal(map[string]interface{}{
-// "MinimumPasswordLength": 8,
-// "RequireLowercaseCharacters": true,
-// "RequireUppercaseCharacters": true,
-// "RequireNumbers": true,
-// "RequireSymbols": true,
-// "MaxPasswordAge": 0,
-// "HardExpiry": false,
-// "PasswordReusePrevention": 0,
-// "MaxLoginAttempts": 0,
-// })
-// if err != nil {
-// return err
-// }
-// json0 := string(tmpJSON0)
-// defaultBaseline, err := governance.NewBaseline(ctx, "default", &governance.BaselineArgs{
-// BaselineItems: governance.BaselineBaselineItemArray{
-// &governance.BaselineBaselineItemArgs{
-// Version: pulumi.String("1.0"),
-// Name: pulumi.String(pulumi.String(itemPasswordPolicy)),
-// Config: pulumi.String(pulumi.String(json0)),
-// },
-// },
-// Description: pulumi.String(pulumi.String(name)),
-// BaselineName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-// })
-// if err != nil {
-// return err
-// }
-// _default := pulumi.All(defaultBaseline.ID(),defaultBaseline.BaselineName).ApplyT(func(_args []interface{}) (governance.GetBaselinesResult, error) {
-// id := _args[0].(string)
-// baselineName := _args[1].(*string)
-// return governance.GetBaselinesResult(interface{}(governance.GetBaselines(ctx, &governance.GetBaselinesArgs{
-// Ids: []string{
-// id,
-// },
-// NameRegex: pulumi.StringRef(pulumi.StringRef(pulumi.String(baselineName))),
-// }, nil))), nil
-// }).(governance.GetBaselinesResultOutput)
-// ctx.Export("alicloudGovernanceBaselineExampleId", _default.ApplyT(func(_default governance.GetBaselinesResult) (*string, error) {
-// return &default.Baselines[0].BaselineId, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			itemPasswordPolicy := "ACS-BP_ACCOUNT_FACTORY_RAM_USER_PASSWORD_POLICY"
+//			if param := cfg.Get("itemPasswordPolicy"); param != "" {
+//				itemPasswordPolicy = param
+//			}
+//			itemServices := "ACS-BP_ACCOUNT_FACTORY_SUBSCRIBE_SERVICES"
+//			if param := cfg.Get("itemServices"); param != "" {
+//				itemServices = param
+//			}
+//			itemRamSecurity := "ACS-BP_ACCOUNT_FACTORY_RAM_SECURITY_PREFERENCE"
+//			if param := cfg.Get("itemRamSecurity"); param != "" {
+//				itemRamSecurity = param
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"MinimumPasswordLength":      8,
+//				"RequireLowercaseCharacters": true,
+//				"RequireUppercaseCharacters": true,
+//				"RequireNumbers":             true,
+//				"RequireSymbols":             true,
+//				"MaxPasswordAge":             0,
+//				"HardExpiry":                 false,
+//				"PasswordReusePrevention":    0,
+//				"MaxLoginAttempts":           0,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			defaultBaseline, err := governance.NewBaseline(ctx, "default", &governance.BaselineArgs{
+//				BaselineItems: governance.BaselineBaselineItemArray{
+//					&governance.BaselineBaselineItemArgs{
+//						Version: pulumi.String("1.0"),
+//						Name:    pulumi.String(pulumi.String(itemPasswordPolicy)),
+//						Config:  pulumi.String(pulumi.String(json0)),
+//					},
+//				},
+//				Description:  pulumi.String(pulumi.String(name)),
+//				BaselineName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := pulumi.All(defaultBaseline.ID(), defaultBaseline.BaselineName).ApplyT(func(_args []interface{}) (governance.GetBaselinesResult, error) {
+//				id := _args[0].(string)
+//				baselineName := _args[1].(*string)
+//				return governance.GetBaselinesResult(interface{}(governance.GetBaselines(ctx, &governance.GetBaselinesArgs{
+//					Ids: []string{
+//						id,
+//					},
+//					NameRegex: pulumi.StringRef(pulumi.StringRef(pulumi.String(baselineName))),
+//				}, nil))), nil
+//			}).(governance.GetBaselinesResultOutput)
+//			ctx.Export("alicloudGovernanceBaselineExampleId", _default.ApplyT(func(_default governance.GetBaselinesResult) (*string, error) {
+//				return &_default.Baselines[0].BaselineId, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetBaselines(ctx *pulumi.Context, args *GetBaselinesArgs, opts ...pulumi.InvokeOption) (*GetBaselinesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

@@ -28,9 +28,9 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.GetMscSubContacts.Invoke();
+        ///     var ids = AliCloud.Index.GetMscSubContacts.Invoke();
         /// 
-        ///     var nameRegex = AliCloud.GetMscSubContacts.Invoke(new()
+        ///     var nameRegex = AliCloud.Index.GetMscSubContacts.Invoke(new()
         ///     {
         ///         NameRegex = "^my-Contact",
         ///     });
@@ -63,9 +63,9 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.GetMscSubContacts.Invoke();
+        ///     var ids = AliCloud.Index.GetMscSubContacts.Invoke();
         /// 
-        ///     var nameRegex = AliCloud.GetMscSubContacts.Invoke(new()
+        ///     var nameRegex = AliCloud.Index.GetMscSubContacts.Invoke(new()
         ///     {
         ///         NameRegex = "^my-Contact",
         ///     });
@@ -98,9 +98,9 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.GetMscSubContacts.Invoke();
+        ///     var ids = AliCloud.Index.GetMscSubContacts.Invoke();
         /// 
-        ///     var nameRegex = AliCloud.GetMscSubContacts.Invoke(new()
+        ///     var nameRegex = AliCloud.Index.GetMscSubContacts.Invoke(new()
         ///     {
         ///         NameRegex = "^my-Contact",
         ///     });

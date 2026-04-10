@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.Dns
     ///         var range = new { Value = rangeIndex };
     ///         defaultAddressPool.Add(new AliCloud.Dns.AddressPool($"default-{range.Value}", new()
     ///         {
-    ///             AddressPoolName = Std.Format.Invoke(new()
+    ///             AddressPoolName = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = $"{name}_%d",
     ///                 Args = new[]

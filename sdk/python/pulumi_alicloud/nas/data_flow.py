@@ -375,7 +375,7 @@ class DataFlow(pulumi.CustomResource):
         example_mount_target = alicloud.nas.MountTarget("example",
             file_system_id=example_file_system.id,
             vswitch_id=example_switch.id)
-        example_integer = random.index.Integer("example",
+        example_integer = random.Integer("example",
             max=99999,
             min=10000)
         example_bucket = alicloud.oss.Bucket("example",
@@ -472,7 +472,7 @@ class DataFlow(pulumi.CustomResource):
         example_mount_target = alicloud.nas.MountTarget("example",
             file_system_id=example_file_system.id,
             vswitch_id=example_switch.id)
-        example_integer = random.index.Integer("example",
+        example_integer = random.Integer("example",
             max=99999,
             min=10000)
         example_bucket = alicloud.oss.Bucket("example",

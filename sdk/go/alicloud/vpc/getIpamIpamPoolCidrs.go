@@ -27,46 +27,48 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// defaultIpam, err := vpc.NewIpamIpam(ctx, "defaultIpam", &vpc.IpamIpamArgs{
-// OperatingRegionLists: pulumi.StringArray{
-// pulumi.String("cn-hangzhou"),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// defaultIpamPool, err := vpc.NewIpamIpamPool(ctx, "defaultIpamPool", &vpc.IpamIpamPoolArgs{
-// IpamScopeId: defaultIpam.PrivateDefaultScopeId,
-// PoolRegionId: defaultIpam.RegionId,
-// IpVersion: pulumi.String("IPv4"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultIpamIpamPoolCidr, err := vpc.NewIpamIpamPoolCidr(ctx, "default", &vpc.IpamIpamPoolCidrArgs{
-// Cidr: pulumi.String("10.0.0.0/8"),
-// IpamPoolId: defaultIpamPool.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// _default := vpc.GetIpamIpamPoolCidrsOutput(ctx, vpc.GetIpamIpamPoolCidrsOutputArgs{
-// Cidr: pulumi.String("10.0.0.0/8"),
-// IpamPoolId: defaultIpamIpamPoolCidr.IpamPoolId,
-// }, nil);
-// ctx.Export("alicloudVpcIpamIpamPoolCidrExampleId", _default.ApplyT(func(_default vpc.GetIpamIpamPoolCidrsResult) (*string, error) {
-// return &default.Cidrs[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultIpam, err := vpc.NewIpamIpam(ctx, "defaultIpam", &vpc.IpamIpamArgs{
+//				OperatingRegionLists: pulumi.StringArray{
+//					pulumi.String("cn-hangzhou"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultIpamPool, err := vpc.NewIpamIpamPool(ctx, "defaultIpamPool", &vpc.IpamIpamPoolArgs{
+//				IpamScopeId:  defaultIpam.PrivateDefaultScopeId,
+//				PoolRegionId: defaultIpam.RegionId,
+//				IpVersion:    pulumi.String("IPv4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultIpamIpamPoolCidr, err := vpc.NewIpamIpamPoolCidr(ctx, "default", &vpc.IpamIpamPoolCidrArgs{
+//				Cidr:       pulumi.String("10.0.0.0/8"),
+//				IpamPoolId: defaultIpamPool.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := vpc.GetIpamIpamPoolCidrsOutput(ctx, vpc.GetIpamIpamPoolCidrsOutputArgs{
+//				Cidr:       pulumi.String("10.0.0.0/8"),
+//				IpamPoolId: defaultIpamIpamPoolCidr.IpamPoolId,
+//			}, nil)
+//			ctx.Export("alicloudVpcIpamIpamPoolCidrExampleId", _default.ApplyT(func(_default vpc.GetIpamIpamPoolCidrsResult) (*string, error) {
+//				return &_default.Cidrs[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetIpamIpamPoolCidrs(ctx *pulumi.Context, args *GetIpamIpamPoolCidrsArgs, opts ...pulumi.InvokeOption) (*GetIpamIpamPoolCidrsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

@@ -404,7 +404,7 @@ class Trigger(pulumi.CustomResource):
 
         default = alicloud.get_account()
         default_get_regions = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_project = alicloud.log.Project("default", project_name=f"example-value-{default_integer['result']}")
@@ -510,7 +510,7 @@ class Trigger(pulumi.CustomResource):
 
         default = alicloud.get_account()
         default_get_regions = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_topic = alicloud.mns.Topic("default", name=f"example-value-{default_integer['result']}")
@@ -583,7 +583,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_random as random
 
         default = alicloud.get_account()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_domain_new = alicloud.cdn.DomainNew("default",
@@ -694,7 +694,7 @@ class Trigger(pulumi.CustomResource):
 
         default = alicloud.get_account()
         default_get_regions = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         service_linked_role = alicloud.eventbridge.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForEventBridgeSendToFC")
@@ -940,7 +940,7 @@ class Trigger(pulumi.CustomResource):
 
         default = alicloud.get_account()
         default_get_regions = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_project = alicloud.log.Project("default", project_name=f"example-value-{default_integer['result']}")
@@ -1046,7 +1046,7 @@ class Trigger(pulumi.CustomResource):
 
         default = alicloud.get_account()
         default_get_regions = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_topic = alicloud.mns.Topic("default", name=f"example-value-{default_integer['result']}")
@@ -1119,7 +1119,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_random as random
 
         default = alicloud.get_account()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_domain_new = alicloud.cdn.DomainNew("default",
@@ -1230,7 +1230,7 @@ class Trigger(pulumi.CustomResource):
 
         default = alicloud.get_account()
         default_get_regions = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         service_linked_role = alicloud.eventbridge.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForEventBridgeSendToFC")

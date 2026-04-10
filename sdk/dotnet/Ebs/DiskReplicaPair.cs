@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ebs
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Ebs
     ///         Category = "cloud_essd",
     ///         DeleteAutoSnapshot = true,
     ///         DeleteWithInstance = true,
-    ///         Description = Std.Format.Invoke(new()
+    ///         Description = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s-destination",
     ///             Args = new[]

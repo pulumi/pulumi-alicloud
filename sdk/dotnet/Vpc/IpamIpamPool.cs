@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     var parentIpamPool = new AliCloud.Vpc.IpamIpamPool("parentIpamPool", new()
     ///     {
     ///         IpamScopeId = defaultIpam.PrivateDefaultScopeId,
-    ///         IpamPoolName = Std.Format.Invoke(new()
+    ///         IpamPoolName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s1",
     ///             Args = new[]

@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var current = AliCloud.GetAccount.Invoke();
+    ///     var current = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
     ///     {

@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var defaultGetDirectories = AliCloud.CloudSso.GetDirectories.Invoke();
     /// 
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.CloudSso
     ///             DirectoryName = name,
     ///         }));
     ///     }
-    ///     var directoryId = Output.Tuple(defaultGetDirectories.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids).Length, defaultGetDirectories, Std.Concat.Invoke(new()
+    ///     var directoryId = Output.Tuple(defaultGetDirectories.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids).Length, defaultGetDirectories, Std.Index.Concat.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {

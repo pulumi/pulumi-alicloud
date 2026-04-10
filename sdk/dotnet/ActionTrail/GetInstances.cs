@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {
         ///     var config = new Config();
         ///     var instanceName = config.Get("instanceName") ?? "alikafkaInstanceName";
-        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.Index.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {
         ///     var config = new Config();
         ///     var instanceName = config.Get("instanceName") ?? "alikafkaInstanceName";
-        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.Index.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {
         ///     var config = new Config();
         ///     var instanceName = config.Get("instanceName") ?? "alikafkaInstanceName";
-        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.Index.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });

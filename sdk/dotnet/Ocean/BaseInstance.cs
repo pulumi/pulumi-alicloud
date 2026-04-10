@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ocean
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.GetZones.Invoke();
+    ///     var @default = AliCloud.Index.GetZones.Invoke();
     /// 
     ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 

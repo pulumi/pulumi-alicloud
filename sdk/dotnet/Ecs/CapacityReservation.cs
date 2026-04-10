@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         InstanceTypeFamily = "ecs.g5",
     ///     });
     /// 
-    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
     ///         AvailableInstanceType = @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),

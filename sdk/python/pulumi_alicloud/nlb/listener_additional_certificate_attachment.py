@@ -209,7 +209,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
             vpc_id=create_vpc.id,
             protocol="TCPSSL",
             server_group_name=name)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         ssl0 = alicloud.cas.ServiceCertificate("ssl0",
@@ -403,7 +403,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
             vpc_id=create_vpc.id,
             protocol="TCPSSL",
             server_group_name=name)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         ssl0 = alicloud.cas.ServiceCertificate("ssl0",

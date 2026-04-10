@@ -244,7 +244,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_domain_new = alicloud.cdn.DomainNew("default",
@@ -325,7 +325,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default_domain_new = alicloud.cdn.DomainNew("default",

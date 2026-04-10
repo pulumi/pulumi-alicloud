@@ -585,7 +585,7 @@ class LoadBalancer(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         resource_site_origin_pool = alicloud.esa.Site("resource_Site_OriginPool",
@@ -678,7 +678,7 @@ class LoadBalancer(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         resource_site_origin_pool = alicloud.esa.Site("resource_Site_OriginPool",

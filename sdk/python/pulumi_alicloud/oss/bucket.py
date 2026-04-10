@@ -784,7 +784,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_acl = alicloud.oss.Bucket("bucket-acl", bucket=f"example-value-{default['result']}")
@@ -800,7 +800,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_website = alicloud.oss.Bucket("bucket-website",
@@ -818,7 +818,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_target = alicloud.oss.Bucket("bucket-target", bucket=f"example-value-{default['result']}")
@@ -840,7 +840,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_referer = alicloud.oss.Bucket("bucket-referer",
@@ -865,7 +865,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_random as random
         import pulumi_std as std
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_lifecycle1 = alicloud.oss.Bucket("bucket-lifecycle1",
@@ -1021,7 +1021,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_policy = alicloud.oss.Bucket("bucket-policy",
@@ -1049,7 +1049,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         example = alicloud.oss.Bucket("example", bucket=f"example-sub-resources-{default['result']}")
@@ -1085,7 +1085,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         default_bucket = alicloud.oss.Bucket("default",
@@ -1100,7 +1100,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_sserule = alicloud.oss.Bucket("bucket-sserule",
@@ -1133,7 +1133,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_tags = alicloud.oss.Bucket("bucket-tags",
@@ -1154,7 +1154,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_versioning = alicloud.oss.Bucket("bucket-versioning",
@@ -1174,7 +1174,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_redundancytype = alicloud.oss.Bucket("bucket-redundancytype",
@@ -1189,7 +1189,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_accelerate = alicloud.oss.Bucket("bucket-accelerate",
@@ -1206,7 +1206,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default = alicloud.resourcemanager.get_resource_groups(name_regex="default")
@@ -1272,7 +1272,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_acl = alicloud.oss.Bucket("bucket-acl", bucket=f"example-value-{default['result']}")
@@ -1288,7 +1288,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_website = alicloud.oss.Bucket("bucket-website",
@@ -1306,7 +1306,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_target = alicloud.oss.Bucket("bucket-target", bucket=f"example-value-{default['result']}")
@@ -1328,7 +1328,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_referer = alicloud.oss.Bucket("bucket-referer",
@@ -1353,7 +1353,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_random as random
         import pulumi_std as std
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_lifecycle1 = alicloud.oss.Bucket("bucket-lifecycle1",
@@ -1509,7 +1509,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_policy = alicloud.oss.Bucket("bucket-policy",
@@ -1537,7 +1537,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         example = alicloud.oss.Bucket("example", bucket=f"example-sub-resources-{default['result']}")
@@ -1573,7 +1573,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         default_bucket = alicloud.oss.Bucket("default",
@@ -1588,7 +1588,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_sserule = alicloud.oss.Bucket("bucket-sserule",
@@ -1621,7 +1621,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_tags = alicloud.oss.Bucket("bucket-tags",
@@ -1642,7 +1642,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_versioning = alicloud.oss.Bucket("bucket-versioning",
@@ -1662,7 +1662,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_redundancytype = alicloud.oss.Bucket("bucket-redundancytype",
@@ -1677,7 +1677,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         bucket_accelerate = alicloud.oss.Bucket("bucket-accelerate",
@@ -1694,7 +1694,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             max=99999,
             min=10000)
         default = alicloud.resourcemanager.get_resource_groups(name_regex="default")

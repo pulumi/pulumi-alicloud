@@ -667,7 +667,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.index.Integer("vlan_id",
+        vlan_id = random.Integer("vlan_id",
             max=2999,
             min=1)
         default = alicloud.get_account()
@@ -734,7 +734,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.index.Integer("vlan_id",
+        vlan_id = random.Integer("vlan_id",
             max=2999,
             min=1)
         default = alicloud.get_account()

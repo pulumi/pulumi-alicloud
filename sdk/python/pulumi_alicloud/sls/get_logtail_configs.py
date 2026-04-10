@@ -174,7 +174,7 @@ def get_logtail_configs(ids: Optional[Sequence[_builtins.str]] = None,
     import pulumi_alicloud as alicloud
     import pulumi_random as random
 
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         max=99999,
         min=10000)
     config = pulumi.Config()
@@ -295,7 +295,7 @@ def get_logtail_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[_bui
     import pulumi_alicloud as alicloud
     import pulumi_random as random
 
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         max=99999,
         min=10000)
     config = pulumi.Config()

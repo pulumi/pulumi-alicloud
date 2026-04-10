@@ -309,7 +309,7 @@ class AccessManagement(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.cloudsso.get_directories()
         default_get_resource_directories = alicloud.resourcemanager.get_resource_directories()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_directory = []
@@ -392,7 +392,7 @@ class AccessManagement(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.cloudsso.get_directories()
         default_get_resource_directories = alicloud.resourcemanager.get_resource_directories()
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_directory = []

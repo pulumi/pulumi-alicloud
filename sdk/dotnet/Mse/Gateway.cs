@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Mse
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AliCloud.GetZones.Invoke(new()
+    ///     var example = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Mse
     ///         exampleSwitch.Add(new AliCloud.Vpc.Switch($"example-{range.Value}", new()
     ///         {
     ///             VpcId = exampleNetwork.Id,
-    ///             CidrBlock = Std.Format.Invoke(new()
+    ///             CidrBlock = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "172.16.%d.0/21",
     ///                 Args = new[]
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Mse
     ///                 },
     ///             }).Apply(invoke =&gt; invoke.Result),
     ///             ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id,
-    ///             VswitchName = Std.Format.Invoke(new()
+    ///             VswitchName = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "terraform_example_%d",
     ///                 Args = new[]

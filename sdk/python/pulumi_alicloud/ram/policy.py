@@ -516,7 +516,7 @@ class Policy(pulumi.CustomResource):
         import pulumi_random as random
 
         # Create a new RAM Policy.
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         policy = alicloud.ram.Policy("policy",
@@ -596,7 +596,7 @@ class Policy(pulumi.CustomResource):
         import pulumi_random as random
 
         # Create a new RAM Policy.
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         policy = alicloud.ram.Policy("policy",

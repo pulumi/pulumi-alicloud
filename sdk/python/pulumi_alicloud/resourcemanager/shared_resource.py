@@ -340,7 +340,7 @@ class SharedResource(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_network = alicloud.vpc.Network("default",
@@ -410,7 +410,7 @@ class SharedResource(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_network = alicloud.vpc.Network("default",

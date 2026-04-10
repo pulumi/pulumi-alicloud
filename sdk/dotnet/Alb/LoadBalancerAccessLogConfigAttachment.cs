@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Alb
     ///         VpcId = albExampleTfVpc.Id,
     ///         ZoneId = "cn-beijing-j",
     ///         CidrBlock = "192.168.1.0/24",
-    ///         VswitchName = Std.Format.Invoke(new()
+    ///         VswitchName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s1",
     ///             Args = new[]
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Alb
     ///         VpcId = albExampleTfVpc.Id,
     ///         ZoneId = "cn-beijing-k",
     ///         CidrBlock = "192.168.2.0/24",
-    ///         VswitchName = Std.Format.Invoke(new()
+    ///         VswitchName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s2",
     ///             Args = new[]
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Alb
     ///         VpcId = albExampleTfVpc.Id,
     ///         ZoneId = "cn-beijing-f",
     ///         CidrBlock = "192.168.3.0/24",
-    ///         VswitchName = Std.Format.Invoke(new()
+    ///         VswitchName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s3",
     ///             Args = new[]
@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Alb
     /// 
     ///     var defaultDYswYo = new AliCloud.Alb.LoadBalancer("defaultDYswYo", new()
     ///     {
-    ///         LoadBalancerName = Std.Format.Invoke(new()
+    ///         LoadBalancerName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s4",
     ///             Args = new[]

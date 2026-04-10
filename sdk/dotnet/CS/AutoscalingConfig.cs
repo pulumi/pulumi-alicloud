@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.CS
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
@@ -76,13 +76,13 @@ namespace Pulumi.AliCloud.CS
     ///             defaultSwitch.Id,
     ///         },
     ///         NewNatGateway = true,
-    ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+    ///         PodCidr = Std.Index.Cidrsubnet.Invoke(new()
     ///         {
     ///             Input = "10.0.0.0/8",
     ///             Newbits = 8,
     ///             Netnum = 36,
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+    ///         ServiceCidr = Std.Index.Cidrsubnet.Invoke(new()
     ///         {
     ///             Input = "172.16.0.0/16",
     ///             Newbits = 4,
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.CS
     ///         var range = new { Value = rangeIndex };
     ///         defaultNodePool.Add(new AliCloud.CS.NodePool($"default-{range.Value}", new()
     ///         {
-    ///             NodePoolName = Std.Format.Invoke(new()
+    ///             NodePoolName = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "%s-%d",
     ///                 Args = new[]
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.CS
     ///         ScalerType = "cluster-autoscaler",
     ///         Priorities = 
     ///         {
-    ///             { "10", Std.Join.Invoke(new()
+    ///             { "10", Std.Index.Join.Invoke(new()
     ///             {
     ///                 Separator = ",",
     ///                 Input = new[]

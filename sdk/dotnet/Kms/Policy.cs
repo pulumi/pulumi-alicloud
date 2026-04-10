@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Kms
     ///         {
     ///             "10.10.10.10",
     ///         },
-    ///         NetworkRuleName = Std.Format.Invoke(new()
+    ///         NetworkRuleName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s1",
     ///             Args = new[]
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Kms
     ///         {
     ///             "10.10.10.10",
     ///         },
-    ///         NetworkRuleName = Std.Format.Invoke(new()
+    ///         NetworkRuleName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s2",
     ///             Args = new[]
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Kms
     ///         {
     ///             "10.10.10.10",
     ///         },
-    ///         NetworkRuleName = Std.Format.Invoke(new()
+    ///         NetworkRuleName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s3",
     ///             Args = new[]

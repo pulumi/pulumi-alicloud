@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.GetFileCrc64Checksum.Invoke(new()
+        ///     var @default = AliCloud.Index.GetFileCrc64Checksum.Invoke(new()
         ///     {
         ///         Filename = "exampleFileName",
         ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.GetFileCrc64Checksum.Invoke(new()
+        ///     var @default = AliCloud.Index.GetFileCrc64Checksum.Invoke(new()
         ///     {
         ///         Filename = "exampleFileName",
         ///     });
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.GetFileCrc64Checksum.Invoke(new()
+        ///     var @default = AliCloud.Index.GetFileCrc64Checksum.Invoke(new()
         ///     {
         ///         Filename = "exampleFileName",
         ///     });

@@ -28,33 +28,33 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "tf_example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-// Min: 10000,
-// Max: 99999,
-// })
-// if err != nil {
-// return err
-// }
-// defaultSiteMonitor, err := cms.NewSiteMonitor(ctx, "default", &cms.SiteMonitorArgs{
-// Address: pulumi.String("http://www.alibabacloud.com"),
-// TaskName: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
-// TaskType: pulumi.String("HTTP"),
-// Interval: pulumi.String("5"),
-// IspCities: cms.SiteMonitorIspCityArray{
-// &cms.SiteMonitorIspCityArgs{
-// City: pulumi.String("546"),
-// Isp: pulumi.String("465"),
-// },
-// },
 //
-//	OptionsJson: pulumi.String(`{
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSiteMonitor, err := cms.NewSiteMonitor(ctx, "default", &cms.SiteMonitorArgs{
+//				Address:  pulumi.String("http://www.alibabacloud.com"),
+//				TaskName: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
+//				TaskType: pulumi.String("HTTP"),
+//				Interval: pulumi.String("5"),
+//				IspCities: cms.SiteMonitorIspCityArray{
+//					&cms.SiteMonitorIspCityArgs{
+//						City: pulumi.String("546"),
+//						Isp:  pulumi.String("465"),
+//					},
+//				},
+//				OptionsJson: pulumi.String(`{
 //	    \"http_method\": \"get\",
 //	    \"waitTime_after_completion\": null,
 //	    \"ipv6_task\": false,
@@ -71,22 +71,24 @@ import (
 //	}
 //
 // `),
-// })
-// if err != nil {
-// return err
-// }
-// _default := cms.GetSiteMonitorsOutput(ctx, cms.GetSiteMonitorsOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultSiteMonitor.ID(),
-// },
-// TaskType: pulumi.String("HTTP"),
-// }, nil);
-// ctx.Export("alicloudCmsSiteMonitorExampleId", _default.ApplyT(func(_default cms.GetSiteMonitorsResult) (*string, error) {
-// return &default.Monitors[0].TaskId, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := cms.GetSiteMonitorsOutput(ctx, cms.GetSiteMonitorsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultSiteMonitor.ID(),
+//				},
+//				TaskType: pulumi.String("HTTP"),
+//			}, nil)
+//			ctx.Export("alicloudCmsSiteMonitorExampleId", _default.ApplyT(func(_default cms.GetSiteMonitorsResult) (*string, error) {
+//				return &_default.Monitors[0].TaskId, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSiteMonitors(ctx *pulumi.Context, args *GetSiteMonitorsArgs, opts ...pulumi.InvokeOption) (*GetSiteMonitorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

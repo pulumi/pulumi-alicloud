@@ -28,17 +28,17 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
-// Name: pulumi.String("roleName"),
 //
-//	Document: pulumi.String(`    {
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
+//				Name: pulumi.String("roleName"),
+//				Document: pulumi.String(`    {
 //	      \"Statement\": [
 //	        {
 //	          \"Action\": \"sts:AssumeRole\",
@@ -55,22 +55,22 @@ import (
 //	    }
 //
 // `),
-// Description: pulumi.String("this is a role test."),
-// })
-// if err != nil {
-// return err
-// }
-// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-// Min: 10000,
-// Max: 99999,
-// })
-// if err != nil {
-// return err
-// }
-// policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-// PolicyName: pulumi.Sprintf("tf-example-%v", defaultInteger.Result),
 //
-//	PolicyDocument: pulumi.String(`  {
+//				Description: pulumi.String("this is a role test."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+//				PolicyName: pulumi.Sprintf("tf-example-%v", defaultInteger.Result),
+//				PolicyDocument: pulumi.String(`  {
 //	    \"Statement\": [
 //	      {
 //	        \"Action\": [
@@ -88,31 +88,33 @@ import (
 //	  }
 //
 // `),
-// Description: pulumi.String("this is a policy test"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultRolePolicyAttachment, err := ram.NewRolePolicyAttachment(ctx, "default", &ram.RolePolicyAttachmentArgs{
-// PolicyName: policy.PolicyName,
-// PolicyType: policy.Type,
-// RoleName: role.Name,
-// })
-// if err != nil {
-// return err
-// }
-// _default := ram.GetRolePolicyAttachmentsOutput(ctx, ram.GetRolePolicyAttachmentsOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultRolePolicyAttachment.ID(),
-// },
-// RoleName: role.ID(),
-// }, nil);
-// ctx.Export("alicloudRamRolePolicyAttachmentExampleId", _default.ApplyT(func(_default ram.GetRolePolicyAttachmentsResult) (*string, error) {
-// return &default.Attachments[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//				Description: pulumi.String("this is a policy test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRolePolicyAttachment, err := ram.NewRolePolicyAttachment(ctx, "default", &ram.RolePolicyAttachmentArgs{
+//				PolicyName: policy.PolicyName,
+//				PolicyType: policy.Type,
+//				RoleName:   role.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := ram.GetRolePolicyAttachmentsOutput(ctx, ram.GetRolePolicyAttachmentsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultRolePolicyAttachment.ID(),
+//				},
+//				RoleName: role.ID(),
+//			}, nil)
+//			ctx.Export("alicloudRamRolePolicyAttachmentExampleId", _default.ApplyT(func(_default ram.GetRolePolicyAttachmentsResult) (*string, error) {
+//				return &_default.Attachments[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRolePolicyAttachments(ctx *pulumi.Context, args *GetRolePolicyAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetRolePolicyAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     clusterId: __key,
  *     temporaryDurationMinutes: 60,
  *     outputFile: "my-auth-json",
- * }) })));
+ * }) }), {}));
  * ```
  */
 export function getClusterCredential(args: GetClusterCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterCredentialResult> {
@@ -117,7 +117,7 @@ export interface GetClusterCredentialResult {
  *     clusterId: __key,
  *     temporaryDurationMinutes: 60,
  *     outputFile: "my-auth-json",
- * }) })));
+ * }) }), {}));
  * ```
  */
 export function getClusterCredentialOutput(args: GetClusterCredentialOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterCredentialResult> {

@@ -30,74 +30,76 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// this, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
-// DbType: pulumi.StringRef("MySQL"),
-// DbVersion: pulumi.StringRef("8.0"),
-// PayType: "PostPaid",
-// Category: pulumi.StringRef("Normal"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-// VpcName: pulumi.String("terraform-example"),
-// CidrBlock: pulumi.String("172.16.0.0/16"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-// VpcId: defaultNetwork.ID(),
-// CidrBlock: pulumi.String("172.16.0.0/24"),
-// ZoneId: pulumi.String(pulumi.String(this.Classes[0].ZoneId)),
-// VswitchName: pulumi.String("terraform-example"),
-// })
-// if err != nil {
-// return err
-// }
-// cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
-// DbType: pulumi.String("MySQL"),
-// DbVersion: pulumi.String("8.0"),
-// PayType: pulumi.String("PostPaid"),
-// DbNodeCount: pulumi.Int(2),
-// DbNodeClass: pulumi.String(pulumi.String(this.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass)),
-// VswitchId: defaultSwitch.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// polardbClustersDs := polardb.GetClustersOutput(ctx, polardb.GetClustersOutputArgs{
-// DescriptionRegex: cluster.Description,
-// Status: pulumi.String("Running"),
-// }, nil);
-// defaultDatabase, err := polardb.NewDatabase(ctx, "default", &polardb.DatabaseArgs{
-// DbClusterId: pulumi.String(polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (*string, error) {
-// return &polardbClustersDs.Clusters[0].Id, nil
-// }).(pulumi.StringPtrOutput)),
-// DbName: polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (string, error) {
-// return fmt.Sprintf("tfaccountpri_%v", polardbClustersDs.Clusters[0].Id), nil
-// }).(pulumi.StringOutput),
-// DbDescription: pulumi.String("from terraform"),
-// })
-// if err != nil {
-// return err
-// }
-// _default := pulumi.All(polardbClustersDs,defaultDatabase.DbName).ApplyT(func(_args []interface{}) (polardb.GetDatabasesResult, error) {
-// polardbClustersDs := _args[0].(polardb.GetClustersResult)
-// dbName := _args[1].(string)
-// return polardb.GetDatabasesResult(interface{}(polardb.GetDatabases(ctx, &polardb.GetDatabasesArgs{
-// DbClusterId: polardbClustersDs.Clusters[0].Id,
-// NameRegex: pulumi.StringRef(pulumi.StringRef(dbName)),
-// }, nil))), nil
-// }).(polardb.GetDatabasesResultOutput)
-// ctx.Export("database", _default.ApplyT(func(_default polardb.GetDatabasesResult) (*string, error) {
-// return &default.Databases[0].DbName, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+//				DbType:    pulumi.StringRef("MySQL"),
+//				DbVersion: pulumi.StringRef("8.0"),
+//				PayType:   "PostPaid",
+//				Category:  pulumi.StringRef("Normal"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(pulumi.String(this.Classes[0].ZoneId)),
+//				VswitchName: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
+//				DbType:      pulumi.String("MySQL"),
+//				DbVersion:   pulumi.String("8.0"),
+//				PayType:     pulumi.String("PostPaid"),
+//				DbNodeCount: pulumi.Int(2),
+//				DbNodeClass: pulumi.String(pulumi.String(this.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass)),
+//				VswitchId:   defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			polardbClustersDs := polardb.GetClustersOutput(ctx, polardb.GetClustersOutputArgs{
+//				DescriptionRegex: cluster.Description,
+//				Status:           pulumi.String("Running"),
+//			}, nil)
+//			defaultDatabase, err := polardb.NewDatabase(ctx, "default", &polardb.DatabaseArgs{
+//				DbClusterId: pulumi.String(polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (*string, error) {
+//					return &polardbClustersDs.Clusters[0].Id, nil
+//				}).(pulumi.StringPtrOutput)),
+//				DbName: polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (string, error) {
+//					return fmt.Sprintf("tfaccountpri_%v", polardbClustersDs.Clusters[0].Id), nil
+//				}).(pulumi.StringOutput),
+//				DbDescription: pulumi.String("from terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := pulumi.All(polardbClustersDs, defaultDatabase.DbName).ApplyT(func(_args []interface{}) (polardb.GetDatabasesResult, error) {
+//				polardbClustersDs := _args[0].(polardb.GetClustersResult)
+//				dbName := _args[1].(string)
+//				return polardb.GetDatabasesResult(interface{}(polardb.GetDatabases(ctx, &polardb.GetDatabasesArgs{
+//					DbClusterId: polardbClustersDs.Clusters[0].Id,
+//					NameRegex:   pulumi.StringRef(pulumi.StringRef(dbName)),
+//				}, nil))), nil
+//			}).(polardb.GetDatabasesResultOutput)
+//			ctx.Export("database", _default.ApplyT(func(_default polardb.GetDatabasesResult) (*string, error) {
+//				return &_default.Databases[0].DbName, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.InvokeOption) (*GetDatabasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

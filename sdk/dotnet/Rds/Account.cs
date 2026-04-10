@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Rds
     ///     var config = new Config();
     ///     var creation = config.Get("creation") ?? "Rds";
     ///     var name = config.Get("name") ?? "dbaccountmysql";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = creation,
     ///     });

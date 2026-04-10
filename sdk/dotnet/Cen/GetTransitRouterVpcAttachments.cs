@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cen
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var @default = AliCloud.GetZones.Invoke();
+        ///     var @default = AliCloud.Index.GetZones.Invoke();
         /// 
         ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Cen
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var @default = AliCloud.GetZones.Invoke();
+        ///     var @default = AliCloud.Index.GetZones.Invoke();
         /// 
         ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Cen
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var @default = AliCloud.GetZones.Invoke();
+        ///     var @default = AliCloud.Index.GetZones.Invoke();
         /// 
         ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {

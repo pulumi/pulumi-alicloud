@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.EventBridge
     ///     var config = new Config();
     ///     var region = config.Get("region") ?? "cn-chengdu";
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.GetZones.Invoke();
+    ///     var @default = AliCloud.Index.GetZones.Invoke();
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {

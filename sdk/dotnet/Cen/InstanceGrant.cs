@@ -32,11 +32,11 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     var config = new Config();
     ///     var anotherUid = config.Get("anotherUid") ?? "xxxx";
-    ///     var yourAccount = AliCloud.GetAccount.Invoke();
+    ///     var yourAccount = AliCloud.Index.GetAccount.Invoke();
     /// 
-    ///     var childAccount = AliCloud.GetAccount.Invoke();
+    ///     var childAccount = AliCloud.Index.GetAccount.Invoke();
     /// 
-    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

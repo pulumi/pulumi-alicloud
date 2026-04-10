@@ -540,7 +540,7 @@ class BucketObject(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")
@@ -560,7 +560,7 @@ class BucketObject(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")
@@ -613,7 +613,7 @@ class BucketObject(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")
@@ -633,7 +633,7 @@ class BucketObject(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             max=99999,
             min=10000)
         default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")

@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Vpc
     ///         VpcName = name,
     ///     });
     /// 
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

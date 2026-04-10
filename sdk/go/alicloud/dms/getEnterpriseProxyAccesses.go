@@ -26,29 +26,31 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// defaultEnterpriseProxyAccess, err := dms.NewEnterpriseProxyAccess(ctx, "default", &dms.EnterpriseProxyAccessArgs{
-// IndepPassword: pulumi.String("PASSWORD-DEMO"),
-// ProxyId: pulumi.String("1881"),
-// IndepAccount: pulumi.String("dmstest"),
-// UserId: pulumi.String("104442"),
-// })
-// if err != nil {
-// return err
-// }
-// _default := dms.GetEnterpriseProxyAccessesOutput(ctx, dms.GetEnterpriseProxyAccessesOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultEnterpriseProxyAccess.ID(),
-// },
-// ProxyId: pulumi.String("1881"),
-// }, nil);
-// ctx.Export("alicloudDmsProxyAccesesExampleId", _default.ApplyT(func(_default dms.GetEnterpriseProxyAccessesResult) (*string, error) {
-// return &default.Accesses[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultEnterpriseProxyAccess, err := dms.NewEnterpriseProxyAccess(ctx, "default", &dms.EnterpriseProxyAccessArgs{
+//				IndepPassword: pulumi.String("PASSWORD-DEMO"),
+//				ProxyId:       pulumi.String("1881"),
+//				IndepAccount:  pulumi.String("dmstest"),
+//				UserId:        pulumi.String("104442"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := dms.GetEnterpriseProxyAccessesOutput(ctx, dms.GetEnterpriseProxyAccessesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultEnterpriseProxyAccess.ID(),
+//				},
+//				ProxyId: pulumi.String("1881"),
+//			}, nil)
+//			ctx.Export("alicloudDmsProxyAccesesExampleId", _default.ApplyT(func(_default dms.GetEnterpriseProxyAccessesResult) (*string, error) {
+//				return &_default.Accesses[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetEnterpriseProxyAccesses(ctx *pulumi.Context, args *GetEnterpriseProxyAccessesArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseProxyAccessesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

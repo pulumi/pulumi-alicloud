@@ -107,7 +107,7 @@ def get_buckets(name_regex: Optional[_builtins.str] = None,
     import pulumi_alicloud as alicloud
     import pulumi_random as random
 
-    default = random.index.Integer("default",
+    default = random.Integer("default",
         max=99999,
         min=10000)
     bucket = alicloud.oss.Bucket("bucket", bucket=f"oss-tf-example-{default['result']}")
@@ -146,7 +146,7 @@ def get_buckets_output(name_regex: Optional[pulumi.Input[Optional[_builtins.str]
     import pulumi_alicloud as alicloud
     import pulumi_random as random
 
-    default = random.index.Integer("default",
+    default = random.Integer("default",
         max=99999,
         min=10000)
     bucket = alicloud.oss.Bucket("bucket", bucket=f"oss-tf-example-{default['result']}")

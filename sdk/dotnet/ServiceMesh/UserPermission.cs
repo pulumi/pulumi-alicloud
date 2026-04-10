@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     ///         Edition = "Default",
     ///     });
     /// 
-    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

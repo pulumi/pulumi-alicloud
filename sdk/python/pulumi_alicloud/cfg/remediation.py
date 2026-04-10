@@ -279,7 +279,7 @@ class Remediation(pulumi.CustomResource):
         if name is None:
             name = "tf-example-oss"
         default = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_bucket = alicloud.oss.Bucket("default",
@@ -359,7 +359,7 @@ class Remediation(pulumi.CustomResource):
         if name is None:
             name = "tf-example-oss"
         default = alicloud.get_regions(current=True)
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default_bucket = alicloud.oss.Bucket("default",

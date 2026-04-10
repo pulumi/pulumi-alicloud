@@ -177,7 +177,8 @@ import (
 //							defaultNodePool[1].ScalingGroupId,
 //						},
 //					}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//						return invoke.Result, nil
+//						val := invoke.Result
+//						return &val, nil
 //					}).(pulumi.StringPtrOutput)),
 //					"20": defaultNodePool[2].ScalingGroupId,
 //				},

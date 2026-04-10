@@ -1955,7 +1955,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         my_name = f"{name}-{default_integer['result']}"
@@ -2119,7 +2119,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         my_name = f"{name}-{default_integer['result']}"

@@ -290,7 +290,7 @@ class SearchIndex(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_instance = alicloud.ots.Instance("default",
@@ -418,7 +418,7 @@ class SearchIndex(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_instance = alicloud.ots.Instance("default",

@@ -27,40 +27,42 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// defaultQSrGmc, err := cloudsso.NewDirectory(ctx, "defaultQSrGmc", &cloudsso.DirectoryArgs{
-// DirectoryGlobalAccessStatus: pulumi.String("Disabled"),
-// PasswordPolicy: &cloudsso.DirectoryPasswordPolicyArgs{
-// MinPasswordLength: pulumi.Int(8),
-// MinPasswordDifferentChars: pulumi.Int(8),
-// MaxPasswordAge: pulumi.Int(90),
-// PasswordReusePrevention: pulumi.Int(1),
-// MaxLoginAttempts: pulumi.Int(5),
-// },
-// MfaAuthenticationSettingInfo: &cloudsso.DirectoryMfaAuthenticationSettingInfoArgs{
-// MfaAuthenticationAdvanceSettings: pulumi.String("OnlyRiskyLogin"),
-// OperationForRiskLogin: pulumi.String("EnforceVerify"),
-// },
-// DirectoryName: pulumi.String("tfexample"),
-// })
-// if err != nil {
-// return err
-// }
-// _default := cloudsso.GetUserProvisioningEventsOutput(ctx, cloudsso.GetUserProvisioningEventsOutputArgs{
-// DirectoryId: defaultQSrGmc.ID(),
-// }, nil);
-// ctx.Export("alicloudCloudSsoUserProvisioningEventExampleId", _default.ApplyT(func(_default cloudsso.GetUserProvisioningEventsResult) (*string, error) {
-// return &default.Events[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultQSrGmc, err := cloudsso.NewDirectory(ctx, "defaultQSrGmc", &cloudsso.DirectoryArgs{
+//				DirectoryGlobalAccessStatus: pulumi.String("Disabled"),
+//				PasswordPolicy: &cloudsso.DirectoryPasswordPolicyArgs{
+//					MinPasswordLength:         pulumi.Int(8),
+//					MinPasswordDifferentChars: pulumi.Int(8),
+//					MaxPasswordAge:            pulumi.Int(90),
+//					PasswordReusePrevention:   pulumi.Int(1),
+//					MaxLoginAttempts:          pulumi.Int(5),
+//				},
+//				MfaAuthenticationSettingInfo: &cloudsso.DirectoryMfaAuthenticationSettingInfoArgs{
+//					MfaAuthenticationAdvanceSettings: pulumi.String("OnlyRiskyLogin"),
+//					OperationForRiskLogin:            pulumi.String("EnforceVerify"),
+//				},
+//				DirectoryName: pulumi.String("tfexample"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := cloudsso.GetUserProvisioningEventsOutput(ctx, cloudsso.GetUserProvisioningEventsOutputArgs{
+//				DirectoryId: defaultQSrGmc.ID(),
+//			}, nil)
+//			ctx.Export("alicloudCloudSsoUserProvisioningEventExampleId", _default.ApplyT(func(_default cloudsso.GetUserProvisioningEventsResult) (*string, error) {
+//				return &_default.Events[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetUserProvisioningEvents(ctx *pulumi.Context, args *GetUserProvisioningEventsArgs, opts ...pulumi.InvokeOption) (*GetUserProvisioningEventsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

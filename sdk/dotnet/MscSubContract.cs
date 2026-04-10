@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tfexample";
-    ///     var @default = new AliCloud.MscSubContract("default", new()
+    ///     var @default = new AliCloud.Index.MscSubContract("default", new()
     ///     {
     ///         ContactName = name,
     ///         Position = "CEO",

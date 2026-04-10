@@ -196,7 +196,7 @@ class BucketWebsite(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Uuid("default")
+        default = random.Uuid("default")
         defaultn_vj9x3 = alicloud.oss.Bucket("defaultnVj9x3",
             bucket=f"{name}-{default['result']}",
             storage_class="Standard")
@@ -276,7 +276,7 @@ class BucketWebsite(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Uuid("default")
+        default = random.Uuid("default")
         defaultn_vj9x3 = alicloud.oss.Bucket("defaultnVj9x3",
             bucket=f"{name}-{default['result']}",
             storage_class="Standard")

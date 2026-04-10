@@ -377,7 +377,7 @@ class HanaBackupPlan(pulumi.CustomResource):
         import pulumi_random as random
 
         example = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example_vault = alicloud.hbr.Vault("example", vault_name=f"terraform-example-{default['result']}")
@@ -453,7 +453,7 @@ class HanaBackupPlan(pulumi.CustomResource):
         import pulumi_random as random
 
         example = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         example_vault = alicloud.hbr.Vault("example", vault_name=f"terraform-example-{default['result']}")

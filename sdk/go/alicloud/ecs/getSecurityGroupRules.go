@@ -33,7 +33,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			securityGroupId := cfg.RequireObject("securityGroupId")
+//			var securityGroupId interface{}
+//			cfg.RequireObject("securityGroupId", &securityGroupId)
 //			// Or get it from the alicloud_security_groups data source.
 //			// Please note that the data source arguments must be enough to filter results to one security group.
 //			groupsDs, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{

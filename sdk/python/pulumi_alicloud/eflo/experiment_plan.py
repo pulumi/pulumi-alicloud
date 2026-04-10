@@ -273,7 +273,7 @@ class ExperimentPlan(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         defaultp_szn7t = alicloud.eflo.ExperimentPlanTemplate("defaultpSZN7t",
@@ -371,7 +371,7 @@ class ExperimentPlan(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         defaultp_szn7t = alicloud.eflo.ExperimentPlanTemplate("defaultpSZN7t",

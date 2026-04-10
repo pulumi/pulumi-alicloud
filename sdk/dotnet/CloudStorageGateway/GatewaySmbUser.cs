@@ -36,12 +36,12 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// 
     ///     var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("default", new()
     ///     {
-    ///         StorageBundleName = Std.Replace.Invoke(new()
+    ///         StorageBundleName = Std.Index.Replace.Invoke(new()
     ///         {
     ///             Text = defaultUuid.Result,
     ///             Search = "-",
     ///             Replace = "",
-    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Substr.Invoke(new()
     ///         {
     ///             Input = $"tf-example-{invoke.Result}",
     ///             Offset = 0,
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

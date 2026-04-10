@@ -49,12 +49,12 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     ///     var exampleProject = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         ProjectName = Std.Replace.Invoke(new()
+    ///         ProjectName = Std.Index.Replace.Invoke(new()
     ///         {
     ///             Text = exampleUuid.Result,
     ///             Search = "-",
     ///             Replace = "",
-    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Index.Substr.Invoke(new()
     ///         {
     ///             Input = $"tf-example-{invoke.Result}",
     ///             Offset = 0,

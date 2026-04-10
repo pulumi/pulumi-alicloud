@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var current = AliCloud.GetCallerIdentity.Invoke();
+        ///     var current = AliCloud.Index.GetCallerIdentity.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var current = AliCloud.GetCallerIdentity.Invoke();
+        ///     var current = AliCloud.Index.GetCallerIdentity.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var current = AliCloud.GetCallerIdentity.Invoke();
+        ///     var current = AliCloud.Index.GetCallerIdentity.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

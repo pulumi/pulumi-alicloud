@@ -1189,7 +1189,7 @@ class OssStockTask(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_pyh_xov = alicloud.oss.Bucket("defaultPyhXOV",
@@ -1360,7 +1360,7 @@ class OssStockTask(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_pyh_xov = alicloud.oss.Bucket("defaultPyhXOV",

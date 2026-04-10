@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Gwlb
     ///         VpcId = defaulti9Axhl.Id,
     ///         ZoneId = zoneId1,
     ///         CidrBlock = "10.0.0.0/24",
-    ///         VswitchName = Std.Format.Invoke(new()
+    ///         VswitchName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s1",
     ///             Args = new[]
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Gwlb
     ///         VpcId = defaulti9Axhl.Id,
     ///         ZoneId = zoneId2,
     ///         CidrBlock = "10.0.1.0/24",
-    ///         VswitchName = Std.Format.Invoke(new()
+    ///         VswitchName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s2",
     ///             Args = new[]

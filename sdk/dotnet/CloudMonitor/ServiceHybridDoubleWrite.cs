@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.CloudMonitor
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var source = new AliCloud.Cms.Namespace("source", new()
     ///     {

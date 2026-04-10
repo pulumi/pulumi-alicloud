@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.CS
         ///         EnableDetails = false,
         ///     });
         /// 
-        ///     var auth = Std.Toset.Invoke(new()
+        ///     var auth = Std.Index.Toset.Invoke(new()
         ///     {
         ///         Input = k8s.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Ids),
         ///     }).Apply(invoke =&gt; );
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.CS
         ///         EnableDetails = false,
         ///     });
         /// 
-        ///     var auth = Std.Toset.Invoke(new()
+        ///     var auth = Std.Index.Toset.Invoke(new()
         ///     {
         ///         Input = k8s.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Ids),
         ///     }).Apply(invoke =&gt; );
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.CS
         ///         EnableDetails = false,
         ///     });
         /// 
-        ///     var auth = Std.Toset.Invoke(new()
+        ///     var auth = Std.Index.Toset.Invoke(new()
         ///     {
         ///         Input = k8s.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Ids),
         ///     }).Apply(invoke =&gt; );

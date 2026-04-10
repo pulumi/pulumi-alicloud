@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AliCloud.GetZones.Invoke();
+    ///     var example = AliCloud.Index.GetZones.Invoke();
     /// 
     ///     var exampleEcsDedicatedHostCluster = new AliCloud.Ecs.EcsDedicatedHostCluster("example", new()
     ///     {

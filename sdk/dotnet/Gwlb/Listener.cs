@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Gwlb
     ///         VpcId = defaultNetwork.Id,
     ///         ZoneId = zoneId1,
     ///         CidrBlock = "10.0.0.0/24",
-    ///         VswitchName = Std.Format.Invoke(new()
+    ///         VswitchName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s1",
     ///             Args = new[]
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Gwlb
     ///     var defaultLoadBalancer = new AliCloud.Gwlb.LoadBalancer("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
-    ///         LoadBalancerName = Std.Format.Invoke(new()
+    ///         LoadBalancerName = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%s3",
     ///             Args = new[]

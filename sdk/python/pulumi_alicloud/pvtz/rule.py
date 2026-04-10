@@ -225,7 +225,7 @@ class Rule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "example_value"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.pvtz.get_resolver_zones(status="NORMAL")
@@ -318,7 +318,7 @@ class Rule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "example_value"
-        default_integer = random.index.Integer("default",
+        default_integer = random.Integer("default",
             min=10000,
             max=99999)
         default = alicloud.pvtz.get_resolver_zones(status="NORMAL")

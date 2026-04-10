@@ -163,7 +163,7 @@ class SlsGroup(pulumi.CustomResource):
             name = "tf_example"
         default = alicloud.get_account()
         default_get_regions = alicloud.get_regions(current=True)
-        default_uuid = random.index.Uuid("default")
+        default_uuid = random.Uuid("default")
         default_project = alicloud.log.Project("default", project_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
                 search='-',
                 replace='').result}",
@@ -233,7 +233,7 @@ class SlsGroup(pulumi.CustomResource):
             name = "tf_example"
         default = alicloud.get_account()
         default_get_regions = alicloud.get_regions(current=True)
-        default_uuid = random.index.Uuid("default")
+        default_uuid = random.Uuid("default")
         default_project = alicloud.log.Project("default", project_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
                 search='-',
                 replace='').result}",

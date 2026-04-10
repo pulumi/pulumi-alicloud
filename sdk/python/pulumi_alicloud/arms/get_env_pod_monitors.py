@@ -138,7 +138,7 @@ def get_env_pod_monitors(environment_id: Optional[_builtins.str] = None,
     if name is None:
         name = "terraform-example"
     enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         max=99999,
         min=10000)
     vpc = alicloud.vpc.Network("vpc",
@@ -276,7 +276,7 @@ def get_env_pod_monitors_output(environment_id: Optional[pulumi.Input[_builtins.
     if name is None:
         name = "terraform-example"
     enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
-    default_integer = random.index.Integer("default",
+    default_integer = random.Integer("default",
         max=99999,
         min=10000)
     vpc = alicloud.vpc.Network("vpc",

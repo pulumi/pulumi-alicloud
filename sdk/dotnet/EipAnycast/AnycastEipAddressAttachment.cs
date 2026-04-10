@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.EipAnycast
     ///         ServiceLocation = "ChineseMainland",
     ///     });
     /// 
-    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.Index.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.EipAnycast
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.EipAnycast
     ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
-    ///     var default2 = AliCloud.GetZones.Invoke(new()
+    ///     var default2 = AliCloud.Index.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",

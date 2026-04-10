@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.Index.GetAccount.Invoke();
     /// 
     ///     var config = new Config();
     ///     var acceptingRegion = config.Get("acceptingRegion") ?? "cn-beijing";

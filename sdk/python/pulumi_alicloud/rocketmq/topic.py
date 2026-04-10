@@ -325,7 +325,7 @@ class Topic(pulumi.CustomResource):
         topic = config.get("topic")
         if topic is None:
             topic = "onsTopicName"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_instance = alicloud.rocketmq.Instance("default",
@@ -392,7 +392,7 @@ class Topic(pulumi.CustomResource):
         topic = config.get("topic")
         if topic is None:
             topic = "onsTopicName"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         default_instance = alicloud.rocketmq.Instance("default",

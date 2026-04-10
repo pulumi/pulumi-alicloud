@@ -189,7 +189,7 @@ class WorkspaceMember(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform_example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         workspace = alicloud.pai.WorkspaceWorkspace("Workspace",
@@ -251,7 +251,7 @@ class WorkspaceMember(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform_example"
-        default = random.index.Integer("default",
+        default = random.Integer("default",
             min=10000,
             max=99999)
         workspace = alicloud.pai.WorkspaceWorkspace("Workspace",
