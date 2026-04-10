@@ -81,6 +81,7 @@ class InstanceArgs:
                  security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  spot_duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 spot_interruption_behavior: Optional[pulumi.Input[_builtins.str]] = None,
                  spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
                  spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -105,7 +106,7 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
 
-        :param pulumi.Input[_builtins.bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        :param pulumi.Input[_builtins.bool] allocate_public_ip: Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
                The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
                Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
@@ -114,20 +115,6 @@ class InstanceArgs:
                - [1, 2, 3] when `period_unit` in "Week"
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input['InstanceCpuOptionsArgs'] cpu_options: The options of cpu. See `cpu_options` below.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
@@ -202,7 +189,21 @@ class InstanceArgs:
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+               
+               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+               
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+               
+               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+               
+               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+               
+               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+               
+               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
@@ -210,6 +211,9 @@ class InstanceArgs:
                - Deactive: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        :param pulumi.Input[_builtins.str] spot_interruption_behavior: The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+               - `Terminate`: The instance is released.
+               - `Stop`: The instance is stopped in economical mode.
         :param pulumi.Input[_builtins.float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
                - NoSpot: A regular Pay-As-You-Go instance.
@@ -247,8 +251,8 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
         """
         if allocate_public_ip is not None:
-            warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
-            pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
+            warnings.warn("""Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.""", DeprecationWarning)
+            pulumi.log.warn("""allocate_public_ip is deprecated: Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.""")
         if allocate_public_ip is not None:
             pulumi.set(__self__, "allocate_public_ip", allocate_public_ip)
         if auto_release_time is not None:
@@ -361,6 +365,9 @@ class InstanceArgs:
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_name is not None:
+            warnings.warn("""Field `role_name` has been deprecated from provider version 1.275.0. New resource `ecs.RamRoleAttachment` instead.""", DeprecationWarning)
+            pulumi.log.warn("""role_name is deprecated: Field `role_name` has been deprecated from provider version 1.275.0. New resource `ecs.RamRoleAttachment` instead.""")
+        if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
         if secondary_private_ip_address_count is not None:
             pulumi.set(__self__, "secondary_private_ip_address_count", secondary_private_ip_address_count)
@@ -372,6 +379,8 @@ class InstanceArgs:
             pulumi.set(__self__, "security_groups", security_groups)
         if spot_duration is not None:
             pulumi.set(__self__, "spot_duration", spot_duration)
+        if spot_interruption_behavior is not None:
+            pulumi.set(__self__, "spot_interruption_behavior", spot_interruption_behavior)
         if spot_price_limit is not None:
             pulumi.set(__self__, "spot_price_limit", spot_price_limit)
         if spot_strategy is not None:
@@ -417,10 +426,10 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="allocatePublicIp")
-    @_utilities.deprecated("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
+    @_utilities.deprecated("""Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.""")
     def allocate_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.
         """
         return pulumi.get(self, "allocate_public_ip")
 
@@ -473,20 +482,6 @@ class InstanceArgs:
     def cpu_options(self) -> Optional[pulumi.Input['InstanceCpuOptionsArgs']]:
         """
         The options of cpu. See `cpu_options` below.
-
-        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-
-        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-
-        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-
-        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-
-        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "cpu_options")
 
@@ -1110,9 +1105,24 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="roleName")
+    @_utilities.deprecated("""Field `role_name` has been deprecated from provider version 1.275.0. New resource `ecs.RamRoleAttachment` instead.""")
     def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+
+        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+
+        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+
+        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+
+        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+
+        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+
+        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "role_name")
 
@@ -1181,6 +1191,20 @@ class InstanceArgs:
     @spot_duration.setter
     def spot_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "spot_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="spotInterruptionBehavior")
+    def spot_interruption_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+        - `Terminate`: The instance is released.
+        - `Stop`: The instance is stopped in economical mode.
+        """
+        return pulumi.get(self, "spot_interruption_behavior")
+
+    @spot_interruption_behavior.setter
+    def spot_interruption_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "spot_interruption_behavior", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPriceLimit")
@@ -1522,6 +1546,7 @@ class _InstanceState:
                  security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  spot_duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 spot_interruption_behavior: Optional[pulumi.Input[_builtins.str]] = None,
                  spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
                  spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  start_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1548,7 +1573,7 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
 
-        :param pulumi.Input[_builtins.bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        :param pulumi.Input[_builtins.bool] allocate_public_ip: Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
                The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
                Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
@@ -1558,20 +1583,6 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[_builtins.int] cpu: The number of vCPUs.
         :param pulumi.Input['InstanceCpuOptionsArgs'] cpu_options: The options of cpu. See `cpu_options` below.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.232.0) The time when the instance was created.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
@@ -1655,7 +1666,21 @@ class _InstanceState:
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+               
+               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+               
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+               
+               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+               
+               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+               
+               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+               
+               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
@@ -1663,6 +1688,9 @@ class _InstanceState:
                - Deactive: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        :param pulumi.Input[_builtins.str] spot_interruption_behavior: The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+               - `Terminate`: The instance is released.
+               - `Stop`: The instance is stopped in economical mode.
         :param pulumi.Input[_builtins.float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
                - NoSpot: A regular Pay-As-You-Go instance.
@@ -1702,8 +1730,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
         """
         if allocate_public_ip is not None:
-            warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
-            pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
+            warnings.warn("""Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.""", DeprecationWarning)
+            pulumi.log.warn("""allocate_public_ip is deprecated: Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.""")
         if allocate_public_ip is not None:
             pulumi.set(__self__, "allocate_public_ip", allocate_public_ip)
         if auto_release_time is not None:
@@ -1836,6 +1864,9 @@ class _InstanceState:
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_name is not None:
+            warnings.warn("""Field `role_name` has been deprecated from provider version 1.275.0. New resource `ecs.RamRoleAttachment` instead.""", DeprecationWarning)
+            pulumi.log.warn("""role_name is deprecated: Field `role_name` has been deprecated from provider version 1.275.0. New resource `ecs.RamRoleAttachment` instead.""")
+        if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
         if secondary_private_ip_address_count is not None:
             pulumi.set(__self__, "secondary_private_ip_address_count", secondary_private_ip_address_count)
@@ -1847,6 +1878,8 @@ class _InstanceState:
             pulumi.set(__self__, "security_groups", security_groups)
         if spot_duration is not None:
             pulumi.set(__self__, "spot_duration", spot_duration)
+        if spot_interruption_behavior is not None:
+            pulumi.set(__self__, "spot_interruption_behavior", spot_interruption_behavior)
         if spot_price_limit is not None:
             pulumi.set(__self__, "spot_price_limit", spot_price_limit)
         if spot_strategy is not None:
@@ -1896,10 +1929,10 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="allocatePublicIp")
-    @_utilities.deprecated("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
+    @_utilities.deprecated("""Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.""")
     def allocate_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.
         """
         return pulumi.get(self, "allocate_public_ip")
 
@@ -1964,20 +1997,6 @@ class _InstanceState:
     def cpu_options(self) -> Optional[pulumi.Input['InstanceCpuOptionsArgs']]:
         """
         The options of cpu. See `cpu_options` below.
-
-        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-
-        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-
-        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-
-        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-
-        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "cpu_options")
 
@@ -2709,9 +2728,24 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="roleName")
+    @_utilities.deprecated("""Field `role_name` has been deprecated from provider version 1.275.0. New resource `ecs.RamRoleAttachment` instead.""")
     def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+
+        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+
+        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+
+        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+
+        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+
+        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+
+        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "role_name")
 
@@ -2780,6 +2814,20 @@ class _InstanceState:
     @spot_duration.setter
     def spot_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "spot_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="spotInterruptionBehavior")
+    def spot_interruption_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+        - `Terminate`: The instance is released.
+        - `Stop`: The instance is stopped in economical mode.
+        """
+        return pulumi.get(self, "spot_interruption_behavior")
+
+    @spot_interruption_behavior.setter
+    def spot_interruption_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "spot_interruption_behavior", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPriceLimit")
@@ -3138,6 +3186,7 @@ class Instance(pulumi.CustomResource):
                  security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  spot_duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 spot_interruption_behavior: Optional[pulumi.Input[_builtins.str]] = None,
                  spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
                  spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3243,7 +3292,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        :param pulumi.Input[_builtins.bool] allocate_public_ip: Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
                The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
                Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
@@ -3252,20 +3301,6 @@ class Instance(pulumi.CustomResource):
                - [1, 2, 3] when `period_unit` in "Week"
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']] cpu_options: The options of cpu. See `cpu_options` below.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
@@ -3340,7 +3375,21 @@ class Instance(pulumi.CustomResource):
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+               
+               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+               
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+               
+               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+               
+               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+               
+               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+               
+               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
@@ -3348,6 +3397,9 @@ class Instance(pulumi.CustomResource):
                - Deactive: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        :param pulumi.Input[_builtins.str] spot_interruption_behavior: The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+               - `Terminate`: The instance is released.
+               - `Stop`: The instance is stopped in economical mode.
         :param pulumi.Input[_builtins.float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
                - NoSpot: A regular Pay-As-You-Go instance.
@@ -3546,6 +3598,7 @@ class Instance(pulumi.CustomResource):
                  security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  spot_duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 spot_interruption_behavior: Optional[pulumi.Input[_builtins.str]] = None,
                  spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
                  spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3636,6 +3689,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
             __props__.__dict__["security_groups"] = security_groups
             __props__.__dict__["spot_duration"] = spot_duration
+            __props__.__dict__["spot_interruption_behavior"] = spot_interruption_behavior
             __props__.__dict__["spot_price_limit"] = spot_price_limit
             __props__.__dict__["spot_strategy"] = spot_strategy
             __props__.__dict__["status"] = status
@@ -3751,6 +3805,7 @@ class Instance(pulumi.CustomResource):
             security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             spot_duration: Optional[pulumi.Input[_builtins.int]] = None,
+            spot_interruption_behavior: Optional[pulumi.Input[_builtins.str]] = None,
             spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
             spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
             start_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3781,7 +3836,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        :param pulumi.Input[_builtins.bool] allocate_public_ip: Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
                The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
                Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
@@ -3791,20 +3846,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[_builtins.int] cpu: The number of vCPUs.
         :param pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']] cpu_options: The options of cpu. See `cpu_options` below.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.232.0) The time when the instance was created.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
@@ -3888,7 +3929,21 @@ class Instance(pulumi.CustomResource):
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+               
+               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+               
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+               
+               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+               
+               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+               
+               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+               
+               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
@@ -3896,6 +3951,9 @@ class Instance(pulumi.CustomResource):
                - Deactive: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        :param pulumi.Input[_builtins.str] spot_interruption_behavior: The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+               - `Terminate`: The instance is released.
+               - `Stop`: The instance is stopped in economical mode.
         :param pulumi.Input[_builtins.float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
                - NoSpot: A regular Pay-As-You-Go instance.
@@ -4008,6 +4066,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
         __props__.__dict__["security_groups"] = security_groups
         __props__.__dict__["spot_duration"] = spot_duration
+        __props__.__dict__["spot_interruption_behavior"] = spot_interruption_behavior
         __props__.__dict__["spot_price_limit"] = spot_price_limit
         __props__.__dict__["spot_strategy"] = spot_strategy
         __props__.__dict__["start_time"] = start_time
@@ -4035,10 +4094,10 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="allocatePublicIp")
-    @_utilities.deprecated("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
+    @_utilities.deprecated("""Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.""")
     def allocate_public_ip(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        Field `allocate_public_ip` has been deprecated from provider version 1.7.0. Setting  `internet_max_bandwidth_out` larger than 0 will allocate public ip for instance.
         """
         return pulumi.get(self, "allocate_public_ip")
 
@@ -4083,20 +4142,6 @@ class Instance(pulumi.CustomResource):
     def cpu_options(self) -> pulumi.Output['outputs.InstanceCpuOptions']:
         """
         The options of cpu. See `cpu_options` below.
-
-        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-
-        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-
-        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-
-        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-
-        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "cpu_options")
 
@@ -4592,9 +4637,24 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="roleName")
+    @_utilities.deprecated("""Field `role_name` has been deprecated from provider version 1.275.0. New resource `ecs.RamRoleAttachment` instead.""")
     def role_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+
+        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+
+        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+
+        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+
+        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+
+        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+
+        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "role_name")
 
@@ -4639,6 +4699,16 @@ class Instance(pulumi.CustomResource):
         The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
         """
         return pulumi.get(self, "spot_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="spotInterruptionBehavior")
+    def spot_interruption_behavior(self) -> pulumi.Output[_builtins.str]:
+        """
+        The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+        - `Terminate`: The instance is released.
+        - `Stop`: The instance is stopped in economical mode.
+        """
+        return pulumi.get(self, "spot_interruption_behavior")
 
     @_builtins.property
     @pulumi.getter(name="spotPriceLimit")

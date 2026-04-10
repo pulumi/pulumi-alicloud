@@ -42,49 +42,66 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     ///     var defaultGatewayVpnAttachment = new AliCloud.Vpn.GatewayVpnAttachment("default", new()
     ///     {
-    ///         CustomerGatewayId = @default.Id,
+    ///         VpnAttachmentName = name,
     ///         NetworkType = "public",
     ///         LocalSubnet = "0.0.0.0/0",
     ///         RemoteSubnet = "0.0.0.0/0",
     ///         EffectImmediately = false,
-    ///         IkeConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIkeConfigArgs
+    ///         TunnelOptionsSpecifications = new[]
     ///         {
-    ///             IkeAuthAlg = "md5",
-    ///             IkeEncAlg = "des",
-    ///             IkeVersion = "ikev2",
-    ///             IkeMode = "main",
-    ///             IkeLifetime = 86400,
-    ///             Psk = "tf-testvpn2",
-    ///             IkePfs = "group1",
-    ///             RemoteId = "testbob2",
-    ///             LocalId = "testalice2",
+    ///             new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs
+    ///             {
+    ///                 TunnelIndex = 1,
+    ///                 CustomerGatewayId = @default.Id,
+    ///                 EnableDpd = true,
+    ///                 EnableNatTraversal = true,
+    ///                 TunnelIkeConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs
+    ///                 {
+    ///                     IkeVersion = "ikev2",
+    ///                     IkeMode = "main",
+    ///                     IkeAuthAlg = "sha256",
+    ///                     IkeEncAlg = "aes",
+    ///                     IkePfs = "group2",
+    ///                     IkeLifetime = 86400,
+    ///                     Psk = "tf-example-psk1",
+    ///                     LocalId = "42.104.22.210",
+    ///                     RemoteId = "42.104.22.210",
+    ///                 },
+    ///                 TunnelIpsecConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs
+    ///                 {
+    ///                     IpsecAuthAlg = "sha256",
+    ///                     IpsecEncAlg = "aes",
+    ///                     IpsecPfs = "group2",
+    ///                     IpsecLifetime = 86400,
+    ///                 },
+    ///             },
+    ///             new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs
+    ///             {
+    ///                 TunnelIndex = 2,
+    ///                 CustomerGatewayId = @default.Id,
+    ///                 EnableDpd = true,
+    ///                 EnableNatTraversal = true,
+    ///                 TunnelIkeConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs
+    ///                 {
+    ///                     IkeVersion = "ikev2",
+    ///                     IkeMode = "main",
+    ///                     IkeAuthAlg = "sha256",
+    ///                     IkeEncAlg = "aes",
+    ///                     IkePfs = "group2",
+    ///                     IkeLifetime = 86400,
+    ///                     Psk = "tf-example-psk2",
+    ///                     LocalId = "42.104.22.210",
+    ///                     RemoteId = "42.104.22.210",
+    ///                 },
+    ///                 TunnelIpsecConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs
+    ///                 {
+    ///                     IpsecAuthAlg = "sha256",
+    ///                     IpsecEncAlg = "aes",
+    ///                     IpsecPfs = "group2",
+    ///                     IpsecLifetime = 86400,
+    ///                 },
+    ///             },
     ///         },
-    ///         IpsecConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIpsecConfigArgs
-    ///         {
-    ///             IpsecPfs = "group5",
-    ///             IpsecEncAlg = "des",
-    ///             IpsecAuthAlg = "md5",
-    ///             IpsecLifetime = 86400,
-    ///         },
-    ///         BgpConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentBgpConfigArgs
-    ///         {
-    ///             Enable = true,
-    ///             LocalAsn = 45014,
-    ///             TunnelCidr = "169.254.11.0/30",
-    ///             LocalBgpIp = "169.254.11.1",
-    ///         },
-    ///         HealthCheckConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentHealthCheckConfigArgs
-    ///         {
-    ///             Enable = true,
-    ///             Sip = "192.168.1.1",
-    ///             Dip = "10.0.0.1",
-    ///             Interval = 10,
-    ///             Retry = 10,
-    ///             Policy = "revoke_route",
-    ///         },
-    ///         EnableDpd = true,
-    ///         EnableNatTraversal = true,
-    ///         VpnAttachmentName = name,
     ///     });
     /// 
     /// });

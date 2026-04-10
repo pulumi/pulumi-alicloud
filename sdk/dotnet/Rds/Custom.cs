@@ -161,6 +161,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// Data disk See `DataDisk` below.
+        /// 
+        /// -&gt;**NOTE:** From version 1.275.0, If you want to use `DataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.CustomDataDisk>> DataDisks { get; private set; } = null!;
@@ -425,6 +427,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// Data disk See `DataDisk` below.
+        /// 
+        /// -&gt;**NOTE:** From version 1.275.0, If you want to use `DataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
         /// </summary>
         public InputList<Inputs.CustomDataDiskArgs> DataDisks
         {
@@ -660,6 +664,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// Data disk See `DataDisk` below.
+        /// 
+        /// -&gt;**NOTE:** From version 1.275.0, If you want to use `DataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
         /// </summary>
         public InputList<Inputs.CustomDataDiskGetArgs> DataDisks
         {

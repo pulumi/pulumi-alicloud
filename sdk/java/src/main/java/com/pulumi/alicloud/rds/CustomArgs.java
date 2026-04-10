@@ -100,12 +100,16 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Data disk See `dataDisk` below.
      * 
+     * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+     * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<CustomDataDiskArgs>> dataDisks;
 
     /**
      * @return Data disk See `dataDisk` below.
+     * 
+     * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
      * 
      */
     public Optional<Output<List<CustomDataDiskArgs>>> dataDisks() {
@@ -703,6 +707,8 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dataDisks Data disk See `dataDisk` below.
          * 
+         * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+         * 
          * @return builder
          * 
          */
@@ -714,6 +720,8 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dataDisks Data disk See `dataDisk` below.
          * 
+         * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+         * 
          * @return builder
          * 
          */
@@ -723,6 +731,8 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataDisks Data disk See `dataDisk` below.
+         * 
+         * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
          * 
          * @return builder
          * 

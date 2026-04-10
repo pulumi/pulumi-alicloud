@@ -116,9 +116,9 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+     * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      *
-     * @deprecated Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
+     * @deprecated Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      */
     declare public readonly allocatePublicIp: pulumi.Output<boolean | undefined>;
     /**
@@ -143,20 +143,6 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly cpu: pulumi.Output<number>;
     /**
      * The options of cpu. See `cpuOptions` below.
-     *
-     * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-     *
-     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
-     *
-     * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-     *
-     * > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     *
-     * > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-     * Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-     *
-     * > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
      */
     declare public readonly cpuOptions: pulumi.Output<outputs.ecs.InstanceCpuOptions>;
     /**
@@ -419,7 +405,23 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead.
+     *
+     * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     *
+     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
+     *
+     * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+     *
+     * > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     *
+     * > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+     * Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+     *
+     * > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+     *
+     * @deprecated Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
      */
     declare public readonly roleName: pulumi.Output<string>;
     /**
@@ -444,6 +446,12 @@ export class Instance extends pulumi.CustomResource {
      * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
      */
     declare public readonly spotDuration: pulumi.Output<number>;
+    /**
+     * The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+     * - `Terminate`: The instance is released.
+     * - `Stop`: The instance is stopped in economical mode.
+     */
+    declare public readonly spotInterruptionBehavior: pulumi.Output<string>;
     /**
      * The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
      */
@@ -634,6 +642,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["securityEnhancementStrategy"] = state?.securityEnhancementStrategy;
             resourceInputs["securityGroups"] = state?.securityGroups;
             resourceInputs["spotDuration"] = state?.spotDuration;
+            resourceInputs["spotInterruptionBehavior"] = state?.spotInterruptionBehavior;
             resourceInputs["spotPriceLimit"] = state?.spotPriceLimit;
             resourceInputs["spotStrategy"] = state?.spotStrategy;
             resourceInputs["startTime"] = state?.startTime;
@@ -719,6 +728,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["securityEnhancementStrategy"] = args?.securityEnhancementStrategy;
             resourceInputs["securityGroups"] = args?.securityGroups;
             resourceInputs["spotDuration"] = args?.spotDuration;
+            resourceInputs["spotInterruptionBehavior"] = args?.spotInterruptionBehavior;
             resourceInputs["spotPriceLimit"] = args?.spotPriceLimit;
             resourceInputs["spotStrategy"] = args?.spotStrategy;
             resourceInputs["status"] = args?.status;
@@ -765,9 +775,9 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+     * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      *
-     * @deprecated Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
+     * @deprecated Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      */
     allocatePublicIp?: pulumi.Input<boolean>;
     /**
@@ -792,20 +802,6 @@ export interface InstanceState {
     cpu?: pulumi.Input<number>;
     /**
      * The options of cpu. See `cpuOptions` below.
-     *
-     * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-     *
-     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
-     *
-     * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-     *
-     * > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     *
-     * > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-     * Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-     *
-     * > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
      */
     cpuOptions?: pulumi.Input<inputs.ecs.InstanceCpuOptions>;
     /**
@@ -1068,7 +1064,23 @@ export interface InstanceState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead.
+     *
+     * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     *
+     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
+     *
+     * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+     *
+     * > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     *
+     * > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+     * Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+     *
+     * > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+     *
+     * @deprecated Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
      */
     roleName?: pulumi.Input<string>;
     /**
@@ -1093,6 +1105,12 @@ export interface InstanceState {
      * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
      */
     spotDuration?: pulumi.Input<number>;
+    /**
+     * The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+     * - `Terminate`: The instance is released.
+     * - `Stop`: The instance is stopped in economical mode.
+     */
+    spotInterruptionBehavior?: pulumi.Input<string>;
     /**
      * The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
      */
@@ -1206,9 +1224,9 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+     * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      *
-     * @deprecated Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
+     * @deprecated Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      */
     allocatePublicIp?: pulumi.Input<boolean>;
     /**
@@ -1229,20 +1247,6 @@ export interface InstanceArgs {
     availabilityZone?: pulumi.Input<string>;
     /**
      * The options of cpu. See `cpuOptions` below.
-     *
-     * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-     *
-     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
-     *
-     * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-     *
-     * > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     *
-     * > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-     * Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-     *
-     * > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
      */
     cpuOptions?: pulumi.Input<inputs.ecs.InstanceCpuOptions>;
     /**
@@ -1469,7 +1473,23 @@ export interface InstanceArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead.
+     *
+     * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     *
+     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
+     *
+     * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+     *
+     * > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     *
+     * > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+     * Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+     *
+     * > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+     *
+     * @deprecated Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
      */
     roleName?: pulumi.Input<string>;
     /**
@@ -1494,6 +1514,12 @@ export interface InstanceArgs {
      * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
      */
     spotDuration?: pulumi.Input<number>;
+    /**
+     * The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
+     * - `Terminate`: The instance is released.
+     * - `Stop`: The instance is stopped in economical mode.
+     */
+    spotInterruptionBehavior?: pulumi.Input<string>;
     /**
      * The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
      */

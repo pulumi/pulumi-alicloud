@@ -1585,6 +1585,7 @@
         "rds/custom.ts",
         "rds/customDeploymentSet.ts",
         "rds/customDisk.ts",
+        "rds/customDiskAttachment.ts",
         "rds/database.ts",
         "rds/dbInstanceEndpoint.ts",
         "rds/dbInstanceEndpointAddress.ts",

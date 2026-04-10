@@ -66,6 +66,8 @@ class CustomArgs:
         :param pulumi.Input[_builtins.str] create_extra_param: Reserved parameters are not supported.
         :param pulumi.Input[_builtins.str] create_mode: Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
         :param pulumi.Input[Sequence[pulumi.Input['CustomDataDiskArgs']]] data_disks: Data disk See `data_disk` below.
+               
+               ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
         :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set.
         :param pulumi.Input[_builtins.str] description: Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
         :param pulumi.Input[_builtins.str] direction: Instance configuration type, value range:
@@ -257,6 +259,8 @@ class CustomArgs:
     def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomDataDiskArgs']]]]:
         """
         Data disk See `data_disk` below.
+
+        ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
         """
         return pulumi.get(self, "data_disks")
 
@@ -621,6 +625,8 @@ class _CustomState:
         :param pulumi.Input[_builtins.str] create_extra_param: Reserved parameters are not supported.
         :param pulumi.Input[_builtins.str] create_mode: Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
         :param pulumi.Input[Sequence[pulumi.Input['CustomDataDiskArgs']]] data_disks: Data disk See `data_disk` below.
+               
+               ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
         :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set.
         :param pulumi.Input[_builtins.str] description: Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
         :param pulumi.Input[_builtins.str] direction: Instance configuration type, value range:
@@ -795,6 +801,8 @@ class _CustomState:
     def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomDataDiskArgs']]]]:
         """
         Data disk See `data_disk` below.
+
+        ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
         """
         return pulumi.get(self, "data_disks")
 
@@ -1302,6 +1310,8 @@ class Custom(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_extra_param: Reserved parameters are not supported.
         :param pulumi.Input[_builtins.str] create_mode: Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]] data_disks: Data disk See `data_disk` below.
+               
+               ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
         :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set.
         :param pulumi.Input[_builtins.str] description: Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
         :param pulumi.Input[_builtins.str] direction: Instance configuration type, value range:
@@ -1603,6 +1613,8 @@ class Custom(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_extra_param: Reserved parameters are not supported.
         :param pulumi.Input[_builtins.str] create_mode: Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]] data_disks: Data disk See `data_disk` below.
+               
+               ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
         :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set.
         :param pulumi.Input[_builtins.str] description: Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
         :param pulumi.Input[_builtins.str] direction: Instance configuration type, value range:
@@ -1725,9 +1737,11 @@ class Custom(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.CustomDataDisk']]]:
+    def data_disks(self) -> pulumi.Output[Sequence['outputs.CustomDataDisk']]:
         """
         Data disk See `data_disk` below.
+
+        ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
         """
         return pulumi.get(self, "data_disks")
 

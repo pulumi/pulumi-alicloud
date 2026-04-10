@@ -46,10 +46,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
  * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
  * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
- * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIkeConfigArgs;
- * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIpsecConfigArgs;
- * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentBgpConfigArgs;
- * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentHealthCheckConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -73,45 +72,58 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment("defaultGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()
- *             .customerGatewayId(default_.id())
+ *             .vpnAttachmentName(name)
  *             .networkType("public")
  *             .localSubnet("0.0.0.0/0")
  *             .remoteSubnet("0.0.0.0/0")
  *             .effectImmediately(false)
- *             .ikeConfig(GatewayVpnAttachmentIkeConfigArgs.builder()
- *                 .ikeAuthAlg("md5")
- *                 .ikeEncAlg("des")
- *                 .ikeVersion("ikev2")
- *                 .ikeMode("main")
- *                 .ikeLifetime(86400)
- *                 .psk("tf-testvpn2")
- *                 .ikePfs("group1")
- *                 .remoteId("testbob2")
- *                 .localId("testalice2")
- *                 .build())
- *             .ipsecConfig(GatewayVpnAttachmentIpsecConfigArgs.builder()
- *                 .ipsecPfs("group5")
- *                 .ipsecEncAlg("des")
- *                 .ipsecAuthAlg("md5")
- *                 .ipsecLifetime(86400)
- *                 .build())
- *             .bgpConfig(GatewayVpnAttachmentBgpConfigArgs.builder()
- *                 .enable(true)
- *                 .localAsn(45014)
- *                 .tunnelCidr("169.254.11.0/30")
- *                 .localBgpIp("169.254.11.1")
- *                 .build())
- *             .healthCheckConfig(GatewayVpnAttachmentHealthCheckConfigArgs.builder()
- *                 .enable(true)
- *                 .sip("192.168.1.1")
- *                 .dip("10.0.0.1")
- *                 .interval(10)
- *                 .retry(10)
- *                 .policy("revoke_route")
- *                 .build())
- *             .enableDpd(true)
- *             .enableNatTraversal(true)
- *             .vpnAttachmentName(name)
+ *             .tunnelOptionsSpecifications(            
+ *                 GatewayVpnAttachmentTunnelOptionsSpecificationArgs.builder()
+ *                     .tunnelIndex(1)
+ *                     .customerGatewayId(default_.id())
+ *                     .enableDpd(true)
+ *                     .enableNatTraversal(true)
+ *                     .tunnelIkeConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
+ *                         .ikeVersion("ikev2")
+ *                         .ikeMode("main")
+ *                         .ikeAuthAlg("sha256")
+ *                         .ikeEncAlg("aes")
+ *                         .ikePfs("group2")
+ *                         .ikeLifetime(86400)
+ *                         .psk("tf-example-psk1")
+ *                         .localId("42.104.22.210")
+ *                         .remoteId("42.104.22.210")
+ *                         .build())
+ *                     .tunnelIpsecConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
+ *                         .ipsecAuthAlg("sha256")
+ *                         .ipsecEncAlg("aes")
+ *                         .ipsecPfs("group2")
+ *                         .ipsecLifetime(86400)
+ *                         .build())
+ *                     .build(),
+ *                 GatewayVpnAttachmentTunnelOptionsSpecificationArgs.builder()
+ *                     .tunnelIndex(2)
+ *                     .customerGatewayId(default_.id())
+ *                     .enableDpd(true)
+ *                     .enableNatTraversal(true)
+ *                     .tunnelIkeConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
+ *                         .ikeVersion("ikev2")
+ *                         .ikeMode("main")
+ *                         .ikeAuthAlg("sha256")
+ *                         .ikeEncAlg("aes")
+ *                         .ikePfs("group2")
+ *                         .ikeLifetime(86400)
+ *                         .psk("tf-example-psk2")
+ *                         .localId("42.104.22.210")
+ *                         .remoteId("42.104.22.210")
+ *                         .build())
+ *                     .tunnelIpsecConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
+ *                         .ipsecAuthAlg("sha256")
+ *                         .ipsecEncAlg("aes")
+ *                         .ipsecPfs("group2")
+ *                         .ipsecLifetime(86400)
+ *                         .build())
+ *                     .build())
  *             .build());
  * 
  *     }
