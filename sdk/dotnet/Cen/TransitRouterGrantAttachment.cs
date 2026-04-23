@@ -68,13 +68,13 @@ namespace Pulumi.AliCloud.Cen
     public partial class TransitRouterGrantAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+        /// CEN instance ID
         /// </summary>
         [Output("cenId")]
         public Output<string> CenId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Alibaba Cloud account to which the CEN instance belongs.
+        /// The ID of the account of the CEN instance.
         /// </summary>
         [Output("cenOwnerId")]
         public Output<string> CenOwnerId { get; private set; } = null!;
@@ -86,13 +86,17 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+        /// The type of the network instance.
+        /// - `VPC`: VPC instance.
+        /// - `VBR`: VBR instance.
+        /// - `CCN`: CCN instance.
+        /// - `VPN`:IPsec connection.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+        /// Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
         /// </summary>
         [Output("orderType")]
         public Output<string> OrderType { get; private set; } = null!;
@@ -144,13 +148,13 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterGrantAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+        /// CEN instance ID
         /// </summary>
         [Input("cenId", required: true)]
         public Input<string> CenId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Alibaba Cloud account to which the CEN instance belongs.
+        /// The ID of the account of the CEN instance.
         /// </summary>
         [Input("cenOwnerId", required: true)]
         public Input<string> CenOwnerId { get; set; } = null!;
@@ -162,13 +166,17 @@ namespace Pulumi.AliCloud.Cen
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+        /// The type of the network instance.
+        /// - `VPC`: VPC instance.
+        /// - `VBR`: VBR instance.
+        /// - `CCN`: CCN instance.
+        /// - `VPN`:IPsec connection.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
         /// <summary>
-        /// The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+        /// Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
@@ -182,13 +190,13 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterGrantAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+        /// CEN instance ID
         /// </summary>
         [Input("cenId")]
         public Input<string>? CenId { get; set; }
 
         /// <summary>
-        /// The ID of the Alibaba Cloud account to which the CEN instance belongs.
+        /// The ID of the account of the CEN instance.
         /// </summary>
         [Input("cenOwnerId")]
         public Input<string>? CenOwnerId { get; set; }
@@ -200,13 +208,17 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+        /// The type of the network instance.
+        /// - `VPC`: VPC instance.
+        /// - `VBR`: VBR instance.
+        /// - `CCN`: CCN instance.
+        /// - `VPN`:IPsec connection.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+        /// Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }

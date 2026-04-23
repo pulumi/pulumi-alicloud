@@ -86,14 +86,14 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
     }
 
     /**
-     * The role of Tunnel.
+     * The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return The role of Tunnel.
+     * @return The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
      * 
      */
     public Optional<Output<String>> role() {
@@ -351,7 +351,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
         }
 
         /**
-         * @param role The role of Tunnel.
+         * @param role The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
         }
 
         /**
-         * @param role The role of Tunnel.
+         * @param role The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
          * 
          * @return builder
          * 

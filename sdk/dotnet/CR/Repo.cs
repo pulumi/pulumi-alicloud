@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CR
 {
     /// <summary>
+    /// &gt; **DEPRECATION NOTICE:** This resource is deprecated and will be removed in a future release.
+    /// 
     /// This resource will help you to manager Container Registry repositories, see [What is Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository).
     /// 
     /// &gt; **NOTE:** Available since v1.35.0.

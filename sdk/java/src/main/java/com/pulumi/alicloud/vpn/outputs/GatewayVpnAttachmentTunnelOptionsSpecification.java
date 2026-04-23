@@ -40,7 +40,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecification {
      */
     private @Nullable String internetIp;
     /**
-     * @return The role of Tunnel.
+     * @return The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
      * 
      */
     private @Nullable String role;
@@ -120,7 +120,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecification {
         return Optional.ofNullable(this.internetIp);
     }
     /**
-     * @return The role of Tunnel.
+     * @return The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
      * 
      */
     public Optional<String> role() {

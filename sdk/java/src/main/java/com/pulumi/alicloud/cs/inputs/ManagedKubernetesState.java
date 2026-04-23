@@ -281,6 +281,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * 
      * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      * 
      */
@@ -289,6 +290,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * @return Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * 
      * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      * 
      */
@@ -327,6 +329,25 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+     * 
+     * &gt; **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+     * 
+     */
+    @Import(name="disableEncryption")
+    private @Nullable Output<Boolean> disableEncryption;
+
+    /**
+     * @return Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+     * 
+     * &gt; **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+     * 
+     */
+    public Optional<Output<Boolean>> disableEncryption() {
+        return Optional.ofNullable(this.disableEncryption);
+    }
+
+    /**
      * Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      * 
      */
@@ -344,12 +365,16 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     /**
      * The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
      * 
+     * &gt; **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+     * 
      */
     @Import(name="encryptionProviderKey")
     private @Nullable Output<String> encryptionProviderKey;
 
     /**
      * @return The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+     * 
+     * &gt; **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
      * 
      */
     public Optional<Output<String>> encryptionProviderKey() {
@@ -629,7 +654,8 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-     * * &gt; **NOTE:** Please take of note before updating the `securityGroupId`:
+     * 
+     * &gt; **NOTE:** Please take of note before updating the `securityGroupId`:
      * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
      * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
      * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -640,7 +666,8 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-     * * &gt; **NOTE:** Please take of note before updating the `securityGroupId`:
+     * 
+     * &gt; **NOTE:** Please take of note before updating the `securityGroupId`:
      * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
      * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
      * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -772,7 +799,8 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * Cluster timezone, works for control plane and Worker nodes.
-     * * &gt; **NOTE:** Please take of note before updating the `timezone`:
+     * 
+     * &gt; **NOTE:** Please take of note before updating the `timezone`:
      * * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
      * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
      * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -783,7 +811,8 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * @return Cluster timezone, works for control plane and Worker nodes.
-     * * &gt; **NOTE:** Please take of note before updating the `timezone`:
+     * 
+     * &gt; **NOTE:** Please take of note before updating the `timezone`:
      * * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
      * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
      * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -795,6 +824,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+     * 
      * &gt; **NOTE:** This parameter only applies during resource update.
      * 
      * *Network params*
@@ -805,6 +835,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * @return Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+     * 
      * &gt; **NOTE:** This parameter only applies during resource update.
      * 
      * *Network params*
@@ -861,6 +892,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * The vSwitches of the control plane.
+     * 
      * &gt; **NOTE:** Please take of note before updating the `vswitchIds`:
      * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
      * * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -873,6 +905,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The vSwitches of the control plane.
+     * 
      * &gt; **NOTE:** Please take of note before updating the `vswitchIds`:
      * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
      * * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -957,6 +990,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         this.customSan = $.customSan;
         this.deleteOptions = $.deleteOptions;
         this.deletionProtection = $.deletionProtection;
+        this.disableEncryption = $.disableEncryption;
         this.enableRrsa = $.enableRrsa;
         this.encryptionProviderKey = $.encryptionProviderKey;
         this.ipStack = $.ipStack;
@@ -1380,6 +1414,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param customSan Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+         * 
          * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
          * 
          * @return builder
@@ -1392,6 +1427,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param customSan Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+         * 
          * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
          * 
          * @return builder
@@ -1454,6 +1490,31 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param disableEncryption Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+         * 
+         * &gt; **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableEncryption(@Nullable Output<Boolean> disableEncryption) {
+            $.disableEncryption = disableEncryption;
+            return this;
+        }
+
+        /**
+         * @param disableEncryption Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+         * 
+         * &gt; **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableEncryption(Boolean disableEncryption) {
+            return disableEncryption(Output.of(disableEncryption));
+        }
+
+        /**
          * @param enableRrsa Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
          * 
          * @return builder
@@ -1477,6 +1538,8 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         /**
          * @param encryptionProviderKey The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
          * 
+         * &gt; **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+         * 
          * @return builder
          * 
          */
@@ -1487,6 +1550,8 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param encryptionProviderKey The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+         * 
+         * &gt; **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
          * 
          * @return builder
          * 
@@ -1890,7 +1955,8 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param securityGroupId The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-         * * &gt; **NOTE:** Please take of note before updating the `securityGroupId`:
+         * 
+         * &gt; **NOTE:** Please take of note before updating the `securityGroupId`:
          * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
          * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
          * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -1905,7 +1971,8 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param securityGroupId The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-         * * &gt; **NOTE:** Please take of note before updating the `securityGroupId`:
+         * 
+         * &gt; **NOTE:** Please take of note before updating the `securityGroupId`:
          * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
          * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
          * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -2087,7 +2154,8 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param timezone Cluster timezone, works for control plane and Worker nodes.
-         * * &gt; **NOTE:** Please take of note before updating the `timezone`:
+         * 
+         * &gt; **NOTE:** Please take of note before updating the `timezone`:
          * * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
          * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
          * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -2102,7 +2170,8 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param timezone Cluster timezone, works for control plane and Worker nodes.
-         * * &gt; **NOTE:** Please take of note before updating the `timezone`:
+         * 
+         * &gt; **NOTE:** Please take of note before updating the `timezone`:
          * * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
          * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
          * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -2116,6 +2185,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param upgradePolicy Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+         * 
          * &gt; **NOTE:** This parameter only applies during resource update.
          * 
          * *Network params*
@@ -2130,6 +2200,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param upgradePolicy Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+         * 
          * &gt; **NOTE:** This parameter only applies during resource update.
          * 
          * *Network params*
@@ -2206,6 +2277,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param vswitchIds The vSwitches of the control plane.
+         * 
          * &gt; **NOTE:** Please take of note before updating the `vswitchIds`:
          * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
          * * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -2222,6 +2294,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param vswitchIds The vSwitches of the control plane.
+         * 
          * &gt; **NOTE:** Please take of note before updating the `vswitchIds`:
          * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
          * * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -2237,6 +2310,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param vswitchIds The vSwitches of the control plane.
+         * 
          * &gt; **NOTE:** Please take of note before updating the `vswitchIds`:
          * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
          * * The control plane restarts during the change process. Exercise caution when you perform this operation.

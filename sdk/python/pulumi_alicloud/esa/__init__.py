@@ -12,6 +12,7 @@ from .certificate import *
 from .client_ca_certificate import *
 from .client_certificate import *
 from .compression_rule import *
+from .custom_response_code_rule import *
 from .custom_scene_policy import *
 from .edge_container_app import *
 from .edge_container_app_record import *

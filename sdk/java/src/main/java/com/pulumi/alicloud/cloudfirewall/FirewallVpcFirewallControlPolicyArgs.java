@@ -50,6 +50,7 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
 
     /**
      * The list of application types that the access control policy supports.
+     * 
      * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      * 
      */
@@ -58,6 +59,7 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
 
     /**
      * @return The list of application types that the access control policy supports.
+     * 
      * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      * 
      */
@@ -81,14 +83,18 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+     * The destination port in the access control policy.
+     * 
+     * -&gt;**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
      * 
      */
     @Import(name="destPort")
     private @Nullable Output<String> destPort;
 
     /**
-     * @return The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+     * @return The destination port in the access control policy.
+     * 
+     * -&gt;**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
      * 
      */
     public Optional<Output<String>> destPort() {
@@ -96,14 +102,18 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+     * Access control policy in the access traffic of the destination port address book name.
+     * 
+     * -&gt;**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
      * 
      */
     @Import(name="destPortGroup")
     private @Nullable Output<String> destPortGroup;
 
     /**
-     * @return Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+     * @return Access control policy in the access traffic of the destination port address book name.
+     * 
+     * -&gt;**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
      * 
      */
     public Optional<Output<String>> destPortGroup() {
@@ -225,15 +235,15 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
      * The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
      * 
      */
-    @Import(name="order", required=true)
-    private Output<Integer> order;
+    @Import(name="order")
+    private @Nullable Output<Integer> order;
 
     /**
      * @return The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
      * 
      */
-    public Output<Integer> order() {
-        return this.order;
+    public Optional<Output<Integer>> order() {
+        return Optional.ofNullable(this.order);
     }
 
     /**
@@ -485,6 +495,7 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
 
         /**
          * @param applicationNameLists The list of application types that the access control policy supports.
+         * 
          * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
          * 
          * @return builder
@@ -497,6 +508,7 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
 
         /**
          * @param applicationNameLists The list of application types that the access control policy supports.
+         * 
          * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
          * 
          * @return builder
@@ -508,6 +520,7 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
 
         /**
          * @param applicationNameLists The list of application types that the access control policy supports.
+         * 
          * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
          * 
          * @return builder
@@ -539,7 +552,9 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destPort The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+         * @param destPort The destination port in the access control policy.
+         * 
+         * -&gt;**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
          * 
          * @return builder
          * 
@@ -550,7 +565,9 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destPort The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+         * @param destPort The destination port in the access control policy.
+         * 
+         * -&gt;**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
          * 
          * @return builder
          * 
@@ -560,7 +577,9 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destPortGroup Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+         * @param destPortGroup Access control policy in the access traffic of the destination port address book name.
+         * 
+         * -&gt;**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
          * 
          * @return builder
          * 
@@ -571,7 +590,9 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destPortGroup Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+         * @param destPortGroup Access control policy in the access traffic of the destination port address book name.
+         * 
+         * -&gt;**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
          * 
          * @return builder
          * 
@@ -739,7 +760,7 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder order(Output<Integer> order) {
+        public Builder order(@Nullable Output<Integer> order) {
             $.order = order;
             return this;
         }
@@ -996,9 +1017,6 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
             }
             if ($.destinationType == null) {
                 throw new MissingRequiredPropertyException("FirewallVpcFirewallControlPolicyArgs", "destinationType");
-            }
-            if ($.order == null) {
-                throw new MissingRequiredPropertyException("FirewallVpcFirewallControlPolicyArgs", "order");
             }
             if ($.proto == null) {
                 throw new MissingRequiredPropertyException("FirewallVpcFirewallControlPolicyArgs", "proto");

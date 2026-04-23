@@ -27,11 +27,15 @@ class TransitRouterGrantAttachmentArgs:
         """
         The set of arguments for constructing a TransitRouterGrantAttachment resource.
 
-        :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
-        :param pulumi.Input[_builtins.str] cen_owner_id: The ID of the Alibaba Cloud account to which the CEN instance belongs.
+        :param pulumi.Input[_builtins.str] cen_id: CEN instance ID
+        :param pulumi.Input[_builtins.str] cen_owner_id: The ID of the account of the CEN instance.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the network instance.
-        :param pulumi.Input[_builtins.str] instance_type: The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
-        :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+        :param pulumi.Input[_builtins.str] instance_type: The type of the network instance.
+               - `VPC`: VPC instance.
+               - `VBR`: VBR instance.
+               - `CCN`: CCN instance.
+               - `VPN`:IPsec connection.
+        :param pulumi.Input[_builtins.str] order_type: Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
         """
         pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "cen_owner_id", cen_owner_id)
@@ -44,7 +48,7 @@ class TransitRouterGrantAttachmentArgs:
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+        CEN instance ID
         """
         return pulumi.get(self, "cen_id")
 
@@ -56,7 +60,7 @@ class TransitRouterGrantAttachmentArgs:
     @pulumi.getter(name="cenOwnerId")
     def cen_owner_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the Alibaba Cloud account to which the CEN instance belongs.
+        The ID of the account of the CEN instance.
         """
         return pulumi.get(self, "cen_owner_id")
 
@@ -80,7 +84,11 @@ class TransitRouterGrantAttachmentArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+        The type of the network instance.
+        - `VPC`: VPC instance.
+        - `VBR`: VBR instance.
+        - `CCN`: CCN instance.
+        - `VPN`:IPsec connection.
         """
         return pulumi.get(self, "instance_type")
 
@@ -92,7 +100,7 @@ class TransitRouterGrantAttachmentArgs:
     @pulumi.getter(name="orderType")
     def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+        Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
         """
         return pulumi.get(self, "order_type")
 
@@ -112,11 +120,15 @@ class _TransitRouterGrantAttachmentState:
         """
         Input properties used for looking up and filtering TransitRouterGrantAttachment resources.
 
-        :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
-        :param pulumi.Input[_builtins.str] cen_owner_id: The ID of the Alibaba Cloud account to which the CEN instance belongs.
+        :param pulumi.Input[_builtins.str] cen_id: CEN instance ID
+        :param pulumi.Input[_builtins.str] cen_owner_id: The ID of the account of the CEN instance.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the network instance.
-        :param pulumi.Input[_builtins.str] instance_type: The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
-        :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+        :param pulumi.Input[_builtins.str] instance_type: The type of the network instance.
+               - `VPC`: VPC instance.
+               - `VBR`: VBR instance.
+               - `CCN`: CCN instance.
+               - `VPN`:IPsec connection.
+        :param pulumi.Input[_builtins.str] order_type: Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
         """
         if cen_id is not None:
             pulumi.set(__self__, "cen_id", cen_id)
@@ -133,7 +145,7 @@ class _TransitRouterGrantAttachmentState:
     @pulumi.getter(name="cenId")
     def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+        CEN instance ID
         """
         return pulumi.get(self, "cen_id")
 
@@ -145,7 +157,7 @@ class _TransitRouterGrantAttachmentState:
     @pulumi.getter(name="cenOwnerId")
     def cen_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the Alibaba Cloud account to which the CEN instance belongs.
+        The ID of the account of the CEN instance.
         """
         return pulumi.get(self, "cen_owner_id")
 
@@ -169,7 +181,11 @@ class _TransitRouterGrantAttachmentState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+        The type of the network instance.
+        - `VPC`: VPC instance.
+        - `VBR`: VBR instance.
+        - `CCN`: CCN instance.
+        - `VPN`:IPsec connection.
         """
         return pulumi.get(self, "instance_type")
 
@@ -181,7 +197,7 @@ class _TransitRouterGrantAttachmentState:
     @pulumi.getter(name="orderType")
     def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+        Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
         """
         return pulumi.get(self, "order_type")
 
@@ -245,11 +261,15 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
-        :param pulumi.Input[_builtins.str] cen_owner_id: The ID of the Alibaba Cloud account to which the CEN instance belongs.
+        :param pulumi.Input[_builtins.str] cen_id: CEN instance ID
+        :param pulumi.Input[_builtins.str] cen_owner_id: The ID of the account of the CEN instance.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the network instance.
-        :param pulumi.Input[_builtins.str] instance_type: The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
-        :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+        :param pulumi.Input[_builtins.str] instance_type: The type of the network instance.
+               - `VPC`: VPC instance.
+               - `VBR`: VBR instance.
+               - `CCN`: CCN instance.
+               - `VPN`:IPsec connection.
+        :param pulumi.Input[_builtins.str] order_type: Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
         """
         ...
     @overload
@@ -362,11 +382,15 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
-        :param pulumi.Input[_builtins.str] cen_owner_id: The ID of the Alibaba Cloud account to which the CEN instance belongs.
+        :param pulumi.Input[_builtins.str] cen_id: CEN instance ID
+        :param pulumi.Input[_builtins.str] cen_owner_id: The ID of the account of the CEN instance.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the network instance.
-        :param pulumi.Input[_builtins.str] instance_type: The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
-        :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+        :param pulumi.Input[_builtins.str] instance_type: The type of the network instance.
+               - `VPC`: VPC instance.
+               - `VBR`: VBR instance.
+               - `CCN`: CCN instance.
+               - `VPN`:IPsec connection.
+        :param pulumi.Input[_builtins.str] order_type: Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -383,7 +407,7 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+        CEN instance ID
         """
         return pulumi.get(self, "cen_id")
 
@@ -391,7 +415,7 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
     @pulumi.getter(name="cenOwnerId")
     def cen_owner_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the Alibaba Cloud account to which the CEN instance belongs.
+        The ID of the account of the CEN instance.
         """
         return pulumi.get(self, "cen_owner_id")
 
@@ -407,7 +431,11 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+        The type of the network instance.
+        - `VPC`: VPC instance.
+        - `VBR`: VBR instance.
+        - `CCN`: CCN instance.
+        - `VPN`:IPsec connection.
         """
         return pulumi.get(self, "instance_type")
 
@@ -415,7 +443,7 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
     @pulumi.getter(name="orderType")
     def order_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+        Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
         """
         return pulumi.get(self, "order_type")
 

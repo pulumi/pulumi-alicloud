@@ -25,10 +25,12 @@ class TransitRouterVpnAttachmentArgs:
                  auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  cen_id: Optional[pulumi.Input[_builtins.str]] = None,
                  charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 transit_router_vpn_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]] = None):
         """
@@ -39,12 +41,17 @@ class TransitRouterVpnAttachmentArgs:
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
         :param pulumi.Input[_builtins.str] charge_type: The billing method.
                Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+        :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values:
+               
+               - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+               - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] transit_router_attachment_description: The new description of the VPN attachment.
                The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] transit_router_attachment_name: The name of the VPN attachment.
-               The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[_builtins.str] transit_router_attachment_name: . Field 'transit_router_attachment_name' has been deprecated from provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[_builtins.str] transit_router_vpn_attachment_name: The name of the VPN attachment.
+               The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[_builtins.str] vpn_owner_id: The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
                
                - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
@@ -52,6 +59,8 @@ class TransitRouterVpnAttachmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]] zones: The Zone ID in the current region.
                System will create resources under the Zone that you specify.
                Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         pulumi.set(__self__, "vpn_id", vpn_id)
         if auto_publish_route_enabled is not None:
@@ -60,14 +69,21 @@ class TransitRouterVpnAttachmentArgs:
             pulumi.set(__self__, "cen_id", cen_id)
         if charge_type is not None:
             pulumi.set(__self__, "charge_type", charge_type)
+        if order_type is not None:
+            pulumi.set(__self__, "order_type", order_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if transit_router_attachment_description is not None:
             pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
         if transit_router_attachment_name is not None:
+            warnings.warn("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""transit_router_attachment_name is deprecated: Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.""")
+        if transit_router_attachment_name is not None:
             pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
         if transit_router_id is not None:
             pulumi.set(__self__, "transit_router_id", transit_router_id)
+        if transit_router_vpn_attachment_name is not None:
+            pulumi.set(__self__, "transit_router_vpn_attachment_name", transit_router_vpn_attachment_name)
         if vpn_owner_id is not None:
             pulumi.set(__self__, "vpn_owner_id", vpn_owner_id)
         if zones is not None:
@@ -123,6 +139,21 @@ class TransitRouterVpnAttachmentArgs:
         pulumi.set(self, "charge_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="orderType")
+    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The entity that pays the fees of the network instance. Valid values:
+
+        - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+        - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+        """
+        return pulumi.get(self, "order_type")
+
+    @order_type.setter
+    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "order_type", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -149,10 +180,10 @@ class TransitRouterVpnAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentName")
+    @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.""")
     def transit_router_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the VPN attachment.
-        The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        . Field 'transit_router_attachment_name' has been deprecated from provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
@@ -171,6 +202,19 @@ class TransitRouterVpnAttachmentArgs:
     @transit_router_id.setter
     def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="transitRouterVpnAttachmentName")
+    def transit_router_vpn_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the VPN attachment.
+        The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        """
+        return pulumi.get(self, "transit_router_vpn_attachment_name")
+
+    @transit_router_vpn_attachment_name.setter
+    def transit_router_vpn_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "transit_router_vpn_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnOwnerId")
@@ -194,6 +238,8 @@ class TransitRouterVpnAttachmentArgs:
         The Zone ID in the current region.
         System will create resources under the Zone that you specify.
         Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "zones")
 
@@ -209,12 +255,14 @@ class _TransitRouterVpnAttachmentState:
                  cen_id: Optional[pulumi.Input[_builtins.str]] = None,
                  charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
                  region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 transit_router_vpn_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]] = None):
@@ -225,15 +273,20 @@ class _TransitRouterVpnAttachmentState:
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
         :param pulumi.Input[_builtins.str] charge_type: The billing method.
                Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
+        :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values:
+               
+               - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+               - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
         :param pulumi.Input[_builtins.str] region_id: The ID of the region where the transit router is deployed.
-        :param pulumi.Input[_builtins.str] status: Status
+        :param pulumi.Input[_builtins.str] status: Status.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] transit_router_attachment_description: The new description of the VPN attachment.
                The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] transit_router_attachment_name: The name of the VPN attachment.
-               The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[_builtins.str] transit_router_attachment_name: . Field 'transit_router_attachment_name' has been deprecated from provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[_builtins.str] transit_router_vpn_attachment_name: The name of the VPN attachment.
+               The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[_builtins.str] vpn_id: The ID of the IPsec-VPN attachment.
         :param pulumi.Input[_builtins.str] vpn_owner_id: The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
                
@@ -242,6 +295,8 @@ class _TransitRouterVpnAttachmentState:
         :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]] zones: The Zone ID in the current region.
                System will create resources under the Zone that you specify.
                Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if auto_publish_route_enabled is not None:
             pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
@@ -251,6 +306,8 @@ class _TransitRouterVpnAttachmentState:
             pulumi.set(__self__, "charge_type", charge_type)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if order_type is not None:
+            pulumi.set(__self__, "order_type", order_type)
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
         if status is not None:
@@ -260,9 +317,14 @@ class _TransitRouterVpnAttachmentState:
         if transit_router_attachment_description is not None:
             pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
         if transit_router_attachment_name is not None:
+            warnings.warn("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""transit_router_attachment_name is deprecated: Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.""")
+        if transit_router_attachment_name is not None:
             pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
         if transit_router_id is not None:
             pulumi.set(__self__, "transit_router_id", transit_router_id)
+        if transit_router_vpn_attachment_name is not None:
+            pulumi.set(__self__, "transit_router_vpn_attachment_name", transit_router_vpn_attachment_name)
         if vpn_id is not None:
             pulumi.set(__self__, "vpn_id", vpn_id)
         if vpn_owner_id is not None:
@@ -311,13 +373,28 @@ class _TransitRouterVpnAttachmentState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation time of the resource
+        The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="orderType")
+    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The entity that pays the fees of the network instance. Valid values:
+
+        - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+        - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+        """
+        return pulumi.get(self, "order_type")
+
+    @order_type.setter
+    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "order_type", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
@@ -335,7 +412,7 @@ class _TransitRouterVpnAttachmentState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Status
+        Status.
         """
         return pulumi.get(self, "status")
 
@@ -370,10 +447,10 @@ class _TransitRouterVpnAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentName")
+    @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.""")
     def transit_router_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the VPN attachment.
-        The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        . Field 'transit_router_attachment_name' has been deprecated from provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
@@ -392,6 +469,19 @@ class _TransitRouterVpnAttachmentState:
     @transit_router_id.setter
     def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="transitRouterVpnAttachmentName")
+    def transit_router_vpn_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the VPN attachment.
+        The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        """
+        return pulumi.get(self, "transit_router_vpn_attachment_name")
+
+    @transit_router_vpn_attachment_name.setter
+    def transit_router_vpn_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "transit_router_vpn_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnId")
@@ -427,6 +517,8 @@ class _TransitRouterVpnAttachmentState:
         The Zone ID in the current region.
         System will create resources under the Zone that you specify.
         Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "zones")
 
@@ -444,10 +536,12 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
                  auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  cen_id: Optional[pulumi.Input[_builtins.str]] = None,
                  charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 transit_router_vpn_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None,
@@ -471,7 +565,6 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = alicloud.cen.get_transit_router_available_resources()
         example = alicloud.cen.Instance("example", cen_instance_name=name)
         example_transit_router = alicloud.cen.TransitRouter("example",
             cen_id=example.id,
@@ -483,44 +576,60 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             asn="45014",
             description=name)
         example_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("example",
-            customer_gateway_id=example_customer_gateway.id,
             network_type="public",
             local_subnet="0.0.0.0/0",
             remote_subnet="0.0.0.0/0",
             effect_immediately=False,
-            ike_config={
-                "ike_auth_alg": "md5",
-                "ike_enc_alg": "des",
-                "ike_version": "ikev2",
-                "ike_mode": "main",
-                "ike_lifetime": 86400,
-                "psk": "tf-examplevpn2",
-                "ike_pfs": "group1",
-                "remote_id": "examplebob2",
-                "local_id": "examplealice2",
-            },
-            ipsec_config={
-                "ipsec_pfs": "group5",
-                "ipsec_enc_alg": "des",
-                "ipsec_auth_alg": "md5",
-                "ipsec_lifetime": 86400,
-            },
-            bgp_config={
-                "enable": True,
-                "local_asn": 45014,
-                "tunnel_cidr": "169.254.11.0/30",
-                "local_bgp_ip": "169.254.11.1",
-            },
-            health_check_config={
-                "enable": True,
-                "sip": "192.168.1.1",
-                "dip": "10.0.0.1",
-                "interval": 10,
-                "retry": 10,
-                "policy": "revoke_route",
-            },
-            enable_dpd=True,
-            enable_nat_traversal=True,
+            tunnel_options_specifications=[
+                {
+                    "customer_gateway_id": example_customer_gateway.id,
+                    "role": "master",
+                    "tunnel_index": 1,
+                    "enable_dpd": True,
+                    "enable_nat_traversal": True,
+                    "tunnel_ike_config": {
+                        "ike_auth_alg": "md5",
+                        "ike_enc_alg": "des",
+                        "ike_version": "ikev2",
+                        "ike_mode": "main",
+                        "ike_lifetime": 86400,
+                        "psk": "tf-examplevpn1",
+                        "ike_pfs": "group1",
+                        "remote_id": "examplebob1",
+                        "local_id": "examplealice1",
+                    },
+                    "tunnel_ipsec_config": {
+                        "ipsec_pfs": "group5",
+                        "ipsec_enc_alg": "des",
+                        "ipsec_auth_alg": "md5",
+                        "ipsec_lifetime": 86400,
+                    },
+                },
+                {
+                    "customer_gateway_id": example_customer_gateway.id,
+                    "role": "slave",
+                    "tunnel_index": 2,
+                    "enable_dpd": True,
+                    "enable_nat_traversal": True,
+                    "tunnel_ike_config": {
+                        "ike_auth_alg": "md5",
+                        "ike_enc_alg": "des",
+                        "ike_version": "ikev2",
+                        "ike_mode": "main",
+                        "ike_lifetime": 86400,
+                        "psk": "tf-examplevpn2",
+                        "ike_pfs": "group1",
+                        "remote_id": "examplebob2",
+                        "local_id": "examplealice2",
+                    },
+                    "tunnel_ipsec_config": {
+                        "ipsec_pfs": "group5",
+                        "ipsec_enc_alg": "des",
+                        "ipsec_auth_alg": "md5",
+                        "ipsec_lifetime": 86400,
+                    },
+                },
+            ],
             vpn_attachment_name=name)
         example_transit_router_cidr = alicloud.cen.TransitRouterCidr("example",
             transit_router_id=example_transit_router.transit_router_id,
@@ -531,99 +640,10 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         example_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("example",
             auto_publish_route_enabled=False,
             transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
+            transit_router_vpn_attachment_name=name,
             cen_id=example_transit_router.cen_id,
             transit_router_id=example_transit_router_cidr.transit_router_id,
-            vpn_id=example_gateway_vpn_attachment.id,
-            zones=[{
-                "zone_id": default.resources[0].master_zones[0],
-            }])
-        ```
-
-        Dual Tunnel Mode Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.get_account()
-        defaultbp_r5_uk = alicloud.cen.Instance("defaultbpR5Uk", cen_instance_name="example-vpn-attachment")
-        default_m8_zo6_h = alicloud.cen.TransitRouter("defaultM8Zo6H", cen_id=defaultbp_r5_uk.id)
-        defaultu_uty_cv = alicloud.cen.TransitRouterCidr("defaultuUtyCv",
-            cidr="192.168.10.0/24",
-            transit_router_id=default_m8_zo6_h.transit_router_id)
-        default_meo_c_iz = alicloud.vpn.CustomerGateway("defaultMeoCIz",
-            ip_address="0.0.0.0",
-            customer_gateway_name="example-vpn-attachment",
-            opts = pulumi.ResourceOptions(depends_on=[defaultu_uty_cv]))
-        default_get_transit_router_service = alicloud.cen.get_transit_router_service(enable="On")
-        defaultvr_pzdh = alicloud.vpn.GatewayVpnAttachment("defaultvrPzdh",
-            network_type="public",
-            local_subnet="0.0.0.0/0",
-            enable_tunnels_bgp=False,
-            vpn_attachment_name=name,
-            tunnel_options_specifications=[
-                {
-                    "customer_gateway_id": default_meo_c_iz.id,
-                    "enable_dpd": True,
-                    "enable_nat_traversal": True,
-                    "tunnel_index": 1,
-                    "tunnel_ike_config": {
-                        "remote_id": "2.2.2.2",
-                        "ike_enc_alg": "aes",
-                        "ike_mode": "main",
-                        "ike_version": "ikev1",
-                        "local_id": "1.1.1.1",
-                        "ike_auth_alg": "md5",
-                        "ike_lifetime": 86100,
-                        "ike_pfs": "group2",
-                        "psk": "12345678",
-                    },
-                    "tunnel_ipsec_config": {
-                        "ipsec_auth_alg": "md5",
-                        "ipsec_enc_alg": "aes",
-                        "ipsec_lifetime": 86200,
-                        "ipsec_pfs": "group5",
-                    },
-                },
-                {
-                    "enable_nat_traversal": True,
-                    "tunnel_index": 2,
-                    "tunnel_ike_config": {
-                        "local_id": "4.4.4.4",
-                        "remote_id": "5.5.5.5",
-                        "ike_lifetime": 86400,
-                        "ike_pfs": "group5",
-                        "ike_mode": "main",
-                        "ike_version": "ikev2",
-                        "psk": "32333442",
-                        "ike_auth_alg": "md5",
-                        "ike_enc_alg": "aes",
-                    },
-                    "tunnel_ipsec_config": {
-                        "ipsec_enc_alg": "aes",
-                        "ipsec_lifetime": 86400,
-                        "ipsec_pfs": "group5",
-                        "ipsec_auth_alg": "sha256",
-                    },
-                    "customer_gateway_id": default_meo_c_iz.id,
-                    "enable_dpd": True,
-                },
-            ],
-            remote_subnet="0.0.0.0/0")
-        default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("default",
-            transit_router_id=default_m8_zo6_h.transit_router_id,
-            vpn_id=defaultvr_pzdh.id,
-            auto_publish_route_enabled=False,
-            charge_type="POSTPAY",
-            transit_router_attachment_name="example-vpn-attachment",
-            vpn_owner_id=default.id,
-            cen_id=default_m8_zo6_h.cen_id,
-            transit_router_attachment_description="example-vpn-attachment")
+            vpn_id=example_gateway_vpn_attachment.id)
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -633,7 +653,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         Cloud Enterprise Network (CEN) Transit Router Vpn Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example <id>
+        $ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example <transit_router_attachment_id>
         ```
 
 
@@ -643,12 +663,17 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
         :param pulumi.Input[_builtins.str] charge_type: The billing method.
                Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+        :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values:
+               
+               - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+               - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] transit_router_attachment_description: The new description of the VPN attachment.
                The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] transit_router_attachment_name: The name of the VPN attachment.
-               The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[_builtins.str] transit_router_attachment_name: . Field 'transit_router_attachment_name' has been deprecated from provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[_builtins.str] transit_router_vpn_attachment_name: The name of the VPN attachment.
+               The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[_builtins.str] vpn_id: The ID of the IPsec-VPN attachment.
         :param pulumi.Input[_builtins.str] vpn_owner_id: The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
                
@@ -657,6 +682,8 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]] zones: The Zone ID in the current region.
                System will create resources under the Zone that you specify.
                Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -683,7 +710,6 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = alicloud.cen.get_transit_router_available_resources()
         example = alicloud.cen.Instance("example", cen_instance_name=name)
         example_transit_router = alicloud.cen.TransitRouter("example",
             cen_id=example.id,
@@ -695,44 +721,60 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             asn="45014",
             description=name)
         example_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("example",
-            customer_gateway_id=example_customer_gateway.id,
             network_type="public",
             local_subnet="0.0.0.0/0",
             remote_subnet="0.0.0.0/0",
             effect_immediately=False,
-            ike_config={
-                "ike_auth_alg": "md5",
-                "ike_enc_alg": "des",
-                "ike_version": "ikev2",
-                "ike_mode": "main",
-                "ike_lifetime": 86400,
-                "psk": "tf-examplevpn2",
-                "ike_pfs": "group1",
-                "remote_id": "examplebob2",
-                "local_id": "examplealice2",
-            },
-            ipsec_config={
-                "ipsec_pfs": "group5",
-                "ipsec_enc_alg": "des",
-                "ipsec_auth_alg": "md5",
-                "ipsec_lifetime": 86400,
-            },
-            bgp_config={
-                "enable": True,
-                "local_asn": 45014,
-                "tunnel_cidr": "169.254.11.0/30",
-                "local_bgp_ip": "169.254.11.1",
-            },
-            health_check_config={
-                "enable": True,
-                "sip": "192.168.1.1",
-                "dip": "10.0.0.1",
-                "interval": 10,
-                "retry": 10,
-                "policy": "revoke_route",
-            },
-            enable_dpd=True,
-            enable_nat_traversal=True,
+            tunnel_options_specifications=[
+                {
+                    "customer_gateway_id": example_customer_gateway.id,
+                    "role": "master",
+                    "tunnel_index": 1,
+                    "enable_dpd": True,
+                    "enable_nat_traversal": True,
+                    "tunnel_ike_config": {
+                        "ike_auth_alg": "md5",
+                        "ike_enc_alg": "des",
+                        "ike_version": "ikev2",
+                        "ike_mode": "main",
+                        "ike_lifetime": 86400,
+                        "psk": "tf-examplevpn1",
+                        "ike_pfs": "group1",
+                        "remote_id": "examplebob1",
+                        "local_id": "examplealice1",
+                    },
+                    "tunnel_ipsec_config": {
+                        "ipsec_pfs": "group5",
+                        "ipsec_enc_alg": "des",
+                        "ipsec_auth_alg": "md5",
+                        "ipsec_lifetime": 86400,
+                    },
+                },
+                {
+                    "customer_gateway_id": example_customer_gateway.id,
+                    "role": "slave",
+                    "tunnel_index": 2,
+                    "enable_dpd": True,
+                    "enable_nat_traversal": True,
+                    "tunnel_ike_config": {
+                        "ike_auth_alg": "md5",
+                        "ike_enc_alg": "des",
+                        "ike_version": "ikev2",
+                        "ike_mode": "main",
+                        "ike_lifetime": 86400,
+                        "psk": "tf-examplevpn2",
+                        "ike_pfs": "group1",
+                        "remote_id": "examplebob2",
+                        "local_id": "examplealice2",
+                    },
+                    "tunnel_ipsec_config": {
+                        "ipsec_pfs": "group5",
+                        "ipsec_enc_alg": "des",
+                        "ipsec_auth_alg": "md5",
+                        "ipsec_lifetime": 86400,
+                    },
+                },
+            ],
             vpn_attachment_name=name)
         example_transit_router_cidr = alicloud.cen.TransitRouterCidr("example",
             transit_router_id=example_transit_router.transit_router_id,
@@ -743,99 +785,10 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         example_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("example",
             auto_publish_route_enabled=False,
             transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
+            transit_router_vpn_attachment_name=name,
             cen_id=example_transit_router.cen_id,
             transit_router_id=example_transit_router_cidr.transit_router_id,
-            vpn_id=example_gateway_vpn_attachment.id,
-            zones=[{
-                "zone_id": default.resources[0].master_zones[0],
-            }])
-        ```
-
-        Dual Tunnel Mode Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.get_account()
-        defaultbp_r5_uk = alicloud.cen.Instance("defaultbpR5Uk", cen_instance_name="example-vpn-attachment")
-        default_m8_zo6_h = alicloud.cen.TransitRouter("defaultM8Zo6H", cen_id=defaultbp_r5_uk.id)
-        defaultu_uty_cv = alicloud.cen.TransitRouterCidr("defaultuUtyCv",
-            cidr="192.168.10.0/24",
-            transit_router_id=default_m8_zo6_h.transit_router_id)
-        default_meo_c_iz = alicloud.vpn.CustomerGateway("defaultMeoCIz",
-            ip_address="0.0.0.0",
-            customer_gateway_name="example-vpn-attachment",
-            opts = pulumi.ResourceOptions(depends_on=[defaultu_uty_cv]))
-        default_get_transit_router_service = alicloud.cen.get_transit_router_service(enable="On")
-        defaultvr_pzdh = alicloud.vpn.GatewayVpnAttachment("defaultvrPzdh",
-            network_type="public",
-            local_subnet="0.0.0.0/0",
-            enable_tunnels_bgp=False,
-            vpn_attachment_name=name,
-            tunnel_options_specifications=[
-                {
-                    "customer_gateway_id": default_meo_c_iz.id,
-                    "enable_dpd": True,
-                    "enable_nat_traversal": True,
-                    "tunnel_index": 1,
-                    "tunnel_ike_config": {
-                        "remote_id": "2.2.2.2",
-                        "ike_enc_alg": "aes",
-                        "ike_mode": "main",
-                        "ike_version": "ikev1",
-                        "local_id": "1.1.1.1",
-                        "ike_auth_alg": "md5",
-                        "ike_lifetime": 86100,
-                        "ike_pfs": "group2",
-                        "psk": "12345678",
-                    },
-                    "tunnel_ipsec_config": {
-                        "ipsec_auth_alg": "md5",
-                        "ipsec_enc_alg": "aes",
-                        "ipsec_lifetime": 86200,
-                        "ipsec_pfs": "group5",
-                    },
-                },
-                {
-                    "enable_nat_traversal": True,
-                    "tunnel_index": 2,
-                    "tunnel_ike_config": {
-                        "local_id": "4.4.4.4",
-                        "remote_id": "5.5.5.5",
-                        "ike_lifetime": 86400,
-                        "ike_pfs": "group5",
-                        "ike_mode": "main",
-                        "ike_version": "ikev2",
-                        "psk": "32333442",
-                        "ike_auth_alg": "md5",
-                        "ike_enc_alg": "aes",
-                    },
-                    "tunnel_ipsec_config": {
-                        "ipsec_enc_alg": "aes",
-                        "ipsec_lifetime": 86400,
-                        "ipsec_pfs": "group5",
-                        "ipsec_auth_alg": "sha256",
-                    },
-                    "customer_gateway_id": default_meo_c_iz.id,
-                    "enable_dpd": True,
-                },
-            ],
-            remote_subnet="0.0.0.0/0")
-        default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("default",
-            transit_router_id=default_m8_zo6_h.transit_router_id,
-            vpn_id=defaultvr_pzdh.id,
-            auto_publish_route_enabled=False,
-            charge_type="POSTPAY",
-            transit_router_attachment_name="example-vpn-attachment",
-            vpn_owner_id=default.id,
-            cen_id=default_m8_zo6_h.cen_id,
-            transit_router_attachment_description="example-vpn-attachment")
+            vpn_id=example_gateway_vpn_attachment.id)
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -845,7 +798,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         Cloud Enterprise Network (CEN) Transit Router Vpn Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example <id>
+        $ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example <transit_router_attachment_id>
         ```
 
 
@@ -867,10 +820,12 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
                  auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  cen_id: Optional[pulumi.Input[_builtins.str]] = None,
                  charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 transit_router_vpn_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None,
@@ -886,10 +841,12 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             __props__.__dict__["auto_publish_route_enabled"] = auto_publish_route_enabled
             __props__.__dict__["cen_id"] = cen_id
             __props__.__dict__["charge_type"] = charge_type
+            __props__.__dict__["order_type"] = order_type
             __props__.__dict__["tags"] = tags
             __props__.__dict__["transit_router_attachment_description"] = transit_router_attachment_description
             __props__.__dict__["transit_router_attachment_name"] = transit_router_attachment_name
             __props__.__dict__["transit_router_id"] = transit_router_id
+            __props__.__dict__["transit_router_vpn_attachment_name"] = transit_router_vpn_attachment_name
             if vpn_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpn_id'")
             __props__.__dict__["vpn_id"] = vpn_id
@@ -912,12 +869,14 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             cen_id: Optional[pulumi.Input[_builtins.str]] = None,
             charge_type: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            order_type: Optional[pulumi.Input[_builtins.str]] = None,
             region_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
             transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
             transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+            transit_router_vpn_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
             vpn_id: Optional[pulumi.Input[_builtins.str]] = None,
             vpn_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
             zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None) -> 'TransitRouterVpnAttachment':
@@ -932,15 +891,20 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
         :param pulumi.Input[_builtins.str] charge_type: The billing method.
                Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
+        :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values:
+               
+               - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+               - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
         :param pulumi.Input[_builtins.str] region_id: The ID of the region where the transit router is deployed.
-        :param pulumi.Input[_builtins.str] status: Status
+        :param pulumi.Input[_builtins.str] status: Status.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] transit_router_attachment_description: The new description of the VPN attachment.
                The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] transit_router_attachment_name: The name of the VPN attachment.
-               The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[_builtins.str] transit_router_attachment_name: . Field 'transit_router_attachment_name' has been deprecated from provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[_builtins.str] transit_router_vpn_attachment_name: The name of the VPN attachment.
+               The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[_builtins.str] vpn_id: The ID of the IPsec-VPN attachment.
         :param pulumi.Input[_builtins.str] vpn_owner_id: The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
                
@@ -949,6 +913,8 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]] zones: The Zone ID in the current region.
                System will create resources under the Zone that you specify.
                Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -958,12 +924,14 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         __props__.__dict__["cen_id"] = cen_id
         __props__.__dict__["charge_type"] = charge_type
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["order_type"] = order_type
         __props__.__dict__["region_id"] = region_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["transit_router_attachment_description"] = transit_router_attachment_description
         __props__.__dict__["transit_router_attachment_name"] = transit_router_attachment_name
         __props__.__dict__["transit_router_id"] = transit_router_id
+        __props__.__dict__["transit_router_vpn_attachment_name"] = transit_router_vpn_attachment_name
         __props__.__dict__["vpn_id"] = vpn_id
         __props__.__dict__["vpn_owner_id"] = vpn_owner_id
         __props__.__dict__["zones"] = zones
@@ -998,9 +966,20 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation time of the resource
+        The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="orderType")
+    def order_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The entity that pays the fees of the network instance. Valid values:
+
+        - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+        - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+        """
+        return pulumi.get(self, "order_type")
 
     @_builtins.property
     @pulumi.getter(name="regionId")
@@ -1014,7 +993,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Status
+        Status.
         """
         return pulumi.get(self, "status")
 
@@ -1037,10 +1016,10 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentName")
-    def transit_router_attachment_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.""")
+    def transit_router_attachment_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the VPN attachment.
-        The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        . Field 'transit_router_attachment_name' has been deprecated from provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
@@ -1051,6 +1030,15 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         The ID of the transit router.
         """
         return pulumi.get(self, "transit_router_id")
+
+    @_builtins.property
+    @pulumi.getter(name="transitRouterVpnAttachmentName")
+    def transit_router_vpn_attachment_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the VPN attachment.
+        The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        """
+        return pulumi.get(self, "transit_router_vpn_attachment_name")
 
     @_builtins.property
     @pulumi.getter(name="vpnId")
@@ -1078,6 +1066,8 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         The Zone ID in the current region.
         System will create resources under the Zone that you specify.
         Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "zones")
 

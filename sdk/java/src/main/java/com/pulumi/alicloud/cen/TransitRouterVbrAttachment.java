@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloud Enterprise Network (CEN) Transit Router VBR Attachment resource.
+ * Provides a Cloud Enterprise Network (CEN) Transit Router Vbr Attachment resource.
  * 
- * For information about Cloud Enterprise Network (CEN) Transit Router VBR Attachment and how to use it, see [What is Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
+ * For information about Cloud Enterprise Network (CEN) Transit Router Vbr Attachment and how to use it, see [What is Transit Router Vbr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment).
  * 
  * &gt; **NOTE:** Available since v1.126.0.
  * 
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Enterprise Network (CEN) Transit Router VBR Attachment can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Transit Router Vbr Attachment can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example &lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;
@@ -111,32 +111,46 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment")
 public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+     * AutoPublishRouteEnabled
      * 
      */
     @Export(name="autoPublishRouteEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPublishRouteEnabled;
 
     /**
-     * @return Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+     * @return AutoPublishRouteEnabled
      * 
      */
     public Output<Optional<Boolean>> autoPublishRouteEnabled() {
         return Codegen.optional(this.autoPublishRouteEnabled);
     }
     /**
-     * The ID of the CEN.
+     * CenId
      * 
      */
     @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
-     * @return The ID of the CEN.
+     * @return CenId
      * 
      */
     public Output<String> cenId() {
         return this.cenId;
+    }
+    /**
+     * The creation time of the resource.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
@@ -151,6 +165,40 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
+    }
+    /**
+     * The entity that pays the fees of the network instance. Valid values:
+     * 
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     * 
+     */
+    @Export(name="orderType", refs={String.class}, tree="[0]")
+    private Output<String> orderType;
+
+    /**
+     * @return The entity that pays the fees of the network instance. Valid values:
+     * 
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     * 
+     */
+    public Output<String> orderType() {
+        return this.orderType;
+    }
+    /**
+     * RegionId.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return RegionId.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
@@ -187,8 +235,6 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
     /**
      * Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
-     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
-     * 
      * @deprecated
      * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      * 
@@ -200,119 +246,117 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
     /**
      * @return Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
-     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
-     * 
      */
     public Output<Optional<Boolean>> routeTablePropagationEnabled() {
         return Codegen.optional(this.routeTablePropagationEnabled);
     }
     /**
-     * The status of the Transit Router VBR Attachment.
+     * The status of the resource.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the Transit Router VBR Attachment.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The description of the transit router vbr attachment.
+     * TransitRouterAttachmentDescription
      * 
      */
     @Export(name="transitRouterAttachmentDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentDescription;
 
     /**
-     * @return The description of the transit router vbr attachment.
+     * @return TransitRouterAttachmentDescription
      * 
      */
     public Output<Optional<String>> transitRouterAttachmentDescription() {
         return Codegen.optional(this.transitRouterAttachmentDescription);
     }
     /**
-     * The ID of the VBR connection.
+     * The first ID of the resource.
      * 
      */
     @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID of the VBR connection.
+     * @return The first ID of the resource.
      * 
      */
     public Output<String> transitRouterAttachmentId() {
         return this.transitRouterAttachmentId;
     }
     /**
-     * The name of the transit router vbr attachment.
+     * TransitRouterAttachmentName
      * 
      */
     @Export(name="transitRouterAttachmentName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentName;
 
     /**
-     * @return The name of the transit router vbr attachment.
+     * @return TransitRouterAttachmentName
      * 
      */
     public Output<Optional<String>> transitRouterAttachmentName() {
         return Codegen.optional(this.transitRouterAttachmentName);
     }
     /**
-     * The ID of the transit router.
+     * TransitRouterId
      * 
      */
     @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**
-     * @return The ID of the transit router.
+     * @return TransitRouterId
      * 
      */
     public Output<String> transitRouterId() {
         return this.transitRouterId;
     }
     /**
-     * The ID of the VBR.
+     * VbrId
      * 
      */
     @Export(name="vbrId", refs={String.class}, tree="[0]")
     private Output<String> vbrId;
 
     /**
-     * @return The ID of the VBR.
+     * @return VbrId
      * 
      */
     public Output<String> vbrId() {
         return this.vbrId;
     }
     /**
-     * The owner id of the vbr.
+     * VbrOwnerId
      * 
      */
     @Export(name="vbrOwnerId", refs={String.class}, tree="[0]")
     private Output<String> vbrOwnerId;
 
     /**
-     * @return The owner id of the vbr.
+     * @return VbrOwnerId
      * 
      */
     public Output<String> vbrOwnerId() {

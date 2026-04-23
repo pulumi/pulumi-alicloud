@@ -16,6 +16,9 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// &gt; **NOTE:** Available since v1.224.0.
     /// 
+    /// &gt; **NOTE** Since v1.276.0. Set `NewOrder = -1` or omit the argument to let the Cloud Backend manage policy ordering automatically. You can also use `alicloud.cloudfirewall.NatFirewallControlPolicyOrder` to manage the policy ordering.&lt;br&gt;
+    /// If you want manged the policy order in parallel, **do not** set the `NewOrder`, instead use `alicloud.cloudfirewall.NatFirewallControlPolicyOrder` manage the policy order.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -210,16 +213,12 @@ namespace Pulumi.AliCloud.CloudFirewall
     {
         /// <summary>
         /// The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
-        /// - **accept**: Release
-        /// - **drop**: Refused
-        /// - **log**: Observation.
         /// </summary>
         [Output("aclAction")]
         public Output<string> AclAction { get; private set; } = null!;
 
         /// <summary>
         /// The unique ID of the security access control policy.
-        /// &gt; **NOTE:**  To modify a security access control policy, you need to provide the unique ID of the policy. You can call the DescribeNatFirewallControlPolicy interface to obtain the ID.
         /// </summary>
         [Output("aclUuid")]
         public Output<string> AclUuid { get; private set; } = null!;
@@ -245,9 +244,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The destination port of traffic access in the access control policy. Value:
         /// - When the protocol type is set to ICMP, the value of DestPort is null.
+        /// 
         /// &gt; **NOTE:**  When the protocol type is ICMP, access control on the destination port is not supported.
+        /// 
         /// - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) IS group, the value of DestPort is null.
+        /// 
         /// &gt; **NOTE:**  When you select group (destination port address book) for the destination port type of the access control policy, you do not need to set a specific destination port number. All ports that need to be controlled by this access control policy are included in the destination port address book.
+        /// 
         /// - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
         /// </summary>
         [Output("destPort")]
@@ -255,6 +258,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The address book name of the destination port of the access traffic in the access control policy.
+        /// 
         /// &gt; **NOTE:**  When DestPortType is set to group, you need to set the destination port address book name.
         /// </summary>
         [Output("destPortGroup")]
@@ -262,8 +266,6 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The destination port type of the access traffic in the security access control policy.
-        /// - **port**: port
-        /// - **group**: Port Address Book.
         /// </summary>
         [Output("destPortType")]
         public Output<string> DestPortType { get; private set; } = null!;
@@ -280,31 +282,25 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The destination address type in the access control policy. Valid values:
-        /// - **net**: Destination Network segment (CIDR address)
-        /// - **group**: Destination Address Book
-        /// - **domain**: the destination domain name.
         /// </summary>
         [Output("destinationType")]
         public Output<string> DestinationType { get; private set; } = null!;
 
         /// <summary>
         /// The traffic direction of the access control policy. Valid values:
-        /// - **out**: Internal and external traffic access control.
         /// </summary>
         [Output("direction")]
         public Output<string> Direction { get; private set; } = null!;
 
         /// <summary>
         /// The domain name resolution method of the access control policy. The policy is enabled by default after it is created. Valid values:
-        /// - **0**: Based on FQDN
-        /// - **1**: DNS-based dynamic resolution
-        /// - **2**: dynamic resolution based on FQDN and DNS.
         /// </summary>
         [Output("domainResolveType")]
         public Output<int?> DomainResolveType { get; private set; } = null!;
 
         /// <summary>
         /// The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
+        /// 
         /// &gt; **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
         /// </summary>
         [Output("endTime")]
@@ -312,7 +308,6 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// Supported IP address version. Value:
-        /// - **4** (default): indicates the IPv4 address.
         /// </summary>
         [Output("ipVersion")]
         public Output<string?> IpVersion { get; private set; } = null!;
@@ -324,40 +319,39 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> NatGatewayId { get; private set; } = null!;
 
         /// <summary>
-        /// The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority.
+        /// The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority. If not set, default to `-1`.
         /// </summary>
         [Output("newOrder")]
         public Output<string> NewOrder { get; private set; } = null!;
 
         /// <summary>
         /// The security protocol type for traffic access in the access control policy. Valid values:
-        /// - ANY (indicates that all protocol types are queried)
-        /// - TCP
-        /// - UDP
-        /// - ICMP.
+        /// - `ANY` (Indicates that all protocol types are queried)
+        /// - `TCP`
+        /// - `UDP`
+        /// - `ICMP`.
         /// </summary>
         [Output("proto")]
         public Output<string> Proto { get; private set; } = null!;
 
         /// <summary>
         /// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-        /// - **true**: Enable access control policy
-        /// - **false**: Do not enable access control policies.
         /// </summary>
         [Output("release")]
         public Output<string> Release { get; private set; } = null!;
 
         /// <summary>
         /// Collection of recurring dates for the policy validity period of the access control policy.
-        /// - When RepeatType is 'Permanent', 'None', 'Daily', RepeatDays is an empty collection. For example:[]
-        /// - When RepeatType is Weekly, RepeatDays cannot be empty. For example:["0", "6"]. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
-        /// - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:[1, 31]. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
+        /// - When RepeatType is `Permanent`, `None`, `Daily`, RepeatDays is an empty collection. For example:`[]`
+        /// - When RepeatType is Weekly, RepeatDays cannot be empty. For example:`["0", "6"]`. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
+        /// - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:`[1, 31]`. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
         /// </summary>
         [Output("repeatDays")]
         public Output<ImmutableArray<int>> RepeatDays { get; private set; } = null!;
 
         /// <summary>
         /// The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
+        /// 
         /// &gt; **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
         /// </summary>
         [Output("repeatEndTime")]
@@ -365,6 +359,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
+        /// 
         /// &gt; **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
         /// </summary>
         [Output("repeatStartTime")]
@@ -372,33 +367,32 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The type of repetition for the policy validity period of the access control policy. Value:
-        /// - **Permit** (default): Always
-        /// - **None**: Specify a single time
-        /// - **Daily**: Daily
-        /// - **Weekly**: Weekly
-        /// - **Monthly**: Monthly.
+        /// - `Permit` (default): Always
+        /// - `None`: Specify a single time
+        /// - `Daily`: Daily
+        /// - `Weekly`: Weekly
+        /// - `Monthly`: Monthly.
         /// </summary>
         [Output("repeatType")]
         public Output<string> RepeatType { get; private set; } = null!;
 
         /// <summary>
         /// The source address in the access control policy. Valid values:
-        /// - When **SourceType** is set to 'net', Source is the Source CIDR address. For example: 10.2.4.0/24
-        /// - When **SourceType** is set to 'group', Source is the name of the Source address book. For example: db_group.
+        /// - When `SourceType` is set to `Net`, Source is the Source CIDR address. For example: `10.2.4.0/24`
+        /// - When `SourceType` is set to `Group`, Source is the name of the Source address book. For example: `DbGroup`.
         /// </summary>
         [Output("source")]
         public Output<string> Source { get; private set; } = null!;
 
         /// <summary>
         /// The source address type in the access control policy. Valid values:
-        /// - **net**: the source network segment (CIDR address)
-        /// - **group**: source address book
         /// </summary>
         [Output("sourceType")]
         public Output<string> SourceType { get; private set; } = null!;
 
         /// <summary>
         /// The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
+        /// 
         /// &gt; **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
         /// </summary>
         [Output("startTime")]
@@ -452,9 +446,6 @@ namespace Pulumi.AliCloud.CloudFirewall
     {
         /// <summary>
         /// The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
-        /// - **accept**: Release
-        /// - **drop**: Refused
-        /// - **log**: Observation.
         /// </summary>
         [Input("aclAction", required: true)]
         public Input<string> AclAction { get; set; } = null!;
@@ -480,9 +471,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The destination port of traffic access in the access control policy. Value:
         /// - When the protocol type is set to ICMP, the value of DestPort is null.
+        /// 
         /// &gt; **NOTE:**  When the protocol type is ICMP, access control on the destination port is not supported.
+        /// 
         /// - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) IS group, the value of DestPort is null.
+        /// 
         /// &gt; **NOTE:**  When you select group (destination port address book) for the destination port type of the access control policy, you do not need to set a specific destination port number. All ports that need to be controlled by this access control policy are included in the destination port address book.
+        /// 
         /// - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
         /// </summary>
         [Input("destPort")]
@@ -490,6 +485,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The address book name of the destination port of the access traffic in the access control policy.
+        /// 
         /// &gt; **NOTE:**  When DestPortType is set to group, you need to set the destination port address book name.
         /// </summary>
         [Input("destPortGroup")]
@@ -497,8 +493,6 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The destination port type of the access traffic in the security access control policy.
-        /// - **port**: port
-        /// - **group**: Port Address Book.
         /// </summary>
         [Input("destPortType")]
         public Input<string>? DestPortType { get; set; }
@@ -515,31 +509,25 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The destination address type in the access control policy. Valid values:
-        /// - **net**: Destination Network segment (CIDR address)
-        /// - **group**: Destination Address Book
-        /// - **domain**: the destination domain name.
         /// </summary>
         [Input("destinationType", required: true)]
         public Input<string> DestinationType { get; set; } = null!;
 
         /// <summary>
         /// The traffic direction of the access control policy. Valid values:
-        /// - **out**: Internal and external traffic access control.
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
 
         /// <summary>
         /// The domain name resolution method of the access control policy. The policy is enabled by default after it is created. Valid values:
-        /// - **0**: Based on FQDN
-        /// - **1**: DNS-based dynamic resolution
-        /// - **2**: dynamic resolution based on FQDN and DNS.
         /// </summary>
         [Input("domainResolveType")]
         public Input<int>? DomainResolveType { get; set; }
 
         /// <summary>
         /// The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
+        /// 
         /// &gt; **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
         /// </summary>
         [Input("endTime")]
@@ -547,7 +535,6 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// Supported IP address version. Value:
-        /// - **4** (default): indicates the IPv4 address.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -559,25 +546,23 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> NatGatewayId { get; set; } = null!;
 
         /// <summary>
-        /// The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority.
+        /// The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority. If not set, default to `-1`.
         /// </summary>
-        [Input("newOrder", required: true)]
-        public Input<string> NewOrder { get; set; } = null!;
+        [Input("newOrder")]
+        public Input<string>? NewOrder { get; set; }
 
         /// <summary>
         /// The security protocol type for traffic access in the access control policy. Valid values:
-        /// - ANY (indicates that all protocol types are queried)
-        /// - TCP
-        /// - UDP
-        /// - ICMP.
+        /// - `ANY` (Indicates that all protocol types are queried)
+        /// - `TCP`
+        /// - `UDP`
+        /// - `ICMP`.
         /// </summary>
         [Input("proto", required: true)]
         public Input<string> Proto { get; set; } = null!;
 
         /// <summary>
         /// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-        /// - **true**: Enable access control policy
-        /// - **false**: Do not enable access control policies.
         /// </summary>
         [Input("release")]
         public Input<string>? Release { get; set; }
@@ -587,9 +572,9 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// Collection of recurring dates for the policy validity period of the access control policy.
-        /// - When RepeatType is 'Permanent', 'None', 'Daily', RepeatDays is an empty collection. For example:[]
-        /// - When RepeatType is Weekly, RepeatDays cannot be empty. For example:["0", "6"]. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
-        /// - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:[1, 31]. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
+        /// - When RepeatType is `Permanent`, `None`, `Daily`, RepeatDays is an empty collection. For example:`[]`
+        /// - When RepeatType is Weekly, RepeatDays cannot be empty. For example:`["0", "6"]`. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
+        /// - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:`[1, 31]`. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
         /// </summary>
         public InputList<int> RepeatDays
         {
@@ -599,6 +584,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
+        /// 
         /// &gt; **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
         /// </summary>
         [Input("repeatEndTime")]
@@ -606,6 +592,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
+        /// 
         /// &gt; **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
         /// </summary>
         [Input("repeatStartTime")]
@@ -613,33 +600,32 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The type of repetition for the policy validity period of the access control policy. Value:
-        /// - **Permit** (default): Always
-        /// - **None**: Specify a single time
-        /// - **Daily**: Daily
-        /// - **Weekly**: Weekly
-        /// - **Monthly**: Monthly.
+        /// - `Permit` (default): Always
+        /// - `None`: Specify a single time
+        /// - `Daily`: Daily
+        /// - `Weekly`: Weekly
+        /// - `Monthly`: Monthly.
         /// </summary>
         [Input("repeatType")]
         public Input<string>? RepeatType { get; set; }
 
         /// <summary>
         /// The source address in the access control policy. Valid values:
-        /// - When **SourceType** is set to 'net', Source is the Source CIDR address. For example: 10.2.4.0/24
-        /// - When **SourceType** is set to 'group', Source is the name of the Source address book. For example: db_group.
+        /// - When `SourceType` is set to `Net`, Source is the Source CIDR address. For example: `10.2.4.0/24`
+        /// - When `SourceType` is set to `Group`, Source is the name of the Source address book. For example: `DbGroup`.
         /// </summary>
         [Input("source", required: true)]
         public Input<string> Source { get; set; } = null!;
 
         /// <summary>
         /// The source address type in the access control policy. Valid values:
-        /// - **net**: the source network segment (CIDR address)
-        /// - **group**: source address book
         /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;
 
         /// <summary>
         /// The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
+        /// 
         /// &gt; **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
         /// </summary>
         [Input("startTime")]
@@ -655,16 +641,12 @@ namespace Pulumi.AliCloud.CloudFirewall
     {
         /// <summary>
         /// The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
-        /// - **accept**: Release
-        /// - **drop**: Refused
-        /// - **log**: Observation.
         /// </summary>
         [Input("aclAction")]
         public Input<string>? AclAction { get; set; }
 
         /// <summary>
         /// The unique ID of the security access control policy.
-        /// &gt; **NOTE:**  To modify a security access control policy, you need to provide the unique ID of the policy. You can call the DescribeNatFirewallControlPolicy interface to obtain the ID.
         /// </summary>
         [Input("aclUuid")]
         public Input<string>? AclUuid { get; set; }
@@ -696,9 +678,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The destination port of traffic access in the access control policy. Value:
         /// - When the protocol type is set to ICMP, the value of DestPort is null.
+        /// 
         /// &gt; **NOTE:**  When the protocol type is ICMP, access control on the destination port is not supported.
+        /// 
         /// - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) IS group, the value of DestPort is null.
+        /// 
         /// &gt; **NOTE:**  When you select group (destination port address book) for the destination port type of the access control policy, you do not need to set a specific destination port number. All ports that need to be controlled by this access control policy are included in the destination port address book.
+        /// 
         /// - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
         /// </summary>
         [Input("destPort")]
@@ -706,6 +692,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The address book name of the destination port of the access traffic in the access control policy.
+        /// 
         /// &gt; **NOTE:**  When DestPortType is set to group, you need to set the destination port address book name.
         /// </summary>
         [Input("destPortGroup")]
@@ -713,8 +700,6 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The destination port type of the access traffic in the security access control policy.
-        /// - **port**: port
-        /// - **group**: Port Address Book.
         /// </summary>
         [Input("destPortType")]
         public Input<string>? DestPortType { get; set; }
@@ -731,31 +716,25 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The destination address type in the access control policy. Valid values:
-        /// - **net**: Destination Network segment (CIDR address)
-        /// - **group**: Destination Address Book
-        /// - **domain**: the destination domain name.
         /// </summary>
         [Input("destinationType")]
         public Input<string>? DestinationType { get; set; }
 
         /// <summary>
         /// The traffic direction of the access control policy. Valid values:
-        /// - **out**: Internal and external traffic access control.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// The domain name resolution method of the access control policy. The policy is enabled by default after it is created. Valid values:
-        /// - **0**: Based on FQDN
-        /// - **1**: DNS-based dynamic resolution
-        /// - **2**: dynamic resolution based on FQDN and DNS.
         /// </summary>
         [Input("domainResolveType")]
         public Input<int>? DomainResolveType { get; set; }
 
         /// <summary>
         /// The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
+        /// 
         /// &gt; **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
         /// </summary>
         [Input("endTime")]
@@ -763,7 +742,6 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// Supported IP address version. Value:
-        /// - **4** (default): indicates the IPv4 address.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -775,25 +753,23 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? NatGatewayId { get; set; }
 
         /// <summary>
-        /// The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority.
+        /// The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority. If not set, default to `-1`.
         /// </summary>
         [Input("newOrder")]
         public Input<string>? NewOrder { get; set; }
 
         /// <summary>
         /// The security protocol type for traffic access in the access control policy. Valid values:
-        /// - ANY (indicates that all protocol types are queried)
-        /// - TCP
-        /// - UDP
-        /// - ICMP.
+        /// - `ANY` (Indicates that all protocol types are queried)
+        /// - `TCP`
+        /// - `UDP`
+        /// - `ICMP`.
         /// </summary>
         [Input("proto")]
         public Input<string>? Proto { get; set; }
 
         /// <summary>
         /// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-        /// - **true**: Enable access control policy
-        /// - **false**: Do not enable access control policies.
         /// </summary>
         [Input("release")]
         public Input<string>? Release { get; set; }
@@ -803,9 +779,9 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// Collection of recurring dates for the policy validity period of the access control policy.
-        /// - When RepeatType is 'Permanent', 'None', 'Daily', RepeatDays is an empty collection. For example:[]
-        /// - When RepeatType is Weekly, RepeatDays cannot be empty. For example:["0", "6"]. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
-        /// - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:[1, 31]. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
+        /// - When RepeatType is `Permanent`, `None`, `Daily`, RepeatDays is an empty collection. For example:`[]`
+        /// - When RepeatType is Weekly, RepeatDays cannot be empty. For example:`["0", "6"]`. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
+        /// - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:`[1, 31]`. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
         /// </summary>
         public InputList<int> RepeatDays
         {
@@ -815,6 +791,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
+        /// 
         /// &gt; **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
         /// </summary>
         [Input("repeatEndTime")]
@@ -822,6 +799,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
+        /// 
         /// &gt; **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
         /// </summary>
         [Input("repeatStartTime")]
@@ -829,33 +807,32 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The type of repetition for the policy validity period of the access control policy. Value:
-        /// - **Permit** (default): Always
-        /// - **None**: Specify a single time
-        /// - **Daily**: Daily
-        /// - **Weekly**: Weekly
-        /// - **Monthly**: Monthly.
+        /// - `Permit` (default): Always
+        /// - `None`: Specify a single time
+        /// - `Daily`: Daily
+        /// - `Weekly`: Weekly
+        /// - `Monthly`: Monthly.
         /// </summary>
         [Input("repeatType")]
         public Input<string>? RepeatType { get; set; }
 
         /// <summary>
         /// The source address in the access control policy. Valid values:
-        /// - When **SourceType** is set to 'net', Source is the Source CIDR address. For example: 10.2.4.0/24
-        /// - When **SourceType** is set to 'group', Source is the name of the Source address book. For example: db_group.
+        /// - When `SourceType` is set to `Net`, Source is the Source CIDR address. For example: `10.2.4.0/24`
+        /// - When `SourceType` is set to `Group`, Source is the name of the Source address book. For example: `DbGroup`.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 
         /// <summary>
         /// The source address type in the access control policy. Valid values:
-        /// - **net**: the source network segment (CIDR address)
-        /// - **group**: source address book
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
 
         /// <summary>
         /// The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
+        /// 
         /// &gt; **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
         /// </summary>
         [Input("startTime")]

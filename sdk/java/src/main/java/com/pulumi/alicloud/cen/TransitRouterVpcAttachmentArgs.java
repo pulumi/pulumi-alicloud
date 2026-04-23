@@ -22,6 +22,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
     /**
      * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+     * 
      * - **false:** (default)
      * 
      */
@@ -30,6 +31,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
     /**
      * @return Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+     * 
      * - **false:** (default)
      * 
      */
@@ -40,12 +42,16 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
      * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and deletion. Modifying it in isolation will not trigger any action.
+     * 
      */
     @Import(name="cenId")
     private @Nullable Output<String> cenId;
 
     /**
      * @return The ID of the Cloud Enterprise Network (CEN) instance.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and deletion. Modifying it in isolation will not trigger any action.
      * 
      */
     public Optional<Output<String>> cenId() {
@@ -83,6 +89,27 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
     }
 
     /**
+     * The entity that pays the fees of the network instance. Valid values:
+     * 
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     * 
+     */
+    @Import(name="orderType")
+    private @Nullable Output<String> orderType;
+
+    /**
+     * @return The entity that pays the fees of the network instance. Valid values:
+     * 
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     * 
+     */
+    public Optional<Output<String>> orderType() {
+        return Optional.ofNullable(this.orderType);
+    }
+
+    /**
      * The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
      * 
      */
@@ -100,12 +127,16 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
     /**
      * The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
      * @return The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -175,7 +206,6 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
     /**
      * The description of the VPC connection.
-     * 
      * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
@@ -184,7 +214,6 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
     /**
      * @return The description of the VPC connection.
-     * 
      * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
@@ -232,7 +261,6 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
     /**
      * The name of the VPC connection.
-     * 
      * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
      * 
      */
@@ -241,7 +269,6 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
     /**
      * @return The name of the VPC connection.
-     * 
      * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
      * 
      */
@@ -297,16 +324,12 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
     /**
      * ZoneMappingss See `zoneMappings` below.
      * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
-     * 
      */
     @Import(name="zoneMappings", required=true)
     private Output<List<TransitRouterVpcAttachmentZoneMappingArgs>> zoneMappings;
 
     /**
      * @return ZoneMappingss See `zoneMappings` below.
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<List<TransitRouterVpcAttachmentZoneMappingArgs>> zoneMappings() {
@@ -320,6 +343,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
         this.cenId = $.cenId;
         this.dryRun = $.dryRun;
         this.forceDelete = $.forceDelete;
+        this.orderType = $.orderType;
         this.paymentType = $.paymentType;
         this.resourceType = $.resourceType;
         this.routeTableAssociationEnabled = $.routeTableAssociationEnabled;
@@ -355,6 +379,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
         /**
          * @param autoPublishRouteEnabled Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+         * 
          * - **false:** (default)
          * 
          * @return builder
@@ -367,6 +392,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
         /**
          * @param autoPublishRouteEnabled Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+         * 
          * - **false:** (default)
          * 
          * @return builder
@@ -379,6 +405,8 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
         /**
          * @param cenId The ID of the Cloud Enterprise Network (CEN) instance.
          * 
+         * &gt; **NOTE:** This parameter is only evaluated during resource creation and deletion. Modifying it in isolation will not trigger any action.
+         * 
          * @return builder
          * 
          */
@@ -389,6 +417,8 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
         /**
          * @param cenId The ID of the Cloud Enterprise Network (CEN) instance.
+         * 
+         * &gt; **NOTE:** This parameter is only evaluated during resource creation and deletion. Modifying it in isolation will not trigger any action.
          * 
          * @return builder
          * 
@@ -440,6 +470,33 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param orderType The entity that pays the fees of the network instance. Valid values:
+         * 
+         * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+         * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderType(@Nullable Output<String> orderType) {
+            $.orderType = orderType;
+            return this;
+        }
+
+        /**
+         * @param orderType The entity that pays the fees of the network instance. Valid values:
+         * 
+         * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+         * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderType(String orderType) {
+            return orderType(Output.of(orderType));
+        }
+
+        /**
          * @param paymentType The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
          * 
          * @return builder
@@ -463,6 +520,8 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
         /**
          * @param resourceType The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
          * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
          * @return builder
          * 
          */
@@ -473,6 +532,8 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
         /**
          * @param resourceType The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -562,7 +623,6 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
         /**
          * @param transitRouterAttachmentDescription The description of the VPC connection.
-         * 
          * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
          * 
          * @return builder
@@ -575,7 +635,6 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
         /**
          * @param transitRouterAttachmentDescription The description of the VPC connection.
-         * 
          * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
          * 
          * @return builder
@@ -637,7 +696,6 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
         /**
          * @param transitRouterVpcAttachmentName The name of the VPC connection.
-         * 
          * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
@@ -650,7 +708,6 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
         /**
          * @param transitRouterVpcAttachmentName The name of the VPC connection.
-         * 
          * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
@@ -726,8 +783,6 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
         /**
          * @param zoneMappings ZoneMappingss See `zoneMappings` below.
          * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
-         * 
          * @return builder
          * 
          */
@@ -739,8 +794,6 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
         /**
          * @param zoneMappings ZoneMappingss See `zoneMappings` below.
          * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
-         * 
          * @return builder
          * 
          */
@@ -750,8 +803,6 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
         /**
          * @param zoneMappings ZoneMappingss See `zoneMappings` below.
-         * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

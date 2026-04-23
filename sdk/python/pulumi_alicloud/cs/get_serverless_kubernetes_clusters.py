@@ -130,6 +130,8 @@ def get_serverless_kubernetes_clusters(enable_details: Optional[_builtins.bool] 
                                        output_file: Optional[_builtins.str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerlessKubernetesClustersResult:
     """
+    > **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs_get_clusters` instead.
+
     This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
 
     > **NOTE:** Available since v1.58.0
@@ -181,6 +183,8 @@ def get_serverless_kubernetes_clusters_output(enable_details: Optional[pulumi.In
                                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerlessKubernetesClustersResult]:
     """
+    > **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs_get_clusters` instead.
+
     This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
 
     > **NOTE:** Available since v1.58.0

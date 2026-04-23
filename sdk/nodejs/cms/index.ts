@@ -160,6 +160,11 @@ export type SlsGroup = import("./slsGroup").SlsGroup;
 export const SlsGroup: typeof import("./slsGroup").SlsGroup = null as any;
 utilities.lazyLoad(exports, ["SlsGroup"], () => require("./slsGroup"));
 
+export { WorkspaceArgs, WorkspaceState } from "./workspace";
+export type Workspace = import("./workspace").Workspace;
+export const Workspace: typeof import("./workspace").Workspace = null as any;
+utilities.lazyLoad(exports, ["Workspace"], () => require("./workspace"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -195,6 +200,8 @@ const _module = {
                 return new SiteMonitor(name, <any>undefined, { urn })
             case "alicloud:cms/slsGroup:SlsGroup":
                 return new SlsGroup(name, <any>undefined, { urn })
+            case "alicloud:cms/workspace:Workspace":
+                return new Workspace(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -215,3 +222,4 @@ pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroupInstances", _
 pulumi.runtime.registerResourceModule("alicloud", "cms/namespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/siteMonitor", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/slsGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/workspace", _module)

@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+ *
  * This data source provides a list Container Registry repositories on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.35.0+
@@ -87,6 +89,8 @@ export interface GetReposResult {
     readonly repos: outputs.cr.GetReposRepo[];
 }
 /**
+ * > **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+ *
  * This data source provides a list Container Registry repositories on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.35.0+

@@ -82,15 +82,19 @@ import (
 type TransitRouterGrantAttachment struct {
 	pulumi.CustomResourceState
 
-	// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+	// CEN instance ID
 	CenId pulumi.StringOutput `pulumi:"cenId"`
-	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
+	// The ID of the account of the CEN instance.
 	CenOwnerId pulumi.StringOutput `pulumi:"cenOwnerId"`
 	// The ID of the network instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+	// The type of the network instance.
+	// - `VPC`: VPC instance.
+	// - `VBR`: VBR instance.
+	// - `CCN`: CCN instance.
+	// - `VPN`:IPsec connection.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
-	// The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+	// Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
 	OrderType pulumi.StringOutput `pulumi:"orderType"`
 }
 
@@ -136,28 +140,36 @@ func GetTransitRouterGrantAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitRouterGrantAttachment resources.
 type transitRouterGrantAttachmentState struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+	// CEN instance ID
 	CenId *string `pulumi:"cenId"`
-	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
+	// The ID of the account of the CEN instance.
 	CenOwnerId *string `pulumi:"cenOwnerId"`
 	// The ID of the network instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+	// The type of the network instance.
+	// - `VPC`: VPC instance.
+	// - `VBR`: VBR instance.
+	// - `CCN`: CCN instance.
+	// - `VPN`:IPsec connection.
 	InstanceType *string `pulumi:"instanceType"`
-	// The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+	// Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
 	OrderType *string `pulumi:"orderType"`
 }
 
 type TransitRouterGrantAttachmentState struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+	// CEN instance ID
 	CenId pulumi.StringPtrInput
-	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
+	// The ID of the account of the CEN instance.
 	CenOwnerId pulumi.StringPtrInput
 	// The ID of the network instance.
 	InstanceId pulumi.StringPtrInput
-	// The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+	// The type of the network instance.
+	// - `VPC`: VPC instance.
+	// - `VBR`: VBR instance.
+	// - `CCN`: CCN instance.
+	// - `VPN`:IPsec connection.
 	InstanceType pulumi.StringPtrInput
-	// The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+	// Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
 	OrderType pulumi.StringPtrInput
 }
 
@@ -166,29 +178,37 @@ func (TransitRouterGrantAttachmentState) ElementType() reflect.Type {
 }
 
 type transitRouterGrantAttachmentArgs struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+	// CEN instance ID
 	CenId string `pulumi:"cenId"`
-	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
+	// The ID of the account of the CEN instance.
 	CenOwnerId string `pulumi:"cenOwnerId"`
 	// The ID of the network instance.
 	InstanceId string `pulumi:"instanceId"`
-	// The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+	// The type of the network instance.
+	// - `VPC`: VPC instance.
+	// - `VBR`: VBR instance.
+	// - `CCN`: CCN instance.
+	// - `VPN`:IPsec connection.
 	InstanceType string `pulumi:"instanceType"`
-	// The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+	// Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
 	OrderType *string `pulumi:"orderType"`
 }
 
 // The set of arguments for constructing a TransitRouterGrantAttachment resource.
 type TransitRouterGrantAttachmentArgs struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+	// CEN instance ID
 	CenId pulumi.StringInput
-	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
+	// The ID of the account of the CEN instance.
 	CenOwnerId pulumi.StringInput
 	// The ID of the network instance.
 	InstanceId pulumi.StringInput
-	// The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+	// The type of the network instance.
+	// - `VPC`: VPC instance.
+	// - `VBR`: VBR instance.
+	// - `CCN`: CCN instance.
+	// - `VPN`:IPsec connection.
 	InstanceType pulumi.StringInput
-	// The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+	// Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
 	OrderType pulumi.StringPtrInput
 }
 
@@ -279,12 +299,12 @@ func (o TransitRouterGrantAttachmentOutput) ToTransitRouterGrantAttachmentOutput
 	return o
 }
 
-// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+// CEN instance ID
 func (o TransitRouterGrantAttachmentOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterGrantAttachment) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
 }
 
-// The ID of the Alibaba Cloud account to which the CEN instance belongs.
+// The ID of the account of the CEN instance.
 func (o TransitRouterGrantAttachmentOutput) CenOwnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterGrantAttachment) pulumi.StringOutput { return v.CenOwnerId }).(pulumi.StringOutput)
 }
@@ -294,12 +314,16 @@ func (o TransitRouterGrantAttachmentOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterGrantAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+// The type of the network instance.
+// - `VPC`: VPC instance.
+// - `VBR`: VBR instance.
+// - `CCN`: CCN instance.
+// - `VPN`:IPsec connection.
 func (o TransitRouterGrantAttachmentOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterGrantAttachment) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+// Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
 func (o TransitRouterGrantAttachmentOutput) OrderType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterGrantAttachment) pulumi.StringOutput { return v.OrderType }).(pulumi.StringOutput)
 }

@@ -131,6 +131,8 @@ def get_repos(enable_details: Optional[_builtins.bool] = None,
               output_file: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReposResult:
     """
+    > **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+
     This data source provides a list Container Registry repositories on Alibaba Cloud.
 
     > **NOTE:** Available in v1.35.0+
@@ -176,6 +178,8 @@ def get_repos_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bo
                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReposResult]:
     """
+    > **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+
     This data source provides a list Container Registry repositories on Alibaba Cloud.
 
     > **NOTE:** Available in v1.35.0+

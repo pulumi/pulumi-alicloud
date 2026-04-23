@@ -90,28 +90,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment")
 public class TransitRouterGrantAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+     * CEN instance ID
      * 
      */
     @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
-     * @return The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+     * @return CEN instance ID
      * 
      */
     public Output<String> cenId() {
         return this.cenId;
     }
     /**
-     * The ID of the Alibaba Cloud account to which the CEN instance belongs.
+     * The ID of the account of the CEN instance.
      * 
      */
     @Export(name="cenOwnerId", refs={String.class}, tree="[0]")
     private Output<String> cenOwnerId;
 
     /**
-     * @return The ID of the Alibaba Cloud account to which the CEN instance belongs.
+     * @return The ID of the account of the CEN instance.
      * 
      */
     public Output<String> cenOwnerId() {
@@ -132,28 +132,36 @@ public class TransitRouterGrantAttachment extends com.pulumi.resources.CustomRes
         return this.instanceId;
     }
     /**
-     * The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+     * The type of the network instance.
+     * - `VPC`: VPC instance.
+     * - `VBR`: VBR instance.
+     * - `CCN`: CCN instance.
+     * - `VPN`:IPsec connection.
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
+     * @return The type of the network instance.
+     * - `VPC`: VPC instance.
+     * - `VBR`: VBR instance.
+     * - `CCN`: CCN instance.
+     * - `VPN`:IPsec connection.
      * 
      */
     public Output<String> instanceType() {
         return this.instanceType;
     }
     /**
-     * The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+     * Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
      * 
      */
     @Export(name="orderType", refs={String.class}, tree="[0]")
     private Output<String> orderType;
 
     /**
-     * @return The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
+     * @return Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
      * 
      */
     public Output<String> orderType() {

@@ -125,14 +125,14 @@ public class TransitRouterCidr extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="publishCidrRoute", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> publishCidrRoute;
+    private Output<Boolean> publishCidrRoute;
 
     /**
      * @return Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
      * 
      */
-    public Output<Optional<Boolean>> publishCidrRoute() {
-        return Codegen.optional(this.publishCidrRoute);
+    public Output<Boolean> publishCidrRoute() {
+        return this.publishCidrRoute;
     }
     /**
      * The ID of the CIDR block.

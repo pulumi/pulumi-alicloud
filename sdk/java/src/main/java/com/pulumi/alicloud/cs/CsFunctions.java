@@ -995,6 +995,8 @@ public final class CsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.103.0.
@@ -1040,6 +1042,8 @@ public final class CsFunctions {
         return getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.103.0.
@@ -1085,6 +1089,8 @@ public final class CsFunctions {
         return getEdgeKubernetesClustersPlain(GetEdgeKubernetesClustersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.103.0.
@@ -1130,6 +1136,8 @@ public final class CsFunctions {
         return getEdgeKubernetesClusters(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.103.0.
@@ -1175,6 +1183,8 @@ public final class CsFunctions {
         return getEdgeKubernetesClustersPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.103.0.
@@ -1220,6 +1230,8 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", TypeShape.of(GetEdgeKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.103.0.
@@ -1265,6 +1277,8 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", TypeShape.of(GetEdgeKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.103.0.
@@ -2225,6 +2239,8 @@ public final class CsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getKubernetesAddons:getKubernetesAddons", TypeShape.of(GetKubernetesAddonsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.34.0.
@@ -2273,6 +2289,8 @@ public final class CsFunctions {
         return getKubernetesClusters(GetKubernetesClustersArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.34.0.
@@ -2321,6 +2339,8 @@ public final class CsFunctions {
         return getKubernetesClustersPlain(GetKubernetesClustersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.34.0.
@@ -2369,6 +2389,8 @@ public final class CsFunctions {
         return getKubernetesClusters(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.34.0.
@@ -2417,6 +2439,8 @@ public final class CsFunctions {
         return getKubernetesClustersPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.34.0.
@@ -2465,6 +2489,8 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesClusters:getKubernetesClusters", TypeShape.of(GetKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.34.0.
@@ -2513,6 +2539,8 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesClusters:getKubernetesClusters", TypeShape.of(GetKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.34.0.
@@ -4216,6 +4244,8 @@ public final class CsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getKubernetesVersion:getKubernetesVersion", TypeShape.of(GetKubernetesVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.35.0
@@ -4264,6 +4294,8 @@ public final class CsFunctions {
         return getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.35.0
@@ -4312,6 +4344,8 @@ public final class CsFunctions {
         return getManagedKubernetesClustersPlain(GetManagedKubernetesClustersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.35.0
@@ -4360,6 +4394,8 @@ public final class CsFunctions {
         return getManagedKubernetesClusters(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.35.0
@@ -4408,6 +4444,8 @@ public final class CsFunctions {
         return getManagedKubernetesClustersPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.35.0
@@ -4456,6 +4494,8 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", TypeShape.of(GetManagedKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.35.0
@@ -4504,6 +4544,8 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", TypeShape.of(GetManagedKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.35.0
@@ -5697,6 +5739,8 @@ public final class CsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", TypeShape.of(GetRegistryEnterpriseSyncRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.58.0
@@ -5745,6 +5789,8 @@ public final class CsFunctions {
         return getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.58.0
@@ -5793,6 +5839,8 @@ public final class CsFunctions {
         return getServerlessKubernetesClustersPlain(GetServerlessKubernetesClustersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.58.0
@@ -5841,6 +5889,8 @@ public final class CsFunctions {
         return getServerlessKubernetesClusters(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.58.0
@@ -5889,6 +5939,8 @@ public final class CsFunctions {
         return getServerlessKubernetesClustersPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.58.0
@@ -5937,6 +5989,8 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", TypeShape.of(GetServerlessKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.58.0
@@ -5985,6 +6039,8 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", TypeShape.of(GetServerlessKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.58.0

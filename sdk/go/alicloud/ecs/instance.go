@@ -301,7 +301,7 @@ type Instance struct {
 	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead. From version 1.276.0, `roleName` can be modified.
 	//
 	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
@@ -595,7 +595,7 @@ type instanceState struct {
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead. From version 1.276.0, `roleName` can be modified.
 	//
 	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
@@ -853,7 +853,7 @@ type InstanceState struct {
 	RenewalStatus pulumi.StringPtrInput
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead. From version 1.276.0, `roleName` can be modified.
 	//
 	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
@@ -1095,7 +1095,7 @@ type instanceArgs struct {
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead. From version 1.276.0, `roleName` can be modified.
 	//
 	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
@@ -1330,7 +1330,7 @@ type InstanceArgs struct {
 	RenewalStatus pulumi.StringPtrInput
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead. From version 1.276.0, `roleName` can be modified.
 	//
 	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
@@ -1862,7 +1862,7 @@ func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead. From version 1.276.0, `roleName` can be modified.
 //
 // > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 //

@@ -430,7 +430,7 @@ class TransitRouterCidr(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="publishCidrRoute")
-    def publish_cidr_route(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def publish_cidr_route(self) -> pulumi.Output[_builtins.bool]:
         """
         Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
         """

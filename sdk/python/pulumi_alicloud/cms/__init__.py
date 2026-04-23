@@ -37,5 +37,6 @@ from .monitor_group_instances import *
 from .namespace import *
 from .site_monitor import *
 from .sls_group import *
+from .workspace import *
 from ._inputs import *
 from . import outputs

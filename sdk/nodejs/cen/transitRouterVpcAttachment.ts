@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Cen Transit Router Vpc Attachment resource.
+ * Provides a Cloud Enterprise Network (CEN) Transit Router Vpc Attachment resource.
  *
- * For information about Cen Transit Router Vpc Attachment and how to use it, see [What is Transit Router Vpc Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
+ * For information about Cloud Enterprise Network (CEN) Transit Router Vpc Attachment and how to use it, see [What is Transit Router Vpc Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment).
  *
  * > **NOTE:** Available since v1.126.0.
  *
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *             vswitchId: exampleSlave.id,
  *         },
  *     ],
- *     transitRouterAttachmentName: name,
+ *     transitRouterVpcAttachmentName: name,
  *     transitRouterAttachmentDescription: name,
  * });
  * ```
@@ -73,10 +73,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cen Transit Router Vpc Attachment can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Transit Router Vpc Attachment can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <id>
+ * $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <transit_router_attachment_id>
  * ```
  */
 export class TransitRouterVpcAttachment extends pulumi.CustomResource {
@@ -109,15 +109,18 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
 
     /**
      * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+     *
      * - **false:** (default)
      */
     declare public readonly autoPublishRouteEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
+     *
+     * > **NOTE:** This parameter is only evaluated during resource creation and deletion. Modifying it in isolation will not trigger any action.
      */
     declare public readonly cenId: pulumi.Output<string | undefined>;
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -129,15 +132,24 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      */
     declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
+     * The entity that pays the fees of the network instance. Valid values:
+     *
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     */
+    declare public readonly orderType: pulumi.Output<string>;
+    /**
      * The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
      */
     declare public readonly paymentType: pulumi.Output<string>;
     /**
-     * (Available since v1.260.0).The ID of the region where the VPC is deployed.
+     * The ID of the region where the VPC is deployed.
      */
     declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     declare public readonly resourceType: pulumi.Output<string>;
     /**
@@ -153,7 +165,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      */
     declare public readonly routeTablePropagationEnabled: pulumi.Output<boolean | undefined>;
     /**
-     * Status
+     * Status.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -162,7 +174,6 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The description of the VPC connection.
-     *
      * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      */
     declare public readonly transitRouterAttachmentDescription: pulumi.Output<string | undefined>;
@@ -182,7 +193,6 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
     declare public readonly transitRouterId: pulumi.Output<string>;
     /**
      * The name of the VPC connection.
-     *
      * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
      */
     declare public readonly transitRouterVpcAttachmentName: pulumi.Output<string>;
@@ -200,8 +210,6 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
     declare public readonly vpcOwnerId: pulumi.Output<string>;
     /**
      * ZoneMappingss See `zoneMappings` below.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     declare public readonly zoneMappings: pulumi.Output<outputs.cen.TransitRouterVpcAttachmentZoneMapping[]>;
 
@@ -223,6 +231,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["orderType"] = state?.orderType;
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["regionId"] = state?.regionId;
             resourceInputs["resourceType"] = state?.resourceType;
@@ -251,6 +260,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
             resourceInputs["cenId"] = args?.cenId;
             resourceInputs["dryRun"] = args?.dryRun;
             resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["orderType"] = args?.orderType;
             resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["routeTableAssociationEnabled"] = args?.routeTableAssociationEnabled;
@@ -280,15 +290,18 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
 export interface TransitRouterVpcAttachmentState {
     /**
      * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+     *
      * - **false:** (default)
      */
     autoPublishRouteEnabled?: pulumi.Input<boolean>;
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
+     *
+     * > **NOTE:** This parameter is only evaluated during resource creation and deletion. Modifying it in isolation will not trigger any action.
      */
     cenId?: pulumi.Input<string>;
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -300,15 +313,24 @@ export interface TransitRouterVpcAttachmentState {
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
+     * The entity that pays the fees of the network instance. Valid values:
+     *
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     */
+    orderType?: pulumi.Input<string>;
+    /**
      * The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * (Available since v1.260.0).The ID of the region where the VPC is deployed.
+     * The ID of the region where the VPC is deployed.
      */
     regionId?: pulumi.Input<string>;
     /**
      * The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     resourceType?: pulumi.Input<string>;
     /**
@@ -324,7 +346,7 @@ export interface TransitRouterVpcAttachmentState {
      */
     routeTablePropagationEnabled?: pulumi.Input<boolean>;
     /**
-     * Status
+     * Status.
      */
     status?: pulumi.Input<string>;
     /**
@@ -333,7 +355,6 @@ export interface TransitRouterVpcAttachmentState {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The description of the VPC connection.
-     *
      * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      */
     transitRouterAttachmentDescription?: pulumi.Input<string>;
@@ -353,7 +374,6 @@ export interface TransitRouterVpcAttachmentState {
     transitRouterId?: pulumi.Input<string>;
     /**
      * The name of the VPC connection.
-     *
      * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
      */
     transitRouterVpcAttachmentName?: pulumi.Input<string>;
@@ -371,8 +391,6 @@ export interface TransitRouterVpcAttachmentState {
     vpcOwnerId?: pulumi.Input<string>;
     /**
      * ZoneMappingss See `zoneMappings` below.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     zoneMappings?: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;
 }
@@ -383,11 +401,14 @@ export interface TransitRouterVpcAttachmentState {
 export interface TransitRouterVpcAttachmentArgs {
     /**
      * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+     *
      * - **false:** (default)
      */
     autoPublishRouteEnabled?: pulumi.Input<boolean>;
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
+     *
+     * > **NOTE:** This parameter is only evaluated during resource creation and deletion. Modifying it in isolation will not trigger any action.
      */
     cenId?: pulumi.Input<string>;
     /**
@@ -399,11 +420,20 @@ export interface TransitRouterVpcAttachmentArgs {
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
+     * The entity that pays the fees of the network instance. Valid values:
+     *
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     */
+    orderType?: pulumi.Input<string>;
+    /**
      * The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
      */
     paymentType?: pulumi.Input<string>;
     /**
      * The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     resourceType?: pulumi.Input<string>;
     /**
@@ -424,7 +454,6 @@ export interface TransitRouterVpcAttachmentArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The description of the VPC connection.
-     *
      * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      */
     transitRouterAttachmentDescription?: pulumi.Input<string>;
@@ -440,7 +469,6 @@ export interface TransitRouterVpcAttachmentArgs {
     transitRouterId?: pulumi.Input<string>;
     /**
      * The name of the VPC connection.
-     *
      * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
      */
     transitRouterVpcAttachmentName?: pulumi.Input<string>;
@@ -458,8 +486,6 @@ export interface TransitRouterVpcAttachmentArgs {
     vpcOwnerId?: pulumi.Input<string>;
     /**
      * ZoneMappingss See `zoneMappings` below.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     zoneMappings: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;
 }

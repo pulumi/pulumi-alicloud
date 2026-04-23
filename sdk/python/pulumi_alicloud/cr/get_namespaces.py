@@ -108,6 +108,8 @@ def get_namespaces(name_regex: Optional[_builtins.str] = None,
                    output_file: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNamespacesResult:
     """
+    > **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+
     This data source provides a list Container Registry namespaces on Alibaba Cloud.
 
     > **NOTE:** Available in v1.35.0+
@@ -145,6 +147,8 @@ def get_namespaces_output(name_regex: Optional[pulumi.Input[Optional[_builtins.s
                           output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNamespacesResult]:
     """
+    > **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+
     This data source provides a list Container Registry namespaces on Alibaba Cloud.
 
     > **NOTE:** Available in v1.35.0+

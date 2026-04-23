@@ -6,6 +6,7 @@ package com.pulumi.alicloud.esa;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.esa.SiteArgs;
 import com.pulumi.alicloud.esa.inputs.SiteState;
+import com.pulumi.alicloud.esa.outputs.SiteSiteWafSettings;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -109,7 +110,7 @@ public class Site extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accessType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accessType;
+    private Output<String> accessType;
 
     /**
      * @return The DNS setup. Valid values:
@@ -117,8 +118,8 @@ public class Site extends com.pulumi.resources.CustomResource {
      * - `CNAME`
      * 
      */
-    public Output<Optional<String>> accessType() {
-        return Codegen.optional(this.accessType);
+    public Output<String> accessType() {
+        return this.accessType;
     }
     /**
      * Add visitor geolocation header. Value range:
@@ -175,6 +176,48 @@ public class Site extends com.pulumi.resources.CustomResource {
      */
     public Output<String> aiTemplate() {
         return this.aiTemplate;
+    }
+    /**
+     * AutomaticFrequencyControl Disposal action.Valid values:
+     * 
+     */
+    @Export(name="automaticFrequencyControlActionType", refs={String.class}, tree="[0]")
+    private Output<String> automaticFrequencyControlActionType;
+
+    /**
+     * @return AutomaticFrequencyControl Disposal action.Valid values:
+     * 
+     */
+    public Output<String> automaticFrequencyControlActionType() {
+        return this.automaticFrequencyControlActionType;
+    }
+    /**
+     * AutomaticFrequencyControl Switch.Valid values:
+     * 
+     */
+    @Export(name="automaticFrequencyControlEnable", refs={String.class}, tree="[0]")
+    private Output<String> automaticFrequencyControlEnable;
+
+    /**
+     * @return AutomaticFrequencyControl Switch.Valid values:
+     * 
+     */
+    public Output<String> automaticFrequencyControlEnable() {
+        return this.automaticFrequencyControlEnable;
+    }
+    /**
+     * AutomaticFrequencyControl Protection Level.Valid values:
+     * 
+     */
+    @Export(name="automaticFrequencyControlLevel", refs={String.class}, tree="[0]")
+    private Output<String> automaticFrequencyControlLevel;
+
+    /**
+     * @return AutomaticFrequencyControl Protection Level.Valid values:
+     * 
+     */
+    public Output<String> automaticFrequencyControlLevel() {
+        return this.automaticFrequencyControlLevel;
     }
     /**
      * Multi-level cache architecture mode. Possible values:
@@ -379,6 +422,34 @@ public class Site extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.paused);
     }
     /**
+     * Whether to enable the quality data collection switch.Valid values:
+     * 
+     */
+    @Export(name="performanceDataCollectionEnable", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> performanceDataCollectionEnable;
+
+    /**
+     * @return Whether to enable the quality data collection switch.Valid values:
+     * 
+     */
+    public Output<Optional<String>> performanceDataCollectionEnable() {
+        return Codegen.optional(this.performanceDataCollectionEnable);
+    }
+    /**
+     * Real client IP header name.
+     * 
+     */
+    @Export(name="realClientIpHeaderName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> realClientIpHeaderName;
+
+    /**
+     * @return Real client IP header name.
+     * 
+     */
+    public Output<Optional<String>> realClientIpHeaderName() {
+        return Codegen.optional(this.realClientIpHeaderName);
+    }
+    /**
      * The ID of the resource group
      * 
      */
@@ -447,6 +518,20 @@ public class Site extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> siteVersion() {
         return Codegen.optional(this.siteVersion);
+    }
+    /**
+     * Site WAF Configuration Details. See `siteWafSettings` below.
+     * 
+     */
+    @Export(name="siteWafSettings", refs={SiteSiteWafSettings.class}, tree="[0]")
+    private Output<SiteSiteWafSettings> siteWafSettings;
+
+    /**
+     * @return Site WAF Configuration Details. See `siteWafSettings` below.
+     * 
+     */
+    public Output<SiteSiteWafSettings> siteWafSettings() {
+        return this.siteWafSettings;
     }
     /**
      * The status of the resource

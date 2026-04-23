@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a Cen Transit Router Vpc Attachment resource.
+    /// Provides a Cloud Enterprise Network (CEN) Transit Router Vpc Attachment resource.
     /// 
-    /// For information about Cen Transit Router Vpc Attachment and how to use it, see [What is Transit Router Vpc Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
+    /// For information about Cloud Enterprise Network (CEN) Transit Router Vpc Attachment and how to use it, see [What is Transit Router Vpc Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment).
     /// 
     /// &gt; **NOTE:** Available since v1.126.0.
     /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Cen
     ///                 VswitchId = exampleSlave.Id,
     ///             },
     ///         },
-    ///         TransitRouterAttachmentName = name,
+    ///         TransitRouterVpcAttachmentName = name,
     ///         TransitRouterAttachmentDescription = name,
     ///     });
     /// 
@@ -99,10 +99,10 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// Cen Transit Router Vpc Attachment can be imported using the id, e.g.
+    /// Cloud Enterprise Network (CEN) Transit Router Vpc Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example &lt;id&gt;
+    /// $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example &lt;transit_router_attachment_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment")]
@@ -110,6 +110,7 @@ namespace Pulumi.AliCloud.Cen
     {
         /// <summary>
         /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+        /// 
         /// - **false:** (default)
         /// </summary>
         [Output("autoPublishRouteEnabled")]
@@ -117,12 +118,14 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The ID of the Cloud Enterprise Network (CEN) instance.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and deletion. Modifying it in isolation will not trigger any action.
         /// </summary>
         [Output("cenId")]
         public Output<string?> CenId { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource
+        /// The creation time of the resource.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -140,19 +143,30 @@ namespace Pulumi.AliCloud.Cen
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
+        /// The entity that pays the fees of the network instance. Valid values:
+        /// 
+        /// - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+        /// - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+        /// </summary>
+        [Output("orderType")]
+        public Output<string> OrderType { get; private set; } = null!;
+
+        /// <summary>
         /// The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.260.0).The ID of the region where the VPC is deployed.
+        /// The ID of the region where the VPC is deployed.
         /// </summary>
         [Output("regionId")]
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
@@ -170,7 +184,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<bool?> RouteTablePropagationEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Status
+        /// Status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -183,7 +197,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The description of the VPC connection.
-        /// 
         /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Output("transitRouterAttachmentDescription")]
@@ -209,7 +222,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The name of the VPC connection.
-        /// 
         /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Output("transitRouterVpcAttachmentName")]
@@ -235,8 +247,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// ZoneMappingss See `ZoneMappings` below.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("zoneMappings")]
         public Output<ImmutableArray<Outputs.TransitRouterVpcAttachmentZoneMapping>> ZoneMappings { get; private set; } = null!;
@@ -289,6 +299,7 @@ namespace Pulumi.AliCloud.Cen
     {
         /// <summary>
         /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+        /// 
         /// - **false:** (default)
         /// </summary>
         [Input("autoPublishRouteEnabled")]
@@ -296,6 +307,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The ID of the Cloud Enterprise Network (CEN) instance.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and deletion. Modifying it in isolation will not trigger any action.
         /// </summary>
         [Input("cenId")]
         public Input<string>? CenId { get; set; }
@@ -313,6 +326,15 @@ namespace Pulumi.AliCloud.Cen
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
+        /// The entity that pays the fees of the network instance. Valid values:
+        /// 
+        /// - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+        /// - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+        /// </summary>
+        [Input("orderType")]
+        public Input<string>? OrderType { get; set; }
+
+        /// <summary>
         /// The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         /// </summary>
         [Input("paymentType")]
@@ -320,6 +342,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
@@ -350,7 +374,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The description of the VPC connection.
-        /// 
         /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Input("transitRouterAttachmentDescription")]
@@ -370,7 +393,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The name of the VPC connection.
-        /// 
         /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Input("transitRouterVpcAttachmentName")]
@@ -405,8 +427,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// ZoneMappingss See `ZoneMappings` below.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs> ZoneMappings
         {
@@ -424,6 +444,7 @@ namespace Pulumi.AliCloud.Cen
     {
         /// <summary>
         /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+        /// 
         /// - **false:** (default)
         /// </summary>
         [Input("autoPublishRouteEnabled")]
@@ -431,12 +452,14 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The ID of the Cloud Enterprise Network (CEN) instance.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and deletion. Modifying it in isolation will not trigger any action.
         /// </summary>
         [Input("cenId")]
         public Input<string>? CenId { get; set; }
 
         /// <summary>
-        /// The creation time of the resource
+        /// The creation time of the resource.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -454,19 +477,30 @@ namespace Pulumi.AliCloud.Cen
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
+        /// The entity that pays the fees of the network instance. Valid values:
+        /// 
+        /// - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+        /// - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+        /// </summary>
+        [Input("orderType")]
+        public Input<string>? OrderType { get; set; }
+
+        /// <summary>
         /// The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// (Available since v1.260.0).The ID of the region where the VPC is deployed.
+        /// The ID of the region where the VPC is deployed.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
@@ -484,7 +518,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
 
         /// <summary>
-        /// Status
+        /// Status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -503,7 +537,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The description of the VPC connection.
-        /// 
         /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Input("transitRouterAttachmentDescription")]
@@ -529,7 +562,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The name of the VPC connection.
-        /// 
         /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Input("transitRouterVpcAttachmentName")]
@@ -564,8 +596,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// ZoneMappingss See `ZoneMappings` below.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs> ZoneMappings
         {

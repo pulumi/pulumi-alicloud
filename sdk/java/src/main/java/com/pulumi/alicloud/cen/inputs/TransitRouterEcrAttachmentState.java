@@ -33,14 +33,14 @@ public final class TransitRouterEcrAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The creation time of the resource.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -78,14 +78,14 @@ public final class TransitRouterEcrAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The status of the resource
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -206,7 +206,7 @@ public final class TransitRouterEcrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param createTime The creation time of the resource.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class TransitRouterEcrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param createTime The creation time of the resource.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class TransitRouterEcrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class TransitRouterEcrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource.
          * 
          * @return builder
          * 

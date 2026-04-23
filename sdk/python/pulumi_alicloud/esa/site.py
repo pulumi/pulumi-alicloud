@@ -13,19 +13,24 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['SiteArgs', 'Site']
 
 @pulumi.input_type
 class SiteArgs:
     def __init__(__self__, *,
+                 access_type: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  site_name: pulumi.Input[_builtins.str],
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
                  add_client_geolocation_header: Optional[pulumi.Input[_builtins.str]] = None,
                  add_real_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
                  ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  ai_template: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_frequency_control_action_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_frequency_control_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_frequency_control_level: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_architecture_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -38,25 +43,31 @@ class SiteArgs:
                  ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
                  paused: Optional[pulumi.Input[_builtins.bool]] = None,
+                 performance_data_collection_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 real_client_ip_header_name: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  seo_bypass: Optional[pulumi.Input[_builtins.str]] = None,
                  site_name_exclusive: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_waf_settings: Optional[pulumi.Input['SiteSiteWafSettingsArgs']] = None,
                  tag_name: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  version_management: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Site resource.
 
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the associated package instance.
-        :param pulumi.Input[_builtins.str] site_name: The website name.
         :param pulumi.Input[_builtins.str] access_type: The DNS setup. Valid values:
                - `NS`
                - `CNAME`
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the associated package instance.
+        :param pulumi.Input[_builtins.str] site_name: The website name.
         :param pulumi.Input[_builtins.str] add_client_geolocation_header: Add visitor geolocation header. Value range:
         :param pulumi.Input[_builtins.str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
         :param pulumi.Input[_builtins.str] ai_mode: HTTP DDoS Intelligent Protection Mode. Valid values:
         :param pulumi.Input[_builtins.str] ai_template: HTTP DDoS Intelligent Protection Level. Values:
+        :param pulumi.Input[_builtins.str] automatic_frequency_control_action_type: AutomaticFrequencyControl Disposal action.Valid values:
+        :param pulumi.Input[_builtins.str] automatic_frequency_control_enable: AutomaticFrequencyControl Switch.Valid values:
+        :param pulumi.Input[_builtins.str] automatic_frequency_control_level: AutomaticFrequencyControl Protection Level.Valid values:
         :param pulumi.Input[_builtins.str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
         :param pulumi.Input[_builtins.str] cache_reserve_enable: Site cache hold switch. Value:
         :param pulumi.Input[_builtins.str] cache_reserve_instance_id: The ID of the cache instance.
@@ -72,18 +83,20 @@ class SiteArgs:
                - 'x.x': Global.
                - 'Cn.cn ': Mainland China.
         :param pulumi.Input[_builtins.bool] paused: Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+        :param pulumi.Input[_builtins.str] performance_data_collection_enable: Whether to enable the quality data collection switch.Valid values:
+        :param pulumi.Input[_builtins.str] real_client_ip_header_name: Real client IP header name.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] seo_bypass: Release the search engine crawler configuration. Value:
         :param pulumi.Input[_builtins.str] site_name_exclusive: Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
         :param pulumi.Input[_builtins.int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
+        :param pulumi.Input['SiteSiteWafSettingsArgs'] site_waf_settings: Site WAF Configuration Details. See `site_waf_settings` below.
         :param pulumi.Input[_builtins.str] tag_name: Custom CacheTag name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Resource tags
         :param pulumi.Input[_builtins.bool] version_management: Version management enabled. When true, version management is turned on for the table site.
         """
+        pulumi.set(__self__, "access_type", access_type)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "site_name", site_name)
-        if access_type is not None:
-            pulumi.set(__self__, "access_type", access_type)
         if add_client_geolocation_header is not None:
             pulumi.set(__self__, "add_client_geolocation_header", add_client_geolocation_header)
         if add_real_client_ip_header is not None:
@@ -92,6 +105,12 @@ class SiteArgs:
             pulumi.set(__self__, "ai_mode", ai_mode)
         if ai_template is not None:
             pulumi.set(__self__, "ai_template", ai_template)
+        if automatic_frequency_control_action_type is not None:
+            pulumi.set(__self__, "automatic_frequency_control_action_type", automatic_frequency_control_action_type)
+        if automatic_frequency_control_enable is not None:
+            pulumi.set(__self__, "automatic_frequency_control_enable", automatic_frequency_control_enable)
+        if automatic_frequency_control_level is not None:
+            pulumi.set(__self__, "automatic_frequency_control_level", automatic_frequency_control_level)
         if cache_architecture_mode is not None:
             pulumi.set(__self__, "cache_architecture_mode", cache_architecture_mode)
         if cache_reserve_enable is not None:
@@ -116,6 +135,10 @@ class SiteArgs:
             pulumi.set(__self__, "ipv6_region", ipv6_region)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
+        if performance_data_collection_enable is not None:
+            pulumi.set(__self__, "performance_data_collection_enable", performance_data_collection_enable)
+        if real_client_ip_header_name is not None:
+            pulumi.set(__self__, "real_client_ip_header_name", real_client_ip_header_name)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if seo_bypass is not None:
@@ -124,12 +147,28 @@ class SiteArgs:
             pulumi.set(__self__, "site_name_exclusive", site_name_exclusive)
         if site_version is not None:
             pulumi.set(__self__, "site_version", site_version)
+        if site_waf_settings is not None:
+            pulumi.set(__self__, "site_waf_settings", site_waf_settings)
         if tag_name is not None:
             pulumi.set(__self__, "tag_name", tag_name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if version_management is not None:
             pulumi.set(__self__, "version_management", version_management)
+
+    @_builtins.property
+    @pulumi.getter(name="accessType")
+    def access_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The DNS setup. Valid values:
+        - `NS`
+        - `CNAME`
+        """
+        return pulumi.get(self, "access_type")
+
+    @access_type.setter
+    def access_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -154,20 +193,6 @@ class SiteArgs:
     @site_name.setter
     def site_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The DNS setup. Valid values:
-        - `NS`
-        - `CNAME`
-        """
-        return pulumi.get(self, "access_type")
-
-    @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="addClientGeolocationHeader")
@@ -216,6 +241,42 @@ class SiteArgs:
     @ai_template.setter
     def ai_template(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ai_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticFrequencyControlActionType")
+    def automatic_frequency_control_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        AutomaticFrequencyControl Disposal action.Valid values:
+        """
+        return pulumi.get(self, "automatic_frequency_control_action_type")
+
+    @automatic_frequency_control_action_type.setter
+    def automatic_frequency_control_action_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "automatic_frequency_control_action_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticFrequencyControlEnable")
+    def automatic_frequency_control_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        AutomaticFrequencyControl Switch.Valid values:
+        """
+        return pulumi.get(self, "automatic_frequency_control_enable")
+
+    @automatic_frequency_control_enable.setter
+    def automatic_frequency_control_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "automatic_frequency_control_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticFrequencyControlLevel")
+    def automatic_frequency_control_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        AutomaticFrequencyControl Protection Level.Valid values:
+        """
+        return pulumi.get(self, "automatic_frequency_control_level")
+
+    @automatic_frequency_control_level.setter
+    def automatic_frequency_control_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "automatic_frequency_control_level", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheArchitectureMode")
@@ -365,6 +426,30 @@ class SiteArgs:
         pulumi.set(self, "paused", value)
 
     @_builtins.property
+    @pulumi.getter(name="performanceDataCollectionEnable")
+    def performance_data_collection_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to enable the quality data collection switch.Valid values:
+        """
+        return pulumi.get(self, "performance_data_collection_enable")
+
+    @performance_data_collection_enable.setter
+    def performance_data_collection_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "performance_data_collection_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="realClientIpHeaderName")
+    def real_client_ip_header_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Real client IP header name.
+        """
+        return pulumi.get(self, "real_client_ip_header_name")
+
+    @real_client_ip_header_name.setter
+    def real_client_ip_header_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "real_client_ip_header_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -413,6 +498,18 @@ class SiteArgs:
         pulumi.set(self, "site_version", value)
 
     @_builtins.property
+    @pulumi.getter(name="siteWafSettings")
+    def site_waf_settings(self) -> Optional[pulumi.Input['SiteSiteWafSettingsArgs']]:
+        """
+        Site WAF Configuration Details. See `site_waf_settings` below.
+        """
+        return pulumi.get(self, "site_waf_settings")
+
+    @site_waf_settings.setter
+    def site_waf_settings(self, value: Optional[pulumi.Input['SiteSiteWafSettingsArgs']]):
+        pulumi.set(self, "site_waf_settings", value)
+
+    @_builtins.property
     @pulumi.getter(name="tagName")
     def tag_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -457,6 +554,9 @@ class _SiteState:
                  add_real_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
                  ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  ai_template: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_frequency_control_action_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_frequency_control_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_frequency_control_level: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_architecture_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -471,11 +571,14 @@ class _SiteState:
                  ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
                  paused: Optional[pulumi.Input[_builtins.bool]] = None,
+                 performance_data_collection_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 real_client_ip_header_name: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  seo_bypass: Optional[pulumi.Input[_builtins.str]] = None,
                  site_name: Optional[pulumi.Input[_builtins.str]] = None,
                  site_name_exclusive: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_waf_settings: Optional[pulumi.Input['SiteSiteWafSettingsArgs']] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  tag_name: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -490,6 +593,9 @@ class _SiteState:
         :param pulumi.Input[_builtins.str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
         :param pulumi.Input[_builtins.str] ai_mode: HTTP DDoS Intelligent Protection Mode. Valid values:
         :param pulumi.Input[_builtins.str] ai_template: HTTP DDoS Intelligent Protection Level. Values:
+        :param pulumi.Input[_builtins.str] automatic_frequency_control_action_type: AutomaticFrequencyControl Disposal action.Valid values:
+        :param pulumi.Input[_builtins.str] automatic_frequency_control_enable: AutomaticFrequencyControl Switch.Valid values:
+        :param pulumi.Input[_builtins.str] automatic_frequency_control_level: AutomaticFrequencyControl Protection Level.Valid values:
         :param pulumi.Input[_builtins.str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
         :param pulumi.Input[_builtins.str] cache_reserve_enable: Site cache hold switch. Value:
         :param pulumi.Input[_builtins.str] cache_reserve_instance_id: The ID of the cache instance.
@@ -507,11 +613,14 @@ class _SiteState:
                - 'x.x': Global.
                - 'Cn.cn ': Mainland China.
         :param pulumi.Input[_builtins.bool] paused: Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+        :param pulumi.Input[_builtins.str] performance_data_collection_enable: Whether to enable the quality data collection switch.Valid values:
+        :param pulumi.Input[_builtins.str] real_client_ip_header_name: Real client IP header name.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] seo_bypass: Release the search engine crawler configuration. Value:
         :param pulumi.Input[_builtins.str] site_name: The website name.
         :param pulumi.Input[_builtins.str] site_name_exclusive: Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
         :param pulumi.Input[_builtins.int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
+        :param pulumi.Input['SiteSiteWafSettingsArgs'] site_waf_settings: Site WAF Configuration Details. See `site_waf_settings` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[_builtins.str] tag_name: Custom CacheTag name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Resource tags
@@ -527,6 +636,12 @@ class _SiteState:
             pulumi.set(__self__, "ai_mode", ai_mode)
         if ai_template is not None:
             pulumi.set(__self__, "ai_template", ai_template)
+        if automatic_frequency_control_action_type is not None:
+            pulumi.set(__self__, "automatic_frequency_control_action_type", automatic_frequency_control_action_type)
+        if automatic_frequency_control_enable is not None:
+            pulumi.set(__self__, "automatic_frequency_control_enable", automatic_frequency_control_enable)
+        if automatic_frequency_control_level is not None:
+            pulumi.set(__self__, "automatic_frequency_control_level", automatic_frequency_control_level)
         if cache_architecture_mode is not None:
             pulumi.set(__self__, "cache_architecture_mode", cache_architecture_mode)
         if cache_reserve_enable is not None:
@@ -555,6 +670,10 @@ class _SiteState:
             pulumi.set(__self__, "ipv6_region", ipv6_region)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
+        if performance_data_collection_enable is not None:
+            pulumi.set(__self__, "performance_data_collection_enable", performance_data_collection_enable)
+        if real_client_ip_header_name is not None:
+            pulumi.set(__self__, "real_client_ip_header_name", real_client_ip_header_name)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if seo_bypass is not None:
@@ -565,6 +684,8 @@ class _SiteState:
             pulumi.set(__self__, "site_name_exclusive", site_name_exclusive)
         if site_version is not None:
             pulumi.set(__self__, "site_version", site_version)
+        if site_waf_settings is not None:
+            pulumi.set(__self__, "site_waf_settings", site_waf_settings)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tag_name is not None:
@@ -635,6 +756,42 @@ class _SiteState:
     @ai_template.setter
     def ai_template(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ai_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticFrequencyControlActionType")
+    def automatic_frequency_control_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        AutomaticFrequencyControl Disposal action.Valid values:
+        """
+        return pulumi.get(self, "automatic_frequency_control_action_type")
+
+    @automatic_frequency_control_action_type.setter
+    def automatic_frequency_control_action_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "automatic_frequency_control_action_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticFrequencyControlEnable")
+    def automatic_frequency_control_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        AutomaticFrequencyControl Switch.Valid values:
+        """
+        return pulumi.get(self, "automatic_frequency_control_enable")
+
+    @automatic_frequency_control_enable.setter
+    def automatic_frequency_control_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "automatic_frequency_control_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticFrequencyControlLevel")
+    def automatic_frequency_control_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        AutomaticFrequencyControl Protection Level.Valid values:
+        """
+        return pulumi.get(self, "automatic_frequency_control_level")
+
+    @automatic_frequency_control_level.setter
+    def automatic_frequency_control_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "automatic_frequency_control_level", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheArchitectureMode")
@@ -808,6 +965,30 @@ class _SiteState:
         pulumi.set(self, "paused", value)
 
     @_builtins.property
+    @pulumi.getter(name="performanceDataCollectionEnable")
+    def performance_data_collection_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to enable the quality data collection switch.Valid values:
+        """
+        return pulumi.get(self, "performance_data_collection_enable")
+
+    @performance_data_collection_enable.setter
+    def performance_data_collection_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "performance_data_collection_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="realClientIpHeaderName")
+    def real_client_ip_header_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Real client IP header name.
+        """
+        return pulumi.get(self, "real_client_ip_header_name")
+
+    @real_client_ip_header_name.setter
+    def real_client_ip_header_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "real_client_ip_header_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -866,6 +1047,18 @@ class _SiteState:
     @site_version.setter
     def site_version(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "site_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="siteWafSettings")
+    def site_waf_settings(self) -> Optional[pulumi.Input['SiteSiteWafSettingsArgs']]:
+        """
+        Site WAF Configuration Details. See `site_waf_settings` below.
+        """
+        return pulumi.get(self, "site_waf_settings")
+
+    @site_waf_settings.setter
+    def site_waf_settings(self, value: Optional[pulumi.Input['SiteSiteWafSettingsArgs']]):
+        pulumi.set(self, "site_waf_settings", value)
 
     @_builtins.property
     @pulumi.getter
@@ -927,6 +1120,9 @@ class Site(pulumi.CustomResource):
                  add_real_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
                  ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  ai_template: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_frequency_control_action_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_frequency_control_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_frequency_control_level: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_architecture_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -940,11 +1136,14 @@ class Site(pulumi.CustomResource):
                  ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
                  paused: Optional[pulumi.Input[_builtins.bool]] = None,
+                 performance_data_collection_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 real_client_ip_header_name: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  seo_bypass: Optional[pulumi.Input[_builtins.str]] = None,
                  site_name: Optional[pulumi.Input[_builtins.str]] = None,
                  site_name_exclusive: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_waf_settings: Optional[pulumi.Input[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict']]] = None,
                  tag_name: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  version_management: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1009,6 +1208,9 @@ class Site(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
         :param pulumi.Input[_builtins.str] ai_mode: HTTP DDoS Intelligent Protection Mode. Valid values:
         :param pulumi.Input[_builtins.str] ai_template: HTTP DDoS Intelligent Protection Level. Values:
+        :param pulumi.Input[_builtins.str] automatic_frequency_control_action_type: AutomaticFrequencyControl Disposal action.Valid values:
+        :param pulumi.Input[_builtins.str] automatic_frequency_control_enable: AutomaticFrequencyControl Switch.Valid values:
+        :param pulumi.Input[_builtins.str] automatic_frequency_control_level: AutomaticFrequencyControl Protection Level.Valid values:
         :param pulumi.Input[_builtins.str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
         :param pulumi.Input[_builtins.str] cache_reserve_enable: Site cache hold switch. Value:
         :param pulumi.Input[_builtins.str] cache_reserve_instance_id: The ID of the cache instance.
@@ -1025,11 +1227,14 @@ class Site(pulumi.CustomResource):
                - 'x.x': Global.
                - 'Cn.cn ': Mainland China.
         :param pulumi.Input[_builtins.bool] paused: Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+        :param pulumi.Input[_builtins.str] performance_data_collection_enable: Whether to enable the quality data collection switch.Valid values:
+        :param pulumi.Input[_builtins.str] real_client_ip_header_name: Real client IP header name.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] seo_bypass: Release the search engine crawler configuration. Value:
         :param pulumi.Input[_builtins.str] site_name: The website name.
         :param pulumi.Input[_builtins.str] site_name_exclusive: Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
         :param pulumi.Input[_builtins.int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
+        :param pulumi.Input[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict']] site_waf_settings: Site WAF Configuration Details. See `site_waf_settings` below.
         :param pulumi.Input[_builtins.str] tag_name: Custom CacheTag name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Resource tags
         :param pulumi.Input[_builtins.bool] version_management: Version management enabled. When true, version management is turned on for the table site.
@@ -1111,6 +1316,9 @@ class Site(pulumi.CustomResource):
                  add_real_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
                  ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  ai_template: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_frequency_control_action_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_frequency_control_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_frequency_control_level: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_architecture_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  cache_reserve_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1124,11 +1332,14 @@ class Site(pulumi.CustomResource):
                  ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
                  paused: Optional[pulumi.Input[_builtins.bool]] = None,
+                 performance_data_collection_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 real_client_ip_header_name: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  seo_bypass: Optional[pulumi.Input[_builtins.str]] = None,
                  site_name: Optional[pulumi.Input[_builtins.str]] = None,
                  site_name_exclusive: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_waf_settings: Optional[pulumi.Input[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict']]] = None,
                  tag_name: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  version_management: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1141,11 +1352,16 @@ class Site(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SiteArgs.__new__(SiteArgs)
 
+            if access_type is None and not opts.urn:
+                raise TypeError("Missing required property 'access_type'")
             __props__.__dict__["access_type"] = access_type
             __props__.__dict__["add_client_geolocation_header"] = add_client_geolocation_header
             __props__.__dict__["add_real_client_ip_header"] = add_real_client_ip_header
             __props__.__dict__["ai_mode"] = ai_mode
             __props__.__dict__["ai_template"] = ai_template
+            __props__.__dict__["automatic_frequency_control_action_type"] = automatic_frequency_control_action_type
+            __props__.__dict__["automatic_frequency_control_enable"] = automatic_frequency_control_enable
+            __props__.__dict__["automatic_frequency_control_level"] = automatic_frequency_control_level
             __props__.__dict__["cache_architecture_mode"] = cache_architecture_mode
             __props__.__dict__["cache_reserve_enable"] = cache_reserve_enable
             __props__.__dict__["cache_reserve_instance_id"] = cache_reserve_instance_id
@@ -1161,6 +1377,8 @@ class Site(pulumi.CustomResource):
             __props__.__dict__["ipv6_enable"] = ipv6_enable
             __props__.__dict__["ipv6_region"] = ipv6_region
             __props__.__dict__["paused"] = paused
+            __props__.__dict__["performance_data_collection_enable"] = performance_data_collection_enable
+            __props__.__dict__["real_client_ip_header_name"] = real_client_ip_header_name
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["seo_bypass"] = seo_bypass
             if site_name is None and not opts.urn:
@@ -1168,6 +1386,7 @@ class Site(pulumi.CustomResource):
             __props__.__dict__["site_name"] = site_name
             __props__.__dict__["site_name_exclusive"] = site_name_exclusive
             __props__.__dict__["site_version"] = site_version
+            __props__.__dict__["site_waf_settings"] = site_waf_settings
             __props__.__dict__["tag_name"] = tag_name
             __props__.__dict__["tags"] = tags
             __props__.__dict__["version_management"] = version_management
@@ -1188,6 +1407,9 @@ class Site(pulumi.CustomResource):
             add_real_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
             ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
             ai_template: Optional[pulumi.Input[_builtins.str]] = None,
+            automatic_frequency_control_action_type: Optional[pulumi.Input[_builtins.str]] = None,
+            automatic_frequency_control_enable: Optional[pulumi.Input[_builtins.str]] = None,
+            automatic_frequency_control_level: Optional[pulumi.Input[_builtins.str]] = None,
             cache_architecture_mode: Optional[pulumi.Input[_builtins.str]] = None,
             cache_reserve_enable: Optional[pulumi.Input[_builtins.str]] = None,
             cache_reserve_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1202,11 +1424,14 @@ class Site(pulumi.CustomResource):
             ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
             ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
             paused: Optional[pulumi.Input[_builtins.bool]] = None,
+            performance_data_collection_enable: Optional[pulumi.Input[_builtins.str]] = None,
+            real_client_ip_header_name: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             seo_bypass: Optional[pulumi.Input[_builtins.str]] = None,
             site_name: Optional[pulumi.Input[_builtins.str]] = None,
             site_name_exclusive: Optional[pulumi.Input[_builtins.str]] = None,
             site_version: Optional[pulumi.Input[_builtins.int]] = None,
+            site_waf_settings: Optional[pulumi.Input[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict']]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             tag_name: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1225,6 +1450,9 @@ class Site(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
         :param pulumi.Input[_builtins.str] ai_mode: HTTP DDoS Intelligent Protection Mode. Valid values:
         :param pulumi.Input[_builtins.str] ai_template: HTTP DDoS Intelligent Protection Level. Values:
+        :param pulumi.Input[_builtins.str] automatic_frequency_control_action_type: AutomaticFrequencyControl Disposal action.Valid values:
+        :param pulumi.Input[_builtins.str] automatic_frequency_control_enable: AutomaticFrequencyControl Switch.Valid values:
+        :param pulumi.Input[_builtins.str] automatic_frequency_control_level: AutomaticFrequencyControl Protection Level.Valid values:
         :param pulumi.Input[_builtins.str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
         :param pulumi.Input[_builtins.str] cache_reserve_enable: Site cache hold switch. Value:
         :param pulumi.Input[_builtins.str] cache_reserve_instance_id: The ID of the cache instance.
@@ -1242,11 +1470,14 @@ class Site(pulumi.CustomResource):
                - 'x.x': Global.
                - 'Cn.cn ': Mainland China.
         :param pulumi.Input[_builtins.bool] paused: Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+        :param pulumi.Input[_builtins.str] performance_data_collection_enable: Whether to enable the quality data collection switch.Valid values:
+        :param pulumi.Input[_builtins.str] real_client_ip_header_name: Real client IP header name.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] seo_bypass: Release the search engine crawler configuration. Value:
         :param pulumi.Input[_builtins.str] site_name: The website name.
         :param pulumi.Input[_builtins.str] site_name_exclusive: Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
         :param pulumi.Input[_builtins.int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
+        :param pulumi.Input[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict']] site_waf_settings: Site WAF Configuration Details. See `site_waf_settings` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[_builtins.str] tag_name: Custom CacheTag name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Resource tags
@@ -1261,6 +1492,9 @@ class Site(pulumi.CustomResource):
         __props__.__dict__["add_real_client_ip_header"] = add_real_client_ip_header
         __props__.__dict__["ai_mode"] = ai_mode
         __props__.__dict__["ai_template"] = ai_template
+        __props__.__dict__["automatic_frequency_control_action_type"] = automatic_frequency_control_action_type
+        __props__.__dict__["automatic_frequency_control_enable"] = automatic_frequency_control_enable
+        __props__.__dict__["automatic_frequency_control_level"] = automatic_frequency_control_level
         __props__.__dict__["cache_architecture_mode"] = cache_architecture_mode
         __props__.__dict__["cache_reserve_enable"] = cache_reserve_enable
         __props__.__dict__["cache_reserve_instance_id"] = cache_reserve_instance_id
@@ -1275,11 +1509,14 @@ class Site(pulumi.CustomResource):
         __props__.__dict__["ipv6_enable"] = ipv6_enable
         __props__.__dict__["ipv6_region"] = ipv6_region
         __props__.__dict__["paused"] = paused
+        __props__.__dict__["performance_data_collection_enable"] = performance_data_collection_enable
+        __props__.__dict__["real_client_ip_header_name"] = real_client_ip_header_name
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["seo_bypass"] = seo_bypass
         __props__.__dict__["site_name"] = site_name
         __props__.__dict__["site_name_exclusive"] = site_name_exclusive
         __props__.__dict__["site_version"] = site_version
+        __props__.__dict__["site_waf_settings"] = site_waf_settings
         __props__.__dict__["status"] = status
         __props__.__dict__["tag_name"] = tag_name
         __props__.__dict__["tags"] = tags
@@ -1288,7 +1525,7 @@ class Site(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def access_type(self) -> pulumi.Output[_builtins.str]:
         """
         The DNS setup. Valid values:
         - `NS`
@@ -1327,6 +1564,30 @@ class Site(pulumi.CustomResource):
         HTTP DDoS Intelligent Protection Level. Values:
         """
         return pulumi.get(self, "ai_template")
+
+    @_builtins.property
+    @pulumi.getter(name="automaticFrequencyControlActionType")
+    def automatic_frequency_control_action_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        AutomaticFrequencyControl Disposal action.Valid values:
+        """
+        return pulumi.get(self, "automatic_frequency_control_action_type")
+
+    @_builtins.property
+    @pulumi.getter(name="automaticFrequencyControlEnable")
+    def automatic_frequency_control_enable(self) -> pulumi.Output[_builtins.str]:
+        """
+        AutomaticFrequencyControl Switch.Valid values:
+        """
+        return pulumi.get(self, "automatic_frequency_control_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="automaticFrequencyControlLevel")
+    def automatic_frequency_control_level(self) -> pulumi.Output[_builtins.str]:
+        """
+        AutomaticFrequencyControl Protection Level.Valid values:
+        """
+        return pulumi.get(self, "automatic_frequency_control_level")
 
     @_builtins.property
     @pulumi.getter(name="cacheArchitectureMode")
@@ -1444,6 +1705,22 @@ class Site(pulumi.CustomResource):
         return pulumi.get(self, "paused")
 
     @_builtins.property
+    @pulumi.getter(name="performanceDataCollectionEnable")
+    def performance_data_collection_enable(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Whether to enable the quality data collection switch.Valid values:
+        """
+        return pulumi.get(self, "performance_data_collection_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="realClientIpHeaderName")
+    def real_client_ip_header_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Real client IP header name.
+        """
+        return pulumi.get(self, "real_client_ip_header_name")
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1482,6 +1759,14 @@ class Site(pulumi.CustomResource):
         The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         """
         return pulumi.get(self, "site_version")
+
+    @_builtins.property
+    @pulumi.getter(name="siteWafSettings")
+    def site_waf_settings(self) -> pulumi.Output['outputs.SiteSiteWafSettings']:
+        """
+        Site WAF Configuration Details. See `site_waf_settings` below.
+        """
+        return pulumi.get(self, "site_waf_settings")
 
     @_builtins.property
     @pulumi.getter

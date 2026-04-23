@@ -20,6 +20,10 @@ import (
 //
 // > **NOTE:** Available since v1.194.0.
 //
+// > **NOTE** Since v1.276.0. Set `newOrder = -1` or omit the argument to let the Cloud Backend manage policy ordering automatically. You can also use `cloudfirewall.VpcFirewallControlPolicyOrder` to manage the policy ordering.<br>
+//
+//	If you want manged the policy order in parallel **do not** set the `newOrder`, instead use `cloudfirewall.VpcFirewallControlPolicyOrder` manage the policy order.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -106,15 +110,20 @@ type FirewallVpcFirewallControlPolicy struct {
 	// The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
 	ApplicationName pulumi.StringPtrOutput `pulumi:"applicationName"`
 	// The list of application types that the access control policy supports.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
 	ApplicationNameLists pulumi.StringArrayOutput `pulumi:"applicationNameLists"`
 	// (Available since v1.267.0) The time when the policy was created.
 	CreateTime pulumi.IntOutput `pulumi:"createTime"`
 	// Access control over VPC firewalls description of the strategy information.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+	// The destination port in the access control policy.
+	//
+	// ->**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
 	DestPort pulumi.StringOutput `pulumi:"destPort"`
-	// Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+	// Access control policy in the access traffic of the destination port address book name.
+	//
+	// ->**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
 	DestPortGroup pulumi.StringPtrOutput `pulumi:"destPortGroup"`
 	// Port Address Book port list.
 	DestPortGroupPorts pulumi.StringArrayOutput `pulumi:"destPortGroupPorts"`
@@ -192,9 +201,6 @@ func NewFirewallVpcFirewallControlPolicy(ctx *pulumi.Context,
 	if args.DestinationType == nil {
 		return nil, errors.New("invalid value for required argument 'DestinationType'")
 	}
-	if args.Order == nil {
-		return nil, errors.New("invalid value for required argument 'Order'")
-	}
 	if args.Proto == nil {
 		return nil, errors.New("invalid value for required argument 'Proto'")
 	}
@@ -239,15 +245,20 @@ type firewallVpcFirewallControlPolicyState struct {
 	// The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
 	ApplicationName *string `pulumi:"applicationName"`
 	// The list of application types that the access control policy supports.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
 	ApplicationNameLists []string `pulumi:"applicationNameLists"`
 	// (Available since v1.267.0) The time when the policy was created.
 	CreateTime *int `pulumi:"createTime"`
 	// Access control over VPC firewalls description of the strategy information.
 	Description *string `pulumi:"description"`
-	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+	// The destination port in the access control policy.
+	//
+	// ->**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
 	DestPort *string `pulumi:"destPort"`
-	// Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+	// Access control policy in the access traffic of the destination port address book name.
+	//
+	// ->**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
 	DestPortGroup *string `pulumi:"destPortGroup"`
 	// Port Address Book port list.
 	DestPortGroupPorts []string `pulumi:"destPortGroupPorts"`
@@ -316,15 +327,20 @@ type FirewallVpcFirewallControlPolicyState struct {
 	// The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
 	ApplicationName pulumi.StringPtrInput
 	// The list of application types that the access control policy supports.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
 	ApplicationNameLists pulumi.StringArrayInput
 	// (Available since v1.267.0) The time when the policy was created.
 	CreateTime pulumi.IntPtrInput
 	// Access control over VPC firewalls description of the strategy information.
 	Description pulumi.StringPtrInput
-	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+	// The destination port in the access control policy.
+	//
+	// ->**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
 	DestPort pulumi.StringPtrInput
-	// Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+	// Access control policy in the access traffic of the destination port address book name.
+	//
+	// ->**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
 	DestPortGroup pulumi.StringPtrInput
 	// Port Address Book port list.
 	DestPortGroupPorts pulumi.StringArrayInput
@@ -393,13 +409,18 @@ type firewallVpcFirewallControlPolicyArgs struct {
 	// The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
 	ApplicationName *string `pulumi:"applicationName"`
 	// The list of application types that the access control policy supports.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
 	ApplicationNameLists []string `pulumi:"applicationNameLists"`
 	// Access control over VPC firewalls description of the strategy information.
 	Description string `pulumi:"description"`
-	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+	// The destination port in the access control policy.
+	//
+	// ->**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
 	DestPort *string `pulumi:"destPort"`
-	// Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+	// Access control policy in the access traffic of the destination port address book name.
+	//
+	// ->**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
 	DestPortGroup *string `pulumi:"destPortGroup"`
 	// The type of the destination port in the access control policy. Valid values: `port`, `group`.
 	DestPortType *string `pulumi:"destPortType"`
@@ -419,7 +440,7 @@ type firewallVpcFirewallControlPolicyArgs struct {
 	// The UID of the member account of the current Alibaba cloud account.
 	MemberUid *string `pulumi:"memberUid"`
 	// The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
-	Order int `pulumi:"order"`
+	Order *int `pulumi:"order"`
 	// The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
 	Proto string `pulumi:"proto"`
 	// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
@@ -453,13 +474,18 @@ type FirewallVpcFirewallControlPolicyArgs struct {
 	// The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
 	ApplicationName pulumi.StringPtrInput
 	// The list of application types that the access control policy supports.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
 	ApplicationNameLists pulumi.StringArrayInput
 	// Access control over VPC firewalls description of the strategy information.
 	Description pulumi.StringInput
-	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+	// The destination port in the access control policy.
+	//
+	// ->**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
 	DestPort pulumi.StringPtrInput
-	// Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+	// Access control policy in the access traffic of the destination port address book name.
+	//
+	// ->**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
 	DestPortGroup pulumi.StringPtrInput
 	// The type of the destination port in the access control policy. Valid values: `port`, `group`.
 	DestPortType pulumi.StringPtrInput
@@ -479,7 +505,7 @@ type FirewallVpcFirewallControlPolicyArgs struct {
 	// The UID of the member account of the current Alibaba cloud account.
 	MemberUid pulumi.StringPtrInput
 	// The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
-	Order pulumi.IntInput
+	Order pulumi.IntPtrInput
 	// The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
 	Proto pulumi.StringInput
 	// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
@@ -614,6 +640,7 @@ func (o FirewallVpcFirewallControlPolicyOutput) ApplicationName() pulumi.StringP
 }
 
 // The list of application types that the access control policy supports.
+//
 // > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
 func (o FirewallVpcFirewallControlPolicyOutput) ApplicationNameLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringArrayOutput { return v.ApplicationNameLists }).(pulumi.StringArrayOutput)
@@ -629,12 +656,16 @@ func (o FirewallVpcFirewallControlPolicyOutput) Description() pulumi.StringOutpu
 	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+// The destination port in the access control policy.
+//
+// ->**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
 func (o FirewallVpcFirewallControlPolicyOutput) DestPort() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringOutput { return v.DestPort }).(pulumi.StringOutput)
 }
 
-// Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+// Access control policy in the access traffic of the destination port address book name.
+//
+// ->**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
 func (o FirewallVpcFirewallControlPolicyOutput) DestPortGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringPtrOutput { return v.DestPortGroup }).(pulumi.StringPtrOutput)
 }

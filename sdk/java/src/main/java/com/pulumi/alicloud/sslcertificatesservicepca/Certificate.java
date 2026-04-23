@@ -75,21 +75,24 @@ import javax.annotation.Nullable;
  * SSL Certificates Pca Certificate can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:sslcertificatesservicepca/certificate:Certificate example &lt;id&gt;
+ * $ pulumi import alicloud:sslcertificatesservicepca/certificate:Certificate example &lt;identifier&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:sslcertificatesservicepca/certificate:Certificate")
 public class Certificate extends com.pulumi.resources.CustomResource {
     /**
-     * The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
-     * - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-     * - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-     * - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-     * - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-     * - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-     * - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-     * - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+     * The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+     * - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+     * - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+     * - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+     * - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+     * - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+     * - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+     * - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+     * 
+     * The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+     * 
      * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
      * 
      */
@@ -97,14 +100,17 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     private Output<String> algorithm;
 
     /**
-     * @return The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
-     * - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-     * - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-     * - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-     * - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-     * - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-     * - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-     * - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+     * @return The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+     * - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+     * - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+     * - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+     * - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+     * - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+     * - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+     * - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+     * 
+     * The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+     * 
      * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
      * 
      */
@@ -148,142 +154,154 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return this.certificateType;
     }
     /**
-     * The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+     * The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
      * 
      */
     @Export(name="commonName", refs={String.class}, tree="[0]")
     private Output<String> commonName;
 
     /**
-     * @return The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+     * @return The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
      * 
      */
     public Output<String> commonName() {
         return this.commonName;
     }
     /**
-     * The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+     * The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+     * For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
      * 
      */
     @Export(name="countryCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> countryCode;
 
     /**
-     * @return The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+     * @return The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+     * For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
      * 
      */
     public Output<Optional<String>> countryCode() {
         return Codegen.optional(this.countryCode);
     }
     /**
-     * The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * The interval (in days) for updating the Certificate Revocation List (CRL).
      * 
      */
     @Export(name="crlDay", refs={Integer.class}, tree="[0]")
     private Output<Integer> crlDay;
 
     /**
-     * @return The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * @return The interval (in days) for updating the Certificate Revocation List (CRL).
      * 
      */
     public Output<Integer> crlDay() {
         return this.crlDay;
     }
     /**
-     * This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+     * Specifies whether to enable CRL.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Export(name="enableCrl", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableCrl;
 
     /**
-     * @return This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+     * @return Specifies whether to enable CRL.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<Boolean>> enableCrl() {
         return Codegen.optional(this.enableCrl);
     }
     /**
-     * The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * Extended attributes of the certificate, used to define extended key usages.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Export(name="extendedKeyUsages", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> extendedKeyUsages;
 
     /**
-     * @return The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * @return Extended attributes of the certificate, used to define extended key usages.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<List<String>>> extendedKeyUsages() {
         return Codegen.optional(this.extendedKeyUsages);
     }
     /**
-     * Name of the city where the organization is located. Support the use of Chinese, English characters.
+     * The name of the city where the organization is located.
      * 
      */
     @Export(name="locality", refs={String.class}, tree="[0]")
     private Output<String> locality;
 
     /**
-     * @return Name of the city where the organization is located. Support the use of Chinese, English characters.
+     * @return The name of the city where the organization is located.
      * 
      */
     public Output<String> locality() {
         return this.locality;
     }
     /**
-     * The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+     * The name of the organization associated with the CA certificate.
      * 
      */
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
-     * @return The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+     * @return The name of the organization associated with the CA certificate.
      * 
      */
     public Output<String> organization() {
         return this.organization;
     }
     /**
-     * The name of the department or branch under the organization. Support the use of Chinese, English characters.
+     * The name of the department or branch within the organization
      * 
      */
     @Export(name="organizationUnit", refs={String.class}, tree="[0]")
     private Output<String> organizationUnit;
 
     /**
-     * @return The name of the department or branch under the organization. Support the use of Chinese, English characters.
+     * @return The name of the department or branch within the organization
      * 
      */
     public Output<String> organizationUnit() {
         return this.organizationUnit;
     }
     /**
-     * The unique identifier of the root CA certificate.
-     * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+     * Parent node identifier.
      * 
      */
     @Export(name="parentIdentifier", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentIdentifier;
 
     /**
-     * @return The unique identifier of the root CA certificate.
-     * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+     * @return Parent node identifier.
      * 
      */
     public Output<Optional<String>> parentIdentifier() {
         return Codegen.optional(this.parentIdentifier);
     }
     /**
-     * The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * The maximum depth of subordinate CA levels allowed under this CA.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Export(name="pathLenConstraint", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> pathLenConstraint;
 
     /**
-     * @return The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * @return The maximum depth of subordinate CA levels allowed under this CA.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<Integer>> pathLenConstraint() {
@@ -304,58 +322,60 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+     * The name of the province, municipality directly under the central government, or autonomous region where the organization is located
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+     * @return The name of the province, municipality directly under the central government, or autonomous region where the organization is located
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * The status of the CA certificate.
+     * The current CA status.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the CA certificate.
+     * @return The current CA status.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The tag of the resource.
+     * Tags
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return Tags
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The validity period of the CA certificate, in years.
-     * &gt; **NOTE:**  It is recommended to set to `5` to `10` years.
+     * The validity period of the root CA certificate, in years.
+     * 
+     * &gt; **NOTE:**  We recommend setting it to 5–10 years.
      * 
      */
     @Export(name="years", refs={Integer.class}, tree="[0]")
     private Output<Integer> years;
 
     /**
-     * @return The validity period of the CA certificate, in years.
-     * &gt; **NOTE:**  It is recommended to set to `5` to `10` years.
+     * @return The validity period of the root CA certificate, in years.
+     * 
+     * &gt; **NOTE:**  We recommend setting it to 5–10 years.
      * 
      */
     public Output<Integer> years() {

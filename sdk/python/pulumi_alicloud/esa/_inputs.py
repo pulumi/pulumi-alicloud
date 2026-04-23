@@ -53,6 +53,30 @@ __all__ = [
     'SiteDeliveryTaskS3DeliveryArgsDict',
     'SiteDeliveryTaskSlsDeliveryArgs',
     'SiteDeliveryTaskSlsDeliveryArgsDict',
+    'SiteSiteWafSettingsArgs',
+    'SiteSiteWafSettingsArgsDict',
+    'SiteSiteWafSettingsAddBotProtectionHeadersArgs',
+    'SiteSiteWafSettingsAddBotProtectionHeadersArgsDict',
+    'SiteSiteWafSettingsAddSecurityHeadersArgs',
+    'SiteSiteWafSettingsAddSecurityHeadersArgsDict',
+    'SiteSiteWafSettingsBandwidthAbuseProtectionArgs',
+    'SiteSiteWafSettingsBandwidthAbuseProtectionArgsDict',
+    'SiteSiteWafSettingsBotManagementArgs',
+    'SiteSiteWafSettingsBotManagementArgsDict',
+    'SiteSiteWafSettingsBotManagementDefiniteBotsArgs',
+    'SiteSiteWafSettingsBotManagementDefiniteBotsArgsDict',
+    'SiteSiteWafSettingsBotManagementEffectOnStaticArgs',
+    'SiteSiteWafSettingsBotManagementEffectOnStaticArgsDict',
+    'SiteSiteWafSettingsBotManagementJsDetectionArgs',
+    'SiteSiteWafSettingsBotManagementJsDetectionArgsDict',
+    'SiteSiteWafSettingsBotManagementLikelyBotsArgs',
+    'SiteSiteWafSettingsBotManagementLikelyBotsArgsDict',
+    'SiteSiteWafSettingsBotManagementVerifiedBotsArgs',
+    'SiteSiteWafSettingsBotManagementVerifiedBotsArgsDict',
+    'SiteSiteWafSettingsClientIpIdentifierArgs',
+    'SiteSiteWafSettingsClientIpIdentifierArgsDict',
+    'SiteSiteWafSettingsSecurityLevelArgs',
+    'SiteSiteWafSettingsSecurityLevelArgsDict',
     'TransportLayerApplicationRuleArgs',
     'TransportLayerApplicationRuleArgsDict',
     'WafRuleConfigArgs',
@@ -2352,6 +2376,647 @@ class SiteDeliveryTaskSlsDeliveryArgs:
     @sls_region.setter
     def sls_region(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "sls_region", value)
+
+
+class SiteSiteWafSettingsArgsDict(TypedDict):
+    add_bot_protection_headers: NotRequired[pulumi.Input['SiteSiteWafSettingsAddBotProtectionHeadersArgsDict']]
+    """
+    Add BOT Protection Header. See `add_bot_protection_headers` below.
+    """
+    add_security_headers: NotRequired[pulumi.Input['SiteSiteWafSettingsAddSecurityHeadersArgsDict']]
+    """
+    Add Security Header. See `add_security_headers` below.
+    """
+    bandwidth_abuse_protection: NotRequired[pulumi.Input['SiteSiteWafSettingsBandwidthAbuseProtectionArgsDict']]
+    """
+    Anti-theft brush. See `bandwidth_abuse_protection` below.
+    """
+    bot_management: NotRequired[pulumi.Input['SiteSiteWafSettingsBotManagementArgsDict']]
+    """
+    Bot Management. See `bot_management` below.
+    """
+    client_ip_identifier: NotRequired[pulumi.Input['SiteSiteWafSettingsClientIpIdentifierArgsDict']]
+    """
+    Client IP Identification. See `client_ip_identifier` below.
+    """
+    security_level: NotRequired[pulumi.Input['SiteSiteWafSettingsSecurityLevelArgsDict']]
+    """
+    Security Level. See `security_level` below.
+    """
+
+@pulumi.input_type
+class SiteSiteWafSettingsArgs:
+    def __init__(__self__, *,
+                 add_bot_protection_headers: Optional[pulumi.Input['SiteSiteWafSettingsAddBotProtectionHeadersArgs']] = None,
+                 add_security_headers: Optional[pulumi.Input['SiteSiteWafSettingsAddSecurityHeadersArgs']] = None,
+                 bandwidth_abuse_protection: Optional[pulumi.Input['SiteSiteWafSettingsBandwidthAbuseProtectionArgs']] = None,
+                 bot_management: Optional[pulumi.Input['SiteSiteWafSettingsBotManagementArgs']] = None,
+                 client_ip_identifier: Optional[pulumi.Input['SiteSiteWafSettingsClientIpIdentifierArgs']] = None,
+                 security_level: Optional[pulumi.Input['SiteSiteWafSettingsSecurityLevelArgs']] = None):
+        """
+        :param pulumi.Input['SiteSiteWafSettingsAddBotProtectionHeadersArgs'] add_bot_protection_headers: Add BOT Protection Header. See `add_bot_protection_headers` below.
+        :param pulumi.Input['SiteSiteWafSettingsAddSecurityHeadersArgs'] add_security_headers: Add Security Header. See `add_security_headers` below.
+        :param pulumi.Input['SiteSiteWafSettingsBandwidthAbuseProtectionArgs'] bandwidth_abuse_protection: Anti-theft brush. See `bandwidth_abuse_protection` below.
+        :param pulumi.Input['SiteSiteWafSettingsBotManagementArgs'] bot_management: Bot Management. See `bot_management` below.
+        :param pulumi.Input['SiteSiteWafSettingsClientIpIdentifierArgs'] client_ip_identifier: Client IP Identification. See `client_ip_identifier` below.
+        :param pulumi.Input['SiteSiteWafSettingsSecurityLevelArgs'] security_level: Security Level. See `security_level` below.
+        """
+        if add_bot_protection_headers is not None:
+            pulumi.set(__self__, "add_bot_protection_headers", add_bot_protection_headers)
+        if add_security_headers is not None:
+            pulumi.set(__self__, "add_security_headers", add_security_headers)
+        if bandwidth_abuse_protection is not None:
+            pulumi.set(__self__, "bandwidth_abuse_protection", bandwidth_abuse_protection)
+        if bot_management is not None:
+            pulumi.set(__self__, "bot_management", bot_management)
+        if client_ip_identifier is not None:
+            pulumi.set(__self__, "client_ip_identifier", client_ip_identifier)
+        if security_level is not None:
+            pulumi.set(__self__, "security_level", security_level)
+
+    @_builtins.property
+    @pulumi.getter(name="addBotProtectionHeaders")
+    def add_bot_protection_headers(self) -> Optional[pulumi.Input['SiteSiteWafSettingsAddBotProtectionHeadersArgs']]:
+        """
+        Add BOT Protection Header. See `add_bot_protection_headers` below.
+        """
+        return pulumi.get(self, "add_bot_protection_headers")
+
+    @add_bot_protection_headers.setter
+    def add_bot_protection_headers(self, value: Optional[pulumi.Input['SiteSiteWafSettingsAddBotProtectionHeadersArgs']]):
+        pulumi.set(self, "add_bot_protection_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="addSecurityHeaders")
+    def add_security_headers(self) -> Optional[pulumi.Input['SiteSiteWafSettingsAddSecurityHeadersArgs']]:
+        """
+        Add Security Header. See `add_security_headers` below.
+        """
+        return pulumi.get(self, "add_security_headers")
+
+    @add_security_headers.setter
+    def add_security_headers(self, value: Optional[pulumi.Input['SiteSiteWafSettingsAddSecurityHeadersArgs']]):
+        pulumi.set(self, "add_security_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bandwidthAbuseProtection")
+    def bandwidth_abuse_protection(self) -> Optional[pulumi.Input['SiteSiteWafSettingsBandwidthAbuseProtectionArgs']]:
+        """
+        Anti-theft brush. See `bandwidth_abuse_protection` below.
+        """
+        return pulumi.get(self, "bandwidth_abuse_protection")
+
+    @bandwidth_abuse_protection.setter
+    def bandwidth_abuse_protection(self, value: Optional[pulumi.Input['SiteSiteWafSettingsBandwidthAbuseProtectionArgs']]):
+        pulumi.set(self, "bandwidth_abuse_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="botManagement")
+    def bot_management(self) -> Optional[pulumi.Input['SiteSiteWafSettingsBotManagementArgs']]:
+        """
+        Bot Management. See `bot_management` below.
+        """
+        return pulumi.get(self, "bot_management")
+
+    @bot_management.setter
+    def bot_management(self, value: Optional[pulumi.Input['SiteSiteWafSettingsBotManagementArgs']]):
+        pulumi.set(self, "bot_management", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientIpIdentifier")
+    def client_ip_identifier(self) -> Optional[pulumi.Input['SiteSiteWafSettingsClientIpIdentifierArgs']]:
+        """
+        Client IP Identification. See `client_ip_identifier` below.
+        """
+        return pulumi.get(self, "client_ip_identifier")
+
+    @client_ip_identifier.setter
+    def client_ip_identifier(self, value: Optional[pulumi.Input['SiteSiteWafSettingsClientIpIdentifierArgs']]):
+        pulumi.set(self, "client_ip_identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securityLevel")
+    def security_level(self) -> Optional[pulumi.Input['SiteSiteWafSettingsSecurityLevelArgs']]:
+        """
+        Security Level. See `security_level` below.
+        """
+        return pulumi.get(self, "security_level")
+
+    @security_level.setter
+    def security_level(self, value: Optional[pulumi.Input['SiteSiteWafSettingsSecurityLevelArgs']]):
+        pulumi.set(self, "security_level", value)
+
+
+class SiteSiteWafSettingsAddBotProtectionHeadersArgsDict(TypedDict):
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Switch.
+    """
+
+@pulumi.input_type
+class SiteSiteWafSettingsAddBotProtectionHeadersArgs:
+    def __init__(__self__, *,
+                 enable: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable: Switch.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Switch.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable", value)
+
+
+class SiteSiteWafSettingsAddSecurityHeadersArgsDict(TypedDict):
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Switch.
+    """
+
+@pulumi.input_type
+class SiteSiteWafSettingsAddSecurityHeadersArgs:
+    def __init__(__self__, *,
+                 enable: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable: Switch.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Switch.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable", value)
+
+
+class SiteSiteWafSettingsBandwidthAbuseProtectionArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Action.Valid values:
+    """
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Rule ID.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the resource
+    """
+
+@pulumi.input_type
+class SiteSiteWafSettingsBandwidthAbuseProtectionArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.int]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] action: Action.Valid values:
+        :param pulumi.Input[_builtins.int] id: Rule ID.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Action.Valid values:
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+class SiteSiteWafSettingsBotManagementArgsDict(TypedDict):
+    definite_bots: NotRequired[pulumi.Input['SiteSiteWafSettingsBotManagementDefiniteBotsArgsDict']]
+    """
+    Definitely Bot.
+    """
+    effect_on_static: NotRequired[pulumi.Input['SiteSiteWafSettingsBotManagementEffectOnStaticArgsDict']]
+    """
+    VApply to Static Resource Requests. See `effect_on_static` below.
+    """
+    js_detection: NotRequired[pulumi.Input['SiteSiteWafSettingsBotManagementJsDetectionArgsDict']]
+    """
+    JavaScript Challenge. See `js_detection` below.
+    """
+    likely_bots: NotRequired[pulumi.Input['SiteSiteWafSettingsBotManagementLikelyBotsArgsDict']]
+    """
+    Likely Bot.
+    """
+    verified_bots: NotRequired[pulumi.Input['SiteSiteWafSettingsBotManagementVerifiedBotsArgsDict']]
+    """
+    Verified Bot.
+    """
+
+@pulumi.input_type
+class SiteSiteWafSettingsBotManagementArgs:
+    def __init__(__self__, *,
+                 definite_bots: Optional[pulumi.Input['SiteSiteWafSettingsBotManagementDefiniteBotsArgs']] = None,
+                 effect_on_static: Optional[pulumi.Input['SiteSiteWafSettingsBotManagementEffectOnStaticArgs']] = None,
+                 js_detection: Optional[pulumi.Input['SiteSiteWafSettingsBotManagementJsDetectionArgs']] = None,
+                 likely_bots: Optional[pulumi.Input['SiteSiteWafSettingsBotManagementLikelyBotsArgs']] = None,
+                 verified_bots: Optional[pulumi.Input['SiteSiteWafSettingsBotManagementVerifiedBotsArgs']] = None):
+        """
+        :param pulumi.Input['SiteSiteWafSettingsBotManagementDefiniteBotsArgs'] definite_bots: Definitely Bot.
+        :param pulumi.Input['SiteSiteWafSettingsBotManagementEffectOnStaticArgs'] effect_on_static: VApply to Static Resource Requests. See `effect_on_static` below.
+        :param pulumi.Input['SiteSiteWafSettingsBotManagementJsDetectionArgs'] js_detection: JavaScript Challenge. See `js_detection` below.
+        :param pulumi.Input['SiteSiteWafSettingsBotManagementLikelyBotsArgs'] likely_bots: Likely Bot.
+        :param pulumi.Input['SiteSiteWafSettingsBotManagementVerifiedBotsArgs'] verified_bots: Verified Bot.
+        """
+        if definite_bots is not None:
+            pulumi.set(__self__, "definite_bots", definite_bots)
+        if effect_on_static is not None:
+            pulumi.set(__self__, "effect_on_static", effect_on_static)
+        if js_detection is not None:
+            pulumi.set(__self__, "js_detection", js_detection)
+        if likely_bots is not None:
+            pulumi.set(__self__, "likely_bots", likely_bots)
+        if verified_bots is not None:
+            pulumi.set(__self__, "verified_bots", verified_bots)
+
+    @_builtins.property
+    @pulumi.getter(name="definiteBots")
+    def definite_bots(self) -> Optional[pulumi.Input['SiteSiteWafSettingsBotManagementDefiniteBotsArgs']]:
+        """
+        Definitely Bot.
+        """
+        return pulumi.get(self, "definite_bots")
+
+    @definite_bots.setter
+    def definite_bots(self, value: Optional[pulumi.Input['SiteSiteWafSettingsBotManagementDefiniteBotsArgs']]):
+        pulumi.set(self, "definite_bots", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectOnStatic")
+    def effect_on_static(self) -> Optional[pulumi.Input['SiteSiteWafSettingsBotManagementEffectOnStaticArgs']]:
+        """
+        VApply to Static Resource Requests. See `effect_on_static` below.
+        """
+        return pulumi.get(self, "effect_on_static")
+
+    @effect_on_static.setter
+    def effect_on_static(self, value: Optional[pulumi.Input['SiteSiteWafSettingsBotManagementEffectOnStaticArgs']]):
+        pulumi.set(self, "effect_on_static", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jsDetection")
+    def js_detection(self) -> Optional[pulumi.Input['SiteSiteWafSettingsBotManagementJsDetectionArgs']]:
+        """
+        JavaScript Challenge. See `js_detection` below.
+        """
+        return pulumi.get(self, "js_detection")
+
+    @js_detection.setter
+    def js_detection(self, value: Optional[pulumi.Input['SiteSiteWafSettingsBotManagementJsDetectionArgs']]):
+        pulumi.set(self, "js_detection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="likelyBots")
+    def likely_bots(self) -> Optional[pulumi.Input['SiteSiteWafSettingsBotManagementLikelyBotsArgs']]:
+        """
+        Likely Bot.
+        """
+        return pulumi.get(self, "likely_bots")
+
+    @likely_bots.setter
+    def likely_bots(self, value: Optional[pulumi.Input['SiteSiteWafSettingsBotManagementLikelyBotsArgs']]):
+        pulumi.set(self, "likely_bots", value)
+
+    @_builtins.property
+    @pulumi.getter(name="verifiedBots")
+    def verified_bots(self) -> Optional[pulumi.Input['SiteSiteWafSettingsBotManagementVerifiedBotsArgs']]:
+        """
+        Verified Bot.
+        """
+        return pulumi.get(self, "verified_bots")
+
+    @verified_bots.setter
+    def verified_bots(self, value: Optional[pulumi.Input['SiteSiteWafSettingsBotManagementVerifiedBotsArgs']]):
+        pulumi.set(self, "verified_bots", value)
+
+
+class SiteSiteWafSettingsBotManagementDefiniteBotsArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Action.Valid values:
+    """
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Rule ID.
+    """
+
+@pulumi.input_type
+class SiteSiteWafSettingsBotManagementDefiniteBotsArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] action: Action.Valid values:
+        :param pulumi.Input[_builtins.int] id: Rule ID.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Action.Valid values:
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "id", value)
+
+
+class SiteSiteWafSettingsBotManagementEffectOnStaticArgsDict(TypedDict):
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Switch.
+    """
+
+@pulumi.input_type
+class SiteSiteWafSettingsBotManagementEffectOnStaticArgs:
+    def __init__(__self__, *,
+                 enable: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable: Switch.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Switch.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable", value)
+
+
+class SiteSiteWafSettingsBotManagementJsDetectionArgsDict(TypedDict):
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Switch.
+    """
+
+@pulumi.input_type
+class SiteSiteWafSettingsBotManagementJsDetectionArgs:
+    def __init__(__self__, *,
+                 enable: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable: Switch.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Switch.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable", value)
+
+
+class SiteSiteWafSettingsBotManagementLikelyBotsArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Action.Valid values:
+    """
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Rule ID.
+    """
+
+@pulumi.input_type
+class SiteSiteWafSettingsBotManagementLikelyBotsArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] action: Action.Valid values:
+        :param pulumi.Input[_builtins.int] id: Rule ID.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Action.Valid values:
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "id", value)
+
+
+class SiteSiteWafSettingsBotManagementVerifiedBotsArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Action.Valid values:
+    """
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Rule ID.
+    """
+
+@pulumi.input_type
+class SiteSiteWafSettingsBotManagementVerifiedBotsArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] action: Action.Valid values:
+        :param pulumi.Input[_builtins.int] id: Rule ID.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Action.Valid values:
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "id", value)
+
+
+class SiteSiteWafSettingsClientIpIdentifierArgsDict(TypedDict):
+    headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Identification Mode.Valid values:
+    """
+
+@pulumi.input_type
+class SiteSiteWafSettingsClientIpIdentifierArgs:
+    def __init__(__self__, *,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] mode: Identification Mode.Valid values:
+        """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "headers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identification Mode.Valid values:
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+
+class SiteSiteWafSettingsSecurityLevelArgsDict(TypedDict):
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Security level value. Valid values:
+    """
+
+@pulumi.input_type
+class SiteSiteWafSettingsSecurityLevelArgs:
+    def __init__(__self__, *,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] value: Security level value. Valid values:
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Security level value. Valid values:
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 class TransportLayerApplicationRuleArgsDict(TypedDict):

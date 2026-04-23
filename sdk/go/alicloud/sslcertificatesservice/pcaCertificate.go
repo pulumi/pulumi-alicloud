@@ -60,21 +60,24 @@ import (
 // SSL Certificates Pca Certificate can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example <id>
+// $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example <identifier>
 // ```
 //
 // Deprecated: alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate
 type PcaCertificate struct {
 	pulumi.CustomResourceState
 
-	// The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
-	// - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-	// - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-	// - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+	// The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+	// - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+	//
+	// The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+	//
 	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
 	Algorithm pulumi.StringOutput `pulumi:"algorithm"`
 	// A custom alias for the certificate, used to define a user-friendly name.
@@ -85,37 +88,44 @@ type PcaCertificate struct {
 	// - `ROOT`: A root CA certificate.
 	// - `SUB_ROOT`: A subordinate CA certificate.
 	CertificateType pulumi.StringOutput `pulumi:"certificateType"`
-	// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+	// The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
 	CommonName pulumi.StringOutput `pulumi:"commonName"`
-	// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+	// The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+	// For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
-	// The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// The interval (in days) for updating the Certificate Revocation List (CRL).
 	CrlDay pulumi.IntOutput `pulumi:"crlDay"`
-	// This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+	// Specifies whether to enable CRL.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	EnableCrl pulumi.BoolPtrOutput `pulumi:"enableCrl"`
-	// The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// Extended attributes of the certificate, used to define extended key usages.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ExtendedKeyUsages pulumi.StringArrayOutput `pulumi:"extendedKeyUsages"`
-	// Name of the city where the organization is located. Support the use of Chinese, English characters.
+	// The name of the city where the organization is located.
 	Locality pulumi.StringOutput `pulumi:"locality"`
-	// The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+	// The name of the organization associated with the CA certificate.
 	Organization pulumi.StringOutput `pulumi:"organization"`
-	// The name of the department or branch under the organization. Support the use of Chinese, English characters.
+	// The name of the department or branch within the organization
 	OrganizationUnit pulumi.StringOutput `pulumi:"organizationUnit"`
-	// The unique identifier of the root CA certificate.
-	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+	// Parent node identifier.
 	ParentIdentifier pulumi.StringPtrOutput `pulumi:"parentIdentifier"`
-	// The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// The maximum depth of subordinate CA levels allowed under this CA.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PathLenConstraint pulumi.IntPtrOutput `pulumi:"pathLenConstraint"`
 	// A resource property field representing the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+	// The name of the province, municipality directly under the central government, or autonomous region where the organization is located
 	State pulumi.StringOutput `pulumi:"state"`
-	// The status of the CA certificate.
+	// The current CA status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The tag of the resource.
+	// Tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The validity period of the CA certificate, in years.
-	// > **NOTE:**  It is recommended to set to `5` to `10` years.
+	// The validity period of the root CA certificate, in years.
+	//
+	// > **NOTE:**  We recommend setting it to 5–10 years.
 	Years pulumi.IntOutput `pulumi:"years"`
 }
 
@@ -167,14 +177,17 @@ func GetPcaCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PcaCertificate resources.
 type pcaCertificateState struct {
-	// The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
-	// - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-	// - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-	// - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+	// The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+	// - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+	//
+	// The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+	//
 	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
 	Algorithm *string `pulumi:"algorithm"`
 	// A custom alias for the certificate, used to define a user-friendly name.
@@ -185,49 +198,59 @@ type pcaCertificateState struct {
 	// - `ROOT`: A root CA certificate.
 	// - `SUB_ROOT`: A subordinate CA certificate.
 	CertificateType *string `pulumi:"certificateType"`
-	// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+	// The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
 	CommonName *string `pulumi:"commonName"`
-	// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+	// The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+	// For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
 	CountryCode *string `pulumi:"countryCode"`
-	// The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// The interval (in days) for updating the Certificate Revocation List (CRL).
 	CrlDay *int `pulumi:"crlDay"`
-	// This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+	// Specifies whether to enable CRL.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	EnableCrl *bool `pulumi:"enableCrl"`
-	// The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// Extended attributes of the certificate, used to define extended key usages.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ExtendedKeyUsages []string `pulumi:"extendedKeyUsages"`
-	// Name of the city where the organization is located. Support the use of Chinese, English characters.
+	// The name of the city where the organization is located.
 	Locality *string `pulumi:"locality"`
-	// The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+	// The name of the organization associated with the CA certificate.
 	Organization *string `pulumi:"organization"`
-	// The name of the department or branch under the organization. Support the use of Chinese, English characters.
+	// The name of the department or branch within the organization
 	OrganizationUnit *string `pulumi:"organizationUnit"`
-	// The unique identifier of the root CA certificate.
-	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+	// Parent node identifier.
 	ParentIdentifier *string `pulumi:"parentIdentifier"`
-	// The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// The maximum depth of subordinate CA levels allowed under this CA.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PathLenConstraint *int `pulumi:"pathLenConstraint"`
 	// A resource property field representing the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+	// The name of the province, municipality directly under the central government, or autonomous region where the organization is located
 	State *string `pulumi:"state"`
-	// The status of the CA certificate.
+	// The current CA status.
 	Status *string `pulumi:"status"`
-	// The tag of the resource.
+	// Tags
 	Tags map[string]string `pulumi:"tags"`
-	// The validity period of the CA certificate, in years.
-	// > **NOTE:**  It is recommended to set to `5` to `10` years.
+	// The validity period of the root CA certificate, in years.
+	//
+	// > **NOTE:**  We recommend setting it to 5–10 years.
 	Years *int `pulumi:"years"`
 }
 
 type PcaCertificateState struct {
-	// The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
-	// - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-	// - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-	// - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+	// The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+	// - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+	//
+	// The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+	//
 	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
 	Algorithm pulumi.StringPtrInput
 	// A custom alias for the certificate, used to define a user-friendly name.
@@ -238,37 +261,44 @@ type PcaCertificateState struct {
 	// - `ROOT`: A root CA certificate.
 	// - `SUB_ROOT`: A subordinate CA certificate.
 	CertificateType pulumi.StringPtrInput
-	// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+	// The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
 	CommonName pulumi.StringPtrInput
-	// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+	// The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+	// For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
 	CountryCode pulumi.StringPtrInput
-	// The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// The interval (in days) for updating the Certificate Revocation List (CRL).
 	CrlDay pulumi.IntPtrInput
-	// This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+	// Specifies whether to enable CRL.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	EnableCrl pulumi.BoolPtrInput
-	// The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// Extended attributes of the certificate, used to define extended key usages.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ExtendedKeyUsages pulumi.StringArrayInput
-	// Name of the city where the organization is located. Support the use of Chinese, English characters.
+	// The name of the city where the organization is located.
 	Locality pulumi.StringPtrInput
-	// The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+	// The name of the organization associated with the CA certificate.
 	Organization pulumi.StringPtrInput
-	// The name of the department or branch under the organization. Support the use of Chinese, English characters.
+	// The name of the department or branch within the organization
 	OrganizationUnit pulumi.StringPtrInput
-	// The unique identifier of the root CA certificate.
-	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+	// Parent node identifier.
 	ParentIdentifier pulumi.StringPtrInput
-	// The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// The maximum depth of subordinate CA levels allowed under this CA.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PathLenConstraint pulumi.IntPtrInput
 	// A resource property field representing the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+	// The name of the province, municipality directly under the central government, or autonomous region where the organization is located
 	State pulumi.StringPtrInput
-	// The status of the CA certificate.
+	// The current CA status.
 	Status pulumi.StringPtrInput
-	// The tag of the resource.
+	// Tags
 	Tags pulumi.StringMapInput
-	// The validity period of the CA certificate, in years.
-	// > **NOTE:**  It is recommended to set to `5` to `10` years.
+	// The validity period of the root CA certificate, in years.
+	//
+	// > **NOTE:**  We recommend setting it to 5–10 years.
 	Years pulumi.IntPtrInput
 }
 
@@ -277,14 +307,17 @@ func (PcaCertificateState) ElementType() reflect.Type {
 }
 
 type pcaCertificateArgs struct {
-	// The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
-	// - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-	// - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-	// - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+	// The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+	// - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+	//
+	// The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+	//
 	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
 	Algorithm *string `pulumi:"algorithm"`
 	// A custom alias for the certificate, used to define a user-friendly name.
@@ -295,48 +328,58 @@ type pcaCertificateArgs struct {
 	// - `ROOT`: A root CA certificate.
 	// - `SUB_ROOT`: A subordinate CA certificate.
 	CertificateType *string `pulumi:"certificateType"`
-	// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+	// The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
 	CommonName string `pulumi:"commonName"`
-	// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+	// The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+	// For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
 	CountryCode *string `pulumi:"countryCode"`
-	// The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// The interval (in days) for updating the Certificate Revocation List (CRL).
 	CrlDay *int `pulumi:"crlDay"`
-	// This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+	// Specifies whether to enable CRL.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	EnableCrl *bool `pulumi:"enableCrl"`
-	// The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// Extended attributes of the certificate, used to define extended key usages.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ExtendedKeyUsages []string `pulumi:"extendedKeyUsages"`
-	// Name of the city where the organization is located. Support the use of Chinese, English characters.
+	// The name of the city where the organization is located.
 	Locality string `pulumi:"locality"`
-	// The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+	// The name of the organization associated with the CA certificate.
 	Organization string `pulumi:"organization"`
-	// The name of the department or branch under the organization. Support the use of Chinese, English characters.
+	// The name of the department or branch within the organization
 	OrganizationUnit string `pulumi:"organizationUnit"`
-	// The unique identifier of the root CA certificate.
-	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+	// Parent node identifier.
 	ParentIdentifier *string `pulumi:"parentIdentifier"`
-	// The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// The maximum depth of subordinate CA levels allowed under this CA.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PathLenConstraint *int `pulumi:"pathLenConstraint"`
 	// A resource property field representing the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+	// The name of the province, municipality directly under the central government, or autonomous region where the organization is located
 	State string `pulumi:"state"`
-	// The tag of the resource.
+	// Tags
 	Tags map[string]string `pulumi:"tags"`
-	// The validity period of the CA certificate, in years.
-	// > **NOTE:**  It is recommended to set to `5` to `10` years.
+	// The validity period of the root CA certificate, in years.
+	//
+	// > **NOTE:**  We recommend setting it to 5–10 years.
 	Years int `pulumi:"years"`
 }
 
 // The set of arguments for constructing a PcaCertificate resource.
 type PcaCertificateArgs struct {
-	// The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
-	// - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-	// - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-	// - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-	// - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+	// The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+	// - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+	// - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+	// - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+	//
+	// The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+	//
 	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
 	Algorithm pulumi.StringPtrInput
 	// A custom alias for the certificate, used to define a user-friendly name.
@@ -347,35 +390,42 @@ type PcaCertificateArgs struct {
 	// - `ROOT`: A root CA certificate.
 	// - `SUB_ROOT`: A subordinate CA certificate.
 	CertificateType pulumi.StringPtrInput
-	// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+	// The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
 	CommonName pulumi.StringInput
-	// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+	// The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+	// For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
 	CountryCode pulumi.StringPtrInput
-	// The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// The interval (in days) for updating the Certificate Revocation List (CRL).
 	CrlDay pulumi.IntPtrInput
-	// This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+	// Specifies whether to enable CRL.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	EnableCrl pulumi.BoolPtrInput
-	// The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// Extended attributes of the certificate, used to define extended key usages.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ExtendedKeyUsages pulumi.StringArrayInput
-	// Name of the city where the organization is located. Support the use of Chinese, English characters.
+	// The name of the city where the organization is located.
 	Locality pulumi.StringInput
-	// The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+	// The name of the organization associated with the CA certificate.
 	Organization pulumi.StringInput
-	// The name of the department or branch under the organization. Support the use of Chinese, English characters.
+	// The name of the department or branch within the organization
 	OrganizationUnit pulumi.StringInput
-	// The unique identifier of the root CA certificate.
-	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+	// Parent node identifier.
 	ParentIdentifier pulumi.StringPtrInput
-	// The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+	// The maximum depth of subordinate CA levels allowed under this CA.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PathLenConstraint pulumi.IntPtrInput
 	// A resource property field representing the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+	// The name of the province, municipality directly under the central government, or autonomous region where the organization is located
 	State pulumi.StringInput
-	// The tag of the resource.
+	// Tags
 	Tags pulumi.StringMapInput
-	// The validity period of the CA certificate, in years.
-	// > **NOTE:**  It is recommended to set to `5` to `10` years.
+	// The validity period of the root CA certificate, in years.
+	//
+	// > **NOTE:**  We recommend setting it to 5–10 years.
 	Years pulumi.IntInput
 }
 
@@ -466,14 +516,17 @@ func (o PcaCertificateOutput) ToPcaCertificateOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
-// - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-// - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-// - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-// - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-// - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-// - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+// The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+// - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+// - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+// - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+// - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+// - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+// - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+// - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+//
+// The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+//
 // > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
 func (o PcaCertificateOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.Algorithm }).(pulumi.StringOutput)
@@ -493,53 +546,59 @@ func (o PcaCertificateOutput) CertificateType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.CertificateType }).(pulumi.StringOutput)
 }
 
-// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+// The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
 func (o PcaCertificateOutput) CommonName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.CommonName }).(pulumi.StringOutput)
 }
 
-// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+// The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+// For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
 func (o PcaCertificateOutput) CountryCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringPtrOutput { return v.CountryCode }).(pulumi.StringPtrOutput)
 }
 
-// The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+// The interval (in days) for updating the Certificate Revocation List (CRL).
 func (o PcaCertificateOutput) CrlDay() pulumi.IntOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.IntOutput { return v.CrlDay }).(pulumi.IntOutput)
 }
 
-// This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+// Specifies whether to enable CRL.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o PcaCertificateOutput) EnableCrl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.BoolPtrOutput { return v.EnableCrl }).(pulumi.BoolPtrOutput)
 }
 
-// The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+// Extended attributes of the certificate, used to define extended key usages.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o PcaCertificateOutput) ExtendedKeyUsages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringArrayOutput { return v.ExtendedKeyUsages }).(pulumi.StringArrayOutput)
 }
 
-// Name of the city where the organization is located. Support the use of Chinese, English characters.
+// The name of the city where the organization is located.
 func (o PcaCertificateOutput) Locality() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.Locality }).(pulumi.StringOutput)
 }
 
-// The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+// The name of the organization associated with the CA certificate.
 func (o PcaCertificateOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
 }
 
-// The name of the department or branch under the organization. Support the use of Chinese, English characters.
+// The name of the department or branch within the organization
 func (o PcaCertificateOutput) OrganizationUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.OrganizationUnit }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the root CA certificate.
-// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+// Parent node identifier.
 func (o PcaCertificateOutput) ParentIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringPtrOutput { return v.ParentIdentifier }).(pulumi.StringPtrOutput)
 }
 
-// The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+// The maximum depth of subordinate CA levels allowed under this CA.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o PcaCertificateOutput) PathLenConstraint() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.IntPtrOutput { return v.PathLenConstraint }).(pulumi.IntPtrOutput)
 }
@@ -549,23 +608,24 @@ func (o PcaCertificateOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+// The name of the province, municipality directly under the central government, or autonomous region where the organization is located
 func (o PcaCertificateOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The status of the CA certificate.
+// The current CA status.
 func (o PcaCertificateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// Tags
 func (o PcaCertificateOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The validity period of the CA certificate, in years.
-// > **NOTE:**  It is recommended to set to `5` to `10` years.
+// The validity period of the root CA certificate, in years.
+//
+// > **NOTE:**  We recommend setting it to 5–10 years.
 func (o PcaCertificateOutput) Years() pulumi.IntOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.IntOutput { return v.Years }).(pulumi.IntOutput)
 }

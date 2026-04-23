@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.CR
     public static class GetNamespaces
     {
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+        /// 
         /// This data source provides a list Container Registry namespaces on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+
@@ -44,6 +46,8 @@ namespace Pulumi.AliCloud.CR
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? new GetNamespacesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+        /// 
         /// This data source provides a list Container Registry namespaces on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+
@@ -76,6 +80,8 @@ namespace Pulumi.AliCloud.CR
             => global::Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? new GetNamespacesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+        /// 
         /// This data source provides a list Container Registry namespaces on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+

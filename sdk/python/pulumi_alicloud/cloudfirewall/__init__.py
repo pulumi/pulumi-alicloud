@@ -29,12 +29,14 @@ from .instance_v2 import *
 from .ips_config import *
 from .nat_firewall import *
 from .nat_firewall_control_policy import *
+from .nat_firewall_control_policy_order import *
 from .policy_advanced_config import *
 from .private_dns import *
 from .threat_intelligence_switch import *
 from .user_alarm_config import *
 from .vpc_cen_tr_firewall import *
 from .vpc_firewall_acl_engine_mode import *
+from .vpc_firewall_control_policy_order import *
 from .vpc_firewall_ips_config import *
 from ._inputs import *
 from . import outputs

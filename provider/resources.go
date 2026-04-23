@@ -692,19 +692,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cr_chain":               {Tok: resource(crMod, "Chain")},
 
 			// CS
-			"alicloud_container_cluster": {
-				Tok:  resource(csMod, "Cluster"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"alicloud_cs_application": {
-				Tok:  resource(csMod, "Application"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
-			},
 			"alicloud_cs_kubernetes": {Tok: resource(csMod, "Kubernetes")},
-			"alicloud_cs_swarm": {
-				Tok:  resource(csMod, "Swarm"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
-			},
 			"alicloud_cs_kubernetes_autoscaler":  {Tok: resource(csMod, "KubernetesAutoscaler")},
 			"alicloud_cs_managed_kubernetes":     {Tok: resource(csMod, "ManagedKubernetes")},
 			"alicloud_cs_serverless_kubernetes":  {Tok: resource(csMod, "ServerlessKubernetes")},

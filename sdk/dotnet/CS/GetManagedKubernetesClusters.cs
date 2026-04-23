@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.CS
     public static class GetManagedKubernetesClusters
     {
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+        /// 
         /// This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available since v1.35.0
@@ -47,6 +49,8 @@ namespace Pulumi.AliCloud.CS
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetManagedKubernetesClustersResult>("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args ?? new GetManagedKubernetesClustersArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+        /// 
         /// This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available since v1.35.0
@@ -82,6 +86,8 @@ namespace Pulumi.AliCloud.CS
             => global::Pulumi.Deployment.Instance.Invoke<GetManagedKubernetesClustersResult>("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args ?? new GetManagedKubernetesClustersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+        /// 
         /// This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available since v1.35.0

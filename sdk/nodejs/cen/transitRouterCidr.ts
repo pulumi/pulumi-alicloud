@@ -88,7 +88,7 @@ export class TransitRouterCidr extends pulumi.CustomResource {
     /**
      * Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
      */
-    declare public readonly publishCidrRoute: pulumi.Output<boolean | undefined>;
+    declare public readonly publishCidrRoute: pulumi.Output<boolean>;
     /**
      * The ID of the CIDR block.
      */

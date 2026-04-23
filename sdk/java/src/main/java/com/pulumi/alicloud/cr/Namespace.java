@@ -15,6 +15,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **DEPRECATION NOTICE:** This resource is deprecated and will be removed in a future release.
+ * 
  * This resource will help you to manager Container Registry namespaces, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace).
  * 
  * &gt; **NOTE:** Available since v1.34.0.

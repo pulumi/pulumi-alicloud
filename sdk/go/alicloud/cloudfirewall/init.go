@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NatFirewall{}
 	case "alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy":
 		r = &NatFirewallControlPolicy{}
+	case "alicloud:cloudfirewall/natFirewallControlPolicyOrder:NatFirewallControlPolicyOrder":
+		r = &NatFirewallControlPolicyOrder{}
 	case "alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig":
 		r = &PolicyAdvancedConfig{}
 	case "alicloud:cloudfirewall/privateDns:PrivateDns":
@@ -59,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VpcCenTrFirewall{}
 	case "alicloud:cloudfirewall/vpcFirewallAclEngineMode:VpcFirewallAclEngineMode":
 		r = &VpcFirewallAclEngineMode{}
+	case "alicloud:cloudfirewall/vpcFirewallControlPolicyOrder:VpcFirewallControlPolicyOrder":
+		r = &VpcFirewallControlPolicyOrder{}
 	case "alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig":
 		r = &VpcFirewallIpsConfig{}
 	default:
@@ -141,6 +145,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"cloudfirewall/natFirewallControlPolicyOrder",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"cloudfirewall/policyAdvancedConfig",
 		&module{version},
 	)
@@ -167,6 +176,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudfirewall/vpcFirewallAclEngineMode",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/vpcFirewallControlPolicyOrder",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

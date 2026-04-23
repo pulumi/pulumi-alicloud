@@ -36,6 +36,7 @@ class ManagedKubernetesArgs:
                  custom_san: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_options: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[_builtins.bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_stack: Optional[pulumi.Input[_builtins.str]] = None,
@@ -86,11 +87,17 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
         :param pulumi.Input[_builtins.str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+               
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether to enable cluster deletion protection.
+        :param pulumi.Input[_builtins.bool] disable_encryption: Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+               
+               > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[_builtins.str] encryption_provider_key: The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+               
+               > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.str] ip_stack: The IP address family that the cluster network uses. Valid values:
         :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
@@ -111,7 +118,8 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-               * > **NOTE:** Please take of note before updating the `security_group_id`:
+               
+               > **NOTE:** Please take of note before updating the `security_group_id`:
                * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
                * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
                * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -121,17 +129,20 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[_builtins.str] timezone: Cluster timezone, works for control plane and Worker nodes.
-               * > **NOTE:** Please take of note before updating the `timezone`:
+               
+               > **NOTE:** Please take of note before updating the `timezone`:
                * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
                * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
                * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         :param pulumi.Input['ManagedKubernetesUpgradePolicyArgs'] upgrade_policy: Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+               
                > **NOTE:** This parameter only applies during resource update.
                
                *Network params*
         :param pulumi.Input[_builtins.str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[_builtins.str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vSwitches of the control plane.
+               
                > **NOTE:** Please take of note before updating the `vswitch_ids`:
                * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
                * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -179,6 +190,8 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "delete_options", delete_options)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if disable_encryption is not None:
+            pulumi.set(__self__, "disable_encryption", disable_encryption)
         if enable_rrsa is not None:
             pulumi.set(__self__, "enable_rrsa", enable_rrsa)
         if encryption_provider_key is not None:
@@ -402,6 +415,7 @@ class ManagedKubernetesArgs:
     def custom_san(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+
         > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         """
         return pulumi.get(self, "custom_san")
@@ -435,6 +449,20 @@ class ManagedKubernetesArgs:
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
+    @pulumi.getter(name="disableEncryption")
+    def disable_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+
+        > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
+        """
+        return pulumi.get(self, "disable_encryption")
+
+    @disable_encryption.setter
+    def disable_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_encryption", value)
+
+    @_builtins.property
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -451,6 +479,8 @@ class ManagedKubernetesArgs:
     def encryption_provider_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+
+        > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
         """
         return pulumi.get(self, "encryption_provider_key")
 
@@ -648,7 +678,8 @@ class ManagedKubernetesArgs:
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        * > **NOTE:** Please take of note before updating the `security_group_id`:
+
+        > **NOTE:** Please take of note before updating the `security_group_id`:
         * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
         * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -724,7 +755,8 @@ class ManagedKubernetesArgs:
     def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Cluster timezone, works for control plane and Worker nodes.
-        * > **NOTE:** Please take of note before updating the `timezone`:
+
+        > **NOTE:** Please take of note before updating the `timezone`:
         * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
         * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -740,6 +772,7 @@ class ManagedKubernetesArgs:
     def upgrade_policy(self) -> Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']]:
         """
         Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+
         > **NOTE:** This parameter only applies during resource update.
 
         *Network params*
@@ -779,6 +812,7 @@ class ManagedKubernetesArgs:
     def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The vSwitches of the control plane.
+
         > **NOTE:** Please take of note before updating the `vswitch_ids`:
         * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
         * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -837,6 +871,7 @@ class _ManagedKubernetesState:
                  custom_san: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_options: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[_builtins.bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_stack: Optional[pulumi.Input[_builtins.str]] = None,
@@ -896,11 +931,17 @@ class _ManagedKubernetesState:
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
         :param pulumi.Input[_builtins.str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+               
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether to enable cluster deletion protection.
+        :param pulumi.Input[_builtins.bool] disable_encryption: Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+               
+               > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[_builtins.str] encryption_provider_key: The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+               
+               > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.str] ip_stack: The IP address family that the cluster network uses. Valid values:
         :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
@@ -923,7 +964,8 @@ class _ManagedKubernetesState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input['ManagedKubernetesRrsaMetadataArgs'] rrsa_metadata: (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-               * > **NOTE:** Please take of note before updating the `security_group_id`:
+               
+               > **NOTE:** Please take of note before updating the `security_group_id`:
                * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
                * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
                * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -936,11 +978,13 @@ class _ManagedKubernetesState:
         :param pulumi.Input[_builtins.str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[_builtins.str] timezone: Cluster timezone, works for control plane and Worker nodes.
-               * > **NOTE:** Please take of note before updating the `timezone`:
+               
+               > **NOTE:** Please take of note before updating the `timezone`:
                * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
                * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
                * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         :param pulumi.Input['ManagedKubernetesUpgradePolicyArgs'] upgrade_policy: Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+               
                > **NOTE:** This parameter only applies during resource update.
                
                *Network params*
@@ -948,6 +992,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input[_builtins.str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vSwitches of the control plane.
+               
                > **NOTE:** Please take of note before updating the `vswitch_ids`:
                * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
                * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -1003,6 +1048,8 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "delete_options", delete_options)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if disable_encryption is not None:
+            pulumi.set(__self__, "disable_encryption", disable_encryption)
         if enable_rrsa is not None:
             pulumi.set(__self__, "enable_rrsa", enable_rrsa)
         if encryption_provider_key is not None:
@@ -1265,6 +1312,7 @@ class _ManagedKubernetesState:
     def custom_san(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+
         > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         """
         return pulumi.get(self, "custom_san")
@@ -1298,6 +1346,20 @@ class _ManagedKubernetesState:
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
+    @pulumi.getter(name="disableEncryption")
+    def disable_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+
+        > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
+        """
+        return pulumi.get(self, "disable_encryption")
+
+    @disable_encryption.setter
+    def disable_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_encryption", value)
+
+    @_builtins.property
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -1314,6 +1376,8 @@ class _ManagedKubernetesState:
     def encryption_provider_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+
+        > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
         """
         return pulumi.get(self, "encryption_provider_key")
 
@@ -1535,7 +1599,8 @@ class _ManagedKubernetesState:
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        * > **NOTE:** Please take of note before updating the `security_group_id`:
+
+        > **NOTE:** Please take of note before updating the `security_group_id`:
         * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
         * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -1647,7 +1712,8 @@ class _ManagedKubernetesState:
     def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Cluster timezone, works for control plane and Worker nodes.
-        * > **NOTE:** Please take of note before updating the `timezone`:
+
+        > **NOTE:** Please take of note before updating the `timezone`:
         * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
         * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -1663,6 +1729,7 @@ class _ManagedKubernetesState:
     def upgrade_policy(self) -> Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']]:
         """
         Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+
         > **NOTE:** This parameter only applies during resource update.
 
         *Network params*
@@ -1714,6 +1781,7 @@ class _ManagedKubernetesState:
     def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The vSwitches of the control plane.
+
         > **NOTE:** Please take of note before updating the `vswitch_ids`:
         * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
         * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -1785,6 +1853,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  custom_san: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[_builtins.bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_stack: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1862,7 +1931,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "tf-example-"
         # Existing vpc id used to create several vswitches and other resources.
         vpc_id = config.get("vpcId")
         if vpc_id is None:
@@ -1902,6 +1971,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                 "10.5.0.0/16",
             ]
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        default = alicloud.kms.get_keys(filters="[{\\"Key\\":\\"KeyState\\",\\"Values\\":[\\"Enabled\\"]},{\\"Key\\":\\"KeySpec\\",\\"Values\\":[\\"Aliyun_AES_256\\"]},{\\"Key\\":\\"KeyUsage\\",\\"Values\\":[\\"ENCRYPT/DECRYPT\\"]},{\\"Key\\":\\"CreatorType\\",\\"Values\\":[\\"User\\"]}]")
         # If there is not specifying vpc_id, the module will launch a new vpc
         vpc = []
         for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
@@ -1923,7 +1993,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                 cidr_block=terway_vswitch_cidrs[range["value"]],
                 zone_id=enhanced.zones[range["value"]].zone_id))
         k8s = alicloud.cs.ManagedKubernetes("k8s",
-            name=name,
+            name_prefix=name,
             cluster_spec="ack.pro.small",
             vswitch_ids=std.split(separator=",",
                 text=std.join(separator=",",
@@ -1939,6 +2009,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             proxy_mode=proxy_mode,
             service_cidr=service_cidr,
             skip_set_certificate_authority=True,
+            encryption_provider_key=default.keys[0].key_id,
             addons=[
                 {
                     "name": "terway-eniip",
@@ -2142,11 +2213,17 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
         :param pulumi.Input[_builtins.str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+               
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether to enable cluster deletion protection.
+        :param pulumi.Input[_builtins.bool] disable_encryption: Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+               
+               > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[_builtins.str] encryption_provider_key: The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+               
+               > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.str] ip_stack: The IP address family that the cluster network uses. Valid values:
         :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
@@ -2167,7 +2244,8 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-               * > **NOTE:** Please take of note before updating the `security_group_id`:
+               
+               > **NOTE:** Please take of note before updating the `security_group_id`:
                * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
                * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
                * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -2177,17 +2255,20 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[_builtins.str] timezone: Cluster timezone, works for control plane and Worker nodes.
-               * > **NOTE:** Please take of note before updating the `timezone`:
+               
+               > **NOTE:** Please take of note before updating the `timezone`:
                * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
                * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
                * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         :param pulumi.Input[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict']] upgrade_policy: Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+               
                > **NOTE:** This parameter only applies during resource update.
                
                *Network params*
         :param pulumi.Input[_builtins.str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[_builtins.str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vSwitches of the control plane.
+               
                > **NOTE:** Please take of note before updating the `vswitch_ids`:
                * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
                * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -2248,7 +2329,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "tf-example-"
         # Existing vpc id used to create several vswitches and other resources.
         vpc_id = config.get("vpcId")
         if vpc_id is None:
@@ -2288,6 +2369,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                 "10.5.0.0/16",
             ]
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        default = alicloud.kms.get_keys(filters="[{\\"Key\\":\\"KeyState\\",\\"Values\\":[\\"Enabled\\"]},{\\"Key\\":\\"KeySpec\\",\\"Values\\":[\\"Aliyun_AES_256\\"]},{\\"Key\\":\\"KeyUsage\\",\\"Values\\":[\\"ENCRYPT/DECRYPT\\"]},{\\"Key\\":\\"CreatorType\\",\\"Values\\":[\\"User\\"]}]")
         # If there is not specifying vpc_id, the module will launch a new vpc
         vpc = []
         for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
@@ -2309,7 +2391,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                 cidr_block=terway_vswitch_cidrs[range["value"]],
                 zone_id=enhanced.zones[range["value"]].zone_id))
         k8s = alicloud.cs.ManagedKubernetes("k8s",
-            name=name,
+            name_prefix=name,
             cluster_spec="ack.pro.small",
             vswitch_ids=std.split(separator=",",
                 text=std.join(separator=",",
@@ -2325,6 +2407,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             proxy_mode=proxy_mode,
             service_cidr=service_cidr,
             skip_set_certificate_authority=True,
+            encryption_provider_key=default.keys[0].key_id,
             addons=[
                 {
                     "name": "terway-eniip",
@@ -2539,6 +2622,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  custom_san: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[_builtins.bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_stack: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2593,6 +2677,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["custom_san"] = custom_san
             __props__.__dict__["delete_options"] = delete_options
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["disable_encryption"] = disable_encryption
             __props__.__dict__["enable_rrsa"] = enable_rrsa
             __props__.__dict__["encryption_provider_key"] = encryption_provider_key
             __props__.__dict__["ip_stack"] = ip_stack
@@ -2659,6 +2744,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             custom_san: Optional[pulumi.Input[_builtins.str]] = None,
             delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]]] = None,
             deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+            disable_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
             enable_rrsa: Optional[pulumi.Input[_builtins.bool]] = None,
             encryption_provider_key: Optional[pulumi.Input[_builtins.str]] = None,
             ip_stack: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2722,11 +2808,17 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
         :param pulumi.Input[_builtins.str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+               
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether to enable cluster deletion protection.
+        :param pulumi.Input[_builtins.bool] disable_encryption: Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+               
+               > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[_builtins.str] encryption_provider_key: The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+               
+               > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.str] ip_stack: The IP address family that the cluster network uses. Valid values:
         :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
@@ -2749,7 +2841,8 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input[Union['ManagedKubernetesRrsaMetadataArgs', 'ManagedKubernetesRrsaMetadataArgsDict']] rrsa_metadata: (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-               * > **NOTE:** Please take of note before updating the `security_group_id`:
+               
+               > **NOTE:** Please take of note before updating the `security_group_id`:
                * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
                * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
                * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -2762,11 +2855,13 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[_builtins.str] timezone: Cluster timezone, works for control plane and Worker nodes.
-               * > **NOTE:** Please take of note before updating the `timezone`:
+               
+               > **NOTE:** Please take of note before updating the `timezone`:
                * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
                * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
                * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         :param pulumi.Input[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict']] upgrade_policy: Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+               
                > **NOTE:** This parameter only applies during resource update.
                
                *Network params*
@@ -2774,6 +2869,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vSwitches of the control plane.
+               
                > **NOTE:** Please take of note before updating the `vswitch_ids`:
                * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
                * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -2804,6 +2900,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["custom_san"] = custom_san
         __props__.__dict__["delete_options"] = delete_options
         __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["disable_encryption"] = disable_encryption
         __props__.__dict__["enable_rrsa"] = enable_rrsa
         __props__.__dict__["encryption_provider_key"] = encryption_provider_key
         __props__.__dict__["ip_stack"] = ip_stack
@@ -2968,6 +3065,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     def custom_san(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+
         > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         """
         return pulumi.get(self, "custom_san")
@@ -2989,6 +3087,16 @@ class ManagedKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
+    @pulumi.getter(name="disableEncryption")
+    def disable_encryption(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+
+        > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
+        """
+        return pulumi.get(self, "disable_encryption")
+
+    @_builtins.property
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -3001,6 +3109,8 @@ class ManagedKubernetes(pulumi.CustomResource):
     def encryption_provider_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+
+        > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
         """
         return pulumi.get(self, "encryption_provider_key")
 
@@ -3150,7 +3260,8 @@ class ManagedKubernetes(pulumi.CustomResource):
     def security_group_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        * > **NOTE:** Please take of note before updating the `security_group_id`:
+
+        > **NOTE:** Please take of note before updating the `security_group_id`:
         * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
         * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -3226,7 +3337,8 @@ class ManagedKubernetes(pulumi.CustomResource):
     def timezone(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Cluster timezone, works for control plane and Worker nodes.
-        * > **NOTE:** Please take of note before updating the `timezone`:
+
+        > **NOTE:** Please take of note before updating the `timezone`:
         * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
         * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -3238,6 +3350,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     def upgrade_policy(self) -> pulumi.Output[Optional['outputs.ManagedKubernetesUpgradePolicy']]:
         """
         Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+
         > **NOTE:** This parameter only applies during resource update.
 
         *Network params*
@@ -3273,6 +3386,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     def vswitch_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         The vSwitches of the control plane.
+
         > **NOTE:** Please take of note before updating the `vswitch_ids`:
         * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
         * The control plane restarts during the change process. Exercise caution when you perform this operation.

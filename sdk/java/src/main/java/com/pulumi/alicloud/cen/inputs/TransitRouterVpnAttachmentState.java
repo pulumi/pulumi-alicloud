@@ -67,18 +67,39 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The creation time of the resource.
      * 
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The entity that pays the fees of the network instance. Valid values:
+     * 
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     * 
+     */
+    @Import(name="orderType")
+    private @Nullable Output<String> orderType;
+
+    /**
+     * @return The entity that pays the fees of the network instance. Valid values:
+     * 
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     * 
+     */
+    public Optional<Output<String>> orderType() {
+        return Optional.ofNullable(this.orderType);
     }
 
     /**
@@ -97,14 +118,14 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * Status
+     * Status.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Status
+     * @return Status.
      * 
      */
     public Optional<Output<String>> status() {
@@ -144,18 +165,24 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The name of the VPN attachment.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead. */
     @Import(name="transitRouterAttachmentName")
     private @Nullable Output<String> transitRouterAttachmentName;
 
     /**
-     * @return The name of the VPN attachment.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * @return . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead. */
     public Optional<Output<String>> transitRouterAttachmentName() {
         return Optional.ofNullable(this.transitRouterAttachmentName);
     }
@@ -173,6 +200,23 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
      */
     public Optional<Output<String>> transitRouterId() {
         return Optional.ofNullable(this.transitRouterId);
+    }
+
+    /**
+     * The name of the VPN attachment.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * 
+     */
+    @Import(name="transitRouterVpnAttachmentName")
+    private @Nullable Output<String> transitRouterVpnAttachmentName;
+
+    /**
+     * @return The name of the VPN attachment.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * 
+     */
+    public Optional<Output<String>> transitRouterVpnAttachmentName() {
+        return Optional.ofNullable(this.transitRouterVpnAttachmentName);
     }
 
     /**
@@ -216,6 +260,8 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
      * System will create resources under the Zone that you specify.
      * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Import(name="zones")
     private @Nullable Output<List<TransitRouterVpnAttachmentZoneArgs>> zones;
@@ -224,6 +270,8 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
      * @return The Zone ID in the current region.
      * System will create resources under the Zone that you specify.
      * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<List<TransitRouterVpnAttachmentZoneArgs>>> zones() {
@@ -237,12 +285,14 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         this.cenId = $.cenId;
         this.chargeType = $.chargeType;
         this.createTime = $.createTime;
+        this.orderType = $.orderType;
         this.regionId = $.regionId;
         this.status = $.status;
         this.tags = $.tags;
         this.transitRouterAttachmentDescription = $.transitRouterAttachmentDescription;
         this.transitRouterAttachmentName = $.transitRouterAttachmentName;
         this.transitRouterId = $.transitRouterId;
+        this.transitRouterVpnAttachmentName = $.transitRouterVpnAttachmentName;
         this.vpnId = $.vpnId;
         this.vpnOwnerId = $.vpnOwnerId;
         this.zones = $.zones;
@@ -332,7 +382,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param createTime The creation time of the resource.
          * 
          * @return builder
          * 
@@ -343,13 +393,40 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param createTime The creation time of the resource.
          * 
          * @return builder
          * 
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param orderType The entity that pays the fees of the network instance. Valid values:
+         * 
+         * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+         * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderType(@Nullable Output<String> orderType) {
+            $.orderType = orderType;
+            return this;
+        }
+
+        /**
+         * @param orderType The entity that pays the fees of the network instance. Valid values:
+         * 
+         * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+         * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderType(String orderType) {
+            return orderType(Output.of(orderType));
         }
 
         /**
@@ -374,7 +451,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param status Status
+         * @param status Status.
          * 
          * @return builder
          * 
@@ -385,7 +462,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param status Status
+         * @param status Status.
          * 
          * @return builder
          * 
@@ -439,24 +516,30 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentName The name of the VPN attachment.
-         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+         * @param transitRouterAttachmentName . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead. */
         public Builder transitRouterAttachmentName(@Nullable Output<String> transitRouterAttachmentName) {
             $.transitRouterAttachmentName = transitRouterAttachmentName;
             return this;
         }
 
         /**
-         * @param transitRouterAttachmentName The name of the VPN attachment.
-         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+         * @param transitRouterAttachmentName . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead. */
         public Builder transitRouterAttachmentName(String transitRouterAttachmentName) {
             return transitRouterAttachmentName(Output.of(transitRouterAttachmentName));
         }
@@ -480,6 +563,29 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
          */
         public Builder transitRouterId(String transitRouterId) {
             return transitRouterId(Output.of(transitRouterId));
+        }
+
+        /**
+         * @param transitRouterVpnAttachmentName The name of the VPN attachment.
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterVpnAttachmentName(@Nullable Output<String> transitRouterVpnAttachmentName) {
+            $.transitRouterVpnAttachmentName = transitRouterVpnAttachmentName;
+            return this;
+        }
+
+        /**
+         * @param transitRouterVpnAttachmentName The name of the VPN attachment.
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterVpnAttachmentName(String transitRouterVpnAttachmentName) {
+            return transitRouterVpnAttachmentName(Output.of(transitRouterVpnAttachmentName));
         }
 
         /**
@@ -535,6 +641,8 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
          * System will create resources under the Zone that you specify.
          * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
          * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
          * @return builder
          * 
          */
@@ -548,6 +656,8 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
          * System will create resources under the Zone that you specify.
          * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
          * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
          * @return builder
          * 
          */
@@ -559,6 +669,8 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
          * @param zones The Zone ID in the current region.
          * System will create resources under the Zone that you specify.
          * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

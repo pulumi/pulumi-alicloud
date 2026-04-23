@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CEN Transit Router Ecr Attachment resource.
+ * Provides a Cloud Enterprise Network (CEN) Transit Router Ecr Attachment resource.
  *
- * For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
+ * For information about Cloud Enterprise Network (CEN) Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
  *
  * > **NOTE:** Available since v1.235.0.
  *
@@ -53,10 +53,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * CEN Transit Router Ecr Attachment can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Transit Router Ecr Attachment can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example <id>
+ * $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example <transit_router_attachment_id>
  * ```
  */
 export class TransitRouterEcrAttachment extends pulumi.CustomResource {
@@ -92,7 +92,7 @@ export class TransitRouterEcrAttachment extends pulumi.CustomResource {
      */
     declare public readonly cenId: pulumi.Output<string | undefined>;
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -104,7 +104,7 @@ export class TransitRouterEcrAttachment extends pulumi.CustomResource {
      */
     declare public readonly ecrOwnerId: pulumi.Output<number | undefined>;
     /**
-     * The status of the resource
+     * The status of the resource.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -175,7 +175,7 @@ export interface TransitRouterEcrAttachmentState {
      */
     cenId?: pulumi.Input<string>;
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -187,7 +187,7 @@ export interface TransitRouterEcrAttachmentState {
      */
     ecrOwnerId?: pulumi.Input<number>;
     /**
-     * The status of the resource
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
     /**

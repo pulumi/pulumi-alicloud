@@ -31,7 +31,7 @@ public final class RocketMQInstanceProductInfo {
      */
     private String msgProcessSpec;
     /**
-     * @return message send receive ratio.  Value range: [0.2, 0.5].
+     * @return message send receive ratio.  Value range: [0.05, 0.5].
      * 
      */
     private @Nullable Double sendReceiveRatio;
@@ -79,7 +79,7 @@ public final class RocketMQInstanceProductInfo {
         return this.msgProcessSpec;
     }
     /**
-     * @return message send receive ratio.  Value range: [0.2, 0.5].
+     * @return message send receive ratio.  Value range: [0.05, 0.5].
      * 
      */
     public Optional<Double> sendReceiveRatio() {

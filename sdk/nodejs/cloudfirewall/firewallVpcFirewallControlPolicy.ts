@@ -13,6 +13,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.194.0.
  *
+ * > **NOTE** Since v1.276.0. Set `newOrder = -1` or omit the argument to let the Cloud Backend manage policy ordering automatically. You can also use `alicloud.cloudfirewall.VpcFirewallControlPolicyOrder` to manage the policy ordering.<br>
+ *   If you want manged the policy order in parallel **do not** set the `newOrder`, instead use `alicloud.cloudfirewall.VpcFirewallControlPolicyOrder` manage the policy order.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -106,7 +109,8 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
      */
     declare public readonly applicationName: pulumi.Output<string | undefined>;
     /**
-     * The list of application types that the access control policy supports. 
+     * The list of application types that the access control policy supports.
+     *
      * > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      */
     declare public readonly applicationNameLists: pulumi.Output<string[] | undefined>;
@@ -119,11 +123,15 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+     * The destination port in the access control policy.
+     *
+     * ->**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
      */
     declare public readonly destPort: pulumi.Output<string>;
     /**
-     * Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+     * Access control policy in the access traffic of the destination port address book name.
+     *
+     * ->**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
      */
     declare public readonly destPortGroup: pulumi.Output<string | undefined>;
     /**
@@ -290,9 +298,6 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
             if (args?.destinationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationType'");
             }
-            if (args?.order === undefined && !opts.urn) {
-                throw new Error("Missing required property 'order'");
-            }
             if (args?.proto === undefined && !opts.urn) {
                 throw new Error("Missing required property 'proto'");
             }
@@ -365,7 +370,8 @@ export interface FirewallVpcFirewallControlPolicyState {
      */
     applicationName?: pulumi.Input<string>;
     /**
-     * The list of application types that the access control policy supports. 
+     * The list of application types that the access control policy supports.
+     *
      * > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      */
     applicationNameLists?: pulumi.Input<pulumi.Input<string>[]>;
@@ -378,11 +384,15 @@ export interface FirewallVpcFirewallControlPolicyState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+     * The destination port in the access control policy.
+     *
+     * ->**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
      */
     destPort?: pulumi.Input<string>;
     /**
-     * Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+     * Access control policy in the access traffic of the destination port address book name.
+     *
+     * ->**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
      */
     destPortGroup?: pulumi.Input<string>;
     /**
@@ -503,7 +513,8 @@ export interface FirewallVpcFirewallControlPolicyArgs {
      */
     applicationName?: pulumi.Input<string>;
     /**
-     * The list of application types that the access control policy supports. 
+     * The list of application types that the access control policy supports.
+     *
      * > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      */
     applicationNameLists?: pulumi.Input<pulumi.Input<string>[]>;
@@ -512,11 +523,15 @@ export interface FirewallVpcFirewallControlPolicyArgs {
      */
     description: pulumi.Input<string>;
     /**
-     * The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+     * The destination port in the access control policy.
+     *
+     * ->**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
      */
     destPort?: pulumi.Input<string>;
     /**
-     * Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+     * Access control policy in the access traffic of the destination port address book name.
+     *
+     * ->**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
      */
     destPortGroup?: pulumi.Input<string>;
     /**
@@ -553,7 +568,7 @@ export interface FirewallVpcFirewallControlPolicyArgs {
     /**
      * The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
      */
-    order: pulumi.Input<number>;
+    order?: pulumi.Input<number>;
     /**
      * The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
      */

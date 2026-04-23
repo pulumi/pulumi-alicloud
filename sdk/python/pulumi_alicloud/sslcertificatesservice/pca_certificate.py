@@ -39,21 +39,25 @@ class PcaCertificateArgs:
         """
         The set of arguments for constructing a PcaCertificate resource.
 
-        :param pulumi.Input[_builtins.str] common_name: The common name or abbreviation of the organization. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] locality: Name of the city where the organization is located. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] organization: The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] organization_unit: The name of the department or branch under the organization. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.int] years: The validity period of the CA certificate, in years.
-               > **NOTE:**  It is recommended to set to `5` to `10` years.
-        :param pulumi.Input[_builtins.str] algorithm: The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
-               - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-               - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-               - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-               - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-               - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-               - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-               - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+        :param pulumi.Input[_builtins.str] common_name: The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
+        :param pulumi.Input[_builtins.str] locality: The name of the city where the organization is located.
+        :param pulumi.Input[_builtins.str] organization: The name of the organization associated with the CA certificate.
+        :param pulumi.Input[_builtins.str] organization_unit: The name of the department or branch within the organization
+        :param pulumi.Input[_builtins.str] state: The name of the province, municipality directly under the central government, or autonomous region where the organization is located
+        :param pulumi.Input[_builtins.int] years: The validity period of the root CA certificate, in years.
+               
+               > **NOTE:**  We recommend setting it to 5–10 years.
+        :param pulumi.Input[_builtins.str] algorithm: The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+               - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+               - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+               - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+               - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+               - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+               - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+               - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+               
+               The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+               
                > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
         :param pulumi.Input[_builtins.str] alias_name: A custom alias for the certificate, used to define a user-friendly name.
                
@@ -61,15 +65,21 @@ class PcaCertificateArgs:
         :param pulumi.Input[_builtins.str] certificate_type: The type of the CA certificate. Default value: `ROOT`. Valid values:
                - `ROOT`: A root CA certificate.
                - `SUB_ROOT`: A subordinate CA certificate.
-        :param pulumi.Input[_builtins.str] country_code: The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
-        :param pulumi.Input[_builtins.int] crl_day: The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crl_day` takes effect only if `certificate_type` is set to `SUB_ROOT`.
-        :param pulumi.Input[_builtins.bool] enable_crl: This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: The extended key usages. **Note:** `extended_key_usages` takes effect only if `certificate_type` is set to `SUB_ROOT`.
-        :param pulumi.Input[_builtins.str] parent_identifier: The unique identifier of the root CA certificate.
-               > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `parent_identifier` is required.
-        :param pulumi.Input[_builtins.int] path_len_constraint: The certificate path length. Default value: `0`. **Note:** `path_len_constraint` takes effect only if `certificate_type` is set to `SUB_ROOT`.
+        :param pulumi.Input[_builtins.str] country_code: The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+               For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
+        :param pulumi.Input[_builtins.int] crl_day: The interval (in days) for updating the Certificate Revocation List (CRL).
+        :param pulumi.Input[_builtins.bool] enable_crl: Specifies whether to enable CRL.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: Extended attributes of the certificate, used to define extended key usages.  
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] parent_identifier: Parent node identifier.
+        :param pulumi.Input[_builtins.int] path_len_constraint: The maximum depth of subordinate CA levels allowed under this CA.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: A resource property field representing the resource group.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags
         """
         pulumi.set(__self__, "common_name", common_name)
         pulumi.set(__self__, "locality", locality)
@@ -104,7 +114,7 @@ class PcaCertificateArgs:
     @pulumi.getter(name="commonName")
     def common_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+        The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
         """
         return pulumi.get(self, "common_name")
 
@@ -116,7 +126,7 @@ class PcaCertificateArgs:
     @pulumi.getter
     def locality(self) -> pulumi.Input[_builtins.str]:
         """
-        Name of the city where the organization is located. Support the use of Chinese, English characters.
+        The name of the city where the organization is located.
         """
         return pulumi.get(self, "locality")
 
@@ -128,7 +138,7 @@ class PcaCertificateArgs:
     @pulumi.getter
     def organization(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+        The name of the organization associated with the CA certificate.
         """
         return pulumi.get(self, "organization")
 
@@ -140,7 +150,7 @@ class PcaCertificateArgs:
     @pulumi.getter(name="organizationUnit")
     def organization_unit(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the department or branch under the organization. Support the use of Chinese, English characters.
+        The name of the department or branch within the organization
         """
         return pulumi.get(self, "organization_unit")
 
@@ -152,7 +162,7 @@ class PcaCertificateArgs:
     @pulumi.getter
     def state(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+        The name of the province, municipality directly under the central government, or autonomous region where the organization is located
         """
         return pulumi.get(self, "state")
 
@@ -164,8 +174,9 @@ class PcaCertificateArgs:
     @pulumi.getter
     def years(self) -> pulumi.Input[_builtins.int]:
         """
-        The validity period of the CA certificate, in years.
-        > **NOTE:**  It is recommended to set to `5` to `10` years.
+        The validity period of the root CA certificate, in years.
+
+        > **NOTE:**  We recommend setting it to 5–10 years.
         """
         return pulumi.get(self, "years")
 
@@ -177,14 +188,17 @@ class PcaCertificateArgs:
     @pulumi.getter
     def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
-        - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-        - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-        - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-        - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-        - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-        - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-        - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+        The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+        - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+        - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+        - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+        - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+        - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+        - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+        - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+
+        The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+
         > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
         """
         return pulumi.get(self, "algorithm")
@@ -225,7 +239,8 @@ class PcaCertificateArgs:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+        The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+        For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
         """
         return pulumi.get(self, "country_code")
 
@@ -237,7 +252,7 @@ class PcaCertificateArgs:
     @pulumi.getter(name="crlDay")
     def crl_day(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crl_day` takes effect only if `certificate_type` is set to `SUB_ROOT`.
+        The interval (in days) for updating the Certificate Revocation List (CRL).
         """
         return pulumi.get(self, "crl_day")
 
@@ -249,7 +264,9 @@ class PcaCertificateArgs:
     @pulumi.getter(name="enableCrl")
     def enable_crl(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+        Specifies whether to enable CRL.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "enable_crl")
 
@@ -261,7 +278,9 @@ class PcaCertificateArgs:
     @pulumi.getter(name="extendedKeyUsages")
     def extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The extended key usages. **Note:** `extended_key_usages` takes effect only if `certificate_type` is set to `SUB_ROOT`.
+        Extended attributes of the certificate, used to define extended key usages.  
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "extended_key_usages")
 
@@ -273,8 +292,7 @@ class PcaCertificateArgs:
     @pulumi.getter(name="parentIdentifier")
     def parent_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The unique identifier of the root CA certificate.
-        > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `parent_identifier` is required.
+        Parent node identifier.
         """
         return pulumi.get(self, "parent_identifier")
 
@@ -286,7 +304,9 @@ class PcaCertificateArgs:
     @pulumi.getter(name="pathLenConstraint")
     def path_len_constraint(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The certificate path length. Default value: `0`. **Note:** `path_len_constraint` takes effect only if `certificate_type` is set to `SUB_ROOT`.
+        The maximum depth of subordinate CA levels allowed under this CA.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "path_len_constraint")
 
@@ -310,7 +330,7 @@ class PcaCertificateArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The tag of the resource.
+        Tags
         """
         return pulumi.get(self, "tags")
 
@@ -343,14 +363,17 @@ class _PcaCertificateState:
         """
         Input properties used for looking up and filtering PcaCertificate resources.
 
-        :param pulumi.Input[_builtins.str] algorithm: The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
-               - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-               - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-               - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-               - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-               - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-               - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-               - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+        :param pulumi.Input[_builtins.str] algorithm: The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+               - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+               - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+               - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+               - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+               - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+               - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+               - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+               
+               The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+               
                > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
         :param pulumi.Input[_builtins.str] alias_name: A custom alias for the certificate, used to define a user-friendly name.
                
@@ -358,23 +381,30 @@ class _PcaCertificateState:
         :param pulumi.Input[_builtins.str] certificate_type: The type of the CA certificate. Default value: `ROOT`. Valid values:
                - `ROOT`: A root CA certificate.
                - `SUB_ROOT`: A subordinate CA certificate.
-        :param pulumi.Input[_builtins.str] common_name: The common name or abbreviation of the organization. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] country_code: The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
-        :param pulumi.Input[_builtins.int] crl_day: The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crl_day` takes effect only if `certificate_type` is set to `SUB_ROOT`.
-        :param pulumi.Input[_builtins.bool] enable_crl: This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: The extended key usages. **Note:** `extended_key_usages` takes effect only if `certificate_type` is set to `SUB_ROOT`.
-        :param pulumi.Input[_builtins.str] locality: Name of the city where the organization is located. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] organization: The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] organization_unit: The name of the department or branch under the organization. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] parent_identifier: The unique identifier of the root CA certificate.
-               > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `parent_identifier` is required.
-        :param pulumi.Input[_builtins.int] path_len_constraint: The certificate path length. Default value: `0`. **Note:** `path_len_constraint` takes effect only if `certificate_type` is set to `SUB_ROOT`.
+        :param pulumi.Input[_builtins.str] common_name: The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
+        :param pulumi.Input[_builtins.str] country_code: The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+               For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
+        :param pulumi.Input[_builtins.int] crl_day: The interval (in days) for updating the Certificate Revocation List (CRL).
+        :param pulumi.Input[_builtins.bool] enable_crl: Specifies whether to enable CRL.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: Extended attributes of the certificate, used to define extended key usages.  
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] locality: The name of the city where the organization is located.
+        :param pulumi.Input[_builtins.str] organization: The name of the organization associated with the CA certificate.
+        :param pulumi.Input[_builtins.str] organization_unit: The name of the department or branch within the organization
+        :param pulumi.Input[_builtins.str] parent_identifier: Parent node identifier.
+        :param pulumi.Input[_builtins.int] path_len_constraint: The maximum depth of subordinate CA levels allowed under this CA.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: A resource property field representing the resource group.
-        :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] status: The status of the CA certificate.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
-        :param pulumi.Input[_builtins.int] years: The validity period of the CA certificate, in years.
-               > **NOTE:**  It is recommended to set to `5` to `10` years.
+        :param pulumi.Input[_builtins.str] state: The name of the province, municipality directly under the central government, or autonomous region where the organization is located
+        :param pulumi.Input[_builtins.str] status: The current CA status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags
+        :param pulumi.Input[_builtins.int] years: The validity period of the root CA certificate, in years.
+               
+               > **NOTE:**  We recommend setting it to 5–10 years.
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -417,14 +447,17 @@ class _PcaCertificateState:
     @pulumi.getter
     def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
-        - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-        - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-        - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-        - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-        - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-        - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-        - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+        The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+        - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+        - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+        - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+        - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+        - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+        - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+        - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+
+        The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+
         > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
         """
         return pulumi.get(self, "algorithm")
@@ -465,7 +498,7 @@ class _PcaCertificateState:
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+        The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
         """
         return pulumi.get(self, "common_name")
 
@@ -477,7 +510,8 @@ class _PcaCertificateState:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+        The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+        For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
         """
         return pulumi.get(self, "country_code")
 
@@ -489,7 +523,7 @@ class _PcaCertificateState:
     @pulumi.getter(name="crlDay")
     def crl_day(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crl_day` takes effect only if `certificate_type` is set to `SUB_ROOT`.
+        The interval (in days) for updating the Certificate Revocation List (CRL).
         """
         return pulumi.get(self, "crl_day")
 
@@ -501,7 +535,9 @@ class _PcaCertificateState:
     @pulumi.getter(name="enableCrl")
     def enable_crl(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+        Specifies whether to enable CRL.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "enable_crl")
 
@@ -513,7 +549,9 @@ class _PcaCertificateState:
     @pulumi.getter(name="extendedKeyUsages")
     def extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The extended key usages. **Note:** `extended_key_usages` takes effect only if `certificate_type` is set to `SUB_ROOT`.
+        Extended attributes of the certificate, used to define extended key usages.  
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "extended_key_usages")
 
@@ -525,7 +563,7 @@ class _PcaCertificateState:
     @pulumi.getter
     def locality(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the city where the organization is located. Support the use of Chinese, English characters.
+        The name of the city where the organization is located.
         """
         return pulumi.get(self, "locality")
 
@@ -537,7 +575,7 @@ class _PcaCertificateState:
     @pulumi.getter
     def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+        The name of the organization associated with the CA certificate.
         """
         return pulumi.get(self, "organization")
 
@@ -549,7 +587,7 @@ class _PcaCertificateState:
     @pulumi.getter(name="organizationUnit")
     def organization_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the department or branch under the organization. Support the use of Chinese, English characters.
+        The name of the department or branch within the organization
         """
         return pulumi.get(self, "organization_unit")
 
@@ -561,8 +599,7 @@ class _PcaCertificateState:
     @pulumi.getter(name="parentIdentifier")
     def parent_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The unique identifier of the root CA certificate.
-        > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `parent_identifier` is required.
+        Parent node identifier.
         """
         return pulumi.get(self, "parent_identifier")
 
@@ -574,7 +611,9 @@ class _PcaCertificateState:
     @pulumi.getter(name="pathLenConstraint")
     def path_len_constraint(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The certificate path length. Default value: `0`. **Note:** `path_len_constraint` takes effect only if `certificate_type` is set to `SUB_ROOT`.
+        The maximum depth of subordinate CA levels allowed under this CA.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "path_len_constraint")
 
@@ -598,7 +637,7 @@ class _PcaCertificateState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+        The name of the province, municipality directly under the central government, or autonomous region where the organization is located
         """
         return pulumi.get(self, "state")
 
@@ -610,7 +649,7 @@ class _PcaCertificateState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the CA certificate.
+        The current CA status.
         """
         return pulumi.get(self, "status")
 
@@ -622,7 +661,7 @@ class _PcaCertificateState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The tag of the resource.
+        Tags
         """
         return pulumi.get(self, "tags")
 
@@ -634,8 +673,9 @@ class _PcaCertificateState:
     @pulumi.getter
     def years(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The validity period of the CA certificate, in years.
-        > **NOTE:**  It is recommended to set to `5` to `10` years.
+        The validity period of the root CA certificate, in years.
+
+        > **NOTE:**  We recommend setting it to 5–10 years.
         """
         return pulumi.get(self, "years")
 
@@ -706,20 +746,23 @@ class PcaCertificate(pulumi.CustomResource):
         SSL Certificates Pca Certificate can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example <id>
+        $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example <identifier>
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] algorithm: The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
-               - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-               - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-               - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-               - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-               - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-               - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-               - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+        :param pulumi.Input[_builtins.str] algorithm: The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+               - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+               - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+               - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+               - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+               - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+               - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+               - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+               
+               The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+               
                > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
         :param pulumi.Input[_builtins.str] alias_name: A custom alias for the certificate, used to define a user-friendly name.
                
@@ -727,22 +770,29 @@ class PcaCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] certificate_type: The type of the CA certificate. Default value: `ROOT`. Valid values:
                - `ROOT`: A root CA certificate.
                - `SUB_ROOT`: A subordinate CA certificate.
-        :param pulumi.Input[_builtins.str] common_name: The common name or abbreviation of the organization. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] country_code: The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
-        :param pulumi.Input[_builtins.int] crl_day: The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crl_day` takes effect only if `certificate_type` is set to `SUB_ROOT`.
-        :param pulumi.Input[_builtins.bool] enable_crl: This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: The extended key usages. **Note:** `extended_key_usages` takes effect only if `certificate_type` is set to `SUB_ROOT`.
-        :param pulumi.Input[_builtins.str] locality: Name of the city where the organization is located. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] organization: The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] organization_unit: The name of the department or branch under the organization. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] parent_identifier: The unique identifier of the root CA certificate.
-               > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `parent_identifier` is required.
-        :param pulumi.Input[_builtins.int] path_len_constraint: The certificate path length. Default value: `0`. **Note:** `path_len_constraint` takes effect only if `certificate_type` is set to `SUB_ROOT`.
+        :param pulumi.Input[_builtins.str] common_name: The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
+        :param pulumi.Input[_builtins.str] country_code: The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+               For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
+        :param pulumi.Input[_builtins.int] crl_day: The interval (in days) for updating the Certificate Revocation List (CRL).
+        :param pulumi.Input[_builtins.bool] enable_crl: Specifies whether to enable CRL.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: Extended attributes of the certificate, used to define extended key usages.  
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] locality: The name of the city where the organization is located.
+        :param pulumi.Input[_builtins.str] organization: The name of the organization associated with the CA certificate.
+        :param pulumi.Input[_builtins.str] organization_unit: The name of the department or branch within the organization
+        :param pulumi.Input[_builtins.str] parent_identifier: Parent node identifier.
+        :param pulumi.Input[_builtins.int] path_len_constraint: The maximum depth of subordinate CA levels allowed under this CA.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: A resource property field representing the resource group.
-        :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
-        :param pulumi.Input[_builtins.int] years: The validity period of the CA certificate, in years.
-               > **NOTE:**  It is recommended to set to `5` to `10` years.
+        :param pulumi.Input[_builtins.str] state: The name of the province, municipality directly under the central government, or autonomous region where the organization is located
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags
+        :param pulumi.Input[_builtins.int] years: The validity period of the root CA certificate, in years.
+               
+               > **NOTE:**  We recommend setting it to 5–10 years.
         """
         ...
     @overload
@@ -783,7 +833,7 @@ class PcaCertificate(pulumi.CustomResource):
         SSL Certificates Pca Certificate can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example <id>
+        $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example <identifier>
         ```
 
 
@@ -894,14 +944,17 @@ class PcaCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] algorithm: The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
-               - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-               - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-               - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-               - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-               - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-               - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-               - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+        :param pulumi.Input[_builtins.str] algorithm: The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+               - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+               - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+               - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+               - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+               - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+               - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+               - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+               
+               The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+               
                > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
         :param pulumi.Input[_builtins.str] alias_name: A custom alias for the certificate, used to define a user-friendly name.
                
@@ -909,23 +962,30 @@ class PcaCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] certificate_type: The type of the CA certificate. Default value: `ROOT`. Valid values:
                - `ROOT`: A root CA certificate.
                - `SUB_ROOT`: A subordinate CA certificate.
-        :param pulumi.Input[_builtins.str] common_name: The common name or abbreviation of the organization. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] country_code: The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
-        :param pulumi.Input[_builtins.int] crl_day: The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crl_day` takes effect only if `certificate_type` is set to `SUB_ROOT`.
-        :param pulumi.Input[_builtins.bool] enable_crl: This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: The extended key usages. **Note:** `extended_key_usages` takes effect only if `certificate_type` is set to `SUB_ROOT`.
-        :param pulumi.Input[_builtins.str] locality: Name of the city where the organization is located. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] organization: The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] organization_unit: The name of the department or branch under the organization. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] parent_identifier: The unique identifier of the root CA certificate.
-               > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `parent_identifier` is required.
-        :param pulumi.Input[_builtins.int] path_len_constraint: The certificate path length. Default value: `0`. **Note:** `path_len_constraint` takes effect only if `certificate_type` is set to `SUB_ROOT`.
+        :param pulumi.Input[_builtins.str] common_name: The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
+        :param pulumi.Input[_builtins.str] country_code: The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+               For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
+        :param pulumi.Input[_builtins.int] crl_day: The interval (in days) for updating the Certificate Revocation List (CRL).
+        :param pulumi.Input[_builtins.bool] enable_crl: Specifies whether to enable CRL.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: Extended attributes of the certificate, used to define extended key usages.  
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] locality: The name of the city where the organization is located.
+        :param pulumi.Input[_builtins.str] organization: The name of the organization associated with the CA certificate.
+        :param pulumi.Input[_builtins.str] organization_unit: The name of the department or branch within the organization
+        :param pulumi.Input[_builtins.str] parent_identifier: Parent node identifier.
+        :param pulumi.Input[_builtins.int] path_len_constraint: The maximum depth of subordinate CA levels allowed under this CA.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: A resource property field representing the resource group.
-        :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] status: The status of the CA certificate.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
-        :param pulumi.Input[_builtins.int] years: The validity period of the CA certificate, in years.
-               > **NOTE:**  It is recommended to set to `5` to `10` years.
+        :param pulumi.Input[_builtins.str] state: The name of the province, municipality directly under the central government, or autonomous region where the organization is located
+        :param pulumi.Input[_builtins.str] status: The current CA status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags
+        :param pulumi.Input[_builtins.int] years: The validity period of the root CA certificate, in years.
+               
+               > **NOTE:**  We recommend setting it to 5–10 years.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -955,14 +1015,17 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter
     def algorithm(self) -> pulumi.Output[_builtins.str]:
         """
-        The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
-        - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-        - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-        - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-        - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-        - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-        - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-        - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+        The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+        - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+        - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+        - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+        - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+        - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+        - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+        - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+
+        The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+
         > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
         """
         return pulumi.get(self, "algorithm")
@@ -991,7 +1054,7 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter(name="commonName")
     def common_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+        The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
         """
         return pulumi.get(self, "common_name")
 
@@ -999,7 +1062,8 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter(name="countryCode")
     def country_code(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+        The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+        For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
         """
         return pulumi.get(self, "country_code")
 
@@ -1007,7 +1071,7 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter(name="crlDay")
     def crl_day(self) -> pulumi.Output[_builtins.int]:
         """
-        The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crl_day` takes effect only if `certificate_type` is set to `SUB_ROOT`.
+        The interval (in days) for updating the Certificate Revocation List (CRL).
         """
         return pulumi.get(self, "crl_day")
 
@@ -1015,7 +1079,9 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter(name="enableCrl")
     def enable_crl(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+        Specifies whether to enable CRL.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "enable_crl")
 
@@ -1023,7 +1089,9 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter(name="extendedKeyUsages")
     def extended_key_usages(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The extended key usages. **Note:** `extended_key_usages` takes effect only if `certificate_type` is set to `SUB_ROOT`.
+        Extended attributes of the certificate, used to define extended key usages.  
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "extended_key_usages")
 
@@ -1031,7 +1099,7 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter
     def locality(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the city where the organization is located. Support the use of Chinese, English characters.
+        The name of the city where the organization is located.
         """
         return pulumi.get(self, "locality")
 
@@ -1039,7 +1107,7 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter
     def organization(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+        The name of the organization associated with the CA certificate.
         """
         return pulumi.get(self, "organization")
 
@@ -1047,7 +1115,7 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter(name="organizationUnit")
     def organization_unit(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the department or branch under the organization. Support the use of Chinese, English characters.
+        The name of the department or branch within the organization
         """
         return pulumi.get(self, "organization_unit")
 
@@ -1055,8 +1123,7 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter(name="parentIdentifier")
     def parent_identifier(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The unique identifier of the root CA certificate.
-        > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `parent_identifier` is required.
+        Parent node identifier.
         """
         return pulumi.get(self, "parent_identifier")
 
@@ -1064,7 +1131,9 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter(name="pathLenConstraint")
     def path_len_constraint(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The certificate path length. Default value: `0`. **Note:** `path_len_constraint` takes effect only if `certificate_type` is set to `SUB_ROOT`.
+        The maximum depth of subordinate CA levels allowed under this CA.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "path_len_constraint")
 
@@ -1080,7 +1149,7 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+        The name of the province, municipality directly under the central government, or autonomous region where the organization is located
         """
         return pulumi.get(self, "state")
 
@@ -1088,7 +1157,7 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the CA certificate.
+        The current CA status.
         """
         return pulumi.get(self, "status")
 
@@ -1096,7 +1165,7 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        The tag of the resource.
+        Tags
         """
         return pulumi.get(self, "tags")
 
@@ -1104,8 +1173,9 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter
     def years(self) -> pulumi.Output[_builtins.int]:
         """
-        The validity period of the CA certificate, in years.
-        > **NOTE:**  It is recommended to set to `5` to `10` years.
+        The validity period of the root CA certificate, in years.
+
+        > **NOTE:**  We recommend setting it to 5–10 years.
         """
         return pulumi.get(self, "years")
 
