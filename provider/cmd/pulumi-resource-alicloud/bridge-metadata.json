@@ -1520,6 +1520,9 @@
                     }
                 }
             },
+            "alicloud_cloud_firewall_nat_firewall_control_policy_order": {
+                "current": "alicloud:cloudfirewall/natFirewallControlPolicyOrder:NatFirewallControlPolicyOrder"
+            },
             "alicloud_cloud_firewall_policy_advanced_config": {
                 "current": "alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig"
             },
@@ -1643,6 +1646,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_cloud_firewall_vpc_firewall_control_policy_order": {
+                "current": "alicloud:cloudfirewall/vpcFirewallControlPolicyOrder:VpcFirewallControlPolicyOrder"
             },
             "alicloud_cloud_firewall_vpc_firewall_ips_config": {
                 "current": "alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig"
@@ -2055,6 +2061,9 @@
                     }
                 }
             },
+            "alicloud_cms_workspace": {
+                "current": "alicloud:cms/workspace:Workspace"
+            },
             "alicloud_common_bandwidth_package": {
                 "current": "alicloud:vpc/commonBandwithPackage:CommonBandwithPackage",
                 "fields": {
@@ -2185,14 +2194,6 @@
                     }
                 }
             },
-            "alicloud_container_cluster": {
-                "current": "alicloud:cs/cluster:Cluster",
-                "fields": {
-                    "nodes": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
             "alicloud_copy_image": {
                 "current": "alicloud:ecs/copyImage:CopyImage"
             },
@@ -2298,14 +2299,6 @@
             },
             "alicloud_cr_vpc_endpoint_linked_vpc": {
                 "current": "alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc"
-            },
-            "alicloud_cs_application": {
-                "current": "alicloud:cs/application:Application",
-                "fields": {
-                    "services": {
-                        "maxItemsOne": false
-                    }
-                }
             },
             "alicloud_cs_autoscaling_config": {
                 "current": "alicloud:cs/autoscalingConfig:AutoscalingConfig"
@@ -2658,14 +2651,6 @@
                         "maxItemsOne": false
                     },
                     "vswitch_ids": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "alicloud_cs_swarm": {
-                "current": "alicloud:cs/swarm:Swarm",
-                "fields": {
-                    "nodes": {
                         "maxItemsOne": false
                     }
                 }
@@ -5037,6 +5022,9 @@
             "alicloud_esa_compression_rule": {
                 "current": "alicloud:esa/compressionRule:CompressionRule"
             },
+            "alicloud_esa_custom_response_code_rule": {
+                "current": "alicloud:esa/customResponseCodeRule:CustomResponseCodeRule"
+            },
             "alicloud_esa_custom_scene_policy": {
                 "current": "alicloud:esa/customScenePolicy:CustomScenePolicy"
             },
@@ -5205,7 +5193,60 @@
                 "current": "alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob"
             },
             "alicloud_esa_site": {
-                "current": "alicloud:esa/site:Site"
+                "current": "alicloud:esa/site:Site",
+                "fields": {
+                    "site_waf_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "add_bot_protection_headers": {
+                                    "maxItemsOne": true
+                                },
+                                "add_security_headers": {
+                                    "maxItemsOne": true
+                                },
+                                "bandwidth_abuse_protection": {
+                                    "maxItemsOne": true
+                                },
+                                "bot_management": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "definite_bots": {
+                                                "maxItemsOne": true
+                                            },
+                                            "effect_on_static": {
+                                                "maxItemsOne": true
+                                            },
+                                            "js_detection": {
+                                                "maxItemsOne": true
+                                            },
+                                            "likely_bots": {
+                                                "maxItemsOne": true
+                                            },
+                                            "verified_bots": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "client_ip_identifier": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "headers": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "security_level": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "alicloud_esa_site_delivery_task": {
                 "current": "alicloud:esa/siteDeliveryTask:SiteDeliveryTask",
