@@ -30,8 +30,6 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
-    /// 
     ///     var example = new AliCloud.Cen.Instance("example", new()
     ///     {
     ///         CenInstanceName = name,
@@ -54,48 +52,67 @@ namespace Pulumi.AliCloud.Cen
     /// 
     ///     var exampleGatewayVpnAttachment = new AliCloud.Vpn.GatewayVpnAttachment("example", new()
     ///     {
-    ///         CustomerGatewayId = exampleCustomerGateway.Id,
     ///         NetworkType = "public",
     ///         LocalSubnet = "0.0.0.0/0",
     ///         RemoteSubnet = "0.0.0.0/0",
     ///         EffectImmediately = false,
-    ///         IkeConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIkeConfigArgs
+    ///         TunnelOptionsSpecifications = new[]
     ///         {
-    ///             IkeAuthAlg = "md5",
-    ///             IkeEncAlg = "des",
-    ///             IkeVersion = "ikev2",
-    ///             IkeMode = "main",
-    ///             IkeLifetime = 86400,
-    ///             Psk = "tf-examplevpn2",
-    ///             IkePfs = "group1",
-    ///             RemoteId = "examplebob2",
-    ///             LocalId = "examplealice2",
+    ///             new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs
+    ///             {
+    ///                 CustomerGatewayId = exampleCustomerGateway.Id,
+    ///                 Role = "master",
+    ///                 TunnelIndex = 1,
+    ///                 EnableDpd = true,
+    ///                 EnableNatTraversal = true,
+    ///                 TunnelIkeConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs
+    ///                 {
+    ///                     IkeAuthAlg = "md5",
+    ///                     IkeEncAlg = "des",
+    ///                     IkeVersion = "ikev2",
+    ///                     IkeMode = "main",
+    ///                     IkeLifetime = 86400,
+    ///                     Psk = "tf-examplevpn1",
+    ///                     IkePfs = "group1",
+    ///                     RemoteId = "examplebob1",
+    ///                     LocalId = "examplealice1",
+    ///                 },
+    ///                 TunnelIpsecConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs
+    ///                 {
+    ///                     IpsecPfs = "group5",
+    ///                     IpsecEncAlg = "des",
+    ///                     IpsecAuthAlg = "md5",
+    ///                     IpsecLifetime = 86400,
+    ///                 },
+    ///             },
+    ///             new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs
+    ///             {
+    ///                 CustomerGatewayId = exampleCustomerGateway.Id,
+    ///                 Role = "slave",
+    ///                 TunnelIndex = 2,
+    ///                 EnableDpd = true,
+    ///                 EnableNatTraversal = true,
+    ///                 TunnelIkeConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs
+    ///                 {
+    ///                     IkeAuthAlg = "md5",
+    ///                     IkeEncAlg = "des",
+    ///                     IkeVersion = "ikev2",
+    ///                     IkeMode = "main",
+    ///                     IkeLifetime = 86400,
+    ///                     Psk = "tf-examplevpn2",
+    ///                     IkePfs = "group1",
+    ///                     RemoteId = "examplebob2",
+    ///                     LocalId = "examplealice2",
+    ///                 },
+    ///                 TunnelIpsecConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs
+    ///                 {
+    ///                     IpsecPfs = "group5",
+    ///                     IpsecEncAlg = "des",
+    ///                     IpsecAuthAlg = "md5",
+    ///                     IpsecLifetime = 86400,
+    ///                 },
+    ///             },
     ///         },
-    ///         IpsecConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIpsecConfigArgs
-    ///         {
-    ///             IpsecPfs = "group5",
-    ///             IpsecEncAlg = "des",
-    ///             IpsecAuthAlg = "md5",
-    ///             IpsecLifetime = 86400,
-    ///         },
-    ///         BgpConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentBgpConfigArgs
-    ///         {
-    ///             Enable = true,
-    ///             LocalAsn = 45014,
-    ///             TunnelCidr = "169.254.11.0/30",
-    ///             LocalBgpIp = "169.254.11.1",
-    ///         },
-    ///         HealthCheckConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentHealthCheckConfigArgs
-    ///         {
-    ///             Enable = true,
-    ///             Sip = "192.168.1.1",
-    ///             Dip = "10.0.0.1",
-    ///             Interval = 10,
-    ///             Retry = 10,
-    ///             Policy = "revoke_route",
-    ///         },
-    ///         EnableDpd = true,
-    ///         EnableNatTraversal = true,
     ///         VpnAttachmentName = name,
     ///     });
     /// 
@@ -112,143 +129,10 @@ namespace Pulumi.AliCloud.Cen
     ///     {
     ///         AutoPublishRouteEnabled = false,
     ///         TransitRouterAttachmentDescription = name,
-    ///         TransitRouterAttachmentName = name,
+    ///         TransitRouterVpnAttachmentName = name,
     ///         CenId = exampleTransitRouter.CenId,
     ///         TransitRouterId = exampleTransitRouterCidr.TransitRouterId,
     ///         VpnId = exampleGatewayVpnAttachment.Id,
-    ///         Zones = new[]
-    ///         {
-    ///             new AliCloud.Cen.Inputs.TransitRouterVpnAttachmentZoneArgs
-    ///             {
-    ///                 ZoneId = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0])),
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Dual Tunnel Mode Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = AliCloud.Index.GetAccount.Invoke();
-    /// 
-    ///     var defaultbpR5Uk = new AliCloud.Cen.Instance("defaultbpR5Uk", new()
-    ///     {
-    ///         CenInstanceName = "example-vpn-attachment",
-    ///     });
-    /// 
-    ///     var defaultM8Zo6H = new AliCloud.Cen.TransitRouter("defaultM8Zo6H", new()
-    ///     {
-    ///         CenId = defaultbpR5Uk.Id,
-    ///     });
-    /// 
-    ///     var defaultuUtyCv = new AliCloud.Cen.TransitRouterCidr("defaultuUtyCv", new()
-    ///     {
-    ///         Cidr = "192.168.10.0/24",
-    ///         TransitRouterId = defaultM8Zo6H.TransitRouterId,
-    ///     });
-    /// 
-    ///     var defaultMeoCIz = new AliCloud.Vpn.CustomerGateway("defaultMeoCIz", new()
-    ///     {
-    ///         IpAddress = "0.0.0.0",
-    ///         CustomerGatewayName = "example-vpn-attachment",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             defaultuUtyCv,
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultGetTransitRouterService = AliCloud.Cen.GetTransitRouterService.Invoke(new()
-    ///     {
-    ///         Enable = "On",
-    ///     });
-    /// 
-    ///     var defaultvrPzdh = new AliCloud.Vpn.GatewayVpnAttachment("defaultvrPzdh", new()
-    ///     {
-    ///         NetworkType = "public",
-    ///         LocalSubnet = "0.0.0.0/0",
-    ///         EnableTunnelsBgp = false,
-    ///         VpnAttachmentName = name,
-    ///         TunnelOptionsSpecifications = new[]
-    ///         {
-    ///             new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs
-    ///             {
-    ///                 CustomerGatewayId = defaultMeoCIz.Id,
-    ///                 EnableDpd = true,
-    ///                 EnableNatTraversal = true,
-    ///                 TunnelIndex = 1,
-    ///                 TunnelIkeConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs
-    ///                 {
-    ///                     RemoteId = "2.2.2.2",
-    ///                     IkeEncAlg = "aes",
-    ///                     IkeMode = "main",
-    ///                     IkeVersion = "ikev1",
-    ///                     LocalId = "1.1.1.1",
-    ///                     IkeAuthAlg = "md5",
-    ///                     IkeLifetime = 86100,
-    ///                     IkePfs = "group2",
-    ///                     Psk = "12345678",
-    ///                 },
-    ///                 TunnelIpsecConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs
-    ///                 {
-    ///                     IpsecAuthAlg = "md5",
-    ///                     IpsecEncAlg = "aes",
-    ///                     IpsecLifetime = 86200,
-    ///                     IpsecPfs = "group5",
-    ///                 },
-    ///             },
-    ///             new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs
-    ///             {
-    ///                 EnableNatTraversal = true,
-    ///                 TunnelIndex = 2,
-    ///                 TunnelIkeConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs
-    ///                 {
-    ///                     LocalId = "4.4.4.4",
-    ///                     RemoteId = "5.5.5.5",
-    ///                     IkeLifetime = 86400,
-    ///                     IkePfs = "group5",
-    ///                     IkeMode = "main",
-    ///                     IkeVersion = "ikev2",
-    ///                     Psk = "32333442",
-    ///                     IkeAuthAlg = "md5",
-    ///                     IkeEncAlg = "aes",
-    ///                 },
-    ///                 TunnelIpsecConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs
-    ///                 {
-    ///                     IpsecEncAlg = "aes",
-    ///                     IpsecLifetime = 86400,
-    ///                     IpsecPfs = "group5",
-    ///                     IpsecAuthAlg = "sha256",
-    ///                 },
-    ///                 CustomerGatewayId = defaultMeoCIz.Id,
-    ///                 EnableDpd = true,
-    ///             },
-    ///         },
-    ///         RemoteSubnet = "0.0.0.0/0",
-    ///     });
-    /// 
-    ///     var defaultTransitRouterVpnAttachment = new AliCloud.Cen.TransitRouterVpnAttachment("default", new()
-    ///     {
-    ///         TransitRouterId = defaultM8Zo6H.TransitRouterId,
-    ///         VpnId = defaultvrPzdh.Id,
-    ///         AutoPublishRouteEnabled = false,
-    ///         ChargeType = "POSTPAY",
-    ///         TransitRouterAttachmentName = "example-vpn-attachment",
-    ///         VpnOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
-    ///         CenId = defaultM8Zo6H.CenId,
-    ///         TransitRouterAttachmentDescription = "example-vpn-attachment",
     ///     });
     /// 
     /// });
@@ -261,7 +145,7 @@ namespace Pulumi.AliCloud.Cen
     /// Cloud Enterprise Network (CEN) Transit Router Vpn Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example &lt;id&gt;
+    /// $ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example &lt;transit_router_attachment_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment")]
@@ -287,10 +171,19 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> ChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource
+        /// The creation time of the resource.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The entity that pays the fees of the network instance. Valid values:
+        /// 
+        /// - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+        /// - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+        /// </summary>
+        [Output("orderType")]
+        public Output<string> OrderType { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the region where the transit router is deployed.
@@ -299,7 +192,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
-        /// Status
+        /// Status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -318,17 +211,23 @@ namespace Pulumi.AliCloud.Cen
         public Output<string?> TransitRouterAttachmentDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the VPN attachment.
-        /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        /// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.
         /// </summary>
         [Output("transitRouterAttachmentName")]
-        public Output<string?> TransitRouterAttachmentName { get; private set; } = null!;
+        public Output<string> TransitRouterAttachmentName { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the transit router.
         /// </summary>
         [Output("transitRouterId")]
         public Output<string?> TransitRouterId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the VPN attachment.
+        /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        /// </summary>
+        [Output("transitRouterVpnAttachmentName")]
+        public Output<string> TransitRouterVpnAttachmentName { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the IPsec-VPN attachment.
@@ -349,6 +248,8 @@ namespace Pulumi.AliCloud.Cen
         /// The Zone ID in the current region.
         /// System will create resources under the Zone that you specify.
         /// Left blank if associated IPSec connection is in dual-tunnel mode. See `Zone` below.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("zones")]
         public Output<ImmutableArray<Outputs.TransitRouterVpnAttachmentZone>> Zones { get; private set; } = null!;
@@ -418,6 +319,15 @@ namespace Pulumi.AliCloud.Cen
         [Input("chargeType")]
         public Input<string>? ChargeType { get; set; }
 
+        /// <summary>
+        /// The entity that pays the fees of the network instance. Valid values:
+        /// 
+        /// - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+        /// - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+        /// </summary>
+        [Input("orderType")]
+        public Input<string>? OrderType { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -438,8 +348,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? TransitRouterAttachmentDescription { get; set; }
 
         /// <summary>
-        /// The name of the VPN attachment.
-        /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        /// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.
         /// </summary>
         [Input("transitRouterAttachmentName")]
         public Input<string>? TransitRouterAttachmentName { get; set; }
@@ -449,6 +358,13 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }
+
+        /// <summary>
+        /// The name of the VPN attachment.
+        /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        /// </summary>
+        [Input("transitRouterVpnAttachmentName")]
+        public Input<string>? TransitRouterVpnAttachmentName { get; set; }
 
         /// <summary>
         /// The ID of the IPsec-VPN attachment.
@@ -472,6 +388,8 @@ namespace Pulumi.AliCloud.Cen
         /// The Zone ID in the current region.
         /// System will create resources under the Zone that you specify.
         /// Left blank if associated IPSec connection is in dual-tunnel mode. See `Zone` below.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputList<Inputs.TransitRouterVpnAttachmentZoneArgs> Zones
         {
@@ -507,10 +425,19 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? ChargeType { get; set; }
 
         /// <summary>
-        /// The creation time of the resource
+        /// The creation time of the resource.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The entity that pays the fees of the network instance. Valid values:
+        /// 
+        /// - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+        /// - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+        /// </summary>
+        [Input("orderType")]
+        public Input<string>? OrderType { get; set; }
 
         /// <summary>
         /// The ID of the region where the transit router is deployed.
@@ -519,7 +446,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? RegionId { get; set; }
 
         /// <summary>
-        /// Status
+        /// Status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -544,8 +471,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? TransitRouterAttachmentDescription { get; set; }
 
         /// <summary>
-        /// The name of the VPN attachment.
-        /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        /// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.
         /// </summary>
         [Input("transitRouterAttachmentName")]
         public Input<string>? TransitRouterAttachmentName { get; set; }
@@ -555,6 +481,13 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }
+
+        /// <summary>
+        /// The name of the VPN attachment.
+        /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        /// </summary>
+        [Input("transitRouterVpnAttachmentName")]
+        public Input<string>? TransitRouterVpnAttachmentName { get; set; }
 
         /// <summary>
         /// The ID of the IPsec-VPN attachment.
@@ -578,6 +511,8 @@ namespace Pulumi.AliCloud.Cen
         /// The Zone ID in the current region.
         /// System will create resources under the Zone that you specify.
         /// Left blank if associated IPSec connection is in dual-tunnel mode. See `Zone` below.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputList<Inputs.TransitRouterVpnAttachmentZoneGetArgs> Zones
         {

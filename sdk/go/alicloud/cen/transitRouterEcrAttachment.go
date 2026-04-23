@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CEN Transit Router Ecr Attachment resource.
+// Provides a Cloud Enterprise Network (CEN) Transit Router Ecr Attachment resource.
 //
-// For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
+// For information about Cloud Enterprise Network (CEN) Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
 //
 // > **NOTE:** Available since v1.235.0.
 //
@@ -101,23 +101,23 @@ import (
 //
 // ## Import
 //
-// CEN Transit Router Ecr Attachment can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Transit Router Ecr Attachment can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example <id>
+// $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example <transit_router_attachment_id>
 // ```
 type TransitRouterEcrAttachment struct {
 	pulumi.CustomResourceState
 
 	// CenId
 	CenId pulumi.StringPtrOutput `pulumi:"cenId"`
-	// The creation time of the resource
+	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// EcrId
 	EcrId pulumi.StringOutput `pulumi:"ecrId"`
 	// EcrOwnerId
 	EcrOwnerId pulumi.IntPtrOutput `pulumi:"ecrOwnerId"`
-	// The status of the resource
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -164,13 +164,13 @@ func GetTransitRouterEcrAttachment(ctx *pulumi.Context,
 type transitRouterEcrAttachmentState struct {
 	// CenId
 	CenId *string `pulumi:"cenId"`
-	// The creation time of the resource
+	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
 	// EcrId
 	EcrId *string `pulumi:"ecrId"`
 	// EcrOwnerId
 	EcrOwnerId *int `pulumi:"ecrOwnerId"`
-	// The status of the resource
+	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
@@ -185,13 +185,13 @@ type transitRouterEcrAttachmentState struct {
 type TransitRouterEcrAttachmentState struct {
 	// CenId
 	CenId pulumi.StringPtrInput
-	// The creation time of the resource
+	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
 	// EcrId
 	EcrId pulumi.StringPtrInput
 	// EcrOwnerId
 	EcrOwnerId pulumi.IntPtrInput
-	// The status of the resource
+	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
@@ -334,7 +334,7 @@ func (o TransitRouterEcrAttachmentOutput) CenId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouterEcrAttachment) pulumi.StringPtrOutput { return v.CenId }).(pulumi.StringPtrOutput)
 }
 
-// The creation time of the resource
+// The creation time of the resource.
 func (o TransitRouterEcrAttachmentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterEcrAttachment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -349,7 +349,7 @@ func (o TransitRouterEcrAttachmentOutput) EcrOwnerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TransitRouterEcrAttachment) pulumi.IntPtrOutput { return v.EcrOwnerId }).(pulumi.IntPtrOutput)
 }
 
-// The status of the resource
+// The status of the resource.
 func (o TransitRouterEcrAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterEcrAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

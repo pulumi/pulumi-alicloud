@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.CS
     public static class GetServerlessKubernetesClusters
     {
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+        /// 
         /// This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available since v1.58.0
@@ -47,6 +49,8 @@ namespace Pulumi.AliCloud.CS
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerlessKubernetesClustersResult>("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args ?? new GetServerlessKubernetesClustersArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+        /// 
         /// This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available since v1.58.0
@@ -82,6 +86,8 @@ namespace Pulumi.AliCloud.CS
             => global::Pulumi.Deployment.Instance.Invoke<GetServerlessKubernetesClustersResult>("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args ?? new GetServerlessKubernetesClustersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+        /// 
         /// This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available since v1.58.0

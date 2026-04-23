@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a CEN Transit Router Ecr Attachment resource.
+    /// Provides a Cloud Enterprise Network (CEN) Transit Router Ecr Attachment resource.
     /// 
-    /// For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
+    /// For information about Cloud Enterprise Network (CEN) Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
     /// 
     /// &gt; **NOTE:** Available since v1.235.0.
     /// 
@@ -76,10 +76,10 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// CEN Transit Router Ecr Attachment can be imported using the id, e.g.
+    /// Cloud Enterprise Network (CEN) Transit Router Ecr Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example &lt;id&gt;
+    /// $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example &lt;transit_router_attachment_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment")]
@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string?> CenId { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource
+        /// The creation time of the resource.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<int?> EcrOwnerId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -248,7 +248,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? CenId { get; set; }
 
         /// <summary>
-        /// The creation time of the resource
+        /// The creation time of the resource.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -266,7 +266,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<int>? EcrOwnerId { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

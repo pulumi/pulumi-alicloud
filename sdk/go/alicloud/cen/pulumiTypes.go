@@ -389,11 +389,16 @@ func (o TransitRouterMulticastDomainOptionsPtrOutput) Igmpv2Support() pulumi.Str
 }
 
 type TransitRouterVpcAttachmentZoneMapping struct {
-	// The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+	// The ID of the vSwitch that you want to add to the VPC connection.
+	//
+	// You can specify at most 10 vSwitches in each call.
+	//
 	// - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
 	// - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
 	VswitchId string `pulumi:"vswitchId"`
-	// The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
+	// The ID of the zone that supports Enterprise Edition transit routers.
+	// You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.
+	// You can specify at most 10 zones in each call.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -409,11 +414,16 @@ type TransitRouterVpcAttachmentZoneMappingInput interface {
 }
 
 type TransitRouterVpcAttachmentZoneMappingArgs struct {
-	// The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+	// The ID of the vSwitch that you want to add to the VPC connection.
+	//
+	// You can specify at most 10 vSwitches in each call.
+	//
 	// - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
 	// - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	// The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
+	// The ID of the zone that supports Enterprise Edition transit routers.
+	// You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.
+	// You can specify at most 10 zones in each call.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -468,14 +478,19 @@ func (o TransitRouterVpcAttachmentZoneMappingOutput) ToTransitRouterVpcAttachmen
 	return o
 }
 
-// The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+// The ID of the vSwitch that you want to add to the VPC connection.
+//
+// You can specify at most 10 vSwitches in each call.
+//
 // - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
 // - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
 func (o TransitRouterVpcAttachmentZoneMappingOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v TransitRouterVpcAttachmentZoneMapping) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
+// The ID of the zone that supports Enterprise Edition transit routers.
+// You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.
+// You can specify at most 10 zones in each call.
 func (o TransitRouterVpcAttachmentZoneMappingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v TransitRouterVpcAttachmentZoneMapping) string { return v.ZoneId }).(pulumi.StringOutput)
 }

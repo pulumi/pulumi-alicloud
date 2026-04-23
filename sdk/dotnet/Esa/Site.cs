@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Esa
         /// - `CNAME`
         /// </summary>
         [Output("accessType")]
-        public Output<string?> AccessType { get; private set; } = null!;
+        public Output<string> AccessType { get; private set; } = null!;
 
         /// <summary>
         /// Add visitor geolocation header. Value range:
@@ -106,6 +106,24 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Output("aiTemplate")]
         public Output<string> AiTemplate { get; private set; } = null!;
+
+        /// <summary>
+        /// AutomaticFrequencyControl Disposal action.Valid values:
+        /// </summary>
+        [Output("automaticFrequencyControlActionType")]
+        public Output<string> AutomaticFrequencyControlActionType { get; private set; } = null!;
+
+        /// <summary>
+        /// AutomaticFrequencyControl Switch.Valid values:
+        /// </summary>
+        [Output("automaticFrequencyControlEnable")]
+        public Output<string> AutomaticFrequencyControlEnable { get; private set; } = null!;
+
+        /// <summary>
+        /// AutomaticFrequencyControl Protection Level.Valid values:
+        /// </summary>
+        [Output("automaticFrequencyControlLevel")]
+        public Output<string> AutomaticFrequencyControlLevel { get; private set; } = null!;
 
         /// <summary>
         /// Multi-level cache architecture mode. Possible values:
@@ -195,6 +213,18 @@ namespace Pulumi.AliCloud.Esa
         public Output<bool?> Paused { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable the quality data collection switch.Valid values:
+        /// </summary>
+        [Output("performanceDataCollectionEnable")]
+        public Output<string?> PerformanceDataCollectionEnable { get; private set; } = null!;
+
+        /// <summary>
+        /// Real client IP header name.
+        /// </summary>
+        [Output("realClientIpHeaderName")]
+        public Output<string?> RealClientIpHeaderName { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the resource group
         /// </summary>
         [Output("resourceGroupId")]
@@ -223,6 +253,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Output("siteVersion")]
         public Output<int?> SiteVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Site WAF Configuration Details. See `SiteWafSettings` below.
+        /// </summary>
+        [Output("siteWafSettings")]
+        public Output<Outputs.SiteSiteWafSettings> SiteWafSettings { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource
@@ -299,8 +335,8 @@ namespace Pulumi.AliCloud.Esa
         /// - `NS`
         /// - `CNAME`
         /// </summary>
-        [Input("accessType")]
-        public Input<string>? AccessType { get; set; }
+        [Input("accessType", required: true)]
+        public Input<string> AccessType { get; set; } = null!;
 
         /// <summary>
         /// Add visitor geolocation header. Value range:
@@ -325,6 +361,24 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("aiTemplate")]
         public Input<string>? AiTemplate { get; set; }
+
+        /// <summary>
+        /// AutomaticFrequencyControl Disposal action.Valid values:
+        /// </summary>
+        [Input("automaticFrequencyControlActionType")]
+        public Input<string>? AutomaticFrequencyControlActionType { get; set; }
+
+        /// <summary>
+        /// AutomaticFrequencyControl Switch.Valid values:
+        /// </summary>
+        [Input("automaticFrequencyControlEnable")]
+        public Input<string>? AutomaticFrequencyControlEnable { get; set; }
+
+        /// <summary>
+        /// AutomaticFrequencyControl Protection Level.Valid values:
+        /// </summary>
+        [Input("automaticFrequencyControlLevel")]
+        public Input<string>? AutomaticFrequencyControlLevel { get; set; }
 
         /// <summary>
         /// Multi-level cache architecture mode. Possible values:
@@ -408,6 +462,18 @@ namespace Pulumi.AliCloud.Esa
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
+        /// Whether to enable the quality data collection switch.Valid values:
+        /// </summary>
+        [Input("performanceDataCollectionEnable")]
+        public Input<string>? PerformanceDataCollectionEnable { get; set; }
+
+        /// <summary>
+        /// Real client IP header name.
+        /// </summary>
+        [Input("realClientIpHeaderName")]
+        public Input<string>? RealClientIpHeaderName { get; set; }
+
+        /// <summary>
         /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
@@ -436,6 +502,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
+
+        /// <summary>
+        /// Site WAF Configuration Details. See `SiteWafSettings` below.
+        /// </summary>
+        [Input("siteWafSettings")]
+        public Input<Inputs.SiteSiteWafSettingsArgs>? SiteWafSettings { get; set; }
 
         /// <summary>
         /// Custom CacheTag name.
@@ -500,6 +572,24 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("aiTemplate")]
         public Input<string>? AiTemplate { get; set; }
+
+        /// <summary>
+        /// AutomaticFrequencyControl Disposal action.Valid values:
+        /// </summary>
+        [Input("automaticFrequencyControlActionType")]
+        public Input<string>? AutomaticFrequencyControlActionType { get; set; }
+
+        /// <summary>
+        /// AutomaticFrequencyControl Switch.Valid values:
+        /// </summary>
+        [Input("automaticFrequencyControlEnable")]
+        public Input<string>? AutomaticFrequencyControlEnable { get; set; }
+
+        /// <summary>
+        /// AutomaticFrequencyControl Protection Level.Valid values:
+        /// </summary>
+        [Input("automaticFrequencyControlLevel")]
+        public Input<string>? AutomaticFrequencyControlLevel { get; set; }
 
         /// <summary>
         /// Multi-level cache architecture mode. Possible values:
@@ -589,6 +679,18 @@ namespace Pulumi.AliCloud.Esa
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
+        /// Whether to enable the quality data collection switch.Valid values:
+        /// </summary>
+        [Input("performanceDataCollectionEnable")]
+        public Input<string>? PerformanceDataCollectionEnable { get; set; }
+
+        /// <summary>
+        /// Real client IP header name.
+        /// </summary>
+        [Input("realClientIpHeaderName")]
+        public Input<string>? RealClientIpHeaderName { get; set; }
+
+        /// <summary>
         /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
@@ -617,6 +719,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
+
+        /// <summary>
+        /// Site WAF Configuration Details. See `SiteWafSettings` below.
+        /// </summary>
+        [Input("siteWafSettings")]
+        public Input<Inputs.SiteSiteWafSettingsGetArgs>? SiteWafSettings { get; set; }
 
         /// <summary>
         /// The status of the resource

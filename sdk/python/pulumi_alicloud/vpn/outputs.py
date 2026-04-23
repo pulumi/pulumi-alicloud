@@ -1379,7 +1379,7 @@ class GatewayVpnAttachmentTunnelOptionsSpecification(dict):
         :param _builtins.bool enable_dpd: Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:
         :param _builtins.bool enable_nat_traversal: Whether the NAT crossing function is enabled for the tunnel. Value:
         :param _builtins.str internet_ip: The local internet IP in Tunnel.
-        :param _builtins.str role: The role of Tunnel.
+        :param _builtins.str role: The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
         :param _builtins.str state: The state of Tunnel.
         :param _builtins.str status: The negotiation status of Tunnel.
         :param 'GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs' tunnel_bgp_config: Add the BGP configuration for the tunnel.
@@ -1462,7 +1462,7 @@ class GatewayVpnAttachmentTunnelOptionsSpecification(dict):
     @pulumi.getter
     def role(self) -> Optional[_builtins.str]:
         """
-        The role of Tunnel.
+        The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
         """
         return pulumi.get(self, "role")
 

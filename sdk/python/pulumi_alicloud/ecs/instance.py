@@ -189,7 +189,7 @@ class InstanceArgs:
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead. From version 1.276.0, `role_name` can be modified.
                
                > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
                
@@ -1108,7 +1108,7 @@ class InstanceArgs:
     @_utilities.deprecated("""Field `role_name` has been deprecated from provider version 1.275.0. New resource `ecs.RamRoleAttachment` instead.""")
     def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead. From version 1.276.0, `role_name` can be modified.
 
         > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
 
@@ -1666,7 +1666,7 @@ class _InstanceState:
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead. From version 1.276.0, `role_name` can be modified.
                
                > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
                
@@ -2731,7 +2731,7 @@ class _InstanceState:
     @_utilities.deprecated("""Field `role_name` has been deprecated from provider version 1.275.0. New resource `ecs.RamRoleAttachment` instead.""")
     def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead. From version 1.276.0, `role_name` can be modified.
 
         > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
 
@@ -3375,7 +3375,7 @@ class Instance(pulumi.CustomResource):
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead. From version 1.276.0, `role_name` can be modified.
                
                > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
                
@@ -3929,7 +3929,7 @@ class Instance(pulumi.CustomResource):
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead. From version 1.276.0, `role_name` can be modified.
                
                > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
                
@@ -4640,7 +4640,7 @@ class Instance(pulumi.CustomResource):
     @_utilities.deprecated("""Field `role_name` has been deprecated from provider version 1.275.0. New resource `ecs.RamRoleAttachment` instead.""")
     def role_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead.
+        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `role_name` has been deprecated from provider version 1.275.0. New resource ecs.RamRoleAttachment instead. From version 1.276.0, `role_name` can be modified.
 
         > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
 

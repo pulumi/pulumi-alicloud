@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClientCertificate{}
 	case "alicloud:esa/compressionRule:CompressionRule":
 		r = &CompressionRule{}
+	case "alicloud:esa/customResponseCodeRule:CustomResponseCodeRule":
+		r = &CustomResponseCodeRule{}
 	case "alicloud:esa/customScenePolicy:CustomScenePolicy":
 		r = &CustomScenePolicy{}
 	case "alicloud:esa/edgeContainerApp:EdgeContainerApp":
@@ -160,6 +162,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/compressionRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/customResponseCodeRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

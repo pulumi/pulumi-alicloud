@@ -1987,6 +1987,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cloudfirewall/natFirewallControlPolicyOrder",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/natFirewallControlPolicyOrder:NatFirewallControlPolicyOrder": "NatFirewallControlPolicyOrder"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cloudfirewall/policyAdvancedConfig",
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
@@ -2031,6 +2039,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
    "alicloud:cloudfirewall/vpcFirewallAclEngineMode:VpcFirewallAclEngineMode": "VpcFirewallAclEngineMode"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudfirewall/vpcFirewallControlPolicyOrder",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/vpcFirewallControlPolicyOrder:VpcFirewallControlPolicyOrder": "VpcFirewallControlPolicyOrder"
   }
  },
  {
@@ -2403,6 +2419,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cms/workspace",
+  "fqn": "pulumi_alicloud.cms",
+  "classes": {
+   "alicloud:cms/workspace:Workspace": "Workspace"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "compute/nestServiceInstance",
   "fqn": "pulumi_alicloud.compute",
   "classes": {
@@ -2507,26 +2531,10 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
-  "mod": "cs/application",
-  "fqn": "pulumi_alicloud.cs",
-  "classes": {
-   "alicloud:cs/application:Application": "Application"
-  }
- },
- {
-  "pkg": "alicloud",
   "mod": "cs/autoscalingConfig",
   "fqn": "pulumi_alicloud.cs",
   "classes": {
    "alicloud:cs/autoscalingConfig:AutoscalingConfig": "AutoscalingConfig"
-  }
- },
- {
-  "pkg": "alicloud",
-  "mod": "cs/cluster",
-  "fqn": "pulumi_alicloud.cs",
-  "classes": {
-   "alicloud:cs/cluster:Cluster": "Cluster"
   }
  },
  {
@@ -2623,14 +2631,6 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cs",
   "classes": {
    "alicloud:cs/serverlessKubernetes:ServerlessKubernetes": "ServerlessKubernetes"
-  }
- },
- {
-  "pkg": "alicloud",
-  "mod": "cs/swarm",
-  "fqn": "pulumi_alicloud.cs",
-  "classes": {
-   "alicloud:cs/swarm:Swarm": "Swarm"
   }
  },
  {
@@ -4399,6 +4399,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.esa",
   "classes": {
    "alicloud:esa/compressionRule:CompressionRule": "CompressionRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/customResponseCodeRule",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/customResponseCodeRule:CustomResponseCodeRule": "CustomResponseCodeRule"
   }
  },
  {

@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? InternetIp;
         /// <summary>
-        /// The role of Tunnel.
+        /// The role of the tunnel. Valid values: `Master`, `Slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
         /// </summary>
         public readonly string? Role;
         /// <summary>

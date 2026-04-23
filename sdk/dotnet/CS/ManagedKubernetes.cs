@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.CS
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "tf-example-";
     ///     // Existing vpc id used to create several vswitches and other resources.
     ///     var vpcId = config.Get("vpcId") ?? "";
     ///     // The cidr block used to launch a new vpc when 'vpc_id' is not specified.
@@ -83,6 +83,11 @@ namespace Pulumi.AliCloud.CS
     ///         "10.5.0.0/16",
     ///     };
     ///     var enhanced = AliCloud.Vpc.GetEnhancedNatAvailableZones.Invoke();
+    /// 
+    ///     var @default = AliCloud.Kms.GetKeys.Invoke(new()
+    ///     {
+    ///         Filters = "[{\"Key\":\"KeyState\",\"Values\":[\"Enabled\"]},{\"Key\":\"KeySpec\",\"Values\":[\"Aliyun_AES_256\"]},{\"Key\":\"KeyUsage\",\"Values\":[\"ENCRYPT/DECRYPT\"]},{\"Key\":\"CreatorType\",\"Values\":[\"User\"]}]",
+    ///     });
     /// 
     ///     // If there is not specifying vpc_id, the module will launch a new vpc
     ///     var vpc = new List&lt;AliCloud.Vpc.Network&gt;();
@@ -128,7 +133,7 @@ namespace Pulumi.AliCloud.CS
     ///     }
     ///     var k8s = new AliCloud.CS.ManagedKubernetes("k8s", new()
     ///     {
-    ///         Name = name,
+    ///         NamePrefix = name,
     ///         ClusterSpec = "ack.pro.small",
     ///         VswitchIds = vswitchIds.Length &gt; 0 ? Std.Index.Join.Invoke(new()
     ///         {
@@ -168,6 +173,7 @@ namespace Pulumi.AliCloud.CS
     ///         ProxyMode = proxyMode,
     ///         ServiceCidr = serviceCidr,
     ///         SkipSetCertificateAuthority = true,
+    ///         EncryptionProviderKey = @default.Apply(@default =&gt; @default.Apply(getKeysResult =&gt; getKeysResult.Keys[0]?.KeyId)),
     ///         Addons = new[]
     ///         {
     ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
@@ -496,6 +502,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// 
         /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         /// </summary>
         [Output("customSan")]
@@ -514,6 +521,14 @@ namespace Pulumi.AliCloud.CS
         public Output<bool> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to disable encryption for Kubernetes Secrets. Default value is `False`. Set to `True` to disable encryption.
+        /// 
+        /// &gt; **Note:** When enabling encryption, you must explicitly set `DisableEncryption = false` along with `EncryptionProviderKey`. When disabling encryption, you only need to set `DisableEncryption = true`, and the `EncryptionProviderKey` will be ignored.
+        /// </summary>
+        [Output("disableEncryption")]
+        public Output<bool> DisableEncryption { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `False`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Output("enableRrsa")]
@@ -521,6 +536,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+        /// 
+        /// &gt; **Note:** To enable encryption, you must specify both `EncryptionProviderKey` and `DisableEncryption = false`. When `DisableEncryption` is set to `True`, changes to `EncryptionProviderKey` will be ignored.
         /// </summary>
         [Output("encryptionProviderKey")]
         public Output<string?> EncryptionProviderKey { get; private set; } = null!;
@@ -633,7 +650,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        /// * &gt; **NOTE:** Please take of note before updating the `SecurityGroupId`:
+        /// 
+        /// &gt; **NOTE:** Please take of note before updating the `SecurityGroupId`:
         /// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
         /// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         /// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -691,7 +709,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Cluster timezone, works for control plane and Worker nodes.
-        /// * &gt; **NOTE:** Please take of note before updating the `Timezone`:
+        /// 
+        /// &gt; **NOTE:** Please take of note before updating the `Timezone`:
         /// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
         /// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         /// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -701,6 +720,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Configuration block for cluster upgrade operations. See `UpgradePolicy` below.
+        /// 
         /// &gt; **NOTE:** This parameter only applies during resource update.
         /// 
         /// *Network params*
@@ -728,6 +748,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The vSwitches of the control plane.
+        /// 
         /// &gt; **NOTE:** Please take of note before updating the `VswitchIds`:
         /// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
         /// * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -897,6 +918,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// 
         /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         /// </summary>
         [Input("customSan")]
@@ -921,6 +943,14 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
+        /// Whether to disable encryption for Kubernetes Secrets. Default value is `False`. Set to `True` to disable encryption.
+        /// 
+        /// &gt; **Note:** When enabling encryption, you must explicitly set `DisableEncryption = false` along with `EncryptionProviderKey`. When disabling encryption, you only need to set `DisableEncryption = true`, and the `EncryptionProviderKey` will be ignored.
+        /// </summary>
+        [Input("disableEncryption")]
+        public Input<bool>? DisableEncryption { get; set; }
+
+        /// <summary>
         /// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `False`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Input("enableRrsa")]
@@ -928,6 +958,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+        /// 
+        /// &gt; **Note:** To enable encryption, you must specify both `EncryptionProviderKey` and `DisableEncryption = false`. When `DisableEncryption` is set to `True`, changes to `EncryptionProviderKey` will be ignored.
         /// </summary>
         [Input("encryptionProviderKey")]
         public Input<string>? EncryptionProviderKey { get; set; }
@@ -1040,7 +1072,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        /// * &gt; **NOTE:** Please take of note before updating the `SecurityGroupId`:
+        /// 
+        /// &gt; **NOTE:** Please take of note before updating the `SecurityGroupId`:
         /// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
         /// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         /// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -1086,7 +1119,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Cluster timezone, works for control plane and Worker nodes.
-        /// * &gt; **NOTE:** Please take of note before updating the `Timezone`:
+        /// 
+        /// &gt; **NOTE:** Please take of note before updating the `Timezone`:
         /// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
         /// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         /// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -1096,6 +1130,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Configuration block for cluster upgrade operations. See `UpgradePolicy` below.
+        /// 
         /// &gt; **NOTE:** This parameter only applies during resource update.
         /// 
         /// *Network params*
@@ -1120,6 +1155,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The vSwitches of the control plane.
+        /// 
         /// &gt; **NOTE:** Please take of note before updating the `VswitchIds`:
         /// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
         /// * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -1273,6 +1309,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// 
         /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         /// </summary>
         [Input("customSan")]
@@ -1297,6 +1334,14 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
+        /// Whether to disable encryption for Kubernetes Secrets. Default value is `False`. Set to `True` to disable encryption.
+        /// 
+        /// &gt; **Note:** When enabling encryption, you must explicitly set `DisableEncryption = false` along with `EncryptionProviderKey`. When disabling encryption, you only need to set `DisableEncryption = true`, and the `EncryptionProviderKey` will be ignored.
+        /// </summary>
+        [Input("disableEncryption")]
+        public Input<bool>? DisableEncryption { get; set; }
+
+        /// <summary>
         /// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `False`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Input("enableRrsa")]
@@ -1304,6 +1349,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+        /// 
+        /// &gt; **Note:** To enable encryption, you must specify both `EncryptionProviderKey` and `DisableEncryption = false`. When `DisableEncryption` is set to `True`, changes to `EncryptionProviderKey` will be ignored.
         /// </summary>
         [Input("encryptionProviderKey")]
         public Input<string>? EncryptionProviderKey { get; set; }
@@ -1428,7 +1475,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        /// * &gt; **NOTE:** Please take of note before updating the `SecurityGroupId`:
+        /// 
+        /// &gt; **NOTE:** Please take of note before updating the `SecurityGroupId`:
         /// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
         /// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         /// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -1492,7 +1540,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Cluster timezone, works for control plane and Worker nodes.
-        /// * &gt; **NOTE:** Please take of note before updating the `Timezone`:
+        /// 
+        /// &gt; **NOTE:** Please take of note before updating the `Timezone`:
         /// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
         /// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         /// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -1502,6 +1551,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Configuration block for cluster upgrade operations. See `UpgradePolicy` below.
+        /// 
         /// &gt; **NOTE:** This parameter only applies during resource update.
         /// 
         /// *Network params*
@@ -1532,6 +1582,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The vSwitches of the control plane.
+        /// 
         /// &gt; **NOTE:** Please take of note before updating the `VswitchIds`:
         /// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
         /// * The control plane restarts during the change process. Exercise caution when you perform this operation.

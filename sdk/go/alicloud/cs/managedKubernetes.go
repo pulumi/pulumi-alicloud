@@ -303,15 +303,22 @@ type ManagedKubernetes struct {
 	// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
 	ControlPlaneLogTtl pulumi.StringOutput `pulumi:"controlPlaneLogTtl"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan pulumi.StringPtrOutput `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions ManagedKubernetesDeleteOptionArrayOutput `pulumi:"deleteOptions"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
+	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+	//
+	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+	DisableEncryption pulumi.BoolOutput `pulumi:"disableEncryption"`
 	// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrOutput `pulumi:"enableRrsa"`
 	// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+	//
+	// > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
 	EncryptionProviderKey pulumi.StringPtrOutput `pulumi:"encryptionProviderKey"`
 	// The IP address family that the cluster network uses. Valid values:
 	IpStack pulumi.StringOutput `pulumi:"ipStack"`
@@ -354,7 +361,8 @@ type ManagedKubernetes struct {
 	// (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
 	RrsaMetadata ManagedKubernetesRrsaMetadataOutput `pulumi:"rrsaMetadata"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-	// * > **NOTE:** Please take of note before updating the `securityGroupId`:
+	//
+	// > **NOTE:** Please take of note before updating the `securityGroupId`:
 	// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
 	// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -376,12 +384,14 @@ type ManagedKubernetes struct {
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Cluster timezone, works for control plane and Worker nodes.
-	// * > **NOTE:** Please take of note before updating the `timezone`:
+	//
+	// > **NOTE:** Please take of note before updating the `timezone`:
 	// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
 	// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+	//
 	// > **NOTE:** This parameter only applies during resource update.
 	//
 	// *Network params*
@@ -393,6 +403,7 @@ type ManagedKubernetes struct {
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The vSwitches of the control plane.
+	//
 	// > **NOTE:** Please take of note before updating the `vswitchIds`:
 	// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
 	// * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -480,15 +491,22 @@ type managedKubernetesState struct {
 	// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
 	ControlPlaneLogTtl *string `pulumi:"controlPlaneLogTtl"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan *string `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions []ManagedKubernetesDeleteOption `pulumi:"deleteOptions"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+	//
+	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+	DisableEncryption *bool `pulumi:"disableEncryption"`
 	// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa *bool `pulumi:"enableRrsa"`
 	// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+	//
+	// > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
 	EncryptionProviderKey *string `pulumi:"encryptionProviderKey"`
 	// The IP address family that the cluster network uses. Valid values:
 	IpStack *string `pulumi:"ipStack"`
@@ -531,7 +549,8 @@ type managedKubernetesState struct {
 	// (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
 	RrsaMetadata *ManagedKubernetesRrsaMetadata `pulumi:"rrsaMetadata"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-	// * > **NOTE:** Please take of note before updating the `securityGroupId`:
+	//
+	// > **NOTE:** Please take of note before updating the `securityGroupId`:
 	// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
 	// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -553,12 +572,14 @@ type managedKubernetesState struct {
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
 	Tags map[string]string `pulumi:"tags"`
 	// Cluster timezone, works for control plane and Worker nodes.
-	// * > **NOTE:** Please take of note before updating the `timezone`:
+	//
+	// > **NOTE:** Please take of note before updating the `timezone`:
 	// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
 	// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
 	Timezone *string `pulumi:"timezone"`
 	// Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+	//
 	// > **NOTE:** This parameter only applies during resource update.
 	//
 	// *Network params*
@@ -570,6 +591,7 @@ type managedKubernetesState struct {
 	// The ID of VPC where the current cluster is located.
 	VpcId *string `pulumi:"vpcId"`
 	// The vSwitches of the control plane.
+	//
 	// > **NOTE:** Please take of note before updating the `vswitchIds`:
 	// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
 	// * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -628,15 +650,22 @@ type ManagedKubernetesState struct {
 	// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
 	ControlPlaneLogTtl pulumi.StringPtrInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan pulumi.StringPtrInput
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions ManagedKubernetesDeleteOptionArrayInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
+	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+	//
+	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+	DisableEncryption pulumi.BoolPtrInput
 	// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrInput
 	// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+	//
+	// > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
 	EncryptionProviderKey pulumi.StringPtrInput
 	// The IP address family that the cluster network uses. Valid values:
 	IpStack pulumi.StringPtrInput
@@ -679,7 +708,8 @@ type ManagedKubernetesState struct {
 	// (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
 	RrsaMetadata ManagedKubernetesRrsaMetadataPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-	// * > **NOTE:** Please take of note before updating the `securityGroupId`:
+	//
+	// > **NOTE:** Please take of note before updating the `securityGroupId`:
 	// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
 	// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -701,12 +731,14 @@ type ManagedKubernetesState struct {
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
 	Tags pulumi.StringMapInput
 	// Cluster timezone, works for control plane and Worker nodes.
-	// * > **NOTE:** Please take of note before updating the `timezone`:
+	//
+	// > **NOTE:** Please take of note before updating the `timezone`:
 	// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
 	// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
 	Timezone pulumi.StringPtrInput
 	// Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+	//
 	// > **NOTE:** This parameter only applies during resource update.
 	//
 	// *Network params*
@@ -718,6 +750,7 @@ type ManagedKubernetesState struct {
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringPtrInput
 	// The vSwitches of the control plane.
+	//
 	// > **NOTE:** Please take of note before updating the `vswitchIds`:
 	// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
 	// * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -774,15 +807,22 @@ type managedKubernetesArgs struct {
 	// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
 	ControlPlaneLogTtl *string `pulumi:"controlPlaneLogTtl"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan *string `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions []ManagedKubernetesDeleteOption `pulumi:"deleteOptions"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+	//
+	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+	DisableEncryption *bool `pulumi:"disableEncryption"`
 	// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa *bool `pulumi:"enableRrsa"`
 	// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+	//
+	// > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
 	EncryptionProviderKey *string `pulumi:"encryptionProviderKey"`
 	// The IP address family that the cluster network uses. Valid values:
 	IpStack *string `pulumi:"ipStack"`
@@ -821,7 +861,8 @@ type managedKubernetesArgs struct {
 	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources []string `pulumi:"retainResources"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-	// * > **NOTE:** Please take of note before updating the `securityGroupId`:
+	//
+	// > **NOTE:** Please take of note before updating the `securityGroupId`:
 	// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
 	// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -837,12 +878,14 @@ type managedKubernetesArgs struct {
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
 	Tags map[string]string `pulumi:"tags"`
 	// Cluster timezone, works for control plane and Worker nodes.
-	// * > **NOTE:** Please take of note before updating the `timezone`:
+	//
+	// > **NOTE:** Please take of note before updating the `timezone`:
 	// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
 	// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
 	Timezone *string `pulumi:"timezone"`
 	// Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+	//
 	// > **NOTE:** This parameter only applies during resource update.
 	//
 	// *Network params*
@@ -852,6 +895,7 @@ type managedKubernetesArgs struct {
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
 	Version *string `pulumi:"version"`
 	// The vSwitches of the control plane.
+	//
 	// > **NOTE:** Please take of note before updating the `vswitchIds`:
 	// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
 	// * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -903,15 +947,22 @@ type ManagedKubernetesArgs struct {
 	// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
 	ControlPlaneLogTtl pulumi.StringPtrInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan pulumi.StringPtrInput
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions ManagedKubernetesDeleteOptionArrayInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
+	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+	//
+	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+	DisableEncryption pulumi.BoolPtrInput
 	// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrInput
 	// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+	//
+	// > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
 	EncryptionProviderKey pulumi.StringPtrInput
 	// The IP address family that the cluster network uses. Valid values:
 	IpStack pulumi.StringPtrInput
@@ -950,7 +1001,8 @@ type ManagedKubernetesArgs struct {
 	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources pulumi.StringArrayInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-	// * > **NOTE:** Please take of note before updating the `securityGroupId`:
+	//
+	// > **NOTE:** Please take of note before updating the `securityGroupId`:
 	// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
 	// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -966,12 +1018,14 @@ type ManagedKubernetesArgs struct {
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
 	Tags pulumi.StringMapInput
 	// Cluster timezone, works for control plane and Worker nodes.
-	// * > **NOTE:** Please take of note before updating the `timezone`:
+	//
+	// > **NOTE:** Please take of note before updating the `timezone`:
 	// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
 	// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
 	Timezone pulumi.StringPtrInput
 	// Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+	//
 	// > **NOTE:** This parameter only applies during resource update.
 	//
 	// *Network params*
@@ -981,6 +1035,7 @@ type ManagedKubernetesArgs struct {
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
 	Version pulumi.StringPtrInput
 	// The vSwitches of the control plane.
+	//
 	// > **NOTE:** Please take of note before updating the `vswitchIds`:
 	// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
 	// * The control plane restarts during the change process. Exercise caution when you perform this operation.
@@ -1165,6 +1220,7 @@ func (o ManagedKubernetesOutput) ControlPlaneLogTtl() pulumi.StringOutput {
 }
 
 // Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+//
 // > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 func (o ManagedKubernetesOutput) CustomSan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringPtrOutput { return v.CustomSan }).(pulumi.StringPtrOutput)
@@ -1180,12 +1236,21 @@ func (o ManagedKubernetesOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.BoolOutput { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
+// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+//
+// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+func (o ManagedKubernetesOutput) DisableEncryption() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) pulumi.BoolOutput { return v.DisableEncryption }).(pulumi.BoolOutput)
+}
+
 // Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 func (o ManagedKubernetesOutput) EnableRrsa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.BoolPtrOutput { return v.EnableRrsa }).(pulumi.BoolPtrOutput)
 }
 
 // The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+//
+// > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
 func (o ManagedKubernetesOutput) EncryptionProviderKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringPtrOutput { return v.EncryptionProviderKey }).(pulumi.StringPtrOutput)
 }
@@ -1282,7 +1347,8 @@ func (o ManagedKubernetesOutput) RrsaMetadata() ManagedKubernetesRrsaMetadataOut
 }
 
 // The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-// * > **NOTE:** Please take of note before updating the `securityGroupId`:
+//
+// > **NOTE:** Please take of note before updating the `securityGroupId`:
 // * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
 // * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 // * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -1331,7 +1397,8 @@ func (o ManagedKubernetesOutput) Tags() pulumi.StringMapOutput {
 }
 
 // Cluster timezone, works for control plane and Worker nodes.
-// * > **NOTE:** Please take of note before updating the `timezone`:
+//
+// > **NOTE:** Please take of note before updating the `timezone`:
 // * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
 // * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 // * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -1340,6 +1407,7 @@ func (o ManagedKubernetesOutput) Timezone() pulumi.StringPtrOutput {
 }
 
 // Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+//
 // > **NOTE:** This parameter only applies during resource update.
 //
 // *Network params*
@@ -1363,6 +1431,7 @@ func (o ManagedKubernetesOutput) VpcId() pulumi.StringOutput {
 }
 
 // The vSwitches of the control plane.
+//
 // > **NOTE:** Please take of note before updating the `vswitchIds`:
 // * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
 // * The control plane restarts during the change process. Exercise caution when you perform this operation.

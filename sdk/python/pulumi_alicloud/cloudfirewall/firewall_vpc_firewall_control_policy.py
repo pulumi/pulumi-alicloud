@@ -23,7 +23,6 @@ class FirewallVpcFirewallControlPolicyArgs:
                  description: pulumi.Input[_builtins.str],
                  destination: pulumi.Input[_builtins.str],
                  destination_type: pulumi.Input[_builtins.str],
-                 order: pulumi.Input[_builtins.int],
                  proto: pulumi.Input[_builtins.str],
                  source: pulumi.Input[_builtins.str],
                  source_type: pulumi.Input[_builtins.str],
@@ -37,6 +36,7 @@ class FirewallVpcFirewallControlPolicyArgs:
                  end_time: Optional[pulumi.Input[_builtins.int]] = None,
                  lang: Optional[pulumi.Input[_builtins.str]] = None,
                  member_uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 order: Optional[pulumi.Input[_builtins.int]] = None,
                  release: Optional[pulumi.Input[_builtins.str]] = None,
                  repeat_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  repeat_end_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -53,7 +53,6 @@ class FirewallVpcFirewallControlPolicyArgs:
                - If `destination_type` is set to `group`, the value of `destination` must be an address book.
                - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
         :param pulumi.Input[_builtins.str] destination_type: The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
-        :param pulumi.Input[_builtins.int] order: The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
         :param pulumi.Input[_builtins.str] proto: The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
         :param pulumi.Input[_builtins.str] source: Access control over VPC firewalls strategy in the source address.
         :param pulumi.Input[_builtins.str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`.
@@ -61,15 +60,21 @@ class FirewallVpcFirewallControlPolicyArgs:
                - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
                - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         :param pulumi.Input[_builtins.str] application_name: The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types that the access control policy supports. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types that the access control policy supports.
+               
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
-        :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
-        :param pulumi.Input[_builtins.str] dest_port_group: Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+        :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy.
+               
+               ->**Note:** If `dest_port_type` is set to `port`, `dest_port` is mandatory.
+        :param pulumi.Input[_builtins.str] dest_port_group: Access control policy in the access traffic of the destination port address book name.
+               
+               ->**Note:** If `dest_port_type` is set to `group`, `dest_port_group` is mandatory.
         :param pulumi.Input[_builtins.str] dest_port_type: The type of the destination port in the access control policy. Valid values: `port`, `group`.
         :param pulumi.Input[_builtins.str] domain_resolve_type: The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
         :param pulumi.Input[_builtins.int] end_time: The end time of the policy validity period.
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] member_uid: The UID of the member account of the current Alibaba cloud account.
+        :param pulumi.Input[_builtins.int] order: The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
         :param pulumi.Input[_builtins.str] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: The days of the week or month on which the policy is recurrently active. Valid values:
                - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
@@ -83,7 +88,6 @@ class FirewallVpcFirewallControlPolicyArgs:
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "destination_type", destination_type)
-        pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "proto", proto)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "source_type", source_type)
@@ -106,6 +110,8 @@ class FirewallVpcFirewallControlPolicyArgs:
             pulumi.set(__self__, "lang", lang)
         if member_uid is not None:
             pulumi.set(__self__, "member_uid", member_uid)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
         if release is not None:
             pulumi.set(__self__, "release", release)
         if repeat_days is not None:
@@ -169,18 +175,6 @@ class FirewallVpcFirewallControlPolicyArgs:
     @destination_type.setter
     def destination_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "destination_type", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def order(self) -> pulumi.Input[_builtins.int]:
-        """
-        The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
-        """
-        return pulumi.get(self, "order")
-
-    @order.setter
-    def order(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "order", value)
 
     @_builtins.property
     @pulumi.getter
@@ -248,7 +242,8 @@ class FirewallVpcFirewallControlPolicyArgs:
     @pulumi.getter(name="applicationNameLists")
     def application_name_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of application types that the access control policy supports. 
+        The list of application types that the access control policy supports.
+
         > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         """
         return pulumi.get(self, "application_name_lists")
@@ -261,7 +256,9 @@ class FirewallVpcFirewallControlPolicyArgs:
     @pulumi.getter(name="destPort")
     def dest_port(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
+        The destination port in the access control policy.
+
+        ->**Note:** If `dest_port_type` is set to `port`, `dest_port` is mandatory.
         """
         return pulumi.get(self, "dest_port")
 
@@ -273,7 +270,9 @@ class FirewallVpcFirewallControlPolicyArgs:
     @pulumi.getter(name="destPortGroup")
     def dest_port_group(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+        Access control policy in the access traffic of the destination port address book name.
+
+        ->**Note:** If `dest_port_type` is set to `group`, `dest_port_group` is mandatory.
         """
         return pulumi.get(self, "dest_port_group")
 
@@ -340,6 +339,18 @@ class FirewallVpcFirewallControlPolicyArgs:
     @member_uid.setter
     def member_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "member_uid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "order", value)
 
     @_builtins.property
     @pulumi.getter
@@ -459,12 +470,17 @@ class _FirewallVpcFirewallControlPolicyState:
         :param pulumi.Input[_builtins.str] acl_uuid: Access control over VPC firewalls strategy unique identifier.
         :param pulumi.Input[_builtins.str] application_id: Policy specifies the application ID.
         :param pulumi.Input[_builtins.str] application_name: The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types that the access control policy supports. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types that the access control policy supports.
+               
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         :param pulumi.Input[_builtins.int] create_time: (Available since v1.267.0) The time when the policy was created.
         :param pulumi.Input[_builtins.str] description: Access control over VPC firewalls description of the strategy information.
-        :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
-        :param pulumi.Input[_builtins.str] dest_port_group: Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+        :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy.
+               
+               ->**Note:** If `dest_port_type` is set to `port`, `dest_port` is mandatory.
+        :param pulumi.Input[_builtins.str] dest_port_group: Access control policy in the access traffic of the destination port address book name.
+               
+               ->**Note:** If `dest_port_type` is set to `group`, `dest_port_group` is mandatory.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dest_port_group_ports: Port Address Book port list.
         :param pulumi.Input[_builtins.str] dest_port_type: The type of the destination port in the access control policy. Valid values: `port`, `group`.
         :param pulumi.Input[_builtins.str] destination: The destination address in the access control policy. Valid values:
@@ -616,7 +632,8 @@ class _FirewallVpcFirewallControlPolicyState:
     @pulumi.getter(name="applicationNameLists")
     def application_name_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of application types that the access control policy supports. 
+        The list of application types that the access control policy supports.
+
         > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         """
         return pulumi.get(self, "application_name_lists")
@@ -653,7 +670,9 @@ class _FirewallVpcFirewallControlPolicyState:
     @pulumi.getter(name="destPort")
     def dest_port(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
+        The destination port in the access control policy.
+
+        ->**Note:** If `dest_port_type` is set to `port`, `dest_port` is mandatory.
         """
         return pulumi.get(self, "dest_port")
 
@@ -665,7 +684,9 @@ class _FirewallVpcFirewallControlPolicyState:
     @pulumi.getter(name="destPortGroup")
     def dest_port_group(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+        Access control policy in the access traffic of the destination port address book name.
+
+        ->**Note:** If `dest_port_type` is set to `group`, `dest_port_group` is mandatory.
         """
         return pulumi.get(self, "dest_port_group")
 
@@ -1009,6 +1030,9 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
+        > **NOTE** Since v1.276.0. Set `new_order = -1` or omit the argument to let the Cloud Backend manage policy ordering automatically. You can also use `cloudfirewall.VpcFirewallControlPolicyOrder` to manage the policy ordering.<br>
+          If you want manged the policy order in parallel **do not** set the `new_order`, instead use `cloudfirewall.VpcFirewallControlPolicyOrder` manage the policy order.
+
         ## Example Usage
 
         Basic Usage
@@ -1062,11 +1086,16 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         :param pulumi.Input[_builtins.str] application_name: The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types that the access control policy supports. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types that the access control policy supports.
+               
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         :param pulumi.Input[_builtins.str] description: Access control over VPC firewalls description of the strategy information.
-        :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
-        :param pulumi.Input[_builtins.str] dest_port_group: Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+        :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy.
+               
+               ->**Note:** If `dest_port_type` is set to `port`, `dest_port` is mandatory.
+        :param pulumi.Input[_builtins.str] dest_port_group: Access control policy in the access traffic of the destination port address book name.
+               
+               ->**Note:** If `dest_port_type` is set to `group`, `dest_port_group` is mandatory.
         :param pulumi.Input[_builtins.str] dest_port_type: The type of the destination port in the access control policy. Valid values: `port`, `group`.
         :param pulumi.Input[_builtins.str] destination: The destination address in the access control policy. Valid values:
                - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
@@ -1107,6 +1136,9 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
 
         > **NOTE:** Available since v1.194.0.
+
+        > **NOTE** Since v1.276.0. Set `new_order = -1` or omit the argument to let the Cloud Backend manage policy ordering automatically. You can also use `cloudfirewall.VpcFirewallControlPolicyOrder` to manage the policy ordering.<br>
+          If you want manged the policy order in parallel **do not** set the `new_order`, instead use `cloudfirewall.VpcFirewallControlPolicyOrder` manage the policy order.
 
         ## Example Usage
 
@@ -1226,8 +1258,6 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
             __props__.__dict__["end_time"] = end_time
             __props__.__dict__["lang"] = lang
             __props__.__dict__["member_uid"] = member_uid
-            if order is None and not opts.urn:
-                raise TypeError("Missing required property 'order'")
             __props__.__dict__["order"] = order
             if proto is None and not opts.urn:
                 raise TypeError("Missing required property 'proto'")
@@ -1310,12 +1340,17 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl_uuid: Access control over VPC firewalls strategy unique identifier.
         :param pulumi.Input[_builtins.str] application_id: Policy specifies the application ID.
         :param pulumi.Input[_builtins.str] application_name: The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types that the access control policy supports. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types that the access control policy supports.
+               
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         :param pulumi.Input[_builtins.int] create_time: (Available since v1.267.0) The time when the policy was created.
         :param pulumi.Input[_builtins.str] description: Access control over VPC firewalls description of the strategy information.
-        :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
-        :param pulumi.Input[_builtins.str] dest_port_group: Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+        :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy.
+               
+               ->**Note:** If `dest_port_type` is set to `port`, `dest_port` is mandatory.
+        :param pulumi.Input[_builtins.str] dest_port_group: Access control policy in the access traffic of the destination port address book name.
+               
+               ->**Note:** If `dest_port_type` is set to `group`, `dest_port_group` is mandatory.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dest_port_group_ports: Port Address Book port list.
         :param pulumi.Input[_builtins.str] dest_port_type: The type of the destination port in the access control policy. Valid values: `port`, `group`.
         :param pulumi.Input[_builtins.str] destination: The destination address in the access control policy. Valid values:
@@ -1423,7 +1458,8 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="applicationNameLists")
     def application_name_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The list of application types that the access control policy supports. 
+        The list of application types that the access control policy supports.
+
         > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         """
         return pulumi.get(self, "application_name_lists")
@@ -1448,7 +1484,9 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="destPort")
     def dest_port(self) -> pulumi.Output[_builtins.str]:
         """
-        The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
+        The destination port in the access control policy.
+
+        ->**Note:** If `dest_port_type` is set to `port`, `dest_port` is mandatory.
         """
         return pulumi.get(self, "dest_port")
 
@@ -1456,7 +1494,9 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="destPortGroup")
     def dest_port_group(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+        Access control policy in the access traffic of the destination port address book name.
+
+        ->**Note:** If `dest_port_type` is set to `group`, `dest_port_group` is mandatory.
         """
         return pulumi.get(self, "dest_port_group")
 

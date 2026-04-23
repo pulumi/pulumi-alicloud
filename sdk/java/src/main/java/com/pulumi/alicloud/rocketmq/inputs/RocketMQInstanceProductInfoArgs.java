@@ -65,14 +65,14 @@ public final class RocketMQInstanceProductInfoArgs extends com.pulumi.resources.
     }
 
     /**
-     * message send receive ratio.  Value range: [0.2, 0.5].
+     * message send receive ratio.  Value range: [0.05, 0.5].
      * 
      */
     @Import(name="sendReceiveRatio")
     private @Nullable Output<Double> sendReceiveRatio;
 
     /**
-     * @return message send receive ratio.  Value range: [0.2, 0.5].
+     * @return message send receive ratio.  Value range: [0.05, 0.5].
      * 
      */
     public Optional<Output<Double>> sendReceiveRatio() {
@@ -234,7 +234,7 @@ public final class RocketMQInstanceProductInfoArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sendReceiveRatio message send receive ratio.  Value range: [0.2, 0.5].
+         * @param sendReceiveRatio message send receive ratio.  Value range: [0.05, 0.5].
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class RocketMQInstanceProductInfoArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sendReceiveRatio message send receive ratio.  Value range: [0.2, 0.5].
+         * @param sendReceiveRatio message send receive ratio.  Value range: [0.05, 0.5].
          * 
          * @return builder
          * 

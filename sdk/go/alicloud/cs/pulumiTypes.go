@@ -13,236 +13,6 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type ApplicationService struct {
-	Id      *string `pulumi:"id"`
-	Name    *string `pulumi:"name"`
-	Status  *string `pulumi:"status"`
-	Version *string `pulumi:"version"`
-}
-
-// ApplicationServiceInput is an input type that accepts ApplicationServiceArgs and ApplicationServiceOutput values.
-// You can construct a concrete instance of `ApplicationServiceInput` via:
-//
-//	ApplicationServiceArgs{...}
-type ApplicationServiceInput interface {
-	pulumi.Input
-
-	ToApplicationServiceOutput() ApplicationServiceOutput
-	ToApplicationServiceOutputWithContext(context.Context) ApplicationServiceOutput
-}
-
-type ApplicationServiceArgs struct {
-	Id      pulumi.StringPtrInput `pulumi:"id"`
-	Name    pulumi.StringPtrInput `pulumi:"name"`
-	Status  pulumi.StringPtrInput `pulumi:"status"`
-	Version pulumi.StringPtrInput `pulumi:"version"`
-}
-
-func (ApplicationServiceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationService)(nil)).Elem()
-}
-
-func (i ApplicationServiceArgs) ToApplicationServiceOutput() ApplicationServiceOutput {
-	return i.ToApplicationServiceOutputWithContext(context.Background())
-}
-
-func (i ApplicationServiceArgs) ToApplicationServiceOutputWithContext(ctx context.Context) ApplicationServiceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationServiceOutput)
-}
-
-// ApplicationServiceArrayInput is an input type that accepts ApplicationServiceArray and ApplicationServiceArrayOutput values.
-// You can construct a concrete instance of `ApplicationServiceArrayInput` via:
-//
-//	ApplicationServiceArray{ ApplicationServiceArgs{...} }
-type ApplicationServiceArrayInput interface {
-	pulumi.Input
-
-	ToApplicationServiceArrayOutput() ApplicationServiceArrayOutput
-	ToApplicationServiceArrayOutputWithContext(context.Context) ApplicationServiceArrayOutput
-}
-
-type ApplicationServiceArray []ApplicationServiceInput
-
-func (ApplicationServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationService)(nil)).Elem()
-}
-
-func (i ApplicationServiceArray) ToApplicationServiceArrayOutput() ApplicationServiceArrayOutput {
-	return i.ToApplicationServiceArrayOutputWithContext(context.Background())
-}
-
-func (i ApplicationServiceArray) ToApplicationServiceArrayOutputWithContext(ctx context.Context) ApplicationServiceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationServiceArrayOutput)
-}
-
-type ApplicationServiceOutput struct{ *pulumi.OutputState }
-
-func (ApplicationServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationService)(nil)).Elem()
-}
-
-func (o ApplicationServiceOutput) ToApplicationServiceOutput() ApplicationServiceOutput {
-	return o
-}
-
-func (o ApplicationServiceOutput) ToApplicationServiceOutputWithContext(ctx context.Context) ApplicationServiceOutput {
-	return o
-}
-
-func (o ApplicationServiceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationService) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o ApplicationServiceOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationService) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o ApplicationServiceOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationService) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-func (o ApplicationServiceOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationService) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-type ApplicationServiceArrayOutput struct{ *pulumi.OutputState }
-
-func (ApplicationServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationService)(nil)).Elem()
-}
-
-func (o ApplicationServiceArrayOutput) ToApplicationServiceArrayOutput() ApplicationServiceArrayOutput {
-	return o
-}
-
-func (o ApplicationServiceArrayOutput) ToApplicationServiceArrayOutputWithContext(ctx context.Context) ApplicationServiceArrayOutput {
-	return o
-}
-
-func (o ApplicationServiceArrayOutput) Index(i pulumi.IntInput) ApplicationServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationService {
-		return vs[0].([]ApplicationService)[vs[1].(int)]
-	}).(ApplicationServiceOutput)
-}
-
-type ClusterNode struct {
-	Eip       *string `pulumi:"eip"`
-	Id        *string `pulumi:"id"`
-	Name      *string `pulumi:"name"`
-	PrivateIp *string `pulumi:"privateIp"`
-	Status    *string `pulumi:"status"`
-}
-
-// ClusterNodeInput is an input type that accepts ClusterNodeArgs and ClusterNodeOutput values.
-// You can construct a concrete instance of `ClusterNodeInput` via:
-//
-//	ClusterNodeArgs{...}
-type ClusterNodeInput interface {
-	pulumi.Input
-
-	ToClusterNodeOutput() ClusterNodeOutput
-	ToClusterNodeOutputWithContext(context.Context) ClusterNodeOutput
-}
-
-type ClusterNodeArgs struct {
-	Eip       pulumi.StringPtrInput `pulumi:"eip"`
-	Id        pulumi.StringPtrInput `pulumi:"id"`
-	Name      pulumi.StringPtrInput `pulumi:"name"`
-	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
-	Status    pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (ClusterNodeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterNode)(nil)).Elem()
-}
-
-func (i ClusterNodeArgs) ToClusterNodeOutput() ClusterNodeOutput {
-	return i.ToClusterNodeOutputWithContext(context.Background())
-}
-
-func (i ClusterNodeArgs) ToClusterNodeOutputWithContext(ctx context.Context) ClusterNodeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeOutput)
-}
-
-// ClusterNodeArrayInput is an input type that accepts ClusterNodeArray and ClusterNodeArrayOutput values.
-// You can construct a concrete instance of `ClusterNodeArrayInput` via:
-//
-//	ClusterNodeArray{ ClusterNodeArgs{...} }
-type ClusterNodeArrayInput interface {
-	pulumi.Input
-
-	ToClusterNodeArrayOutput() ClusterNodeArrayOutput
-	ToClusterNodeArrayOutputWithContext(context.Context) ClusterNodeArrayOutput
-}
-
-type ClusterNodeArray []ClusterNodeInput
-
-func (ClusterNodeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterNode)(nil)).Elem()
-}
-
-func (i ClusterNodeArray) ToClusterNodeArrayOutput() ClusterNodeArrayOutput {
-	return i.ToClusterNodeArrayOutputWithContext(context.Background())
-}
-
-func (i ClusterNodeArray) ToClusterNodeArrayOutputWithContext(ctx context.Context) ClusterNodeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeArrayOutput)
-}
-
-type ClusterNodeOutput struct{ *pulumi.OutputState }
-
-func (ClusterNodeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterNode)(nil)).Elem()
-}
-
-func (o ClusterNodeOutput) ToClusterNodeOutput() ClusterNodeOutput {
-	return o
-}
-
-func (o ClusterNodeOutput) ToClusterNodeOutputWithContext(ctx context.Context) ClusterNodeOutput {
-	return o
-}
-
-func (o ClusterNodeOutput) Eip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterNode) *string { return v.Eip }).(pulumi.StringPtrOutput)
-}
-
-func (o ClusterNodeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterNode) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o ClusterNodeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterNode) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o ClusterNodeOutput) PrivateIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
-}
-
-func (o ClusterNodeOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterNode) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type ClusterNodeArrayOutput struct{ *pulumi.OutputState }
-
-func (ClusterNodeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterNode)(nil)).Elem()
-}
-
-func (o ClusterNodeArrayOutput) ToClusterNodeArrayOutput() ClusterNodeArrayOutput {
-	return o
-}
-
-func (o ClusterNodeArrayOutput) ToClusterNodeArrayOutputWithContext(ctx context.Context) ClusterNodeArrayOutput {
-	return o
-}
-
-func (o ClusterNodeArrayOutput) Index(i pulumi.IntInput) ClusterNodeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNode {
-		return vs[0].([]ClusterNode)[vs[1].(int)]
-	}).(ClusterNodeOutput)
-}
-
 type EdgeKubernetesAddon struct {
 	// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
 	Config *string `pulumi:"config"`
@@ -9182,124 +8952,6 @@ func (o ServerlessKubernetesRrsaMetadataPtrOutput) RrsaOidcIssuerUrl() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-type SwarmNode struct {
-	Eip       *string `pulumi:"eip"`
-	Id        *string `pulumi:"id"`
-	Name      *string `pulumi:"name"`
-	PrivateIp *string `pulumi:"privateIp"`
-	Status    *string `pulumi:"status"`
-}
-
-// SwarmNodeInput is an input type that accepts SwarmNodeArgs and SwarmNodeOutput values.
-// You can construct a concrete instance of `SwarmNodeInput` via:
-//
-//	SwarmNodeArgs{...}
-type SwarmNodeInput interface {
-	pulumi.Input
-
-	ToSwarmNodeOutput() SwarmNodeOutput
-	ToSwarmNodeOutputWithContext(context.Context) SwarmNodeOutput
-}
-
-type SwarmNodeArgs struct {
-	Eip       pulumi.StringPtrInput `pulumi:"eip"`
-	Id        pulumi.StringPtrInput `pulumi:"id"`
-	Name      pulumi.StringPtrInput `pulumi:"name"`
-	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
-	Status    pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (SwarmNodeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwarmNode)(nil)).Elem()
-}
-
-func (i SwarmNodeArgs) ToSwarmNodeOutput() SwarmNodeOutput {
-	return i.ToSwarmNodeOutputWithContext(context.Background())
-}
-
-func (i SwarmNodeArgs) ToSwarmNodeOutputWithContext(ctx context.Context) SwarmNodeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwarmNodeOutput)
-}
-
-// SwarmNodeArrayInput is an input type that accepts SwarmNodeArray and SwarmNodeArrayOutput values.
-// You can construct a concrete instance of `SwarmNodeArrayInput` via:
-//
-//	SwarmNodeArray{ SwarmNodeArgs{...} }
-type SwarmNodeArrayInput interface {
-	pulumi.Input
-
-	ToSwarmNodeArrayOutput() SwarmNodeArrayOutput
-	ToSwarmNodeArrayOutputWithContext(context.Context) SwarmNodeArrayOutput
-}
-
-type SwarmNodeArray []SwarmNodeInput
-
-func (SwarmNodeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SwarmNode)(nil)).Elem()
-}
-
-func (i SwarmNodeArray) ToSwarmNodeArrayOutput() SwarmNodeArrayOutput {
-	return i.ToSwarmNodeArrayOutputWithContext(context.Background())
-}
-
-func (i SwarmNodeArray) ToSwarmNodeArrayOutputWithContext(ctx context.Context) SwarmNodeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwarmNodeArrayOutput)
-}
-
-type SwarmNodeOutput struct{ *pulumi.OutputState }
-
-func (SwarmNodeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwarmNode)(nil)).Elem()
-}
-
-func (o SwarmNodeOutput) ToSwarmNodeOutput() SwarmNodeOutput {
-	return o
-}
-
-func (o SwarmNodeOutput) ToSwarmNodeOutputWithContext(ctx context.Context) SwarmNodeOutput {
-	return o
-}
-
-func (o SwarmNodeOutput) Eip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SwarmNode) *string { return v.Eip }).(pulumi.StringPtrOutput)
-}
-
-func (o SwarmNodeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SwarmNode) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o SwarmNodeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SwarmNode) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o SwarmNodeOutput) PrivateIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SwarmNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
-}
-
-func (o SwarmNodeOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SwarmNode) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type SwarmNodeArrayOutput struct{ *pulumi.OutputState }
-
-func (SwarmNodeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SwarmNode)(nil)).Elem()
-}
-
-func (o SwarmNodeArrayOutput) ToSwarmNodeArrayOutput() SwarmNodeArrayOutput {
-	return o
-}
-
-func (o SwarmNodeArrayOutput) ToSwarmNodeArrayOutputWithContext(ctx context.Context) SwarmNodeArrayOutput {
-	return o
-}
-
-func (o SwarmNodeArrayOutput) Index(i pulumi.IntInput) SwarmNodeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SwarmNode {
-		return vs[0].([]SwarmNode)[vs[1].(int)]
-	}).(SwarmNodeOutput)
-}
-
 type GetClusterCredentialCertificateAuthority struct {
 	// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kube config file for your cluster.
 	ClientCert string `pulumi:"clientCert"`
@@ -15683,10 +15335,6 @@ func (o GetServerlessKubernetesClustersClusterConnectionsOutput) MasterPublicIp(
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationServiceInput)(nil)).Elem(), ApplicationServiceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationServiceArrayInput)(nil)).Elem(), ApplicationServiceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeInput)(nil)).Elem(), ClusterNodeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeArrayInput)(nil)).Elem(), ClusterNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesAddonInput)(nil)).Elem(), EdgeKubernetesAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesAddonArrayInput)(nil)).Elem(), EdgeKubernetesAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesCertificateAuthorityInput)(nil)).Elem(), EdgeKubernetesCertificateAuthorityArgs{})
@@ -15791,8 +15439,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrInput)(nil)).Elem(), ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesRrsaMetadataInput)(nil)).Elem(), ServerlessKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesRrsaMetadataPtrInput)(nil)).Elem(), ServerlessKubernetesRrsaMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SwarmNodeInput)(nil)).Elem(), SwarmNodeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SwarmNodeArrayInput)(nil)).Elem(), SwarmNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterCredentialCertificateAuthorityInput)(nil)).Elem(), GetClusterCredentialCertificateAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
@@ -15864,10 +15510,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterArrayInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterConnectionsArgs{})
-	pulumi.RegisterOutputType(ApplicationServiceOutput{})
-	pulumi.RegisterOutputType(ApplicationServiceArrayOutput{})
-	pulumi.RegisterOutputType(ClusterNodeOutput{})
-	pulumi.RegisterOutputType(ClusterNodeArrayOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesCertificateAuthorityOutput{})
@@ -15972,8 +15614,6 @@ func init() {
 	pulumi.RegisterOutputType(ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesRrsaMetadataOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesRrsaMetadataPtrOutput{})
-	pulumi.RegisterOutputType(SwarmNodeOutput{})
-	pulumi.RegisterOutputType(SwarmNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterCredentialCertificateAuthorityOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})

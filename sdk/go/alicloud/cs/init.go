@@ -21,12 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "alicloud:cs/application:Application":
-		r = &Application{}
 	case "alicloud:cs/autoscalingConfig:AutoscalingConfig":
 		r = &AutoscalingConfig{}
-	case "alicloud:cs/cluster:Cluster":
-		r = &Cluster{}
 	case "alicloud:cs/edgeKubernetes:EdgeKubernetes":
 		r = &EdgeKubernetes{}
 	case "alicloud:cs/kubernetes:Kubernetes":
@@ -51,8 +47,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegistryEnterpriseSyncRule{}
 	case "alicloud:cs/serverlessKubernetes:ServerlessKubernetes":
 		r = &ServerlessKubernetes{}
-	case "alicloud:cs/swarm:Swarm":
-		r = &Swarm{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -68,17 +62,7 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
-		"cs/application",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"alicloud",
 		"cs/autoscalingConfig",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"alicloud",
-		"cs/cluster",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -139,11 +123,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cs/serverlessKubernetes",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"alicloud",
-		"cs/swarm",
 		&module{version},
 	)
 }

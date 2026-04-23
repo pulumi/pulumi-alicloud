@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
         /// </summary>
         public readonly string MsgProcessSpec;
         /// <summary>
-        /// message send receive ratio.  Value range: [0.2, 0.5].
+        /// message send receive ratio.  Value range: [0.05, 0.5].
         /// </summary>
         public readonly double? SendReceiveRatio;
         /// <summary>

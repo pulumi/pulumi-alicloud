@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public Input<string>? InternetIp { get; set; }
 
         /// <summary>
-        /// The role of Tunnel.
+        /// The role of the tunnel. Valid values: `Master`, `Slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

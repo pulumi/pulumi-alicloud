@@ -18,6 +18,9 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// &gt; **NOTE:** Available since v1.194.0.
     /// 
+    /// &gt; **NOTE** Since v1.276.0. Set `NewOrder = -1` or omit the argument to let the Cloud Backend manage policy ordering automatically. You can also use `alicloud.cloudfirewall.VpcFirewallControlPolicyOrder` to manage the policy ordering.&lt;br&gt;
+    ///   If you want manged the policy order in parallel **do not** set the `NewOrder`, instead use `alicloud.cloudfirewall.VpcFirewallControlPolicyOrder` manage the policy order.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -105,7 +108,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> ApplicationName { get; private set; } = null!;
 
         /// <summary>
-        /// The list of application types that the access control policy supports. 
+        /// The list of application types that the access control policy supports.
+        /// 
         /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationNameList` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `ApplicationNameList` and `ApplicationName`. If you specify both `ApplicationNameList` and `ApplicationName`, only the `ApplicationNameList` takes effect.
         /// </summary>
         [Output("applicationNameLists")]
@@ -124,13 +128,17 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The destination port in the access control policy. **Note:** If `DestPortType` is set to `Port`, you must specify this parameter.
+        /// The destination port in the access control policy.
+        /// 
+        /// -&gt;**Note:** If `DestPortType` is set to `Port`, `DestPort` is mandatory.
         /// </summary>
         [Output("destPort")]
         public Output<string> DestPort { get; private set; } = null!;
 
         /// <summary>
-        /// Access control policy in the access traffic of the destination port address book name. **Note:** If `DestPortType` is set to `Group`, you must specify this parameter.
+        /// Access control policy in the access traffic of the destination port address book name.
+        /// 
+        /// -&gt;**Note:** If `DestPortType` is set to `Group`, `DestPortGroup` is mandatory.
         /// </summary>
         [Output("destPortGroup")]
         public Output<string?> DestPortGroup { get; private set; } = null!;
@@ -348,7 +356,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         private InputList<string>? _applicationNameLists;
 
         /// <summary>
-        /// The list of application types that the access control policy supports. 
+        /// The list of application types that the access control policy supports.
+        /// 
         /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationNameList` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `ApplicationNameList` and `ApplicationName`. If you specify both `ApplicationNameList` and `ApplicationName`, only the `ApplicationNameList` takes effect.
         /// </summary>
         public InputList<string> ApplicationNameLists
@@ -364,13 +373,17 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The destination port in the access control policy. **Note:** If `DestPortType` is set to `Port`, you must specify this parameter.
+        /// The destination port in the access control policy.
+        /// 
+        /// -&gt;**Note:** If `DestPortType` is set to `Port`, `DestPort` is mandatory.
         /// </summary>
         [Input("destPort")]
         public Input<string>? DestPort { get; set; }
 
         /// <summary>
-        /// Access control policy in the access traffic of the destination port address book name. **Note:** If `DestPortType` is set to `Group`, you must specify this parameter.
+        /// Access control policy in the access traffic of the destination port address book name.
+        /// 
+        /// -&gt;**Note:** If `DestPortType` is set to `Group`, `DestPortGroup` is mandatory.
         /// </summary>
         [Input("destPortGroup")]
         public Input<string>? DestPortGroup { get; set; }
@@ -423,8 +436,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
         /// </summary>
-        [Input("order", required: true)]
-        public Input<int> Order { get; set; } = null!;
+        [Input("order")]
+        public Input<int>? Order { get; set; }
 
         /// <summary>
         /// The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
@@ -532,7 +545,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         private InputList<string>? _applicationNameLists;
 
         /// <summary>
-        /// The list of application types that the access control policy supports. 
+        /// The list of application types that the access control policy supports.
+        /// 
         /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationNameList` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `ApplicationNameList` and `ApplicationName`. If you specify both `ApplicationNameList` and `ApplicationName`, only the `ApplicationNameList` takes effect.
         /// </summary>
         public InputList<string> ApplicationNameLists
@@ -554,13 +568,17 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The destination port in the access control policy. **Note:** If `DestPortType` is set to `Port`, you must specify this parameter.
+        /// The destination port in the access control policy.
+        /// 
+        /// -&gt;**Note:** If `DestPortType` is set to `Port`, `DestPort` is mandatory.
         /// </summary>
         [Input("destPort")]
         public Input<string>? DestPort { get; set; }
 
         /// <summary>
-        /// Access control policy in the access traffic of the destination port address book name. **Note:** If `DestPortType` is set to `Group`, you must specify this parameter.
+        /// Access control policy in the access traffic of the destination port address book name.
+        /// 
+        /// -&gt;**Note:** If `DestPortType` is set to `Group`, `DestPortGroup` is mandatory.
         /// </summary>
         [Input("destPortGroup")]
         public Input<string>? DestPortGroup { get; set; }

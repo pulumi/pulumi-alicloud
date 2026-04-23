@@ -5,20 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export { ApplicationArgs, ApplicationState } from "./application";
-export type Application = import("./application").Application;
-export const Application: typeof import("./application").Application = null as any;
-utilities.lazyLoad(exports, ["Application"], () => require("./application"));
-
 export { AutoscalingConfigArgs, AutoscalingConfigState } from "./autoscalingConfig";
 export type AutoscalingConfig = import("./autoscalingConfig").AutoscalingConfig;
 export const AutoscalingConfig: typeof import("./autoscalingConfig").AutoscalingConfig = null as any;
 utilities.lazyLoad(exports, ["AutoscalingConfig"], () => require("./autoscalingConfig"));
-
-export { ClusterArgs, ClusterState } from "./cluster";
-export type Cluster = import("./cluster").Cluster;
-export const Cluster: typeof import("./cluster").Cluster = null as any;
-utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
 export { EdgeKubernetesArgs, EdgeKubernetesState } from "./edgeKubernetes";
 export type EdgeKubernetes = import("./edgeKubernetes").EdgeKubernetes;
@@ -160,22 +150,13 @@ export type ServerlessKubernetes = import("./serverlessKubernetes").ServerlessKu
 export const ServerlessKubernetes: typeof import("./serverlessKubernetes").ServerlessKubernetes = null as any;
 utilities.lazyLoad(exports, ["ServerlessKubernetes"], () => require("./serverlessKubernetes"));
 
-export { SwarmArgs, SwarmState } from "./swarm";
-export type Swarm = import("./swarm").Swarm;
-export const Swarm: typeof import("./swarm").Swarm = null as any;
-utilities.lazyLoad(exports, ["Swarm"], () => require("./swarm"));
-
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "alicloud:cs/application:Application":
-                return new Application(name, <any>undefined, { urn })
             case "alicloud:cs/autoscalingConfig:AutoscalingConfig":
                 return new AutoscalingConfig(name, <any>undefined, { urn })
-            case "alicloud:cs/cluster:Cluster":
-                return new Cluster(name, <any>undefined, { urn })
             case "alicloud:cs/edgeKubernetes:EdgeKubernetes":
                 return new EdgeKubernetes(name, <any>undefined, { urn })
             case "alicloud:cs/kubernetes:Kubernetes":
@@ -200,16 +181,12 @@ const _module = {
                 return new RegistryEnterpriseSyncRule(name, <any>undefined, { urn })
             case "alicloud:cs/serverlessKubernetes:ServerlessKubernetes":
                 return new ServerlessKubernetes(name, <any>undefined, { urn })
-            case "alicloud:cs/swarm:Swarm":
-                return new Swarm(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("alicloud", "cs/application", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/autoscalingConfig", _module)
-pulumi.runtime.registerResourceModule("alicloud", "cs/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/edgeKubernetes", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetes", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetesAddon", _module)
@@ -222,4 +199,3 @@ pulumi.runtime.registerResourceModule("alicloud", "cs/registryEnterpriseNamespac
 pulumi.runtime.registerResourceModule("alicloud", "cs/registryEnterpriseRepo", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/registryEnterpriseSyncRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/serverlessKubernetes", _module)
-pulumi.runtime.registerResourceModule("alicloud", "cs/swarm", _module)

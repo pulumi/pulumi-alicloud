@@ -21,14 +21,17 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     public static final PcaCertificateArgs Empty = new PcaCertificateArgs();
 
     /**
-     * The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
-     * - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-     * - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-     * - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-     * - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-     * - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-     * - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-     * - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+     * The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+     * - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+     * - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+     * - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+     * - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+     * - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+     * - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+     * - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+     * 
+     * The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+     * 
      * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
      * 
      */
@@ -36,14 +39,17 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<String> algorithm;
 
     /**
-     * @return The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
-     * - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-     * - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-     * - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-     * - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-     * - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-     * - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-     * - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+     * @return The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+     * - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+     * - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+     * - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+     * - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+     * - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+     * - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+     * - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+     * 
+     * The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+     * 
      * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
      * 
      */
@@ -90,14 +96,14 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+     * The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
      * 
      */
     @Import(name="commonName", required=true)
     private Output<String> commonName;
 
     /**
-     * @return The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+     * @return The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
      * 
      */
     public Output<String> commonName() {
@@ -105,14 +111,16 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+     * The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+     * For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
      * 
      */
     @Import(name="countryCode")
     private @Nullable Output<String> countryCode;
 
     /**
-     * @return The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+     * @return The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+     * For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
      * 
      */
     public Optional<Output<String>> countryCode() {
@@ -120,14 +128,14 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * The interval (in days) for updating the Certificate Revocation List (CRL).
      * 
      */
     @Import(name="crlDay")
     private @Nullable Output<Integer> crlDay;
 
     /**
-     * @return The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * @return The interval (in days) for updating the Certificate Revocation List (CRL).
      * 
      */
     public Optional<Output<Integer>> crlDay() {
@@ -135,14 +143,18 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+     * Specifies whether to enable CRL.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Import(name="enableCrl")
     private @Nullable Output<Boolean> enableCrl;
 
     /**
-     * @return This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+     * @return Specifies whether to enable CRL.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<Boolean>> enableCrl() {
@@ -150,14 +162,18 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * Extended attributes of the certificate, used to define extended key usages.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Import(name="extendedKeyUsages")
     private @Nullable Output<List<String>> extendedKeyUsages;
 
     /**
-     * @return The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * @return Extended attributes of the certificate, used to define extended key usages.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<List<String>>> extendedKeyUsages() {
@@ -165,14 +181,14 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the city where the organization is located. Support the use of Chinese, English characters.
+     * The name of the city where the organization is located.
      * 
      */
     @Import(name="locality", required=true)
     private Output<String> locality;
 
     /**
-     * @return Name of the city where the organization is located. Support the use of Chinese, English characters.
+     * @return The name of the city where the organization is located.
      * 
      */
     public Output<String> locality() {
@@ -180,14 +196,14 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+     * The name of the organization associated with the CA certificate.
      * 
      */
     @Import(name="organization", required=true)
     private Output<String> organization;
 
     /**
-     * @return The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+     * @return The name of the organization associated with the CA certificate.
      * 
      */
     public Output<String> organization() {
@@ -195,14 +211,14 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the department or branch under the organization. Support the use of Chinese, English characters.
+     * The name of the department or branch within the organization
      * 
      */
     @Import(name="organizationUnit", required=true)
     private Output<String> organizationUnit;
 
     /**
-     * @return The name of the department or branch under the organization. Support the use of Chinese, English characters.
+     * @return The name of the department or branch within the organization
      * 
      */
     public Output<String> organizationUnit() {
@@ -210,16 +226,14 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The unique identifier of the root CA certificate.
-     * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+     * Parent node identifier.
      * 
      */
     @Import(name="parentIdentifier")
     private @Nullable Output<String> parentIdentifier;
 
     /**
-     * @return The unique identifier of the root CA certificate.
-     * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+     * @return Parent node identifier.
      * 
      */
     public Optional<Output<String>> parentIdentifier() {
@@ -227,14 +241,18 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * The maximum depth of subordinate CA levels allowed under this CA.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Import(name="pathLenConstraint")
     private @Nullable Output<Integer> pathLenConstraint;
 
     /**
-     * @return The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * @return The maximum depth of subordinate CA levels allowed under this CA.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<Integer>> pathLenConstraint() {
@@ -257,14 +275,14 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+     * The name of the province, municipality directly under the central government, or autonomous region where the organization is located
      * 
      */
     @Import(name="state", required=true)
     private Output<String> state;
 
     /**
-     * @return The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+     * @return The name of the province, municipality directly under the central government, or autonomous region where the organization is located
      * 
      */
     public Output<String> state() {
@@ -272,14 +290,14 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The tag of the resource.
+     * Tags
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return Tags
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -287,16 +305,18 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The validity period of the CA certificate, in years.
-     * &gt; **NOTE:**  It is recommended to set to `5` to `10` years.
+     * The validity period of the root CA certificate, in years.
+     * 
+     * &gt; **NOTE:**  We recommend setting it to 5–10 years.
      * 
      */
     @Import(name="years", required=true)
     private Output<Integer> years;
 
     /**
-     * @return The validity period of the CA certificate, in years.
-     * &gt; **NOTE:**  It is recommended to set to `5` to `10` years.
+     * @return The validity period of the root CA certificate, in years.
+     * 
+     * &gt; **NOTE:**  We recommend setting it to 5–10 years.
      * 
      */
     public Output<Integer> years() {
@@ -344,14 +364,17 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param algorithm The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
-         * - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-         * - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-         * - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-         * - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-         * - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-         * - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-         * - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+         * @param algorithm The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+         * - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+         * - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+         * - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+         * - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+         * - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+         * - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+         * - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+         * 
+         * The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+         * 
          * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
          * 
          * @return builder
@@ -363,14 +386,17 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param algorithm The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
-         * - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-         * - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-         * - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-         * - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-         * - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-         * - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-         * - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+         * @param algorithm The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+         * - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+         * - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+         * - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+         * - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+         * - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+         * - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+         * - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+         * 
+         * The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+         * 
          * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
          * 
          * @return builder
@@ -431,7 +457,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param commonName The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+         * @param commonName The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
          * 
          * @return builder
          * 
@@ -442,7 +468,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param commonName The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+         * @param commonName The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
          * 
          * @return builder
          * 
@@ -452,7 +478,8 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param countryCode The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+         * @param countryCode The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+         * For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
          * 
          * @return builder
          * 
@@ -463,7 +490,8 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param countryCode The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+         * @param countryCode The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+         * For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
          * 
          * @return builder
          * 
@@ -473,7 +501,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param crlDay The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+         * @param crlDay The interval (in days) for updating the Certificate Revocation List (CRL).
          * 
          * @return builder
          * 
@@ -484,7 +512,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param crlDay The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+         * @param crlDay The interval (in days) for updating the Certificate Revocation List (CRL).
          * 
          * @return builder
          * 
@@ -494,7 +522,9 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enableCrl This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+         * @param enableCrl Specifies whether to enable CRL.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -505,7 +535,9 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enableCrl This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+         * @param enableCrl Specifies whether to enable CRL.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -515,7 +547,9 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param extendedKeyUsages The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+         * @param extendedKeyUsages Extended attributes of the certificate, used to define extended key usages.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -526,7 +560,9 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param extendedKeyUsages The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+         * @param extendedKeyUsages Extended attributes of the certificate, used to define extended key usages.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -536,7 +572,9 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param extendedKeyUsages The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+         * @param extendedKeyUsages Extended attributes of the certificate, used to define extended key usages.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -546,7 +584,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param locality Name of the city where the organization is located. Support the use of Chinese, English characters.
+         * @param locality The name of the city where the organization is located.
          * 
          * @return builder
          * 
@@ -557,7 +595,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param locality Name of the city where the organization is located. Support the use of Chinese, English characters.
+         * @param locality The name of the city where the organization is located.
          * 
          * @return builder
          * 
@@ -567,7 +605,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param organization The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+         * @param organization The name of the organization associated with the CA certificate.
          * 
          * @return builder
          * 
@@ -578,7 +616,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param organization The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+         * @param organization The name of the organization associated with the CA certificate.
          * 
          * @return builder
          * 
@@ -588,7 +626,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param organizationUnit The name of the department or branch under the organization. Support the use of Chinese, English characters.
+         * @param organizationUnit The name of the department or branch within the organization
          * 
          * @return builder
          * 
@@ -599,7 +637,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param organizationUnit The name of the department or branch under the organization. Support the use of Chinese, English characters.
+         * @param organizationUnit The name of the department or branch within the organization
          * 
          * @return builder
          * 
@@ -609,8 +647,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param parentIdentifier The unique identifier of the root CA certificate.
-         * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+         * @param parentIdentifier Parent node identifier.
          * 
          * @return builder
          * 
@@ -621,8 +658,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param parentIdentifier The unique identifier of the root CA certificate.
-         * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+         * @param parentIdentifier Parent node identifier.
          * 
          * @return builder
          * 
@@ -632,7 +668,9 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pathLenConstraint The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+         * @param pathLenConstraint The maximum depth of subordinate CA levels allowed under this CA.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -643,7 +681,9 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pathLenConstraint The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+         * @param pathLenConstraint The maximum depth of subordinate CA levels allowed under this CA.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -674,7 +714,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param state The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+         * @param state The name of the province, municipality directly under the central government, or autonomous region where the organization is located
          * 
          * @return builder
          * 
@@ -685,7 +725,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param state The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+         * @param state The name of the province, municipality directly under the central government, or autonomous region where the organization is located
          * 
          * @return builder
          * 
@@ -695,7 +735,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags Tags
          * 
          * @return builder
          * 
@@ -706,7 +746,7 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags Tags
          * 
          * @return builder
          * 
@@ -716,8 +756,9 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param years The validity period of the CA certificate, in years.
-         * &gt; **NOTE:**  It is recommended to set to `5` to `10` years.
+         * @param years The validity period of the root CA certificate, in years.
+         * 
+         * &gt; **NOTE:**  We recommend setting it to 5–10 years.
          * 
          * @return builder
          * 
@@ -728,8 +769,9 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param years The validity period of the CA certificate, in years.
-         * &gt; **NOTE:**  It is recommended to set to `5` to `10` years.
+         * @param years The validity period of the root CA certificate, in years.
+         * 
+         * &gt; **NOTE:**  We recommend setting it to 5–10 years.
          * 
          * @return builder
          * 

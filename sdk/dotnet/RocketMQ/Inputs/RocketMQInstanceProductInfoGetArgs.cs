@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.RocketMQ.Inputs
         public Input<string> MsgProcessSpec { get; set; } = null!;
 
         /// <summary>
-        /// message send receive ratio.  Value range: [0.2, 0.5].
+        /// message send receive ratio.  Value range: [0.05, 0.5].
         /// </summary>
         [Input("sendReceiveRatio")]
         public Input<double>? SendReceiveRatio { get; set; }

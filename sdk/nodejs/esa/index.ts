@@ -35,6 +35,11 @@ export type CompressionRule = import("./compressionRule").CompressionRule;
 export const CompressionRule: typeof import("./compressionRule").CompressionRule = null as any;
 utilities.lazyLoad(exports, ["CompressionRule"], () => require("./compressionRule"));
 
+export { CustomResponseCodeRuleArgs, CustomResponseCodeRuleState } from "./customResponseCodeRule";
+export type CustomResponseCodeRule = import("./customResponseCodeRule").CustomResponseCodeRule;
+export const CustomResponseCodeRule: typeof import("./customResponseCodeRule").CustomResponseCodeRule = null as any;
+utilities.lazyLoad(exports, ["CustomResponseCodeRule"], () => require("./customResponseCodeRule"));
+
 export { CustomScenePolicyArgs, CustomScenePolicyState } from "./customScenePolicy";
 export type CustomScenePolicy = import("./customScenePolicy").CustomScenePolicy;
 export const CustomScenePolicy: typeof import("./customScenePolicy").CustomScenePolicy = null as any;
@@ -277,6 +282,8 @@ const _module = {
                 return new ClientCertificate(name, <any>undefined, { urn })
             case "alicloud:esa/compressionRule:CompressionRule":
                 return new CompressionRule(name, <any>undefined, { urn })
+            case "alicloud:esa/customResponseCodeRule:CustomResponseCodeRule":
+                return new CustomResponseCodeRule(name, <any>undefined, { urn })
             case "alicloud:esa/customScenePolicy:CustomScenePolicy":
                 return new CustomScenePolicy(name, <any>undefined, { urn })
             case "alicloud:esa/edgeContainerApp:EdgeContainerApp":
@@ -374,6 +381,7 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/certificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/clientCaCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/clientCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/compressionRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/customResponseCodeRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/customScenePolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/edgeContainerApp", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/edgeContainerAppRecord", _module)

@@ -36,8 +36,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cen.CenFunctions;
- * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
  * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.TransitRouter;
@@ -46,15 +44,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
  * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
  * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
- * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIkeConfigArgs;
- * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIpsecConfigArgs;
- * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentBgpConfigArgs;
- * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentHealthCheckConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs;
  * import com.pulumi.alicloud.cen.TransitRouterCidr;
  * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
  * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
  * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
- * import com.pulumi.alicloud.cen.inputs.TransitRouterVpnAttachmentZoneArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -70,9 +66,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
- *             .build());
- * 
  *         var example = new Instance("example", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .build());
@@ -91,44 +84,59 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleGatewayVpnAttachment = new GatewayVpnAttachment("exampleGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()
- *             .customerGatewayId(exampleCustomerGateway.id())
  *             .networkType("public")
  *             .localSubnet("0.0.0.0/0")
  *             .remoteSubnet("0.0.0.0/0")
  *             .effectImmediately(false)
- *             .ikeConfig(GatewayVpnAttachmentIkeConfigArgs.builder()
- *                 .ikeAuthAlg("md5")
- *                 .ikeEncAlg("des")
- *                 .ikeVersion("ikev2")
- *                 .ikeMode("main")
- *                 .ikeLifetime(86400)
- *                 .psk("tf-examplevpn2")
- *                 .ikePfs("group1")
- *                 .remoteId("examplebob2")
- *                 .localId("examplealice2")
- *                 .build())
- *             .ipsecConfig(GatewayVpnAttachmentIpsecConfigArgs.builder()
- *                 .ipsecPfs("group5")
- *                 .ipsecEncAlg("des")
- *                 .ipsecAuthAlg("md5")
- *                 .ipsecLifetime(86400)
- *                 .build())
- *             .bgpConfig(GatewayVpnAttachmentBgpConfigArgs.builder()
- *                 .enable(true)
- *                 .localAsn(45014)
- *                 .tunnelCidr("169.254.11.0/30")
- *                 .localBgpIp("169.254.11.1")
- *                 .build())
- *             .healthCheckConfig(GatewayVpnAttachmentHealthCheckConfigArgs.builder()
- *                 .enable(true)
- *                 .sip("192.168.1.1")
- *                 .dip("10.0.0.1")
- *                 .interval(10)
- *                 .retry(10)
- *                 .policy("revoke_route")
- *                 .build())
- *             .enableDpd(true)
- *             .enableNatTraversal(true)
+ *             .tunnelOptionsSpecifications(            
+ *                 GatewayVpnAttachmentTunnelOptionsSpecificationArgs.builder()
+ *                     .customerGatewayId(exampleCustomerGateway.id())
+ *                     .role("master")
+ *                     .tunnelIndex(1)
+ *                     .enableDpd(true)
+ *                     .enableNatTraversal(true)
+ *                     .tunnelIkeConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
+ *                         .ikeAuthAlg("md5")
+ *                         .ikeEncAlg("des")
+ *                         .ikeVersion("ikev2")
+ *                         .ikeMode("main")
+ *                         .ikeLifetime(86400)
+ *                         .psk("tf-examplevpn1")
+ *                         .ikePfs("group1")
+ *                         .remoteId("examplebob1")
+ *                         .localId("examplealice1")
+ *                         .build())
+ *                     .tunnelIpsecConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
+ *                         .ipsecPfs("group5")
+ *                         .ipsecEncAlg("des")
+ *                         .ipsecAuthAlg("md5")
+ *                         .ipsecLifetime(86400)
+ *                         .build())
+ *                     .build(),
+ *                 GatewayVpnAttachmentTunnelOptionsSpecificationArgs.builder()
+ *                     .customerGatewayId(exampleCustomerGateway.id())
+ *                     .role("slave")
+ *                     .tunnelIndex(2)
+ *                     .enableDpd(true)
+ *                     .enableNatTraversal(true)
+ *                     .tunnelIkeConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
+ *                         .ikeAuthAlg("md5")
+ *                         .ikeEncAlg("des")
+ *                         .ikeVersion("ikev2")
+ *                         .ikeMode("main")
+ *                         .ikeLifetime(86400)
+ *                         .psk("tf-examplevpn2")
+ *                         .ikePfs("group1")
+ *                         .remoteId("examplebob2")
+ *                         .localId("examplealice2")
+ *                         .build())
+ *                     .tunnelIpsecConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
+ *                         .ipsecPfs("group5")
+ *                         .ipsecEncAlg("des")
+ *                         .ipsecAuthAlg("md5")
+ *                         .ipsecLifetime(86400)
+ *                         .build())
+ *                     .build())
  *             .vpnAttachmentName(name)
  *             .build());
  * 
@@ -143,153 +151,10 @@ import javax.annotation.Nullable;
  *         var exampleTransitRouterVpnAttachment = new TransitRouterVpnAttachment("exampleTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
  *             .autoPublishRouteEnabled(false)
  *             .transitRouterAttachmentDescription(name)
- *             .transitRouterAttachmentName(name)
+ *             .transitRouterVpnAttachmentName(name)
  *             .cenId(exampleTransitRouter.cenId())
  *             .transitRouterId(exampleTransitRouterCidr.transitRouterId())
  *             .vpnId(exampleGatewayVpnAttachment.id())
- *             .zones(TransitRouterVpnAttachmentZoneArgs.builder()
- *                 .zoneId(default_.resources()[0].masterZones()[0])
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * Dual Tunnel Mode Usage
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.cen.Instance;
- * import com.pulumi.alicloud.cen.InstanceArgs;
- * import com.pulumi.alicloud.cen.TransitRouter;
- * import com.pulumi.alicloud.cen.TransitRouterArgs;
- * import com.pulumi.alicloud.cen.TransitRouterCidr;
- * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
- * import com.pulumi.alicloud.vpn.CustomerGateway;
- * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
- * import com.pulumi.alicloud.cen.CenFunctions;
- * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
- * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
- * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
- * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs;
- * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs;
- * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs;
- * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
- * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf_example");
- *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
- * 
- *         var defaultbpR5Uk = new Instance("defaultbpR5Uk", InstanceArgs.builder()
- *             .cenInstanceName("example-vpn-attachment")
- *             .build());
- * 
- *         var defaultM8Zo6H = new TransitRouter("defaultM8Zo6H", TransitRouterArgs.builder()
- *             .cenId(defaultbpR5Uk.id())
- *             .build());
- * 
- *         var defaultuUtyCv = new TransitRouterCidr("defaultuUtyCv", TransitRouterCidrArgs.builder()
- *             .cidr("192.168.10.0/24")
- *             .transitRouterId(defaultM8Zo6H.transitRouterId())
- *             .build());
- * 
- *         var defaultMeoCIz = new CustomerGateway("defaultMeoCIz", CustomerGatewayArgs.builder()
- *             .ipAddress("0.0.0.0")
- *             .customerGatewayName("example-vpn-attachment")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(defaultuUtyCv)
- *                 .build());
- * 
- *         final var defaultGetTransitRouterService = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
- *             .enable("On")
- *             .build());
- * 
- *         var defaultvrPzdh = new GatewayVpnAttachment("defaultvrPzdh", GatewayVpnAttachmentArgs.builder()
- *             .networkType("public")
- *             .localSubnet("0.0.0.0/0")
- *             .enableTunnelsBgp(false)
- *             .vpnAttachmentName(name)
- *             .tunnelOptionsSpecifications(            
- *                 GatewayVpnAttachmentTunnelOptionsSpecificationArgs.builder()
- *                     .customerGatewayId(defaultMeoCIz.id())
- *                     .enableDpd(true)
- *                     .enableNatTraversal(true)
- *                     .tunnelIndex(1)
- *                     .tunnelIkeConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
- *                         .remoteId("2.2.2.2")
- *                         .ikeEncAlg("aes")
- *                         .ikeMode("main")
- *                         .ikeVersion("ikev1")
- *                         .localId("1.1.1.1")
- *                         .ikeAuthAlg("md5")
- *                         .ikeLifetime(86100)
- *                         .ikePfs("group2")
- *                         .psk("12345678")
- *                         .build())
- *                     .tunnelIpsecConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
- *                         .ipsecAuthAlg("md5")
- *                         .ipsecEncAlg("aes")
- *                         .ipsecLifetime(86200)
- *                         .ipsecPfs("group5")
- *                         .build())
- *                     .build(),
- *                 GatewayVpnAttachmentTunnelOptionsSpecificationArgs.builder()
- *                     .enableNatTraversal(true)
- *                     .tunnelIndex(2)
- *                     .tunnelIkeConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
- *                         .localId("4.4.4.4")
- *                         .remoteId("5.5.5.5")
- *                         .ikeLifetime(86400)
- *                         .ikePfs("group5")
- *                         .ikeMode("main")
- *                         .ikeVersion("ikev2")
- *                         .psk("32333442")
- *                         .ikeAuthAlg("md5")
- *                         .ikeEncAlg("aes")
- *                         .build())
- *                     .tunnelIpsecConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
- *                         .ipsecEncAlg("aes")
- *                         .ipsecLifetime(86400)
- *                         .ipsecPfs("group5")
- *                         .ipsecAuthAlg("sha256")
- *                         .build())
- *                     .customerGatewayId(defaultMeoCIz.id())
- *                     .enableDpd(true)
- *                     .build())
- *             .remoteSubnet("0.0.0.0/0")
- *             .build());
- * 
- *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
- *             .transitRouterId(defaultM8Zo6H.transitRouterId())
- *             .vpnId(defaultvrPzdh.id())
- *             .autoPublishRouteEnabled(false)
- *             .chargeType("POSTPAY")
- *             .transitRouterAttachmentName("example-vpn-attachment")
- *             .vpnOwnerId(default_.id())
- *             .cenId(defaultM8Zo6H.cenId())
- *             .transitRouterAttachmentDescription("example-vpn-attachment")
  *             .build());
  * 
  *     }
@@ -304,7 +169,7 @@ import javax.annotation.Nullable;
  * Cloud Enterprise Network (CEN) Transit Router Vpn Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example &lt;id&gt;
+ * $ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example &lt;transit_router_attachment_id&gt;
  * ```
  * 
  */
@@ -355,18 +220,38 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
         return this.chargeType;
     }
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The creation time of the resource.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * The entity that pays the fees of the network instance. Valid values:
+     * 
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     * 
+     */
+    @Export(name="orderType", refs={String.class}, tree="[0]")
+    private Output<String> orderType;
+
+    /**
+     * @return The entity that pays the fees of the network instance. Valid values:
+     * 
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     * 
+     */
+    public Output<String> orderType() {
+        return this.orderType;
     }
     /**
      * The ID of the region where the transit router is deployed.
@@ -383,14 +268,14 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
         return this.regionId;
     }
     /**
-     * Status
+     * Status.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status
+     * @return Status.
      * 
      */
     public Output<String> status() {
@@ -427,20 +312,22 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.transitRouterAttachmentDescription);
     }
     /**
-     * The name of the VPN attachment.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead. */
     @Export(name="transitRouterAttachmentName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> transitRouterAttachmentName;
+    private Output<String> transitRouterAttachmentName;
 
     /**
-     * @return The name of the VPN attachment.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * @return . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
      * 
      */
-    public Output<Optional<String>> transitRouterAttachmentName() {
-        return Codegen.optional(this.transitRouterAttachmentName);
+    public Output<String> transitRouterAttachmentName() {
+        return this.transitRouterAttachmentName;
     }
     /**
      * The ID of the transit router.
@@ -455,6 +342,22 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<String>> transitRouterId() {
         return Codegen.optional(this.transitRouterId);
+    }
+    /**
+     * The name of the VPN attachment.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * 
+     */
+    @Export(name="transitRouterVpnAttachmentName", refs={String.class}, tree="[0]")
+    private Output<String> transitRouterVpnAttachmentName;
+
+    /**
+     * @return The name of the VPN attachment.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * 
+     */
+    public Output<String> transitRouterVpnAttachmentName() {
+        return this.transitRouterVpnAttachmentName;
     }
     /**
      * The ID of the IPsec-VPN attachment.
@@ -495,6 +398,8 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
      * System will create resources under the Zone that you specify.
      * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Export(name="zones", refs={List.class,TransitRouterVpnAttachmentZone.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TransitRouterVpnAttachmentZone>> zones;
@@ -503,6 +408,8 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
      * @return The Zone ID in the current region.
      * System will create resources under the Zone that you specify.
      * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<Optional<List<TransitRouterVpnAttachmentZone>>> zones() {

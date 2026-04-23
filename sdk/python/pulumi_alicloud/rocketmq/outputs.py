@@ -511,7 +511,7 @@ class RocketMQInstanceProductInfo(dict):
         :param _builtins.str msg_process_spec: Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
         :param _builtins.bool auto_scaling: is open auto scaling.
         :param _builtins.int message_retention_time: Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
-        :param _builtins.float send_receive_ratio: message send receive ratio.  Value range: [0.2, 0.5].
+        :param _builtins.float send_receive_ratio: message send receive ratio.  Value range: [0.05, 0.5].
         :param _builtins.bool storage_encryption: Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
         :param _builtins.str storage_secret_key: The key for encryption at rest.
         :param _builtins.bool support_auto_scaling: is support auto scaling.
@@ -561,7 +561,7 @@ class RocketMQInstanceProductInfo(dict):
     @pulumi.getter(name="sendReceiveRatio")
     def send_receive_ratio(self) -> Optional[_builtins.float]:
         """
-        message send receive ratio.  Value range: [0.2, 0.5].
+        message send receive ratio.  Value range: [0.05, 0.5].
         """
         return pulumi.get(self, "send_receive_ratio")
 

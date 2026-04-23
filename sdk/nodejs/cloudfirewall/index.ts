@@ -120,6 +120,11 @@ export type NatFirewallControlPolicy = import("./natFirewallControlPolicy").NatF
 export const NatFirewallControlPolicy: typeof import("./natFirewallControlPolicy").NatFirewallControlPolicy = null as any;
 utilities.lazyLoad(exports, ["NatFirewallControlPolicy"], () => require("./natFirewallControlPolicy"));
 
+export { NatFirewallControlPolicyOrderArgs, NatFirewallControlPolicyOrderState } from "./natFirewallControlPolicyOrder";
+export type NatFirewallControlPolicyOrder = import("./natFirewallControlPolicyOrder").NatFirewallControlPolicyOrder;
+export const NatFirewallControlPolicyOrder: typeof import("./natFirewallControlPolicyOrder").NatFirewallControlPolicyOrder = null as any;
+utilities.lazyLoad(exports, ["NatFirewallControlPolicyOrder"], () => require("./natFirewallControlPolicyOrder"));
+
 export { PolicyAdvancedConfigArgs, PolicyAdvancedConfigState } from "./policyAdvancedConfig";
 export type PolicyAdvancedConfig = import("./policyAdvancedConfig").PolicyAdvancedConfig;
 export const PolicyAdvancedConfig: typeof import("./policyAdvancedConfig").PolicyAdvancedConfig = null as any;
@@ -149,6 +154,11 @@ export { VpcFirewallAclEngineModeArgs, VpcFirewallAclEngineModeState } from "./v
 export type VpcFirewallAclEngineMode = import("./vpcFirewallAclEngineMode").VpcFirewallAclEngineMode;
 export const VpcFirewallAclEngineMode: typeof import("./vpcFirewallAclEngineMode").VpcFirewallAclEngineMode = null as any;
 utilities.lazyLoad(exports, ["VpcFirewallAclEngineMode"], () => require("./vpcFirewallAclEngineMode"));
+
+export { VpcFirewallControlPolicyOrderArgs, VpcFirewallControlPolicyOrderState } from "./vpcFirewallControlPolicyOrder";
+export type VpcFirewallControlPolicyOrder = import("./vpcFirewallControlPolicyOrder").VpcFirewallControlPolicyOrder;
+export const VpcFirewallControlPolicyOrder: typeof import("./vpcFirewallControlPolicyOrder").VpcFirewallControlPolicyOrder = null as any;
+utilities.lazyLoad(exports, ["VpcFirewallControlPolicyOrder"], () => require("./vpcFirewallControlPolicyOrder"));
 
 export { VpcFirewallIpsConfigArgs, VpcFirewallIpsConfigState } from "./vpcFirewallIpsConfig";
 export type VpcFirewallIpsConfig = import("./vpcFirewallIpsConfig").VpcFirewallIpsConfig;
@@ -186,6 +196,8 @@ const _module = {
                 return new NatFirewall(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy":
                 return new NatFirewallControlPolicy(name, <any>undefined, { urn })
+            case "alicloud:cloudfirewall/natFirewallControlPolicyOrder:NatFirewallControlPolicyOrder":
+                return new NatFirewallControlPolicyOrder(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig":
                 return new PolicyAdvancedConfig(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/privateDns:PrivateDns":
@@ -198,6 +210,8 @@ const _module = {
                 return new VpcCenTrFirewall(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/vpcFirewallAclEngineMode:VpcFirewallAclEngineMode":
                 return new VpcFirewallAclEngineMode(name, <any>undefined, { urn })
+            case "alicloud:cloudfirewall/vpcFirewallControlPolicyOrder:VpcFirewallControlPolicyOrder":
+                return new VpcFirewallControlPolicyOrder(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig":
                 return new VpcFirewallIpsConfig(name, <any>undefined, { urn })
             default:
@@ -218,10 +232,12 @@ pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/instanceV2", _m
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/ipsConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/natFirewall", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/natFirewallControlPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/natFirewallControlPolicyOrder", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/policyAdvancedConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/privateDns", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/threatIntelligenceSwitch", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/userAlarmConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/vpcCenTrFirewall", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/vpcFirewallAclEngineMode", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/vpcFirewallControlPolicyOrder", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/vpcFirewallIpsConfig", _module)

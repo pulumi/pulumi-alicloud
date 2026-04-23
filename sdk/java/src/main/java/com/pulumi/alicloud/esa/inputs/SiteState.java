@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.esa.inputs;
 
+import com.pulumi.alicloud.esa.inputs.SiteSiteWafSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -95,6 +96,51 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> aiTemplate() {
         return Optional.ofNullable(this.aiTemplate);
+    }
+
+    /**
+     * AutomaticFrequencyControl Disposal action.Valid values:
+     * 
+     */
+    @Import(name="automaticFrequencyControlActionType")
+    private @Nullable Output<String> automaticFrequencyControlActionType;
+
+    /**
+     * @return AutomaticFrequencyControl Disposal action.Valid values:
+     * 
+     */
+    public Optional<Output<String>> automaticFrequencyControlActionType() {
+        return Optional.ofNullable(this.automaticFrequencyControlActionType);
+    }
+
+    /**
+     * AutomaticFrequencyControl Switch.Valid values:
+     * 
+     */
+    @Import(name="automaticFrequencyControlEnable")
+    private @Nullable Output<String> automaticFrequencyControlEnable;
+
+    /**
+     * @return AutomaticFrequencyControl Switch.Valid values:
+     * 
+     */
+    public Optional<Output<String>> automaticFrequencyControlEnable() {
+        return Optional.ofNullable(this.automaticFrequencyControlEnable);
+    }
+
+    /**
+     * AutomaticFrequencyControl Protection Level.Valid values:
+     * 
+     */
+    @Import(name="automaticFrequencyControlLevel")
+    private @Nullable Output<String> automaticFrequencyControlLevel;
+
+    /**
+     * @return AutomaticFrequencyControl Protection Level.Valid values:
+     * 
+     */
+    public Optional<Output<String>> automaticFrequencyControlLevel() {
+        return Optional.ofNullable(this.automaticFrequencyControlLevel);
     }
 
     /**
@@ -314,6 +360,36 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to enable the quality data collection switch.Valid values:
+     * 
+     */
+    @Import(name="performanceDataCollectionEnable")
+    private @Nullable Output<String> performanceDataCollectionEnable;
+
+    /**
+     * @return Whether to enable the quality data collection switch.Valid values:
+     * 
+     */
+    public Optional<Output<String>> performanceDataCollectionEnable() {
+        return Optional.ofNullable(this.performanceDataCollectionEnable);
+    }
+
+    /**
+     * Real client IP header name.
+     * 
+     */
+    @Import(name="realClientIpHeaderName")
+    private @Nullable Output<String> realClientIpHeaderName;
+
+    /**
+     * @return Real client IP header name.
+     * 
+     */
+    public Optional<Output<String>> realClientIpHeaderName() {
+        return Optional.ofNullable(this.realClientIpHeaderName);
+    }
+
+    /**
      * The ID of the resource group
      * 
      */
@@ -389,6 +465,21 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Site WAF Configuration Details. See `siteWafSettings` below.
+     * 
+     */
+    @Import(name="siteWafSettings")
+    private @Nullable Output<SiteSiteWafSettingsArgs> siteWafSettings;
+
+    /**
+     * @return Site WAF Configuration Details. See `siteWafSettings` below.
+     * 
+     */
+    public Optional<Output<SiteSiteWafSettingsArgs>> siteWafSettings() {
+        return Optional.ofNullable(this.siteWafSettings);
+    }
+
+    /**
      * The status of the resource
      * 
      */
@@ -456,6 +547,9 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
         this.addRealClientIpHeader = $.addRealClientIpHeader;
         this.aiMode = $.aiMode;
         this.aiTemplate = $.aiTemplate;
+        this.automaticFrequencyControlActionType = $.automaticFrequencyControlActionType;
+        this.automaticFrequencyControlEnable = $.automaticFrequencyControlEnable;
+        this.automaticFrequencyControlLevel = $.automaticFrequencyControlLevel;
         this.cacheArchitectureMode = $.cacheArchitectureMode;
         this.cacheReserveEnable = $.cacheReserveEnable;
         this.cacheReserveInstanceId = $.cacheReserveInstanceId;
@@ -470,11 +564,14 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
         this.ipv6Enable = $.ipv6Enable;
         this.ipv6Region = $.ipv6Region;
         this.paused = $.paused;
+        this.performanceDataCollectionEnable = $.performanceDataCollectionEnable;
+        this.realClientIpHeaderName = $.realClientIpHeaderName;
         this.resourceGroupId = $.resourceGroupId;
         this.seoBypass = $.seoBypass;
         this.siteName = $.siteName;
         this.siteNameExclusive = $.siteNameExclusive;
         this.siteVersion = $.siteVersion;
+        this.siteWafSettings = $.siteWafSettings;
         this.status = $.status;
         this.tagName = $.tagName;
         this.tags = $.tags;
@@ -606,6 +703,69 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder aiTemplate(String aiTemplate) {
             return aiTemplate(Output.of(aiTemplate));
+        }
+
+        /**
+         * @param automaticFrequencyControlActionType AutomaticFrequencyControl Disposal action.Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticFrequencyControlActionType(@Nullable Output<String> automaticFrequencyControlActionType) {
+            $.automaticFrequencyControlActionType = automaticFrequencyControlActionType;
+            return this;
+        }
+
+        /**
+         * @param automaticFrequencyControlActionType AutomaticFrequencyControl Disposal action.Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticFrequencyControlActionType(String automaticFrequencyControlActionType) {
+            return automaticFrequencyControlActionType(Output.of(automaticFrequencyControlActionType));
+        }
+
+        /**
+         * @param automaticFrequencyControlEnable AutomaticFrequencyControl Switch.Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticFrequencyControlEnable(@Nullable Output<String> automaticFrequencyControlEnable) {
+            $.automaticFrequencyControlEnable = automaticFrequencyControlEnable;
+            return this;
+        }
+
+        /**
+         * @param automaticFrequencyControlEnable AutomaticFrequencyControl Switch.Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticFrequencyControlEnable(String automaticFrequencyControlEnable) {
+            return automaticFrequencyControlEnable(Output.of(automaticFrequencyControlEnable));
+        }
+
+        /**
+         * @param automaticFrequencyControlLevel AutomaticFrequencyControl Protection Level.Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticFrequencyControlLevel(@Nullable Output<String> automaticFrequencyControlLevel) {
+            $.automaticFrequencyControlLevel = automaticFrequencyControlLevel;
+            return this;
+        }
+
+        /**
+         * @param automaticFrequencyControlLevel AutomaticFrequencyControl Protection Level.Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticFrequencyControlLevel(String automaticFrequencyControlLevel) {
+            return automaticFrequencyControlLevel(Output.of(automaticFrequencyControlLevel));
         }
 
         /**
@@ -909,6 +1069,48 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param performanceDataCollectionEnable Whether to enable the quality data collection switch.Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceDataCollectionEnable(@Nullable Output<String> performanceDataCollectionEnable) {
+            $.performanceDataCollectionEnable = performanceDataCollectionEnable;
+            return this;
+        }
+
+        /**
+         * @param performanceDataCollectionEnable Whether to enable the quality data collection switch.Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceDataCollectionEnable(String performanceDataCollectionEnable) {
+            return performanceDataCollectionEnable(Output.of(performanceDataCollectionEnable));
+        }
+
+        /**
+         * @param realClientIpHeaderName Real client IP header name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder realClientIpHeaderName(@Nullable Output<String> realClientIpHeaderName) {
+            $.realClientIpHeaderName = realClientIpHeaderName;
+            return this;
+        }
+
+        /**
+         * @param realClientIpHeaderName Real client IP header name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder realClientIpHeaderName(String realClientIpHeaderName) {
+            return realClientIpHeaderName(Output.of(realClientIpHeaderName));
+        }
+
+        /**
          * @param resourceGroupId The ID of the resource group
          * 
          * @return builder
@@ -1011,6 +1213,27 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder siteVersion(Integer siteVersion) {
             return siteVersion(Output.of(siteVersion));
+        }
+
+        /**
+         * @param siteWafSettings Site WAF Configuration Details. See `siteWafSettings` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteWafSettings(@Nullable Output<SiteSiteWafSettingsArgs> siteWafSettings) {
+            $.siteWafSettings = siteWafSettings;
+            return this;
+        }
+
+        /**
+         * @param siteWafSettings Site WAF Configuration Details. See `siteWafSettings` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteWafSettings(SiteSiteWafSettingsArgs siteWafSettings) {
+            return siteWafSettings(Output.of(siteWafSettings));
         }
 
         /**

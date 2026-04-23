@@ -3396,13 +3396,18 @@ export namespace cen {
 
     export interface TransitRouterVpcAttachmentZoneMapping {
         /**
-         * The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+         * The ID of the vSwitch that you want to add to the VPC connection.
+         *
+         * You can specify at most 10 vSwitches in each call.
+         *
          * - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
          * - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
          */
         vswitchId: pulumi.Input<string>;
         /**
-         * The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
+         * The ID of the zone that supports Enterprise Edition transit routers.
+         * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.
+         * You can specify at most 10 zones in each call.
          */
         zoneId: pulumi.Input<string>;
     }
@@ -5309,21 +5314,6 @@ export namespace cr {
 }
 
 export namespace cs {
-    export interface ApplicationService {
-        id?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
-        status?: pulumi.Input<string>;
-        version?: pulumi.Input<string>;
-    }
-
-    export interface ClusterNode {
-        eip?: pulumi.Input<string>;
-        id?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
-        privateIp?: pulumi.Input<string>;
-        status?: pulumi.Input<string>;
-    }
-
     export interface EdgeKubernetesAddon {
         /**
          * The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
@@ -6736,14 +6726,6 @@ export namespace cs {
          * The issuer URL of RRSA OIDC Token.
          */
         rrsaOidcIssuerUrl?: pulumi.Input<string>;
-    }
-
-    export interface SwarmNode {
-        eip?: pulumi.Input<string>;
-        id?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
-        privateIp?: pulumi.Input<string>;
-        status?: pulumi.Input<string>;
     }
 }
 
@@ -12311,6 +12293,147 @@ export namespace esa {
         slsLogStore?: pulumi.Input<string>;
         slsProject?: pulumi.Input<string>;
         slsRegion?: pulumi.Input<string>;
+    }
+
+    export interface SiteSiteWafSettings {
+        /**
+         * Add BOT Protection Header. See `addBotProtectionHeaders` below.
+         */
+        addBotProtectionHeaders?: pulumi.Input<inputs.esa.SiteSiteWafSettingsAddBotProtectionHeaders>;
+        /**
+         * Add Security Header. See `addSecurityHeaders` below.
+         */
+        addSecurityHeaders?: pulumi.Input<inputs.esa.SiteSiteWafSettingsAddSecurityHeaders>;
+        /**
+         * Anti-theft brush. See `bandwidthAbuseProtection` below.
+         */
+        bandwidthAbuseProtection?: pulumi.Input<inputs.esa.SiteSiteWafSettingsBandwidthAbuseProtection>;
+        /**
+         * Bot Management. See `botManagement` below.
+         */
+        botManagement?: pulumi.Input<inputs.esa.SiteSiteWafSettingsBotManagement>;
+        /**
+         * Client IP Identification. See `clientIpIdentifier` below.
+         */
+        clientIpIdentifier?: pulumi.Input<inputs.esa.SiteSiteWafSettingsClientIpIdentifier>;
+        /**
+         * Security Level. See `securityLevel` below.
+         */
+        securityLevel?: pulumi.Input<inputs.esa.SiteSiteWafSettingsSecurityLevel>;
+    }
+
+    export interface SiteSiteWafSettingsAddBotProtectionHeaders {
+        /**
+         * Switch.
+         */
+        enable?: pulumi.Input<boolean>;
+    }
+
+    export interface SiteSiteWafSettingsAddSecurityHeaders {
+        /**
+         * Switch.
+         */
+        enable?: pulumi.Input<boolean>;
+    }
+
+    export interface SiteSiteWafSettingsBandwidthAbuseProtection {
+        /**
+         * Action.Valid values:
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * Rule ID.
+         */
+        id?: pulumi.Input<number>;
+        /**
+         * The status of the resource
+         */
+        status?: pulumi.Input<string>;
+    }
+
+    export interface SiteSiteWafSettingsBotManagement {
+        /**
+         * Definitely Bot.
+         */
+        definiteBots?: pulumi.Input<inputs.esa.SiteSiteWafSettingsBotManagementDefiniteBots>;
+        /**
+         * VApply to Static Resource Requests. See `effectOnStatic` below.
+         */
+        effectOnStatic?: pulumi.Input<inputs.esa.SiteSiteWafSettingsBotManagementEffectOnStatic>;
+        /**
+         * JavaScript Challenge. See `jsDetection` below.
+         */
+        jsDetection?: pulumi.Input<inputs.esa.SiteSiteWafSettingsBotManagementJsDetection>;
+        /**
+         * Likely Bot.
+         */
+        likelyBots?: pulumi.Input<inputs.esa.SiteSiteWafSettingsBotManagementLikelyBots>;
+        /**
+         * Verified Bot.
+         */
+        verifiedBots?: pulumi.Input<inputs.esa.SiteSiteWafSettingsBotManagementVerifiedBots>;
+    }
+
+    export interface SiteSiteWafSettingsBotManagementDefiniteBots {
+        /**
+         * Action.Valid values:
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * Rule ID.
+         */
+        id?: pulumi.Input<number>;
+    }
+
+    export interface SiteSiteWafSettingsBotManagementEffectOnStatic {
+        /**
+         * Switch.
+         */
+        enable?: pulumi.Input<boolean>;
+    }
+
+    export interface SiteSiteWafSettingsBotManagementJsDetection {
+        /**
+         * Switch.
+         */
+        enable?: pulumi.Input<boolean>;
+    }
+
+    export interface SiteSiteWafSettingsBotManagementLikelyBots {
+        /**
+         * Action.Valid values:
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * Rule ID.
+         */
+        id?: pulumi.Input<number>;
+    }
+
+    export interface SiteSiteWafSettingsBotManagementVerifiedBots {
+        /**
+         * Action.Valid values:
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * Rule ID.
+         */
+        id?: pulumi.Input<number>;
+    }
+
+    export interface SiteSiteWafSettingsClientIpIdentifier {
+        headers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Identification Mode.Valid values:
+         */
+        mode?: pulumi.Input<string>;
+    }
+
+    export interface SiteSiteWafSettingsSecurityLevel {
+        /**
+         * Security level value. Valid values:
+         */
+        value?: pulumi.Input<string>;
     }
 
     export interface TransportLayerApplicationRule {
@@ -20160,7 +20283,7 @@ export namespace rocketmq {
          */
         msgProcessSpec: pulumi.Input<string>;
         /**
-         * message send receive ratio.  Value range: [0.2, 0.5].
+         * message send receive ratio.  Value range: [0.05, 0.5].
          */
         sendReceiveRatio?: pulumi.Input<number>;
         /**
@@ -23435,7 +23558,7 @@ export namespace vpn {
          */
         internetIp?: pulumi.Input<string>;
         /**
-         * The role of Tunnel.
+         * The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
          */
         role?: pulumi.Input<string>;
         /**

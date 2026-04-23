@@ -2789,7 +2789,7 @@ type GatewayVpnAttachmentTunnelOptionsSpecification struct {
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
 	// The local internet IP in Tunnel.
 	InternetIp *string `pulumi:"internetIp"`
-	// The role of Tunnel.
+	// The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
 	Role *string `pulumi:"role"`
 	// The state of Tunnel.
 	State *string `pulumi:"state"`
@@ -2834,7 +2834,7 @@ type GatewayVpnAttachmentTunnelOptionsSpecificationArgs struct {
 	EnableNatTraversal pulumi.BoolPtrInput `pulumi:"enableNatTraversal"`
 	// The local internet IP in Tunnel.
 	InternetIp pulumi.StringPtrInput `pulumi:"internetIp"`
-	// The role of Tunnel.
+	// The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 	// The state of Tunnel.
 	State pulumi.StringPtrInput `pulumi:"state"`
@@ -2930,7 +2930,7 @@ func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) InternetIp() pulum
 	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *string { return v.InternetIp }).(pulumi.StringPtrOutput)
 }
 
-// The role of Tunnel.
+// The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
 func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *string { return v.Role }).(pulumi.StringPtrOutput)
 }

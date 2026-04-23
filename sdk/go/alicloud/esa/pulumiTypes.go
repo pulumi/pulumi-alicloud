@@ -3845,6 +3845,1945 @@ func (o SiteDeliveryTaskSlsDeliveryPtrOutput) SlsRegion() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type SiteSiteWafSettings struct {
+	// Add BOT Protection Header. See `addBotProtectionHeaders` below.
+	AddBotProtectionHeaders *SiteSiteWafSettingsAddBotProtectionHeaders `pulumi:"addBotProtectionHeaders"`
+	// Add Security Header. See `addSecurityHeaders` below.
+	AddSecurityHeaders *SiteSiteWafSettingsAddSecurityHeaders `pulumi:"addSecurityHeaders"`
+	// Anti-theft brush. See `bandwidthAbuseProtection` below.
+	BandwidthAbuseProtection *SiteSiteWafSettingsBandwidthAbuseProtection `pulumi:"bandwidthAbuseProtection"`
+	// Bot Management. See `botManagement` below.
+	BotManagement *SiteSiteWafSettingsBotManagement `pulumi:"botManagement"`
+	// Client IP Identification. See `clientIpIdentifier` below.
+	ClientIpIdentifier *SiteSiteWafSettingsClientIpIdentifier `pulumi:"clientIpIdentifier"`
+	// Security Level. See `securityLevel` below.
+	SecurityLevel *SiteSiteWafSettingsSecurityLevel `pulumi:"securityLevel"`
+}
+
+// SiteSiteWafSettingsInput is an input type that accepts SiteSiteWafSettingsArgs and SiteSiteWafSettingsOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsInput` via:
+//
+//	SiteSiteWafSettingsArgs{...}
+type SiteSiteWafSettingsInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsOutput() SiteSiteWafSettingsOutput
+	ToSiteSiteWafSettingsOutputWithContext(context.Context) SiteSiteWafSettingsOutput
+}
+
+type SiteSiteWafSettingsArgs struct {
+	// Add BOT Protection Header. See `addBotProtectionHeaders` below.
+	AddBotProtectionHeaders SiteSiteWafSettingsAddBotProtectionHeadersPtrInput `pulumi:"addBotProtectionHeaders"`
+	// Add Security Header. See `addSecurityHeaders` below.
+	AddSecurityHeaders SiteSiteWafSettingsAddSecurityHeadersPtrInput `pulumi:"addSecurityHeaders"`
+	// Anti-theft brush. See `bandwidthAbuseProtection` below.
+	BandwidthAbuseProtection SiteSiteWafSettingsBandwidthAbuseProtectionPtrInput `pulumi:"bandwidthAbuseProtection"`
+	// Bot Management. See `botManagement` below.
+	BotManagement SiteSiteWafSettingsBotManagementPtrInput `pulumi:"botManagement"`
+	// Client IP Identification. See `clientIpIdentifier` below.
+	ClientIpIdentifier SiteSiteWafSettingsClientIpIdentifierPtrInput `pulumi:"clientIpIdentifier"`
+	// Security Level. See `securityLevel` below.
+	SecurityLevel SiteSiteWafSettingsSecurityLevelPtrInput `pulumi:"securityLevel"`
+}
+
+func (SiteSiteWafSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettings)(nil)).Elem()
+}
+
+func (i SiteSiteWafSettingsArgs) ToSiteSiteWafSettingsOutput() SiteSiteWafSettingsOutput {
+	return i.ToSiteSiteWafSettingsOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsArgs) ToSiteSiteWafSettingsOutputWithContext(ctx context.Context) SiteSiteWafSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsOutput)
+}
+
+func (i SiteSiteWafSettingsArgs) ToSiteSiteWafSettingsPtrOutput() SiteSiteWafSettingsPtrOutput {
+	return i.ToSiteSiteWafSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsArgs) ToSiteSiteWafSettingsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsOutput).ToSiteSiteWafSettingsPtrOutputWithContext(ctx)
+}
+
+// SiteSiteWafSettingsPtrInput is an input type that accepts SiteSiteWafSettingsArgs, SiteSiteWafSettingsPtr and SiteSiteWafSettingsPtrOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsPtrInput` via:
+//
+//	        SiteSiteWafSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteSiteWafSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsPtrOutput() SiteSiteWafSettingsPtrOutput
+	ToSiteSiteWafSettingsPtrOutputWithContext(context.Context) SiteSiteWafSettingsPtrOutput
+}
+
+type siteSiteWafSettingsPtrType SiteSiteWafSettingsArgs
+
+func SiteSiteWafSettingsPtr(v *SiteSiteWafSettingsArgs) SiteSiteWafSettingsPtrInput {
+	return (*siteSiteWafSettingsPtrType)(v)
+}
+
+func (*siteSiteWafSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettings)(nil)).Elem()
+}
+
+func (i *siteSiteWafSettingsPtrType) ToSiteSiteWafSettingsPtrOutput() SiteSiteWafSettingsPtrOutput {
+	return i.ToSiteSiteWafSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *siteSiteWafSettingsPtrType) ToSiteSiteWafSettingsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsPtrOutput)
+}
+
+type SiteSiteWafSettingsOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettings)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsOutput) ToSiteSiteWafSettingsOutput() SiteSiteWafSettingsOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsOutput) ToSiteSiteWafSettingsOutputWithContext(ctx context.Context) SiteSiteWafSettingsOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsOutput) ToSiteSiteWafSettingsPtrOutput() SiteSiteWafSettingsPtrOutput {
+	return o.ToSiteSiteWafSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SiteSiteWafSettingsOutput) ToSiteSiteWafSettingsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteSiteWafSettings) *SiteSiteWafSettings {
+		return &v
+	}).(SiteSiteWafSettingsPtrOutput)
+}
+
+// Add BOT Protection Header. See `addBotProtectionHeaders` below.
+func (o SiteSiteWafSettingsOutput) AddBotProtectionHeaders() SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettings) *SiteSiteWafSettingsAddBotProtectionHeaders {
+		return v.AddBotProtectionHeaders
+	}).(SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput)
+}
+
+// Add Security Header. See `addSecurityHeaders` below.
+func (o SiteSiteWafSettingsOutput) AddSecurityHeaders() SiteSiteWafSettingsAddSecurityHeadersPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettings) *SiteSiteWafSettingsAddSecurityHeaders { return v.AddSecurityHeaders }).(SiteSiteWafSettingsAddSecurityHeadersPtrOutput)
+}
+
+// Anti-theft brush. See `bandwidthAbuseProtection` below.
+func (o SiteSiteWafSettingsOutput) BandwidthAbuseProtection() SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettings) *SiteSiteWafSettingsBandwidthAbuseProtection {
+		return v.BandwidthAbuseProtection
+	}).(SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput)
+}
+
+// Bot Management. See `botManagement` below.
+func (o SiteSiteWafSettingsOutput) BotManagement() SiteSiteWafSettingsBotManagementPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettings) *SiteSiteWafSettingsBotManagement { return v.BotManagement }).(SiteSiteWafSettingsBotManagementPtrOutput)
+}
+
+// Client IP Identification. See `clientIpIdentifier` below.
+func (o SiteSiteWafSettingsOutput) ClientIpIdentifier() SiteSiteWafSettingsClientIpIdentifierPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettings) *SiteSiteWafSettingsClientIpIdentifier { return v.ClientIpIdentifier }).(SiteSiteWafSettingsClientIpIdentifierPtrOutput)
+}
+
+// Security Level. See `securityLevel` below.
+func (o SiteSiteWafSettingsOutput) SecurityLevel() SiteSiteWafSettingsSecurityLevelPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettings) *SiteSiteWafSettingsSecurityLevel { return v.SecurityLevel }).(SiteSiteWafSettingsSecurityLevelPtrOutput)
+}
+
+type SiteSiteWafSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettings)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsPtrOutput) ToSiteSiteWafSettingsPtrOutput() SiteSiteWafSettingsPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsPtrOutput) ToSiteSiteWafSettingsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsPtrOutput) Elem() SiteSiteWafSettingsOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettings) SiteSiteWafSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SiteSiteWafSettings
+		return ret
+	}).(SiteSiteWafSettingsOutput)
+}
+
+// Add BOT Protection Header. See `addBotProtectionHeaders` below.
+func (o SiteSiteWafSettingsPtrOutput) AddBotProtectionHeaders() SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettings) *SiteSiteWafSettingsAddBotProtectionHeaders {
+		if v == nil {
+			return nil
+		}
+		return v.AddBotProtectionHeaders
+	}).(SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput)
+}
+
+// Add Security Header. See `addSecurityHeaders` below.
+func (o SiteSiteWafSettingsPtrOutput) AddSecurityHeaders() SiteSiteWafSettingsAddSecurityHeadersPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettings) *SiteSiteWafSettingsAddSecurityHeaders {
+		if v == nil {
+			return nil
+		}
+		return v.AddSecurityHeaders
+	}).(SiteSiteWafSettingsAddSecurityHeadersPtrOutput)
+}
+
+// Anti-theft brush. See `bandwidthAbuseProtection` below.
+func (o SiteSiteWafSettingsPtrOutput) BandwidthAbuseProtection() SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettings) *SiteSiteWafSettingsBandwidthAbuseProtection {
+		if v == nil {
+			return nil
+		}
+		return v.BandwidthAbuseProtection
+	}).(SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput)
+}
+
+// Bot Management. See `botManagement` below.
+func (o SiteSiteWafSettingsPtrOutput) BotManagement() SiteSiteWafSettingsBotManagementPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettings) *SiteSiteWafSettingsBotManagement {
+		if v == nil {
+			return nil
+		}
+		return v.BotManagement
+	}).(SiteSiteWafSettingsBotManagementPtrOutput)
+}
+
+// Client IP Identification. See `clientIpIdentifier` below.
+func (o SiteSiteWafSettingsPtrOutput) ClientIpIdentifier() SiteSiteWafSettingsClientIpIdentifierPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettings) *SiteSiteWafSettingsClientIpIdentifier {
+		if v == nil {
+			return nil
+		}
+		return v.ClientIpIdentifier
+	}).(SiteSiteWafSettingsClientIpIdentifierPtrOutput)
+}
+
+// Security Level. See `securityLevel` below.
+func (o SiteSiteWafSettingsPtrOutput) SecurityLevel() SiteSiteWafSettingsSecurityLevelPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettings) *SiteSiteWafSettingsSecurityLevel {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityLevel
+	}).(SiteSiteWafSettingsSecurityLevelPtrOutput)
+}
+
+type SiteSiteWafSettingsAddBotProtectionHeaders struct {
+	// Switch.
+	Enable *bool `pulumi:"enable"`
+}
+
+// SiteSiteWafSettingsAddBotProtectionHeadersInput is an input type that accepts SiteSiteWafSettingsAddBotProtectionHeadersArgs and SiteSiteWafSettingsAddBotProtectionHeadersOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsAddBotProtectionHeadersInput` via:
+//
+//	SiteSiteWafSettingsAddBotProtectionHeadersArgs{...}
+type SiteSiteWafSettingsAddBotProtectionHeadersInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsAddBotProtectionHeadersOutput() SiteSiteWafSettingsAddBotProtectionHeadersOutput
+	ToSiteSiteWafSettingsAddBotProtectionHeadersOutputWithContext(context.Context) SiteSiteWafSettingsAddBotProtectionHeadersOutput
+}
+
+type SiteSiteWafSettingsAddBotProtectionHeadersArgs struct {
+	// Switch.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+}
+
+func (SiteSiteWafSettingsAddBotProtectionHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsAddBotProtectionHeaders)(nil)).Elem()
+}
+
+func (i SiteSiteWafSettingsAddBotProtectionHeadersArgs) ToSiteSiteWafSettingsAddBotProtectionHeadersOutput() SiteSiteWafSettingsAddBotProtectionHeadersOutput {
+	return i.ToSiteSiteWafSettingsAddBotProtectionHeadersOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsAddBotProtectionHeadersArgs) ToSiteSiteWafSettingsAddBotProtectionHeadersOutputWithContext(ctx context.Context) SiteSiteWafSettingsAddBotProtectionHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsAddBotProtectionHeadersOutput)
+}
+
+func (i SiteSiteWafSettingsAddBotProtectionHeadersArgs) ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutput() SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput {
+	return i.ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsAddBotProtectionHeadersArgs) ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsAddBotProtectionHeadersOutput).ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutputWithContext(ctx)
+}
+
+// SiteSiteWafSettingsAddBotProtectionHeadersPtrInput is an input type that accepts SiteSiteWafSettingsAddBotProtectionHeadersArgs, SiteSiteWafSettingsAddBotProtectionHeadersPtr and SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsAddBotProtectionHeadersPtrInput` via:
+//
+//	        SiteSiteWafSettingsAddBotProtectionHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteSiteWafSettingsAddBotProtectionHeadersPtrInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutput() SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput
+	ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutputWithContext(context.Context) SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput
+}
+
+type siteSiteWafSettingsAddBotProtectionHeadersPtrType SiteSiteWafSettingsAddBotProtectionHeadersArgs
+
+func SiteSiteWafSettingsAddBotProtectionHeadersPtr(v *SiteSiteWafSettingsAddBotProtectionHeadersArgs) SiteSiteWafSettingsAddBotProtectionHeadersPtrInput {
+	return (*siteSiteWafSettingsAddBotProtectionHeadersPtrType)(v)
+}
+
+func (*siteSiteWafSettingsAddBotProtectionHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsAddBotProtectionHeaders)(nil)).Elem()
+}
+
+func (i *siteSiteWafSettingsAddBotProtectionHeadersPtrType) ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutput() SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput {
+	return i.ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *siteSiteWafSettingsAddBotProtectionHeadersPtrType) ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput)
+}
+
+type SiteSiteWafSettingsAddBotProtectionHeadersOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsAddBotProtectionHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsAddBotProtectionHeaders)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsAddBotProtectionHeadersOutput) ToSiteSiteWafSettingsAddBotProtectionHeadersOutput() SiteSiteWafSettingsAddBotProtectionHeadersOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsAddBotProtectionHeadersOutput) ToSiteSiteWafSettingsAddBotProtectionHeadersOutputWithContext(ctx context.Context) SiteSiteWafSettingsAddBotProtectionHeadersOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsAddBotProtectionHeadersOutput) ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutput() SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput {
+	return o.ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o SiteSiteWafSettingsAddBotProtectionHeadersOutput) ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteSiteWafSettingsAddBotProtectionHeaders) *SiteSiteWafSettingsAddBotProtectionHeaders {
+		return &v
+	}).(SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput)
+}
+
+// Switch.
+func (o SiteSiteWafSettingsAddBotProtectionHeadersOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsAddBotProtectionHeaders) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+type SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsAddBotProtectionHeaders)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput) ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutput() SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput) ToSiteSiteWafSettingsAddBotProtectionHeadersPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput) Elem() SiteSiteWafSettingsAddBotProtectionHeadersOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsAddBotProtectionHeaders) SiteSiteWafSettingsAddBotProtectionHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret SiteSiteWafSettingsAddBotProtectionHeaders
+		return ret
+	}).(SiteSiteWafSettingsAddBotProtectionHeadersOutput)
+}
+
+// Switch.
+func (o SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsAddBotProtectionHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SiteSiteWafSettingsAddSecurityHeaders struct {
+	// Switch.
+	Enable *bool `pulumi:"enable"`
+}
+
+// SiteSiteWafSettingsAddSecurityHeadersInput is an input type that accepts SiteSiteWafSettingsAddSecurityHeadersArgs and SiteSiteWafSettingsAddSecurityHeadersOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsAddSecurityHeadersInput` via:
+//
+//	SiteSiteWafSettingsAddSecurityHeadersArgs{...}
+type SiteSiteWafSettingsAddSecurityHeadersInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsAddSecurityHeadersOutput() SiteSiteWafSettingsAddSecurityHeadersOutput
+	ToSiteSiteWafSettingsAddSecurityHeadersOutputWithContext(context.Context) SiteSiteWafSettingsAddSecurityHeadersOutput
+}
+
+type SiteSiteWafSettingsAddSecurityHeadersArgs struct {
+	// Switch.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+}
+
+func (SiteSiteWafSettingsAddSecurityHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsAddSecurityHeaders)(nil)).Elem()
+}
+
+func (i SiteSiteWafSettingsAddSecurityHeadersArgs) ToSiteSiteWafSettingsAddSecurityHeadersOutput() SiteSiteWafSettingsAddSecurityHeadersOutput {
+	return i.ToSiteSiteWafSettingsAddSecurityHeadersOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsAddSecurityHeadersArgs) ToSiteSiteWafSettingsAddSecurityHeadersOutputWithContext(ctx context.Context) SiteSiteWafSettingsAddSecurityHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsAddSecurityHeadersOutput)
+}
+
+func (i SiteSiteWafSettingsAddSecurityHeadersArgs) ToSiteSiteWafSettingsAddSecurityHeadersPtrOutput() SiteSiteWafSettingsAddSecurityHeadersPtrOutput {
+	return i.ToSiteSiteWafSettingsAddSecurityHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsAddSecurityHeadersArgs) ToSiteSiteWafSettingsAddSecurityHeadersPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsAddSecurityHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsAddSecurityHeadersOutput).ToSiteSiteWafSettingsAddSecurityHeadersPtrOutputWithContext(ctx)
+}
+
+// SiteSiteWafSettingsAddSecurityHeadersPtrInput is an input type that accepts SiteSiteWafSettingsAddSecurityHeadersArgs, SiteSiteWafSettingsAddSecurityHeadersPtr and SiteSiteWafSettingsAddSecurityHeadersPtrOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsAddSecurityHeadersPtrInput` via:
+//
+//	        SiteSiteWafSettingsAddSecurityHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteSiteWafSettingsAddSecurityHeadersPtrInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsAddSecurityHeadersPtrOutput() SiteSiteWafSettingsAddSecurityHeadersPtrOutput
+	ToSiteSiteWafSettingsAddSecurityHeadersPtrOutputWithContext(context.Context) SiteSiteWafSettingsAddSecurityHeadersPtrOutput
+}
+
+type siteSiteWafSettingsAddSecurityHeadersPtrType SiteSiteWafSettingsAddSecurityHeadersArgs
+
+func SiteSiteWafSettingsAddSecurityHeadersPtr(v *SiteSiteWafSettingsAddSecurityHeadersArgs) SiteSiteWafSettingsAddSecurityHeadersPtrInput {
+	return (*siteSiteWafSettingsAddSecurityHeadersPtrType)(v)
+}
+
+func (*siteSiteWafSettingsAddSecurityHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsAddSecurityHeaders)(nil)).Elem()
+}
+
+func (i *siteSiteWafSettingsAddSecurityHeadersPtrType) ToSiteSiteWafSettingsAddSecurityHeadersPtrOutput() SiteSiteWafSettingsAddSecurityHeadersPtrOutput {
+	return i.ToSiteSiteWafSettingsAddSecurityHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *siteSiteWafSettingsAddSecurityHeadersPtrType) ToSiteSiteWafSettingsAddSecurityHeadersPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsAddSecurityHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsAddSecurityHeadersPtrOutput)
+}
+
+type SiteSiteWafSettingsAddSecurityHeadersOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsAddSecurityHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsAddSecurityHeaders)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsAddSecurityHeadersOutput) ToSiteSiteWafSettingsAddSecurityHeadersOutput() SiteSiteWafSettingsAddSecurityHeadersOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsAddSecurityHeadersOutput) ToSiteSiteWafSettingsAddSecurityHeadersOutputWithContext(ctx context.Context) SiteSiteWafSettingsAddSecurityHeadersOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsAddSecurityHeadersOutput) ToSiteSiteWafSettingsAddSecurityHeadersPtrOutput() SiteSiteWafSettingsAddSecurityHeadersPtrOutput {
+	return o.ToSiteSiteWafSettingsAddSecurityHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o SiteSiteWafSettingsAddSecurityHeadersOutput) ToSiteSiteWafSettingsAddSecurityHeadersPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsAddSecurityHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteSiteWafSettingsAddSecurityHeaders) *SiteSiteWafSettingsAddSecurityHeaders {
+		return &v
+	}).(SiteSiteWafSettingsAddSecurityHeadersPtrOutput)
+}
+
+// Switch.
+func (o SiteSiteWafSettingsAddSecurityHeadersOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsAddSecurityHeaders) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+type SiteSiteWafSettingsAddSecurityHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsAddSecurityHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsAddSecurityHeaders)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsAddSecurityHeadersPtrOutput) ToSiteSiteWafSettingsAddSecurityHeadersPtrOutput() SiteSiteWafSettingsAddSecurityHeadersPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsAddSecurityHeadersPtrOutput) ToSiteSiteWafSettingsAddSecurityHeadersPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsAddSecurityHeadersPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsAddSecurityHeadersPtrOutput) Elem() SiteSiteWafSettingsAddSecurityHeadersOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsAddSecurityHeaders) SiteSiteWafSettingsAddSecurityHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret SiteSiteWafSettingsAddSecurityHeaders
+		return ret
+	}).(SiteSiteWafSettingsAddSecurityHeadersOutput)
+}
+
+// Switch.
+func (o SiteSiteWafSettingsAddSecurityHeadersPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsAddSecurityHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SiteSiteWafSettingsBandwidthAbuseProtection struct {
+	// Action.Valid values:
+	Action *string `pulumi:"action"`
+	// Rule ID.
+	Id *int `pulumi:"id"`
+	// The status of the resource
+	Status *string `pulumi:"status"`
+}
+
+// SiteSiteWafSettingsBandwidthAbuseProtectionInput is an input type that accepts SiteSiteWafSettingsBandwidthAbuseProtectionArgs and SiteSiteWafSettingsBandwidthAbuseProtectionOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBandwidthAbuseProtectionInput` via:
+//
+//	SiteSiteWafSettingsBandwidthAbuseProtectionArgs{...}
+type SiteSiteWafSettingsBandwidthAbuseProtectionInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBandwidthAbuseProtectionOutput() SiteSiteWafSettingsBandwidthAbuseProtectionOutput
+	ToSiteSiteWafSettingsBandwidthAbuseProtectionOutputWithContext(context.Context) SiteSiteWafSettingsBandwidthAbuseProtectionOutput
+}
+
+type SiteSiteWafSettingsBandwidthAbuseProtectionArgs struct {
+	// Action.Valid values:
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Rule ID.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The status of the resource
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (SiteSiteWafSettingsBandwidthAbuseProtectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBandwidthAbuseProtection)(nil)).Elem()
+}
+
+func (i SiteSiteWafSettingsBandwidthAbuseProtectionArgs) ToSiteSiteWafSettingsBandwidthAbuseProtectionOutput() SiteSiteWafSettingsBandwidthAbuseProtectionOutput {
+	return i.ToSiteSiteWafSettingsBandwidthAbuseProtectionOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBandwidthAbuseProtectionArgs) ToSiteSiteWafSettingsBandwidthAbuseProtectionOutputWithContext(ctx context.Context) SiteSiteWafSettingsBandwidthAbuseProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBandwidthAbuseProtectionOutput)
+}
+
+func (i SiteSiteWafSettingsBandwidthAbuseProtectionArgs) ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput() SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput {
+	return i.ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBandwidthAbuseProtectionArgs) ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBandwidthAbuseProtectionOutput).ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutputWithContext(ctx)
+}
+
+// SiteSiteWafSettingsBandwidthAbuseProtectionPtrInput is an input type that accepts SiteSiteWafSettingsBandwidthAbuseProtectionArgs, SiteSiteWafSettingsBandwidthAbuseProtectionPtr and SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBandwidthAbuseProtectionPtrInput` via:
+//
+//	        SiteSiteWafSettingsBandwidthAbuseProtectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteSiteWafSettingsBandwidthAbuseProtectionPtrInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput() SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput
+	ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutputWithContext(context.Context) SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput
+}
+
+type siteSiteWafSettingsBandwidthAbuseProtectionPtrType SiteSiteWafSettingsBandwidthAbuseProtectionArgs
+
+func SiteSiteWafSettingsBandwidthAbuseProtectionPtr(v *SiteSiteWafSettingsBandwidthAbuseProtectionArgs) SiteSiteWafSettingsBandwidthAbuseProtectionPtrInput {
+	return (*siteSiteWafSettingsBandwidthAbuseProtectionPtrType)(v)
+}
+
+func (*siteSiteWafSettingsBandwidthAbuseProtectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBandwidthAbuseProtection)(nil)).Elem()
+}
+
+func (i *siteSiteWafSettingsBandwidthAbuseProtectionPtrType) ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput() SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput {
+	return i.ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutputWithContext(context.Background())
+}
+
+func (i *siteSiteWafSettingsBandwidthAbuseProtectionPtrType) ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput)
+}
+
+type SiteSiteWafSettingsBandwidthAbuseProtectionOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBandwidthAbuseProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBandwidthAbuseProtection)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBandwidthAbuseProtectionOutput) ToSiteSiteWafSettingsBandwidthAbuseProtectionOutput() SiteSiteWafSettingsBandwidthAbuseProtectionOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBandwidthAbuseProtectionOutput) ToSiteSiteWafSettingsBandwidthAbuseProtectionOutputWithContext(ctx context.Context) SiteSiteWafSettingsBandwidthAbuseProtectionOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBandwidthAbuseProtectionOutput) ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput() SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput {
+	return o.ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutputWithContext(context.Background())
+}
+
+func (o SiteSiteWafSettingsBandwidthAbuseProtectionOutput) ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteSiteWafSettingsBandwidthAbuseProtection) *SiteSiteWafSettingsBandwidthAbuseProtection {
+		return &v
+	}).(SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput)
+}
+
+// Action.Valid values:
+func (o SiteSiteWafSettingsBandwidthAbuseProtectionOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBandwidthAbuseProtection) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Rule ID.
+func (o SiteSiteWafSettingsBandwidthAbuseProtectionOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBandwidthAbuseProtection) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The status of the resource
+func (o SiteSiteWafSettingsBandwidthAbuseProtectionOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBandwidthAbuseProtection) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBandwidthAbuseProtection)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput) ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput() SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput) ToSiteSiteWafSettingsBandwidthAbuseProtectionPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput) Elem() SiteSiteWafSettingsBandwidthAbuseProtectionOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBandwidthAbuseProtection) SiteSiteWafSettingsBandwidthAbuseProtection {
+		if v != nil {
+			return *v
+		}
+		var ret SiteSiteWafSettingsBandwidthAbuseProtection
+		return ret
+	}).(SiteSiteWafSettingsBandwidthAbuseProtectionOutput)
+}
+
+// Action.Valid values:
+func (o SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBandwidthAbuseProtection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Rule ID.
+func (o SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBandwidthAbuseProtection) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+// The status of the resource
+func (o SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBandwidthAbuseProtection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagement struct {
+	// Definitely Bot.
+	DefiniteBots *SiteSiteWafSettingsBotManagementDefiniteBots `pulumi:"definiteBots"`
+	// VApply to Static Resource Requests. See `effectOnStatic` below.
+	EffectOnStatic *SiteSiteWafSettingsBotManagementEffectOnStatic `pulumi:"effectOnStatic"`
+	// JavaScript Challenge. See `jsDetection` below.
+	JsDetection *SiteSiteWafSettingsBotManagementJsDetection `pulumi:"jsDetection"`
+	// Likely Bot.
+	LikelyBots *SiteSiteWafSettingsBotManagementLikelyBots `pulumi:"likelyBots"`
+	// Verified Bot.
+	VerifiedBots *SiteSiteWafSettingsBotManagementVerifiedBots `pulumi:"verifiedBots"`
+}
+
+// SiteSiteWafSettingsBotManagementInput is an input type that accepts SiteSiteWafSettingsBotManagementArgs and SiteSiteWafSettingsBotManagementOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBotManagementInput` via:
+//
+//	SiteSiteWafSettingsBotManagementArgs{...}
+type SiteSiteWafSettingsBotManagementInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBotManagementOutput() SiteSiteWafSettingsBotManagementOutput
+	ToSiteSiteWafSettingsBotManagementOutputWithContext(context.Context) SiteSiteWafSettingsBotManagementOutput
+}
+
+type SiteSiteWafSettingsBotManagementArgs struct {
+	// Definitely Bot.
+	DefiniteBots SiteSiteWafSettingsBotManagementDefiniteBotsPtrInput `pulumi:"definiteBots"`
+	// VApply to Static Resource Requests. See `effectOnStatic` below.
+	EffectOnStatic SiteSiteWafSettingsBotManagementEffectOnStaticPtrInput `pulumi:"effectOnStatic"`
+	// JavaScript Challenge. See `jsDetection` below.
+	JsDetection SiteSiteWafSettingsBotManagementJsDetectionPtrInput `pulumi:"jsDetection"`
+	// Likely Bot.
+	LikelyBots SiteSiteWafSettingsBotManagementLikelyBotsPtrInput `pulumi:"likelyBots"`
+	// Verified Bot.
+	VerifiedBots SiteSiteWafSettingsBotManagementVerifiedBotsPtrInput `pulumi:"verifiedBots"`
+}
+
+func (SiteSiteWafSettingsBotManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBotManagement)(nil)).Elem()
+}
+
+func (i SiteSiteWafSettingsBotManagementArgs) ToSiteSiteWafSettingsBotManagementOutput() SiteSiteWafSettingsBotManagementOutput {
+	return i.ToSiteSiteWafSettingsBotManagementOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBotManagementArgs) ToSiteSiteWafSettingsBotManagementOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementOutput)
+}
+
+func (i SiteSiteWafSettingsBotManagementArgs) ToSiteSiteWafSettingsBotManagementPtrOutput() SiteSiteWafSettingsBotManagementPtrOutput {
+	return i.ToSiteSiteWafSettingsBotManagementPtrOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBotManagementArgs) ToSiteSiteWafSettingsBotManagementPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementOutput).ToSiteSiteWafSettingsBotManagementPtrOutputWithContext(ctx)
+}
+
+// SiteSiteWafSettingsBotManagementPtrInput is an input type that accepts SiteSiteWafSettingsBotManagementArgs, SiteSiteWafSettingsBotManagementPtr and SiteSiteWafSettingsBotManagementPtrOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBotManagementPtrInput` via:
+//
+//	        SiteSiteWafSettingsBotManagementArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteSiteWafSettingsBotManagementPtrInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBotManagementPtrOutput() SiteSiteWafSettingsBotManagementPtrOutput
+	ToSiteSiteWafSettingsBotManagementPtrOutputWithContext(context.Context) SiteSiteWafSettingsBotManagementPtrOutput
+}
+
+type siteSiteWafSettingsBotManagementPtrType SiteSiteWafSettingsBotManagementArgs
+
+func SiteSiteWafSettingsBotManagementPtr(v *SiteSiteWafSettingsBotManagementArgs) SiteSiteWafSettingsBotManagementPtrInput {
+	return (*siteSiteWafSettingsBotManagementPtrType)(v)
+}
+
+func (*siteSiteWafSettingsBotManagementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBotManagement)(nil)).Elem()
+}
+
+func (i *siteSiteWafSettingsBotManagementPtrType) ToSiteSiteWafSettingsBotManagementPtrOutput() SiteSiteWafSettingsBotManagementPtrOutput {
+	return i.ToSiteSiteWafSettingsBotManagementPtrOutputWithContext(context.Background())
+}
+
+func (i *siteSiteWafSettingsBotManagementPtrType) ToSiteSiteWafSettingsBotManagementPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBotManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBotManagement)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBotManagementOutput) ToSiteSiteWafSettingsBotManagementOutput() SiteSiteWafSettingsBotManagementOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementOutput) ToSiteSiteWafSettingsBotManagementOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementOutput) ToSiteSiteWafSettingsBotManagementPtrOutput() SiteSiteWafSettingsBotManagementPtrOutput {
+	return o.ToSiteSiteWafSettingsBotManagementPtrOutputWithContext(context.Background())
+}
+
+func (o SiteSiteWafSettingsBotManagementOutput) ToSiteSiteWafSettingsBotManagementPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteSiteWafSettingsBotManagement) *SiteSiteWafSettingsBotManagement {
+		return &v
+	}).(SiteSiteWafSettingsBotManagementPtrOutput)
+}
+
+// Definitely Bot.
+func (o SiteSiteWafSettingsBotManagementOutput) DefiniteBots() SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBotManagement) *SiteSiteWafSettingsBotManagementDefiniteBots {
+		return v.DefiniteBots
+	}).(SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput)
+}
+
+// VApply to Static Resource Requests. See `effectOnStatic` below.
+func (o SiteSiteWafSettingsBotManagementOutput) EffectOnStatic() SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBotManagement) *SiteSiteWafSettingsBotManagementEffectOnStatic {
+		return v.EffectOnStatic
+	}).(SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput)
+}
+
+// JavaScript Challenge. See `jsDetection` below.
+func (o SiteSiteWafSettingsBotManagementOutput) JsDetection() SiteSiteWafSettingsBotManagementJsDetectionPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBotManagement) *SiteSiteWafSettingsBotManagementJsDetection {
+		return v.JsDetection
+	}).(SiteSiteWafSettingsBotManagementJsDetectionPtrOutput)
+}
+
+// Likely Bot.
+func (o SiteSiteWafSettingsBotManagementOutput) LikelyBots() SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBotManagement) *SiteSiteWafSettingsBotManagementLikelyBots {
+		return v.LikelyBots
+	}).(SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput)
+}
+
+// Verified Bot.
+func (o SiteSiteWafSettingsBotManagementOutput) VerifiedBots() SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBotManagement) *SiteSiteWafSettingsBotManagementVerifiedBots {
+		return v.VerifiedBots
+	}).(SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBotManagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBotManagement)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBotManagementPtrOutput) ToSiteSiteWafSettingsBotManagementPtrOutput() SiteSiteWafSettingsBotManagementPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementPtrOutput) ToSiteSiteWafSettingsBotManagementPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementPtrOutput) Elem() SiteSiteWafSettingsBotManagementOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagement) SiteSiteWafSettingsBotManagement {
+		if v != nil {
+			return *v
+		}
+		var ret SiteSiteWafSettingsBotManagement
+		return ret
+	}).(SiteSiteWafSettingsBotManagementOutput)
+}
+
+// Definitely Bot.
+func (o SiteSiteWafSettingsBotManagementPtrOutput) DefiniteBots() SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagement) *SiteSiteWafSettingsBotManagementDefiniteBots {
+		if v == nil {
+			return nil
+		}
+		return v.DefiniteBots
+	}).(SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput)
+}
+
+// VApply to Static Resource Requests. See `effectOnStatic` below.
+func (o SiteSiteWafSettingsBotManagementPtrOutput) EffectOnStatic() SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagement) *SiteSiteWafSettingsBotManagementEffectOnStatic {
+		if v == nil {
+			return nil
+		}
+		return v.EffectOnStatic
+	}).(SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput)
+}
+
+// JavaScript Challenge. See `jsDetection` below.
+func (o SiteSiteWafSettingsBotManagementPtrOutput) JsDetection() SiteSiteWafSettingsBotManagementJsDetectionPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagement) *SiteSiteWafSettingsBotManagementJsDetection {
+		if v == nil {
+			return nil
+		}
+		return v.JsDetection
+	}).(SiteSiteWafSettingsBotManagementJsDetectionPtrOutput)
+}
+
+// Likely Bot.
+func (o SiteSiteWafSettingsBotManagementPtrOutput) LikelyBots() SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagement) *SiteSiteWafSettingsBotManagementLikelyBots {
+		if v == nil {
+			return nil
+		}
+		return v.LikelyBots
+	}).(SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput)
+}
+
+// Verified Bot.
+func (o SiteSiteWafSettingsBotManagementPtrOutput) VerifiedBots() SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagement) *SiteSiteWafSettingsBotManagementVerifiedBots {
+		if v == nil {
+			return nil
+		}
+		return v.VerifiedBots
+	}).(SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementDefiniteBots struct {
+	// Action.Valid values:
+	Action *string `pulumi:"action"`
+	// Rule ID.
+	Id *int `pulumi:"id"`
+}
+
+// SiteSiteWafSettingsBotManagementDefiniteBotsInput is an input type that accepts SiteSiteWafSettingsBotManagementDefiniteBotsArgs and SiteSiteWafSettingsBotManagementDefiniteBotsOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBotManagementDefiniteBotsInput` via:
+//
+//	SiteSiteWafSettingsBotManagementDefiniteBotsArgs{...}
+type SiteSiteWafSettingsBotManagementDefiniteBotsInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBotManagementDefiniteBotsOutput() SiteSiteWafSettingsBotManagementDefiniteBotsOutput
+	ToSiteSiteWafSettingsBotManagementDefiniteBotsOutputWithContext(context.Context) SiteSiteWafSettingsBotManagementDefiniteBotsOutput
+}
+
+type SiteSiteWafSettingsBotManagementDefiniteBotsArgs struct {
+	// Action.Valid values:
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Rule ID.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+}
+
+func (SiteSiteWafSettingsBotManagementDefiniteBotsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBotManagementDefiniteBots)(nil)).Elem()
+}
+
+func (i SiteSiteWafSettingsBotManagementDefiniteBotsArgs) ToSiteSiteWafSettingsBotManagementDefiniteBotsOutput() SiteSiteWafSettingsBotManagementDefiniteBotsOutput {
+	return i.ToSiteSiteWafSettingsBotManagementDefiniteBotsOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBotManagementDefiniteBotsArgs) ToSiteSiteWafSettingsBotManagementDefiniteBotsOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementDefiniteBotsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementDefiniteBotsOutput)
+}
+
+func (i SiteSiteWafSettingsBotManagementDefiniteBotsArgs) ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput() SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput {
+	return i.ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBotManagementDefiniteBotsArgs) ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementDefiniteBotsOutput).ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutputWithContext(ctx)
+}
+
+// SiteSiteWafSettingsBotManagementDefiniteBotsPtrInput is an input type that accepts SiteSiteWafSettingsBotManagementDefiniteBotsArgs, SiteSiteWafSettingsBotManagementDefiniteBotsPtr and SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBotManagementDefiniteBotsPtrInput` via:
+//
+//	        SiteSiteWafSettingsBotManagementDefiniteBotsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteSiteWafSettingsBotManagementDefiniteBotsPtrInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput() SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput
+	ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutputWithContext(context.Context) SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput
+}
+
+type siteSiteWafSettingsBotManagementDefiniteBotsPtrType SiteSiteWafSettingsBotManagementDefiniteBotsArgs
+
+func SiteSiteWafSettingsBotManagementDefiniteBotsPtr(v *SiteSiteWafSettingsBotManagementDefiniteBotsArgs) SiteSiteWafSettingsBotManagementDefiniteBotsPtrInput {
+	return (*siteSiteWafSettingsBotManagementDefiniteBotsPtrType)(v)
+}
+
+func (*siteSiteWafSettingsBotManagementDefiniteBotsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBotManagementDefiniteBots)(nil)).Elem()
+}
+
+func (i *siteSiteWafSettingsBotManagementDefiniteBotsPtrType) ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput() SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput {
+	return i.ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutputWithContext(context.Background())
+}
+
+func (i *siteSiteWafSettingsBotManagementDefiniteBotsPtrType) ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementDefiniteBotsOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBotManagementDefiniteBotsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBotManagementDefiniteBots)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBotManagementDefiniteBotsOutput) ToSiteSiteWafSettingsBotManagementDefiniteBotsOutput() SiteSiteWafSettingsBotManagementDefiniteBotsOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementDefiniteBotsOutput) ToSiteSiteWafSettingsBotManagementDefiniteBotsOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementDefiniteBotsOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementDefiniteBotsOutput) ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput() SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput {
+	return o.ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutputWithContext(context.Background())
+}
+
+func (o SiteSiteWafSettingsBotManagementDefiniteBotsOutput) ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteSiteWafSettingsBotManagementDefiniteBots) *SiteSiteWafSettingsBotManagementDefiniteBots {
+		return &v
+	}).(SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput)
+}
+
+// Action.Valid values:
+func (o SiteSiteWafSettingsBotManagementDefiniteBotsOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBotManagementDefiniteBots) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Rule ID.
+func (o SiteSiteWafSettingsBotManagementDefiniteBotsOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBotManagementDefiniteBots) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBotManagementDefiniteBots)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput) ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput() SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput) ToSiteSiteWafSettingsBotManagementDefiniteBotsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput) Elem() SiteSiteWafSettingsBotManagementDefiniteBotsOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagementDefiniteBots) SiteSiteWafSettingsBotManagementDefiniteBots {
+		if v != nil {
+			return *v
+		}
+		var ret SiteSiteWafSettingsBotManagementDefiniteBots
+		return ret
+	}).(SiteSiteWafSettingsBotManagementDefiniteBotsOutput)
+}
+
+// Action.Valid values:
+func (o SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagementDefiniteBots) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Rule ID.
+func (o SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagementDefiniteBots) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementEffectOnStatic struct {
+	// Switch.
+	Enable *bool `pulumi:"enable"`
+}
+
+// SiteSiteWafSettingsBotManagementEffectOnStaticInput is an input type that accepts SiteSiteWafSettingsBotManagementEffectOnStaticArgs and SiteSiteWafSettingsBotManagementEffectOnStaticOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBotManagementEffectOnStaticInput` via:
+//
+//	SiteSiteWafSettingsBotManagementEffectOnStaticArgs{...}
+type SiteSiteWafSettingsBotManagementEffectOnStaticInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBotManagementEffectOnStaticOutput() SiteSiteWafSettingsBotManagementEffectOnStaticOutput
+	ToSiteSiteWafSettingsBotManagementEffectOnStaticOutputWithContext(context.Context) SiteSiteWafSettingsBotManagementEffectOnStaticOutput
+}
+
+type SiteSiteWafSettingsBotManagementEffectOnStaticArgs struct {
+	// Switch.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+}
+
+func (SiteSiteWafSettingsBotManagementEffectOnStaticArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBotManagementEffectOnStatic)(nil)).Elem()
+}
+
+func (i SiteSiteWafSettingsBotManagementEffectOnStaticArgs) ToSiteSiteWafSettingsBotManagementEffectOnStaticOutput() SiteSiteWafSettingsBotManagementEffectOnStaticOutput {
+	return i.ToSiteSiteWafSettingsBotManagementEffectOnStaticOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBotManagementEffectOnStaticArgs) ToSiteSiteWafSettingsBotManagementEffectOnStaticOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementEffectOnStaticOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementEffectOnStaticOutput)
+}
+
+func (i SiteSiteWafSettingsBotManagementEffectOnStaticArgs) ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput() SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput {
+	return i.ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBotManagementEffectOnStaticArgs) ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementEffectOnStaticOutput).ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutputWithContext(ctx)
+}
+
+// SiteSiteWafSettingsBotManagementEffectOnStaticPtrInput is an input type that accepts SiteSiteWafSettingsBotManagementEffectOnStaticArgs, SiteSiteWafSettingsBotManagementEffectOnStaticPtr and SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBotManagementEffectOnStaticPtrInput` via:
+//
+//	        SiteSiteWafSettingsBotManagementEffectOnStaticArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteSiteWafSettingsBotManagementEffectOnStaticPtrInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput() SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput
+	ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutputWithContext(context.Context) SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput
+}
+
+type siteSiteWafSettingsBotManagementEffectOnStaticPtrType SiteSiteWafSettingsBotManagementEffectOnStaticArgs
+
+func SiteSiteWafSettingsBotManagementEffectOnStaticPtr(v *SiteSiteWafSettingsBotManagementEffectOnStaticArgs) SiteSiteWafSettingsBotManagementEffectOnStaticPtrInput {
+	return (*siteSiteWafSettingsBotManagementEffectOnStaticPtrType)(v)
+}
+
+func (*siteSiteWafSettingsBotManagementEffectOnStaticPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBotManagementEffectOnStatic)(nil)).Elem()
+}
+
+func (i *siteSiteWafSettingsBotManagementEffectOnStaticPtrType) ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput() SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput {
+	return i.ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutputWithContext(context.Background())
+}
+
+func (i *siteSiteWafSettingsBotManagementEffectOnStaticPtrType) ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementEffectOnStaticOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBotManagementEffectOnStaticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBotManagementEffectOnStatic)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBotManagementEffectOnStaticOutput) ToSiteSiteWafSettingsBotManagementEffectOnStaticOutput() SiteSiteWafSettingsBotManagementEffectOnStaticOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementEffectOnStaticOutput) ToSiteSiteWafSettingsBotManagementEffectOnStaticOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementEffectOnStaticOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementEffectOnStaticOutput) ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput() SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput {
+	return o.ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutputWithContext(context.Background())
+}
+
+func (o SiteSiteWafSettingsBotManagementEffectOnStaticOutput) ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteSiteWafSettingsBotManagementEffectOnStatic) *SiteSiteWafSettingsBotManagementEffectOnStatic {
+		return &v
+	}).(SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput)
+}
+
+// Switch.
+func (o SiteSiteWafSettingsBotManagementEffectOnStaticOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBotManagementEffectOnStatic) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBotManagementEffectOnStatic)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput) ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput() SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput) ToSiteSiteWafSettingsBotManagementEffectOnStaticPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput) Elem() SiteSiteWafSettingsBotManagementEffectOnStaticOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagementEffectOnStatic) SiteSiteWafSettingsBotManagementEffectOnStatic {
+		if v != nil {
+			return *v
+		}
+		var ret SiteSiteWafSettingsBotManagementEffectOnStatic
+		return ret
+	}).(SiteSiteWafSettingsBotManagementEffectOnStaticOutput)
+}
+
+// Switch.
+func (o SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagementEffectOnStatic) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementJsDetection struct {
+	// Switch.
+	Enable *bool `pulumi:"enable"`
+}
+
+// SiteSiteWafSettingsBotManagementJsDetectionInput is an input type that accepts SiteSiteWafSettingsBotManagementJsDetectionArgs and SiteSiteWafSettingsBotManagementJsDetectionOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBotManagementJsDetectionInput` via:
+//
+//	SiteSiteWafSettingsBotManagementJsDetectionArgs{...}
+type SiteSiteWafSettingsBotManagementJsDetectionInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBotManagementJsDetectionOutput() SiteSiteWafSettingsBotManagementJsDetectionOutput
+	ToSiteSiteWafSettingsBotManagementJsDetectionOutputWithContext(context.Context) SiteSiteWafSettingsBotManagementJsDetectionOutput
+}
+
+type SiteSiteWafSettingsBotManagementJsDetectionArgs struct {
+	// Switch.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+}
+
+func (SiteSiteWafSettingsBotManagementJsDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBotManagementJsDetection)(nil)).Elem()
+}
+
+func (i SiteSiteWafSettingsBotManagementJsDetectionArgs) ToSiteSiteWafSettingsBotManagementJsDetectionOutput() SiteSiteWafSettingsBotManagementJsDetectionOutput {
+	return i.ToSiteSiteWafSettingsBotManagementJsDetectionOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBotManagementJsDetectionArgs) ToSiteSiteWafSettingsBotManagementJsDetectionOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementJsDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementJsDetectionOutput)
+}
+
+func (i SiteSiteWafSettingsBotManagementJsDetectionArgs) ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutput() SiteSiteWafSettingsBotManagementJsDetectionPtrOutput {
+	return i.ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBotManagementJsDetectionArgs) ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementJsDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementJsDetectionOutput).ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutputWithContext(ctx)
+}
+
+// SiteSiteWafSettingsBotManagementJsDetectionPtrInput is an input type that accepts SiteSiteWafSettingsBotManagementJsDetectionArgs, SiteSiteWafSettingsBotManagementJsDetectionPtr and SiteSiteWafSettingsBotManagementJsDetectionPtrOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBotManagementJsDetectionPtrInput` via:
+//
+//	        SiteSiteWafSettingsBotManagementJsDetectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteSiteWafSettingsBotManagementJsDetectionPtrInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutput() SiteSiteWafSettingsBotManagementJsDetectionPtrOutput
+	ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutputWithContext(context.Context) SiteSiteWafSettingsBotManagementJsDetectionPtrOutput
+}
+
+type siteSiteWafSettingsBotManagementJsDetectionPtrType SiteSiteWafSettingsBotManagementJsDetectionArgs
+
+func SiteSiteWafSettingsBotManagementJsDetectionPtr(v *SiteSiteWafSettingsBotManagementJsDetectionArgs) SiteSiteWafSettingsBotManagementJsDetectionPtrInput {
+	return (*siteSiteWafSettingsBotManagementJsDetectionPtrType)(v)
+}
+
+func (*siteSiteWafSettingsBotManagementJsDetectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBotManagementJsDetection)(nil)).Elem()
+}
+
+func (i *siteSiteWafSettingsBotManagementJsDetectionPtrType) ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutput() SiteSiteWafSettingsBotManagementJsDetectionPtrOutput {
+	return i.ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i *siteSiteWafSettingsBotManagementJsDetectionPtrType) ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementJsDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementJsDetectionPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementJsDetectionOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBotManagementJsDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBotManagementJsDetection)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBotManagementJsDetectionOutput) ToSiteSiteWafSettingsBotManagementJsDetectionOutput() SiteSiteWafSettingsBotManagementJsDetectionOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementJsDetectionOutput) ToSiteSiteWafSettingsBotManagementJsDetectionOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementJsDetectionOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementJsDetectionOutput) ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutput() SiteSiteWafSettingsBotManagementJsDetectionPtrOutput {
+	return o.ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutputWithContext(context.Background())
+}
+
+func (o SiteSiteWafSettingsBotManagementJsDetectionOutput) ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementJsDetectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteSiteWafSettingsBotManagementJsDetection) *SiteSiteWafSettingsBotManagementJsDetection {
+		return &v
+	}).(SiteSiteWafSettingsBotManagementJsDetectionPtrOutput)
+}
+
+// Switch.
+func (o SiteSiteWafSettingsBotManagementJsDetectionOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBotManagementJsDetection) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementJsDetectionPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBotManagementJsDetectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBotManagementJsDetection)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBotManagementJsDetectionPtrOutput) ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutput() SiteSiteWafSettingsBotManagementJsDetectionPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementJsDetectionPtrOutput) ToSiteSiteWafSettingsBotManagementJsDetectionPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementJsDetectionPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementJsDetectionPtrOutput) Elem() SiteSiteWafSettingsBotManagementJsDetectionOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagementJsDetection) SiteSiteWafSettingsBotManagementJsDetection {
+		if v != nil {
+			return *v
+		}
+		var ret SiteSiteWafSettingsBotManagementJsDetection
+		return ret
+	}).(SiteSiteWafSettingsBotManagementJsDetectionOutput)
+}
+
+// Switch.
+func (o SiteSiteWafSettingsBotManagementJsDetectionPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagementJsDetection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementLikelyBots struct {
+	// Action.Valid values:
+	Action *string `pulumi:"action"`
+	// Rule ID.
+	Id *int `pulumi:"id"`
+}
+
+// SiteSiteWafSettingsBotManagementLikelyBotsInput is an input type that accepts SiteSiteWafSettingsBotManagementLikelyBotsArgs and SiteSiteWafSettingsBotManagementLikelyBotsOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBotManagementLikelyBotsInput` via:
+//
+//	SiteSiteWafSettingsBotManagementLikelyBotsArgs{...}
+type SiteSiteWafSettingsBotManagementLikelyBotsInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBotManagementLikelyBotsOutput() SiteSiteWafSettingsBotManagementLikelyBotsOutput
+	ToSiteSiteWafSettingsBotManagementLikelyBotsOutputWithContext(context.Context) SiteSiteWafSettingsBotManagementLikelyBotsOutput
+}
+
+type SiteSiteWafSettingsBotManagementLikelyBotsArgs struct {
+	// Action.Valid values:
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Rule ID.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+}
+
+func (SiteSiteWafSettingsBotManagementLikelyBotsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBotManagementLikelyBots)(nil)).Elem()
+}
+
+func (i SiteSiteWafSettingsBotManagementLikelyBotsArgs) ToSiteSiteWafSettingsBotManagementLikelyBotsOutput() SiteSiteWafSettingsBotManagementLikelyBotsOutput {
+	return i.ToSiteSiteWafSettingsBotManagementLikelyBotsOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBotManagementLikelyBotsArgs) ToSiteSiteWafSettingsBotManagementLikelyBotsOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementLikelyBotsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementLikelyBotsOutput)
+}
+
+func (i SiteSiteWafSettingsBotManagementLikelyBotsArgs) ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutput() SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput {
+	return i.ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBotManagementLikelyBotsArgs) ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementLikelyBotsOutput).ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutputWithContext(ctx)
+}
+
+// SiteSiteWafSettingsBotManagementLikelyBotsPtrInput is an input type that accepts SiteSiteWafSettingsBotManagementLikelyBotsArgs, SiteSiteWafSettingsBotManagementLikelyBotsPtr and SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBotManagementLikelyBotsPtrInput` via:
+//
+//	        SiteSiteWafSettingsBotManagementLikelyBotsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteSiteWafSettingsBotManagementLikelyBotsPtrInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutput() SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput
+	ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutputWithContext(context.Context) SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput
+}
+
+type siteSiteWafSettingsBotManagementLikelyBotsPtrType SiteSiteWafSettingsBotManagementLikelyBotsArgs
+
+func SiteSiteWafSettingsBotManagementLikelyBotsPtr(v *SiteSiteWafSettingsBotManagementLikelyBotsArgs) SiteSiteWafSettingsBotManagementLikelyBotsPtrInput {
+	return (*siteSiteWafSettingsBotManagementLikelyBotsPtrType)(v)
+}
+
+func (*siteSiteWafSettingsBotManagementLikelyBotsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBotManagementLikelyBots)(nil)).Elem()
+}
+
+func (i *siteSiteWafSettingsBotManagementLikelyBotsPtrType) ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutput() SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput {
+	return i.ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutputWithContext(context.Background())
+}
+
+func (i *siteSiteWafSettingsBotManagementLikelyBotsPtrType) ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementLikelyBotsOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBotManagementLikelyBotsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBotManagementLikelyBots)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBotManagementLikelyBotsOutput) ToSiteSiteWafSettingsBotManagementLikelyBotsOutput() SiteSiteWafSettingsBotManagementLikelyBotsOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementLikelyBotsOutput) ToSiteSiteWafSettingsBotManagementLikelyBotsOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementLikelyBotsOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementLikelyBotsOutput) ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutput() SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput {
+	return o.ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutputWithContext(context.Background())
+}
+
+func (o SiteSiteWafSettingsBotManagementLikelyBotsOutput) ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteSiteWafSettingsBotManagementLikelyBots) *SiteSiteWafSettingsBotManagementLikelyBots {
+		return &v
+	}).(SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput)
+}
+
+// Action.Valid values:
+func (o SiteSiteWafSettingsBotManagementLikelyBotsOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBotManagementLikelyBots) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Rule ID.
+func (o SiteSiteWafSettingsBotManagementLikelyBotsOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBotManagementLikelyBots) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBotManagementLikelyBots)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput) ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutput() SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput) ToSiteSiteWafSettingsBotManagementLikelyBotsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput) Elem() SiteSiteWafSettingsBotManagementLikelyBotsOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagementLikelyBots) SiteSiteWafSettingsBotManagementLikelyBots {
+		if v != nil {
+			return *v
+		}
+		var ret SiteSiteWafSettingsBotManagementLikelyBots
+		return ret
+	}).(SiteSiteWafSettingsBotManagementLikelyBotsOutput)
+}
+
+// Action.Valid values:
+func (o SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagementLikelyBots) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Rule ID.
+func (o SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagementLikelyBots) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementVerifiedBots struct {
+	// Action.Valid values:
+	Action *string `pulumi:"action"`
+	// Rule ID.
+	Id *int `pulumi:"id"`
+}
+
+// SiteSiteWafSettingsBotManagementVerifiedBotsInput is an input type that accepts SiteSiteWafSettingsBotManagementVerifiedBotsArgs and SiteSiteWafSettingsBotManagementVerifiedBotsOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBotManagementVerifiedBotsInput` via:
+//
+//	SiteSiteWafSettingsBotManagementVerifiedBotsArgs{...}
+type SiteSiteWafSettingsBotManagementVerifiedBotsInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBotManagementVerifiedBotsOutput() SiteSiteWafSettingsBotManagementVerifiedBotsOutput
+	ToSiteSiteWafSettingsBotManagementVerifiedBotsOutputWithContext(context.Context) SiteSiteWafSettingsBotManagementVerifiedBotsOutput
+}
+
+type SiteSiteWafSettingsBotManagementVerifiedBotsArgs struct {
+	// Action.Valid values:
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Rule ID.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+}
+
+func (SiteSiteWafSettingsBotManagementVerifiedBotsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBotManagementVerifiedBots)(nil)).Elem()
+}
+
+func (i SiteSiteWafSettingsBotManagementVerifiedBotsArgs) ToSiteSiteWafSettingsBotManagementVerifiedBotsOutput() SiteSiteWafSettingsBotManagementVerifiedBotsOutput {
+	return i.ToSiteSiteWafSettingsBotManagementVerifiedBotsOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBotManagementVerifiedBotsArgs) ToSiteSiteWafSettingsBotManagementVerifiedBotsOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementVerifiedBotsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementVerifiedBotsOutput)
+}
+
+func (i SiteSiteWafSettingsBotManagementVerifiedBotsArgs) ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput() SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput {
+	return i.ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsBotManagementVerifiedBotsArgs) ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementVerifiedBotsOutput).ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutputWithContext(ctx)
+}
+
+// SiteSiteWafSettingsBotManagementVerifiedBotsPtrInput is an input type that accepts SiteSiteWafSettingsBotManagementVerifiedBotsArgs, SiteSiteWafSettingsBotManagementVerifiedBotsPtr and SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsBotManagementVerifiedBotsPtrInput` via:
+//
+//	        SiteSiteWafSettingsBotManagementVerifiedBotsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteSiteWafSettingsBotManagementVerifiedBotsPtrInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput() SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput
+	ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutputWithContext(context.Context) SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput
+}
+
+type siteSiteWafSettingsBotManagementVerifiedBotsPtrType SiteSiteWafSettingsBotManagementVerifiedBotsArgs
+
+func SiteSiteWafSettingsBotManagementVerifiedBotsPtr(v *SiteSiteWafSettingsBotManagementVerifiedBotsArgs) SiteSiteWafSettingsBotManagementVerifiedBotsPtrInput {
+	return (*siteSiteWafSettingsBotManagementVerifiedBotsPtrType)(v)
+}
+
+func (*siteSiteWafSettingsBotManagementVerifiedBotsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBotManagementVerifiedBots)(nil)).Elem()
+}
+
+func (i *siteSiteWafSettingsBotManagementVerifiedBotsPtrType) ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput() SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput {
+	return i.ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutputWithContext(context.Background())
+}
+
+func (i *siteSiteWafSettingsBotManagementVerifiedBotsPtrType) ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementVerifiedBotsOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBotManagementVerifiedBotsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsBotManagementVerifiedBots)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBotManagementVerifiedBotsOutput) ToSiteSiteWafSettingsBotManagementVerifiedBotsOutput() SiteSiteWafSettingsBotManagementVerifiedBotsOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementVerifiedBotsOutput) ToSiteSiteWafSettingsBotManagementVerifiedBotsOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementVerifiedBotsOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementVerifiedBotsOutput) ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput() SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput {
+	return o.ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutputWithContext(context.Background())
+}
+
+func (o SiteSiteWafSettingsBotManagementVerifiedBotsOutput) ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteSiteWafSettingsBotManagementVerifiedBots) *SiteSiteWafSettingsBotManagementVerifiedBots {
+		return &v
+	}).(SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput)
+}
+
+// Action.Valid values:
+func (o SiteSiteWafSettingsBotManagementVerifiedBotsOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBotManagementVerifiedBots) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Rule ID.
+func (o SiteSiteWafSettingsBotManagementVerifiedBotsOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsBotManagementVerifiedBots) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+type SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsBotManagementVerifiedBots)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput) ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput() SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput) ToSiteSiteWafSettingsBotManagementVerifiedBotsPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput) Elem() SiteSiteWafSettingsBotManagementVerifiedBotsOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagementVerifiedBots) SiteSiteWafSettingsBotManagementVerifiedBots {
+		if v != nil {
+			return *v
+		}
+		var ret SiteSiteWafSettingsBotManagementVerifiedBots
+		return ret
+	}).(SiteSiteWafSettingsBotManagementVerifiedBotsOutput)
+}
+
+// Action.Valid values:
+func (o SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagementVerifiedBots) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Rule ID.
+func (o SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsBotManagementVerifiedBots) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+type SiteSiteWafSettingsClientIpIdentifier struct {
+	Headers []string `pulumi:"headers"`
+	// Identification Mode.Valid values:
+	Mode *string `pulumi:"mode"`
+}
+
+// SiteSiteWafSettingsClientIpIdentifierInput is an input type that accepts SiteSiteWafSettingsClientIpIdentifierArgs and SiteSiteWafSettingsClientIpIdentifierOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsClientIpIdentifierInput` via:
+//
+//	SiteSiteWafSettingsClientIpIdentifierArgs{...}
+type SiteSiteWafSettingsClientIpIdentifierInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsClientIpIdentifierOutput() SiteSiteWafSettingsClientIpIdentifierOutput
+	ToSiteSiteWafSettingsClientIpIdentifierOutputWithContext(context.Context) SiteSiteWafSettingsClientIpIdentifierOutput
+}
+
+type SiteSiteWafSettingsClientIpIdentifierArgs struct {
+	Headers pulumi.StringArrayInput `pulumi:"headers"`
+	// Identification Mode.Valid values:
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (SiteSiteWafSettingsClientIpIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsClientIpIdentifier)(nil)).Elem()
+}
+
+func (i SiteSiteWafSettingsClientIpIdentifierArgs) ToSiteSiteWafSettingsClientIpIdentifierOutput() SiteSiteWafSettingsClientIpIdentifierOutput {
+	return i.ToSiteSiteWafSettingsClientIpIdentifierOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsClientIpIdentifierArgs) ToSiteSiteWafSettingsClientIpIdentifierOutputWithContext(ctx context.Context) SiteSiteWafSettingsClientIpIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsClientIpIdentifierOutput)
+}
+
+func (i SiteSiteWafSettingsClientIpIdentifierArgs) ToSiteSiteWafSettingsClientIpIdentifierPtrOutput() SiteSiteWafSettingsClientIpIdentifierPtrOutput {
+	return i.ToSiteSiteWafSettingsClientIpIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsClientIpIdentifierArgs) ToSiteSiteWafSettingsClientIpIdentifierPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsClientIpIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsClientIpIdentifierOutput).ToSiteSiteWafSettingsClientIpIdentifierPtrOutputWithContext(ctx)
+}
+
+// SiteSiteWafSettingsClientIpIdentifierPtrInput is an input type that accepts SiteSiteWafSettingsClientIpIdentifierArgs, SiteSiteWafSettingsClientIpIdentifierPtr and SiteSiteWafSettingsClientIpIdentifierPtrOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsClientIpIdentifierPtrInput` via:
+//
+//	        SiteSiteWafSettingsClientIpIdentifierArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteSiteWafSettingsClientIpIdentifierPtrInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsClientIpIdentifierPtrOutput() SiteSiteWafSettingsClientIpIdentifierPtrOutput
+	ToSiteSiteWafSettingsClientIpIdentifierPtrOutputWithContext(context.Context) SiteSiteWafSettingsClientIpIdentifierPtrOutput
+}
+
+type siteSiteWafSettingsClientIpIdentifierPtrType SiteSiteWafSettingsClientIpIdentifierArgs
+
+func SiteSiteWafSettingsClientIpIdentifierPtr(v *SiteSiteWafSettingsClientIpIdentifierArgs) SiteSiteWafSettingsClientIpIdentifierPtrInput {
+	return (*siteSiteWafSettingsClientIpIdentifierPtrType)(v)
+}
+
+func (*siteSiteWafSettingsClientIpIdentifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsClientIpIdentifier)(nil)).Elem()
+}
+
+func (i *siteSiteWafSettingsClientIpIdentifierPtrType) ToSiteSiteWafSettingsClientIpIdentifierPtrOutput() SiteSiteWafSettingsClientIpIdentifierPtrOutput {
+	return i.ToSiteSiteWafSettingsClientIpIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i *siteSiteWafSettingsClientIpIdentifierPtrType) ToSiteSiteWafSettingsClientIpIdentifierPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsClientIpIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsClientIpIdentifierPtrOutput)
+}
+
+type SiteSiteWafSettingsClientIpIdentifierOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsClientIpIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsClientIpIdentifier)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsClientIpIdentifierOutput) ToSiteSiteWafSettingsClientIpIdentifierOutput() SiteSiteWafSettingsClientIpIdentifierOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsClientIpIdentifierOutput) ToSiteSiteWafSettingsClientIpIdentifierOutputWithContext(ctx context.Context) SiteSiteWafSettingsClientIpIdentifierOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsClientIpIdentifierOutput) ToSiteSiteWafSettingsClientIpIdentifierPtrOutput() SiteSiteWafSettingsClientIpIdentifierPtrOutput {
+	return o.ToSiteSiteWafSettingsClientIpIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (o SiteSiteWafSettingsClientIpIdentifierOutput) ToSiteSiteWafSettingsClientIpIdentifierPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsClientIpIdentifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteSiteWafSettingsClientIpIdentifier) *SiteSiteWafSettingsClientIpIdentifier {
+		return &v
+	}).(SiteSiteWafSettingsClientIpIdentifierPtrOutput)
+}
+
+func (o SiteSiteWafSettingsClientIpIdentifierOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsClientIpIdentifier) []string { return v.Headers }).(pulumi.StringArrayOutput)
+}
+
+// Identification Mode.Valid values:
+func (o SiteSiteWafSettingsClientIpIdentifierOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsClientIpIdentifier) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type SiteSiteWafSettingsClientIpIdentifierPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsClientIpIdentifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsClientIpIdentifier)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsClientIpIdentifierPtrOutput) ToSiteSiteWafSettingsClientIpIdentifierPtrOutput() SiteSiteWafSettingsClientIpIdentifierPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsClientIpIdentifierPtrOutput) ToSiteSiteWafSettingsClientIpIdentifierPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsClientIpIdentifierPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsClientIpIdentifierPtrOutput) Elem() SiteSiteWafSettingsClientIpIdentifierOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsClientIpIdentifier) SiteSiteWafSettingsClientIpIdentifier {
+		if v != nil {
+			return *v
+		}
+		var ret SiteSiteWafSettingsClientIpIdentifier
+		return ret
+	}).(SiteSiteWafSettingsClientIpIdentifierOutput)
+}
+
+func (o SiteSiteWafSettingsClientIpIdentifierPtrOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsClientIpIdentifier) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Identification Mode.Valid values:
+func (o SiteSiteWafSettingsClientIpIdentifierPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsClientIpIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+type SiteSiteWafSettingsSecurityLevel struct {
+	// Security level value. Valid values:
+	Value *string `pulumi:"value"`
+}
+
+// SiteSiteWafSettingsSecurityLevelInput is an input type that accepts SiteSiteWafSettingsSecurityLevelArgs and SiteSiteWafSettingsSecurityLevelOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsSecurityLevelInput` via:
+//
+//	SiteSiteWafSettingsSecurityLevelArgs{...}
+type SiteSiteWafSettingsSecurityLevelInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsSecurityLevelOutput() SiteSiteWafSettingsSecurityLevelOutput
+	ToSiteSiteWafSettingsSecurityLevelOutputWithContext(context.Context) SiteSiteWafSettingsSecurityLevelOutput
+}
+
+type SiteSiteWafSettingsSecurityLevelArgs struct {
+	// Security level value. Valid values:
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (SiteSiteWafSettingsSecurityLevelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsSecurityLevel)(nil)).Elem()
+}
+
+func (i SiteSiteWafSettingsSecurityLevelArgs) ToSiteSiteWafSettingsSecurityLevelOutput() SiteSiteWafSettingsSecurityLevelOutput {
+	return i.ToSiteSiteWafSettingsSecurityLevelOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsSecurityLevelArgs) ToSiteSiteWafSettingsSecurityLevelOutputWithContext(ctx context.Context) SiteSiteWafSettingsSecurityLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsSecurityLevelOutput)
+}
+
+func (i SiteSiteWafSettingsSecurityLevelArgs) ToSiteSiteWafSettingsSecurityLevelPtrOutput() SiteSiteWafSettingsSecurityLevelPtrOutput {
+	return i.ToSiteSiteWafSettingsSecurityLevelPtrOutputWithContext(context.Background())
+}
+
+func (i SiteSiteWafSettingsSecurityLevelArgs) ToSiteSiteWafSettingsSecurityLevelPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsSecurityLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsSecurityLevelOutput).ToSiteSiteWafSettingsSecurityLevelPtrOutputWithContext(ctx)
+}
+
+// SiteSiteWafSettingsSecurityLevelPtrInput is an input type that accepts SiteSiteWafSettingsSecurityLevelArgs, SiteSiteWafSettingsSecurityLevelPtr and SiteSiteWafSettingsSecurityLevelPtrOutput values.
+// You can construct a concrete instance of `SiteSiteWafSettingsSecurityLevelPtrInput` via:
+//
+//	        SiteSiteWafSettingsSecurityLevelArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteSiteWafSettingsSecurityLevelPtrInput interface {
+	pulumi.Input
+
+	ToSiteSiteWafSettingsSecurityLevelPtrOutput() SiteSiteWafSettingsSecurityLevelPtrOutput
+	ToSiteSiteWafSettingsSecurityLevelPtrOutputWithContext(context.Context) SiteSiteWafSettingsSecurityLevelPtrOutput
+}
+
+type siteSiteWafSettingsSecurityLevelPtrType SiteSiteWafSettingsSecurityLevelArgs
+
+func SiteSiteWafSettingsSecurityLevelPtr(v *SiteSiteWafSettingsSecurityLevelArgs) SiteSiteWafSettingsSecurityLevelPtrInput {
+	return (*siteSiteWafSettingsSecurityLevelPtrType)(v)
+}
+
+func (*siteSiteWafSettingsSecurityLevelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsSecurityLevel)(nil)).Elem()
+}
+
+func (i *siteSiteWafSettingsSecurityLevelPtrType) ToSiteSiteWafSettingsSecurityLevelPtrOutput() SiteSiteWafSettingsSecurityLevelPtrOutput {
+	return i.ToSiteSiteWafSettingsSecurityLevelPtrOutputWithContext(context.Background())
+}
+
+func (i *siteSiteWafSettingsSecurityLevelPtrType) ToSiteSiteWafSettingsSecurityLevelPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsSecurityLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteSiteWafSettingsSecurityLevelPtrOutput)
+}
+
+type SiteSiteWafSettingsSecurityLevelOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsSecurityLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteSiteWafSettingsSecurityLevel)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsSecurityLevelOutput) ToSiteSiteWafSettingsSecurityLevelOutput() SiteSiteWafSettingsSecurityLevelOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsSecurityLevelOutput) ToSiteSiteWafSettingsSecurityLevelOutputWithContext(ctx context.Context) SiteSiteWafSettingsSecurityLevelOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsSecurityLevelOutput) ToSiteSiteWafSettingsSecurityLevelPtrOutput() SiteSiteWafSettingsSecurityLevelPtrOutput {
+	return o.ToSiteSiteWafSettingsSecurityLevelPtrOutputWithContext(context.Background())
+}
+
+func (o SiteSiteWafSettingsSecurityLevelOutput) ToSiteSiteWafSettingsSecurityLevelPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsSecurityLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteSiteWafSettingsSecurityLevel) *SiteSiteWafSettingsSecurityLevel {
+		return &v
+	}).(SiteSiteWafSettingsSecurityLevelPtrOutput)
+}
+
+// Security level value. Valid values:
+func (o SiteSiteWafSettingsSecurityLevelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteSiteWafSettingsSecurityLevel) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SiteSiteWafSettingsSecurityLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteSiteWafSettingsSecurityLevelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteSiteWafSettingsSecurityLevel)(nil)).Elem()
+}
+
+func (o SiteSiteWafSettingsSecurityLevelPtrOutput) ToSiteSiteWafSettingsSecurityLevelPtrOutput() SiteSiteWafSettingsSecurityLevelPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsSecurityLevelPtrOutput) ToSiteSiteWafSettingsSecurityLevelPtrOutputWithContext(ctx context.Context) SiteSiteWafSettingsSecurityLevelPtrOutput {
+	return o
+}
+
+func (o SiteSiteWafSettingsSecurityLevelPtrOutput) Elem() SiteSiteWafSettingsSecurityLevelOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsSecurityLevel) SiteSiteWafSettingsSecurityLevel {
+		if v != nil {
+			return *v
+		}
+		var ret SiteSiteWafSettingsSecurityLevel
+		return ret
+	}).(SiteSiteWafSettingsSecurityLevelOutput)
+}
+
+// Security level value. Valid values:
+func (o SiteSiteWafSettingsSecurityLevelPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteSiteWafSettingsSecurityLevel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 type TransportLayerApplicationRule struct {
 	// Client IP pass-through protocol, supporting:
 	ClientIpPassThroughMode string `pulumi:"clientIpPassThroughMode"`
@@ -9289,6 +11228,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskS3DeliveryPtrInput)(nil)).Elem(), SiteDeliveryTaskS3DeliveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskSlsDeliveryInput)(nil)).Elem(), SiteDeliveryTaskSlsDeliveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskSlsDeliveryPtrInput)(nil)).Elem(), SiteDeliveryTaskSlsDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsInput)(nil)).Elem(), SiteSiteWafSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsPtrInput)(nil)).Elem(), SiteSiteWafSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsAddBotProtectionHeadersInput)(nil)).Elem(), SiteSiteWafSettingsAddBotProtectionHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsAddBotProtectionHeadersPtrInput)(nil)).Elem(), SiteSiteWafSettingsAddBotProtectionHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsAddSecurityHeadersInput)(nil)).Elem(), SiteSiteWafSettingsAddSecurityHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsAddSecurityHeadersPtrInput)(nil)).Elem(), SiteSiteWafSettingsAddSecurityHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBandwidthAbuseProtectionInput)(nil)).Elem(), SiteSiteWafSettingsBandwidthAbuseProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBandwidthAbuseProtectionPtrInput)(nil)).Elem(), SiteSiteWafSettingsBandwidthAbuseProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBotManagementInput)(nil)).Elem(), SiteSiteWafSettingsBotManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBotManagementPtrInput)(nil)).Elem(), SiteSiteWafSettingsBotManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBotManagementDefiniteBotsInput)(nil)).Elem(), SiteSiteWafSettingsBotManagementDefiniteBotsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBotManagementDefiniteBotsPtrInput)(nil)).Elem(), SiteSiteWafSettingsBotManagementDefiniteBotsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBotManagementEffectOnStaticInput)(nil)).Elem(), SiteSiteWafSettingsBotManagementEffectOnStaticArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBotManagementEffectOnStaticPtrInput)(nil)).Elem(), SiteSiteWafSettingsBotManagementEffectOnStaticArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBotManagementJsDetectionInput)(nil)).Elem(), SiteSiteWafSettingsBotManagementJsDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBotManagementJsDetectionPtrInput)(nil)).Elem(), SiteSiteWafSettingsBotManagementJsDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBotManagementLikelyBotsInput)(nil)).Elem(), SiteSiteWafSettingsBotManagementLikelyBotsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBotManagementLikelyBotsPtrInput)(nil)).Elem(), SiteSiteWafSettingsBotManagementLikelyBotsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBotManagementVerifiedBotsInput)(nil)).Elem(), SiteSiteWafSettingsBotManagementVerifiedBotsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsBotManagementVerifiedBotsPtrInput)(nil)).Elem(), SiteSiteWafSettingsBotManagementVerifiedBotsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsClientIpIdentifierInput)(nil)).Elem(), SiteSiteWafSettingsClientIpIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsClientIpIdentifierPtrInput)(nil)).Elem(), SiteSiteWafSettingsClientIpIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsSecurityLevelInput)(nil)).Elem(), SiteSiteWafSettingsSecurityLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteSiteWafSettingsSecurityLevelPtrInput)(nil)).Elem(), SiteSiteWafSettingsSecurityLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransportLayerApplicationRuleInput)(nil)).Elem(), TransportLayerApplicationRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransportLayerApplicationRuleArrayInput)(nil)).Elem(), TransportLayerApplicationRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigInput)(nil)).Elem(), WafRuleConfigArgs{})
@@ -9395,6 +11358,30 @@ func init() {
 	pulumi.RegisterOutputType(SiteDeliveryTaskS3DeliveryPtrOutput{})
 	pulumi.RegisterOutputType(SiteDeliveryTaskSlsDeliveryOutput{})
 	pulumi.RegisterOutputType(SiteDeliveryTaskSlsDeliveryPtrOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsAddBotProtectionHeadersOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsAddBotProtectionHeadersPtrOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsAddSecurityHeadersOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsAddSecurityHeadersPtrOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBandwidthAbuseProtectionOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBandwidthAbuseProtectionPtrOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBotManagementOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBotManagementPtrOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBotManagementDefiniteBotsOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBotManagementDefiniteBotsPtrOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBotManagementEffectOnStaticOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBotManagementEffectOnStaticPtrOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBotManagementJsDetectionOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBotManagementJsDetectionPtrOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBotManagementLikelyBotsOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBotManagementLikelyBotsPtrOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBotManagementVerifiedBotsOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsBotManagementVerifiedBotsPtrOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsClientIpIdentifierOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsClientIpIdentifierPtrOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsSecurityLevelOutput{})
+	pulumi.RegisterOutputType(SiteSiteWafSettingsSecurityLevelPtrOutput{})
 	pulumi.RegisterOutputType(TransportLayerApplicationRuleOutput{})
 	pulumi.RegisterOutputType(TransportLayerApplicationRuleArrayOutput{})
 	pulumi.RegisterOutputType(WafRuleConfigOutput{})

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -88,7 +90,7 @@ export class Site extends pulumi.CustomResource {
      * - `NS`
      * - `CNAME`
      */
-    declare public readonly accessType: pulumi.Output<string | undefined>;
+    declare public readonly accessType: pulumi.Output<string>;
     /**
      * Add visitor geolocation header. Value range:
      */
@@ -105,6 +107,18 @@ export class Site extends pulumi.CustomResource {
      * HTTP DDoS Intelligent Protection Level. Values:
      */
     declare public readonly aiTemplate: pulumi.Output<string>;
+    /**
+     * AutomaticFrequencyControl Disposal action.Valid values:
+     */
+    declare public readonly automaticFrequencyControlActionType: pulumi.Output<string>;
+    /**
+     * AutomaticFrequencyControl Switch.Valid values:
+     */
+    declare public readonly automaticFrequencyControlEnable: pulumi.Output<string>;
+    /**
+     * AutomaticFrequencyControl Protection Level.Valid values:
+     */
+    declare public readonly automaticFrequencyControlLevel: pulumi.Output<string>;
     /**
      * Multi-level cache architecture mode. Possible values:
      */
@@ -165,6 +179,14 @@ export class Site extends pulumi.CustomResource {
      */
     declare public readonly paused: pulumi.Output<boolean | undefined>;
     /**
+     * Whether to enable the quality data collection switch.Valid values:
+     */
+    declare public readonly performanceDataCollectionEnable: pulumi.Output<string | undefined>;
+    /**
+     * Real client IP header name.
+     */
+    declare public readonly realClientIpHeaderName: pulumi.Output<string | undefined>;
+    /**
      * The ID of the resource group
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
@@ -184,6 +206,10 @@ export class Site extends pulumi.CustomResource {
      * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      */
     declare public readonly siteVersion: pulumi.Output<number | undefined>;
+    /**
+     * Site WAF Configuration Details. See `siteWafSettings` below.
+     */
+    declare public readonly siteWafSettings: pulumi.Output<outputs.esa.SiteSiteWafSettings>;
     /**
      * The status of the resource
      */
@@ -219,6 +245,9 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["addRealClientIpHeader"] = state?.addRealClientIpHeader;
             resourceInputs["aiMode"] = state?.aiMode;
             resourceInputs["aiTemplate"] = state?.aiTemplate;
+            resourceInputs["automaticFrequencyControlActionType"] = state?.automaticFrequencyControlActionType;
+            resourceInputs["automaticFrequencyControlEnable"] = state?.automaticFrequencyControlEnable;
+            resourceInputs["automaticFrequencyControlLevel"] = state?.automaticFrequencyControlLevel;
             resourceInputs["cacheArchitectureMode"] = state?.cacheArchitectureMode;
             resourceInputs["cacheReserveEnable"] = state?.cacheReserveEnable;
             resourceInputs["cacheReserveInstanceId"] = state?.cacheReserveInstanceId;
@@ -233,17 +262,23 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["ipv6Enable"] = state?.ipv6Enable;
             resourceInputs["ipv6Region"] = state?.ipv6Region;
             resourceInputs["paused"] = state?.paused;
+            resourceInputs["performanceDataCollectionEnable"] = state?.performanceDataCollectionEnable;
+            resourceInputs["realClientIpHeaderName"] = state?.realClientIpHeaderName;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["seoBypass"] = state?.seoBypass;
             resourceInputs["siteName"] = state?.siteName;
             resourceInputs["siteNameExclusive"] = state?.siteNameExclusive;
             resourceInputs["siteVersion"] = state?.siteVersion;
+            resourceInputs["siteWafSettings"] = state?.siteWafSettings;
             resourceInputs["status"] = state?.status;
             resourceInputs["tagName"] = state?.tagName;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["versionManagement"] = state?.versionManagement;
         } else {
             const args = argsOrState as SiteArgs | undefined;
+            if (args?.accessType === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accessType'");
+            }
             if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
@@ -255,6 +290,9 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["addRealClientIpHeader"] = args?.addRealClientIpHeader;
             resourceInputs["aiMode"] = args?.aiMode;
             resourceInputs["aiTemplate"] = args?.aiTemplate;
+            resourceInputs["automaticFrequencyControlActionType"] = args?.automaticFrequencyControlActionType;
+            resourceInputs["automaticFrequencyControlEnable"] = args?.automaticFrequencyControlEnable;
+            resourceInputs["automaticFrequencyControlLevel"] = args?.automaticFrequencyControlLevel;
             resourceInputs["cacheArchitectureMode"] = args?.cacheArchitectureMode;
             resourceInputs["cacheReserveEnable"] = args?.cacheReserveEnable;
             resourceInputs["cacheReserveInstanceId"] = args?.cacheReserveInstanceId;
@@ -268,11 +306,14 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["ipv6Enable"] = args?.ipv6Enable;
             resourceInputs["ipv6Region"] = args?.ipv6Region;
             resourceInputs["paused"] = args?.paused;
+            resourceInputs["performanceDataCollectionEnable"] = args?.performanceDataCollectionEnable;
+            resourceInputs["realClientIpHeaderName"] = args?.realClientIpHeaderName;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["seoBypass"] = args?.seoBypass;
             resourceInputs["siteName"] = args?.siteName;
             resourceInputs["siteNameExclusive"] = args?.siteNameExclusive;
             resourceInputs["siteVersion"] = args?.siteVersion;
+            resourceInputs["siteWafSettings"] = args?.siteWafSettings;
             resourceInputs["tagName"] = args?.tagName;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["versionManagement"] = args?.versionManagement;
@@ -310,6 +351,18 @@ export interface SiteState {
      * HTTP DDoS Intelligent Protection Level. Values:
      */
     aiTemplate?: pulumi.Input<string>;
+    /**
+     * AutomaticFrequencyControl Disposal action.Valid values:
+     */
+    automaticFrequencyControlActionType?: pulumi.Input<string>;
+    /**
+     * AutomaticFrequencyControl Switch.Valid values:
+     */
+    automaticFrequencyControlEnable?: pulumi.Input<string>;
+    /**
+     * AutomaticFrequencyControl Protection Level.Valid values:
+     */
+    automaticFrequencyControlLevel?: pulumi.Input<string>;
     /**
      * Multi-level cache architecture mode. Possible values:
      */
@@ -370,6 +423,14 @@ export interface SiteState {
      */
     paused?: pulumi.Input<boolean>;
     /**
+     * Whether to enable the quality data collection switch.Valid values:
+     */
+    performanceDataCollectionEnable?: pulumi.Input<string>;
+    /**
+     * Real client IP header name.
+     */
+    realClientIpHeaderName?: pulumi.Input<string>;
+    /**
      * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
@@ -389,6 +450,10 @@ export interface SiteState {
      * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      */
     siteVersion?: pulumi.Input<number>;
+    /**
+     * Site WAF Configuration Details. See `siteWafSettings` below.
+     */
+    siteWafSettings?: pulumi.Input<inputs.esa.SiteSiteWafSettings>;
     /**
      * The status of the resource
      */
@@ -416,7 +481,7 @@ export interface SiteArgs {
      * - `NS`
      * - `CNAME`
      */
-    accessType?: pulumi.Input<string>;
+    accessType: pulumi.Input<string>;
     /**
      * Add visitor geolocation header. Value range:
      */
@@ -433,6 +498,18 @@ export interface SiteArgs {
      * HTTP DDoS Intelligent Protection Level. Values:
      */
     aiTemplate?: pulumi.Input<string>;
+    /**
+     * AutomaticFrequencyControl Disposal action.Valid values:
+     */
+    automaticFrequencyControlActionType?: pulumi.Input<string>;
+    /**
+     * AutomaticFrequencyControl Switch.Valid values:
+     */
+    automaticFrequencyControlEnable?: pulumi.Input<string>;
+    /**
+     * AutomaticFrequencyControl Protection Level.Valid values:
+     */
+    automaticFrequencyControlLevel?: pulumi.Input<string>;
     /**
      * Multi-level cache architecture mode. Possible values:
      */
@@ -489,6 +566,14 @@ export interface SiteArgs {
      */
     paused?: pulumi.Input<boolean>;
     /**
+     * Whether to enable the quality data collection switch.Valid values:
+     */
+    performanceDataCollectionEnable?: pulumi.Input<string>;
+    /**
+     * Real client IP header name.
+     */
+    realClientIpHeaderName?: pulumi.Input<string>;
+    /**
      * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
@@ -508,6 +593,10 @@ export interface SiteArgs {
      * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      */
     siteVersion?: pulumi.Input<number>;
+    /**
+     * Site WAF Configuration Details. See `siteWafSettings` below.
+     */
+    siteWafSettings?: pulumi.Input<inputs.esa.SiteSiteWafSettings>;
     /**
      * Custom CacheTag name.
      */

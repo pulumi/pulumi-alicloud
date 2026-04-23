@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Cen
         /// Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
         /// </summary>
         [Output("publishCidrRoute")]
-        public Output<bool?> PublishCidrRoute { get; private set; } = null!;
+        public Output<bool> PublishCidrRoute { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the CIDR block.

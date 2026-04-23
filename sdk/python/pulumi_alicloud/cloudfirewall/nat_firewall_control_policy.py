@@ -26,7 +26,6 @@ class NatFirewallControlPolicyArgs:
                  destination_type: pulumi.Input[_builtins.str],
                  direction: pulumi.Input[_builtins.str],
                  nat_gateway_id: pulumi.Input[_builtins.str],
-                 new_order: pulumi.Input[_builtins.str],
                  proto: pulumi.Input[_builtins.str],
                  source: pulumi.Input[_builtins.str],
                  source_type: pulumi.Input[_builtins.str],
@@ -36,6 +35,7 @@ class NatFirewallControlPolicyArgs:
                  domain_resolve_type: Optional[pulumi.Input[_builtins.int]] = None,
                  end_time: Optional[pulumi.Input[_builtins.int]] = None,
                  ip_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 new_order: Optional[pulumi.Input[_builtins.str]] = None,
                  release: Optional[pulumi.Input[_builtins.str]] = None,
                  repeat_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  repeat_end_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -46,9 +46,6 @@ class NatFirewallControlPolicyArgs:
         The set of arguments for constructing a NatFirewallControlPolicy resource.
 
         :param pulumi.Input[_builtins.str] acl_action: The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
-               - **accept**: Release
-               - **drop**: Refused
-               - **log**: Observation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types supported by the access control policy.
         :param pulumi.Input[_builtins.str] description: The description of the access control policy.
         :param pulumi.Input[_builtins.str] destination: The destination address segment in the access control policy. Valid values:
@@ -57,61 +54,56 @@ class NatFirewallControlPolicyArgs:
                - When DestinationType is domain, Destination is the Destination domain name. For example: * .aliyuncs.com
                - When DestinationType is location, Destination is the Destination region. For example: \\["BJ11", "ZB"\\].
         :param pulumi.Input[_builtins.str] destination_type: The destination address type in the access control policy. Valid values:
-               - **net**: Destination Network segment (CIDR address)
-               - **group**: Destination Address Book
-               - **domain**: the destination domain name.
         :param pulumi.Input[_builtins.str] direction: The traffic direction of the access control policy. Valid values:
-               - **out**: Internal and external traffic access control.
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of the NAT gateway instance.
-        :param pulumi.Input[_builtins.str] new_order: The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority.
         :param pulumi.Input[_builtins.str] proto: The security protocol type for traffic access in the access control policy. Valid values:
-               - ANY (indicates that all protocol types are queried)
-               - TCP
-               - UDP
-               - ICMP.
+               - `ANY` (Indicates that all protocol types are queried)
+               - `TCP`
+               - `UDP`
+               - `ICMP`.
         :param pulumi.Input[_builtins.str] source: The source address in the access control policy. Valid values:
-               - When **SourceType** is set to 'net', Source is the Source CIDR address. For example: 10.2.4.0/24
-               - When **SourceType** is set to 'group', Source is the name of the Source address book. For example: db_group.
+               - When `SourceType` is set to `net`, Source is the Source CIDR address. For example: `10.2.4.0/24`
+               - When `SourceType` is set to `group`, Source is the name of the Source address book. For example: `db_group`.
         :param pulumi.Input[_builtins.str] source_type: The source address type in the access control policy. Valid values:
-               - **net**: the source network segment (CIDR address)
-               - **group**: source address book
         :param pulumi.Input[_builtins.str] dest_port: The destination port of traffic access in the access control policy. Value:
                - When the protocol type is set to ICMP, the value of DestPort is null.
+               
                > **NOTE:**  When the protocol type is ICMP, access control on the destination port is not supported.
+               
                - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) IS group, the value of DestPort is null.
+               
                > **NOTE:**  When you select group (destination port address book) for the destination port type of the access control policy, you do not need to set a specific destination port number. All ports that need to be controlled by this access control policy are included in the destination port address book.
+               
                - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
         :param pulumi.Input[_builtins.str] dest_port_group: The address book name of the destination port of the access traffic in the access control policy.
+               
                > **NOTE:**  When DestPortType is set to group, you need to set the destination port address book name.
         :param pulumi.Input[_builtins.str] dest_port_type: The destination port type of the access traffic in the security access control policy.
-               - **port**: port
-               - **group**: Port Address Book.
         :param pulumi.Input[_builtins.int] domain_resolve_type: The domain name resolution method of the access control policy. The policy is enabled by default after it is created. Valid values:
-               - **0**: Based on FQDN
-               - **1**: DNS-based dynamic resolution
-               - **2**: dynamic resolution based on FQDN and DNS.
         :param pulumi.Input[_builtins.int] end_time: The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
+               
                > **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
         :param pulumi.Input[_builtins.str] ip_version: Supported IP address version. Value:
-               - **4** (default): indicates the IPv4 address.
+        :param pulumi.Input[_builtins.str] new_order: The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority. If not set, default to `-1`.
         :param pulumi.Input[_builtins.str] release: The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-               - **true**: Enable access control policy
-               - **false**: Do not enable access control policies.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: Collection of recurring dates for the policy validity period of the access control policy.
-               - When RepeatType is 'Permanent', 'None', 'Daily', RepeatDays is an empty collection. For example:[]
-               - When RepeatType is Weekly, RepeatDays cannot be empty. For example:["0", "6"]. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
-               - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:[1, 31]. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
+               - When RepeatType is `Permanent`, `None`, `Daily`, RepeatDays is an empty collection. For example:`[]`
+               - When RepeatType is Weekly, RepeatDays cannot be empty. For example:`["0", "6"]`. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
+               - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:`[1, 31]`. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
         :param pulumi.Input[_builtins.str] repeat_end_time: The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
+               
                > **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
         :param pulumi.Input[_builtins.str] repeat_start_time: The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
+               
                > **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
         :param pulumi.Input[_builtins.str] repeat_type: The type of repetition for the policy validity period of the access control policy. Value:
-               - **Permit** (default): Always
-               - **None**: Specify a single time
-               - **Daily**: Daily
-               - **Weekly**: Weekly
-               - **Monthly**: Monthly.
+               - `Permit` (default): Always
+               - `None`: Specify a single time
+               - `Daily`: Daily
+               - `Weekly`: Weekly
+               - `Monthly`: Monthly.
         :param pulumi.Input[_builtins.int] start_time: The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
+               
                > **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
         """
         pulumi.set(__self__, "acl_action", acl_action)
@@ -121,7 +113,6 @@ class NatFirewallControlPolicyArgs:
         pulumi.set(__self__, "destination_type", destination_type)
         pulumi.set(__self__, "direction", direction)
         pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
-        pulumi.set(__self__, "new_order", new_order)
         pulumi.set(__self__, "proto", proto)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "source_type", source_type)
@@ -137,6 +128,8 @@ class NatFirewallControlPolicyArgs:
             pulumi.set(__self__, "end_time", end_time)
         if ip_version is not None:
             pulumi.set(__self__, "ip_version", ip_version)
+        if new_order is not None:
+            pulumi.set(__self__, "new_order", new_order)
         if release is not None:
             pulumi.set(__self__, "release", release)
         if repeat_days is not None:
@@ -155,9 +148,6 @@ class NatFirewallControlPolicyArgs:
     def acl_action(self) -> pulumi.Input[_builtins.str]:
         """
         The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
-        - **accept**: Release
-        - **drop**: Refused
-        - **log**: Observation.
         """
         return pulumi.get(self, "acl_action")
 
@@ -210,9 +200,6 @@ class NatFirewallControlPolicyArgs:
     def destination_type(self) -> pulumi.Input[_builtins.str]:
         """
         The destination address type in the access control policy. Valid values:
-        - **net**: Destination Network segment (CIDR address)
-        - **group**: Destination Address Book
-        - **domain**: the destination domain name.
         """
         return pulumi.get(self, "destination_type")
 
@@ -225,7 +212,6 @@ class NatFirewallControlPolicyArgs:
     def direction(self) -> pulumi.Input[_builtins.str]:
         """
         The traffic direction of the access control policy. Valid values:
-        - **out**: Internal and external traffic access control.
         """
         return pulumi.get(self, "direction")
 
@@ -246,26 +232,14 @@ class NatFirewallControlPolicyArgs:
         pulumi.set(self, "nat_gateway_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="newOrder")
-    def new_order(self) -> pulumi.Input[_builtins.str]:
-        """
-        The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority.
-        """
-        return pulumi.get(self, "new_order")
-
-    @new_order.setter
-    def new_order(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "new_order", value)
-
-    @_builtins.property
     @pulumi.getter
     def proto(self) -> pulumi.Input[_builtins.str]:
         """
         The security protocol type for traffic access in the access control policy. Valid values:
-        - ANY (indicates that all protocol types are queried)
-        - TCP
-        - UDP
-        - ICMP.
+        - `ANY` (Indicates that all protocol types are queried)
+        - `TCP`
+        - `UDP`
+        - `ICMP`.
         """
         return pulumi.get(self, "proto")
 
@@ -278,8 +252,8 @@ class NatFirewallControlPolicyArgs:
     def source(self) -> pulumi.Input[_builtins.str]:
         """
         The source address in the access control policy. Valid values:
-        - When **SourceType** is set to 'net', Source is the Source CIDR address. For example: 10.2.4.0/24
-        - When **SourceType** is set to 'group', Source is the name of the Source address book. For example: db_group.
+        - When `SourceType` is set to `net`, Source is the Source CIDR address. For example: `10.2.4.0/24`
+        - When `SourceType` is set to `group`, Source is the name of the Source address book. For example: `db_group`.
         """
         return pulumi.get(self, "source")
 
@@ -292,8 +266,6 @@ class NatFirewallControlPolicyArgs:
     def source_type(self) -> pulumi.Input[_builtins.str]:
         """
         The source address type in the access control policy. Valid values:
-        - **net**: the source network segment (CIDR address)
-        - **group**: source address book
         """
         return pulumi.get(self, "source_type")
 
@@ -307,9 +279,13 @@ class NatFirewallControlPolicyArgs:
         """
         The destination port of traffic access in the access control policy. Value:
         - When the protocol type is set to ICMP, the value of DestPort is null.
+
         > **NOTE:**  When the protocol type is ICMP, access control on the destination port is not supported.
+
         - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) IS group, the value of DestPort is null.
+
         > **NOTE:**  When you select group (destination port address book) for the destination port type of the access control policy, you do not need to set a specific destination port number. All ports that need to be controlled by this access control policy are included in the destination port address book.
+
         - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
         """
         return pulumi.get(self, "dest_port")
@@ -323,6 +299,7 @@ class NatFirewallControlPolicyArgs:
     def dest_port_group(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The address book name of the destination port of the access traffic in the access control policy.
+
         > **NOTE:**  When DestPortType is set to group, you need to set the destination port address book name.
         """
         return pulumi.get(self, "dest_port_group")
@@ -336,8 +313,6 @@ class NatFirewallControlPolicyArgs:
     def dest_port_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The destination port type of the access traffic in the security access control policy.
-        - **port**: port
-        - **group**: Port Address Book.
         """
         return pulumi.get(self, "dest_port_type")
 
@@ -350,9 +325,6 @@ class NatFirewallControlPolicyArgs:
     def domain_resolve_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The domain name resolution method of the access control policy. The policy is enabled by default after it is created. Valid values:
-        - **0**: Based on FQDN
-        - **1**: DNS-based dynamic resolution
-        - **2**: dynamic resolution based on FQDN and DNS.
         """
         return pulumi.get(self, "domain_resolve_type")
 
@@ -365,6 +337,7 @@ class NatFirewallControlPolicyArgs:
     def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
+
         > **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
         """
         return pulumi.get(self, "end_time")
@@ -378,7 +351,6 @@ class NatFirewallControlPolicyArgs:
     def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Supported IP address version. Value:
-        - **4** (default): indicates the IPv4 address.
         """
         return pulumi.get(self, "ip_version")
 
@@ -387,12 +359,22 @@ class NatFirewallControlPolicyArgs:
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
+    @pulumi.getter(name="newOrder")
+    def new_order(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority. If not set, default to `-1`.
+        """
+        return pulumi.get(self, "new_order")
+
+    @new_order.setter
+    def new_order(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "new_order", value)
+
+    @_builtins.property
     @pulumi.getter
     def release(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-        - **true**: Enable access control policy
-        - **false**: Do not enable access control policies.
         """
         return pulumi.get(self, "release")
 
@@ -405,9 +387,9 @@ class NatFirewallControlPolicyArgs:
     def repeat_days(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Collection of recurring dates for the policy validity period of the access control policy.
-        - When RepeatType is 'Permanent', 'None', 'Daily', RepeatDays is an empty collection. For example:[]
-        - When RepeatType is Weekly, RepeatDays cannot be empty. For example:["0", "6"]. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
-        - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:[1, 31]. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
+        - When RepeatType is `Permanent`, `None`, `Daily`, RepeatDays is an empty collection. For example:`[]`
+        - When RepeatType is Weekly, RepeatDays cannot be empty. For example:`["0", "6"]`. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
+        - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:`[1, 31]`. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
         """
         return pulumi.get(self, "repeat_days")
 
@@ -420,6 +402,7 @@ class NatFirewallControlPolicyArgs:
     def repeat_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
+
         > **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
         """
         return pulumi.get(self, "repeat_end_time")
@@ -433,6 +416,7 @@ class NatFirewallControlPolicyArgs:
     def repeat_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
+
         > **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
         """
         return pulumi.get(self, "repeat_start_time")
@@ -446,11 +430,11 @@ class NatFirewallControlPolicyArgs:
     def repeat_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The type of repetition for the policy validity period of the access control policy. Value:
-        - **Permit** (default): Always
-        - **None**: Specify a single time
-        - **Daily**: Daily
-        - **Weekly**: Weekly
-        - **Monthly**: Monthly.
+        - `Permit` (default): Always
+        - `None`: Specify a single time
+        - `Daily`: Daily
+        - `Weekly`: Weekly
+        - `Monthly`: Monthly.
         """
         return pulumi.get(self, "repeat_type")
 
@@ -463,6 +447,7 @@ class NatFirewallControlPolicyArgs:
     def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
+
         > **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
         """
         return pulumi.get(self, "start_time")
@@ -504,75 +489,66 @@ class _NatFirewallControlPolicyState:
         Input properties used for looking up and filtering NatFirewallControlPolicy resources.
 
         :param pulumi.Input[_builtins.str] acl_action: The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
-               - **accept**: Release
-               - **drop**: Refused
-               - **log**: Observation.
         :param pulumi.Input[_builtins.str] acl_uuid: The unique ID of the security access control policy.
-               > **NOTE:**  To modify a security access control policy, you need to provide the unique ID of the policy. You can call the DescribeNatFirewallControlPolicy interface to obtain the ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types supported by the access control policy.
         :param pulumi.Input[_builtins.int] create_time: The time when the policy was created.
         :param pulumi.Input[_builtins.str] description: The description of the access control policy.
         :param pulumi.Input[_builtins.str] dest_port: The destination port of traffic access in the access control policy. Value:
                - When the protocol type is set to ICMP, the value of DestPort is null.
+               
                > **NOTE:**  When the protocol type is ICMP, access control on the destination port is not supported.
+               
                - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) IS group, the value of DestPort is null.
+               
                > **NOTE:**  When you select group (destination port address book) for the destination port type of the access control policy, you do not need to set a specific destination port number. All ports that need to be controlled by this access control policy are included in the destination port address book.
+               
                - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
         :param pulumi.Input[_builtins.str] dest_port_group: The address book name of the destination port of the access traffic in the access control policy.
+               
                > **NOTE:**  When DestPortType is set to group, you need to set the destination port address book name.
         :param pulumi.Input[_builtins.str] dest_port_type: The destination port type of the access traffic in the security access control policy.
-               - **port**: port
-               - **group**: Port Address Book.
         :param pulumi.Input[_builtins.str] destination: The destination address segment in the access control policy. Valid values:
                - When DestinationType is net, Destination is the Destination CIDR. For example: 1.2.XX.XX/24
                - When DestinationType IS group, Destination is the name of the Destination address book. For example: db_group
                - When DestinationType is domain, Destination is the Destination domain name. For example: * .aliyuncs.com
                - When DestinationType is location, Destination is the Destination region. For example: \\["BJ11", "ZB"\\].
         :param pulumi.Input[_builtins.str] destination_type: The destination address type in the access control policy. Valid values:
-               - **net**: Destination Network segment (CIDR address)
-               - **group**: Destination Address Book
-               - **domain**: the destination domain name.
         :param pulumi.Input[_builtins.str] direction: The traffic direction of the access control policy. Valid values:
-               - **out**: Internal and external traffic access control.
         :param pulumi.Input[_builtins.int] domain_resolve_type: The domain name resolution method of the access control policy. The policy is enabled by default after it is created. Valid values:
-               - **0**: Based on FQDN
-               - **1**: DNS-based dynamic resolution
-               - **2**: dynamic resolution based on FQDN and DNS.
         :param pulumi.Input[_builtins.int] end_time: The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
+               
                > **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
         :param pulumi.Input[_builtins.str] ip_version: Supported IP address version. Value:
-               - **4** (default): indicates the IPv4 address.
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of the NAT gateway instance.
-        :param pulumi.Input[_builtins.str] new_order: The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority.
+        :param pulumi.Input[_builtins.str] new_order: The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority. If not set, default to `-1`.
         :param pulumi.Input[_builtins.str] proto: The security protocol type for traffic access in the access control policy. Valid values:
-               - ANY (indicates that all protocol types are queried)
-               - TCP
-               - UDP
-               - ICMP.
+               - `ANY` (Indicates that all protocol types are queried)
+               - `TCP`
+               - `UDP`
+               - `ICMP`.
         :param pulumi.Input[_builtins.str] release: The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-               - **true**: Enable access control policy
-               - **false**: Do not enable access control policies.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: Collection of recurring dates for the policy validity period of the access control policy.
-               - When RepeatType is 'Permanent', 'None', 'Daily', RepeatDays is an empty collection. For example:[]
-               - When RepeatType is Weekly, RepeatDays cannot be empty. For example:["0", "6"]. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
-               - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:[1, 31]. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
+               - When RepeatType is `Permanent`, `None`, `Daily`, RepeatDays is an empty collection. For example:`[]`
+               - When RepeatType is Weekly, RepeatDays cannot be empty. For example:`["0", "6"]`. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
+               - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:`[1, 31]`. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
         :param pulumi.Input[_builtins.str] repeat_end_time: The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
+               
                > **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
         :param pulumi.Input[_builtins.str] repeat_start_time: The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
+               
                > **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
         :param pulumi.Input[_builtins.str] repeat_type: The type of repetition for the policy validity period of the access control policy. Value:
-               - **Permit** (default): Always
-               - **None**: Specify a single time
-               - **Daily**: Daily
-               - **Weekly**: Weekly
-               - **Monthly**: Monthly.
+               - `Permit` (default): Always
+               - `None`: Specify a single time
+               - `Daily`: Daily
+               - `Weekly`: Weekly
+               - `Monthly`: Monthly.
         :param pulumi.Input[_builtins.str] source: The source address in the access control policy. Valid values:
-               - When **SourceType** is set to 'net', Source is the Source CIDR address. For example: 10.2.4.0/24
-               - When **SourceType** is set to 'group', Source is the name of the Source address book. For example: db_group.
+               - When `SourceType` is set to `net`, Source is the Source CIDR address. For example: `10.2.4.0/24`
+               - When `SourceType` is set to `group`, Source is the name of the Source address book. For example: `db_group`.
         :param pulumi.Input[_builtins.str] source_type: The source address type in the access control policy. Valid values:
-               - **net**: the source network segment (CIDR address)
-               - **group**: source address book
         :param pulumi.Input[_builtins.int] start_time: The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
+               
                > **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
         """
         if acl_action is not None:
@@ -631,9 +607,6 @@ class _NatFirewallControlPolicyState:
     def acl_action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
-        - **accept**: Release
-        - **drop**: Refused
-        - **log**: Observation.
         """
         return pulumi.get(self, "acl_action")
 
@@ -646,7 +619,6 @@ class _NatFirewallControlPolicyState:
     def acl_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The unique ID of the security access control policy.
-        > **NOTE:**  To modify a security access control policy, you need to provide the unique ID of the policy. You can call the DescribeNatFirewallControlPolicy interface to obtain the ID.
         """
         return pulumi.get(self, "acl_uuid")
 
@@ -696,9 +668,13 @@ class _NatFirewallControlPolicyState:
         """
         The destination port of traffic access in the access control policy. Value:
         - When the protocol type is set to ICMP, the value of DestPort is null.
+
         > **NOTE:**  When the protocol type is ICMP, access control on the destination port is not supported.
+
         - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) IS group, the value of DestPort is null.
+
         > **NOTE:**  When you select group (destination port address book) for the destination port type of the access control policy, you do not need to set a specific destination port number. All ports that need to be controlled by this access control policy are included in the destination port address book.
+
         - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
         """
         return pulumi.get(self, "dest_port")
@@ -712,6 +688,7 @@ class _NatFirewallControlPolicyState:
     def dest_port_group(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The address book name of the destination port of the access traffic in the access control policy.
+
         > **NOTE:**  When DestPortType is set to group, you need to set the destination port address book name.
         """
         return pulumi.get(self, "dest_port_group")
@@ -725,8 +702,6 @@ class _NatFirewallControlPolicyState:
     def dest_port_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The destination port type of the access traffic in the security access control policy.
-        - **port**: port
-        - **group**: Port Address Book.
         """
         return pulumi.get(self, "dest_port_type")
 
@@ -755,9 +730,6 @@ class _NatFirewallControlPolicyState:
     def destination_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The destination address type in the access control policy. Valid values:
-        - **net**: Destination Network segment (CIDR address)
-        - **group**: Destination Address Book
-        - **domain**: the destination domain name.
         """
         return pulumi.get(self, "destination_type")
 
@@ -770,7 +742,6 @@ class _NatFirewallControlPolicyState:
     def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The traffic direction of the access control policy. Valid values:
-        - **out**: Internal and external traffic access control.
         """
         return pulumi.get(self, "direction")
 
@@ -783,9 +754,6 @@ class _NatFirewallControlPolicyState:
     def domain_resolve_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The domain name resolution method of the access control policy. The policy is enabled by default after it is created. Valid values:
-        - **0**: Based on FQDN
-        - **1**: DNS-based dynamic resolution
-        - **2**: dynamic resolution based on FQDN and DNS.
         """
         return pulumi.get(self, "domain_resolve_type")
 
@@ -798,6 +766,7 @@ class _NatFirewallControlPolicyState:
     def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
+
         > **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
         """
         return pulumi.get(self, "end_time")
@@ -811,7 +780,6 @@ class _NatFirewallControlPolicyState:
     def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Supported IP address version. Value:
-        - **4** (default): indicates the IPv4 address.
         """
         return pulumi.get(self, "ip_version")
 
@@ -835,7 +803,7 @@ class _NatFirewallControlPolicyState:
     @pulumi.getter(name="newOrder")
     def new_order(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority.
+        The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority. If not set, default to `-1`.
         """
         return pulumi.get(self, "new_order")
 
@@ -848,10 +816,10 @@ class _NatFirewallControlPolicyState:
     def proto(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The security protocol type for traffic access in the access control policy. Valid values:
-        - ANY (indicates that all protocol types are queried)
-        - TCP
-        - UDP
-        - ICMP.
+        - `ANY` (Indicates that all protocol types are queried)
+        - `TCP`
+        - `UDP`
+        - `ICMP`.
         """
         return pulumi.get(self, "proto")
 
@@ -864,8 +832,6 @@ class _NatFirewallControlPolicyState:
     def release(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-        - **true**: Enable access control policy
-        - **false**: Do not enable access control policies.
         """
         return pulumi.get(self, "release")
 
@@ -878,9 +844,9 @@ class _NatFirewallControlPolicyState:
     def repeat_days(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Collection of recurring dates for the policy validity period of the access control policy.
-        - When RepeatType is 'Permanent', 'None', 'Daily', RepeatDays is an empty collection. For example:[]
-        - When RepeatType is Weekly, RepeatDays cannot be empty. For example:["0", "6"]. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
-        - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:[1, 31]. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
+        - When RepeatType is `Permanent`, `None`, `Daily`, RepeatDays is an empty collection. For example:`[]`
+        - When RepeatType is Weekly, RepeatDays cannot be empty. For example:`["0", "6"]`. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
+        - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:`[1, 31]`. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
         """
         return pulumi.get(self, "repeat_days")
 
@@ -893,6 +859,7 @@ class _NatFirewallControlPolicyState:
     def repeat_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
+
         > **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
         """
         return pulumi.get(self, "repeat_end_time")
@@ -906,6 +873,7 @@ class _NatFirewallControlPolicyState:
     def repeat_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
+
         > **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
         """
         return pulumi.get(self, "repeat_start_time")
@@ -919,11 +887,11 @@ class _NatFirewallControlPolicyState:
     def repeat_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The type of repetition for the policy validity period of the access control policy. Value:
-        - **Permit** (default): Always
-        - **None**: Specify a single time
-        - **Daily**: Daily
-        - **Weekly**: Weekly
-        - **Monthly**: Monthly.
+        - `Permit` (default): Always
+        - `None`: Specify a single time
+        - `Daily`: Daily
+        - `Weekly`: Weekly
+        - `Monthly`: Monthly.
         """
         return pulumi.get(self, "repeat_type")
 
@@ -936,8 +904,8 @@ class _NatFirewallControlPolicyState:
     def source(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The source address in the access control policy. Valid values:
-        - When **SourceType** is set to 'net', Source is the Source CIDR address. For example: 10.2.4.0/24
-        - When **SourceType** is set to 'group', Source is the name of the Source address book. For example: db_group.
+        - When `SourceType` is set to `net`, Source is the Source CIDR address. For example: `10.2.4.0/24`
+        - When `SourceType` is set to `group`, Source is the name of the Source address book. For example: `db_group`.
         """
         return pulumi.get(self, "source")
 
@@ -950,8 +918,6 @@ class _NatFirewallControlPolicyState:
     def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The source address type in the access control policy. Valid values:
-        - **net**: the source network segment (CIDR address)
-        - **group**: source address book
         """
         return pulumi.get(self, "source_type")
 
@@ -964,6 +930,7 @@ class _NatFirewallControlPolicyState:
     def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
+
         > **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
         """
         return pulumi.get(self, "start_time")
@@ -1009,6 +976,9 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
         For information about Cloud Firewall Nat Firewall Control Policy and how to use it, see [What is Nat Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-createnatfirewallcontrolpolicy).
 
         > **NOTE:** Available since v1.224.0.
+
+        > **NOTE** Since v1.276.0. Set `new_order = -1` or omit the argument to let the Cloud Backend manage policy ordering automatically. You can also use `cloudfirewall.NatFirewallControlPolicyOrder` to manage the policy ordering.<br>
+        If you want manged the policy order in parallel, **do not** set the `new_order`, instead use `cloudfirewall.NatFirewallControlPolicyOrder` manage the policy order.
 
         ## Example Usage
 
@@ -1142,72 +1112,64 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_action: The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
-               - **accept**: Release
-               - **drop**: Refused
-               - **log**: Observation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types supported by the access control policy.
         :param pulumi.Input[_builtins.str] description: The description of the access control policy.
         :param pulumi.Input[_builtins.str] dest_port: The destination port of traffic access in the access control policy. Value:
                - When the protocol type is set to ICMP, the value of DestPort is null.
+               
                > **NOTE:**  When the protocol type is ICMP, access control on the destination port is not supported.
+               
                - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) IS group, the value of DestPort is null.
+               
                > **NOTE:**  When you select group (destination port address book) for the destination port type of the access control policy, you do not need to set a specific destination port number. All ports that need to be controlled by this access control policy are included in the destination port address book.
+               
                - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
         :param pulumi.Input[_builtins.str] dest_port_group: The address book name of the destination port of the access traffic in the access control policy.
+               
                > **NOTE:**  When DestPortType is set to group, you need to set the destination port address book name.
         :param pulumi.Input[_builtins.str] dest_port_type: The destination port type of the access traffic in the security access control policy.
-               - **port**: port
-               - **group**: Port Address Book.
         :param pulumi.Input[_builtins.str] destination: The destination address segment in the access control policy. Valid values:
                - When DestinationType is net, Destination is the Destination CIDR. For example: 1.2.XX.XX/24
                - When DestinationType IS group, Destination is the name of the Destination address book. For example: db_group
                - When DestinationType is domain, Destination is the Destination domain name. For example: * .aliyuncs.com
                - When DestinationType is location, Destination is the Destination region. For example: \\["BJ11", "ZB"\\].
         :param pulumi.Input[_builtins.str] destination_type: The destination address type in the access control policy. Valid values:
-               - **net**: Destination Network segment (CIDR address)
-               - **group**: Destination Address Book
-               - **domain**: the destination domain name.
         :param pulumi.Input[_builtins.str] direction: The traffic direction of the access control policy. Valid values:
-               - **out**: Internal and external traffic access control.
         :param pulumi.Input[_builtins.int] domain_resolve_type: The domain name resolution method of the access control policy. The policy is enabled by default after it is created. Valid values:
-               - **0**: Based on FQDN
-               - **1**: DNS-based dynamic resolution
-               - **2**: dynamic resolution based on FQDN and DNS.
         :param pulumi.Input[_builtins.int] end_time: The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
+               
                > **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
         :param pulumi.Input[_builtins.str] ip_version: Supported IP address version. Value:
-               - **4** (default): indicates the IPv4 address.
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of the NAT gateway instance.
-        :param pulumi.Input[_builtins.str] new_order: The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority.
+        :param pulumi.Input[_builtins.str] new_order: The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority. If not set, default to `-1`.
         :param pulumi.Input[_builtins.str] proto: The security protocol type for traffic access in the access control policy. Valid values:
-               - ANY (indicates that all protocol types are queried)
-               - TCP
-               - UDP
-               - ICMP.
+               - `ANY` (Indicates that all protocol types are queried)
+               - `TCP`
+               - `UDP`
+               - `ICMP`.
         :param pulumi.Input[_builtins.str] release: The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-               - **true**: Enable access control policy
-               - **false**: Do not enable access control policies.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: Collection of recurring dates for the policy validity period of the access control policy.
-               - When RepeatType is 'Permanent', 'None', 'Daily', RepeatDays is an empty collection. For example:[]
-               - When RepeatType is Weekly, RepeatDays cannot be empty. For example:["0", "6"]. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
-               - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:[1, 31]. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
+               - When RepeatType is `Permanent`, `None`, `Daily`, RepeatDays is an empty collection. For example:`[]`
+               - When RepeatType is Weekly, RepeatDays cannot be empty. For example:`["0", "6"]`. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
+               - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:`[1, 31]`. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
         :param pulumi.Input[_builtins.str] repeat_end_time: The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
+               
                > **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
         :param pulumi.Input[_builtins.str] repeat_start_time: The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
+               
                > **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
         :param pulumi.Input[_builtins.str] repeat_type: The type of repetition for the policy validity period of the access control policy. Value:
-               - **Permit** (default): Always
-               - **None**: Specify a single time
-               - **Daily**: Daily
-               - **Weekly**: Weekly
-               - **Monthly**: Monthly.
+               - `Permit` (default): Always
+               - `None`: Specify a single time
+               - `Daily`: Daily
+               - `Weekly`: Weekly
+               - `Monthly`: Monthly.
         :param pulumi.Input[_builtins.str] source: The source address in the access control policy. Valid values:
-               - When **SourceType** is set to 'net', Source is the Source CIDR address. For example: 10.2.4.0/24
-               - When **SourceType** is set to 'group', Source is the name of the Source address book. For example: db_group.
+               - When `SourceType` is set to `net`, Source is the Source CIDR address. For example: `10.2.4.0/24`
+               - When `SourceType` is set to `group`, Source is the name of the Source address book. For example: `db_group`.
         :param pulumi.Input[_builtins.str] source_type: The source address type in the access control policy. Valid values:
-               - **net**: the source network segment (CIDR address)
-               - **group**: source address book
         :param pulumi.Input[_builtins.int] start_time: The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
+               
                > **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
         """
         ...
@@ -1222,6 +1184,9 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
         For information about Cloud Firewall Nat Firewall Control Policy and how to use it, see [What is Nat Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-createnatfirewallcontrolpolicy).
 
         > **NOTE:** Available since v1.224.0.
+
+        > **NOTE** Since v1.276.0. Set `new_order = -1` or omit the argument to let the Cloud Backend manage policy ordering automatically. You can also use `cloudfirewall.NatFirewallControlPolicyOrder` to manage the policy ordering.<br>
+        If you want manged the policy order in parallel, **do not** set the `new_order`, instead use `cloudfirewall.NatFirewallControlPolicyOrder` manage the policy order.
 
         ## Example Usage
 
@@ -1426,8 +1391,6 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
             if nat_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'nat_gateway_id'")
             __props__.__dict__["nat_gateway_id"] = nat_gateway_id
-            if new_order is None and not opts.urn:
-                raise TypeError("Missing required property 'new_order'")
             __props__.__dict__["new_order"] = new_order
             if proto is None and not opts.urn:
                 raise TypeError("Missing required property 'proto'")
@@ -1489,75 +1452,66 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_action: The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
-               - **accept**: Release
-               - **drop**: Refused
-               - **log**: Observation.
         :param pulumi.Input[_builtins.str] acl_uuid: The unique ID of the security access control policy.
-               > **NOTE:**  To modify a security access control policy, you need to provide the unique ID of the policy. You can call the DescribeNatFirewallControlPolicy interface to obtain the ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types supported by the access control policy.
         :param pulumi.Input[_builtins.int] create_time: The time when the policy was created.
         :param pulumi.Input[_builtins.str] description: The description of the access control policy.
         :param pulumi.Input[_builtins.str] dest_port: The destination port of traffic access in the access control policy. Value:
                - When the protocol type is set to ICMP, the value of DestPort is null.
+               
                > **NOTE:**  When the protocol type is ICMP, access control on the destination port is not supported.
+               
                - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) IS group, the value of DestPort is null.
+               
                > **NOTE:**  When you select group (destination port address book) for the destination port type of the access control policy, you do not need to set a specific destination port number. All ports that need to be controlled by this access control policy are included in the destination port address book.
+               
                - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
         :param pulumi.Input[_builtins.str] dest_port_group: The address book name of the destination port of the access traffic in the access control policy.
+               
                > **NOTE:**  When DestPortType is set to group, you need to set the destination port address book name.
         :param pulumi.Input[_builtins.str] dest_port_type: The destination port type of the access traffic in the security access control policy.
-               - **port**: port
-               - **group**: Port Address Book.
         :param pulumi.Input[_builtins.str] destination: The destination address segment in the access control policy. Valid values:
                - When DestinationType is net, Destination is the Destination CIDR. For example: 1.2.XX.XX/24
                - When DestinationType IS group, Destination is the name of the Destination address book. For example: db_group
                - When DestinationType is domain, Destination is the Destination domain name. For example: * .aliyuncs.com
                - When DestinationType is location, Destination is the Destination region. For example: \\["BJ11", "ZB"\\].
         :param pulumi.Input[_builtins.str] destination_type: The destination address type in the access control policy. Valid values:
-               - **net**: Destination Network segment (CIDR address)
-               - **group**: Destination Address Book
-               - **domain**: the destination domain name.
         :param pulumi.Input[_builtins.str] direction: The traffic direction of the access control policy. Valid values:
-               - **out**: Internal and external traffic access control.
         :param pulumi.Input[_builtins.int] domain_resolve_type: The domain name resolution method of the access control policy. The policy is enabled by default after it is created. Valid values:
-               - **0**: Based on FQDN
-               - **1**: DNS-based dynamic resolution
-               - **2**: dynamic resolution based on FQDN and DNS.
         :param pulumi.Input[_builtins.int] end_time: The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
+               
                > **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
         :param pulumi.Input[_builtins.str] ip_version: Supported IP address version. Value:
-               - **4** (default): indicates the IPv4 address.
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of the NAT gateway instance.
-        :param pulumi.Input[_builtins.str] new_order: The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority.
+        :param pulumi.Input[_builtins.str] new_order: The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority. If not set, default to `-1`.
         :param pulumi.Input[_builtins.str] proto: The security protocol type for traffic access in the access control policy. Valid values:
-               - ANY (indicates that all protocol types are queried)
-               - TCP
-               - UDP
-               - ICMP.
+               - `ANY` (Indicates that all protocol types are queried)
+               - `TCP`
+               - `UDP`
+               - `ICMP`.
         :param pulumi.Input[_builtins.str] release: The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-               - **true**: Enable access control policy
-               - **false**: Do not enable access control policies.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: Collection of recurring dates for the policy validity period of the access control policy.
-               - When RepeatType is 'Permanent', 'None', 'Daily', RepeatDays is an empty collection. For example:[]
-               - When RepeatType is Weekly, RepeatDays cannot be empty. For example:["0", "6"]. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
-               - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:[1, 31]. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
+               - When RepeatType is `Permanent`, `None`, `Daily`, RepeatDays is an empty collection. For example:`[]`
+               - When RepeatType is Weekly, RepeatDays cannot be empty. For example:`["0", "6"]`. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
+               - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:`[1, 31]`. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
         :param pulumi.Input[_builtins.str] repeat_end_time: The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
+               
                > **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
         :param pulumi.Input[_builtins.str] repeat_start_time: The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
+               
                > **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
         :param pulumi.Input[_builtins.str] repeat_type: The type of repetition for the policy validity period of the access control policy. Value:
-               - **Permit** (default): Always
-               - **None**: Specify a single time
-               - **Daily**: Daily
-               - **Weekly**: Weekly
-               - **Monthly**: Monthly.
+               - `Permit` (default): Always
+               - `None`: Specify a single time
+               - `Daily`: Daily
+               - `Weekly`: Weekly
+               - `Monthly`: Monthly.
         :param pulumi.Input[_builtins.str] source: The source address in the access control policy. Valid values:
-               - When **SourceType** is set to 'net', Source is the Source CIDR address. For example: 10.2.4.0/24
-               - When **SourceType** is set to 'group', Source is the name of the Source address book. For example: db_group.
+               - When `SourceType` is set to `net`, Source is the Source CIDR address. For example: `10.2.4.0/24`
+               - When `SourceType` is set to `group`, Source is the name of the Source address book. For example: `db_group`.
         :param pulumi.Input[_builtins.str] source_type: The source address type in the access control policy. Valid values:
-               - **net**: the source network segment (CIDR address)
-               - **group**: source address book
         :param pulumi.Input[_builtins.int] start_time: The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
+               
                > **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1596,9 +1550,6 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def acl_action(self) -> pulumi.Output[_builtins.str]:
         """
         The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
-        - **accept**: Release
-        - **drop**: Refused
-        - **log**: Observation.
         """
         return pulumi.get(self, "acl_action")
 
@@ -1607,7 +1558,6 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def acl_uuid(self) -> pulumi.Output[_builtins.str]:
         """
         The unique ID of the security access control policy.
-        > **NOTE:**  To modify a security access control policy, you need to provide the unique ID of the policy. You can call the DescribeNatFirewallControlPolicy interface to obtain the ID.
         """
         return pulumi.get(self, "acl_uuid")
 
@@ -1641,9 +1591,13 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
         """
         The destination port of traffic access in the access control policy. Value:
         - When the protocol type is set to ICMP, the value of DestPort is null.
+
         > **NOTE:**  When the protocol type is ICMP, access control on the destination port is not supported.
+
         - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) IS group, the value of DestPort is null.
+
         > **NOTE:**  When you select group (destination port address book) for the destination port type of the access control policy, you do not need to set a specific destination port number. All ports that need to be controlled by this access control policy are included in the destination port address book.
+
         - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
         """
         return pulumi.get(self, "dest_port")
@@ -1653,6 +1607,7 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def dest_port_group(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The address book name of the destination port of the access traffic in the access control policy.
+
         > **NOTE:**  When DestPortType is set to group, you need to set the destination port address book name.
         """
         return pulumi.get(self, "dest_port_group")
@@ -1662,8 +1617,6 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def dest_port_type(self) -> pulumi.Output[_builtins.str]:
         """
         The destination port type of the access traffic in the security access control policy.
-        - **port**: port
-        - **group**: Port Address Book.
         """
         return pulumi.get(self, "dest_port_type")
 
@@ -1684,9 +1637,6 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def destination_type(self) -> pulumi.Output[_builtins.str]:
         """
         The destination address type in the access control policy. Valid values:
-        - **net**: Destination Network segment (CIDR address)
-        - **group**: Destination Address Book
-        - **domain**: the destination domain name.
         """
         return pulumi.get(self, "destination_type")
 
@@ -1695,7 +1645,6 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def direction(self) -> pulumi.Output[_builtins.str]:
         """
         The traffic direction of the access control policy. Valid values:
-        - **out**: Internal and external traffic access control.
         """
         return pulumi.get(self, "direction")
 
@@ -1704,9 +1653,6 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def domain_resolve_type(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The domain name resolution method of the access control policy. The policy is enabled by default after it is created. Valid values:
-        - **0**: Based on FQDN
-        - **1**: DNS-based dynamic resolution
-        - **2**: dynamic resolution based on FQDN and DNS.
         """
         return pulumi.get(self, "domain_resolve_type")
 
@@ -1715,6 +1661,7 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def end_time(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
+
         > **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
         """
         return pulumi.get(self, "end_time")
@@ -1724,7 +1671,6 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def ip_version(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Supported IP address version. Value:
-        - **4** (default): indicates the IPv4 address.
         """
         return pulumi.get(self, "ip_version")
 
@@ -1740,7 +1686,7 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="newOrder")
     def new_order(self) -> pulumi.Output[_builtins.str]:
         """
-        The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority.
+        The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority. If not set, default to `-1`.
         """
         return pulumi.get(self, "new_order")
 
@@ -1749,10 +1695,10 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def proto(self) -> pulumi.Output[_builtins.str]:
         """
         The security protocol type for traffic access in the access control policy. Valid values:
-        - ANY (indicates that all protocol types are queried)
-        - TCP
-        - UDP
-        - ICMP.
+        - `ANY` (Indicates that all protocol types are queried)
+        - `TCP`
+        - `UDP`
+        - `ICMP`.
         """
         return pulumi.get(self, "proto")
 
@@ -1761,8 +1707,6 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def release(self) -> pulumi.Output[_builtins.str]:
         """
         The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-        - **true**: Enable access control policy
-        - **false**: Do not enable access control policies.
         """
         return pulumi.get(self, "release")
 
@@ -1771,9 +1715,9 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def repeat_days(self) -> pulumi.Output[Optional[Sequence[_builtins.int]]]:
         """
         Collection of recurring dates for the policy validity period of the access control policy.
-        - When RepeatType is 'Permanent', 'None', 'Daily', RepeatDays is an empty collection. For example:[]
-        - When RepeatType is Weekly, RepeatDays cannot be empty. For example:["0", "6"]. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
-        - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:[1, 31]. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
+        - When RepeatType is `Permanent`, `None`, `Daily`, RepeatDays is an empty collection. For example:`[]`
+        - When RepeatType is Weekly, RepeatDays cannot be empty. For example:`["0", "6"]`. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
+        - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:`[1, 31]`. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
         """
         return pulumi.get(self, "repeat_days")
 
@@ -1782,6 +1726,7 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def repeat_end_time(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
+
         > **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
         """
         return pulumi.get(self, "repeat_end_time")
@@ -1791,6 +1736,7 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def repeat_start_time(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
+
         > **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
         """
         return pulumi.get(self, "repeat_start_time")
@@ -1800,11 +1746,11 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def repeat_type(self) -> pulumi.Output[_builtins.str]:
         """
         The type of repetition for the policy validity period of the access control policy. Value:
-        - **Permit** (default): Always
-        - **None**: Specify a single time
-        - **Daily**: Daily
-        - **Weekly**: Weekly
-        - **Monthly**: Monthly.
+        - `Permit` (default): Always
+        - `None`: Specify a single time
+        - `Daily`: Daily
+        - `Weekly`: Weekly
+        - `Monthly`: Monthly.
         """
         return pulumi.get(self, "repeat_type")
 
@@ -1813,8 +1759,8 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def source(self) -> pulumi.Output[_builtins.str]:
         """
         The source address in the access control policy. Valid values:
-        - When **SourceType** is set to 'net', Source is the Source CIDR address. For example: 10.2.4.0/24
-        - When **SourceType** is set to 'group', Source is the name of the Source address book. For example: db_group.
+        - When `SourceType` is set to `net`, Source is the Source CIDR address. For example: `10.2.4.0/24`
+        - When `SourceType` is set to `group`, Source is the name of the Source address book. For example: `db_group`.
         """
         return pulumi.get(self, "source")
 
@@ -1823,8 +1769,6 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def source_type(self) -> pulumi.Output[_builtins.str]:
         """
         The source address type in the access control policy. Valid values:
-        - **net**: the source network segment (CIDR address)
-        - **group**: source address book
         """
         return pulumi.get(self, "source_type")
 
@@ -1833,6 +1777,7 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
     def start_time(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
+
         > **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
         """
         return pulumi.get(self, "start_time")

@@ -152,10 +152,10 @@ class _TransitRouterEcrAttachmentState:
         Input properties used for looking up and filtering TransitRouterEcrAttachment resources.
 
         :param pulumi.Input[_builtins.str] cen_id: CenId
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] ecr_id: EcrId
         :param pulumi.Input[_builtins.int] ecr_owner_id: EcrOwnerId
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] transit_router_attachment_description: TransitRouterAttachmentDescription
         :param pulumi.Input[_builtins.str] transit_router_ecr_attachment_name: TransitRouterAttachmentName
@@ -196,7 +196,7 @@ class _TransitRouterEcrAttachmentState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation time of the resource
+        The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
@@ -232,7 +232,7 @@ class _TransitRouterEcrAttachmentState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -304,9 +304,9 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
                  transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a CEN Transit Router Ecr Attachment resource.
+        Provides a Cloud Enterprise Network (CEN) Transit Router Ecr Attachment resource.
 
-        For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
+        For information about Cloud Enterprise Network (CEN) Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
 
         > **NOTE:** Available since v1.235.0.
 
@@ -352,10 +352,10 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
 
         ## Import
 
-        CEN Transit Router Ecr Attachment can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router Ecr Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example <id>
+        $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example <transit_router_attachment_id>
         ```
 
 
@@ -376,9 +376,9 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
                  args: TransitRouterEcrAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN Transit Router Ecr Attachment resource.
+        Provides a Cloud Enterprise Network (CEN) Transit Router Ecr Attachment resource.
 
-        For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
+        For information about Cloud Enterprise Network (CEN) Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
 
         > **NOTE:** Available since v1.235.0.
 
@@ -424,10 +424,10 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
 
         ## Import
 
-        CEN Transit Router Ecr Attachment can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router Ecr Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example <id>
+        $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example <transit_router_attachment_id>
         ```
 
 
@@ -500,10 +500,10 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_id: CenId
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] ecr_id: EcrId
         :param pulumi.Input[_builtins.int] ecr_owner_id: EcrOwnerId
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] transit_router_attachment_description: TransitRouterAttachmentDescription
         :param pulumi.Input[_builtins.str] transit_router_ecr_attachment_name: TransitRouterAttachmentName
@@ -536,7 +536,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation time of the resource
+        The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
@@ -560,7 +560,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 

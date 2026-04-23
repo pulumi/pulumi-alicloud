@@ -25,6 +25,9 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.194.0.
  * 
+ * &gt; **NOTE** Since v1.276.0. Set `newOrder = -1` or omit the argument to let the Cloud Backend manage policy ordering automatically. You can also use `alicloud.cloudfirewall.VpcFirewallControlPolicyOrder` to manage the policy ordering.&lt;br&gt;
+ *   If you want manged the policy order in parallel **do not** set the `newOrder`, instead use `alicloud.cloudfirewall.VpcFirewallControlPolicyOrder` manage the policy order.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -161,6 +164,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
     }
     /**
      * The list of application types that the access control policy supports.
+     * 
      * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      * 
      */
@@ -169,6 +173,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
 
     /**
      * @return The list of application types that the access control policy supports.
+     * 
      * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      * 
      */
@@ -204,28 +209,36 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
         return this.description;
     }
     /**
-     * The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+     * The destination port in the access control policy.
+     * 
+     * -&gt;**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
      * 
      */
     @Export(name="destPort", refs={String.class}, tree="[0]")
     private Output<String> destPort;
 
     /**
-     * @return The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
+     * @return The destination port in the access control policy.
+     * 
+     * -&gt;**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
      * 
      */
     public Output<String> destPort() {
         return this.destPort;
     }
     /**
-     * Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+     * Access control policy in the access traffic of the destination port address book name.
+     * 
+     * -&gt;**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
      * 
      */
     @Export(name="destPortGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destPortGroup;
 
     /**
-     * @return Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
+     * @return Access control policy in the access traffic of the destination port address book name.
+     * 
+     * -&gt;**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
      * 
      */
     public Output<Optional<String>> destPortGroup() {

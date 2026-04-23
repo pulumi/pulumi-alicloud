@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Cloud Enterprise Network (CEN) Transit Router VBR Attachment resource.
+ * Provides a Cloud Enterprise Network (CEN) Transit Router Vbr Attachment resource.
  *
- * For information about Cloud Enterprise Network (CEN) Transit Router VBR Attachment and how to use it, see [What is Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
+ * For information about Cloud Enterprise Network (CEN) Transit Router Vbr Attachment and how to use it, see [What is Transit Router Vbr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment).
  *
  * > **NOTE:** Available since v1.126.0.
  *
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cloud Enterprise Network (CEN) Transit Router VBR Attachment can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Transit Router Vbr Attachment can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example <cen_id>:<transit_router_attachment_id>
@@ -88,17 +88,32 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+     * AutoPublishRouteEnabled
      */
     declare public readonly autoPublishRouteEnabled: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the CEN.
+     * CenId
      */
     declare public readonly cenId: pulumi.Output<string>;
+    /**
+     * The creation time of the resource.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
+    /**
+     * The entity that pays the fees of the network instance. Valid values:
+     *
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     */
+    declare public readonly orderType: pulumi.Output<string>;
+    /**
+     * RegionId.
+     */
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
      */
@@ -112,41 +127,39 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
     /**
      * Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
      *
-     * ->**NOTE:** Ensure that the vbr is not used in Express Connect.
-     *
      * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      */
     declare public readonly routeTablePropagationEnabled: pulumi.Output<boolean | undefined>;
     /**
-     * The status of the Transit Router VBR Attachment.
+     * The status of the resource.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The description of the transit router vbr attachment.
+     * TransitRouterAttachmentDescription
      */
     declare public readonly transitRouterAttachmentDescription: pulumi.Output<string | undefined>;
     /**
-     * The ID of the VBR connection.
+     * The first ID of the resource.
      */
     declare public /*out*/ readonly transitRouterAttachmentId: pulumi.Output<string>;
     /**
-     * The name of the transit router vbr attachment.
+     * TransitRouterAttachmentName
      */
     declare public readonly transitRouterAttachmentName: pulumi.Output<string | undefined>;
     /**
-     * The ID of the transit router.
+     * TransitRouterId
      */
     declare public readonly transitRouterId: pulumi.Output<string>;
     /**
-     * The ID of the VBR.
+     * VbrId
      */
     declare public readonly vbrId: pulumi.Output<string>;
     /**
-     * The owner id of the vbr.
+     * VbrOwnerId
      */
     declare public readonly vbrOwnerId: pulumi.Output<string>;
 
@@ -165,7 +178,10 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
             const state = argsOrState as TransitRouterVbrAttachmentState | undefined;
             resourceInputs["autoPublishRouteEnabled"] = state?.autoPublishRouteEnabled;
             resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["orderType"] = state?.orderType;
+            resourceInputs["regionId"] = state?.regionId;
             resourceInputs["resourceType"] = state?.resourceType;
             resourceInputs["routeTableAssociationEnabled"] = state?.routeTableAssociationEnabled;
             resourceInputs["routeTablePropagationEnabled"] = state?.routeTablePropagationEnabled;
@@ -179,15 +195,13 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
             resourceInputs["vbrOwnerId"] = state?.vbrOwnerId;
         } else {
             const args = argsOrState as TransitRouterVbrAttachmentArgs | undefined;
-            if (args?.cenId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'cenId'");
-            }
             if (args?.vbrId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vbrId'");
             }
             resourceInputs["autoPublishRouteEnabled"] = args?.autoPublishRouteEnabled;
             resourceInputs["cenId"] = args?.cenId;
             resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["orderType"] = args?.orderType;
             resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["routeTableAssociationEnabled"] = args?.routeTableAssociationEnabled;
             resourceInputs["routeTablePropagationEnabled"] = args?.routeTablePropagationEnabled;
@@ -197,6 +211,8 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
             resourceInputs["transitRouterId"] = args?.transitRouterId;
             resourceInputs["vbrId"] = args?.vbrId;
             resourceInputs["vbrOwnerId"] = args?.vbrOwnerId;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["transitRouterAttachmentId"] = undefined /*out*/;
         }
@@ -210,17 +226,32 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
  */
 export interface TransitRouterVbrAttachmentState {
     /**
-     * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+     * AutoPublishRouteEnabled
      */
     autoPublishRouteEnabled?: pulumi.Input<boolean>;
     /**
-     * The ID of the CEN.
+     * CenId
      */
     cenId?: pulumi.Input<string>;
+    /**
+     * The creation time of the resource.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * The entity that pays the fees of the network instance. Valid values:
+     *
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     */
+    orderType?: pulumi.Input<string>;
+    /**
+     * RegionId.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
      */
@@ -234,41 +265,39 @@ export interface TransitRouterVbrAttachmentState {
     /**
      * Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
      *
-     * ->**NOTE:** Ensure that the vbr is not used in Express Connect.
-     *
      * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      */
     routeTablePropagationEnabled?: pulumi.Input<boolean>;
     /**
-     * The status of the Transit Router VBR Attachment.
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The description of the transit router vbr attachment.
+     * TransitRouterAttachmentDescription
      */
     transitRouterAttachmentDescription?: pulumi.Input<string>;
     /**
-     * The ID of the VBR connection.
+     * The first ID of the resource.
      */
     transitRouterAttachmentId?: pulumi.Input<string>;
     /**
-     * The name of the transit router vbr attachment.
+     * TransitRouterAttachmentName
      */
     transitRouterAttachmentName?: pulumi.Input<string>;
     /**
-     * The ID of the transit router.
+     * TransitRouterId
      */
     transitRouterId?: pulumi.Input<string>;
     /**
-     * The ID of the VBR.
+     * VbrId
      */
     vbrId?: pulumi.Input<string>;
     /**
-     * The owner id of the vbr.
+     * VbrOwnerId
      */
     vbrOwnerId?: pulumi.Input<string>;
 }
@@ -278,17 +307,24 @@ export interface TransitRouterVbrAttachmentState {
  */
 export interface TransitRouterVbrAttachmentArgs {
     /**
-     * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+     * AutoPublishRouteEnabled
      */
     autoPublishRouteEnabled?: pulumi.Input<boolean>;
     /**
-     * The ID of the CEN.
+     * CenId
      */
-    cenId: pulumi.Input<string>;
+    cenId?: pulumi.Input<string>;
     /**
      * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * The entity that pays the fees of the network instance. Valid values:
+     *
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     */
+    orderType?: pulumi.Input<string>;
     /**
      * The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
      */
@@ -302,33 +338,31 @@ export interface TransitRouterVbrAttachmentArgs {
     /**
      * Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
      *
-     * ->**NOTE:** Ensure that the vbr is not used in Express Connect.
-     *
      * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      */
     routeTablePropagationEnabled?: pulumi.Input<boolean>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The description of the transit router vbr attachment.
+     * TransitRouterAttachmentDescription
      */
     transitRouterAttachmentDescription?: pulumi.Input<string>;
     /**
-     * The name of the transit router vbr attachment.
+     * TransitRouterAttachmentName
      */
     transitRouterAttachmentName?: pulumi.Input<string>;
     /**
-     * The ID of the transit router.
+     * TransitRouterId
      */
     transitRouterId?: pulumi.Input<string>;
     /**
-     * The ID of the VBR.
+     * VbrId
      */
     vbrId: pulumi.Input<string>;
     /**
-     * The owner id of the vbr.
+     * VbrOwnerId
      */
     vbrOwnerId?: pulumi.Input<string>;
 }

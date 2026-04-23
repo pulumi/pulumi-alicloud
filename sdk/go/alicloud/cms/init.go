@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SiteMonitor{}
 	case "alicloud:cms/slsGroup:SlsGroup":
 		r = &SlsGroup{}
+	case "alicloud:cms/workspace:Workspace":
+		r = &Workspace{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -137,6 +139,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cms/slsGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cms/workspace",
 		&module{version},
 	)
 }

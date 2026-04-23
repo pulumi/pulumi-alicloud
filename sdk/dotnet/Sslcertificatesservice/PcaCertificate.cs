@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
     /// SSL Certificates Pca Certificate can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example &lt;id&gt;
+    /// $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example &lt;identifier&gt;
     /// ```
     /// </summary>
     [Obsolete(@"alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate")]
@@ -58,14 +58,17 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
     public partial class PcaCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
-        /// - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-        /// - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-        /// - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-        /// - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-        /// - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-        /// - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-        /// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+        /// The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+        /// - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+        /// - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+        /// - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+        /// - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+        /// - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+        /// - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+        /// - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+        /// 
+        /// The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+        /// 
         /// &gt; **NOTE:** If `CertificateType` is set to `SUB_ROOT`, `Algorithm` is required.
         /// </summary>
         [Output("algorithm")]
@@ -88,62 +91,68 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         public Output<string> CertificateType { get; private set; } = null!;
 
         /// <summary>
-        /// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+        /// The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
         /// </summary>
         [Output("commonName")]
         public Output<string> CommonName { get; private set; } = null!;
 
         /// <summary>
-        /// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+        /// The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+        /// For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
         /// </summary>
         [Output("countryCode")]
         public Output<string?> CountryCode { get; private set; } = null!;
 
         /// <summary>
-        /// The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `CrlDay` takes effect only if `CertificateType` is set to `SUB_ROOT`.
+        /// The interval (in days) for updating the Certificate Revocation List (CRL).
         /// </summary>
         [Output("crlDay")]
         public Output<int> CrlDay { get; private set; } = null!;
 
         /// <summary>
-        /// This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+        /// Specifies whether to enable CRL.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("enableCrl")]
         public Output<bool?> EnableCrl { get; private set; } = null!;
 
         /// <summary>
-        /// The extended key usages. **Note:** `ExtendedKeyUsages` takes effect only if `CertificateType` is set to `SUB_ROOT`.
+        /// Extended attributes of the certificate, used to define extended key usages.  
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("extendedKeyUsages")]
         public Output<ImmutableArray<string>> ExtendedKeyUsages { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the city where the organization is located. Support the use of Chinese, English characters.
+        /// The name of the city where the organization is located.
         /// </summary>
         [Output("locality")]
         public Output<string> Locality { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+        /// The name of the organization associated with the CA certificate.
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the department or branch under the organization. Support the use of Chinese, English characters.
+        /// The name of the department or branch within the organization
         /// </summary>
         [Output("organizationUnit")]
         public Output<string> OrganizationUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the root CA certificate.
-        /// &gt; **NOTE:** If `CertificateType` is set to `SUB_ROOT`, `ParentIdentifier` is required.
+        /// Parent node identifier.
         /// </summary>
         [Output("parentIdentifier")]
         public Output<string?> ParentIdentifier { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate path length. Default value: `0`. **Note:** `PathLenConstraint` takes effect only if `CertificateType` is set to `SUB_ROOT`.
+        /// The maximum depth of subordinate CA levels allowed under this CA.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("pathLenConstraint")]
         public Output<int?> PathLenConstraint { get; private set; } = null!;
@@ -155,26 +164,27 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+        /// The name of the province, municipality directly under the central government, or autonomous region where the organization is located
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the CA certificate.
+        /// The current CA status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tag of the resource.
+        /// Tags
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The validity period of the CA certificate, in years.
-        /// &gt; **NOTE:**  It is recommended to set to `5` to `10` years.
+        /// The validity period of the root CA certificate, in years.
+        /// 
+        /// &gt; **NOTE:**  We recommend setting it to 5–10 years.
         /// </summary>
         [Output("years")]
         public Output<int> Years { get; private set; } = null!;
@@ -226,14 +236,17 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
     public sealed class PcaCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
-        /// - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-        /// - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-        /// - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-        /// - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-        /// - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-        /// - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-        /// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+        /// The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+        /// - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+        /// - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+        /// - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+        /// - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+        /// - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+        /// - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+        /// - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+        /// 
+        /// The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+        /// 
         /// &gt; **NOTE:** If `CertificateType` is set to `SUB_ROOT`, `Algorithm` is required.
         /// </summary>
         [Input("algorithm")]
@@ -256,25 +269,28 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         public Input<string>? CertificateType { get; set; }
 
         /// <summary>
-        /// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+        /// The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
         /// </summary>
         [Input("commonName", required: true)]
         public Input<string> CommonName { get; set; } = null!;
 
         /// <summary>
-        /// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+        /// The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+        /// For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
 
         /// <summary>
-        /// The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `CrlDay` takes effect only if `CertificateType` is set to `SUB_ROOT`.
+        /// The interval (in days) for updating the Certificate Revocation List (CRL).
         /// </summary>
         [Input("crlDay")]
         public Input<int>? CrlDay { get; set; }
 
         /// <summary>
-        /// This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+        /// Specifies whether to enable CRL.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("enableCrl")]
         public Input<bool>? EnableCrl { get; set; }
@@ -283,7 +299,9 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         private InputList<string>? _extendedKeyUsages;
 
         /// <summary>
-        /// The extended key usages. **Note:** `ExtendedKeyUsages` takes effect only if `CertificateType` is set to `SUB_ROOT`.
+        /// Extended attributes of the certificate, used to define extended key usages.  
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         public InputList<string> ExtendedKeyUsages
         {
@@ -292,32 +310,33 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         }
 
         /// <summary>
-        /// Name of the city where the organization is located. Support the use of Chinese, English characters.
+        /// The name of the city where the organization is located.
         /// </summary>
         [Input("locality", required: true)]
         public Input<string> Locality { get; set; } = null!;
 
         /// <summary>
-        /// The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+        /// The name of the organization associated with the CA certificate.
         /// </summary>
         [Input("organization", required: true)]
         public Input<string> Organization { get; set; } = null!;
 
         /// <summary>
-        /// The name of the department or branch under the organization. Support the use of Chinese, English characters.
+        /// The name of the department or branch within the organization
         /// </summary>
         [Input("organizationUnit", required: true)]
         public Input<string> OrganizationUnit { get; set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the root CA certificate.
-        /// &gt; **NOTE:** If `CertificateType` is set to `SUB_ROOT`, `ParentIdentifier` is required.
+        /// Parent node identifier.
         /// </summary>
         [Input("parentIdentifier")]
         public Input<string>? ParentIdentifier { get; set; }
 
         /// <summary>
-        /// The certificate path length. Default value: `0`. **Note:** `PathLenConstraint` takes effect only if `CertificateType` is set to `SUB_ROOT`.
+        /// The maximum depth of subordinate CA levels allowed under this CA.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("pathLenConstraint")]
         public Input<int>? PathLenConstraint { get; set; }
@@ -329,7 +348,7 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+        /// The name of the province, municipality directly under the central government, or autonomous region where the organization is located
         /// </summary>
         [Input("state", required: true)]
         public Input<string> State { get; set; } = null!;
@@ -338,7 +357,7 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// Tags
         /// </summary>
         public InputMap<string> Tags
         {
@@ -347,8 +366,9 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         }
 
         /// <summary>
-        /// The validity period of the CA certificate, in years.
-        /// &gt; **NOTE:**  It is recommended to set to `5` to `10` years.
+        /// The validity period of the root CA certificate, in years.
+        /// 
+        /// &gt; **NOTE:**  We recommend setting it to 5–10 years.
         /// </summary>
         [Input("years", required: true)]
         public Input<int> Years { get; set; } = null!;
@@ -362,14 +382,17 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
     public sealed class PcaCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
-        /// - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
-        /// - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
-        /// - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
-        /// - `ECC_256`: The signature algorithm is Sha256WithECDSA.
-        /// - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
-        /// - `ECC_512`: The signature algorithm is Sha256WithECDSA.
-        /// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
+        /// The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
+        /// - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
+        /// - `RSA_2048`: Corresponds to the signature algorithm Sha256WithRSA.
+        /// - `RSA_4096`: Corresponds to the signature algorithm Sha256WithRSA.
+        /// - `ECC_256`: Corresponds to the signature algorithm Sha256WithECDSA.
+        /// - `ECC_384`: Corresponds to the signature algorithm Sha256WithECDSA.
+        /// - `ECC_512`: Corresponds to the signature algorithm Sha256WithECDSA.
+        /// - `SM2_256`: Corresponds to the signature algorithm SM3WithSM2.
+        /// 
+        /// The encryption algorithm of the root CA certificate must match the **certificate algorithm** of the private root CA you purchased. For example, if you selected `RSA` as the **certificate algorithm** when purchasing the private root CA, the key algorithm of the root CA certificate must be `RSA_1024`, `RSA_2048`, or `RSA_4096`.
+        /// 
         /// &gt; **NOTE:** If `CertificateType` is set to `SUB_ROOT`, `Algorithm` is required.
         /// </summary>
         [Input("algorithm")]
@@ -392,25 +415,28 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         public Input<string>? CertificateType { get; set; }
 
         /// <summary>
-        /// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
+        /// The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
         /// </summary>
         [Input("commonName")]
         public Input<string>? CommonName { get; set; }
 
         /// <summary>
-        /// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+        /// The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
+        /// For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
 
         /// <summary>
-        /// The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `CrlDay` takes effect only if `CertificateType` is set to `SUB_ROOT`.
+        /// The interval (in days) for updating the Certificate Revocation List (CRL).
         /// </summary>
         [Input("crlDay")]
         public Input<int>? CrlDay { get; set; }
 
         /// <summary>
-        /// This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+        /// Specifies whether to enable CRL.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("enableCrl")]
         public Input<bool>? EnableCrl { get; set; }
@@ -419,7 +445,9 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         private InputList<string>? _extendedKeyUsages;
 
         /// <summary>
-        /// The extended key usages. **Note:** `ExtendedKeyUsages` takes effect only if `CertificateType` is set to `SUB_ROOT`.
+        /// Extended attributes of the certificate, used to define extended key usages.  
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         public InputList<string> ExtendedKeyUsages
         {
@@ -428,32 +456,33 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         }
 
         /// <summary>
-        /// Name of the city where the organization is located. Support the use of Chinese, English characters.
+        /// The name of the city where the organization is located.
         /// </summary>
         [Input("locality")]
         public Input<string>? Locality { get; set; }
 
         /// <summary>
-        /// The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
+        /// The name of the organization associated with the CA certificate.
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }
 
         /// <summary>
-        /// The name of the department or branch under the organization. Support the use of Chinese, English characters.
+        /// The name of the department or branch within the organization
         /// </summary>
         [Input("organizationUnit")]
         public Input<string>? OrganizationUnit { get; set; }
 
         /// <summary>
-        /// The unique identifier of the root CA certificate.
-        /// &gt; **NOTE:** If `CertificateType` is set to `SUB_ROOT`, `ParentIdentifier` is required.
+        /// Parent node identifier.
         /// </summary>
         [Input("parentIdentifier")]
         public Input<string>? ParentIdentifier { get; set; }
 
         /// <summary>
-        /// The certificate path length. Default value: `0`. **Note:** `PathLenConstraint` takes effect only if `CertificateType` is set to `SUB_ROOT`.
+        /// The maximum depth of subordinate CA levels allowed under this CA.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("pathLenConstraint")]
         public Input<int>? PathLenConstraint { get; set; }
@@ -465,13 +494,13 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+        /// The name of the province, municipality directly under the central government, or autonomous region where the organization is located
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The status of the CA certificate.
+        /// The current CA status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -480,7 +509,7 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// Tags
         /// </summary>
         public InputMap<string> Tags
         {
@@ -489,8 +518,9 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         }
 
         /// <summary>
-        /// The validity period of the CA certificate, in years.
-        /// &gt; **NOTE:**  It is recommended to set to `5` to `10` years.
+        /// The validity period of the root CA certificate, in years.
+        /// 
+        /// &gt; **NOTE:**  We recommend setting it to 5–10 years.
         /// </summary>
         [Input("years")]
         public Input<int>? Years { get; set; }

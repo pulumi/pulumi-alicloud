@@ -405,7 +405,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead.
+     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead. From version 1.276.0, `roleName` can be modified.
      *
      * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      *
@@ -1064,7 +1064,7 @@ export interface InstanceState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead.
+     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead. From version 1.276.0, `roleName` can be modified.
      *
      * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      *
@@ -1473,7 +1473,7 @@ export interface InstanceArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead.
+     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead. From version 1.276.0, `roleName` can be modified.
      *
      * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      *

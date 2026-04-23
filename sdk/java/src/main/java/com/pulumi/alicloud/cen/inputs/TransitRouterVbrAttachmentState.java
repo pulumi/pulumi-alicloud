@@ -18,14 +18,14 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
     public static final TransitRouterVbrAttachmentState Empty = new TransitRouterVbrAttachmentState();
 
     /**
-     * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+     * AutoPublishRouteEnabled
      * 
      */
     @Import(name="autoPublishRouteEnabled")
     private @Nullable Output<Boolean> autoPublishRouteEnabled;
 
     /**
-     * @return Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+     * @return AutoPublishRouteEnabled
      * 
      */
     public Optional<Output<Boolean>> autoPublishRouteEnabled() {
@@ -33,18 +33,33 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the CEN.
+     * CenId
      * 
      */
     @Import(name="cenId")
     private @Nullable Output<String> cenId;
 
     /**
-     * @return The ID of the CEN.
+     * @return CenId
      * 
      */
     public Optional<Output<String>> cenId() {
         return Optional.ofNullable(this.cenId);
+    }
+
+    /**
+     * The creation time of the resource.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
     }
 
     /**
@@ -60,6 +75,42 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
      */
     public Optional<Output<Boolean>> dryRun() {
         return Optional.ofNullable(this.dryRun);
+    }
+
+    /**
+     * The entity that pays the fees of the network instance. Valid values:
+     * 
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     * 
+     */
+    @Import(name="orderType")
+    private @Nullable Output<String> orderType;
+
+    /**
+     * @return The entity that pays the fees of the network instance. Valid values:
+     * 
+     * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+     * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+     * 
+     */
+    public Optional<Output<String>> orderType() {
+        return Optional.ofNullable(this.orderType);
+    }
+
+    /**
+     * RegionId.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return RegionId.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     /**
@@ -103,8 +154,6 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
     /**
      * Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
-     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
-     * 
      * @deprecated
      * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      * 
@@ -116,8 +165,6 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
     /**
      * @return Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
-     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
-     * 
      * @deprecated
      * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      * 
@@ -128,14 +175,14 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The status of the Transit Router VBR Attachment.
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the Transit Router VBR Attachment.
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -143,14 +190,14 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -158,14 +205,14 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The description of the transit router vbr attachment.
+     * TransitRouterAttachmentDescription
      * 
      */
     @Import(name="transitRouterAttachmentDescription")
     private @Nullable Output<String> transitRouterAttachmentDescription;
 
     /**
-     * @return The description of the transit router vbr attachment.
+     * @return TransitRouterAttachmentDescription
      * 
      */
     public Optional<Output<String>> transitRouterAttachmentDescription() {
@@ -173,14 +220,14 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the VBR connection.
+     * The first ID of the resource.
      * 
      */
     @Import(name="transitRouterAttachmentId")
     private @Nullable Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID of the VBR connection.
+     * @return The first ID of the resource.
      * 
      */
     public Optional<Output<String>> transitRouterAttachmentId() {
@@ -188,14 +235,14 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The name of the transit router vbr attachment.
+     * TransitRouterAttachmentName
      * 
      */
     @Import(name="transitRouterAttachmentName")
     private @Nullable Output<String> transitRouterAttachmentName;
 
     /**
-     * @return The name of the transit router vbr attachment.
+     * @return TransitRouterAttachmentName
      * 
      */
     public Optional<Output<String>> transitRouterAttachmentName() {
@@ -203,14 +250,14 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the transit router.
+     * TransitRouterId
      * 
      */
     @Import(name="transitRouterId")
     private @Nullable Output<String> transitRouterId;
 
     /**
-     * @return The ID of the transit router.
+     * @return TransitRouterId
      * 
      */
     public Optional<Output<String>> transitRouterId() {
@@ -218,14 +265,14 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the VBR.
+     * VbrId
      * 
      */
     @Import(name="vbrId")
     private @Nullable Output<String> vbrId;
 
     /**
-     * @return The ID of the VBR.
+     * @return VbrId
      * 
      */
     public Optional<Output<String>> vbrId() {
@@ -233,14 +280,14 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The owner id of the vbr.
+     * VbrOwnerId
      * 
      */
     @Import(name="vbrOwnerId")
     private @Nullable Output<String> vbrOwnerId;
 
     /**
-     * @return The owner id of the vbr.
+     * @return VbrOwnerId
      * 
      */
     public Optional<Output<String>> vbrOwnerId() {
@@ -252,7 +299,10 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
     private TransitRouterVbrAttachmentState(TransitRouterVbrAttachmentState $) {
         this.autoPublishRouteEnabled = $.autoPublishRouteEnabled;
         this.cenId = $.cenId;
+        this.createTime = $.createTime;
         this.dryRun = $.dryRun;
+        this.orderType = $.orderType;
+        this.regionId = $.regionId;
         this.resourceType = $.resourceType;
         this.routeTableAssociationEnabled = $.routeTableAssociationEnabled;
         this.routeTablePropagationEnabled = $.routeTablePropagationEnabled;
@@ -285,7 +335,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param autoPublishRouteEnabled Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+         * @param autoPublishRouteEnabled AutoPublishRouteEnabled
          * 
          * @return builder
          * 
@@ -296,7 +346,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param autoPublishRouteEnabled Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+         * @param autoPublishRouteEnabled AutoPublishRouteEnabled
          * 
          * @return builder
          * 
@@ -306,7 +356,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param cenId The ID of the CEN.
+         * @param cenId CenId
          * 
          * @return builder
          * 
@@ -317,13 +367,34 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param cenId The ID of the CEN.
+         * @param cenId CenId
          * 
          * @return builder
          * 
          */
         public Builder cenId(String cenId) {
             return cenId(Output.of(cenId));
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -345,6 +416,54 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
          */
         public Builder dryRun(Boolean dryRun) {
             return dryRun(Output.of(dryRun));
+        }
+
+        /**
+         * @param orderType The entity that pays the fees of the network instance. Valid values:
+         * 
+         * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+         * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderType(@Nullable Output<String> orderType) {
+            $.orderType = orderType;
+            return this;
+        }
+
+        /**
+         * @param orderType The entity that pays the fees of the network instance. Valid values:
+         * 
+         * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
+         * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderType(String orderType) {
+            return orderType(Output.of(orderType));
+        }
+
+        /**
+         * @param regionId RegionId.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId RegionId.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**
@@ -400,8 +519,6 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         /**
          * @param routeTablePropagationEnabled Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
          * 
-         * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -417,8 +534,6 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         /**
          * @param routeTablePropagationEnabled Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
          * 
-         * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -431,7 +546,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param status The status of the Transit Router VBR Attachment.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -442,7 +557,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param status The status of the Transit Router VBR Attachment.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -452,7 +567,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -463,7 +578,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -473,7 +588,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentDescription The description of the transit router vbr attachment.
+         * @param transitRouterAttachmentDescription TransitRouterAttachmentDescription
          * 
          * @return builder
          * 
@@ -484,7 +599,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentDescription The description of the transit router vbr attachment.
+         * @param transitRouterAttachmentDescription TransitRouterAttachmentDescription
          * 
          * @return builder
          * 
@@ -494,7 +609,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentId The ID of the VBR connection.
+         * @param transitRouterAttachmentId The first ID of the resource.
          * 
          * @return builder
          * 
@@ -505,7 +620,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentId The ID of the VBR connection.
+         * @param transitRouterAttachmentId The first ID of the resource.
          * 
          * @return builder
          * 
@@ -515,7 +630,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentName The name of the transit router vbr attachment.
+         * @param transitRouterAttachmentName TransitRouterAttachmentName
          * 
          * @return builder
          * 
@@ -526,7 +641,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentName The name of the transit router vbr attachment.
+         * @param transitRouterAttachmentName TransitRouterAttachmentName
          * 
          * @return builder
          * 
@@ -536,7 +651,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterId The ID of the transit router.
+         * @param transitRouterId TransitRouterId
          * 
          * @return builder
          * 
@@ -547,7 +662,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterId The ID of the transit router.
+         * @param transitRouterId TransitRouterId
          * 
          * @return builder
          * 
@@ -557,7 +672,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param vbrId The ID of the VBR.
+         * @param vbrId VbrId
          * 
          * @return builder
          * 
@@ -568,7 +683,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param vbrId The ID of the VBR.
+         * @param vbrId VbrId
          * 
          * @return builder
          * 
@@ -578,7 +693,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param vbrOwnerId The owner id of the vbr.
+         * @param vbrOwnerId VbrOwnerId
          * 
          * @return builder
          * 
@@ -589,7 +704,7 @@ public final class TransitRouterVbrAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param vbrOwnerId The owner id of the vbr.
+         * @param vbrOwnerId VbrOwnerId
          * 
          * @return builder
          * 

@@ -1109,7 +1109,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead.
+     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead. From version 1.276.0, `roleName` can be modified.
      * 
      * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
@@ -1134,7 +1134,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> roleName;
 
     /**
-     * @return The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead.
+     * @return The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment. Field `roleName` has been deprecated from provider version 1.275.0. New resource alicloud.ecs.RamRoleAttachment instead. From version 1.276.0, `roleName` can be modified.
      * 
      * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 

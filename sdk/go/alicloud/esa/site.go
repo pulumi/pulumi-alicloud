@@ -96,7 +96,7 @@ type Site struct {
 	// The DNS setup. Valid values:
 	// - `NS`
 	// - `CNAME`
-	AccessType pulumi.StringPtrOutput `pulumi:"accessType"`
+	AccessType pulumi.StringOutput `pulumi:"accessType"`
 	// Add visitor geolocation header. Value range:
 	AddClientGeolocationHeader pulumi.StringPtrOutput `pulumi:"addClientGeolocationHeader"`
 	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
@@ -105,6 +105,12 @@ type Site struct {
 	AiMode pulumi.StringOutput `pulumi:"aiMode"`
 	// HTTP DDoS Intelligent Protection Level. Values:
 	AiTemplate pulumi.StringOutput `pulumi:"aiTemplate"`
+	// AutomaticFrequencyControl Disposal action.Valid values:
+	AutomaticFrequencyControlActionType pulumi.StringOutput `pulumi:"automaticFrequencyControlActionType"`
+	// AutomaticFrequencyControl Switch.Valid values:
+	AutomaticFrequencyControlEnable pulumi.StringOutput `pulumi:"automaticFrequencyControlEnable"`
+	// AutomaticFrequencyControl Protection Level.Valid values:
+	AutomaticFrequencyControlLevel pulumi.StringOutput `pulumi:"automaticFrequencyControlLevel"`
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode pulumi.StringOutput `pulumi:"cacheArchitectureMode"`
 	// Site cache hold switch. Value:
@@ -136,6 +142,10 @@ type Site struct {
 	Ipv6Region pulumi.StringOutput `pulumi:"ipv6Region"`
 	// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
 	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
+	// Whether to enable the quality data collection switch.Valid values:
+	PerformanceDataCollectionEnable pulumi.StringPtrOutput `pulumi:"performanceDataCollectionEnable"`
+	// Real client IP header name.
+	RealClientIpHeaderName pulumi.StringPtrOutput `pulumi:"realClientIpHeaderName"`
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Release the search engine crawler configuration. Value:
@@ -146,6 +156,8 @@ type Site struct {
 	SiteNameExclusive pulumi.StringPtrOutput `pulumi:"siteNameExclusive"`
 	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
+	// Site WAF Configuration Details. See `siteWafSettings` below.
+	SiteWafSettings SiteSiteWafSettingsOutput `pulumi:"siteWafSettings"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Custom CacheTag name.
@@ -163,6 +175,9 @@ func NewSite(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccessType == nil {
+		return nil, errors.New("invalid value for required argument 'AccessType'")
+	}
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
@@ -204,6 +219,12 @@ type siteState struct {
 	AiMode *string `pulumi:"aiMode"`
 	// HTTP DDoS Intelligent Protection Level. Values:
 	AiTemplate *string `pulumi:"aiTemplate"`
+	// AutomaticFrequencyControl Disposal action.Valid values:
+	AutomaticFrequencyControlActionType *string `pulumi:"automaticFrequencyControlActionType"`
+	// AutomaticFrequencyControl Switch.Valid values:
+	AutomaticFrequencyControlEnable *string `pulumi:"automaticFrequencyControlEnable"`
+	// AutomaticFrequencyControl Protection Level.Valid values:
+	AutomaticFrequencyControlLevel *string `pulumi:"automaticFrequencyControlLevel"`
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode *string `pulumi:"cacheArchitectureMode"`
 	// Site cache hold switch. Value:
@@ -235,6 +256,10 @@ type siteState struct {
 	Ipv6Region *string `pulumi:"ipv6Region"`
 	// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
 	Paused *bool `pulumi:"paused"`
+	// Whether to enable the quality data collection switch.Valid values:
+	PerformanceDataCollectionEnable *string `pulumi:"performanceDataCollectionEnable"`
+	// Real client IP header name.
+	RealClientIpHeaderName *string `pulumi:"realClientIpHeaderName"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Release the search engine crawler configuration. Value:
@@ -245,6 +270,8 @@ type siteState struct {
 	SiteNameExclusive *string `pulumi:"siteNameExclusive"`
 	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
+	// Site WAF Configuration Details. See `siteWafSettings` below.
+	SiteWafSettings *SiteSiteWafSettings `pulumi:"siteWafSettings"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
 	// Custom CacheTag name.
@@ -268,6 +295,12 @@ type SiteState struct {
 	AiMode pulumi.StringPtrInput
 	// HTTP DDoS Intelligent Protection Level. Values:
 	AiTemplate pulumi.StringPtrInput
+	// AutomaticFrequencyControl Disposal action.Valid values:
+	AutomaticFrequencyControlActionType pulumi.StringPtrInput
+	// AutomaticFrequencyControl Switch.Valid values:
+	AutomaticFrequencyControlEnable pulumi.StringPtrInput
+	// AutomaticFrequencyControl Protection Level.Valid values:
+	AutomaticFrequencyControlLevel pulumi.StringPtrInput
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode pulumi.StringPtrInput
 	// Site cache hold switch. Value:
@@ -299,6 +332,10 @@ type SiteState struct {
 	Ipv6Region pulumi.StringPtrInput
 	// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
 	Paused pulumi.BoolPtrInput
+	// Whether to enable the quality data collection switch.Valid values:
+	PerformanceDataCollectionEnable pulumi.StringPtrInput
+	// Real client IP header name.
+	RealClientIpHeaderName pulumi.StringPtrInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
 	// Release the search engine crawler configuration. Value:
@@ -309,6 +346,8 @@ type SiteState struct {
 	SiteNameExclusive pulumi.StringPtrInput
 	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
 	SiteVersion pulumi.IntPtrInput
+	// Site WAF Configuration Details. See `siteWafSettings` below.
+	SiteWafSettings SiteSiteWafSettingsPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
 	// Custom CacheTag name.
@@ -327,7 +366,7 @@ type siteArgs struct {
 	// The DNS setup. Valid values:
 	// - `NS`
 	// - `CNAME`
-	AccessType *string `pulumi:"accessType"`
+	AccessType string `pulumi:"accessType"`
 	// Add visitor geolocation header. Value range:
 	AddClientGeolocationHeader *string `pulumi:"addClientGeolocationHeader"`
 	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
@@ -336,6 +375,12 @@ type siteArgs struct {
 	AiMode *string `pulumi:"aiMode"`
 	// HTTP DDoS Intelligent Protection Level. Values:
 	AiTemplate *string `pulumi:"aiTemplate"`
+	// AutomaticFrequencyControl Disposal action.Valid values:
+	AutomaticFrequencyControlActionType *string `pulumi:"automaticFrequencyControlActionType"`
+	// AutomaticFrequencyControl Switch.Valid values:
+	AutomaticFrequencyControlEnable *string `pulumi:"automaticFrequencyControlEnable"`
+	// AutomaticFrequencyControl Protection Level.Valid values:
+	AutomaticFrequencyControlLevel *string `pulumi:"automaticFrequencyControlLevel"`
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode *string `pulumi:"cacheArchitectureMode"`
 	// Site cache hold switch. Value:
@@ -365,6 +410,10 @@ type siteArgs struct {
 	Ipv6Region *string `pulumi:"ipv6Region"`
 	// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
 	Paused *bool `pulumi:"paused"`
+	// Whether to enable the quality data collection switch.Valid values:
+	PerformanceDataCollectionEnable *string `pulumi:"performanceDataCollectionEnable"`
+	// Real client IP header name.
+	RealClientIpHeaderName *string `pulumi:"realClientIpHeaderName"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Release the search engine crawler configuration. Value:
@@ -375,6 +424,8 @@ type siteArgs struct {
 	SiteNameExclusive *string `pulumi:"siteNameExclusive"`
 	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
+	// Site WAF Configuration Details. See `siteWafSettings` below.
+	SiteWafSettings *SiteSiteWafSettings `pulumi:"siteWafSettings"`
 	// Custom CacheTag name.
 	TagName *string `pulumi:"tagName"`
 	// Resource tags
@@ -388,7 +439,7 @@ type SiteArgs struct {
 	// The DNS setup. Valid values:
 	// - `NS`
 	// - `CNAME`
-	AccessType pulumi.StringPtrInput
+	AccessType pulumi.StringInput
 	// Add visitor geolocation header. Value range:
 	AddClientGeolocationHeader pulumi.StringPtrInput
 	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
@@ -397,6 +448,12 @@ type SiteArgs struct {
 	AiMode pulumi.StringPtrInput
 	// HTTP DDoS Intelligent Protection Level. Values:
 	AiTemplate pulumi.StringPtrInput
+	// AutomaticFrequencyControl Disposal action.Valid values:
+	AutomaticFrequencyControlActionType pulumi.StringPtrInput
+	// AutomaticFrequencyControl Switch.Valid values:
+	AutomaticFrequencyControlEnable pulumi.StringPtrInput
+	// AutomaticFrequencyControl Protection Level.Valid values:
+	AutomaticFrequencyControlLevel pulumi.StringPtrInput
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode pulumi.StringPtrInput
 	// Site cache hold switch. Value:
@@ -426,6 +483,10 @@ type SiteArgs struct {
 	Ipv6Region pulumi.StringPtrInput
 	// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
 	Paused pulumi.BoolPtrInput
+	// Whether to enable the quality data collection switch.Valid values:
+	PerformanceDataCollectionEnable pulumi.StringPtrInput
+	// Real client IP header name.
+	RealClientIpHeaderName pulumi.StringPtrInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
 	// Release the search engine crawler configuration. Value:
@@ -436,6 +497,8 @@ type SiteArgs struct {
 	SiteNameExclusive pulumi.StringPtrInput
 	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
 	SiteVersion pulumi.IntPtrInput
+	// Site WAF Configuration Details. See `siteWafSettings` below.
+	SiteWafSettings SiteSiteWafSettingsPtrInput
 	// Custom CacheTag name.
 	TagName pulumi.StringPtrInput
 	// Resource tags
@@ -534,8 +597,8 @@ func (o SiteOutput) ToSiteOutputWithContext(ctx context.Context) SiteOutput {
 // The DNS setup. Valid values:
 // - `NS`
 // - `CNAME`
-func (o SiteOutput) AccessType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.AccessType }).(pulumi.StringPtrOutput)
+func (o SiteOutput) AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.AccessType }).(pulumi.StringOutput)
 }
 
 // Add visitor geolocation header. Value range:
@@ -556,6 +619,21 @@ func (o SiteOutput) AiMode() pulumi.StringOutput {
 // HTTP DDoS Intelligent Protection Level. Values:
 func (o SiteOutput) AiTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.AiTemplate }).(pulumi.StringOutput)
+}
+
+// AutomaticFrequencyControl Disposal action.Valid values:
+func (o SiteOutput) AutomaticFrequencyControlActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.AutomaticFrequencyControlActionType }).(pulumi.StringOutput)
+}
+
+// AutomaticFrequencyControl Switch.Valid values:
+func (o SiteOutput) AutomaticFrequencyControlEnable() pulumi.StringOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.AutomaticFrequencyControlEnable }).(pulumi.StringOutput)
+}
+
+// AutomaticFrequencyControl Protection Level.Valid values:
+func (o SiteOutput) AutomaticFrequencyControlLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.AutomaticFrequencyControlLevel }).(pulumi.StringOutput)
 }
 
 // Multi-level cache architecture mode. Possible values:
@@ -631,6 +709,16 @@ func (o SiteOutput) Paused() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Site) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enable the quality data collection switch.Valid values:
+func (o SiteOutput) PerformanceDataCollectionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.PerformanceDataCollectionEnable }).(pulumi.StringPtrOutput)
+}
+
+// Real client IP header name.
+func (o SiteOutput) RealClientIpHeaderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.RealClientIpHeaderName }).(pulumi.StringPtrOutput)
+}
+
 // The ID of the resource group
 func (o SiteOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
@@ -654,6 +742,11 @@ func (o SiteOutput) SiteNameExclusive() pulumi.StringPtrOutput {
 // The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
 func (o SiteOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Site) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
+}
+
+// Site WAF Configuration Details. See `siteWafSettings` below.
+func (o SiteOutput) SiteWafSettings() SiteSiteWafSettingsOutput {
+	return o.ApplyT(func(v *Site) SiteSiteWafSettingsOutput { return v.SiteWafSettings }).(SiteSiteWafSettingsOutput)
 }
 
 // The status of the resource

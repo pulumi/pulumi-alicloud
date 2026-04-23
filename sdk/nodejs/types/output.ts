@@ -8639,13 +8639,18 @@ export namespace cen {
 
     export interface TransitRouterVpcAttachmentZoneMapping {
         /**
-         * The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+         * The ID of the vSwitch that you want to add to the VPC connection.
+         *
+         * You can specify at most 10 vSwitches in each call.
+         *
          * - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
          * - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
          */
         vswitchId: string;
         /**
-         * The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
+         * The ID of the zone that supports Enterprise Edition transit routers.
+         * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.
+         * You can specify at most 10 zones in each call.
          */
         zoneId: string;
     }
@@ -15811,21 +15816,6 @@ export namespace cr {
 }
 
 export namespace cs {
-    export interface ApplicationService {
-        id: string;
-        name: string;
-        status: string;
-        version: string;
-    }
-
-    export interface ClusterNode {
-        eip: string;
-        id: string;
-        name: string;
-        privateIp: string;
-        status: string;
-    }
-
     export interface EdgeKubernetesAddon {
         /**
          * The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
@@ -18781,14 +18771,6 @@ export namespace cs {
          * The issuer URL of RRSA OIDC Token.
          */
         rrsaOidcIssuerUrl: string;
-    }
-
-    export interface SwarmNode {
-        eip: string;
-        id: string;
-        name: string;
-        privateIp: string;
-        status: string;
     }
 
 }
@@ -33964,6 +33946,147 @@ export namespace esa {
         slsLogStore?: string;
         slsProject?: string;
         slsRegion?: string;
+    }
+
+    export interface SiteSiteWafSettings {
+        /**
+         * Add BOT Protection Header. See `addBotProtectionHeaders` below.
+         */
+        addBotProtectionHeaders?: outputs.esa.SiteSiteWafSettingsAddBotProtectionHeaders;
+        /**
+         * Add Security Header. See `addSecurityHeaders` below.
+         */
+        addSecurityHeaders?: outputs.esa.SiteSiteWafSettingsAddSecurityHeaders;
+        /**
+         * Anti-theft brush. See `bandwidthAbuseProtection` below.
+         */
+        bandwidthAbuseProtection?: outputs.esa.SiteSiteWafSettingsBandwidthAbuseProtection;
+        /**
+         * Bot Management. See `botManagement` below.
+         */
+        botManagement?: outputs.esa.SiteSiteWafSettingsBotManagement;
+        /**
+         * Client IP Identification. See `clientIpIdentifier` below.
+         */
+        clientIpIdentifier?: outputs.esa.SiteSiteWafSettingsClientIpIdentifier;
+        /**
+         * Security Level. See `securityLevel` below.
+         */
+        securityLevel: outputs.esa.SiteSiteWafSettingsSecurityLevel;
+    }
+
+    export interface SiteSiteWafSettingsAddBotProtectionHeaders {
+        /**
+         * Switch.
+         */
+        enable?: boolean;
+    }
+
+    export interface SiteSiteWafSettingsAddSecurityHeaders {
+        /**
+         * Switch.
+         */
+        enable?: boolean;
+    }
+
+    export interface SiteSiteWafSettingsBandwidthAbuseProtection {
+        /**
+         * Action.Valid values:
+         */
+        action?: string;
+        /**
+         * Rule ID.
+         */
+        id: number;
+        /**
+         * The status of the resource
+         */
+        status?: string;
+    }
+
+    export interface SiteSiteWafSettingsBotManagement {
+        /**
+         * Definitely Bot.
+         */
+        definiteBots?: outputs.esa.SiteSiteWafSettingsBotManagementDefiniteBots;
+        /**
+         * VApply to Static Resource Requests. See `effectOnStatic` below.
+         */
+        effectOnStatic?: outputs.esa.SiteSiteWafSettingsBotManagementEffectOnStatic;
+        /**
+         * JavaScript Challenge. See `jsDetection` below.
+         */
+        jsDetection?: outputs.esa.SiteSiteWafSettingsBotManagementJsDetection;
+        /**
+         * Likely Bot.
+         */
+        likelyBots?: outputs.esa.SiteSiteWafSettingsBotManagementLikelyBots;
+        /**
+         * Verified Bot.
+         */
+        verifiedBots?: outputs.esa.SiteSiteWafSettingsBotManagementVerifiedBots;
+    }
+
+    export interface SiteSiteWafSettingsBotManagementDefiniteBots {
+        /**
+         * Action.Valid values:
+         */
+        action?: string;
+        /**
+         * Rule ID.
+         */
+        id: number;
+    }
+
+    export interface SiteSiteWafSettingsBotManagementEffectOnStatic {
+        /**
+         * Switch.
+         */
+        enable?: boolean;
+    }
+
+    export interface SiteSiteWafSettingsBotManagementJsDetection {
+        /**
+         * Switch.
+         */
+        enable?: boolean;
+    }
+
+    export interface SiteSiteWafSettingsBotManagementLikelyBots {
+        /**
+         * Action.Valid values:
+         */
+        action?: string;
+        /**
+         * Rule ID.
+         */
+        id: number;
+    }
+
+    export interface SiteSiteWafSettingsBotManagementVerifiedBots {
+        /**
+         * Action.Valid values:
+         */
+        action?: string;
+        /**
+         * Rule ID.
+         */
+        id: number;
+    }
+
+    export interface SiteSiteWafSettingsClientIpIdentifier {
+        headers?: string[];
+        /**
+         * Identification Mode.Valid values:
+         */
+        mode?: string;
+    }
+
+    export interface SiteSiteWafSettingsSecurityLevel {
+        /**
+         * Security level value. Valid values:
+         */
+        value: string;
     }
 
     export interface TransportLayerApplicationRule {
@@ -54073,7 +54196,7 @@ export namespace rocketmq {
          */
         msgProcessSpec: string;
         /**
-         * message send receive ratio.  Value range: [0.2, 0.5].
+         * message send receive ratio.  Value range: [0.05, 0.5].
          */
         sendReceiveRatio: number;
         /**
@@ -64617,7 +64740,7 @@ export namespace vpn {
          */
         internetIp: string;
         /**
-         * The role of Tunnel.
+         * The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
          */
         role: string;
         /**

@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.CR
     public static class GetRepos
     {
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+        /// 
         /// This data source provides a list Container Registry repositories on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+
@@ -44,6 +46,8 @@ namespace Pulumi.AliCloud.CR
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+        /// 
         /// This data source provides a list Container Registry repositories on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+
@@ -76,6 +80,8 @@ namespace Pulumi.AliCloud.CR
             => global::Pulumi.Deployment.Instance.Invoke<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+        /// 
         /// This data source provides a list Container Registry repositories on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+

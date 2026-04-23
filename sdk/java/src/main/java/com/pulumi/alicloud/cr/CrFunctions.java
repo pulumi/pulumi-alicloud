@@ -1095,6 +1095,8 @@ public final class CrFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cr/getEndpointAclService:getEndpointAclService", TypeShape.of(GetEndpointAclServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry namespaces on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+
@@ -1140,6 +1142,8 @@ public final class CrFunctions {
         return getNamespaces(GetNamespacesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry namespaces on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+
@@ -1185,6 +1189,8 @@ public final class CrFunctions {
         return getNamespacesPlain(GetNamespacesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry namespaces on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+
@@ -1230,6 +1236,8 @@ public final class CrFunctions {
         return getNamespaces(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry namespaces on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+
@@ -1275,6 +1283,8 @@ public final class CrFunctions {
         return getNamespacesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry namespaces on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+
@@ -1320,6 +1330,8 @@ public final class CrFunctions {
         return Deployment.getInstance().invoke("alicloud:cr/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry namespaces on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+
@@ -1365,6 +1377,8 @@ public final class CrFunctions {
         return Deployment.getInstance().invoke("alicloud:cr/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry namespaces on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+
@@ -1410,6 +1424,8 @@ public final class CrFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cr/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry repositories on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+
@@ -1455,6 +1471,8 @@ public final class CrFunctions {
         return getRepos(GetReposArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry repositories on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+
@@ -1500,6 +1518,8 @@ public final class CrFunctions {
         return getReposPlain(GetReposPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry repositories on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+
@@ -1545,6 +1565,8 @@ public final class CrFunctions {
         return getRepos(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry repositories on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+
@@ -1590,6 +1612,8 @@ public final class CrFunctions {
         return getReposPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry repositories on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+
@@ -1635,6 +1659,8 @@ public final class CrFunctions {
         return Deployment.getInstance().invoke("alicloud:cr/getRepos:getRepos", TypeShape.of(GetReposResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry repositories on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+
@@ -1680,6 +1706,8 @@ public final class CrFunctions {
         return Deployment.getInstance().invoke("alicloud:cr/getRepos:getRepos", TypeShape.of(GetReposResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.
+     * 
      * This data source provides a list Container Registry repositories on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in v1.35.0+

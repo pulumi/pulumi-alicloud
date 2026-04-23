@@ -16,8 +16,6 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
-    'ApplicationService',
-    'ClusterNode',
     'EdgeKubernetesAddon',
     'EdgeKubernetesCertificateAuthority',
     'EdgeKubernetesConnections',
@@ -70,7 +68,6 @@ __all__ = [
     'ServerlessKubernetesOperationPolicy',
     'ServerlessKubernetesOperationPolicyClusterAutoUpgrade',
     'ServerlessKubernetesRrsaMetadata',
-    'SwarmNode',
     'GetClusterCredentialCertificateAuthorityResult',
     'GetClustersClusterResult',
     'GetClustersClusterAutoModeResult',
@@ -117,105 +114,6 @@ __all__ = [
     'GetServerlessKubernetesClustersClusterResult',
     'GetServerlessKubernetesClustersClusterConnectionsResult',
 ]
-
-@pulumi.output_type
-class ApplicationService(dict):
-    def __init__(__self__, *,
-                 id: Optional[_builtins.str] = None,
-                 name: Optional[_builtins.str] = None,
-                 status: Optional[_builtins.str] = None,
-                 version: Optional[_builtins.str] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "status")
-
-    @_builtins.property
-    @pulumi.getter
-    def version(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "version")
-
-
-@pulumi.output_type
-class ClusterNode(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateIp":
-            suggest = "private_ip"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterNode. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterNode.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterNode.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 eip: Optional[_builtins.str] = None,
-                 id: Optional[_builtins.str] = None,
-                 name: Optional[_builtins.str] = None,
-                 private_ip: Optional[_builtins.str] = None,
-                 status: Optional[_builtins.str] = None):
-        if eip is not None:
-            pulumi.set(__self__, "eip", eip)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def eip(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "eip")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "private_ip")
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "status")
-
 
 @pulumi.output_type
 class EdgeKubernetesAddon(dict):
@@ -4722,68 +4620,6 @@ class ServerlessKubernetesRrsaMetadata(dict):
         The issuer URL of RRSA OIDC Token.
         """
         return pulumi.get(self, "rrsa_oidc_issuer_url")
-
-
-@pulumi.output_type
-class SwarmNode(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateIp":
-            suggest = "private_ip"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SwarmNode. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SwarmNode.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SwarmNode.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 eip: Optional[_builtins.str] = None,
-                 id: Optional[_builtins.str] = None,
-                 name: Optional[_builtins.str] = None,
-                 private_ip: Optional[_builtins.str] = None,
-                 status: Optional[_builtins.str] = None):
-        if eip is not None:
-            pulumi.set(__self__, "eip", eip)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def eip(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "eip")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "private_ip")
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

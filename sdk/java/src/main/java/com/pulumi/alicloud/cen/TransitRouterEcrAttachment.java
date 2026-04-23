@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN Transit Router Ecr Attachment resource.
+ * Provides a Cloud Enterprise Network (CEN) Transit Router Ecr Attachment resource.
  * 
- * For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
+ * For information about Cloud Enterprise Network (CEN) Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
  * 
  * &gt; **NOTE:** Available since v1.235.0.
  * 
@@ -103,10 +103,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CEN Transit Router Ecr Attachment can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Transit Router Ecr Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example &lt;id&gt;
+ * $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example &lt;transit_router_attachment_id&gt;
  * ```
  * 
  */
@@ -127,14 +127,14 @@ public class TransitRouterEcrAttachment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.cenId);
     }
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The creation time of the resource.
      * 
      */
     public Output<String> createTime() {
@@ -169,14 +169,14 @@ public class TransitRouterEcrAttachment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.ecrOwnerId);
     }
     /**
-     * The status of the resource
+     * The status of the resource.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {

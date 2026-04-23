@@ -1160,7 +1160,7 @@ type RocketMQInstanceProductInfo struct {
 	MessageRetentionTime *int `pulumi:"messageRetentionTime"`
 	// Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
 	MsgProcessSpec string `pulumi:"msgProcessSpec"`
-	// message send receive ratio.  Value range: [0.2, 0.5].
+	// message send receive ratio.  Value range: [0.05, 0.5].
 	SendReceiveRatio *float64 `pulumi:"sendReceiveRatio"`
 	// Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
 	StorageEncryption *bool `pulumi:"storageEncryption"`
@@ -1190,7 +1190,7 @@ type RocketMQInstanceProductInfoArgs struct {
 	MessageRetentionTime pulumi.IntPtrInput `pulumi:"messageRetentionTime"`
 	// Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
 	MsgProcessSpec pulumi.StringInput `pulumi:"msgProcessSpec"`
-	// message send receive ratio.  Value range: [0.2, 0.5].
+	// message send receive ratio.  Value range: [0.05, 0.5].
 	SendReceiveRatio pulumi.Float64PtrInput `pulumi:"sendReceiveRatio"`
 	// Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
 	StorageEncryption pulumi.BoolPtrInput `pulumi:"storageEncryption"`
@@ -1294,7 +1294,7 @@ func (o RocketMQInstanceProductInfoOutput) MsgProcessSpec() pulumi.StringOutput 
 	return o.ApplyT(func(v RocketMQInstanceProductInfo) string { return v.MsgProcessSpec }).(pulumi.StringOutput)
 }
 
-// message send receive ratio.  Value range: [0.2, 0.5].
+// message send receive ratio.  Value range: [0.05, 0.5].
 func (o RocketMQInstanceProductInfoOutput) SendReceiveRatio() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RocketMQInstanceProductInfo) *float64 { return v.SendReceiveRatio }).(pulumi.Float64PtrOutput)
 }
@@ -1373,7 +1373,7 @@ func (o RocketMQInstanceProductInfoPtrOutput) MsgProcessSpec() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// message send receive ratio.  Value range: [0.2, 0.5].
+// message send receive ratio.  Value range: [0.05, 0.5].
 func (o RocketMQInstanceProductInfoPtrOutput) SendReceiveRatio() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceProductInfo) *float64 {
 		if v == nil {
