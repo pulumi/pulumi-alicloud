@@ -39,6 +39,8 @@ class InstanceArgs:
                  client_cert_revocation_list: Optional[pulumi.Input[_builtins.str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
                  cold_data_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 collation: Optional[pulumi.Input[_builtins.str]] = None,
+                 collect_stat_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_string_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -51,6 +53,7 @@ class InstanceArgs:
                  effective_time: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  force: Optional[pulumi.Input[_builtins.str]] = None,
+                 force_encryption: Optional[pulumi.Input[_builtins.int]] = None,
                  force_restart: Optional[pulumi.Input[_builtins.bool]] = None,
                  fresh_white_list_readins: Optional[pulumi.Input[_builtins.str]] = None,
                  ha_config: Optional[pulumi.Input[_builtins.str]] = None,
@@ -84,7 +87,9 @@ class InstanceArgs:
                  sql_collector_config_value: Optional[pulumi.Input[_builtins.int]] = None,
                  sql_collector_status: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl_action: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssl_certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssl_password: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_auto_scale: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  storage_upper_bound: Optional[pulumi.Input[_builtins.int]] = None,
@@ -92,9 +97,14 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
                  tcp_connection_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_certificate: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_db_name: Optional[pulumi.Input[_builtins.str]] = None,
                  tde_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  tde_status: Optional[pulumi.Input[_builtins.str]] = None,
                  template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[_builtins.bool]] = None,
                  upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -181,6 +191,25 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] cold_data_enabled: High performance cloud disk data archiving function switch.Example value:
                - true: Enable high-performance cloud disk data archiving function.
                - false: Disable high-performance cloud disk data archiving function.
+        :param pulumi.Input[_builtins.str] collation: The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+               - `Chinese_PRC_CI_AS`
+               - `Chinese_PRC_CS_AS`
+               - `Chinese_PRC_BIN`
+               - `Latin1_General_CI_AS`
+               - `Latin1_General_CS_AS`
+               - `SQL_Latin1_General_CP1_CI_AS`
+               - `SQL_Latin1_General_CP1_CS_AS`
+               - `Japanese_CI_AS`
+               - `Japanese_CS_AS`
+               - `Chinese_Taiwan_Stroke_CI_AS`
+               - `Chinese_Taiwan_Stroke_CS_AS`
+               
+               > **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+        :param pulumi.Input[_builtins.str] collect_stat_mode: Specify the point in time at which the system collects the statistics of the instance.
+               - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+               - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+               
+               > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[_builtins.str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
@@ -225,6 +254,9 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] force: Specifies whether to enable forcible switching. Valid values:
                - Yes
                - No
+        :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+               - 1: enables the feature.
+               - 0: disables the feature.
         :param pulumi.Input[_builtins.bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[_builtins.str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
                * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
@@ -295,7 +327,11 @@ class InstanceArgs:
                See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
                
                > **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
+        :param pulumi.Input[_builtins.str] ssl_certificate: The custom certificate.
+               - Public endpoint: oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+               - Internal endpoint: oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
         :param pulumi.Input[_builtins.str] ssl_connection_string: The internal or public endpoint for which the server certificate needs to be created or updated.
+        :param pulumi.Input[_builtins.str] ssl_password: The password of the certificate.
         :param pulumi.Input[_builtins.str] storage_auto_scale: Automatic storage space expansion switch. Valid values:
                - Enable
                - Disable
@@ -328,11 +364,20 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] tcp_connection_type: The availability check method of the instance. Valid values:
                - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
                - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        :param pulumi.Input[_builtins.str] tde_certificate: The file that contains the certificate.<a class="workbench-show-detail toggle-down">.
+        :param pulumi.Input[_builtins.str] tde_db_name: The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+               
+               > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[_builtins.str] tde_encryption_key: The ID of the custom key.
+        :param pulumi.Input[_builtins.str] tde_password: The password of the certificate.
+        :param pulumi.Input[_builtins.str] tde_private_key: The file that contains the private key of the certificate.<a class="workbench-show-detail toggle-down">.
         :param pulumi.Input[_builtins.str] tde_status: The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
                
                > **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] template_id_lists: Whitelist Template ID List.
+        :param pulumi.Input[_builtins.str] time_zone: The time zone of the instance. By default, the system does not modify the time zone.
+               
+               > **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
         :param pulumi.Input[_builtins.bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -395,6 +440,10 @@ class InstanceArgs:
             pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
         if cold_data_enabled is not None:
             pulumi.set(__self__, "cold_data_enabled", cold_data_enabled)
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
+        if collect_stat_mode is not None:
+            pulumi.set(__self__, "collect_stat_mode", collect_stat_mode)
         if connection_string_prefix is not None:
             pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
         if db_instance_ip_array_attribute is not None:
@@ -419,6 +468,8 @@ class InstanceArgs:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if force_encryption is not None:
+            pulumi.set(__self__, "force_encryption", force_encryption)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
         if fresh_white_list_readins is not None:
@@ -488,8 +539,12 @@ class InstanceArgs:
             pulumi.set(__self__, "sql_collector_status", sql_collector_status)
         if ssl_action is not None:
             pulumi.set(__self__, "ssl_action", ssl_action)
+        if ssl_certificate is not None:
+            pulumi.set(__self__, "ssl_certificate", ssl_certificate)
         if ssl_connection_string is not None:
             pulumi.set(__self__, "ssl_connection_string", ssl_connection_string)
+        if ssl_password is not None:
+            pulumi.set(__self__, "ssl_password", ssl_password)
         if storage_auto_scale is not None:
             pulumi.set(__self__, "storage_auto_scale", storage_auto_scale)
         if storage_threshold is not None:
@@ -504,12 +559,22 @@ class InstanceArgs:
             pulumi.set(__self__, "target_minor_version", target_minor_version)
         if tcp_connection_type is not None:
             pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
+        if tde_certificate is not None:
+            pulumi.set(__self__, "tde_certificate", tde_certificate)
+        if tde_db_name is not None:
+            pulumi.set(__self__, "tde_db_name", tde_db_name)
         if tde_encryption_key is not None:
             pulumi.set(__self__, "tde_encryption_key", tde_encryption_key)
+        if tde_password is not None:
+            pulumi.set(__self__, "tde_password", tde_password)
+        if tde_private_key is not None:
+            pulumi.set(__self__, "tde_private_key", tde_private_key)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
         if template_id_lists is not None:
             pulumi.set(__self__, "template_id_lists", template_id_lists)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
         if upgrade_db_instance_kernel_version is not None:
             warnings.warn("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""", DeprecationWarning)
             pulumi.log.warn("""upgrade_db_instance_kernel_version is deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
@@ -804,6 +869,47 @@ class InstanceArgs:
         pulumi.set(self, "cold_data_enabled", value)
 
     @_builtins.property
+    @pulumi.getter
+    def collation(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+        - `Chinese_PRC_CI_AS`
+        - `Chinese_PRC_CS_AS`
+        - `Chinese_PRC_BIN`
+        - `Latin1_General_CI_AS`
+        - `Latin1_General_CS_AS`
+        - `SQL_Latin1_General_CP1_CI_AS`
+        - `SQL_Latin1_General_CP1_CS_AS`
+        - `Japanese_CI_AS`
+        - `Japanese_CS_AS`
+        - `Chinese_Taiwan_Stroke_CI_AS`
+        - `Chinese_Taiwan_Stroke_CS_AS`
+
+        > **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+        """
+        return pulumi.get(self, "collation")
+
+    @collation.setter
+    def collation(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "collation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="collectStatMode")
+    def collect_stat_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specify the point in time at which the system collects the statistics of the instance.
+        - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+        - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+
+        > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+        """
+        return pulumi.get(self, "collect_stat_mode")
+
+    @collect_stat_mode.setter
+    def collect_stat_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "collect_stat_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="connectionStringPrefix")
     def connection_string_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -978,6 +1084,20 @@ class InstanceArgs:
     @force.setter
     def force(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "force", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forceEncryption")
+    def force_encryption(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        - 1: enables the feature.
+        - 0: disables the feature.
+        """
+        return pulumi.get(self, "force_encryption")
+
+    @force_encryption.setter
+    def force_encryption(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "force_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="forceRestart")
@@ -1414,6 +1534,20 @@ class InstanceArgs:
         pulumi.set(self, "ssl_action", value)
 
     @_builtins.property
+    @pulumi.getter(name="sslCertificate")
+    def ssl_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The custom certificate.
+        - Public endpoint: oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+        - Internal endpoint: oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+        """
+        return pulumi.get(self, "ssl_certificate")
+
+    @ssl_certificate.setter
+    def ssl_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ssl_certificate", value)
+
+    @_builtins.property
     @pulumi.getter(name="sslConnectionString")
     def ssl_connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1424,6 +1558,18 @@ class InstanceArgs:
     @ssl_connection_string.setter
     def ssl_connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ssl_connection_string", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sslPassword")
+    def ssl_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The password of the certificate.
+        """
+        return pulumi.get(self, "ssl_password")
+
+    @ssl_password.setter
+    def ssl_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ssl_password", value)
 
     @_builtins.property
     @pulumi.getter(name="storageAutoScale")
@@ -1535,6 +1681,32 @@ class InstanceArgs:
         pulumi.set(self, "tcp_connection_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="tdeCertificate")
+    def tde_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The file that contains the certificate.<a class="workbench-show-detail toggle-down">.
+        """
+        return pulumi.get(self, "tde_certificate")
+
+    @tde_certificate.setter
+    def tde_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tde_certificate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tdeDbName")
+    def tde_db_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+
+        > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+        """
+        return pulumi.get(self, "tde_db_name")
+
+    @tde_db_name.setter
+    def tde_db_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tde_db_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="tdeEncryptionKey")
     def tde_encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1545,6 +1717,30 @@ class InstanceArgs:
     @tde_encryption_key.setter
     def tde_encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "tde_encryption_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tdePassword")
+    def tde_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The password of the certificate.
+        """
+        return pulumi.get(self, "tde_password")
+
+    @tde_password.setter
+    def tde_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tde_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tdePrivateKey")
+    def tde_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The file that contains the private key of the certificate.<a class="workbench-show-detail toggle-down">.
+        """
+        return pulumi.get(self, "tde_private_key")
+
+    @tde_private_key.setter
+    def tde_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tde_private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="tdeStatus")
@@ -1571,6 +1767,20 @@ class InstanceArgs:
     @template_id_lists.setter
     def template_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "template_id_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The time zone of the instance. By default, the system does not modify the time zone.
+
+        > **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "time_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeDbInstanceKernelVersion")
@@ -1708,6 +1918,8 @@ class _InstanceState:
                  client_cert_revocation_list: Optional[pulumi.Input[_builtins.str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
                  cold_data_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 collation: Optional[pulumi.Input[_builtins.str]] = None,
+                 collect_stat_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_string: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_string_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1725,6 +1937,7 @@ class _InstanceState:
                  engine: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_version: Optional[pulumi.Input[_builtins.str]] = None,
                  force: Optional[pulumi.Input[_builtins.str]] = None,
+                 force_encryption: Optional[pulumi.Input[_builtins.int]] = None,
                  force_restart: Optional[pulumi.Input[_builtins.bool]] = None,
                  fresh_white_list_readins: Optional[pulumi.Input[_builtins.str]] = None,
                  ha_config: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1760,7 +1973,9 @@ class _InstanceState:
                  sql_collector_config_value: Optional[pulumi.Input[_builtins.int]] = None,
                  sql_collector_status: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl_action: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssl_certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssl_password: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl_status: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_auto_scale: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1770,10 +1985,15 @@ class _InstanceState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
                  tcp_connection_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_certificate: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_db_name: Optional[pulumi.Input[_builtins.str]] = None,
                  tde_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  tde_status: Optional[pulumi.Input[_builtins.str]] = None,
                  template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  templates: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[_builtins.bool]] = None,
                  upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1832,6 +2052,25 @@ class _InstanceState:
         :param pulumi.Input[_builtins.bool] cold_data_enabled: High performance cloud disk data archiving function switch.Example value:
                - true: Enable high-performance cloud disk data archiving function.
                - false: Disable high-performance cloud disk data archiving function.
+        :param pulumi.Input[_builtins.str] collation: The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+               - `Chinese_PRC_CI_AS`
+               - `Chinese_PRC_CS_AS`
+               - `Chinese_PRC_BIN`
+               - `Latin1_General_CI_AS`
+               - `Latin1_General_CS_AS`
+               - `SQL_Latin1_General_CP1_CI_AS`
+               - `SQL_Latin1_General_CP1_CS_AS`
+               - `Japanese_CI_AS`
+               - `Japanese_CS_AS`
+               - `Chinese_Taiwan_Stroke_CI_AS`
+               - `Chinese_Taiwan_Stroke_CS_AS`
+               
+               > **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+        :param pulumi.Input[_builtins.str] collect_stat_mode: Specify the point in time at which the system collects the statistics of the instance.
+               - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+               - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+               
+               > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         :param pulumi.Input[_builtins.str] connection_string: RDS database connection string.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
@@ -1892,6 +2131,9 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] force: Specifies whether to enable forcible switching. Valid values:
                - Yes
                - No
+        :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+               - 1: enables the feature.
+               - 0: disables the feature.
         :param pulumi.Input[_builtins.bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[_builtins.str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
                * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
@@ -1977,7 +2219,11 @@ class _InstanceState:
                See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
                
                > **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
+        :param pulumi.Input[_builtins.str] ssl_certificate: The custom certificate.
+               - Public endpoint: oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+               - Internal endpoint: oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
         :param pulumi.Input[_builtins.str] ssl_connection_string: The internal or public endpoint for which the server certificate needs to be created or updated.
+        :param pulumi.Input[_builtins.str] ssl_password: The password of the certificate.
         :param pulumi.Input[_builtins.str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
         :param pulumi.Input[_builtins.str] status: (Available since v1.204.1) The status of db instance.
         :param pulumi.Input[_builtins.str] storage_auto_scale: Automatic storage space expansion switch. Valid values:
@@ -2012,12 +2258,21 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] tcp_connection_type: The availability check method of the instance. Valid values:
                - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
                - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        :param pulumi.Input[_builtins.str] tde_certificate: The file that contains the certificate.<a class="workbench-show-detail toggle-down">.
+        :param pulumi.Input[_builtins.str] tde_db_name: The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+               
+               > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[_builtins.str] tde_encryption_key: The ID of the custom key.
+        :param pulumi.Input[_builtins.str] tde_password: The password of the certificate.
+        :param pulumi.Input[_builtins.str] tde_private_key: The file that contains the private key of the certificate.<a class="workbench-show-detail toggle-down">.
         :param pulumi.Input[_builtins.str] tde_status: The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
                
                > **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] template_id_lists: Whitelist Template ID List.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] templates: (Computed, Available since v1.254.0) Whitelist Template Details.
+        :param pulumi.Input[_builtins.str] time_zone: The time zone of the instance. By default, the system does not modify the time zone.
+               
+               > **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
         :param pulumi.Input[_builtins.bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -2076,6 +2331,10 @@ class _InstanceState:
             pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
         if cold_data_enabled is not None:
             pulumi.set(__self__, "cold_data_enabled", cold_data_enabled)
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
+        if collect_stat_mode is not None:
+            pulumi.set(__self__, "collect_stat_mode", collect_stat_mode)
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
         if connection_string_prefix is not None:
@@ -2110,6 +2369,8 @@ class _InstanceState:
             pulumi.set(__self__, "engine_version", engine_version)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if force_encryption is not None:
+            pulumi.set(__self__, "force_encryption", force_encryption)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
         if fresh_white_list_readins is not None:
@@ -2183,8 +2444,12 @@ class _InstanceState:
             pulumi.set(__self__, "sql_collector_status", sql_collector_status)
         if ssl_action is not None:
             pulumi.set(__self__, "ssl_action", ssl_action)
+        if ssl_certificate is not None:
+            pulumi.set(__self__, "ssl_certificate", ssl_certificate)
         if ssl_connection_string is not None:
             pulumi.set(__self__, "ssl_connection_string", ssl_connection_string)
+        if ssl_password is not None:
+            pulumi.set(__self__, "ssl_password", ssl_password)
         if ssl_status is not None:
             pulumi.set(__self__, "ssl_status", ssl_status)
         if status is not None:
@@ -2203,14 +2468,24 @@ class _InstanceState:
             pulumi.set(__self__, "target_minor_version", target_minor_version)
         if tcp_connection_type is not None:
             pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
+        if tde_certificate is not None:
+            pulumi.set(__self__, "tde_certificate", tde_certificate)
+        if tde_db_name is not None:
+            pulumi.set(__self__, "tde_db_name", tde_db_name)
         if tde_encryption_key is not None:
             pulumi.set(__self__, "tde_encryption_key", tde_encryption_key)
+        if tde_password is not None:
+            pulumi.set(__self__, "tde_password", tde_password)
+        if tde_private_key is not None:
+            pulumi.set(__self__, "tde_private_key", tde_private_key)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
         if template_id_lists is not None:
             pulumi.set(__self__, "template_id_lists", template_id_lists)
         if templates is not None:
             pulumi.set(__self__, "templates", templates)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
         if upgrade_db_instance_kernel_version is not None:
             warnings.warn("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""", DeprecationWarning)
             pulumi.log.warn("""upgrade_db_instance_kernel_version is deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
@@ -2431,6 +2706,47 @@ class _InstanceState:
     @cold_data_enabled.setter
     def cold_data_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "cold_data_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def collation(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+        - `Chinese_PRC_CI_AS`
+        - `Chinese_PRC_CS_AS`
+        - `Chinese_PRC_BIN`
+        - `Latin1_General_CI_AS`
+        - `Latin1_General_CS_AS`
+        - `SQL_Latin1_General_CP1_CI_AS`
+        - `SQL_Latin1_General_CP1_CS_AS`
+        - `Japanese_CI_AS`
+        - `Japanese_CS_AS`
+        - `Chinese_Taiwan_Stroke_CI_AS`
+        - `Chinese_Taiwan_Stroke_CS_AS`
+
+        > **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+        """
+        return pulumi.get(self, "collation")
+
+    @collation.setter
+    def collation(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "collation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="collectStatMode")
+    def collect_stat_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specify the point in time at which the system collects the statistics of the instance.
+        - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+        - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+
+        > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+        """
+        return pulumi.get(self, "collect_stat_mode")
+
+    @collect_stat_mode.setter
+    def collect_stat_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "collect_stat_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
@@ -2678,6 +2994,20 @@ class _InstanceState:
     @force.setter
     def force(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "force", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forceEncryption")
+    def force_encryption(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        - 1: enables the feature.
+        - 0: disables the feature.
+        """
+        return pulumi.get(self, "force_encryption")
+
+    @force_encryption.setter
+    def force_encryption(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "force_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="forceRestart")
@@ -3151,6 +3481,20 @@ class _InstanceState:
         pulumi.set(self, "ssl_action", value)
 
     @_builtins.property
+    @pulumi.getter(name="sslCertificate")
+    def ssl_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The custom certificate.
+        - Public endpoint: oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+        - Internal endpoint: oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+        """
+        return pulumi.get(self, "ssl_certificate")
+
+    @ssl_certificate.setter
+    def ssl_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ssl_certificate", value)
+
+    @_builtins.property
     @pulumi.getter(name="sslConnectionString")
     def ssl_connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -3161,6 +3505,18 @@ class _InstanceState:
     @ssl_connection_string.setter
     def ssl_connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ssl_connection_string", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sslPassword")
+    def ssl_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The password of the certificate.
+        """
+        return pulumi.get(self, "ssl_password")
+
+    @ssl_password.setter
+    def ssl_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ssl_password", value)
 
     @_builtins.property
     @pulumi.getter(name="sslStatus")
@@ -3296,6 +3652,32 @@ class _InstanceState:
         pulumi.set(self, "tcp_connection_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="tdeCertificate")
+    def tde_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The file that contains the certificate.<a class="workbench-show-detail toggle-down">.
+        """
+        return pulumi.get(self, "tde_certificate")
+
+    @tde_certificate.setter
+    def tde_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tde_certificate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tdeDbName")
+    def tde_db_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+
+        > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+        """
+        return pulumi.get(self, "tde_db_name")
+
+    @tde_db_name.setter
+    def tde_db_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tde_db_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="tdeEncryptionKey")
     def tde_encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -3306,6 +3688,30 @@ class _InstanceState:
     @tde_encryption_key.setter
     def tde_encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "tde_encryption_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tdePassword")
+    def tde_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The password of the certificate.
+        """
+        return pulumi.get(self, "tde_password")
+
+    @tde_password.setter
+    def tde_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tde_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tdePrivateKey")
+    def tde_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The file that contains the private key of the certificate.<a class="workbench-show-detail toggle-down">.
+        """
+        return pulumi.get(self, "tde_private_key")
+
+    @tde_private_key.setter
+    def tde_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tde_private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="tdeStatus")
@@ -3344,6 +3750,20 @@ class _InstanceState:
     @templates.setter
     def templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "templates", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The time zone of the instance. By default, the system does not modify the time zone.
+
+        > **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "time_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeDbInstanceKernelVersion")
@@ -3484,6 +3904,8 @@ class Instance(pulumi.CustomResource):
                  client_cert_revocation_list: Optional[pulumi.Input[_builtins.str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
                  cold_data_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 collation: Optional[pulumi.Input[_builtins.str]] = None,
+                 collect_stat_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_string_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3498,6 +3920,7 @@ class Instance(pulumi.CustomResource):
                  engine: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_version: Optional[pulumi.Input[_builtins.str]] = None,
                  force: Optional[pulumi.Input[_builtins.str]] = None,
+                 force_encryption: Optional[pulumi.Input[_builtins.int]] = None,
                  force_restart: Optional[pulumi.Input[_builtins.bool]] = None,
                  fresh_white_list_readins: Optional[pulumi.Input[_builtins.str]] = None,
                  ha_config: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3533,7 +3956,9 @@ class Instance(pulumi.CustomResource):
                  sql_collector_config_value: Optional[pulumi.Input[_builtins.int]] = None,
                  sql_collector_status: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl_action: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssl_certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssl_password: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_auto_scale: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  storage_upper_bound: Optional[pulumi.Input[_builtins.int]] = None,
@@ -3541,9 +3966,14 @@ class Instance(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
                  tcp_connection_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_certificate: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_db_name: Optional[pulumi.Input[_builtins.str]] = None,
                  tde_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  tde_status: Optional[pulumi.Input[_builtins.str]] = None,
                  template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[_builtins.bool]] = None,
                  upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -4024,6 +4454,25 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] cold_data_enabled: High performance cloud disk data archiving function switch.Example value:
                - true: Enable high-performance cloud disk data archiving function.
                - false: Disable high-performance cloud disk data archiving function.
+        :param pulumi.Input[_builtins.str] collation: The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+               - `Chinese_PRC_CI_AS`
+               - `Chinese_PRC_CS_AS`
+               - `Chinese_PRC_BIN`
+               - `Latin1_General_CI_AS`
+               - `Latin1_General_CS_AS`
+               - `SQL_Latin1_General_CP1_CI_AS`
+               - `SQL_Latin1_General_CP1_CS_AS`
+               - `Japanese_CI_AS`
+               - `Japanese_CS_AS`
+               - `Chinese_Taiwan_Stroke_CI_AS`
+               - `Chinese_Taiwan_Stroke_CS_AS`
+               
+               > **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+        :param pulumi.Input[_builtins.str] collect_stat_mode: Specify the point in time at which the system collects the statistics of the instance.
+               - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+               - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+               
+               > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[_builtins.str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
@@ -4081,6 +4530,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] force: Specifies whether to enable forcible switching. Valid values:
                - Yes
                - No
+        :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+               - 1: enables the feature.
+               - 0: disables the feature.
         :param pulumi.Input[_builtins.bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[_builtins.str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
                * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
@@ -4166,7 +4618,11 @@ class Instance(pulumi.CustomResource):
                See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
                
                > **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
+        :param pulumi.Input[_builtins.str] ssl_certificate: The custom certificate.
+               - Public endpoint: oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+               - Internal endpoint: oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
         :param pulumi.Input[_builtins.str] ssl_connection_string: The internal or public endpoint for which the server certificate needs to be created or updated.
+        :param pulumi.Input[_builtins.str] ssl_password: The password of the certificate.
         :param pulumi.Input[_builtins.str] storage_auto_scale: Automatic storage space expansion switch. Valid values:
                - Enable
                - Disable
@@ -4199,11 +4655,20 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] tcp_connection_type: The availability check method of the instance. Valid values:
                - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
                - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        :param pulumi.Input[_builtins.str] tde_certificate: The file that contains the certificate.<a class="workbench-show-detail toggle-down">.
+        :param pulumi.Input[_builtins.str] tde_db_name: The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+               
+               > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[_builtins.str] tde_encryption_key: The ID of the custom key.
+        :param pulumi.Input[_builtins.str] tde_password: The password of the certificate.
+        :param pulumi.Input[_builtins.str] tde_private_key: The file that contains the private key of the certificate.<a class="workbench-show-detail toggle-down">.
         :param pulumi.Input[_builtins.str] tde_status: The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
                
                > **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] template_id_lists: Whitelist Template ID List.
+        :param pulumi.Input[_builtins.str] time_zone: The time zone of the instance. By default, the system does not modify the time zone.
+               
+               > **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
         :param pulumi.Input[_builtins.bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -4691,6 +5156,8 @@ class Instance(pulumi.CustomResource):
                  client_cert_revocation_list: Optional[pulumi.Input[_builtins.str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
                  cold_data_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 collation: Optional[pulumi.Input[_builtins.str]] = None,
+                 collect_stat_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_string_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -4705,6 +5172,7 @@ class Instance(pulumi.CustomResource):
                  engine: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_version: Optional[pulumi.Input[_builtins.str]] = None,
                  force: Optional[pulumi.Input[_builtins.str]] = None,
+                 force_encryption: Optional[pulumi.Input[_builtins.int]] = None,
                  force_restart: Optional[pulumi.Input[_builtins.bool]] = None,
                  fresh_white_list_readins: Optional[pulumi.Input[_builtins.str]] = None,
                  ha_config: Optional[pulumi.Input[_builtins.str]] = None,
@@ -4740,7 +5208,9 @@ class Instance(pulumi.CustomResource):
                  sql_collector_config_value: Optional[pulumi.Input[_builtins.int]] = None,
                  sql_collector_status: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl_action: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssl_certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssl_password: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_auto_scale: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  storage_upper_bound: Optional[pulumi.Input[_builtins.int]] = None,
@@ -4748,9 +5218,14 @@ class Instance(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
                  tcp_connection_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_certificate: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_db_name: Optional[pulumi.Input[_builtins.str]] = None,
                  tde_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 tde_private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  tde_status: Optional[pulumi.Input[_builtins.str]] = None,
                  template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[_builtins.bool]] = None,
                  upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -4782,6 +5257,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
             __props__.__dict__["client_crl_enabled"] = client_crl_enabled
             __props__.__dict__["cold_data_enabled"] = cold_data_enabled
+            __props__.__dict__["collation"] = collation
+            __props__.__dict__["collect_stat_mode"] = collect_stat_mode
             __props__.__dict__["connection_string_prefix"] = connection_string_prefix
             __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
             __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
@@ -4800,6 +5277,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
             __props__.__dict__["force"] = force
+            __props__.__dict__["force_encryption"] = force_encryption
             __props__.__dict__["force_restart"] = force_restart
             __props__.__dict__["fresh_white_list_readins"] = fresh_white_list_readins
             __props__.__dict__["ha_config"] = ha_config
@@ -4839,7 +5317,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["sql_collector_config_value"] = sql_collector_config_value
             __props__.__dict__["sql_collector_status"] = sql_collector_status
             __props__.__dict__["ssl_action"] = ssl_action
+            __props__.__dict__["ssl_certificate"] = None if ssl_certificate is None else pulumi.Output.secret(ssl_certificate)
             __props__.__dict__["ssl_connection_string"] = ssl_connection_string
+            __props__.__dict__["ssl_password"] = None if ssl_password is None else pulumi.Output.secret(ssl_password)
             __props__.__dict__["storage_auto_scale"] = storage_auto_scale
             __props__.__dict__["storage_threshold"] = storage_threshold
             __props__.__dict__["storage_upper_bound"] = storage_upper_bound
@@ -4847,9 +5327,14 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["target_minor_version"] = target_minor_version
             __props__.__dict__["tcp_connection_type"] = tcp_connection_type
+            __props__.__dict__["tde_certificate"] = None if tde_certificate is None else pulumi.Output.secret(tde_certificate)
+            __props__.__dict__["tde_db_name"] = tde_db_name
             __props__.__dict__["tde_encryption_key"] = tde_encryption_key
+            __props__.__dict__["tde_password"] = None if tde_password is None else pulumi.Output.secret(tde_password)
+            __props__.__dict__["tde_private_key"] = None if tde_private_key is None else pulumi.Output.secret(tde_private_key)
             __props__.__dict__["tde_status"] = tde_status
             __props__.__dict__["template_id_lists"] = template_id_lists
+            __props__.__dict__["time_zone"] = time_zone
             __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
             __props__.__dict__["upgrade_time"] = upgrade_time
             __props__.__dict__["vpc_id"] = vpc_id
@@ -4864,7 +5349,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["ssl_status"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["templates"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientCaCert", "serverCert"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientCaCert", "serverCert", "sslCertificate", "sslPassword", "tdeCertificate", "tdePassword", "tdePrivateKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'alicloud:rds/instance:Instance',
@@ -4890,6 +5375,8 @@ class Instance(pulumi.CustomResource):
             client_cert_revocation_list: Optional[pulumi.Input[_builtins.str]] = None,
             client_crl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
             cold_data_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            collation: Optional[pulumi.Input[_builtins.str]] = None,
+            collect_stat_mode: Optional[pulumi.Input[_builtins.str]] = None,
             connection_string: Optional[pulumi.Input[_builtins.str]] = None,
             connection_string_prefix: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -4907,6 +5394,7 @@ class Instance(pulumi.CustomResource):
             engine: Optional[pulumi.Input[_builtins.str]] = None,
             engine_version: Optional[pulumi.Input[_builtins.str]] = None,
             force: Optional[pulumi.Input[_builtins.str]] = None,
+            force_encryption: Optional[pulumi.Input[_builtins.int]] = None,
             force_restart: Optional[pulumi.Input[_builtins.bool]] = None,
             fresh_white_list_readins: Optional[pulumi.Input[_builtins.str]] = None,
             ha_config: Optional[pulumi.Input[_builtins.str]] = None,
@@ -4942,7 +5430,9 @@ class Instance(pulumi.CustomResource):
             sql_collector_config_value: Optional[pulumi.Input[_builtins.int]] = None,
             sql_collector_status: Optional[pulumi.Input[_builtins.str]] = None,
             ssl_action: Optional[pulumi.Input[_builtins.str]] = None,
+            ssl_certificate: Optional[pulumi.Input[_builtins.str]] = None,
             ssl_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
+            ssl_password: Optional[pulumi.Input[_builtins.str]] = None,
             ssl_status: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             storage_auto_scale: Optional[pulumi.Input[_builtins.str]] = None,
@@ -4952,10 +5442,15 @@ class Instance(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             target_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
             tcp_connection_type: Optional[pulumi.Input[_builtins.str]] = None,
+            tde_certificate: Optional[pulumi.Input[_builtins.str]] = None,
+            tde_db_name: Optional[pulumi.Input[_builtins.str]] = None,
             tde_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
+            tde_password: Optional[pulumi.Input[_builtins.str]] = None,
+            tde_private_key: Optional[pulumi.Input[_builtins.str]] = None,
             tde_status: Optional[pulumi.Input[_builtins.str]] = None,
             template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
             templates: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            time_zone: Optional[pulumi.Input[_builtins.str]] = None,
             upgrade_db_instance_kernel_version: Optional[pulumi.Input[_builtins.bool]] = None,
             upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
             vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -5018,6 +5513,25 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] cold_data_enabled: High performance cloud disk data archiving function switch.Example value:
                - true: Enable high-performance cloud disk data archiving function.
                - false: Disable high-performance cloud disk data archiving function.
+        :param pulumi.Input[_builtins.str] collation: The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+               - `Chinese_PRC_CI_AS`
+               - `Chinese_PRC_CS_AS`
+               - `Chinese_PRC_BIN`
+               - `Latin1_General_CI_AS`
+               - `Latin1_General_CS_AS`
+               - `SQL_Latin1_General_CP1_CI_AS`
+               - `SQL_Latin1_General_CP1_CS_AS`
+               - `Japanese_CI_AS`
+               - `Japanese_CS_AS`
+               - `Chinese_Taiwan_Stroke_CI_AS`
+               - `Chinese_Taiwan_Stroke_CS_AS`
+               
+               > **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+        :param pulumi.Input[_builtins.str] collect_stat_mode: Specify the point in time at which the system collects the statistics of the instance.
+               - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+               - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+               
+               > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         :param pulumi.Input[_builtins.str] connection_string: RDS database connection string.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
@@ -5078,6 +5592,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] force: Specifies whether to enable forcible switching. Valid values:
                - Yes
                - No
+        :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+               - 1: enables the feature.
+               - 0: disables the feature.
         :param pulumi.Input[_builtins.bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[_builtins.str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
                * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
@@ -5163,7 +5680,11 @@ class Instance(pulumi.CustomResource):
                See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
                
                > **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
+        :param pulumi.Input[_builtins.str] ssl_certificate: The custom certificate.
+               - Public endpoint: oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+               - Internal endpoint: oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
         :param pulumi.Input[_builtins.str] ssl_connection_string: The internal or public endpoint for which the server certificate needs to be created or updated.
+        :param pulumi.Input[_builtins.str] ssl_password: The password of the certificate.
         :param pulumi.Input[_builtins.str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
         :param pulumi.Input[_builtins.str] status: (Available since v1.204.1) The status of db instance.
         :param pulumi.Input[_builtins.str] storage_auto_scale: Automatic storage space expansion switch. Valid values:
@@ -5198,12 +5719,21 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] tcp_connection_type: The availability check method of the instance. Valid values:
                - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
                - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        :param pulumi.Input[_builtins.str] tde_certificate: The file that contains the certificate.<a class="workbench-show-detail toggle-down">.
+        :param pulumi.Input[_builtins.str] tde_db_name: The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+               
+               > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[_builtins.str] tde_encryption_key: The ID of the custom key.
+        :param pulumi.Input[_builtins.str] tde_password: The password of the certificate.
+        :param pulumi.Input[_builtins.str] tde_private_key: The file that contains the private key of the certificate.<a class="workbench-show-detail toggle-down">.
         :param pulumi.Input[_builtins.str] tde_status: The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
                
                > **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] template_id_lists: Whitelist Template ID List.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] templates: (Computed, Available since v1.254.0) Whitelist Template Details.
+        :param pulumi.Input[_builtins.str] time_zone: The time zone of the instance. By default, the system does not modify the time zone.
+               
+               > **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
         :param pulumi.Input[_builtins.bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -5252,6 +5782,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
         __props__.__dict__["client_crl_enabled"] = client_crl_enabled
         __props__.__dict__["cold_data_enabled"] = cold_data_enabled
+        __props__.__dict__["collation"] = collation
+        __props__.__dict__["collect_stat_mode"] = collect_stat_mode
         __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["connection_string_prefix"] = connection_string_prefix
         __props__.__dict__["create_time"] = create_time
@@ -5269,6 +5801,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["force"] = force
+        __props__.__dict__["force_encryption"] = force_encryption
         __props__.__dict__["force_restart"] = force_restart
         __props__.__dict__["fresh_white_list_readins"] = fresh_white_list_readins
         __props__.__dict__["ha_config"] = ha_config
@@ -5304,7 +5837,9 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["sql_collector_config_value"] = sql_collector_config_value
         __props__.__dict__["sql_collector_status"] = sql_collector_status
         __props__.__dict__["ssl_action"] = ssl_action
+        __props__.__dict__["ssl_certificate"] = ssl_certificate
         __props__.__dict__["ssl_connection_string"] = ssl_connection_string
+        __props__.__dict__["ssl_password"] = ssl_password
         __props__.__dict__["ssl_status"] = ssl_status
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_auto_scale"] = storage_auto_scale
@@ -5314,10 +5849,15 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target_minor_version"] = target_minor_version
         __props__.__dict__["tcp_connection_type"] = tcp_connection_type
+        __props__.__dict__["tde_certificate"] = tde_certificate
+        __props__.__dict__["tde_db_name"] = tde_db_name
         __props__.__dict__["tde_encryption_key"] = tde_encryption_key
+        __props__.__dict__["tde_password"] = tde_password
+        __props__.__dict__["tde_private_key"] = tde_private_key
         __props__.__dict__["tde_status"] = tde_status
         __props__.__dict__["template_id_lists"] = template_id_lists
         __props__.__dict__["templates"] = templates
+        __props__.__dict__["time_zone"] = time_zone
         __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
         __props__.__dict__["upgrade_time"] = upgrade_time
         __props__.__dict__["vpc_id"] = vpc_id
@@ -5472,6 +6012,39 @@ class Instance(pulumi.CustomResource):
         - false: Disable high-performance cloud disk data archiving function.
         """
         return pulumi.get(self, "cold_data_enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def collation(self) -> pulumi.Output[_builtins.str]:
+        """
+        The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+        - `Chinese_PRC_CI_AS`
+        - `Chinese_PRC_CS_AS`
+        - `Chinese_PRC_BIN`
+        - `Latin1_General_CI_AS`
+        - `Latin1_General_CS_AS`
+        - `SQL_Latin1_General_CP1_CI_AS`
+        - `SQL_Latin1_General_CP1_CS_AS`
+        - `Japanese_CI_AS`
+        - `Japanese_CS_AS`
+        - `Chinese_Taiwan_Stroke_CI_AS`
+        - `Chinese_Taiwan_Stroke_CS_AS`
+
+        > **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+        """
+        return pulumi.get(self, "collation")
+
+    @_builtins.property
+    @pulumi.getter(name="collectStatMode")
+    def collect_stat_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specify the point in time at which the system collects the statistics of the instance.
+        - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+        - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+
+        > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+        """
+        return pulumi.get(self, "collect_stat_mode")
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
@@ -5651,6 +6224,16 @@ class Instance(pulumi.CustomResource):
         - No
         """
         return pulumi.get(self, "force")
+
+    @_builtins.property
+    @pulumi.getter(name="forceEncryption")
+    def force_encryption(self) -> pulumi.Output[_builtins.int]:
+        """
+        Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        - 1: enables the feature.
+        - 0: disables the feature.
+        """
+        return pulumi.get(self, "force_encryption")
 
     @_builtins.property
     @pulumi.getter(name="forceRestart")
@@ -5984,12 +6567,30 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "ssl_action")
 
     @_builtins.property
+    @pulumi.getter(name="sslCertificate")
+    def ssl_certificate(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The custom certificate.
+        - Public endpoint: oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+        - Internal endpoint: oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+        """
+        return pulumi.get(self, "ssl_certificate")
+
+    @_builtins.property
     @pulumi.getter(name="sslConnectionString")
     def ssl_connection_string(self) -> pulumi.Output[_builtins.str]:
         """
         The internal or public endpoint for which the server certificate needs to be created or updated.
         """
         return pulumi.get(self, "ssl_connection_string")
+
+    @_builtins.property
+    @pulumi.getter(name="sslPassword")
+    def ssl_password(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The password of the certificate.
+        """
+        return pulumi.get(self, "ssl_password")
 
     @_builtins.property
     @pulumi.getter(name="sslStatus")
@@ -6089,12 +6690,46 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "tcp_connection_type")
 
     @_builtins.property
+    @pulumi.getter(name="tdeCertificate")
+    def tde_certificate(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The file that contains the certificate.<a class="workbench-show-detail toggle-down">.
+        """
+        return pulumi.get(self, "tde_certificate")
+
+    @_builtins.property
+    @pulumi.getter(name="tdeDbName")
+    def tde_db_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+
+        > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+        """
+        return pulumi.get(self, "tde_db_name")
+
+    @_builtins.property
     @pulumi.getter(name="tdeEncryptionKey")
     def tde_encryption_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the custom key.
         """
         return pulumi.get(self, "tde_encryption_key")
+
+    @_builtins.property
+    @pulumi.getter(name="tdePassword")
+    def tde_password(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The password of the certificate.
+        """
+        return pulumi.get(self, "tde_password")
+
+    @_builtins.property
+    @pulumi.getter(name="tdePrivateKey")
+    def tde_private_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The file that contains the private key of the certificate.<a class="workbench-show-detail toggle-down">.
+        """
+        return pulumi.get(self, "tde_private_key")
 
     @_builtins.property
     @pulumi.getter(name="tdeStatus")
@@ -6121,6 +6756,16 @@ class Instance(pulumi.CustomResource):
         (Computed, Available since v1.254.0) Whitelist Template Details.
         """
         return pulumi.get(self, "templates")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Output[_builtins.str]:
+        """
+        The time zone of the instance. By default, the system does not modify the time zone.
+
+        > **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+        """
+        return pulumi.get(self, "time_zone")
 
     @_builtins.property
     @pulumi.getter(name="upgradeDbInstanceKernelVersion")

@@ -621,6 +621,31 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly coldDataEnabled: pulumi.Output<boolean | undefined>;
     /**
+     * The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+     * - `Chinese_PRC_CI_AS`
+     * - `Chinese_PRC_CS_AS`
+     * - `Chinese_PRC_BIN`
+     * - `Latin1_General_CI_AS`
+     * - `Latin1_General_CS_AS`
+     * - `SQL_Latin1_General_CP1_CI_AS`
+     * - `SQL_Latin1_General_CP1_CS_AS`
+     * - `Japanese_CI_AS`
+     * - `Japanese_CS_AS`
+     * - `Chinese_Taiwan_Stroke_CI_AS`
+     * - `Chinese_Taiwan_Stroke_CS_AS`
+     *
+     * > **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+     */
+    declare public readonly collation: pulumi.Output<string>;
+    /**
+     * Specify the point in time at which the system collects the statistics of the instance.
+     * - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+     * - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+     *
+     * > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+     */
+    declare public readonly collectStatMode: pulumi.Output<string | undefined>;
+    /**
      * RDS database connection string.
      */
     declare public /*out*/ readonly connectionString: pulumi.Output<string>;
@@ -731,6 +756,12 @@ export class Instance extends pulumi.CustomResource {
      * - No
      */
     declare public readonly force: pulumi.Output<string | undefined>;
+    /**
+     * Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+     * - 1: enables the feature.
+     * - 0: disables the feature.
+     */
+    declare public readonly forceEncryption: pulumi.Output<number>;
     /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
@@ -924,9 +955,19 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly sslAction: pulumi.Output<string>;
     /**
+     * The custom certificate.
+     * - Public endpoint: oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+     * - Internal endpoint: oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+     */
+    declare public readonly sslCertificate: pulumi.Output<string | undefined>;
+    /**
      * The internal or public endpoint for which the server certificate needs to be created or updated.
      */
     declare public readonly sslConnectionString: pulumi.Output<string>;
+    /**
+     * The password of the certificate.
+     */
+    declare public readonly sslPassword: pulumi.Output<string | undefined>;
     /**
      * Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
      */
@@ -989,9 +1030,27 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly tcpConnectionType: pulumi.Output<string>;
     /**
+     * The file that contains the certificate.<a class="workbench-show-detail toggle-down">.
+     */
+    declare public readonly tdeCertificate: pulumi.Output<string | undefined>;
+    /**
+     * The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+     *
+     * > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+     */
+    declare public readonly tdeDbName: pulumi.Output<string | undefined>;
+    /**
      * The ID of the custom key.
      */
     declare public readonly tdeEncryptionKey: pulumi.Output<string | undefined>;
+    /**
+     * The password of the certificate.
+     */
+    declare public readonly tdePassword: pulumi.Output<string | undefined>;
+    /**
+     * The file that contains the private key of the certificate.<a class="workbench-show-detail toggle-down">.
+     */
+    declare public readonly tdePrivateKey: pulumi.Output<string | undefined>;
     /**
      * The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      *
@@ -1006,6 +1065,12 @@ export class Instance extends pulumi.CustomResource {
      * (Computed, Available since v1.254.0) Whitelist Template Details.
      */
     declare public /*out*/ readonly templates: pulumi.Output<{[key: string]: string}[]>;
+    /**
+     * The time zone of the instance. By default, the system does not modify the time zone.
+     *
+     * > **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+     */
+    declare public readonly timeZone: pulumi.Output<string>;
     /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
@@ -1089,6 +1154,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["clientCertRevocationList"] = state?.clientCertRevocationList;
             resourceInputs["clientCrlEnabled"] = state?.clientCrlEnabled;
             resourceInputs["coldDataEnabled"] = state?.coldDataEnabled;
+            resourceInputs["collation"] = state?.collation;
+            resourceInputs["collectStatMode"] = state?.collectStatMode;
             resourceInputs["connectionString"] = state?.connectionString;
             resourceInputs["connectionStringPrefix"] = state?.connectionStringPrefix;
             resourceInputs["createTime"] = state?.createTime;
@@ -1106,6 +1173,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["engine"] = state?.engine;
             resourceInputs["engineVersion"] = state?.engineVersion;
             resourceInputs["force"] = state?.force;
+            resourceInputs["forceEncryption"] = state?.forceEncryption;
             resourceInputs["forceRestart"] = state?.forceRestart;
             resourceInputs["freshWhiteListReadins"] = state?.freshWhiteListReadins;
             resourceInputs["haConfig"] = state?.haConfig;
@@ -1141,7 +1209,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["sqlCollectorConfigValue"] = state?.sqlCollectorConfigValue;
             resourceInputs["sqlCollectorStatus"] = state?.sqlCollectorStatus;
             resourceInputs["sslAction"] = state?.sslAction;
+            resourceInputs["sslCertificate"] = state?.sslCertificate;
             resourceInputs["sslConnectionString"] = state?.sslConnectionString;
+            resourceInputs["sslPassword"] = state?.sslPassword;
             resourceInputs["sslStatus"] = state?.sslStatus;
             resourceInputs["status"] = state?.status;
             resourceInputs["storageAutoScale"] = state?.storageAutoScale;
@@ -1151,10 +1221,15 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tags"] = state?.tags;
             resourceInputs["targetMinorVersion"] = state?.targetMinorVersion;
             resourceInputs["tcpConnectionType"] = state?.tcpConnectionType;
+            resourceInputs["tdeCertificate"] = state?.tdeCertificate;
+            resourceInputs["tdeDbName"] = state?.tdeDbName;
             resourceInputs["tdeEncryptionKey"] = state?.tdeEncryptionKey;
+            resourceInputs["tdePassword"] = state?.tdePassword;
+            resourceInputs["tdePrivateKey"] = state?.tdePrivateKey;
             resourceInputs["tdeStatus"] = state?.tdeStatus;
             resourceInputs["templateIdLists"] = state?.templateIdLists;
             resourceInputs["templates"] = state?.templates;
+            resourceInputs["timeZone"] = state?.timeZone;
             resourceInputs["upgradeDbInstanceKernelVersion"] = state?.upgradeDbInstanceKernelVersion;
             resourceInputs["upgradeTime"] = state?.upgradeTime;
             resourceInputs["vpcId"] = state?.vpcId;
@@ -1191,6 +1266,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["clientCertRevocationList"] = args?.clientCertRevocationList;
             resourceInputs["clientCrlEnabled"] = args?.clientCrlEnabled;
             resourceInputs["coldDataEnabled"] = args?.coldDataEnabled;
+            resourceInputs["collation"] = args?.collation;
+            resourceInputs["collectStatMode"] = args?.collectStatMode;
             resourceInputs["connectionStringPrefix"] = args?.connectionStringPrefix;
             resourceInputs["dbInstanceIpArrayAttribute"] = args?.dbInstanceIpArrayAttribute;
             resourceInputs["dbInstanceIpArrayName"] = args?.dbInstanceIpArrayName;
@@ -1205,6 +1282,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["engine"] = args?.engine;
             resourceInputs["engineVersion"] = args?.engineVersion;
             resourceInputs["force"] = args?.force;
+            resourceInputs["forceEncryption"] = args?.forceEncryption;
             resourceInputs["forceRestart"] = args?.forceRestart;
             resourceInputs["freshWhiteListReadins"] = args?.freshWhiteListReadins;
             resourceInputs["haConfig"] = args?.haConfig;
@@ -1240,7 +1318,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["sqlCollectorConfigValue"] = args?.sqlCollectorConfigValue;
             resourceInputs["sqlCollectorStatus"] = args?.sqlCollectorStatus;
             resourceInputs["sslAction"] = args?.sslAction;
+            resourceInputs["sslCertificate"] = args?.sslCertificate ? pulumi.secret(args.sslCertificate) : undefined;
             resourceInputs["sslConnectionString"] = args?.sslConnectionString;
+            resourceInputs["sslPassword"] = args?.sslPassword ? pulumi.secret(args.sslPassword) : undefined;
             resourceInputs["storageAutoScale"] = args?.storageAutoScale;
             resourceInputs["storageThreshold"] = args?.storageThreshold;
             resourceInputs["storageUpperBound"] = args?.storageUpperBound;
@@ -1248,9 +1328,14 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["targetMinorVersion"] = args?.targetMinorVersion;
             resourceInputs["tcpConnectionType"] = args?.tcpConnectionType;
+            resourceInputs["tdeCertificate"] = args?.tdeCertificate ? pulumi.secret(args.tdeCertificate) : undefined;
+            resourceInputs["tdeDbName"] = args?.tdeDbName;
             resourceInputs["tdeEncryptionKey"] = args?.tdeEncryptionKey;
+            resourceInputs["tdePassword"] = args?.tdePassword ? pulumi.secret(args.tdePassword) : undefined;
+            resourceInputs["tdePrivateKey"] = args?.tdePrivateKey ? pulumi.secret(args.tdePrivateKey) : undefined;
             resourceInputs["tdeStatus"] = args?.tdeStatus;
             resourceInputs["templateIdLists"] = args?.templateIdLists;
+            resourceInputs["timeZone"] = args?.timeZone;
             resourceInputs["upgradeDbInstanceKernelVersion"] = args?.upgradeDbInstanceKernelVersion;
             resourceInputs["upgradeTime"] = args?.upgradeTime;
             resourceInputs["vpcId"] = args?.vpcId;
@@ -1267,7 +1352,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["templates"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["clientCaCert", "serverCert"] };
+        const secretOpts = { additionalSecretOutputs: ["clientCaCert", "serverCert", "sslCertificate", "sslPassword", "tdeCertificate", "tdePassword", "tdePrivateKey"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
@@ -1366,6 +1451,31 @@ export interface InstanceState {
      * - false: Disable high-performance cloud disk data archiving function.
      */
     coldDataEnabled?: pulumi.Input<boolean>;
+    /**
+     * The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+     * - `Chinese_PRC_CI_AS`
+     * - `Chinese_PRC_CS_AS`
+     * - `Chinese_PRC_BIN`
+     * - `Latin1_General_CI_AS`
+     * - `Latin1_General_CS_AS`
+     * - `SQL_Latin1_General_CP1_CI_AS`
+     * - `SQL_Latin1_General_CP1_CS_AS`
+     * - `Japanese_CI_AS`
+     * - `Japanese_CS_AS`
+     * - `Chinese_Taiwan_Stroke_CI_AS`
+     * - `Chinese_Taiwan_Stroke_CS_AS`
+     *
+     * > **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+     */
+    collation?: pulumi.Input<string>;
+    /**
+     * Specify the point in time at which the system collects the statistics of the instance.
+     * - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+     * - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+     *
+     * > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+     */
+    collectStatMode?: pulumi.Input<string>;
     /**
      * RDS database connection string.
      */
@@ -1477,6 +1587,12 @@ export interface InstanceState {
      * - No
      */
     force?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+     * - 1: enables the feature.
+     * - 0: disables the feature.
+     */
+    forceEncryption?: pulumi.Input<number>;
     /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
@@ -1670,9 +1786,19 @@ export interface InstanceState {
      */
     sslAction?: pulumi.Input<string>;
     /**
+     * The custom certificate.
+     * - Public endpoint: oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+     * - Internal endpoint: oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+     */
+    sslCertificate?: pulumi.Input<string>;
+    /**
      * The internal or public endpoint for which the server certificate needs to be created or updated.
      */
     sslConnectionString?: pulumi.Input<string>;
+    /**
+     * The password of the certificate.
+     */
+    sslPassword?: pulumi.Input<string>;
     /**
      * Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
      */
@@ -1735,9 +1861,27 @@ export interface InstanceState {
      */
     tcpConnectionType?: pulumi.Input<string>;
     /**
+     * The file that contains the certificate.<a class="workbench-show-detail toggle-down">.
+     */
+    tdeCertificate?: pulumi.Input<string>;
+    /**
+     * The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+     *
+     * > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+     */
+    tdeDbName?: pulumi.Input<string>;
+    /**
      * The ID of the custom key.
      */
     tdeEncryptionKey?: pulumi.Input<string>;
+    /**
+     * The password of the certificate.
+     */
+    tdePassword?: pulumi.Input<string>;
+    /**
+     * The file that contains the private key of the certificate.<a class="workbench-show-detail toggle-down">.
+     */
+    tdePrivateKey?: pulumi.Input<string>;
     /**
      * The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      *
@@ -1752,6 +1896,12 @@ export interface InstanceState {
      * (Computed, Available since v1.254.0) Whitelist Template Details.
      */
     templates?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    /**
+     * The time zone of the instance. By default, the system does not modify the time zone.
+     *
+     * > **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+     */
+    timeZone?: pulumi.Input<string>;
     /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
@@ -1903,6 +2053,31 @@ export interface InstanceArgs {
      */
     coldDataEnabled?: pulumi.Input<boolean>;
     /**
+     * The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+     * - `Chinese_PRC_CI_AS`
+     * - `Chinese_PRC_CS_AS`
+     * - `Chinese_PRC_BIN`
+     * - `Latin1_General_CI_AS`
+     * - `Latin1_General_CS_AS`
+     * - `SQL_Latin1_General_CP1_CI_AS`
+     * - `SQL_Latin1_General_CP1_CS_AS`
+     * - `Japanese_CI_AS`
+     * - `Japanese_CS_AS`
+     * - `Chinese_Taiwan_Stroke_CI_AS`
+     * - `Chinese_Taiwan_Stroke_CS_AS`
+     *
+     * > **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+     */
+    collation?: pulumi.Input<string>;
+    /**
+     * Specify the point in time at which the system collects the statistics of the instance.
+     * - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+     * - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+     *
+     * > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+     */
+    collectStatMode?: pulumi.Input<string>;
+    /**
      * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
      * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
      */
@@ -2001,6 +2176,12 @@ export interface InstanceArgs {
      * - No
      */
     force?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+     * - 1: enables the feature.
+     * - 0: disables the feature.
+     */
+    forceEncryption?: pulumi.Input<number>;
     /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
@@ -2194,9 +2375,19 @@ export interface InstanceArgs {
      */
     sslAction?: pulumi.Input<string>;
     /**
+     * The custom certificate.
+     * - Public endpoint: oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+     * - Internal endpoint: oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>.
+     */
+    sslCertificate?: pulumi.Input<string>;
+    /**
      * The internal or public endpoint for which the server certificate needs to be created or updated.
      */
     sslConnectionString?: pulumi.Input<string>;
+    /**
+     * The password of the certificate.
+     */
+    sslPassword?: pulumi.Input<string>;
     /**
      * Automatic storage space expansion switch. Valid values:
      * - Enable
@@ -2251,9 +2442,27 @@ export interface InstanceArgs {
      */
     tcpConnectionType?: pulumi.Input<string>;
     /**
+     * The file that contains the certificate.<a class="workbench-show-detail toggle-down">.
+     */
+    tdeCertificate?: pulumi.Input<string>;
+    /**
+     * The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+     *
+     * > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+     */
+    tdeDbName?: pulumi.Input<string>;
+    /**
      * The ID of the custom key.
      */
     tdeEncryptionKey?: pulumi.Input<string>;
+    /**
+     * The password of the certificate.
+     */
+    tdePassword?: pulumi.Input<string>;
+    /**
+     * The file that contains the private key of the certificate.<a class="workbench-show-detail toggle-down">.
+     */
+    tdePrivateKey?: pulumi.Input<string>;
     /**
      * The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      *
@@ -2264,6 +2473,12 @@ export interface InstanceArgs {
      * Whitelist Template ID List.
      */
     templateIdLists?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The time zone of the instance. By default, the system does not modify the time zone.
+     *
+     * > **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+     */
+    timeZone?: pulumi.Input<string>;
     /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade

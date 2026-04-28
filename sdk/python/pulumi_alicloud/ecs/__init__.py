@@ -15,6 +15,7 @@ from .copy_image import *
 from .dedicated_host import *
 from .disk import *
 from .disk_attachment import *
+from .disk_encryption_by_default import *
 from .ecs_auto_snapshot_policy_attachment import *
 from .ecs_dedicated_host_cluster import *
 from .ecs_deployment_set import *

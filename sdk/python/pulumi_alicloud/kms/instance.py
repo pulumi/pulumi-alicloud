@@ -25,6 +25,7 @@ class InstanceArgs:
                  vswitch_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  zone_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_delete_without_backup: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  key_num: Optional[pulumi.Input[_builtins.int]] = None,
@@ -47,6 +48,7 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Instance bind vswitches
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zone_ids: zone id
         :param pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] force_delete_without_backup: Whether to force deletion even without backup.
                
                > **NOTE:** This parameter only takes effect when deletion is triggered.
@@ -88,6 +90,8 @@ class InstanceArgs:
         pulumi.set(__self__, "zone_ids", zone_ids)
         if bind_vpcs is not None:
             pulumi.set(__self__, "bind_vpcs", bind_vpcs)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if force_delete_without_backup is not None:
             pulumi.set(__self__, "force_delete_without_backup", force_delete_without_backup)
         if instance_name is not None:
@@ -166,6 +170,18 @@ class InstanceArgs:
     @bind_vpcs.setter
     def bind_vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]]):
         pulumi.set(self, "bind_vpcs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDeleteWithoutBackup")
@@ -374,6 +390,7 @@ class _InstanceState:
                  bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]] = None,
                  ca_certificate_chain_pem: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  end_date: Optional[pulumi.Input[_builtins.str]] = None,
                  force_delete_without_backup: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -400,6 +417,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         :param pulumi.Input[_builtins.str] ca_certificate_chain_pem: KMS instance certificate chain in PEM format.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] end_date: (Available since v1.233.1) Instance expiration time.
         :param pulumi.Input[_builtins.str] force_delete_without_backup: Whether to force deletion even without backup.
                
@@ -447,6 +465,8 @@ class _InstanceState:
             pulumi.set(__self__, "ca_certificate_chain_pem", ca_certificate_chain_pem)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if end_date is not None:
             pulumi.set(__self__, "end_date", end_date)
         if force_delete_without_backup is not None:
@@ -523,6 +543,18 @@ class _InstanceState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="endDate")
@@ -792,6 +824,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_delete_without_backup: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  key_num: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1005,6 +1038,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] force_delete_without_backup: Whether to force deletion even without backup.
                
                > **NOTE:** This parameter only takes effect when deletion is triggered.
@@ -1257,6 +1291,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_delete_without_backup: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  key_num: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1285,6 +1320,7 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["bind_vpcs"] = bind_vpcs
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["force_delete_without_backup"] = force_delete_without_backup
             __props__.__dict__["instance_name"] = instance_name
             __props__.__dict__["key_num"] = key_num
@@ -1326,6 +1362,7 @@ class Instance(pulumi.CustomResource):
             bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
             ca_certificate_chain_pem: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             end_date: Optional[pulumi.Input[_builtins.str]] = None,
             force_delete_without_backup: Optional[pulumi.Input[_builtins.str]] = None,
             instance_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1356,6 +1393,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         :param pulumi.Input[_builtins.str] ca_certificate_chain_pem: KMS instance certificate chain in PEM format.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] end_date: (Available since v1.233.1) Instance expiration time.
         :param pulumi.Input[_builtins.str] force_delete_without_backup: Whether to force deletion even without backup.
                
@@ -1404,6 +1442,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["bind_vpcs"] = bind_vpcs
         __props__.__dict__["ca_certificate_chain_pem"] = ca_certificate_chain_pem
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["end_date"] = end_date
         __props__.__dict__["force_delete_without_backup"] = force_delete_without_backup
         __props__.__dict__["instance_name"] = instance_name
@@ -1449,6 +1488,14 @@ class Instance(pulumi.CustomResource):
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter(name="endDate")

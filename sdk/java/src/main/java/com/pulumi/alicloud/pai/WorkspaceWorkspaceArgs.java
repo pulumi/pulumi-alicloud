@@ -67,6 +67,21 @@ public final class WorkspaceWorkspaceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * The workspace name. The format is as follows:
      * - 3 to 23 characters in length and can contain letters, underscores, or numbers.
      * - Must start with a large or small letter.
@@ -93,6 +108,7 @@ public final class WorkspaceWorkspaceArgs extends com.pulumi.resources.ResourceA
         this.description = $.description;
         this.displayName = $.displayName;
         this.envTypes = $.envTypes;
+        this.resourceGroupId = $.resourceGroupId;
         this.workspaceName = $.workspaceName;
     }
 
@@ -191,6 +207,27 @@ public final class WorkspaceWorkspaceArgs extends com.pulumi.resources.ResourceA
          */
         public Builder envTypes(String... envTypes) {
             return envTypes(List.of(envTypes));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

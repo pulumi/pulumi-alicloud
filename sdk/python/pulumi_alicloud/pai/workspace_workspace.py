@@ -22,7 +22,8 @@ class WorkspaceWorkspaceArgs:
                  description: pulumi.Input[_builtins.str],
                  env_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  workspace_name: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceWorkspace resource.
 
@@ -35,12 +36,15 @@ class WorkspaceWorkspaceArgs:
                - Must start with a large or small letter.
                - Unique in the current region.
         :param pulumi.Input[_builtins.str] display_name: It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "env_types", env_types)
         pulumi.set(__self__, "workspace_name", workspace_name)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
 
     @_builtins.property
     @pulumi.getter
@@ -95,6 +99,18 @@ class WorkspaceWorkspaceArgs:
     def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
 
 @pulumi.input_type
 class _WorkspaceWorkspaceState:
@@ -103,6 +119,7 @@ class _WorkspaceWorkspaceState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  env_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -114,6 +131,7 @@ class _WorkspaceWorkspaceState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] env_types: Environments contained in the workspace:
                - Simple mode only production environment (prod).
                - Standard mode includes development environment (dev) and production environment (prod).
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] status: Workspace state, possible values:
         :param pulumi.Input[_builtins.str] workspace_name: The workspace name. The format is as follows:
                - 3 to 23 characters in length and can contain letters, underscores, or numbers.
@@ -128,6 +146,8 @@ class _WorkspaceWorkspaceState:
             pulumi.set(__self__, "display_name", display_name)
         if env_types is not None:
             pulumi.set(__self__, "env_types", env_types)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if workspace_name is not None:
@@ -184,6 +204,18 @@ class _WorkspaceWorkspaceState:
         pulumi.set(self, "env_types", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -220,6 +252,7 @@ class WorkspaceWorkspace(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  env_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -266,6 +299,7 @@ class WorkspaceWorkspace(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] env_types: Environments contained in the workspace:
                - Simple mode only production environment (prod).
                - Standard mode includes development environment (dev) and production environment (prod).
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] workspace_name: The workspace name. The format is as follows:
                - 3 to 23 characters in length and can contain letters, underscores, or numbers.
                - Must start with a large or small letter.
@@ -332,6 +366,7 @@ class WorkspaceWorkspace(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  env_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -349,6 +384,7 @@ class WorkspaceWorkspace(pulumi.CustomResource):
             if env_types is None and not opts.urn:
                 raise TypeError("Missing required property 'env_types'")
             __props__.__dict__["env_types"] = env_types
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if workspace_name is None and not opts.urn:
                 raise TypeError("Missing required property 'workspace_name'")
             __props__.__dict__["workspace_name"] = workspace_name
@@ -368,6 +404,7 @@ class WorkspaceWorkspace(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             env_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             workspace_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkspaceWorkspace':
         """
@@ -383,6 +420,7 @@ class WorkspaceWorkspace(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] env_types: Environments contained in the workspace:
                - Simple mode only production environment (prod).
                - Standard mode includes development environment (dev) and production environment (prod).
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] status: Workspace state, possible values:
         :param pulumi.Input[_builtins.str] workspace_name: The workspace name. The format is as follows:
                - 3 to 23 characters in length and can contain letters, underscores, or numbers.
@@ -397,6 +435,7 @@ class WorkspaceWorkspace(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["env_types"] = env_types
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["workspace_name"] = workspace_name
         return WorkspaceWorkspace(resource_name, opts=opts, __props__=__props__)
@@ -419,7 +458,7 @@ class WorkspaceWorkspace(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def display_name(self) -> pulumi.Output[_builtins.str]:
         """
         It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
         """
@@ -434,6 +473,14 @@ class WorkspaceWorkspace(pulumi.CustomResource):
         - Standard mode includes development environment (dev) and production environment (prod).
         """
         return pulumi.get(self, "env_types")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter

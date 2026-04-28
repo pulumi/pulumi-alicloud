@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Pai
         /// It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
         /// </summary>
         [Output("displayName")]
-        public Output<string?> DisplayName { get; private set; } = null!;
+        public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// Environments contained in the workspace:
@@ -82,6 +82,12 @@ namespace Pulumi.AliCloud.Pai
         /// </summary>
         [Output("envTypes")]
         public Output<ImmutableArray<string>> EnvTypes { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// Workspace state, possible values:
@@ -171,6 +177,12 @@ namespace Pulumi.AliCloud.Pai
         }
 
         /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The workspace name. The format is as follows:
         /// - 3 to 23 characters in length and can contain letters, underscores, or numbers.
         /// - Must start with a large or small letter.
@@ -218,6 +230,12 @@ namespace Pulumi.AliCloud.Pai
             get => _envTypes ?? (_envTypes = new InputList<string>());
             set => _envTypes = value;
         }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// Workspace state, possible values:

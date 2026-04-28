@@ -60,10 +60,10 @@ class ListenerArgs:
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[_builtins.bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         :param pulumi.Input[_builtins.bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
-        :param pulumi.Input[_builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+        :param pulumi.Input[_builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 0~600 Seconds.
         :param pulumi.Input[_builtins.str] listener_description: Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         :param pulumi.Input['ListenerQuicConfigArgs'] quic_config: Configuration Associated with the QuIC Listening See `quic_config` below.
-        :param pulumi.Input[_builtins.int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        :param pulumi.Input[_builtins.int] request_timeout: The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[_builtins.str] security_policy_id: Security Policy
         :param pulumi.Input[_builtins.str] status: The Current IP Address of the Listened State
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
@@ -274,7 +274,7 @@ class ListenerArgs:
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+        Specify the Connection Idle Timeout Value: 0~600 Seconds.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -310,7 +310,7 @@ class ListenerArgs:
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         """
         return pulumi.get(self, "request_timeout")
 
@@ -406,13 +406,13 @@ class _ListenerState:
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[_builtins.bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         :param pulumi.Input[_builtins.bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
-        :param pulumi.Input[_builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+        :param pulumi.Input[_builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 0~600 Seconds.
         :param pulumi.Input[_builtins.str] listener_description: Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         :param pulumi.Input[_builtins.int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         :param pulumi.Input[_builtins.str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
         :param pulumi.Input[_builtins.str] load_balancer_id: The SLB Instance Id.
         :param pulumi.Input['ListenerQuicConfigArgs'] quic_config: Configuration Associated with the QuIC Listening See `quic_config` below.
-        :param pulumi.Input[_builtins.int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        :param pulumi.Input[_builtins.int] request_timeout: The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[_builtins.str] security_policy_id: Security Policy
         :param pulumi.Input[_builtins.str] status: The Current IP Address of the Listened State
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
@@ -591,7 +591,7 @@ class _ListenerState:
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+        Specify the Connection Idle Timeout Value: 0~600 Seconds.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -663,7 +663,7 @@ class _ListenerState:
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         """
         return pulumi.get(self, "request_timeout")
 
@@ -900,13 +900,13 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[_builtins.bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         :param pulumi.Input[_builtins.bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
-        :param pulumi.Input[_builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+        :param pulumi.Input[_builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 0~600 Seconds.
         :param pulumi.Input[_builtins.str] listener_description: Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         :param pulumi.Input[_builtins.int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         :param pulumi.Input[_builtins.str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
         :param pulumi.Input[_builtins.str] load_balancer_id: The SLB Instance Id.
         :param pulumi.Input[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']] quic_config: Configuration Associated with the QuIC Listening See `quic_config` below.
-        :param pulumi.Input[_builtins.int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        :param pulumi.Input[_builtins.int] request_timeout: The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[_builtins.str] security_policy_id: Security Policy
         :param pulumi.Input[_builtins.str] status: The Current IP Address of the Listened State
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
@@ -1180,13 +1180,13 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[_builtins.bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         :param pulumi.Input[_builtins.bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
-        :param pulumi.Input[_builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+        :param pulumi.Input[_builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 0~600 Seconds.
         :param pulumi.Input[_builtins.str] listener_description: Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         :param pulumi.Input[_builtins.int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         :param pulumi.Input[_builtins.str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
         :param pulumi.Input[_builtins.str] load_balancer_id: The SLB Instance Id.
         :param pulumi.Input[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']] quic_config: Configuration Associated with the QuIC Listening See `quic_config` below.
-        :param pulumi.Input[_builtins.int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        :param pulumi.Input[_builtins.int] request_timeout: The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[_builtins.str] security_policy_id: Security Policy
         :param pulumi.Input[_builtins.str] status: The Current IP Address of the Listened State
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
@@ -1306,7 +1306,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> pulumi.Output[_builtins.int]:
         """
-        Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+        Specify the Connection Idle Timeout Value: 0~600 Seconds.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -1354,7 +1354,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> pulumi.Output[_builtins.int]:
         """
-        The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         """
         return pulumi.get(self, "request_timeout")
 

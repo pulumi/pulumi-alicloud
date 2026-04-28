@@ -230,7 +230,7 @@ export class Listener extends pulumi.CustomResource {
      */
     declare public readonly http2Enabled: pulumi.Output<boolean>;
     /**
-     * Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+     * Specify the Connection Idle Timeout Value: 0~600 Seconds.
      */
     declare public readonly idleTimeout: pulumi.Output<number>;
     /**
@@ -254,7 +254,7 @@ export class Listener extends pulumi.CustomResource {
      */
     declare public readonly quicConfig: pulumi.Output<outputs.alb.ListenerQuicConfig>;
     /**
-     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      */
     declare public readonly requestTimeout: pulumi.Output<number>;
     /**
@@ -398,7 +398,7 @@ export interface ListenerState {
      */
     http2Enabled?: pulumi.Input<boolean>;
     /**
-     * Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+     * Specify the Connection Idle Timeout Value: 0~600 Seconds.
      */
     idleTimeout?: pulumi.Input<number>;
     /**
@@ -422,7 +422,7 @@ export interface ListenerState {
      */
     quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
     /**
-     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      */
     requestTimeout?: pulumi.Input<number>;
     /**
@@ -492,7 +492,7 @@ export interface ListenerArgs {
      */
     http2Enabled?: pulumi.Input<boolean>;
     /**
-     * Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+     * Specify the Connection Idle Timeout Value: 0~600 Seconds.
      */
     idleTimeout?: pulumi.Input<number>;
     /**
@@ -516,7 +516,7 @@ export interface ListenerArgs {
      */
     quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
     /**
-     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      */
     requestTimeout?: pulumi.Input<number>;
     /**

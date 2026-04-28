@@ -809,6 +809,35 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> ColdDataEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+        /// - `Chinese_PRC_CI_AS`
+        /// - `Chinese_PRC_CS_AS`
+        /// - `Chinese_PRC_BIN`
+        /// - `Latin1_General_CI_AS`
+        /// - `Latin1_General_CS_AS`
+        /// - `SQL_Latin1_General_CP1_CI_AS`
+        /// - `SQL_Latin1_General_CP1_CS_AS`
+        /// - `Japanese_CI_AS`
+        /// - `Japanese_CS_AS`
+        /// - `Chinese_Taiwan_Stroke_CI_AS`
+        /// - `Chinese_Taiwan_Stroke_CS_AS`
+        /// 
+        /// &gt; **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+        /// </summary>
+        [Output("collation")]
+        public Output<string> Collation { get; private set; } = null!;
+
+        /// <summary>
+        /// Specify the point in time at which the system collects the statistics of the instance.
+        /// - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+        /// - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+        /// 
+        /// &gt; **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+        /// </summary>
+        [Output("collectStatMode")]
+        public Output<string?> CollectStatMode { get; private set; } = null!;
+
+        /// <summary>
         /// RDS database connection string.
         /// </summary>
         [Output("connectionString")]
@@ -952,6 +981,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("force")]
         public Output<string?> Force { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        /// - 1: enables the feature.
+        /// - 0: disables the feature.
+        /// </summary>
+        [Output("forceEncryption")]
+        public Output<int> ForceEncryption { get; private set; } = null!;
 
         /// <summary>
         /// Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -1214,10 +1251,24 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> SslAction { get; private set; } = null!;
 
         /// <summary>
+        /// The custom certificate.
+        /// - Public endpoint: oss-&lt;The ID of the region&gt;.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+        /// - Internal endpoint: oss-&lt;The ID of the region&gt;-internal.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+        /// </summary>
+        [Output("sslCertificate")]
+        public Output<string?> SslCertificate { get; private set; } = null!;
+
+        /// <summary>
         /// The internal or public endpoint for which the server certificate needs to be created or updated.
         /// </summary>
         [Output("sslConnectionString")]
         public Output<string> SslConnectionString { get; private set; } = null!;
+
+        /// <summary>
+        /// The password of the certificate.
+        /// </summary>
+        [Output("sslPassword")]
+        public Output<string?> SslPassword { get; private set; } = null!;
 
         /// <summary>
         /// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
@@ -1299,10 +1350,36 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> TcpConnectionType { get; private set; } = null!;
 
         /// <summary>
+        /// The file that contains the certificate.&lt;a class="workbench-show-detail toggle-down"&gt;.
+        /// </summary>
+        [Output("tdeCertificate")]
+        public Output<string?> TdeCertificate { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+        /// 
+        /// &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+        /// </summary>
+        [Output("tdeDbName")]
+        public Output<string?> TdeDbName { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the custom key.
         /// </summary>
         [Output("tdeEncryptionKey")]
         public Output<string?> TdeEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The password of the certificate.
+        /// </summary>
+        [Output("tdePassword")]
+        public Output<string?> TdePassword { get; private set; } = null!;
+
+        /// <summary>
+        /// The file that contains the private key of the certificate.&lt;a class="workbench-show-detail toggle-down"&gt;.
+        /// </summary>
+        [Output("tdePrivateKey")]
+        public Output<string?> TdePrivateKey { get; private set; } = null!;
 
         /// <summary>
         /// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
@@ -1323,6 +1400,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("templates")]
         public Output<ImmutableArray<ImmutableDictionary<string, string>>> Templates { get; private set; } = null!;
+
+        /// <summary>
+        /// The time zone of the instance. By default, the system does not modify the time zone.
+        /// 
+        /// &gt; **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+        /// </summary>
+        [Output("timeZone")]
+        public Output<string> TimeZone { get; private set; } = null!;
 
         /// <summary>
         /// Whether to upgrade a minor version of the kernel. Valid values:
@@ -1420,6 +1505,11 @@ namespace Pulumi.AliCloud.Rds
                 {
                     "clientCaCert",
                     "serverCert",
+                    "sslCertificate",
+                    "sslPassword",
+                    "tdeCertificate",
+                    "tdePassword",
+                    "tdePrivateKey",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -1578,6 +1668,35 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? ColdDataEnabled { get; set; }
 
         /// <summary>
+        /// The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+        /// - `Chinese_PRC_CI_AS`
+        /// - `Chinese_PRC_CS_AS`
+        /// - `Chinese_PRC_BIN`
+        /// - `Latin1_General_CI_AS`
+        /// - `Latin1_General_CS_AS`
+        /// - `SQL_Latin1_General_CP1_CI_AS`
+        /// - `SQL_Latin1_General_CP1_CS_AS`
+        /// - `Japanese_CI_AS`
+        /// - `Japanese_CS_AS`
+        /// - `Chinese_Taiwan_Stroke_CI_AS`
+        /// - `Chinese_Taiwan_Stroke_CS_AS`
+        /// 
+        /// &gt; **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+        /// </summary>
+        [Input("collation")]
+        public Input<string>? Collation { get; set; }
+
+        /// <summary>
+        /// Specify the point in time at which the system collects the statistics of the instance.
+        /// - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+        /// - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+        /// 
+        /// &gt; **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+        /// </summary>
+        [Input("collectStatMode")]
+        public Input<string>? CollectStatMode { get; set; }
+
+        /// <summary>
         /// The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
         /// &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:'",&lt;&gt;/?
         /// </summary>
@@ -1703,6 +1822,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("force")]
         public Input<string>? Force { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        /// - 1: enables the feature.
+        /// - 0: disables the feature.
+        /// </summary>
+        [Input("forceEncryption")]
+        public Input<int>? ForceEncryption { get; set; }
 
         /// <summary>
         /// Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -2004,11 +2131,45 @@ namespace Pulumi.AliCloud.Rds
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
 
+        [Input("sslCertificate")]
+        private Input<string>? _sslCertificate;
+
+        /// <summary>
+        /// The custom certificate.
+        /// - Public endpoint: oss-&lt;The ID of the region&gt;.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+        /// - Internal endpoint: oss-&lt;The ID of the region&gt;-internal.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+        /// </summary>
+        public Input<string>? SslCertificate
+        {
+            get => _sslCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The internal or public endpoint for which the server certificate needs to be created or updated.
         /// </summary>
         [Input("sslConnectionString")]
         public Input<string>? SslConnectionString { get; set; }
+
+        [Input("sslPassword")]
+        private Input<string>? _sslPassword;
+
+        /// <summary>
+        /// The password of the certificate.
+        /// </summary>
+        public Input<string>? SslPassword
+        {
+            get => _sslPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Automatic storage space expansion switch. Valid values:
@@ -2083,11 +2244,67 @@ namespace Pulumi.AliCloud.Rds
         [Input("tcpConnectionType")]
         public Input<string>? TcpConnectionType { get; set; }
 
+        [Input("tdeCertificate")]
+        private Input<string>? _tdeCertificate;
+
+        /// <summary>
+        /// The file that contains the certificate.&lt;a class="workbench-show-detail toggle-down"&gt;.
+        /// </summary>
+        public Input<string>? TdeCertificate
+        {
+            get => _tdeCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tdeCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+        /// 
+        /// &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+        /// </summary>
+        [Input("tdeDbName")]
+        public Input<string>? TdeDbName { get; set; }
+
         /// <summary>
         /// The ID of the custom key.
         /// </summary>
         [Input("tdeEncryptionKey")]
         public Input<string>? TdeEncryptionKey { get; set; }
+
+        [Input("tdePassword")]
+        private Input<string>? _tdePassword;
+
+        /// <summary>
+        /// The password of the certificate.
+        /// </summary>
+        public Input<string>? TdePassword
+        {
+            get => _tdePassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tdePassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("tdePrivateKey")]
+        private Input<string>? _tdePrivateKey;
+
+        /// <summary>
+        /// The file that contains the private key of the certificate.&lt;a class="workbench-show-detail toggle-down"&gt;.
+        /// </summary>
+        public Input<string>? TdePrivateKey
+        {
+            get => _tdePrivateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tdePrivateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
@@ -2108,6 +2325,14 @@ namespace Pulumi.AliCloud.Rds
             get => _templateIdLists ?? (_templateIdLists = new InputList<int>());
             set => _templateIdLists = value;
         }
+
+        /// <summary>
+        /// The time zone of the instance. By default, the system does not modify the time zone.
+        /// 
+        /// &gt; **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+        /// </summary>
+        [Input("timeZone")]
+        public Input<string>? TimeZone { get; set; }
 
         /// <summary>
         /// Whether to upgrade a minor version of the kernel. Valid values:
@@ -2320,6 +2545,35 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? ColdDataEnabled { get; set; }
 
         /// <summary>
+        /// The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+        /// - `Chinese_PRC_CI_AS`
+        /// - `Chinese_PRC_CS_AS`
+        /// - `Chinese_PRC_BIN`
+        /// - `Latin1_General_CI_AS`
+        /// - `Latin1_General_CS_AS`
+        /// - `SQL_Latin1_General_CP1_CI_AS`
+        /// - `SQL_Latin1_General_CP1_CS_AS`
+        /// - `Japanese_CI_AS`
+        /// - `Japanese_CS_AS`
+        /// - `Chinese_Taiwan_Stroke_CI_AS`
+        /// - `Chinese_Taiwan_Stroke_CS_AS`
+        /// 
+        /// &gt; **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+        /// </summary>
+        [Input("collation")]
+        public Input<string>? Collation { get; set; }
+
+        /// <summary>
+        /// Specify the point in time at which the system collects the statistics of the instance.
+        /// - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+        /// - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+        /// 
+        /// &gt; **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+        /// </summary>
+        [Input("collectStatMode")]
+        public Input<string>? CollectStatMode { get; set; }
+
+        /// <summary>
         /// RDS database connection string.
         /// </summary>
         [Input("connectionString")]
@@ -2463,6 +2717,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("force")]
         public Input<string>? Force { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        /// - 1: enables the feature.
+        /// - 0: disables the feature.
+        /// </summary>
+        [Input("forceEncryption")]
+        public Input<int>? ForceEncryption { get; set; }
 
         /// <summary>
         /// Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -2764,11 +3026,45 @@ namespace Pulumi.AliCloud.Rds
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
 
+        [Input("sslCertificate")]
+        private Input<string>? _sslCertificate;
+
+        /// <summary>
+        /// The custom certificate.
+        /// - Public endpoint: oss-&lt;The ID of the region&gt;.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+        /// - Internal endpoint: oss-&lt;The ID of the region&gt;-internal.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+        /// </summary>
+        public Input<string>? SslCertificate
+        {
+            get => _sslCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The internal or public endpoint for which the server certificate needs to be created or updated.
         /// </summary>
         [Input("sslConnectionString")]
         public Input<string>? SslConnectionString { get; set; }
+
+        [Input("sslPassword")]
+        private Input<string>? _sslPassword;
+
+        /// <summary>
+        /// The password of the certificate.
+        /// </summary>
+        public Input<string>? SslPassword
+        {
+            get => _sslPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
@@ -2855,11 +3151,67 @@ namespace Pulumi.AliCloud.Rds
         [Input("tcpConnectionType")]
         public Input<string>? TcpConnectionType { get; set; }
 
+        [Input("tdeCertificate")]
+        private Input<string>? _tdeCertificate;
+
+        /// <summary>
+        /// The file that contains the certificate.&lt;a class="workbench-show-detail toggle-down"&gt;.
+        /// </summary>
+        public Input<string>? TdeCertificate
+        {
+            get => _tdeCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tdeCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+        /// 
+        /// &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+        /// </summary>
+        [Input("tdeDbName")]
+        public Input<string>? TdeDbName { get; set; }
+
         /// <summary>
         /// The ID of the custom key.
         /// </summary>
         [Input("tdeEncryptionKey")]
         public Input<string>? TdeEncryptionKey { get; set; }
+
+        [Input("tdePassword")]
+        private Input<string>? _tdePassword;
+
+        /// <summary>
+        /// The password of the certificate.
+        /// </summary>
+        public Input<string>? TdePassword
+        {
+            get => _tdePassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tdePassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("tdePrivateKey")]
+        private Input<string>? _tdePrivateKey;
+
+        /// <summary>
+        /// The file that contains the private key of the certificate.&lt;a class="workbench-show-detail toggle-down"&gt;.
+        /// </summary>
+        public Input<string>? TdePrivateKey
+        {
+            get => _tdePrivateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tdePrivateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
@@ -2892,6 +3244,14 @@ namespace Pulumi.AliCloud.Rds
             get => _templates ?? (_templates = new InputList<ImmutableDictionary<string, string>>());
             set => _templates = value;
         }
+
+        /// <summary>
+        /// The time zone of the instance. By default, the system does not modify the time zone.
+        /// 
+        /// &gt; **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+        /// </summary>
+        [Input("timeZone")]
+        public Input<string>? TimeZone { get; set; }
 
         /// <summary>
         /// Whether to upgrade a minor version of the kernel. Valid values:

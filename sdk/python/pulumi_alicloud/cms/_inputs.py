@@ -69,6 +69,8 @@ __all__ = [
     'HybridMonitorSlsTaskSlsProcessConfigGroupByArgsDict',
     'HybridMonitorSlsTaskSlsProcessConfigStatisticArgs',
     'HybridMonitorSlsTaskSlsProcessConfigStatisticArgsDict',
+    'IntegrationPolicyEntityGroupArgs',
+    'IntegrationPolicyEntityGroupArgsDict',
     'MetricRuleBlackListMetricArgs',
     'MetricRuleBlackListMetricArgsDict',
     'MetricRuleTemplateAlertTemplateArgs',
@@ -2464,6 +2466,55 @@ class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs:
     @sls_key_name.setter
     def sls_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "sls_key_name", value)
+
+
+class IntegrationPolicyEntityGroupArgsDict(TypedDict):
+    cluster_entity_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cluster entity type.
+    """
+    cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cluster ID.
+    """
+
+@pulumi.input_type
+class IntegrationPolicyEntityGroupArgs:
+    def __init__(__self__, *,
+                 cluster_entity_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] cluster_entity_type: The cluster entity type.
+        :param pulumi.Input[_builtins.str] cluster_id: The cluster ID.
+        """
+        if cluster_entity_type is not None:
+            pulumi.set(__self__, "cluster_entity_type", cluster_entity_type)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterEntityType")
+    def cluster_entity_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The cluster entity type.
+        """
+        return pulumi.get(self, "cluster_entity_type")
+
+    @cluster_entity_type.setter
+    def cluster_entity_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cluster_entity_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The cluster ID.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cluster_id", value)
 
 
 class MetricRuleBlackListMetricArgsDict(TypedDict):

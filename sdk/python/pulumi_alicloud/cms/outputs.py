@@ -43,6 +43,7 @@ __all__ = [
     'HybridMonitorSlsTaskSlsProcessConfigFilterFilter',
     'HybridMonitorSlsTaskSlsProcessConfigGroupBy',
     'HybridMonitorSlsTaskSlsProcessConfigStatistic',
+    'IntegrationPolicyEntityGroup',
     'MetricRuleBlackListMetric',
     'MetricRuleTemplateAlertTemplate',
     'MetricRuleTemplateAlertTemplateEscalations',
@@ -1982,6 +1983,56 @@ class HybridMonitorSlsTaskSlsProcessConfigStatistic(dict):
         The name of the key that is used to filter logs imported from Log Service.
         """
         return pulumi.get(self, "sls_key_name")
+
+
+@pulumi.output_type
+class IntegrationPolicyEntityGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterEntityType":
+            suggest = "cluster_entity_type"
+        elif key == "clusterId":
+            suggest = "cluster_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationPolicyEntityGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationPolicyEntityGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationPolicyEntityGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_entity_type: Optional[_builtins.str] = None,
+                 cluster_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str cluster_entity_type: The cluster entity type.
+        :param _builtins.str cluster_id: The cluster ID.
+        """
+        if cluster_entity_type is not None:
+            pulumi.set(__self__, "cluster_entity_type", cluster_entity_type)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterEntityType")
+    def cluster_entity_type(self) -> Optional[_builtins.str]:
+        """
+        The cluster entity type.
+        """
+        return pulumi.get(self, "cluster_entity_type")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[_builtins.str]:
+        """
+        The cluster ID.
+        """
+        return pulumi.get(self, "cluster_id")
 
 
 @pulumi.output_type

@@ -387,14 +387,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.http2Enabled;
     }
     /**
-     * Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+     * Specify the Connection Idle Timeout Value: 0~600 Seconds.
      * 
      */
     @Export(name="idleTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> idleTimeout;
 
     /**
-     * @return Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+     * @return Specify the Connection Idle Timeout Value: 0~600 Seconds.
      * 
      */
     public Output<Integer> idleTimeout() {
@@ -471,14 +471,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.quicConfig;
     }
     /**
-     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      * 
      */
     @Export(name="requestTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> requestTimeout;
 
     /**
-     * @return The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * @return The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      * 
      */
     public Output<Integer> requestTimeout() {

@@ -78,13 +78,17 @@ export class WorkspaceWorkspace extends pulumi.CustomResource {
     /**
      * It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
      */
-    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Environments contained in the workspace:
      * - Simple mode only production environment (prod).
      * - Standard mode includes development environment (dev) and production environment (prod).
      */
     declare public readonly envTypes: pulumi.Output<string[]>;
+    /**
+     * The ID of the resource group.
+     */
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Workspace state, possible values:
      */
@@ -114,6 +118,7 @@ export class WorkspaceWorkspace extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["envTypes"] = state?.envTypes;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["status"] = state?.status;
             resourceInputs["workspaceName"] = state?.workspaceName;
         } else {
@@ -130,6 +135,7 @@ export class WorkspaceWorkspace extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["envTypes"] = args?.envTypes;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -162,6 +168,10 @@ export interface WorkspaceWorkspaceState {
      */
     envTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * Workspace state, possible values:
      */
     status?: pulumi.Input<string>;
@@ -192,6 +202,10 @@ export interface WorkspaceWorkspaceArgs {
      * - Standard mode includes development environment (dev) and production environment (prod).
      */
     envTypes: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The workspace name. The format is as follows:
      * - 3 to 23 characters in length and can contain letters, underscores, or numbers.

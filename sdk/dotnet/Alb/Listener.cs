@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<bool> Http2Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+        /// Specify the Connection Idle Timeout Value: 0~600 Seconds.
         /// </summary>
         [Output("idleTimeout")]
         public Output<int> IdleTimeout { get; private set; } = null!;
@@ -321,7 +321,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<Outputs.ListenerQuicConfig> QuicConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        /// The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         /// </summary>
         [Output("requestTimeout")]
         public Output<int> RequestTimeout { get; private set; } = null!;
@@ -471,7 +471,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? Http2Enabled { get; set; }
 
         /// <summary>
-        /// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+        /// Specify the Connection Idle Timeout Value: 0~600 Seconds.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
@@ -507,7 +507,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<Inputs.ListenerQuicConfigArgs>? QuicConfig { get; set; }
 
         /// <summary>
-        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        /// The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }
@@ -625,7 +625,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? Http2Enabled { get; set; }
 
         /// <summary>
-        /// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+        /// Specify the Connection Idle Timeout Value: 0~600 Seconds.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
@@ -661,7 +661,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<Inputs.ListenerQuicConfigGetArgs>? QuicConfig { get; set; }
 
         /// <summary>
-        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        /// The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }

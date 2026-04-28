@@ -125,6 +125,11 @@ export type HybridMonitorSlsTask = import("./hybridMonitorSlsTask").HybridMonito
 export const HybridMonitorSlsTask: typeof import("./hybridMonitorSlsTask").HybridMonitorSlsTask = null as any;
 utilities.lazyLoad(exports, ["HybridMonitorSlsTask"], () => require("./hybridMonitorSlsTask"));
 
+export { IntegrationPolicyArgs, IntegrationPolicyState } from "./integrationPolicy";
+export type IntegrationPolicy = import("./integrationPolicy").IntegrationPolicy;
+export const IntegrationPolicy: typeof import("./integrationPolicy").IntegrationPolicy = null as any;
+utilities.lazyLoad(exports, ["IntegrationPolicy"], () => require("./integrationPolicy"));
+
 export { MetricRuleBlackListArgs, MetricRuleBlackListState } from "./metricRuleBlackList";
 export type MetricRuleBlackList = import("./metricRuleBlackList").MetricRuleBlackList;
 export const MetricRuleBlackList: typeof import("./metricRuleBlackList").MetricRuleBlackList = null as any;
@@ -149,6 +154,11 @@ export { NamespaceArgs, NamespaceState } from "./namespace";
 export type Namespace = import("./namespace").Namespace;
 export const Namespace: typeof import("./namespace").Namespace = null as any;
 utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
+
+export { PrometheusInstanceArgs, PrometheusInstanceState } from "./prometheusInstance";
+export type PrometheusInstance = import("./prometheusInstance").PrometheusInstance;
+export const PrometheusInstance: typeof import("./prometheusInstance").PrometheusInstance = null as any;
+utilities.lazyLoad(exports, ["PrometheusInstance"], () => require("./prometheusInstance"));
 
 export { SiteMonitorArgs, SiteMonitorState } from "./siteMonitor";
 export type SiteMonitor = import("./siteMonitor").SiteMonitor;
@@ -186,6 +196,8 @@ const _module = {
                 return new HybridMonitorFcTask(name, <any>undefined, { urn })
             case "alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask":
                 return new HybridMonitorSlsTask(name, <any>undefined, { urn })
+            case "alicloud:cms/integrationPolicy:IntegrationPolicy":
+                return new IntegrationPolicy(name, <any>undefined, { urn })
             case "alicloud:cms/metricRuleBlackList:MetricRuleBlackList":
                 return new MetricRuleBlackList(name, <any>undefined, { urn })
             case "alicloud:cms/metricRuleTemplate:MetricRuleTemplate":
@@ -196,6 +208,8 @@ const _module = {
                 return new MonitorGroupInstances(name, <any>undefined, { urn })
             case "alicloud:cms/namespace:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
+            case "alicloud:cms/prometheusInstance:PrometheusInstance":
+                return new PrometheusInstance(name, <any>undefined, { urn })
             case "alicloud:cms/siteMonitor:SiteMonitor":
                 return new SiteMonitor(name, <any>undefined, { urn })
             case "alicloud:cms/slsGroup:SlsGroup":
@@ -215,11 +229,13 @@ pulumi.runtime.registerResourceModule("alicloud", "cms/eventRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/groupMetricRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/hybridMonitorFcTask", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/hybridMonitorSlsTask", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/integrationPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/metricRuleBlackList", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/metricRuleTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroupInstances", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/namespace", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/prometheusInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/siteMonitor", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/slsGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/workspace", _module)

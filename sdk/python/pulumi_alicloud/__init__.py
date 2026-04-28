@@ -36,6 +36,10 @@ if typing.TYPE_CHECKING:
     adb = __adb
     import pulumi_alicloud.alb as __alb
     alb = __alb
+    import pulumi_alicloud.alidnscloudgtm as __alidnscloudgtm
+    alidnscloudgtm = __alidnscloudgtm
+    import pulumi_alicloud.alidnscloudgtmaddress as __alidnscloudgtmaddress
+    alidnscloudgtmaddress = __alidnscloudgtmaddress
     import pulumi_alicloud.aligreen as __aligreen
     aligreen = __aligreen
     import pulumi_alicloud.alikafka as __alikafka
@@ -321,6 +325,8 @@ else:
     actiontrail = _utilities.lazy_import('pulumi_alicloud.actiontrail')
     adb = _utilities.lazy_import('pulumi_alicloud.adb')
     alb = _utilities.lazy_import('pulumi_alicloud.alb')
+    alidnscloudgtm = _utilities.lazy_import('pulumi_alicloud.alidnscloudgtm')
+    alidnscloudgtmaddress = _utilities.lazy_import('pulumi_alicloud.alidnscloudgtmaddress')
     aligreen = _utilities.lazy_import('pulumi_alicloud.aligreen')
     alikafka = _utilities.lazy_import('pulumi_alicloud.alikafka')
     amqp = _utilities.lazy_import('pulumi_alicloud.amqp')
@@ -703,6 +709,38 @@ _utilities.register(
   "fqn": "pulumi_alicloud.alb",
   "classes": {
    "alicloud:alb/serverGroup:ServerGroup": "ServerGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "alidnscloudgtm/instanceConfig",
+  "fqn": "pulumi_alicloud.alidnscloudgtm",
+  "classes": {
+   "alicloud:alidnscloudgtm/instanceConfig:InstanceConfig": "InstanceConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "alidnscloudgtm/monitorTemplate",
+  "fqn": "pulumi_alicloud.alidnscloudgtm",
+  "classes": {
+   "alicloud:alidnscloudgtm/monitorTemplate:MonitorTemplate": "MonitorTemplate"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "alidnscloudgtmaddress/alidnsCloudGtmAddress",
+  "fqn": "pulumi_alicloud.alidnscloudgtmaddress",
+  "classes": {
+   "alicloud:alidnscloudgtmaddress/alidnsCloudGtmAddress:AlidnsCloudGtmAddress": "AlidnsCloudGtmAddress"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "alidnscloudgtmaddress/pool",
+  "fqn": "pulumi_alicloud.alidnscloudgtmaddress",
+  "classes": {
+   "alicloud:alidnscloudgtmaddress/pool:Pool": "Pool"
   }
  },
  {
@@ -2363,6 +2401,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cms/integrationPolicy",
+  "fqn": "pulumi_alicloud.cms",
+  "classes": {
+   "alicloud:cms/integrationPolicy:IntegrationPolicy": "IntegrationPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cms/metricRuleBlackList",
   "fqn": "pulumi_alicloud.cms",
   "classes": {
@@ -2399,6 +2445,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cms",
   "classes": {
    "alicloud:cms/namespace:Namespace": "Namespace"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cms/prometheusInstance",
+  "fqn": "pulumi_alicloud.cms",
+  "classes": {
+   "alicloud:cms/prometheusInstance:PrometheusInstance": "PrometheusInstance"
   }
  },
  {
@@ -3519,6 +3573,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ecs",
   "classes": {
    "alicloud:ecs/diskAttachment:DiskAttachment": "DiskAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ecs/diskEncryptionByDefault",
+  "fqn": "pulumi_alicloud.ecs",
+  "classes": {
+   "alicloud:ecs/diskEncryptionByDefault:DiskEncryptionByDefault": "DiskEncryptionByDefault"
   }
  },
  {

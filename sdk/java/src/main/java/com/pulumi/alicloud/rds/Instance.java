@@ -1073,6 +1073,68 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.coldDataEnabled);
     }
     /**
+     * The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+     * - `Chinese_PRC_CI_AS`
+     * - `Chinese_PRC_CS_AS`
+     * - `Chinese_PRC_BIN`
+     * - `Latin1_General_CI_AS`
+     * - `Latin1_General_CS_AS`
+     * - `SQL_Latin1_General_CP1_CI_AS`
+     * - `SQL_Latin1_General_CP1_CS_AS`
+     * - `Japanese_CI_AS`
+     * - `Japanese_CS_AS`
+     * - `Chinese_Taiwan_Stroke_CI_AS`
+     * - `Chinese_Taiwan_Stroke_CS_AS`
+     * 
+     * &gt; **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+     * 
+     */
+    @Export(name="collation", refs={String.class}, tree="[0]")
+    private Output<String> collation;
+
+    /**
+     * @return The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+     * - `Chinese_PRC_CI_AS`
+     * - `Chinese_PRC_CS_AS`
+     * - `Chinese_PRC_BIN`
+     * - `Latin1_General_CI_AS`
+     * - `Latin1_General_CS_AS`
+     * - `SQL_Latin1_General_CP1_CI_AS`
+     * - `SQL_Latin1_General_CP1_CS_AS`
+     * - `Japanese_CI_AS`
+     * - `Japanese_CS_AS`
+     * - `Chinese_Taiwan_Stroke_CI_AS`
+     * - `Chinese_Taiwan_Stroke_CS_AS`
+     * 
+     * &gt; **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+     * 
+     */
+    public Output<String> collation() {
+        return this.collation;
+    }
+    /**
+     * Specify the point in time at which the system collects the statistics of the instance.
+     * - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+     * - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+     * 
+     * &gt; **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+     * 
+     */
+    @Export(name="collectStatMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> collectStatMode;
+
+    /**
+     * @return Specify the point in time at which the system collects the statistics of the instance.
+     * - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+     * - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+     * 
+     * &gt; **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+     * 
+     */
+    public Output<Optional<String>> collectStatMode() {
+        return Codegen.optional(this.collectStatMode);
+    }
+    /**
      * RDS database connection string.
      * 
      */
@@ -1395,6 +1457,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> force() {
         return Codegen.optional(this.force);
+    }
+    /**
+     * Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+     * - 1: enables the feature.
+     * - 0: disables the feature.
+     * 
+     */
+    @Export(name="forceEncryption", refs={Integer.class}, tree="[0]")
+    private Output<Integer> forceEncryption;
+
+    /**
+     * @return Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+     * - 1: enables the feature.
+     * - 0: disables the feature.
+     * 
+     */
+    public Output<Integer> forceEncryption() {
+        return this.forceEncryption;
     }
     /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -1991,6 +2071,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.sslAction;
     }
     /**
+     * The custom certificate.
+     * - Public endpoint: oss-&lt;The ID of the region&gt;.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+     * - Internal endpoint: oss-&lt;The ID of the region&gt;-internal.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+     * 
+     */
+    @Export(name="sslCertificate", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sslCertificate;
+
+    /**
+     * @return The custom certificate.
+     * - Public endpoint: oss-&lt;The ID of the region&gt;.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+     * - Internal endpoint: oss-&lt;The ID of the region&gt;-internal.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+     * 
+     */
+    public Output<Optional<String>> sslCertificate() {
+        return Codegen.optional(this.sslCertificate);
+    }
+    /**
      * The internal or public endpoint for which the server certificate needs to be created or updated.
      * 
      */
@@ -2003,6 +2101,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> sslConnectionString() {
         return this.sslConnectionString;
+    }
+    /**
+     * The password of the certificate.
+     * 
+     */
+    @Export(name="sslPassword", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sslPassword;
+
+    /**
+     * @return The password of the certificate.
+     * 
+     */
+    public Output<Optional<String>> sslPassword() {
+        return Codegen.optional(this.sslPassword);
     }
     /**
      * Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
@@ -2181,6 +2293,38 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.tcpConnectionType;
     }
     /**
+     * The file that contains the certificate.&lt;a class=&#34;workbench-show-detail toggle-down&#34;&gt;.
+     * 
+     */
+    @Export(name="tdeCertificate", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tdeCertificate;
+
+    /**
+     * @return The file that contains the certificate.&lt;a class=&#34;workbench-show-detail toggle-down&#34;&gt;.
+     * 
+     */
+    public Output<Optional<String>> tdeCertificate() {
+        return Codegen.optional(this.tdeCertificate);
+    }
+    /**
+     * The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+     * 
+     * &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+     * 
+     */
+    @Export(name="tdeDbName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tdeDbName;
+
+    /**
+     * @return The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+     * 
+     * &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+     * 
+     */
+    public Output<Optional<String>> tdeDbName() {
+        return Codegen.optional(this.tdeDbName);
+    }
+    /**
      * The ID of the custom key.
      * 
      */
@@ -2193,6 +2337,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> tdeEncryptionKey() {
         return Codegen.optional(this.tdeEncryptionKey);
+    }
+    /**
+     * The password of the certificate.
+     * 
+     */
+    @Export(name="tdePassword", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tdePassword;
+
+    /**
+     * @return The password of the certificate.
+     * 
+     */
+    public Output<Optional<String>> tdePassword() {
+        return Codegen.optional(this.tdePassword);
+    }
+    /**
+     * The file that contains the private key of the certificate.&lt;a class=&#34;workbench-show-detail toggle-down&#34;&gt;.
+     * 
+     */
+    @Export(name="tdePrivateKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tdePrivateKey;
+
+    /**
+     * @return The file that contains the private key of the certificate.&lt;a class=&#34;workbench-show-detail toggle-down&#34;&gt;.
+     * 
+     */
+    public Output<Optional<String>> tdePrivateKey() {
+        return Codegen.optional(this.tdePrivateKey);
     }
     /**
      * The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
@@ -2239,6 +2411,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<List<Map<String,String>>> templates() {
         return this.templates;
+    }
+    /**
+     * The time zone of the instance. By default, the system does not modify the time zone.
+     * 
+     * &gt; **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+     * 
+     */
+    @Export(name="timeZone", refs={String.class}, tree="[0]")
+    private Output<String> timeZone;
+
+    /**
+     * @return The time zone of the instance. By default, the system does not modify the time zone.
+     * 
+     * &gt; **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+     * 
+     */
+    public Output<String> timeZone() {
+        return this.timeZone;
     }
     /**
      * Whether to upgrade a minor version of the kernel. Valid values:
@@ -2438,7 +2628,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
                 "clientCaCert",
-                "serverCert"
+                "serverCert",
+                "sslCertificate",
+                "sslPassword",
+                "tdeCertificate",
+                "tdePassword",
+                "tdePrivateKey"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
