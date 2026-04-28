@@ -2757,10 +2757,10 @@ github.com/alibabacloud-go/alibabacloud-gateway-oss-util v0.0.12 h1:PeA8+z4K3vep
 github.com/alibabacloud-go/alibabacloud-gateway-oss-util v0.0.12/go.mod h1:bMrMQIlkH6zAvG7rTaKHyIcEokmBUM2ML+R2VyRimJ8=
 github.com/alibabacloud-go/alibabacloud-gateway-pop v0.0.6 h1:eIf+iGJxdU4U9ypaUfbtOWCsZSbTb8AUHvyPrxu6mAA=
 github.com/alibabacloud-go/alibabacloud-gateway-pop v0.0.6/go.mod h1:4EUIoxs/do24zMOGGqYVWgw0s9NtiylnJglOeEB5UJo=
-github.com/alibabacloud-go/alibabacloud-gateway-sls v0.0.6 h1:LmBsV3DRJJyGP7GhP+OZONFuyvYPI9t3yvEj8dXVkOM=
-github.com/alibabacloud-go/alibabacloud-gateway-sls v0.0.6/go.mod h1:w1LdOGxFI7W3KSG8j2zruZUCknYZw8zW4QRpi+V4lOQ=
-github.com/alibabacloud-go/alibabacloud-gateway-sls-util v0.0.1 h1:l2sAkhQvmgEqXSZsC0ILaYvPpktFNhj5i6St/UVSPrE=
-github.com/alibabacloud-go/alibabacloud-gateway-sls-util v0.0.1/go.mod h1:RApLor4bnK0iUCxFMKsXodwDJ+9z8ZETHdC9xPwYhdA=
+github.com/alibabacloud-go/alibabacloud-gateway-sls v0.3.0 h1:Cw8bt/gW9BXfy2RKfrhDiNfjLIcwiw8IUV7whK7PIGU=
+github.com/alibabacloud-go/alibabacloud-gateway-sls v0.3.0/go.mod h1:NKW3aNBvIA7b+wNbYzAs6984/WKvnRB4rTzLqR07Av4=
+github.com/alibabacloud-go/alibabacloud-gateway-sls-util v0.3.0 h1:5cHYj3jMXdF4jRV6Pql9Tav3RUUtqwmHILbBweJPQdg=
+github.com/alibabacloud-go/alibabacloud-gateway-sls-util v0.3.0/go.mod h1:o4e70j53rTN7CrD4EDj+r0tfiaFriDVHT9hpR6Tw2M0=
 github.com/alibabacloud-go/alibabacloud-gateway-spi v0.0.4/go.mod h1:sCavSAvdzOjul4cEqeVtvlSaSScfNsTQ+46HwlTL1hc=
 github.com/alibabacloud-go/alibabacloud-gateway-spi v0.0.5 h1:zE8vH9C7JiZLNJJQ5OwjU9mSi4T9ef9u3BURT6LCLC8=
 github.com/alibabacloud-go/alibabacloud-gateway-spi v0.0.5/go.mod h1:tWnyE9AjF8J8qqLk645oUmVUnFybApTQWklQmi5tY6g=
@@ -2799,6 +2799,7 @@ github.com/alibabacloud-go/tea v1.1.17/go.mod h1:nXxjm6CIFkBhwW4FQkNrolwbfon8Svy
 github.com/alibabacloud-go/tea v1.1.19/go.mod h1:nXxjm6CIFkBhwW4FQkNrolwbfon8Svy6cujmKFUq98A=
 github.com/alibabacloud-go/tea v1.1.20/go.mod h1:nXxjm6CIFkBhwW4FQkNrolwbfon8Svy6cujmKFUq98A=
 github.com/alibabacloud-go/tea v1.2.2/go.mod h1:CF3vOzEMAG+bR4WOql8gc2G9H3EkH3ZLAQdpmpXMgwk=
+github.com/alibabacloud-go/tea v1.2.3-0.20240605082020-e6e537a31150/go.mod h1:SP/4ugxOFdctgZvPRC0Anqbq1Q1VmuPXoUVyncO5azs=
 github.com/alibabacloud-go/tea v1.3.8/go.mod h1:A560v/JTQ1n5zklt2BEpurJzZTI8TUT+Psg2drWlxRg=
 github.com/alibabacloud-go/tea v1.3.13 h1:WhGy6LIXaMbBM6VBYcsDCz6K/TPsT1Ri2hPmmZffZ94=
 github.com/alibabacloud-go/tea v1.3.13/go.mod h1:A560v/JTQ1n5zklt2BEpurJzZTI8TUT+Psg2drWlxRg=
@@ -2849,8 +2850,8 @@ github.com/aliyun/credentials-go v1.4.10 h1:4PtFGTW6eMpKd8YUNL6yVh52c/3PZdEOklEL
 github.com/aliyun/credentials-go v1.4.10/go.mod h1:Jm6d+xIgwJVLVWT561vy67ZRP4lPTQxMbEYRuT2Ti1U=
 github.com/aliyun/fc-go-sdk v0.0.0-20220622030011-bc7ded2a9050 h1:E4jdnYzB1G/DiTVHychdLOnak4w/TlKd4ZHM8wZDs58=
 github.com/aliyun/fc-go-sdk v0.0.0-20220622030011-bc7ded2a9050/go.mod h1:rYnxfOnoHRZ2QGKREUOESel1hmRe0frzF2RLpcDVtTU=
-github.com/aliyun/terraform-provider-alicloud v1.276.0 h1:HcpU4KgMQjPLL4MBrRdfH+zByTEIBHq2VYBEgtKeldQ=
-github.com/aliyun/terraform-provider-alicloud v1.276.0/go.mod h1:Hg1EOXjwslHukdyiFo4OA4NyO+6AYZz11U6J+JdhvfI=
+github.com/aliyun/terraform-provider-alicloud v1.277.0 h1:LeBXjsW2KYUAT5dObQnk6RlHXYZj/lsvZmDqiDocZkc=
+github.com/aliyun/terraform-provider-alicloud v1.277.0/go.mod h1:HgY3Trq1DkhnFMRZCaasJgV1OxN5wU1RHl7rcMfqEQ8=
 github.com/andybalholm/brotli v1.0.4/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=
 github.com/andybalholm/brotli v1.0.5/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=
 github.com/andybalholm/brotli v1.1.0 h1:eLKJA0d02Lf0mVpIDgYnqXcUn0GqVmEFny3VuID1U3M=
@@ -3750,6 +3751,7 @@ github.com/klauspost/compress v1.11.2/go.mod h1:aoV0uJVorq1K+umq18yTdKaF57EivdYs
 github.com/klauspost/compress v1.15.0/go.mod h1:/3/Vjq9QcHkK5uEr5lBEmyoZ1iFhe47etQ6QUkpK6sk=
 github.com/klauspost/compress v1.15.9/go.mod h1:PhcZ0MbTNciWF3rruxRgKxI5NkcHHrHUDtV4Yw2GlzU=
 github.com/klauspost/compress v1.16.7/go.mod h1:ntbaceVETuRiXiv4DpjP66DpAtAGkEQskQzEyD//IeE=
+github.com/klauspost/compress v1.17.8/go.mod h1:Di0epgTjJY877eYKx5yC51cX2A2Vl2ibi7bDH9ttBbw=
 github.com/klauspost/compress v1.17.9/go.mod h1:Di0epgTjJY877eYKx5yC51cX2A2Vl2ibi7bDH9ttBbw=
 github.com/klauspost/compress v1.17.11/go.mod h1:pMDklpSncoRMuLFrf1W9Ss9KT+0rH90U12bZKk7uwG0=
 github.com/klauspost/compress v1.18.0/go.mod h1:2Pp+KzxcywXVXMr50+X0Q/Lsb43OQHYWRCY2AiWywWQ=
@@ -3992,6 +3994,7 @@ github.com/phpdave11/gofpdi v1.0.12/go.mod h1:vBmVV0Do6hSBHC8uKUQ71JGW+ZGQq74llk
 github.com/phpdave11/gofpdi v1.0.13/go.mod h1:vBmVV0Do6hSBHC8uKUQ71JGW+ZGQq74llk/7bXwjDoI=
 github.com/pierrec/lz4 v1.0.2-0.20190131084431-473cd7ce01a1/go.mod h1:3/3N9NVKO0jef7pBehbT1qWhCMrIgbYNnFAZCqQ5LRc=
 github.com/pierrec/lz4 v2.0.5+incompatible/go.mod h1:pdkljMzZIN41W+lC3N2tnIh5sFi+IEE17M5jbnwPHcY=
+github.com/pierrec/lz4 v2.6.0+incompatible/go.mod h1:pdkljMzZIN41W+lC3N2tnIh5sFi+IEE17M5jbnwPHcY=
 github.com/pierrec/lz4 v2.6.1+incompatible h1:9UY3+iC23yxF0UfGaYrGplQ+79Rg+h/q9FV9ix19jjM=
 github.com/pierrec/lz4 v2.6.1+incompatible/go.mod h1:pdkljMzZIN41W+lC3N2tnIh5sFi+IEE17M5jbnwPHcY=
 github.com/pierrec/lz4/v4 v4.1.15/go.mod h1:gZWDp/Ze/IJXGXf23ltt2EXimqmTUXEy0GFuRQyBid4=

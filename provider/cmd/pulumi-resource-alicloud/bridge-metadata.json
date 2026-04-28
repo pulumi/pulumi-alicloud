@@ -470,6 +470,28 @@
                     }
                 }
             },
+            "alicloud_alidns_cloud_gtm_address": {
+                "current": "alicloud:alidnscloudgtmaddress/alidnsCloudGtmAddress:AlidnsCloudGtmAddress",
+                "fields": {
+                    "health_tasks": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_alidns_cloud_gtm_address_pool": {
+                "current": "alicloud:alidnscloudgtmaddress/pool:Pool"
+            },
+            "alicloud_alidns_cloud_gtm_instance_config": {
+                "current": "alicloud:alidnscloudgtm/instanceConfig:InstanceConfig"
+            },
+            "alicloud_alidns_cloud_gtm_monitor_template": {
+                "current": "alicloud:alidnscloudgtm/monitorTemplate:MonitorTemplate",
+                "fields": {
+                    "isp_city_nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_alidns_custom_line": {
                 "current": "alicloud:dns/customLine:CustomLine",
                 "fields": {
@@ -1961,6 +1983,14 @@
                     }
                 }
             },
+            "alicloud_cms_integration_policy": {
+                "current": "alicloud:cms/integrationPolicy:IntegrationPolicy",
+                "fields": {
+                    "entity_group": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "alicloud_cms_metric_rule_black_list": {
                 "current": "alicloud:cms/metricRuleBlackList:MetricRuleBlackList",
                 "fields": {
@@ -2021,6 +2051,9 @@
             },
             "alicloud_cms_namespace": {
                 "current": "alicloud:cms/namespace:Namespace"
+            },
+            "alicloud_cms_prometheus_instance": {
+                "current": "alicloud:cms/prometheusInstance:PrometheusInstance"
             },
             "alicloud_cms_site_monitor": {
                 "current": "alicloud:cms/siteMonitor:SiteMonitor",
@@ -4119,6 +4152,9 @@
             },
             "alicloud_ecs_disk_attachment": {
                 "current": "alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment"
+            },
+            "alicloud_ecs_disk_encryption_by_default": {
+                "current": "alicloud:ecs/diskEncryptionByDefault:DiskEncryptionByDefault"
             },
             "alicloud_ecs_elasticity_assurance": {
                 "current": "alicloud:ecs/elasticityAssurance:ElasticityAssurance",
