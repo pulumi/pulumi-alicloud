@@ -381,6 +381,8 @@ type Instance struct {
 	CaCertificateChainPem pulumi.StringOutput `pulumi:"caCertificateChainPem"`
 	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// (Available since v1.233.1) Instance expiration time.
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
 	// Whether to force deletion even without backup.
@@ -487,6 +489,8 @@ type instanceState struct {
 	CaCertificateChainPem *string `pulumi:"caCertificateChainPem"`
 	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
+	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// (Available since v1.233.1) Instance expiration time.
 	EndDate *string `pulumi:"endDate"`
 	// Whether to force deletion even without backup.
@@ -555,6 +559,8 @@ type InstanceState struct {
 	CaCertificateChainPem pulumi.StringPtrInput
 	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
+	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+	DeletionProtection pulumi.BoolPtrInput
 	// (Available since v1.233.1) Instance expiration time.
 	EndDate pulumi.StringPtrInput
 	// Whether to force deletion even without backup.
@@ -623,6 +629,8 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
 	BindVpcs []InstanceBindVpc `pulumi:"bindVpcs"`
+	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Whether to force deletion even without backup.
 	//
 	// > **NOTE:** This parameter only takes effect when deletion is triggered.
@@ -684,6 +692,8 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
 	BindVpcs InstanceBindVpcArrayInput
+	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+	DeletionProtection pulumi.BoolPtrInput
 	// Whether to force deletion even without backup.
 	//
 	// > **NOTE:** This parameter only takes effect when deletion is triggered.
@@ -841,6 +851,11 @@ func (o InstanceOutput) CaCertificateChainPem() pulumi.StringOutput {
 // The creation time of the resource.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // (Available since v1.233.1) Instance expiration time.

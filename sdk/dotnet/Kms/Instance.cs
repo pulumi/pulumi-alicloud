@@ -337,6 +337,12 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable deletion protection. Default value: `False`. Valid values:
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// (Available since v1.233.1) Instance expiration time.
         /// </summary>
         [Output("endDate")]
@@ -535,6 +541,12 @@ namespace Pulumi.AliCloud.Kms
         }
 
         /// <summary>
+        /// Specifies whether to enable deletion protection. Default value: `False`. Valid values:
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// Whether to force deletion even without backup.
         /// 
         /// &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
@@ -711,6 +723,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable deletion protection. Default value: `False`. Valid values:
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// (Available since v1.233.1) Instance expiration time.

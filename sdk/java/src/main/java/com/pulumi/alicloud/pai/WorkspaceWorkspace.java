@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -108,14 +107,14 @@ public class WorkspaceWorkspace extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> displayName;
+    private Output<String> displayName;
 
     /**
      * @return It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
      * 
      */
-    public Output<Optional<String>> displayName() {
-        return Codegen.optional(this.displayName);
+    public Output<String> displayName() {
+        return this.displayName;
     }
     /**
      * Environments contained in the workspace:
@@ -134,6 +133,20 @@ public class WorkspaceWorkspace extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> envTypes() {
         return this.envTypes;
+    }
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * Workspace state, possible values:

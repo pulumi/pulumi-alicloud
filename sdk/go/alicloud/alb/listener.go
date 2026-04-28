@@ -265,7 +265,7 @@ type Listener struct {
 	GzipEnabled pulumi.BoolOutput `pulumi:"gzipEnabled"`
 	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
 	Http2Enabled pulumi.BoolOutput `pulumi:"http2Enabled"`
-	// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+	// Specify the Connection Idle Timeout Value: 0~600 Seconds.
 	IdleTimeout pulumi.IntOutput `pulumi:"idleTimeout"`
 	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
 	ListenerDescription pulumi.StringPtrOutput `pulumi:"listenerDescription"`
@@ -277,7 +277,7 @@ type Listener struct {
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
 	// Configuration Associated with the QuIC Listening See `quicConfig` below.
 	QuicConfig ListenerQuicConfigOutput `pulumi:"quicConfig"`
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntOutput `pulumi:"requestTimeout"`
 	// Security Policy
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
@@ -355,7 +355,7 @@ type listenerState struct {
 	GzipEnabled *bool `pulumi:"gzipEnabled"`
 	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
 	Http2Enabled *bool `pulumi:"http2Enabled"`
-	// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+	// Specify the Connection Idle Timeout Value: 0~600 Seconds.
 	IdleTimeout *int `pulumi:"idleTimeout"`
 	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
 	ListenerDescription *string `pulumi:"listenerDescription"`
@@ -367,7 +367,7 @@ type listenerState struct {
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
 	// Configuration Associated with the QuIC Listening See `quicConfig` below.
 	QuicConfig *ListenerQuicConfig `pulumi:"quicConfig"`
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Security Policy
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
@@ -404,7 +404,7 @@ type ListenerState struct {
 	GzipEnabled pulumi.BoolPtrInput
 	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
 	Http2Enabled pulumi.BoolPtrInput
-	// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+	// Specify the Connection Idle Timeout Value: 0~600 Seconds.
 	IdleTimeout pulumi.IntPtrInput
 	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
 	ListenerDescription pulumi.StringPtrInput
@@ -416,7 +416,7 @@ type ListenerState struct {
 	LoadBalancerId pulumi.StringPtrInput
 	// Configuration Associated with the QuIC Listening See `quicConfig` below.
 	QuicConfig ListenerQuicConfigPtrInput
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntPtrInput
 	// Security Policy
 	SecurityPolicyId pulumi.StringPtrInput
@@ -457,7 +457,7 @@ type listenerArgs struct {
 	GzipEnabled *bool `pulumi:"gzipEnabled"`
 	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
 	Http2Enabled *bool `pulumi:"http2Enabled"`
-	// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+	// Specify the Connection Idle Timeout Value: 0~600 Seconds.
 	IdleTimeout *int `pulumi:"idleTimeout"`
 	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
 	ListenerDescription *string `pulumi:"listenerDescription"`
@@ -469,7 +469,7 @@ type listenerArgs struct {
 	LoadBalancerId string `pulumi:"loadBalancerId"`
 	// Configuration Associated with the QuIC Listening See `quicConfig` below.
 	QuicConfig *ListenerQuicConfig `pulumi:"quicConfig"`
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Security Policy
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
@@ -507,7 +507,7 @@ type ListenerArgs struct {
 	GzipEnabled pulumi.BoolPtrInput
 	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
 	Http2Enabled pulumi.BoolPtrInput
-	// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+	// Specify the Connection Idle Timeout Value: 0~600 Seconds.
 	IdleTimeout pulumi.IntPtrInput
 	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
 	ListenerDescription pulumi.StringPtrInput
@@ -519,7 +519,7 @@ type ListenerArgs struct {
 	LoadBalancerId pulumi.StringInput
 	// Configuration Associated with the QuIC Listening See `quicConfig` below.
 	QuicConfig ListenerQuicConfigPtrInput
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntPtrInput
 	// Security Policy
 	SecurityPolicyId pulumi.StringPtrInput
@@ -672,7 +672,7 @@ func (o ListenerOutput) Http2Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.Http2Enabled }).(pulumi.BoolOutput)
 }
 
-// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
+// Specify the Connection Idle Timeout Value: 0~600 Seconds.
 func (o ListenerOutput) IdleTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.IdleTimeout }).(pulumi.IntOutput)
 }
@@ -702,7 +702,7 @@ func (o ListenerOutput) QuicConfig() ListenerQuicConfigOutput {
 	return o.ApplyT(func(v *Listener) ListenerQuicConfigOutput { return v.QuicConfig }).(ListenerQuicConfigOutput)
 }
 
-// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+// The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 func (o ListenerOutput) RequestTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.RequestTimeout }).(pulumi.IntOutput)
 }

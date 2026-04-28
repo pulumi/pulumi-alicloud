@@ -94,6 +94,8 @@ import * as ackone from "./ackone";
 import * as actiontrail from "./actiontrail";
 import * as adb from "./adb";
 import * as alb from "./alb";
+import * as alidnscloudgtm from "./alidnscloudgtm";
+import * as alidnscloudgtmaddress from "./alidnscloudgtmaddress";
 import * as aligreen from "./aligreen";
 import * as alikafka from "./alikafka";
 import * as amqp from "./amqp";
@@ -241,6 +243,8 @@ export {
     actiontrail,
     adb,
     alb,
+    alidnscloudgtm,
+    alidnscloudgtmaddress,
     aligreen,
     alikafka,
     amqp,

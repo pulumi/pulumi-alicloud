@@ -4151,6 +4151,162 @@ func (o HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput) Index(i pulumi
 	}).(HybridMonitorSlsTaskSlsProcessConfigStatisticOutput)
 }
 
+type IntegrationPolicyEntityGroup struct {
+	// The cluster entity type.
+	ClusterEntityType *string `pulumi:"clusterEntityType"`
+	// The cluster ID.
+	ClusterId *string `pulumi:"clusterId"`
+}
+
+// IntegrationPolicyEntityGroupInput is an input type that accepts IntegrationPolicyEntityGroupArgs and IntegrationPolicyEntityGroupOutput values.
+// You can construct a concrete instance of `IntegrationPolicyEntityGroupInput` via:
+//
+//	IntegrationPolicyEntityGroupArgs{...}
+type IntegrationPolicyEntityGroupInput interface {
+	pulumi.Input
+
+	ToIntegrationPolicyEntityGroupOutput() IntegrationPolicyEntityGroupOutput
+	ToIntegrationPolicyEntityGroupOutputWithContext(context.Context) IntegrationPolicyEntityGroupOutput
+}
+
+type IntegrationPolicyEntityGroupArgs struct {
+	// The cluster entity type.
+	ClusterEntityType pulumi.StringPtrInput `pulumi:"clusterEntityType"`
+	// The cluster ID.
+	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
+}
+
+func (IntegrationPolicyEntityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationPolicyEntityGroup)(nil)).Elem()
+}
+
+func (i IntegrationPolicyEntityGroupArgs) ToIntegrationPolicyEntityGroupOutput() IntegrationPolicyEntityGroupOutput {
+	return i.ToIntegrationPolicyEntityGroupOutputWithContext(context.Background())
+}
+
+func (i IntegrationPolicyEntityGroupArgs) ToIntegrationPolicyEntityGroupOutputWithContext(ctx context.Context) IntegrationPolicyEntityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationPolicyEntityGroupOutput)
+}
+
+func (i IntegrationPolicyEntityGroupArgs) ToIntegrationPolicyEntityGroupPtrOutput() IntegrationPolicyEntityGroupPtrOutput {
+	return i.ToIntegrationPolicyEntityGroupPtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationPolicyEntityGroupArgs) ToIntegrationPolicyEntityGroupPtrOutputWithContext(ctx context.Context) IntegrationPolicyEntityGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationPolicyEntityGroupOutput).ToIntegrationPolicyEntityGroupPtrOutputWithContext(ctx)
+}
+
+// IntegrationPolicyEntityGroupPtrInput is an input type that accepts IntegrationPolicyEntityGroupArgs, IntegrationPolicyEntityGroupPtr and IntegrationPolicyEntityGroupPtrOutput values.
+// You can construct a concrete instance of `IntegrationPolicyEntityGroupPtrInput` via:
+//
+//	        IntegrationPolicyEntityGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntegrationPolicyEntityGroupPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationPolicyEntityGroupPtrOutput() IntegrationPolicyEntityGroupPtrOutput
+	ToIntegrationPolicyEntityGroupPtrOutputWithContext(context.Context) IntegrationPolicyEntityGroupPtrOutput
+}
+
+type integrationPolicyEntityGroupPtrType IntegrationPolicyEntityGroupArgs
+
+func IntegrationPolicyEntityGroupPtr(v *IntegrationPolicyEntityGroupArgs) IntegrationPolicyEntityGroupPtrInput {
+	return (*integrationPolicyEntityGroupPtrType)(v)
+}
+
+func (*integrationPolicyEntityGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationPolicyEntityGroup)(nil)).Elem()
+}
+
+func (i *integrationPolicyEntityGroupPtrType) ToIntegrationPolicyEntityGroupPtrOutput() IntegrationPolicyEntityGroupPtrOutput {
+	return i.ToIntegrationPolicyEntityGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *integrationPolicyEntityGroupPtrType) ToIntegrationPolicyEntityGroupPtrOutputWithContext(ctx context.Context) IntegrationPolicyEntityGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationPolicyEntityGroupPtrOutput)
+}
+
+type IntegrationPolicyEntityGroupOutput struct{ *pulumi.OutputState }
+
+func (IntegrationPolicyEntityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationPolicyEntityGroup)(nil)).Elem()
+}
+
+func (o IntegrationPolicyEntityGroupOutput) ToIntegrationPolicyEntityGroupOutput() IntegrationPolicyEntityGroupOutput {
+	return o
+}
+
+func (o IntegrationPolicyEntityGroupOutput) ToIntegrationPolicyEntityGroupOutputWithContext(ctx context.Context) IntegrationPolicyEntityGroupOutput {
+	return o
+}
+
+func (o IntegrationPolicyEntityGroupOutput) ToIntegrationPolicyEntityGroupPtrOutput() IntegrationPolicyEntityGroupPtrOutput {
+	return o.ToIntegrationPolicyEntityGroupPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationPolicyEntityGroupOutput) ToIntegrationPolicyEntityGroupPtrOutputWithContext(ctx context.Context) IntegrationPolicyEntityGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegrationPolicyEntityGroup) *IntegrationPolicyEntityGroup {
+		return &v
+	}).(IntegrationPolicyEntityGroupPtrOutput)
+}
+
+// The cluster entity type.
+func (o IntegrationPolicyEntityGroupOutput) ClusterEntityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationPolicyEntityGroup) *string { return v.ClusterEntityType }).(pulumi.StringPtrOutput)
+}
+
+// The cluster ID.
+func (o IntegrationPolicyEntityGroupOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationPolicyEntityGroup) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+type IntegrationPolicyEntityGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationPolicyEntityGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationPolicyEntityGroup)(nil)).Elem()
+}
+
+func (o IntegrationPolicyEntityGroupPtrOutput) ToIntegrationPolicyEntityGroupPtrOutput() IntegrationPolicyEntityGroupPtrOutput {
+	return o
+}
+
+func (o IntegrationPolicyEntityGroupPtrOutput) ToIntegrationPolicyEntityGroupPtrOutputWithContext(ctx context.Context) IntegrationPolicyEntityGroupPtrOutput {
+	return o
+}
+
+func (o IntegrationPolicyEntityGroupPtrOutput) Elem() IntegrationPolicyEntityGroupOutput {
+	return o.ApplyT(func(v *IntegrationPolicyEntityGroup) IntegrationPolicyEntityGroup {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationPolicyEntityGroup
+		return ret
+	}).(IntegrationPolicyEntityGroupOutput)
+}
+
+// The cluster entity type.
+func (o IntegrationPolicyEntityGroupPtrOutput) ClusterEntityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationPolicyEntityGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterEntityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cluster ID.
+func (o IntegrationPolicyEntityGroupPtrOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationPolicyEntityGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 type MetricRuleBlackListMetric struct {
 	// The name of the monitoring indicator.
 	MetricName string `pulumi:"metricName"`
@@ -12204,6 +12360,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigGroupByArrayInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigGroupByArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigStatisticInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigStatisticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigStatisticArrayInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigStatisticArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationPolicyEntityGroupInput)(nil)).Elem(), IntegrationPolicyEntityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationPolicyEntityGroupPtrInput)(nil)).Elem(), IntegrationPolicyEntityGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleBlackListMetricInput)(nil)).Elem(), MetricRuleBlackListMetricArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleBlackListMetricArrayInput)(nil)).Elem(), MetricRuleBlackListMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateArgs{})
@@ -12362,6 +12520,8 @@ func init() {
 	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput{})
 	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigStatisticOutput{})
 	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput{})
+	pulumi.RegisterOutputType(IntegrationPolicyEntityGroupOutput{})
+	pulumi.RegisterOutputType(IntegrationPolicyEntityGroupPtrOutput{})
 	pulumi.RegisterOutputType(MetricRuleBlackListMetricOutput{})
 	pulumi.RegisterOutputType(MetricRuleBlackListMetricArrayOutput{})
 	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateOutput{})

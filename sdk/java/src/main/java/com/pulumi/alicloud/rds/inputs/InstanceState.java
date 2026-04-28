@@ -300,6 +300,70 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+     * - `Chinese_PRC_CI_AS`
+     * - `Chinese_PRC_CS_AS`
+     * - `Chinese_PRC_BIN`
+     * - `Latin1_General_CI_AS`
+     * - `Latin1_General_CS_AS`
+     * - `SQL_Latin1_General_CP1_CI_AS`
+     * - `SQL_Latin1_General_CP1_CS_AS`
+     * - `Japanese_CI_AS`
+     * - `Japanese_CS_AS`
+     * - `Chinese_Taiwan_Stroke_CI_AS`
+     * - `Chinese_Taiwan_Stroke_CS_AS`
+     * 
+     * &gt; **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+     * 
+     */
+    @Import(name="collation")
+    private @Nullable Output<String> collation;
+
+    /**
+     * @return The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+     * - `Chinese_PRC_CI_AS`
+     * - `Chinese_PRC_CS_AS`
+     * - `Chinese_PRC_BIN`
+     * - `Latin1_General_CI_AS`
+     * - `Latin1_General_CS_AS`
+     * - `SQL_Latin1_General_CP1_CI_AS`
+     * - `SQL_Latin1_General_CP1_CS_AS`
+     * - `Japanese_CI_AS`
+     * - `Japanese_CS_AS`
+     * - `Chinese_Taiwan_Stroke_CI_AS`
+     * - `Chinese_Taiwan_Stroke_CS_AS`
+     * 
+     * &gt; **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+     * 
+     */
+    public Optional<Output<String>> collation() {
+        return Optional.ofNullable(this.collation);
+    }
+
+    /**
+     * Specify the point in time at which the system collects the statistics of the instance.
+     * - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+     * - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+     * 
+     * &gt; **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+     * 
+     */
+    @Import(name="collectStatMode")
+    private @Nullable Output<String> collectStatMode;
+
+    /**
+     * @return Specify the point in time at which the system collects the statistics of the instance.
+     * - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+     * - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+     * 
+     * &gt; **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+     * 
+     */
+    public Optional<Output<String>> collectStatMode() {
+        return Optional.ofNullable(this.collectStatMode);
+    }
+
+    /**
      * RDS database connection string.
      * 
      */
@@ -638,6 +702,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> force() {
         return Optional.ofNullable(this.force);
+    }
+
+    /**
+     * Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+     * - 1: enables the feature.
+     * - 0: disables the feature.
+     * 
+     */
+    @Import(name="forceEncryption")
+    private @Nullable Output<Integer> forceEncryption;
+
+    /**
+     * @return Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+     * - 1: enables the feature.
+     * - 0: disables the feature.
+     * 
+     */
+    public Optional<Output<Integer>> forceEncryption() {
+        return Optional.ofNullable(this.forceEncryption);
     }
 
     /**
@@ -1274,6 +1357,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The custom certificate.
+     * - Public endpoint: oss-&lt;The ID of the region&gt;.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+     * - Internal endpoint: oss-&lt;The ID of the region&gt;-internal.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+     * 
+     */
+    @Import(name="sslCertificate")
+    private @Nullable Output<String> sslCertificate;
+
+    /**
+     * @return The custom certificate.
+     * - Public endpoint: oss-&lt;The ID of the region&gt;.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+     * - Internal endpoint: oss-&lt;The ID of the region&gt;-internal.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+     * 
+     */
+    public Optional<Output<String>> sslCertificate() {
+        return Optional.ofNullable(this.sslCertificate);
+    }
+
+    /**
      * The internal or public endpoint for which the server certificate needs to be created or updated.
      * 
      */
@@ -1286,6 +1388,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> sslConnectionString() {
         return Optional.ofNullable(this.sslConnectionString);
+    }
+
+    /**
+     * The password of the certificate.
+     * 
+     */
+    @Import(name="sslPassword")
+    private @Nullable Output<String> sslPassword;
+
+    /**
+     * @return The password of the certificate.
+     * 
+     */
+    public Optional<Output<String>> sslPassword() {
+        return Optional.ofNullable(this.sslPassword);
     }
 
     /**
@@ -1474,6 +1591,40 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The file that contains the certificate.&lt;a class=&#34;workbench-show-detail toggle-down&#34;&gt;.
+     * 
+     */
+    @Import(name="tdeCertificate")
+    private @Nullable Output<String> tdeCertificate;
+
+    /**
+     * @return The file that contains the certificate.&lt;a class=&#34;workbench-show-detail toggle-down&#34;&gt;.
+     * 
+     */
+    public Optional<Output<String>> tdeCertificate() {
+        return Optional.ofNullable(this.tdeCertificate);
+    }
+
+    /**
+     * The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+     * 
+     * &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+     * 
+     */
+    @Import(name="tdeDbName")
+    private @Nullable Output<String> tdeDbName;
+
+    /**
+     * @return The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+     * 
+     * &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+     * 
+     */
+    public Optional<Output<String>> tdeDbName() {
+        return Optional.ofNullable(this.tdeDbName);
+    }
+
+    /**
      * The ID of the custom key.
      * 
      */
@@ -1486,6 +1637,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> tdeEncryptionKey() {
         return Optional.ofNullable(this.tdeEncryptionKey);
+    }
+
+    /**
+     * The password of the certificate.
+     * 
+     */
+    @Import(name="tdePassword")
+    private @Nullable Output<String> tdePassword;
+
+    /**
+     * @return The password of the certificate.
+     * 
+     */
+    public Optional<Output<String>> tdePassword() {
+        return Optional.ofNullable(this.tdePassword);
+    }
+
+    /**
+     * The file that contains the private key of the certificate.&lt;a class=&#34;workbench-show-detail toggle-down&#34;&gt;.
+     * 
+     */
+    @Import(name="tdePrivateKey")
+    private @Nullable Output<String> tdePrivateKey;
+
+    /**
+     * @return The file that contains the private key of the certificate.&lt;a class=&#34;workbench-show-detail toggle-down&#34;&gt;.
+     * 
+     */
+    public Optional<Output<String>> tdePrivateKey() {
+        return Optional.ofNullable(this.tdePrivateKey);
     }
 
     /**
@@ -1535,6 +1716,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<Map<String,String>>>> templates() {
         return Optional.ofNullable(this.templates);
+    }
+
+    /**
+     * The time zone of the instance. By default, the system does not modify the time zone.
+     * 
+     * &gt; **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+     * 
+     */
+    @Import(name="timeZone")
+    private @Nullable Output<String> timeZone;
+
+    /**
+     * @return The time zone of the instance. By default, the system does not modify the time zone.
+     * 
+     * &gt; **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+     * 
+     */
+    public Optional<Output<String>> timeZone() {
+        return Optional.ofNullable(this.timeZone);
     }
 
     /**
@@ -1722,6 +1922,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.clientCertRevocationList = $.clientCertRevocationList;
         this.clientCrlEnabled = $.clientCrlEnabled;
         this.coldDataEnabled = $.coldDataEnabled;
+        this.collation = $.collation;
+        this.collectStatMode = $.collectStatMode;
         this.connectionString = $.connectionString;
         this.connectionStringPrefix = $.connectionStringPrefix;
         this.createTime = $.createTime;
@@ -1739,6 +1941,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.engine = $.engine;
         this.engineVersion = $.engineVersion;
         this.force = $.force;
+        this.forceEncryption = $.forceEncryption;
         this.forceRestart = $.forceRestart;
         this.freshWhiteListReadins = $.freshWhiteListReadins;
         this.haConfig = $.haConfig;
@@ -1774,7 +1977,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.sqlCollectorConfigValue = $.sqlCollectorConfigValue;
         this.sqlCollectorStatus = $.sqlCollectorStatus;
         this.sslAction = $.sslAction;
+        this.sslCertificate = $.sslCertificate;
         this.sslConnectionString = $.sslConnectionString;
+        this.sslPassword = $.sslPassword;
         this.sslStatus = $.sslStatus;
         this.status = $.status;
         this.storageAutoScale = $.storageAutoScale;
@@ -1784,10 +1989,15 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.tags = $.tags;
         this.targetMinorVersion = $.targetMinorVersion;
         this.tcpConnectionType = $.tcpConnectionType;
+        this.tdeCertificate = $.tdeCertificate;
+        this.tdeDbName = $.tdeDbName;
         this.tdeEncryptionKey = $.tdeEncryptionKey;
+        this.tdePassword = $.tdePassword;
+        this.tdePrivateKey = $.tdePrivateKey;
         this.tdeStatus = $.tdeStatus;
         this.templateIdLists = $.templateIdLists;
         this.templates = $.templates;
+        this.timeZone = $.timeZone;
         this.upgradeDbInstanceKernelVersion = $.upgradeDbInstanceKernelVersion;
         this.upgradeTime = $.upgradeTime;
         this.vpcId = $.vpcId;
@@ -2186,6 +2396,82 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder coldDataEnabled(Boolean coldDataEnabled) {
             return coldDataEnabled(Output.of(coldDataEnabled));
+        }
+
+        /**
+         * @param collation The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+         * - `Chinese_PRC_CI_AS`
+         * - `Chinese_PRC_CS_AS`
+         * - `Chinese_PRC_BIN`
+         * - `Latin1_General_CI_AS`
+         * - `Latin1_General_CS_AS`
+         * - `SQL_Latin1_General_CP1_CI_AS`
+         * - `SQL_Latin1_General_CP1_CS_AS`
+         * - `Japanese_CI_AS`
+         * - `Japanese_CS_AS`
+         * - `Chinese_Taiwan_Stroke_CI_AS`
+         * - `Chinese_Taiwan_Stroke_CS_AS`
+         * 
+         * &gt; **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collation(@Nullable Output<String> collation) {
+            $.collation = collation;
+            return this;
+        }
+
+        /**
+         * @param collation The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
+         * - `Chinese_PRC_CI_AS`
+         * - `Chinese_PRC_CS_AS`
+         * - `Chinese_PRC_BIN`
+         * - `Latin1_General_CI_AS`
+         * - `Latin1_General_CS_AS`
+         * - `SQL_Latin1_General_CP1_CI_AS`
+         * - `SQL_Latin1_General_CP1_CS_AS`
+         * - `Japanese_CI_AS`
+         * - `Japanese_CS_AS`
+         * - `Chinese_Taiwan_Stroke_CI_AS`
+         * - `Chinese_Taiwan_Stroke_CS_AS`
+         * 
+         * &gt; **NOTE:** The default character set collation of the instance is Chinese_PRC_CI_AS. You must specify one of the Collation and Timezone parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collation(String collation) {
+            return collation(Output.of(collation));
+        }
+
+        /**
+         * @param collectStatMode Specify the point in time at which the system collects the statistics of the instance.
+         * - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+         * - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+         * 
+         * &gt; **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collectStatMode(@Nullable Output<String> collectStatMode) {
+            $.collectStatMode = collectStatMode;
+            return this;
+        }
+
+        /**
+         * @param collectStatMode Specify the point in time at which the system collects the statistics of the instance.
+         * - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+         * - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
+         * 
+         * &gt; **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collectStatMode(String collectStatMode) {
+            return collectStatMode(Output.of(collectStatMode));
         }
 
         /**
@@ -2629,6 +2915,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder force(String force) {
             return force(Output.of(force));
+        }
+
+        /**
+         * @param forceEncryption Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+         * - 1: enables the feature.
+         * - 0: disables the feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceEncryption(@Nullable Output<Integer> forceEncryption) {
+            $.forceEncryption = forceEncryption;
+            return this;
+        }
+
+        /**
+         * @param forceEncryption Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+         * - 1: enables the feature.
+         * - 0: disables the feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceEncryption(Integer forceEncryption) {
+            return forceEncryption(Output.of(forceEncryption));
         }
 
         /**
@@ -3527,6 +3838,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param sslCertificate The custom certificate.
+         * - Public endpoint: oss-&lt;The ID of the region&gt;.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+         * - Internal endpoint: oss-&lt;The ID of the region&gt;-internal.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslCertificate(@Nullable Output<String> sslCertificate) {
+            $.sslCertificate = sslCertificate;
+            return this;
+        }
+
+        /**
+         * @param sslCertificate The custom certificate.
+         * - Public endpoint: oss-&lt;The ID of the region&gt;.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+         * - Internal endpoint: oss-&lt;The ID of the region&gt;-internal.aliyuncs.com:&lt;The name of the bucket&gt;:&lt;The name of the certificate file (The file name contains the extension.)&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslCertificate(String sslCertificate) {
+            return sslCertificate(Output.of(sslCertificate));
+        }
+
+        /**
          * @param sslConnectionString The internal or public endpoint for which the server certificate needs to be created or updated.
          * 
          * @return builder
@@ -3545,6 +3881,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sslConnectionString(String sslConnectionString) {
             return sslConnectionString(Output.of(sslConnectionString));
+        }
+
+        /**
+         * @param sslPassword The password of the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslPassword(@Nullable Output<String> sslPassword) {
+            $.sslPassword = sslPassword;
+            return this;
+        }
+
+        /**
+         * @param sslPassword The password of the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslPassword(String sslPassword) {
+            return sslPassword(Output.of(sslPassword));
         }
 
         /**
@@ -3787,6 +4144,52 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param tdeCertificate The file that contains the certificate.&lt;a class=&#34;workbench-show-detail toggle-down&#34;&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tdeCertificate(@Nullable Output<String> tdeCertificate) {
+            $.tdeCertificate = tdeCertificate;
+            return this;
+        }
+
+        /**
+         * @param tdeCertificate The file that contains the certificate.&lt;a class=&#34;workbench-show-detail toggle-down&#34;&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tdeCertificate(String tdeCertificate) {
+            return tdeCertificate(Output.of(tdeCertificate));
+        }
+
+        /**
+         * @param tdeDbName The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+         * 
+         * &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tdeDbName(@Nullable Output<String> tdeDbName) {
+            $.tdeDbName = tdeDbName;
+            return this;
+        }
+
+        /**
+         * @param tdeDbName The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+         * 
+         * &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tdeDbName(String tdeDbName) {
+            return tdeDbName(Output.of(tdeDbName));
+        }
+
+        /**
          * @param tdeEncryptionKey The ID of the custom key.
          * 
          * @return builder
@@ -3805,6 +4208,48 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tdeEncryptionKey(String tdeEncryptionKey) {
             return tdeEncryptionKey(Output.of(tdeEncryptionKey));
+        }
+
+        /**
+         * @param tdePassword The password of the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tdePassword(@Nullable Output<String> tdePassword) {
+            $.tdePassword = tdePassword;
+            return this;
+        }
+
+        /**
+         * @param tdePassword The password of the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tdePassword(String tdePassword) {
+            return tdePassword(Output.of(tdePassword));
+        }
+
+        /**
+         * @param tdePrivateKey The file that contains the private key of the certificate.&lt;a class=&#34;workbench-show-detail toggle-down&#34;&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tdePrivateKey(@Nullable Output<String> tdePrivateKey) {
+            $.tdePrivateKey = tdePrivateKey;
+            return this;
+        }
+
+        /**
+         * @param tdePrivateKey The file that contains the private key of the certificate.&lt;a class=&#34;workbench-show-detail toggle-down&#34;&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tdePrivateKey(String tdePrivateKey) {
+            return tdePrivateKey(Output.of(tdePrivateKey));
         }
 
         /**
@@ -3892,6 +4337,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder templates(Map<String,String>... templates) {
             return templates(List.of(templates));
+        }
+
+        /**
+         * @param timeZone The time zone of the instance. By default, the system does not modify the time zone.
+         * 
+         * &gt; **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeZone(@Nullable Output<String> timeZone) {
+            $.timeZone = timeZone;
+            return this;
+        }
+
+        /**
+         * @param timeZone The time zone of the instance. By default, the system does not modify the time zone.
+         * 
+         * &gt; **NOTE:** The default time zone of the instance is China Standard Time. You must specify one of the Collation and Timezone parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeZone(String timeZone) {
+            return timeZone(Output.of(timeZone));
         }
 
         /**

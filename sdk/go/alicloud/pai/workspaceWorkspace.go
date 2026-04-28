@@ -74,11 +74,13 @@ type WorkspaceWorkspace struct {
 	// Workspace description, no more than 80 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Environments contained in the workspace:
 	// - Simple mode only production environment (prod).
 	// - Standard mode includes development environment (dev) and production environment (prod).
 	EnvTypes pulumi.StringArrayOutput `pulumi:"envTypes"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Workspace state, possible values:
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The workspace name. The format is as follows:
@@ -137,6 +139,8 @@ type workspaceWorkspaceState struct {
 	// - Simple mode only production environment (prod).
 	// - Standard mode includes development environment (dev) and production environment (prod).
 	EnvTypes []string `pulumi:"envTypes"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Workspace state, possible values:
 	Status *string `pulumi:"status"`
 	// The workspace name. The format is as follows:
@@ -157,6 +161,8 @@ type WorkspaceWorkspaceState struct {
 	// - Simple mode only production environment (prod).
 	// - Standard mode includes development environment (dev) and production environment (prod).
 	EnvTypes pulumi.StringArrayInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// Workspace state, possible values:
 	Status pulumi.StringPtrInput
 	// The workspace name. The format is as follows:
@@ -179,6 +185,8 @@ type workspaceWorkspaceArgs struct {
 	// - Simple mode only production environment (prod).
 	// - Standard mode includes development environment (dev) and production environment (prod).
 	EnvTypes []string `pulumi:"envTypes"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The workspace name. The format is as follows:
 	// - 3 to 23 characters in length and can contain letters, underscores, or numbers.
 	// - Must start with a large or small letter.
@@ -196,6 +204,8 @@ type WorkspaceWorkspaceArgs struct {
 	// - Simple mode only production environment (prod).
 	// - Standard mode includes development environment (dev) and production environment (prod).
 	EnvTypes pulumi.StringArrayInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The workspace name. The format is as follows:
 	// - 3 to 23 characters in length and can contain letters, underscores, or numbers.
 	// - Must start with a large or small letter.
@@ -301,8 +311,8 @@ func (o WorkspaceWorkspaceOutput) Description() pulumi.StringOutput {
 }
 
 // It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
-func (o WorkspaceWorkspaceOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceWorkspace) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o WorkspaceWorkspaceOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceWorkspace) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // Environments contained in the workspace:
@@ -310,6 +320,11 @@ func (o WorkspaceWorkspaceOutput) DisplayName() pulumi.StringPtrOutput {
 // - Standard mode includes development environment (dev) and production environment (prod).
 func (o WorkspaceWorkspaceOutput) EnvTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkspaceWorkspace) pulumi.StringArrayOutput { return v.EnvTypes }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the resource group.
+func (o WorkspaceWorkspaceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceWorkspace) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // Workspace state, possible values:

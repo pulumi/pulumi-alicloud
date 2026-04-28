@@ -30,11 +30,13 @@ from .get_sls_groups import *
 from .group_metric_rule import *
 from .hybrid_monitor_fc_task import *
 from .hybrid_monitor_sls_task import *
+from .integration_policy import *
 from .metric_rule_black_list import *
 from .metric_rule_template import *
 from .monitor_group import *
 from .monitor_group_instances import *
 from .namespace import *
+from .prometheus_instance import *
 from .site_monitor import *
 from .sls_group import *
 from .workspace import *

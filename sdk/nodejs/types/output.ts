@@ -3467,6 +3467,34 @@ export namespace alb {
 
 }
 
+export namespace alidnscloudgtm {
+    export interface MonitorTemplateIspCityNode {
+        /**
+         * The city code of the monitoring node.
+         */
+        cityCode?: string;
+        /**
+         * The ISP (Internet Service Provider) code of the monitoring node.
+         */
+        ispCode?: string;
+    }
+
+}
+
+export namespace alidnscloudgtmaddress {
+    export interface AlidnsCloudGtmAddressHealthTask {
+        /**
+         * The port to probe. If omitted, the default port of the template's protocol is used (for example, 80 for HTTP, 443 for HTTPS).
+         */
+        port?: number;
+        /**
+         * The ID of the Cloud GTM monitor template to probe this address with. Usually referenced as `alicloud_alidns_cloud_gtm_monitor_template.<name>.id`.
+         */
+        templateId?: string;
+    }
+
+}
+
 export namespace alikafka {
     export interface InstanceConfluentConfig {
         /**
@@ -14142,6 +14170,17 @@ export namespace cms {
          * The name of the key that is used to filter logs imported from Log Service.
          */
         slsKeyName?: string;
+    }
+
+    export interface IntegrationPolicyEntityGroup {
+        /**
+         * The cluster entity type.
+         */
+        clusterEntityType: string;
+        /**
+         * The cluster ID.
+         */
+        clusterId?: string;
     }
 
     export interface MetricRuleBlackListMetric {

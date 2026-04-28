@@ -81,6 +81,21 @@ public final class WorkspaceWorkspaceState extends com.pulumi.resources.Resource
     }
 
     /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * Workspace state, possible values:
      * 
      */
@@ -123,6 +138,7 @@ public final class WorkspaceWorkspaceState extends com.pulumi.resources.Resource
         this.description = $.description;
         this.displayName = $.displayName;
         this.envTypes = $.envTypes;
+        this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
         this.workspaceName = $.workspaceName;
     }
@@ -243,6 +259,27 @@ public final class WorkspaceWorkspaceState extends com.pulumi.resources.Resource
          */
         public Builder envTypes(String... envTypes) {
             return envTypes(List.of(envTypes));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

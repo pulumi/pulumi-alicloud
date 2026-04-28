@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HybridMonitorFcTask{}
 	case "alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask":
 		r = &HybridMonitorSlsTask{}
+	case "alicloud:cms/integrationPolicy:IntegrationPolicy":
+		r = &IntegrationPolicy{}
 	case "alicloud:cms/metricRuleBlackList:MetricRuleBlackList":
 		r = &MetricRuleBlackList{}
 	case "alicloud:cms/metricRuleTemplate:MetricRuleTemplate":
@@ -47,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MonitorGroupInstances{}
 	case "alicloud:cms/namespace:Namespace":
 		r = &Namespace{}
+	case "alicloud:cms/prometheusInstance:PrometheusInstance":
+		r = &PrometheusInstance{}
 	case "alicloud:cms/siteMonitor:SiteMonitor":
 		r = &SiteMonitor{}
 	case "alicloud:cms/slsGroup:SlsGroup":
@@ -108,6 +112,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"cms/integrationPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"cms/metricRuleBlackList",
 		&module{version},
 	)
@@ -129,6 +138,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cms/namespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cms/prometheusInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

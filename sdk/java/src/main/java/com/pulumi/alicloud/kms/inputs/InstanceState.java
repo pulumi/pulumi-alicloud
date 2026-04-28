@@ -6,6 +6,7 @@ package com.pulumi.alicloud.kms.inputs;
 import com.pulumi.alicloud.kms.inputs.InstanceBindVpcArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -62,6 +63,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     * 
+     */
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    /**
+     * @return Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -408,6 +424,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.bindVpcs = $.bindVpcs;
         this.caCertificateChainPem = $.caCertificateChainPem;
         this.createTime = $.createTime;
+        this.deletionProtection = $.deletionProtection;
         this.endDate = $.endDate;
         this.forceDeleteWithoutBackup = $.forceDeleteWithoutBackup;
         this.instanceName = $.instanceName;
@@ -519,6 +536,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param deletionProtection Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        /**
+         * @param deletionProtection Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

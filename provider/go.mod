@@ -22,7 +22,7 @@ replace (
 replace github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.15.0
 
 require (
-	github.com/aliyun/terraform-provider-alicloud v1.276.0
+	github.com/aliyun/terraform-provider-alicloud v1.277.0
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.127.0
 	github.com/pulumi/pulumi/sdk/v3 v3.228.0
@@ -55,8 +55,8 @@ require (
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/alibabacloud-go/alibabacloud-gateway-oss v0.0.23 // indirect
 	github.com/alibabacloud-go/alibabacloud-gateway-oss-util v0.0.12 // indirect
-	github.com/alibabacloud-go/alibabacloud-gateway-sls v0.0.6 // indirect
-	github.com/alibabacloud-go/alibabacloud-gateway-sls-util v0.0.1 // indirect
+	github.com/alibabacloud-go/alibabacloud-gateway-sls v0.3.0 // indirect
+	github.com/alibabacloud-go/alibabacloud-gateway-sls-util v0.3.0 // indirect
 	github.com/alibabacloud-go/alibabacloud-gateway-spi v0.0.5 // indirect
 	github.com/alibabacloud-go/cs-20151215/v7 v7.6.0 // indirect
 	github.com/alibabacloud-go/darabonba-array v0.1.0 // indirect

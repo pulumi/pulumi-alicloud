@@ -261,6 +261,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     */
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
+    /**
      * (Available since v1.233.1) Instance expiration time.
      */
     declare public /*out*/ readonly endDate: pulumi.Output<string>;
@@ -377,6 +381,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["bindVpcs"] = state?.bindVpcs;
             resourceInputs["caCertificateChainPem"] = state?.caCertificateChainPem;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["endDate"] = state?.endDate;
             resourceInputs["forceDeleteWithoutBackup"] = state?.forceDeleteWithoutBackup;
             resourceInputs["instanceName"] = state?.instanceName;
@@ -409,6 +414,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneIds'");
             }
             resourceInputs["bindVpcs"] = args?.bindVpcs;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["forceDeleteWithoutBackup"] = args?.forceDeleteWithoutBackup;
             resourceInputs["instanceName"] = args?.instanceName;
             resourceInputs["keyNum"] = args?.keyNum;
@@ -453,6 +459,10 @@ export interface InstanceState {
      * The creation time of the resource.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * (Available since v1.233.1) Instance expiration time.
      */
@@ -563,6 +573,10 @@ export interface InstanceArgs {
      * Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
      */
     bindVpcs?: pulumi.Input<pulumi.Input<inputs.kms.InstanceBindVpc>[]>;
+    /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Whether to force deletion even without backup.
      *
