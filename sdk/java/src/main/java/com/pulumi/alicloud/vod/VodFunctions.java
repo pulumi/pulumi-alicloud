@@ -36,8 +36,8 @@ public final class VodFunctions {
      * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
      * import com.pulumi.alicloud.vod.VodFunctions;
      * import com.pulumi.alicloud.vod.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -102,8 +102,8 @@ public final class VodFunctions {
      * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
      * import com.pulumi.alicloud.vod.VodFunctions;
      * import com.pulumi.alicloud.vod.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -168,8 +168,8 @@ public final class VodFunctions {
      * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
      * import com.pulumi.alicloud.vod.VodFunctions;
      * import com.pulumi.alicloud.vod.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -234,8 +234,8 @@ public final class VodFunctions {
      * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
      * import com.pulumi.alicloud.vod.VodFunctions;
      * import com.pulumi.alicloud.vod.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -300,8 +300,8 @@ public final class VodFunctions {
      * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
      * import com.pulumi.alicloud.vod.VodFunctions;
      * import com.pulumi.alicloud.vod.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -366,8 +366,8 @@ public final class VodFunctions {
      * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
      * import com.pulumi.alicloud.vod.VodFunctions;
      * import com.pulumi.alicloud.vod.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -432,8 +432,8 @@ public final class VodFunctions {
      * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
      * import com.pulumi.alicloud.vod.VodFunctions;
      * import com.pulumi.alicloud.vod.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

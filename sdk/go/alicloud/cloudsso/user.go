@@ -55,17 +55,17 @@ import (
 // if err != nil {
 // return err
 // }
-// var tmp0 float64
+// var defaultDirectory []*cloudsso.Directory
+// for index := 0; index < int(len(_default.Ids).ApplyT(func(length int) (int, error) {
+// var tmp0 int
 // if length > 0 {
 // tmp0 = 0
 // } else {
 // tmp0 = 1
 // }
-// var defaultDirectory []*cloudsso.Directory
-// for index := 0; index < float64(len(_default.Ids).ApplyT(func(length int) (float64, error) {
 // return tmp0, nil
 //
-//	}).(pulumi.Float64Output)); index++ {
+//	}).(pulumi.IntOutput)); index++ {
 //	    key0 := index
 //	    _ := index
 //
@@ -77,6 +77,7 @@ import (
 // }
 // defaultDirectory = append(defaultDirectory, __res)
 // }
+// directoryId := len(_default.Ids).ApplyT(func(length int) (*interface{}, error) {
 // var tmp1 *interface{}
 // if length > 0 {
 // tmp1 = _default.Ids[0]
@@ -90,7 +91,6 @@ import (
 // },
 // }, nil).Result[0]
 // }
-// directoryId := len(_default.Ids).ApplyT(func(length int) (*interface{}, error) {
 // return &tmp1, nil
 // }).(pulumi.Interface{}PtrOutput)
 // _, err = cloudsso.NewUser(ctx, "default", &cloudsso.UserArgs{

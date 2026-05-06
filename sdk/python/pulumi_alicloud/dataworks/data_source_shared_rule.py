@@ -261,10 +261,10 @@ class DataSourceSharedRule(pulumi.CustomResource):
                     "key1": "value1",
                 },
             }),
-            project_id=default_qe_rfv_u.id,
+            project_id=default_qe_rfv_u.id.apply(lambda x: int(x)),
             connection_properties_mode="UrlMode")
         default_data_source_shared_rule = alicloud.dataworks.DataSourceSharedRule("default",
-            target_project_id=defaultasjs_h5.id,
+            target_project_id=defaultasjs_h5.id.apply(lambda x: int(x)),
             data_source_id=defaultvzu0w_g.data_source_id,
             env_type="Prod")
         ```
@@ -352,10 +352,10 @@ class DataSourceSharedRule(pulumi.CustomResource):
                     "key1": "value1",
                 },
             }),
-            project_id=default_qe_rfv_u.id,
+            project_id=default_qe_rfv_u.id.apply(lambda x: int(x)),
             connection_properties_mode="UrlMode")
         default_data_source_shared_rule = alicloud.dataworks.DataSourceSharedRule("default",
-            target_project_id=defaultasjs_h5.id,
+            target_project_id=defaultasjs_h5.id.apply(lambda x: int(x)),
             data_source_id=defaultvzu0w_g.data_source_id,
             env_type="Prod")
         ```

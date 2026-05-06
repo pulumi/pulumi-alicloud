@@ -181,7 +181,7 @@ def get_waf_rulesets(ids: Optional[Sequence[_builtins.str]] = None,
         name = "terraform-example"
     default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
     default_waf_ruleset = alicloud.esa.WafRuleset("default",
-        site_id=default.sites[0].site_id,
+        site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
         phase="http_custom",
         site_version=0,
         name=name)
@@ -260,7 +260,7 @@ def get_waf_rulesets_output(ids: Optional[pulumi.Input[Optional[Sequence[_builti
         name = "terraform-example"
     default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
     default_waf_ruleset = alicloud.esa.WafRuleset("default",
-        site_id=default.sites[0].site_id,
+        site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
         phase="http_custom",
         site_version=0,
         name=name)

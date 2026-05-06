@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *     engineVersion: "8.0",
  *     dbInstanceStorageType: "cloud_essd",
  *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,
  *     securityIps: [
@@ -79,7 +79,7 @@ import * as utilities from "../utilities";
  *     accountType: "Normal",
  * });
  * const defaultEnterpriseInstance = new alicloud.dms.EnterpriseInstance("default", {
- *     tid: defaultGetUserTenants.then(defaultGetUserTenants => defaultGetUserTenants.ids?.[0]),
+ *     tid: output(defaultGetUserTenants.then(defaultGetUserTenants => defaultGetUserTenants.ids?.[0])).apply(x =>Number(x)),
  *     instanceType: "mysql",
  *     instanceSource: "RDS",
  *     networkType: "VPC",
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  *     databaseUser: defaultAccount.accountName,
  *     databasePassword: defaultAccount.accountPassword,
  *     instanceName: name,
- *     dbaUid: current.then(current => current.id),
+ *     dbaUid: output(current.then(current => current.id)).apply(x =>Number(x)),
  *     safeRule: "904496",
  *     useDsql: 1,
  *     queryTimeout: 60,

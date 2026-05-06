@@ -919,7 +919,7 @@ class StreamingJob(pulumi.CustomResource):
             }),
             data_source_type="kafka",
             data_source_description="example",
-            service_id=default2d_usz_y.service_id)
+            service_id=default2d_usz_y.service_id.apply(lambda x: int(x)))
         default = alicloud.gpdb.StreamingJob("default",
             account="example_001",
             dest_schema="public",
@@ -1103,7 +1103,7 @@ class StreamingJob(pulumi.CustomResource):
             }),
             data_source_type="kafka",
             data_source_description="example",
-            service_id=default2d_usz_y.service_id)
+            service_id=default2d_usz_y.service_id.apply(lambda x: int(x)))
         default = alicloud.gpdb.StreamingJob("default",
             account="example_001",
             dest_schema="public",

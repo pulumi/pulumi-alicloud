@@ -755,7 +755,7 @@ class Connection(pulumi.CustomResource):
             network_type="public",
             payment_type="Subscription",
             enable_ipsec=True,
-            bandwidth=spec)
+            bandwidth=int(spec))
         default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
             description="defaultCustomerGateway",
             ip_address="2.2.2.5",
@@ -926,7 +926,7 @@ class Connection(pulumi.CustomResource):
             network_type="public",
             payment_type="Subscription",
             enable_ipsec=True,
-            bandwidth=spec)
+            bandwidth=int(spec))
         default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
             description="defaultCustomerGateway",
             ip_address="2.2.2.5",

@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *             separator: "-",
  *             input: [
  *                 name,
- *                 range.value,
+ *                 String(range.value),
  *             ],
  *         }).then(invoke => invoke.result),
  *         cert: `-----BEGIN CERTIFICATE-----

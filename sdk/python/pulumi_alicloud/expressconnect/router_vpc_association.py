@@ -285,7 +285,7 @@ class RouterVpcAssociation(pulumi.CustomResource):
                 "172.16.2.0/24",
                 "172.16.1.0/24",
             ],
-            vpc_owner_id=current.id,
+            vpc_owner_id=output(current.id).apply(lambda x: int(x)),
             association_region_id="cn-hangzhou",
             vpc_id=default8q_at_d6.id)
         ```
@@ -346,7 +346,7 @@ class RouterVpcAssociation(pulumi.CustomResource):
                 "172.16.2.0/24",
                 "172.16.1.0/24",
             ],
-            vpc_owner_id=current.id,
+            vpc_owner_id=output(current.id).apply(lambda x: int(x)),
             association_region_id="cn-hangzhou",
             vpc_id=default8q_at_d6.id)
         ```

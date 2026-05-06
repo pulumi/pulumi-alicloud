@@ -78,8 +78,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -122,8 +122,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -166,8 +166,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -210,8 +210,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -254,8 +254,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -298,8 +298,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -342,8 +342,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -386,8 +386,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -431,8 +431,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -476,8 +476,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -521,8 +521,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -566,8 +566,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -611,8 +611,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -656,8 +656,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetAlarmContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -706,8 +706,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.DynamicTagGroupMatchExpressArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -773,8 +773,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.DynamicTagGroupMatchExpressArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -840,8 +840,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.DynamicTagGroupMatchExpressArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -907,8 +907,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.DynamicTagGroupMatchExpressArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -974,8 +974,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.DynamicTagGroupMatchExpressArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1041,8 +1041,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.DynamicTagGroupMatchExpressArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1108,8 +1108,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.DynamicTagGroupMatchExpressArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1170,8 +1170,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1220,8 +1220,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1270,8 +1270,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1320,8 +1320,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1370,8 +1370,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1420,8 +1420,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1470,8 +1470,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1520,8 +1520,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetGroupMetricRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1566,8 +1566,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetGroupMetricRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1612,8 +1612,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetGroupMetricRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1658,8 +1658,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetGroupMetricRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1704,8 +1704,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetGroupMetricRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1750,8 +1750,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetGroupMetricRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1796,8 +1796,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetGroupMetricRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1842,8 +1842,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorDatasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1890,8 +1890,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorDatasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1938,8 +1938,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorDatasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1986,8 +1986,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorDatasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2034,8 +2034,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorDatasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2082,8 +2082,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorFcTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2127,8 +2127,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorFcTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2172,8 +2172,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorFcTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2217,8 +2217,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorFcTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2262,8 +2262,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorFcTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2307,8 +2307,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorFcTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2352,8 +2352,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorFcTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2397,8 +2397,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorSlsTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2442,8 +2442,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorSlsTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2487,8 +2487,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorSlsTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2532,8 +2532,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorSlsTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2577,8 +2577,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorSlsTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2622,8 +2622,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorSlsTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2667,8 +2667,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorSlsTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2710,8 +2710,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2755,8 +2755,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2800,8 +2800,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2845,8 +2845,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2890,8 +2890,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2935,8 +2935,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2980,8 +2980,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3027,8 +3027,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3087,8 +3087,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3147,8 +3147,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3207,8 +3207,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3267,8 +3267,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3327,8 +3327,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3387,8 +3387,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMetricRuleTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3462,8 +3462,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMonitorGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3508,8 +3508,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMonitorGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3554,8 +3554,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMonitorGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3600,8 +3600,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMonitorGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3646,8 +3646,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMonitorGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3692,8 +3692,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMonitorGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3738,8 +3738,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetMonitorGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3784,8 +3784,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3829,8 +3829,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3874,8 +3874,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3919,8 +3919,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3964,8 +3964,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4009,8 +4009,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4054,8 +4054,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4101,8 +4101,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4147,8 +4147,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4193,8 +4193,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4239,8 +4239,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4285,8 +4285,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4331,8 +4331,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4377,8 +4377,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4424,8 +4424,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4508,8 +4508,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4592,8 +4592,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4676,8 +4676,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4760,8 +4760,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4844,8 +4844,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4928,8 +4928,8 @@ public final class CmsFunctions {
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5009,8 +5009,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSlsGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5059,8 +5059,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSlsGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5109,8 +5109,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSlsGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5159,8 +5159,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSlsGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5209,8 +5209,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSlsGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5259,8 +5259,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSlsGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5309,8 +5309,8 @@ public final class CmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
      * import com.pulumi.alicloud.cms.inputs.GetSlsGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

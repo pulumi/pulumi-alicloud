@@ -515,7 +515,7 @@ class DiJob(pulumi.CustomResource):
             pai_task_enabled=True)
         default = alicloud.dataworks.DiJob("default",
             description=name,
-            project_id=default_mmhl8_u.id,
+            project_id=default_mmhl8_u.id.apply(lambda x: int(x)),
             job_name="zhenyuan_example_case",
             migration_type="api_FullAndRealtimeIncremental",
             source_data_source_settings=[{
@@ -556,15 +556,15 @@ class DiJob(pulumi.CustomResource):
             source_data_source_type="MySQL",
             resource_settings={
                 "offline_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "S_res_group_524257424564736_1716799673667",
                 },
                 "realtime_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "S_res_group_524257424564736_1716799673667",
                 },
                 "schedule_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "S_res_group_524257424564736_1716799673667",
                 },
             },
@@ -668,7 +668,7 @@ class DiJob(pulumi.CustomResource):
             pai_task_enabled=True)
         default = alicloud.dataworks.DiJob("default",
             description=name,
-            project_id=default_mmhl8_u.id,
+            project_id=default_mmhl8_u.id.apply(lambda x: int(x)),
             job_name="zhenyuan_example_case",
             migration_type="api_FullAndRealtimeIncremental",
             source_data_source_settings=[{
@@ -709,15 +709,15 @@ class DiJob(pulumi.CustomResource):
             source_data_source_type="MySQL",
             resource_settings={
                 "offline_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "S_res_group_524257424564736_1716799673667",
                 },
                 "realtime_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "S_res_group_524257424564736_1716799673667",
                 },
                 "schedule_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "S_res_group_524257424564736_1716799673667",
                 },
             },

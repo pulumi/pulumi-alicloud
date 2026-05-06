@@ -46,8 +46,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -91,8 +91,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -136,8 +136,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -181,8 +181,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -226,8 +226,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -271,8 +271,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -316,8 +316,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -359,8 +359,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetCustomerGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -403,8 +403,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetCustomerGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -447,8 +447,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetCustomerGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -491,8 +491,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetCustomerGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -535,8 +535,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetCustomerGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -579,8 +579,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetCustomerGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -623,8 +623,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetCustomerGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -690,8 +690,8 @@ public final class VpnFunctions {
      * import com.pulumi.alicloud.vpn.GatewayVcoRouteArgs;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -835,8 +835,8 @@ public final class VpnFunctions {
      * import com.pulumi.alicloud.vpn.GatewayVcoRouteArgs;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -980,8 +980,8 @@ public final class VpnFunctions {
      * import com.pulumi.alicloud.vpn.GatewayVcoRouteArgs;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1125,8 +1125,8 @@ public final class VpnFunctions {
      * import com.pulumi.alicloud.vpn.GatewayVcoRouteArgs;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1270,8 +1270,8 @@ public final class VpnFunctions {
      * import com.pulumi.alicloud.vpn.GatewayVcoRouteArgs;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1457,8 +1457,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewayZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1499,8 +1499,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewayZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1541,8 +1541,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewayZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1583,8 +1583,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewayZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1625,8 +1625,8 @@ public final class VpnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewayZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1680,8 +1680,8 @@ public final class VpnFunctions {
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1785,8 +1785,8 @@ public final class VpnFunctions {
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1890,8 +1890,8 @@ public final class VpnFunctions {
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1995,8 +1995,8 @@ public final class VpnFunctions {
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2100,8 +2100,8 @@ public final class VpnFunctions {
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2205,8 +2205,8 @@ public final class VpnFunctions {
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2310,8 +2310,8 @@ public final class VpnFunctions {
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -326,7 +326,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
         if asn is None:
             asn = "4200000667"
         default_o8_hcfx = alicloud.expressconnect.RouterExpressConnectRouter("defaultO8Hcfx",
-            alibaba_side_asn=asn,
+            alibaba_side_asn=int(asn),
             ecr_name=name)
         default_qk_biay = alicloud.cen.Instance("defaultQKBiay", cen_instance_name=name)
         default_qa94_y1 = alicloud.cen.TransitRouter("defaultQa94Y1",
@@ -338,14 +338,14 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
             ecr_id=default_o8_hcfx.id,
             cen_id=default_qk_biay.id,
             transit_router_id=default_qa94_y1.transit_router_id,
-            transit_router_owner_id=current.id)
+            transit_router_owner_id=output(current.id).apply(lambda x: int(x)))
         default = alicloud.cen.TransitRouterEcrAttachment("default",
             ecr_id=default_o8_hcfx.id,
             cen_id=defaulted_pu6c.cen_id,
             transit_router_ecr_attachment_name=name,
             transit_router_attachment_description=name,
             transit_router_id=default_qa94_y1.transit_router_id,
-            ecr_owner_id=current.id)
+            ecr_owner_id=output(current.id).apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -398,7 +398,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
         if asn is None:
             asn = "4200000667"
         default_o8_hcfx = alicloud.expressconnect.RouterExpressConnectRouter("defaultO8Hcfx",
-            alibaba_side_asn=asn,
+            alibaba_side_asn=int(asn),
             ecr_name=name)
         default_qk_biay = alicloud.cen.Instance("defaultQKBiay", cen_instance_name=name)
         default_qa94_y1 = alicloud.cen.TransitRouter("defaultQa94Y1",
@@ -410,14 +410,14 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
             ecr_id=default_o8_hcfx.id,
             cen_id=default_qk_biay.id,
             transit_router_id=default_qa94_y1.transit_router_id,
-            transit_router_owner_id=current.id)
+            transit_router_owner_id=output(current.id).apply(lambda x: int(x)))
         default = alicloud.cen.TransitRouterEcrAttachment("default",
             ecr_id=default_o8_hcfx.id,
             cen_id=defaulted_pu6c.cen_id,
             transit_router_ecr_attachment_name=name,
             transit_router_attachment_description=name,
             transit_router_id=default_qa94_y1.transit_router_id,
-            ecr_owner_id=current.id)
+            ecr_owner_id=output(current.id).apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

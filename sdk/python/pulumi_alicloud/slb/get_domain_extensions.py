@@ -116,7 +116,7 @@ def get_domain_extensions(frontend_port: Optional[_builtins.int] = None,
 
     foo = alicloud.slb.get_domain_extensions(ids=["fake-de-id"],
         load_balancer_id="fake-lb-id",
-        frontend_port="fake-port")
+        frontend_port=int("fake-port"))
     ```
 
 
@@ -157,7 +157,7 @@ def get_domain_extensions_output(frontend_port: Optional[pulumi.Input[_builtins.
 
     foo = alicloud.slb.get_domain_extensions(ids=["fake-de-id"],
         load_balancer_id="fake-lb-id",
-        frontend_port="fake-port")
+        frontend_port=int("fake-port"))
     ```
 
 

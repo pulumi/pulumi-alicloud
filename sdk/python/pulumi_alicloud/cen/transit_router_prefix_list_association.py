@@ -299,7 +299,7 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
             transit_router_table_id=example_transit_router_route_table.transit_router_route_table_id,
             next_hop="BlackHole",
             next_hop_type="BlackHole",
-            owner_uid=default.id)
+            owner_uid=output(default.id).apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -364,7 +364,7 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
             transit_router_table_id=example_transit_router_route_table.transit_router_route_table_id,
             next_hop="BlackHole",
             next_hop_type="BlackHole",
-            owner_uid=default.id)
+            owner_uid=output(default.id).apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

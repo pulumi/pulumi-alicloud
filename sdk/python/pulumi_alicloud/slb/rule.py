@@ -810,7 +810,7 @@ class Rule(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         rule_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         rule_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -953,7 +953,7 @@ class Rule(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         rule_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         rule_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")

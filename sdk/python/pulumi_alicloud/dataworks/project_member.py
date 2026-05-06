@@ -197,7 +197,7 @@ class ProjectMember(pulumi.CustomResource):
             resource_group_id=default.ids[0])
         default_project_member = alicloud.dataworks.ProjectMember("default",
             user_id=default_kc_tr_b2.id,
-            project_id=default_qe_rfv_u.id,
+            project_id=default_qe_rfv_u.id.apply(lambda x: int(x)),
             roles=[{
                 "code": admin_code,
             }])
@@ -267,7 +267,7 @@ class ProjectMember(pulumi.CustomResource):
             resource_group_id=default.ids[0])
         default_project_member = alicloud.dataworks.ProjectMember("default",
             user_id=default_kc_tr_b2.id,
-            project_id=default_qe_rfv_u.id,
+            project_id=default_qe_rfv_u.id.apply(lambda x: int(x)),
             roles=[{
                 "code": admin_code,
             }])

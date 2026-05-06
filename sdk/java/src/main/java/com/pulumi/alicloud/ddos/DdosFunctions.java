@@ -45,8 +45,8 @@ public final class DdosFunctions {
      * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -102,8 +102,8 @@ public final class DdosFunctions {
      * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -159,8 +159,8 @@ public final class DdosFunctions {
      * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -216,8 +216,8 @@ public final class DdosFunctions {
      * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -273,8 +273,8 @@ public final class DdosFunctions {
      * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -330,8 +330,8 @@ public final class DdosFunctions {
      * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -387,8 +387,8 @@ public final class DdosFunctions {
      * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -444,8 +444,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -492,8 +492,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -540,8 +540,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -588,8 +588,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -636,8 +636,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -684,8 +684,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -729,8 +729,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -774,8 +774,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -819,8 +819,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -864,8 +864,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -909,8 +909,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -954,8 +954,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -999,8 +999,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1044,8 +1044,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1089,8 +1089,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1134,8 +1134,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1179,8 +1179,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1224,8 +1224,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1269,8 +1269,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1314,8 +1314,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooPortsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1360,8 +1360,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooPortsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1406,8 +1406,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooPortsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1452,8 +1452,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooPortsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1498,8 +1498,8 @@ public final class DdosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ddos.DdosFunctions;
      * import com.pulumi.alicloud.ddos.inputs.GetDdosCooPortsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

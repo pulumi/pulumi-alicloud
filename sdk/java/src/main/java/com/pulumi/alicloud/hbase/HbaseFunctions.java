@@ -39,8 +39,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -93,8 +93,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -147,8 +147,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -201,8 +201,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -255,8 +255,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -309,8 +309,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -363,8 +363,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -416,8 +416,8 @@ public final class HbaseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.hbase.HbaseFunctions;
      * import com.pulumi.alicloud.hbase.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -460,8 +460,8 @@ public final class HbaseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.hbase.HbaseFunctions;
      * import com.pulumi.alicloud.hbase.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -504,8 +504,8 @@ public final class HbaseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.hbase.HbaseFunctions;
      * import com.pulumi.alicloud.hbase.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -548,8 +548,8 @@ public final class HbaseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.hbase.HbaseFunctions;
      * import com.pulumi.alicloud.hbase.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -592,8 +592,8 @@ public final class HbaseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.hbase.HbaseFunctions;
      * import com.pulumi.alicloud.hbase.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -636,8 +636,8 @@ public final class HbaseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.hbase.HbaseFunctions;
      * import com.pulumi.alicloud.hbase.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -680,8 +680,8 @@ public final class HbaseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.hbase.HbaseFunctions;
      * import com.pulumi.alicloud.hbase.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -725,8 +725,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -772,8 +772,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -819,8 +819,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -866,8 +866,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -913,8 +913,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -960,8 +960,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1007,8 +1007,8 @@ public final class HbaseFunctions {
      * import com.pulumi.alicloud.hbase.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.hbase.Instance;
      * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

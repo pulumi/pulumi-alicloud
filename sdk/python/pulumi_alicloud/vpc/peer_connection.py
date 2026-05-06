@@ -602,7 +602,7 @@ class PeerConnection(pulumi.CustomResource):
         default_peer_connection = alicloud.vpc.PeerConnection("default",
             peer_connection_name="terraform-example",
             vpc_id=local_vpc.id,
-            accepting_ali_uid=default.id,
+            accepting_ali_uid=output(default.id).apply(lambda x: int(x)),
             accepting_region_id=accepting_region,
             accepting_vpc_id=accepting_vpc.id,
             description="terraform-example")
@@ -690,7 +690,7 @@ class PeerConnection(pulumi.CustomResource):
         default_peer_connection = alicloud.vpc.PeerConnection("default",
             peer_connection_name="terraform-example",
             vpc_id=local_vpc.id,
-            accepting_ali_uid=default.id,
+            accepting_ali_uid=output(default.id).apply(lambda x: int(x)),
             accepting_region_id=accepting_region,
             accepting_vpc_id=accepting_vpc.id,
             description="terraform-example")

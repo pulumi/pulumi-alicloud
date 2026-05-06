@@ -221,8 +221,8 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             security_group_ids=[default_security_group.id],
             description="terraform-example",
-            primary_ip_address=default_switch.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
-                host=100)).apply(lambda invoke: invoke.result),
+            primary_ip_address=std.cidrhost_output(input=default_switch.cidr_block,
+                host=100).apply(lambda invoke: invoke.result),
             tags={
                 "Created": "TF",
                 "For": "example",
@@ -294,8 +294,8 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             security_group_ids=[default_security_group.id],
             description="terraform-example",
-            primary_ip_address=default_switch.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
-                host=100)).apply(lambda invoke: invoke.result),
+            primary_ip_address=std.cidrhost_output(input=default_switch.cidr_block,
+                host=100).apply(lambda invoke: invoke.result),
             tags={
                 "Created": "TF",
                 "For": "example",

@@ -26,29 +26,31 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := gpdb.GetInstances(ctx, &gpdb.GetInstancesArgs{
-// NameRegex: pulumi.StringRef("^default-NODELETING$"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// defaultGetLogBackups, err := gpdb.GetLogBackups(ctx, &gpdb.GetLogBackupsArgs{
-// StartTime: pulumi.StringRef("2022-12-12T02:00Z"),
-// EndTime: pulumi.StringRef("2024-12-12T02:00Z"),
-// DbInstanceId: _default.Ids[0],
-// Ids: interface{}{
-// _default.Ids[0],
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudGpdbLogbackupExampleId", defaultGetLogBackups.Logbackups[0].DbInstanceId)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := gpdb.GetInstances(ctx, &gpdb.GetInstancesArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetLogBackups, err := gpdb.GetLogBackups(ctx, &gpdb.GetLogBackupsArgs{
+//				StartTime:    pulumi.StringRef("2022-12-12T02:00Z"),
+//				EndTime:      pulumi.StringRef("2024-12-12T02:00Z"),
+//				DbInstanceId: _default.Ids[0],
+//				Ids: pulumi.StringArray{
+//					_default.Ids[0],
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudGpdbLogbackupExampleId", defaultGetLogBackups.Logbackups[0].DbInstanceId)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetLogBackups(ctx *pulumi.Context, args *GetLogBackupsArgs, opts ...pulumi.InvokeOption) (*GetLogBackupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

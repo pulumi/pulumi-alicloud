@@ -772,7 +772,7 @@ class Listener(pulumi.CustomResource):
         default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         default_network = alicloud.vpc.Network("default",
@@ -942,7 +942,7 @@ class Listener(pulumi.CustomResource):
         default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         default_network = alicloud.vpc.Network("default",

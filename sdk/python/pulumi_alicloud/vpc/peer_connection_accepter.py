@@ -469,7 +469,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         default = alicloud.vpc.PeerConnection("default",
             peer_connection_name=name,
             vpc_id=local.id,
-            accepting_ali_uid=accepting.id,
+            accepting_ali_uid=output(accepting.id).apply(lambda x: int(x)),
             accepting_region_id=accepting_region,
             accepting_vpc_id=accepting_network.id,
             description=name)
@@ -545,7 +545,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         default = alicloud.vpc.PeerConnection("default",
             peer_connection_name=name,
             vpc_id=local.id,
-            accepting_ali_uid=accepting.id,
+            accepting_ali_uid=output(accepting.id).apply(lambda x: int(x)),
             accepting_region_id=accepting_region,
             accepting_vpc_id=accepting_network.id,
             description=name)

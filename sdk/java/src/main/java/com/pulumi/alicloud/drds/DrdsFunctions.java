@@ -32,8 +32,8 @@ public final class DrdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.drds.DrdsFunctions;
      * import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -77,8 +77,8 @@ public final class DrdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.drds.DrdsFunctions;
      * import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -122,8 +122,8 @@ public final class DrdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.drds.DrdsFunctions;
      * import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -167,8 +167,8 @@ public final class DrdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.drds.DrdsFunctions;
      * import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -212,8 +212,8 @@ public final class DrdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.drds.DrdsFunctions;
      * import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -257,8 +257,8 @@ public final class DrdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.drds.DrdsFunctions;
      * import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -302,8 +302,8 @@ public final class DrdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.drds.DrdsFunctions;
      * import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Eds
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,

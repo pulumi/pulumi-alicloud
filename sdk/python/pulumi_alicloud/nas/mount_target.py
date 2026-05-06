@@ -363,7 +363,7 @@ class MountTarget(pulumi.CustomResource):
 
         default = alicloud.nas.get_zones(file_system_type="extreme")
         count_size = len(default.zones)
-        zone_id = count_size.apply(lambda count_size: default.zones[count_size - 1]).apply(lambda obj: obj.zone_id)
+        zone_id = count_size.apply(lambda count_size: default.zones[int(count_size - 1)]).apply(lambda obj: obj.zone_id)
         example = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
@@ -444,7 +444,7 @@ class MountTarget(pulumi.CustomResource):
 
         default = alicloud.nas.get_zones(file_system_type="extreme")
         count_size = len(default.zones)
-        zone_id = count_size.apply(lambda count_size: default.zones[count_size - 1]).apply(lambda obj: obj.zone_id)
+        zone_id = count_size.apply(lambda count_size: default.zones[int(count_size - 1)]).apply(lambda obj: obj.zone_id)
         example = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")

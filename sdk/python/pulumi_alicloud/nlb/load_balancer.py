@@ -922,7 +922,7 @@ class LoadBalancer(pulumi.CustomResource):
         for range in [{"value": i} for i in range(0, 2)]:
             vsw.append(alicloud.vpc.Switch(f"vsw-{range['value']}",
                 enable_ipv6=True,
-                ipv6_cidr_block_mask=f"1{range['value']}",
+                ipv6_cidr_block_mask=int(f"1{range['value']}"),
                 vswitch_name=f"vsw-{range['value']}-for-nlb",
                 vpc_id=vpc.id,
                 cidr_block=f"10.2.1{range['value']}.0/24",
@@ -1092,7 +1092,7 @@ class LoadBalancer(pulumi.CustomResource):
         for range in [{"value": i} for i in range(0, 2)]:
             vsw.append(alicloud.vpc.Switch(f"vsw-{range['value']}",
                 enable_ipv6=True,
-                ipv6_cidr_block_mask=f"1{range['value']}",
+                ipv6_cidr_block_mask=int(f"1{range['value']}"),
                 vswitch_name=f"vsw-{range['value']}-for-nlb",
                 vpc_id=vpc.id,
                 cidr_block=f"10.2.1{range['value']}.0/24",

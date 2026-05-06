@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Sls
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Max = 99999,
         ///         Min = 10000,
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.Sls
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Max = 99999,
         ///         Min = 10000,
@@ -248,7 +248,7 @@ namespace Pulumi.AliCloud.Sls
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Max = 99999,
         ///         Min = 10000,

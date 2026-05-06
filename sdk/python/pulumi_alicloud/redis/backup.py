@@ -197,7 +197,7 @@ class Backup(pulumi.CustomResource):
             password="123456_tf",
             engine_version="5.0",
             zone_id=zone_id,
-            vswitch_id=vswitch_id,
+            vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
             period="1",
             instance_class="redis.shard.small.2.ce")
         default_backup = alicloud.redis.Backup("default",
@@ -280,7 +280,7 @@ class Backup(pulumi.CustomResource):
             password="123456_tf",
             engine_version="5.0",
             zone_id=zone_id,
-            vswitch_id=vswitch_id,
+            vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
             period="1",
             instance_class="redis.shard.small.2.ce")
         default_backup = alicloud.redis.Backup("default",

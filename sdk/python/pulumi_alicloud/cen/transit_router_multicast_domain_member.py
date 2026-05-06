@@ -255,8 +255,8 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
         example_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("example",
             network_interface_name=name,
             vswitch_id=example_switch.id,
-            primary_ip_address=example_switch.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
-                host=100)).apply(lambda invoke: invoke.result),
+            primary_ip_address=std.cidrhost_output(input=example_switch.cidr_block,
+                host=100).apply(lambda invoke: invoke.result),
             security_group_ids=[example_security_group.id])
         example_instance = alicloud.cen.Instance("example", cen_instance_name=name)
         example_transit_router = alicloud.cen.TransitRouter("example",
@@ -346,8 +346,8 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
         example_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("example",
             network_interface_name=name,
             vswitch_id=example_switch.id,
-            primary_ip_address=example_switch.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
-                host=100)).apply(lambda invoke: invoke.result),
+            primary_ip_address=std.cidrhost_output(input=example_switch.cidr_block,
+                host=100).apply(lambda invoke: invoke.result),
             security_group_ids=[example_security_group.id])
         example_instance = alicloud.cen.Instance("example", cen_instance_name=name)
         example_transit_router = alicloud.cen.TransitRouter("example",

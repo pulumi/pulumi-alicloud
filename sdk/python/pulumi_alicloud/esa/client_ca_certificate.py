@@ -207,7 +207,7 @@ class ClientCaCertificate(pulumi.CustomResource):
             certificate=\"\"\"-----BEGIN CERTIFICATE-----
         ****-----END CERTIFICATE-----\"\"\",
             client_ca_cert_name="example",
-            site_id=default.sites[0].id)
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -254,7 +254,7 @@ class ClientCaCertificate(pulumi.CustomResource):
             certificate=\"\"\"-----BEGIN CERTIFICATE-----
         ****-----END CERTIFICATE-----\"\"\",
             client_ca_cert_name="example",
-            site_id=default.sites[0].id)
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

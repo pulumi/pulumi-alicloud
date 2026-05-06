@@ -29,30 +29,32 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-// NameRegex: pulumi.StringRef("ecs_instance_name"),
-// Status: pulumi.StringRef("Running"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ids, err := hbr.GetEcsBackupClients(ctx, &hbr.GetEcsBackupClientsArgs{
-// Ids: interface{}{
-// defaultAlicloudHbrEcsBackupClient.Id,
-// },
-// InstanceIds: interface{}{
-// defaultAlicloudHbrEcsBackupClient.InstanceId,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("hbrEcsBackupClientId1", ids.Clients[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+//				NameRegex: pulumi.StringRef("ecs_instance_name"),
+//				Status:    pulumi.StringRef("Running"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ids, err := hbr.GetEcsBackupClients(ctx, &hbr.GetEcsBackupClientsArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudHbrEcsBackupClient.Id,
+//				},
+//				InstanceIds: pulumi.StringArray{
+//					defaultAlicloudHbrEcsBackupClient.InstanceId,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("hbrEcsBackupClientId1", ids.Clients[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetEcsBackupClients(ctx *pulumi.Context, args *GetEcsBackupClientsArgs, opts ...pulumi.InvokeOption) (*GetEcsBackupClientsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

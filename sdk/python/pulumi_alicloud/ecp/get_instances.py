@@ -205,9 +205,9 @@ def get_instances(enable_details: Optional[_builtins.bool] = None,
     default = alicloud.ecp.get_zones()
     default_get_instance_types = alicloud.ecp.get_instance_types()
     count_size = len(default.zones)
-    zone_id = count_size.apply(lambda count_size: default.zones[count_size - 1]).apply(lambda obj: obj.zone_id)
+    zone_id = count_size.apply(lambda count_size: default.zones[int(count_size - 1)]).apply(lambda obj: obj.zone_id)
     instance_type_count_size = len(default_get_instance_types.instance_types)
-    instance_type = instance_type_count_size.apply(lambda instance_type_count_size: default_get_instance_types.instance_types[instance_type_count_size - 1]).apply(lambda obj: obj.instance_type)
+    instance_type = instance_type_count_size.apply(lambda instance_type_count_size: default_get_instance_types.instance_types[int(instance_type_count_size - 1)]).apply(lambda obj: obj.instance_type)
     default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
     default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
         zone_id=zone_id)
@@ -224,7 +224,7 @@ def get_instances(enable_details: Optional[_builtins.bool] = None,
         key_pair_name=default_key_pair.key_pair_name,
         vswitch_id=default_get_switches.ids[0],
         image_id="android_9_0_0_release_2851157_20211201.vhd",
-        instance_type=instance_type_count_size.apply(lambda instance_type_count_size: default_get_instance_types.instance_types[instance_type_count_size - 1]).apply(lambda obj: obj.instance_type),
+        instance_type=instance_type_count_size.apply(lambda instance_type_count_size: default_get_instance_types.instance_types[int(instance_type_count_size - 1)]).apply(lambda obj: obj.instance_type),
         payment_type="PayAsYouGo")
     ```
 
@@ -305,9 +305,9 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[_builtin
     default = alicloud.ecp.get_zones()
     default_get_instance_types = alicloud.ecp.get_instance_types()
     count_size = len(default.zones)
-    zone_id = count_size.apply(lambda count_size: default.zones[count_size - 1]).apply(lambda obj: obj.zone_id)
+    zone_id = count_size.apply(lambda count_size: default.zones[int(count_size - 1)]).apply(lambda obj: obj.zone_id)
     instance_type_count_size = len(default_get_instance_types.instance_types)
-    instance_type = instance_type_count_size.apply(lambda instance_type_count_size: default_get_instance_types.instance_types[instance_type_count_size - 1]).apply(lambda obj: obj.instance_type)
+    instance_type = instance_type_count_size.apply(lambda instance_type_count_size: default_get_instance_types.instance_types[int(instance_type_count_size - 1)]).apply(lambda obj: obj.instance_type)
     default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
     default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
         zone_id=zone_id)
@@ -324,7 +324,7 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[_builtin
         key_pair_name=default_key_pair.key_pair_name,
         vswitch_id=default_get_switches.ids[0],
         image_id="android_9_0_0_release_2851157_20211201.vhd",
-        instance_type=instance_type_count_size.apply(lambda instance_type_count_size: default_get_instance_types.instance_types[instance_type_count_size - 1]).apply(lambda obj: obj.instance_type),
+        instance_type=instance_type_count_size.apply(lambda instance_type_count_size: default_get_instance_types.instance_types[int(instance_type_count_size - 1)]).apply(lambda obj: obj.instance_type),
         payment_type="PayAsYouGo")
     ```
 

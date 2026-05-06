@@ -578,7 +578,7 @@ class QuotaApplication(pulumi.CustomResource):
                 "key": "regionId",
                 "value": "cn-hangzhou",
             }],
-            desire_value=1001,
+            desire_value=float(1001),
             reason="测试",
             env_language="zh")
         ```
@@ -653,7 +653,7 @@ class QuotaApplication(pulumi.CustomResource):
                 "key": "regionId",
                 "value": "cn-hangzhou",
             }],
-            desire_value=1001,
+            desire_value=float(1001),
             reason="测试",
             env_language="zh")
         ```

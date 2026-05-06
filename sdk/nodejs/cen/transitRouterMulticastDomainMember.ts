@@ -41,10 +41,10 @@ import * as utilities from "../utilities";
  * const exampleEcsNetworkInterface = new alicloud.ecs.EcsNetworkInterface("example", {
  *     networkInterfaceName: name,
  *     vswitchId: exampleSwitch.id,
- *     primaryIpAddress: exampleSwitch.cidrBlock.apply(cidrBlock => std.cidrhostOutput({
- *         input: cidrBlock,
+ *     primaryIpAddress: std.cidrhostOutput({
+ *         input: exampleSwitch.cidrBlock,
  *         host: 100,
- *     })).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  *     securityGroupIds: [exampleSecurityGroup.id],
  * });
  * const exampleInstance = new alicloud.cen.Instance("example", {cenInstanceName: name});

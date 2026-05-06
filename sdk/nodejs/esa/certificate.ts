@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const defaultCertificate = new alicloud.esa.Certificate("default", {
  *     createdType: "free",
  *     domains: "101.gositecdn.cn",
- *     siteId: _default.then(_default => _default.sites?.[0]?.id),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.id)).apply(x =>String(x)),
  *     type: "lets_encrypt",
  * });
  * ```

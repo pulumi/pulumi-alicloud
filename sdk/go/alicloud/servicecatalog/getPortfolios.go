@@ -26,21 +26,23 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := servicecatalog.GetPortfolios(ctx, &servicecatalog.GetPortfoliosArgs{
-// Ids: interface{}{
-// defaultAlicloudServiceCatalogPortfolio.Id,
-// },
-// NameRegex: pulumi.StringRef(defaultAlicloudServiceCatalogPortfolio.Name),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudServiceCatalogPortfolioExampleId", _default.Portfolios[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := servicecatalog.GetPortfolios(ctx, &servicecatalog.GetPortfoliosArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudServiceCatalogPortfolio.Id,
+//				},
+//				NameRegex: pulumi.StringRef(defaultAlicloudServiceCatalogPortfolio.Name),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudServiceCatalogPortfolioExampleId", _default.Portfolios[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetPortfolios(ctx *pulumi.Context, args *GetPortfoliosArgs, opts ...pulumi.InvokeOption) (*GetPortfoliosResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

@@ -34,19 +34,19 @@ namespace Pulumi.AliCloud.Cfg
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @this = AliCloud.Index.GetRegions.Invoke(new()
+    ///     var @this = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var thisGetAccount = AliCloud.Index.GetAccount.Invoke();
+    ///     var thisGetAccount = AliCloud.GetAccount.Invoke();
     /// 
     ///     var @default = AliCloud.ResourceManager.GetAccounts.Invoke(new()
     ///     {
     ///         Status = "CreateSuccess",
     ///     });
     /// 
-    ///     var last = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts)).Length.Apply(length =&gt; length - 1);
+    ///     var last = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts)).Length().Apply(length =&gt; length - 1);
     /// 
     ///     var defaultAggregator = new AliCloud.Cfg.Aggregator("default", new()
     ///     {
@@ -64,16 +64,16 @@ namespace Pulumi.AliCloud.Cfg
     ///         AggregatorType = "CUSTOM",
     ///     });
     /// 
-    ///     var defaultUuid = new Random.Index.Uuid("default");
+    ///     var defaultUuid = new Random.Uuid("default");
     /// 
     ///     var defaultProject = new AliCloud.Log.Project("default", new()
     ///     {
-    ///         ProjectName = Std.Index.Replace.Invoke(new()
+    ///         ProjectName = Std.Replace.Invoke(new()
     ///         {
     ///             Text = defaultUuid.Result,
     ///             Search = "-",
     ///             Replace = "",
-    ///         }).Apply(invoke =&gt; Std.Index.Substr.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
     ///         {
     ///             Input = $"tf-example-{invoke.Result}",
     ///             Offset = 0,

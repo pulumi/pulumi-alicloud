@@ -95,7 +95,7 @@ import * as utilities from "../utilities";
  *             input: [
  *                 name,
  *                 defaultInteger.result,
- *                 range.value,
+ *                 String(range.value),
  *             ],
  *         }).then(invoke => invoke.result),
  *         cert: `-----BEGIN CERTIFICATE-----

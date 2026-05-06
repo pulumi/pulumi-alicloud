@@ -98,8 +98,8 @@ def get_msc_sub_contact_verification_message(contact_id: Optional[_builtins.str]
         position="CEO",
         email="123@163.com",
         mobile="153xxxxx906")
-    default = default_msc_sub_contract.id.apply(lambda id: alicloud.get_msc_sub_contact_verification_message_output(contact_id=id,
-        type=1))
+    default = alicloud.get_msc_sub_contact_verification_message_output(contact_id=default_msc_sub_contract.id,
+        type=1)
     ```
 
 
@@ -136,8 +136,8 @@ def get_msc_sub_contact_verification_message_output(contact_id: Optional[pulumi.
         position="CEO",
         email="123@163.com",
         mobile="153xxxxx906")
-    default = default_msc_sub_contract.id.apply(lambda id: alicloud.get_msc_sub_contact_verification_message_output(contact_id=id,
-        type=1))
+    default = alicloud.get_msc_sub_contact_verification_message_output(contact_id=default_msc_sub_contract.id,
+        type=1)
     ```
 
 

@@ -46,11 +46,11 @@ import * as utilities from "../utilities";
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
  *         vpcId: defaultNetwork[2].id,
- *         cidrBlock: defaultNetwork[2].cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
- *             input: cidrBlock,
+ *         cidrBlock: std.cidrsubnetOutput({
+ *             input: defaultNetwork[2].cidrBlock,
  *             newbits: 8,
  *             netnum: range.value,
- *         })).apply(invoke => invoke.result),
+ *         }).apply(invoke => invoke.result),
  *         zoneId: _default.then(_default => _default.zones[range.value].zoneId),
  *     }));
  * }

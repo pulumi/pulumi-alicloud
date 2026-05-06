@@ -323,13 +323,13 @@ class AccessManagement(pulumi.CustomResource):
             [""],
         ]).result[0])
         default_user = alicloud.cloudsso.User("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_access_configuration = alicloud.cloudsso.AccessConfiguration("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             access_configuration_name=f"{name}-{default_integer['result']}")
         default_access_management = alicloud.cloudsso.AccessManagement("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             access_configuration_id=default_access_configuration.access_configuration_id,
             target_type="RD-Account",
             target_id=default_get_resource_directories.directories[0].master_account_id,
@@ -406,13 +406,13 @@ class AccessManagement(pulumi.CustomResource):
             [""],
         ]).result[0])
         default_user = alicloud.cloudsso.User("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_access_configuration = alicloud.cloudsso.AccessConfiguration("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             access_configuration_name=f"{name}-{default_integer['result']}")
         default_access_management = alicloud.cloudsso.AccessManagement("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             access_configuration_id=default_access_configuration.access_configuration_id,
             target_type="RD-Account",
             target_id=default_get_resource_directories.directories[0].master_account_id,

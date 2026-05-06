@@ -51,8 +51,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -107,8 +107,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -163,8 +163,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -219,8 +219,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -275,8 +275,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -331,8 +331,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -385,8 +385,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -439,8 +439,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -493,8 +493,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -547,8 +547,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -601,8 +601,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostShareKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -655,8 +655,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostShareKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -709,8 +709,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostShareKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -763,8 +763,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostShareKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -817,8 +817,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostShareKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -871,8 +871,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -925,8 +925,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -979,8 +979,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1033,8 +1033,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1087,8 +1087,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1141,8 +1141,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1158,7 +1158,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", Arrays.asList(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1186,8 +1186,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1203,7 +1203,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", Arrays.asList(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1231,8 +1231,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1248,7 +1248,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", Arrays.asList(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1276,8 +1276,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1293,7 +1293,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", Arrays.asList(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1321,8 +1321,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1338,7 +1338,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", Arrays.asList(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1366,8 +1366,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1383,7 +1383,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", Arrays.asList(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1411,8 +1411,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1428,7 +1428,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", Arrays.asList(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1456,8 +1456,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetUserGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1510,8 +1510,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetUserGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1564,8 +1564,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetUserGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1618,8 +1618,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetUserGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1672,8 +1672,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetUserGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1726,8 +1726,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1780,8 +1780,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1834,8 +1834,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1888,8 +1888,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1942,8 +1942,8 @@ public final class BastionhostFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
      * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

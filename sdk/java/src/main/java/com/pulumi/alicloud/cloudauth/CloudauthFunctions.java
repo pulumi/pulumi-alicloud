@@ -35,8 +35,8 @@ public final class CloudauthFunctions {
      * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
      * import com.pulumi.alicloud.cloudauth.CloudauthFunctions;
      * import com.pulumi.alicloud.cloudauth.inputs.GetFaceConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -88,8 +88,8 @@ public final class CloudauthFunctions {
      * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
      * import com.pulumi.alicloud.cloudauth.CloudauthFunctions;
      * import com.pulumi.alicloud.cloudauth.inputs.GetFaceConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -141,8 +141,8 @@ public final class CloudauthFunctions {
      * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
      * import com.pulumi.alicloud.cloudauth.CloudauthFunctions;
      * import com.pulumi.alicloud.cloudauth.inputs.GetFaceConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -194,8 +194,8 @@ public final class CloudauthFunctions {
      * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
      * import com.pulumi.alicloud.cloudauth.CloudauthFunctions;
      * import com.pulumi.alicloud.cloudauth.inputs.GetFaceConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -247,8 +247,8 @@ public final class CloudauthFunctions {
      * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
      * import com.pulumi.alicloud.cloudauth.CloudauthFunctions;
      * import com.pulumi.alicloud.cloudauth.inputs.GetFaceConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -300,8 +300,8 @@ public final class CloudauthFunctions {
      * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
      * import com.pulumi.alicloud.cloudauth.CloudauthFunctions;
      * import com.pulumi.alicloud.cloudauth.inputs.GetFaceConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -353,8 +353,8 @@ public final class CloudauthFunctions {
      * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
      * import com.pulumi.alicloud.cloudauth.CloudauthFunctions;
      * import com.pulumi.alicloud.cloudauth.inputs.GetFaceConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

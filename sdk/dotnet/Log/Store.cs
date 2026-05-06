@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -68,9 +68,9 @@ namespace Pulumi.AliCloud.Log
     ///     var config = new Config();
     ///     // The region of kms key.
     ///     var region = config.Get("region") ?? "cn-hangzhou";
-    ///     var example = AliCloud.Index.GetAccount.Invoke();
+    ///     var example = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,

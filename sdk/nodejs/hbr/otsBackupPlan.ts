@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  *     retention: "1",
  *     instanceName: defaultInstance.name,
  *     crossAccountType: "SELF_ACCOUNT",
- *     crossAccountUserId: _default.then(_default => _default.id),
+ *     crossAccountUserId: output(_default.then(_default => _default.id)).apply(x =>Number(x)),
  *     crossAccountRoleName: defaultRole.id,
  *     otsDetails: [{
  *         tableNames: [defaultTable.tableName],

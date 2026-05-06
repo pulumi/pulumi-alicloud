@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     accountNamePrefix: `${name}-${defaultInteger.result}`,
  *     folderId: defaultGetFolders.then(defaultGetFolders => defaultGetFolders.ids?.[0]),
  *     baselineId: defaultGetBaselines.then(defaultGetBaselines => defaultGetBaselines.ids?.[0]),
- *     payerAccountId: _default.then(_default => _default.id),
+ *     payerAccountId: output(_default.then(_default => _default.id)).apply(x =>Number(x)),
  *     displayName: `${name}-${defaultInteger.result}`,
  * });
  * ```

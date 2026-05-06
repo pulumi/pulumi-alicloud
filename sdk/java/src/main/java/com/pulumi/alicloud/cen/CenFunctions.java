@@ -128,8 +128,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -169,8 +169,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -210,8 +210,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -251,8 +251,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -292,8 +292,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -333,8 +333,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -374,8 +374,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -415,8 +415,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -457,8 +457,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -499,8 +499,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -541,8 +541,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -583,8 +583,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -625,8 +625,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -667,8 +667,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -711,8 +711,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetChildInstanceRouteEntryToAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -755,8 +755,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetChildInstanceRouteEntryToAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -799,8 +799,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetChildInstanceRouteEntryToAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -843,8 +843,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetChildInstanceRouteEntryToAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -887,8 +887,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetChildInstanceRouteEntryToAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -945,8 +945,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.FlowLogArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1043,8 +1043,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.FlowLogArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1141,8 +1141,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.FlowLogArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1239,8 +1239,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.FlowLogArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1337,8 +1337,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.FlowLogArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1435,8 +1435,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.FlowLogArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1533,8 +1533,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.FlowLogArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1617,8 +1617,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1660,8 +1660,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1703,8 +1703,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1746,8 +1746,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1789,8 +1789,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1830,8 +1830,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1872,8 +1872,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1914,8 +1914,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1956,8 +1956,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1998,8 +1998,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2040,8 +2040,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2082,8 +2082,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2128,8 +2128,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2182,8 +2182,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2236,8 +2236,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2290,8 +2290,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2344,8 +2344,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2396,8 +2396,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2441,8 +2441,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2486,8 +2486,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2531,8 +2531,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2576,8 +2576,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2621,8 +2621,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetPrivateZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2666,8 +2666,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetPrivateZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2711,8 +2711,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetPrivateZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2756,8 +2756,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetPrivateZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2801,8 +2801,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetPrivateZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2844,8 +2844,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRegionRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2886,8 +2886,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRegionRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2928,8 +2928,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRegionRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2970,8 +2970,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRegionRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3012,8 +3012,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRegionRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3054,8 +3054,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3096,8 +3096,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3138,8 +3138,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3180,8 +3180,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3222,8 +3222,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3266,8 +3266,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteMapsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3314,8 +3314,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteMapsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3362,8 +3362,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteMapsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3410,8 +3410,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteMapsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3458,8 +3458,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteMapsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3508,8 +3508,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3553,8 +3553,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3598,8 +3598,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3643,8 +3643,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3688,8 +3688,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetRouteServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3733,8 +3733,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3787,8 +3787,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3841,8 +3841,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3895,8 +3895,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3949,8 +3949,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4003,8 +4003,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouteTableAggregationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4055,8 +4055,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouteTableAggregationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4107,8 +4107,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouteTableAggregationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4159,8 +4159,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouteTableAggregationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4211,8 +4211,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouteTableAggregationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4263,8 +4263,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4308,8 +4308,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4353,8 +4353,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4398,8 +4398,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4443,8 +4443,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4488,8 +4488,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4533,8 +4533,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4578,8 +4578,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4630,8 +4630,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4682,8 +4682,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4734,8 +4734,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4786,8 +4786,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4838,8 +4838,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4884,8 +4884,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4930,8 +4930,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4976,8 +4976,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5022,8 +5022,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5068,8 +5068,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5113,8 +5113,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5158,8 +5158,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5203,8 +5203,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5248,8 +5248,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5293,8 +5293,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainPeerMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5338,8 +5338,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainPeerMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5383,8 +5383,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainPeerMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5428,8 +5428,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainPeerMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5473,8 +5473,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainPeerMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5516,8 +5516,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5559,8 +5559,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5602,8 +5602,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5645,8 +5645,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5688,8 +5688,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5733,8 +5733,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5785,8 +5785,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5837,8 +5837,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5889,8 +5889,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5941,8 +5941,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5991,8 +5991,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPeerAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6034,8 +6034,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPeerAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6077,8 +6077,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPeerAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6120,8 +6120,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPeerAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6163,8 +6163,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPeerAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6208,8 +6208,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPrefixListAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6254,8 +6254,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPrefixListAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6300,8 +6300,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPrefixListAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6346,8 +6346,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPrefixListAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6392,8 +6392,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPrefixListAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6481,8 +6481,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6524,8 +6524,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6567,8 +6567,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6610,8 +6610,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6653,8 +6653,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6696,8 +6696,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6739,8 +6739,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6800,8 +6800,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.TransitRouterRouteTablePropagationArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablePropagationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6913,8 +6913,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.TransitRouterRouteTablePropagationArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablePropagationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7026,8 +7026,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.TransitRouterRouteTablePropagationArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablePropagationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7139,8 +7139,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.TransitRouterRouteTablePropagationArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablePropagationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7252,8 +7252,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.TransitRouterRouteTablePropagationArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablePropagationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7355,8 +7355,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7425,8 +7425,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7495,8 +7495,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7565,8 +7565,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7635,8 +7635,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7699,8 +7699,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7743,8 +7743,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7787,8 +7787,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7831,8 +7831,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7875,8 +7875,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7919,8 +7919,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7963,8 +7963,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8005,8 +8005,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVbrAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8048,8 +8048,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVbrAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8091,8 +8091,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVbrAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8134,8 +8134,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVbrAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8177,8 +8177,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVbrAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8234,8 +8234,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpcAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8337,8 +8337,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpcAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8440,8 +8440,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpcAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8543,8 +8543,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpcAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8646,8 +8646,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpcAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8752,8 +8752,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8914,8 +8914,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9076,8 +9076,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9238,8 +9238,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9400,8 +9400,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9562,8 +9562,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9724,8 +9724,8 @@ public final class CenFunctions {
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9869,8 +9869,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9912,8 +9912,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9955,8 +9955,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9998,8 +9998,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10041,8 +10041,8 @@ public final class CenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

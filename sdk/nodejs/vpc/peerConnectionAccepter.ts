@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.vpc.PeerConnection("default", {
  *     peerConnectionName: name,
  *     vpcId: local.id,
- *     acceptingAliUid: accepting.then(accepting => accepting.id),
+ *     acceptingAliUid: output(accepting.then(accepting => accepting.id)).apply(x =>Number(x)),
  *     acceptingRegionId: acceptingRegion,
  *     acceptingVpcId: acceptingNetwork.id,
  *     description: name,

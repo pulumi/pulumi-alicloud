@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  *     networkType: "public",
  *     paymentType: "Subscription",
  *     enableIpsec: true,
- *     bandwidth: spec,
+ *     bandwidth: Number(spec),
  * });
  * ```
  *

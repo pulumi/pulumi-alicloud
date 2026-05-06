@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const foo = alicloud.slb.getDomainExtensions({
  *     ids: ["fake-de-id"],
  *     loadBalancerId: "fake-lb-id",
- *     frontendPort: "fake-port",
+ *     frontendPort: Number("fake-port"),
  * });
  * ```
  */
@@ -84,7 +84,7 @@ export interface GetDomainExtensionsResult {
  * const foo = alicloud.slb.getDomainExtensions({
  *     ids: ["fake-de-id"],
  *     loadBalancerId: "fake-lb-id",
- *     frontendPort: "fake-port",
+ *     frontendPort: Number("fake-port"),
  * });
  * ```
  */

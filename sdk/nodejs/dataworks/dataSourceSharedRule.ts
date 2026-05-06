@@ -67,11 +67,11 @@ import * as utilities from "../utilities";
  *             key1: "value1",
  *         },
  *     }),
- *     projectId: defaultQeRfvU.id,
+ *     projectId: defaultQeRfvU.id.apply(x =>Number(x)),
  *     connectionPropertiesMode: "UrlMode",
  * });
  * const defaultDataSourceSharedRule = new alicloud.dataworks.DataSourceSharedRule("default", {
- *     targetProjectId: defaultasjsH5.id,
+ *     targetProjectId: defaultasjsH5.id.apply(x =>Number(x)),
  *     dataSourceId: defaultvzu0wG.dataSourceId,
  *     envType: "Prod",
  * });

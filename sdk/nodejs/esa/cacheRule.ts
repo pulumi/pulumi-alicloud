@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     queryStringMode: "ignore_all",
  *     rule: "http.host eq \"video.example.com\"",
  *     cacheDeceptionArmor: "off",
- *     siteId: _default.then(_default => _default.sites?.[0]?.id),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.id)).apply(x =>String(x)),
  *     bypassCache: "cache_all",
  *     edgeCacheTtl: "300",
  *     ruleEnable: "off",

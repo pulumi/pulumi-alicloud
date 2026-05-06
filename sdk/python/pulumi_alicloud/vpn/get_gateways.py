@@ -226,13 +226,13 @@ def get_gateways(business_status: Optional[_builtins.str] = None,
     default_gateway = alicloud.vpn.Gateway("default",
         vpn_type="Normal",
         vpn_gateway_name=name,
-        vswitch_id=vswitch_id,
+        vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
         auto_pay=True,
         vpc_id=default_get_networks.ids[0],
         network_type="public",
         payment_type="Subscription",
         enable_ipsec=True,
-        bandwidth=spec)
+        bandwidth=int(spec))
     vpn_gateways = alicloud.vpn.get_gateways_output(ids=[default_gateway.id],
         include_reservation_data=True,
         output_file="/tmp/vpns")
@@ -327,13 +327,13 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[_builtin
     default_gateway = alicloud.vpn.Gateway("default",
         vpn_type="Normal",
         vpn_gateway_name=name,
-        vswitch_id=vswitch_id,
+        vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
         auto_pay=True,
         vpc_id=default_get_networks.ids[0],
         network_type="public",
         payment_type="Subscription",
         enable_ipsec=True,
-        bandwidth=spec)
+        bandwidth=int(spec))
     vpn_gateways = alicloud.vpn.get_gateways_output(ids=[default_gateway.id],
         include_reservation_data=True,
         output_file="/tmp/vpns")

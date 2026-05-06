@@ -295,7 +295,7 @@ class TransportLayerApplication(pulumi.CustomResource):
             site_name="gositecdn.cn")
         default_transport_layer_application = alicloud.esa.TransportLayerApplication("default",
             record_name="resource2.gositecdn.cn",
-            site_id=default.sites[0].site_id,
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
             ip_access_rule="off",
             ipv6="off",
             cross_border_optimization="off",
@@ -367,7 +367,7 @@ class TransportLayerApplication(pulumi.CustomResource):
             site_name="gositecdn.cn")
         default_transport_layer_application = alicloud.esa.TransportLayerApplication("default",
             record_name="resource2.gositecdn.cn",
-            site_id=default.sites[0].site_id,
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
             ip_access_rule="off",
             ipv6="off",
             cross_border_optimization="off",

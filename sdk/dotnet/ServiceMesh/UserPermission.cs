@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tfexample";
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     ///         Edition = "Default",
     ///     });
     /// 
-    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

@@ -36,8 +36,8 @@ public final class OpensearchFunctions {
      * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
      * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
      * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -97,8 +97,8 @@ public final class OpensearchFunctions {
      * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
      * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
      * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -158,8 +158,8 @@ public final class OpensearchFunctions {
      * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
      * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
      * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -219,8 +219,8 @@ public final class OpensearchFunctions {
      * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
      * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
      * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -280,8 +280,8 @@ public final class OpensearchFunctions {
      * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
      * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
      * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -341,8 +341,8 @@ public final class OpensearchFunctions {
      * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
      * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
      * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -402,8 +402,8 @@ public final class OpensearchFunctions {
      * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
      * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
      * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

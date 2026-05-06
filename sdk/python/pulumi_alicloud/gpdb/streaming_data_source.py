@@ -363,7 +363,7 @@ class StreamingDataSource(pulumi.CustomResource):
             data_source_config=kafka_config,
             data_source_type="kafka",
             data_source_description="example-kafka",
-            service_id=defaultwruvdv.service_id)
+            service_id=defaultwruvdv.service_id.apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -467,7 +467,7 @@ class StreamingDataSource(pulumi.CustomResource):
             data_source_config=kafka_config,
             data_source_type="kafka",
             data_source_description="example-kafka",
-            service_id=defaultwruvdv.service_id)
+            service_id=defaultwruvdv.service_id.apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

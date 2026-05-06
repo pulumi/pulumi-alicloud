@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultUW8inp = new alicloud.dataworks.DiJob("defaultUW8inp", {
  *     description: "xxxx",
- *     projectId: defaulteNv8bu.id,
+ *     projectId: defaulteNv8bu.id.apply(x =>Number(x)),
  *     jobName: "xxx",
  *     migrationType: "api_xxx",
  *     sourceDataSourceType: "xxx",

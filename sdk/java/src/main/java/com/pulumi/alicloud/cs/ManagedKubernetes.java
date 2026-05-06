@@ -88,8 +88,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.std.inputs.SplitArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -105,14 +105,14 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example-");
  *         final var vpcId = config.get("vpcId").orElse("");
  *         final var vpcCidr = config.get("vpcCidr").orElse("10.0.0.0/8");
- *         final var vswitchIds = config.get("vswitchIds").orElse(List.of());
- *         final var vswitchCidrs = config.get("vswitchCidrs").orElse(List.of(        
+ *         final var vswitchIds = config.get("vswitchIds").orElse(Arrays.asList());
+ *         final var vswitchCidrs = config.get("vswitchCidrs").orElse(Arrays.asList(        
  *             "10.1.0.0/16",
  *             "10.2.0.0/16"));
  *         final var proxyMode = config.get("proxyMode").orElse("ipvs");
  *         final var serviceCidr = config.get("serviceCidr").orElse("192.168.0.0/16");
- *         final var terwayVswitchIds = config.get("terwayVswitchIds").orElse(List.of());
- *         final var terwayVswitchCidrs = config.get("terwayVswitchCidrs").orElse(List.of(        
+ *         final var terwayVswitchIds = config.get("terwayVswitchIds").orElse(Arrays.asList());
+ *         final var terwayVswitchCidrs = config.get("terwayVswitchCidrs").orElse(Arrays.asList(        
  *             "10.4.0.0/16",
  *             "10.5.0.0/16"));
  *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
@@ -251,8 +251,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAuditLogConfigArgs;
  * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAddonArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

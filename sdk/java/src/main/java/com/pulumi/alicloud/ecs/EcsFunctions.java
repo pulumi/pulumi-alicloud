@@ -132,8 +132,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -176,8 +176,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -220,8 +220,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -264,8 +264,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -308,8 +308,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -352,8 +352,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -396,8 +396,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -440,8 +440,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -486,8 +486,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -532,8 +532,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -578,8 +578,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -624,8 +624,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -670,8 +670,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -716,8 +716,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -760,8 +760,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -806,8 +806,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -852,8 +852,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -898,8 +898,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -944,8 +944,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -990,8 +990,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1036,8 +1036,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1084,8 +1084,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1130,8 +1130,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1176,8 +1176,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1222,8 +1222,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1268,8 +1268,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1314,8 +1314,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1360,8 +1360,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1408,8 +1408,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1468,8 +1468,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1528,8 +1528,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1588,8 +1588,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1648,8 +1648,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1708,8 +1708,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1768,8 +1768,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1824,8 +1824,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1867,8 +1867,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1910,8 +1910,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1953,8 +1953,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1996,8 +1996,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2039,8 +2039,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2082,8 +2082,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2127,8 +2127,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDedicatedHostClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2192,8 +2192,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDedicatedHostClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2257,8 +2257,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDedicatedHostClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2322,8 +2322,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDedicatedHostClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2387,8 +2387,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDedicatedHostClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2452,8 +2452,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDedicatedHostClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2517,8 +2517,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDedicatedHostClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2582,8 +2582,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2632,8 +2632,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2682,8 +2682,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2732,8 +2732,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2782,8 +2782,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2832,8 +2832,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2882,8 +2882,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2936,8 +2936,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2998,8 +2998,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3060,8 +3060,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3122,8 +3122,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3184,8 +3184,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3246,8 +3246,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3308,8 +3308,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3366,8 +3366,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImageComponentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3416,8 +3416,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImageComponentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3466,8 +3466,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImageComponentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3516,8 +3516,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImageComponentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3566,8 +3566,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImageComponentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3616,8 +3616,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImageComponentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3666,8 +3666,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImageComponentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3716,8 +3716,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImagePipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3766,8 +3766,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImagePipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3816,8 +3816,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImagePipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3866,8 +3866,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImagePipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3916,8 +3916,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImagePipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3966,8 +3966,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImagePipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4016,8 +4016,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsImagePipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4066,8 +4066,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsInvocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4111,8 +4111,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsInvocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4156,8 +4156,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsInvocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4201,8 +4201,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsInvocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4246,8 +4246,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsInvocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4291,8 +4291,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsInvocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4336,8 +4336,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsInvocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4385,8 +4385,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4449,8 +4449,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4513,8 +4513,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4577,8 +4577,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4641,8 +4641,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4705,8 +4705,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4769,8 +4769,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4844,8 +4844,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4997,8 +4997,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5150,8 +5150,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5303,8 +5303,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5456,8 +5456,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5609,8 +5609,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5762,8 +5762,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
      * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5900,8 +5900,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacePermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5946,8 +5946,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacePermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5992,8 +5992,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacePermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6038,8 +6038,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacePermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6084,8 +6084,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacePermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6130,8 +6130,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6175,8 +6175,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6220,8 +6220,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6265,8 +6265,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6310,8 +6310,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6355,8 +6355,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6400,8 +6400,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6445,8 +6445,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6491,8 +6491,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6537,8 +6537,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6583,8 +6583,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6629,8 +6629,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6675,8 +6675,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6721,8 +6721,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6767,8 +6767,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6827,8 +6827,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6887,8 +6887,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6947,8 +6947,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7007,8 +7007,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7067,8 +7067,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7127,8 +7127,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7208,8 +7208,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsSnapshot;
      * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7354,8 +7354,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsSnapshot;
      * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7500,8 +7500,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsSnapshot;
      * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7646,8 +7646,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsSnapshot;
      * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7792,8 +7792,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsSnapshot;
      * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7938,8 +7938,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsSnapshot;
      * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8084,8 +8084,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsSnapshot;
      * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8209,8 +8209,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsStorageCapacityUnitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8258,8 +8258,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsStorageCapacityUnitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8307,8 +8307,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsStorageCapacityUnitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8356,8 +8356,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsStorageCapacityUnitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8405,8 +8405,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsStorageCapacityUnitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8454,8 +8454,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsStorageCapacityUnitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8503,8 +8503,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsStorageCapacityUnitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8552,8 +8552,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8598,8 +8598,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8644,8 +8644,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8690,8 +8690,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8736,8 +8736,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8782,8 +8782,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8828,8 +8828,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8872,8 +8872,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8918,8 +8918,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8964,8 +8964,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9010,8 +9010,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9056,8 +9056,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9102,8 +9102,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9148,8 +9148,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9194,8 +9194,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9237,8 +9237,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9280,8 +9280,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9323,8 +9323,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9366,8 +9366,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9409,8 +9409,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9452,8 +9452,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9497,8 +9497,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9543,8 +9543,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9589,8 +9589,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9635,8 +9635,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9681,8 +9681,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9727,8 +9727,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9773,8 +9773,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9816,8 +9816,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9859,8 +9859,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9902,8 +9902,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9945,8 +9945,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9988,8 +9988,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10031,8 +10031,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10074,8 +10074,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10118,8 +10118,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceKeywordsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10162,8 +10162,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceKeywordsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10206,8 +10206,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceKeywordsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10250,8 +10250,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceKeywordsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10294,8 +10294,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceKeywordsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10338,8 +10338,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10382,8 +10382,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10426,8 +10426,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10470,8 +10470,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10514,8 +10514,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10558,8 +10558,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10602,8 +10602,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10664,8 +10664,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10777,8 +10777,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10890,8 +10890,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11003,8 +11003,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11116,8 +11116,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11229,8 +11229,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11342,8 +11342,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11437,8 +11437,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11482,8 +11482,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11527,8 +11527,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11572,8 +11572,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11617,8 +11617,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11662,8 +11662,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11707,8 +11707,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11754,8 +11754,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.KeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11803,8 +11803,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.KeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11852,8 +11852,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.KeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11901,8 +11901,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.KeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11950,8 +11950,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.KeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11999,8 +11999,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.KeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12048,8 +12048,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.KeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12111,8 +12111,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12243,8 +12243,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12375,8 +12375,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12507,8 +12507,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12639,8 +12639,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12771,8 +12771,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12903,8 +12903,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetNetworkInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13024,8 +13024,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupRulesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13088,8 +13088,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupRulesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13152,8 +13152,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupRulesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13216,8 +13216,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupRulesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13280,8 +13280,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupRulesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13338,8 +13338,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
      * import com.pulumi.alicloud.vpc.Network;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13389,8 +13389,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
      * import com.pulumi.alicloud.vpc.Network;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13440,8 +13440,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
      * import com.pulumi.alicloud.vpc.Network;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13491,8 +13491,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
      * import com.pulumi.alicloud.vpc.Network;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13542,8 +13542,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
      * import com.pulumi.alicloud.vpc.Network;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13593,8 +13593,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
      * import com.pulumi.alicloud.vpc.Network;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13644,8 +13644,8 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
      * import com.pulumi.alicloud.vpc.Network;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13700,8 +13700,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13776,8 +13776,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13852,8 +13852,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13928,8 +13928,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14004,8 +14004,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14080,8 +14080,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14156,8 +14156,8 @@ public final class EcsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

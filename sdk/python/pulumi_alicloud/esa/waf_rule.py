@@ -290,7 +290,7 @@ class WafRule(pulumi.CustomResource):
 
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
         default_waf_ruleset = alicloud.esa.WafRuleset("default",
-            site_id=default.sites[0].site_id,
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
             phase="http_custom",
             site_version=0)
         default_waf_rule = alicloud.esa.WafRule("default",
@@ -309,7 +309,7 @@ class WafRule(pulumi.CustomResource):
                 "name": "111",
             },
             site_version=0,
-            site_id=default.sites[0].site_id)
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -361,7 +361,7 @@ class WafRule(pulumi.CustomResource):
 
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
         default_waf_ruleset = alicloud.esa.WafRuleset("default",
-            site_id=default.sites[0].site_id,
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
             phase="http_custom",
             site_version=0)
         default_waf_rule = alicloud.esa.WafRule("default",
@@ -380,7 +380,7 @@ class WafRule(pulumi.CustomResource):
                 "name": "111",
             },
             site_version=0,
-            site_id=default.sites[0].site_id)
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

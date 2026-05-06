@@ -518,7 +518,7 @@ class OtsBackupPlan(pulumi.CustomResource):
             retention="1",
             instance_name=default_instance.name,
             cross_account_type="SELF_ACCOUNT",
-            cross_account_user_id=default.id,
+            cross_account_user_id=output(default.id).apply(lambda x: int(x)),
             cross_account_role_name=default_role.id,
             ots_details=[{
                 "table_names": [default_table.table_name],
@@ -635,7 +635,7 @@ class OtsBackupPlan(pulumi.CustomResource):
             retention="1",
             instance_name=default_instance.name,
             cross_account_type="SELF_ACCOUNT",
-            cross_account_user_id=default.id,
+            cross_account_user_id=output(default.id).apply(lambda x: int(x)),
             cross_account_role_name=default_role.id,
             ots_details=[{
                 "table_names": [default_table.table_name],

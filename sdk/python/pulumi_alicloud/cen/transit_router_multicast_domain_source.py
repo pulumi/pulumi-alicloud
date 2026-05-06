@@ -255,8 +255,8 @@ class TransitRouterMulticastDomainSource(pulumi.CustomResource):
             vswitch_id=default_master.id,
             security_group_ids=[default_security_group.id],
             description="Basic test",
-            primary_ip_address=default_master.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
-                host=100)).apply(lambda invoke: invoke.result),
+            primary_ip_address=std.cidrhost_output(input=default_master.cidr_block,
+                host=100).apply(lambda invoke: invoke.result),
             tags={
                 "Created": "TF",
                 "For": "Test",
@@ -366,8 +366,8 @@ class TransitRouterMulticastDomainSource(pulumi.CustomResource):
             vswitch_id=default_master.id,
             security_group_ids=[default_security_group.id],
             description="Basic test",
-            primary_ip_address=default_master.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
-                host=100)).apply(lambda invoke: invoke.result),
+            primary_ip_address=std.cidrhost_output(input=default_master.cidr_block,
+                host=100).apply(lambda invoke: invoke.result),
             tags={
                 "Created": "TF",
                 "For": "Test",

@@ -427,21 +427,21 @@ import * as utilities from "../utilities";
  * }
  * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
  *     addons: clusterAddons.map((v, k) => ({key: k, value: v})).map(entry => ({
- *         name: std.lookup({
+ *         name: output(std.lookup({
  *             map: entry.value,
  *             key: "name",
  *             "default": clusterAddons,
- *         }).then(invoke => invoke.result),
- *         config: std.lookup({
+ *         }).then(invoke => invoke.result)).apply(x =>String(x)),
+ *         config: output(std.lookup({
  *             map: entry.value,
  *             key: "config",
  *             "default": clusterAddons,
- *         }).then(invoke => invoke.result),
- *         disabled: std.lookup({
+ *         }).then(invoke => invoke.result)).apply(x =>String(x)),
+ *         disabled: output(std.lookup({
  *             map: entry.value,
  *             key: "disabled",
  *             "default": clusterAddons,
- *         }).then(invoke => invoke.result),
+ *         }).then(invoke => invoke.result)).apply(x =>x === "true"),
  *     })),
  *     name: k8sNameTerway,
  *     clusterSpec: clusterSpec,

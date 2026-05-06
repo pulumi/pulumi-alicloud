@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     siteName: "gositecdn.cn",
  * });
  * const defaultClientCertificate = new alicloud.esa.ClientCertificate("default", {
- *     siteId: _default.then(_default => _default.sites?.[0]?.id),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.id)).apply(x =>String(x)),
  *     pkeyType: "RSA",
  *     validityDays: "365",
  * });

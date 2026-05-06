@@ -385,7 +385,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_vpc = alicloud.vpc.Network("defaultVpc",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
@@ -414,7 +414,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             owners="system")
         default2_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default2.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         defaultds_vsw2 = alicloud.vpc.Switch("defaultdsVsw2",
             vpc_id=default_vpc2.id,
             cidr_block="192.168.0.0/24",
@@ -540,7 +540,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_vpc = alicloud.vpc.Network("defaultVpc",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
@@ -569,7 +569,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             owners="system")
         default2_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default2.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         defaultds_vsw2 = alicloud.vpc.Switch("defaultdsVsw2",
             vpc_id=default_vpc2.id,
             cidr_block="192.168.0.0/24",

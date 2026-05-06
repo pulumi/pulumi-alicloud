@@ -457,7 +457,7 @@ class Certificate(pulumi.CustomResource):
         default_certificate = alicloud.esa.Certificate("default",
             created_type="free",
             domains="101.gositecdn.cn",
-            site_id=default.sites[0].id,
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)),
             type="lets_encrypt")
         ```
 
@@ -520,7 +520,7 @@ class Certificate(pulumi.CustomResource):
         default_certificate = alicloud.esa.Certificate("default",
             created_type="free",
             domains="101.gositecdn.cn",
-            site_id=default.sites[0].id,
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)),
             type="lets_encrypt")
         ```
 

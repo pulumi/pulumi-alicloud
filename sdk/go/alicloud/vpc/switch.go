@@ -83,7 +83,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
@@ -91,7 +91,7 @@ import (
 //				return err
 //			}
 //			cidrBlocks, err := vpc.NewIpv4CidrBlock(ctx, "cidr_blocks", &vpc.Ipv4CidrBlockArgs{
-//				VpcId:              vpc.ID(),
+//				VpcId:              vpc2.ID(),
 //				SecondaryCidrBlock: pulumi.String("192.163.0.0/16"),
 //			})
 //			if err != nil {

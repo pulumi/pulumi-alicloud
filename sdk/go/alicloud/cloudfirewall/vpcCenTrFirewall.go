@@ -96,7 +96,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+//			cen2, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
 //				Description:     pulumi.String("terraform example"),
 //				CenInstanceName: pulumi.String(pulumi.String(name)),
 //			})
@@ -106,7 +106,7 @@ import (
 //			tr, err := cen.NewTransitRouter(ctx, "tr", &cen.TransitRouterArgs{
 //				TransitRouterName:        pulumi.String(pulumi.String(name)),
 //				TransitRouterDescription: pulumi.String("tr-created-by-terraform"),
-//				CenId:                    cen.ID(),
+//				CenId:                    cen2.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -157,7 +157,7 @@ import (
 //					},
 //				},
 //				VpcId:           vpc1.ID(),
-//				CenId:           cen.ID(),
+//				CenId:           cen2.ID(),
 //				TransitRouterId: tr.TransitRouterId,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				foo,

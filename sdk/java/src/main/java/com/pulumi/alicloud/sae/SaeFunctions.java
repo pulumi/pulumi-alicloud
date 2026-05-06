@@ -54,8 +54,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetApplicationScalingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -102,8 +102,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetApplicationScalingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -150,8 +150,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetApplicationScalingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -198,8 +198,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetApplicationScalingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -246,8 +246,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetApplicationScalingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -304,8 +304,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.ApplicationArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -396,8 +396,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.ApplicationArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -488,8 +488,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.ApplicationArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -580,8 +580,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.ApplicationArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -672,8 +672,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.ApplicationArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -764,8 +764,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.ApplicationArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -856,8 +856,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.ApplicationArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -943,8 +943,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetConfigMapsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1012,8 +1012,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetConfigMapsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1081,8 +1081,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetConfigMapsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1150,8 +1150,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetConfigMapsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1219,8 +1219,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetConfigMapsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1283,8 +1283,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetGreyTagRoutesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1329,8 +1329,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetGreyTagRoutesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1375,8 +1375,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetGreyTagRoutesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1421,8 +1421,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetGreyTagRoutesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1467,8 +1467,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetGreyTagRoutesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1528,8 +1528,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.inputs.IngressRuleArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetIngressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1646,8 +1646,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.inputs.IngressRuleArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetIngressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1764,8 +1764,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.inputs.IngressRuleArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetIngressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1882,8 +1882,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.inputs.IngressRuleArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetIngressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2000,8 +2000,8 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.inputs.IngressRuleArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetIngressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2103,8 +2103,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetInstanceSpecificationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2147,8 +2147,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetInstanceSpecificationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2191,8 +2191,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetInstanceSpecificationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2235,8 +2235,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetInstanceSpecificationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2279,8 +2279,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetInstanceSpecificationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2323,8 +2323,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetInstanceSpecificationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2367,8 +2367,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetInstanceSpecificationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2411,8 +2411,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2456,8 +2456,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2501,8 +2501,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2546,8 +2546,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2591,8 +2591,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2636,8 +2636,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2681,8 +2681,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2728,8 +2728,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2774,8 +2774,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2820,8 +2820,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2866,8 +2866,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2912,8 +2912,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2958,8 +2958,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3004,8 +3004,8 @@ public final class SaeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
      * import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

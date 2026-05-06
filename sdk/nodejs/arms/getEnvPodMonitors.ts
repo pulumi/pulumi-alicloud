@@ -38,11 +38,11 @@ import * as utilities from "../utilities";
  *     vpcId: vpc.id,
  *     vswitchName: `${name}-${defaultInteger.result}`,
  *     zoneId: enhanced.then(enhanced => enhanced.zones?.[0]?.zoneId),
- *     cidrBlock: vpc.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
- *         input: cidrBlock,
+ *     cidrBlock: std.cidrsubnetOutput({
+ *         input: vpc.cidrBlock,
  *         newbits: 8,
  *         netnum: 8,
- *     })).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  * });
  * const defaultSnapshotPolicy = new alicloud.ecs.SnapshotPolicy("default", {
  *     name: `${name}-${defaultInteger.result}`,
@@ -58,13 +58,13 @@ import * as utilities from "../utilities";
  *         "23",
  *     ],
  * });
- * const _default = vswitch.zoneId.apply(zoneId => alicloud.ecs.getInstanceTypesOutput({
- *     availabilityZone: zoneId,
+ * const _default = alicloud.ecs.getInstanceTypesOutput({
+ *     availabilityZone: vswitch.zoneId,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
  *     kubernetesNodeRole: "Worker",
  *     instanceTypeFamily: "ecs.sn1ne",
- * }));
+ * });
  * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
  *     name: `terraform-example-${defaultInteger.result}`,
  *     clusterSpec: "ack.pro.small",
@@ -217,11 +217,11 @@ export interface GetEnvPodMonitorsResult {
  *     vpcId: vpc.id,
  *     vswitchName: `${name}-${defaultInteger.result}`,
  *     zoneId: enhanced.then(enhanced => enhanced.zones?.[0]?.zoneId),
- *     cidrBlock: vpc.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
- *         input: cidrBlock,
+ *     cidrBlock: std.cidrsubnetOutput({
+ *         input: vpc.cidrBlock,
  *         newbits: 8,
  *         netnum: 8,
- *     })).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  * });
  * const defaultSnapshotPolicy = new alicloud.ecs.SnapshotPolicy("default", {
  *     name: `${name}-${defaultInteger.result}`,
@@ -237,13 +237,13 @@ export interface GetEnvPodMonitorsResult {
  *         "23",
  *     ],
  * });
- * const _default = vswitch.zoneId.apply(zoneId => alicloud.ecs.getInstanceTypesOutput({
- *     availabilityZone: zoneId,
+ * const _default = alicloud.ecs.getInstanceTypesOutput({
+ *     availabilityZone: vswitch.zoneId,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
  *     kubernetesNodeRole: "Worker",
  *     instanceTypeFamily: "ecs.sn1ne",
- * }));
+ * });
  * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
  *     name: `terraform-example-${defaultInteger.result}`,
  *     clusterSpec: "ack.pro.small",

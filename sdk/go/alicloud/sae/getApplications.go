@@ -45,7 +45,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("tf_testacc"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
-//				VpcId:       vpc.ID(),
+//				VpcId:       vpc2.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
 //				VswitchName: pulumi.String(pulumi.String(name)),

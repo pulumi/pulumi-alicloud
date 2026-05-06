@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  *     dataSourceConfig: kafka_config,
  *     dataSourceType: "kafka",
  *     dataSourceDescription: "example-kafka",
- *     serviceId: defaultwruvdv.serviceId,
+ *     serviceId: defaultwruvdv.serviceId.apply(x =>Number(x)),
  * });
  * ```
  *

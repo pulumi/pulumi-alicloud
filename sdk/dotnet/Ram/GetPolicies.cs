@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ram
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var @default = new Random.Index.Integer("default", new()
+        ///     var @default = new Random.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Ram
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var @default = new Random.Index.Integer("default", new()
+        ///     var @default = new Random.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.Ram
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var @default = new Random.Index.Integer("default", new()
+        ///     var @default = new Random.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,

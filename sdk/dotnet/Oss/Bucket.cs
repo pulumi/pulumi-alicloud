@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -366,7 +366,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     ///     var bucket_access_monitor_lifecycle = new AliCloud.Oss.Bucket("bucket-access-monitor-lifecycle", new()
     ///     {
-    ///         BucketName = Std.Index.Format.Invoke(new()
+    ///         BucketName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "example-lifecycle6-%s",
     ///             Args = new[]
@@ -407,7 +407,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     ///     var bucket_tag_lifecycle = new AliCloud.Oss.Bucket("bucket-tag-lifecycle", new()
     ///     {
-    ///         BucketName = Std.Index.Format.Invoke(new()
+    ///         BucketName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "example-lifecycle7-%s",
     ///             Args = new[]
@@ -459,7 +459,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -501,7 +501,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -570,7 +570,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -596,7 +596,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -654,7 +654,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -690,7 +690,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -725,7 +725,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -751,7 +751,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -780,7 +780,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,

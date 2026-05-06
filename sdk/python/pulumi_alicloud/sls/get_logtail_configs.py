@@ -231,11 +231,11 @@ def get_logtail_configs(ids: Optional[Sequence[_builtins.str]] = None,
         }),
         logtail_config_name="tfaccsls62147",
         input_type="file")
-    default = default_logtail_config.logtail_config_name.apply(lambda logtail_config_name: alicloud.sls.get_logtail_configs_output(logtail_config_name=logtail_config_name,
+    default = alicloud.sls.get_logtail_configs_output(logtail_config_name=default_logtail_config.logtail_config_name,
         logstore_name="example",
         project_name=project_name,
         offset=0,
-        size=100))
+        size=100)
     pulumi.export("alicloudSlsLogtailConfigExampleId", default.configs[0].id)
     ```
 
@@ -352,11 +352,11 @@ def get_logtail_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[_bui
         }),
         logtail_config_name="tfaccsls62147",
         input_type="file")
-    default = default_logtail_config.logtail_config_name.apply(lambda logtail_config_name: alicloud.sls.get_logtail_configs_output(logtail_config_name=logtail_config_name,
+    default = alicloud.sls.get_logtail_configs_output(logtail_config_name=default_logtail_config.logtail_config_name,
         logstore_name="example",
         project_name=project_name,
         offset=0,
-        size=100))
+        size=100)
     pulumi.export("alicloudSlsLogtailConfigExampleId", default.configs[0].id)
     ```
 

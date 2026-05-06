@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "AliyunTerraform";
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,

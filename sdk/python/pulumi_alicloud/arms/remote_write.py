@@ -150,7 +150,7 @@ class RemoteWrite(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=len(default.zones).apply(lambda length: default.zones[length - 1]).apply(lambda obj: obj.id))
+            zone_id=len(default.zones).apply(lambda length: default.zones[int(length - 1)]).apply(lambda obj: obj.id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
             vpc_id=default_network.id)
@@ -233,7 +233,7 @@ class RemoteWrite(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=len(default.zones).apply(lambda length: default.zones[length - 1]).apply(lambda obj: obj.id))
+            zone_id=len(default.zones).apply(lambda length: default.zones[int(length - 1)]).apply(lambda obj: obj.id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
             vpc_id=default_network.id)

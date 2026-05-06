@@ -357,7 +357,7 @@ class QuotaAlarm(pulumi.CustomResource):
                 "key": "regionId",
                 "value": "cn-hangzhou",
             }],
-            threshold_percent=80,
+            threshold_percent=float(80),
             product_code="gws",
             quota_alarm_name=f"{name}-{default['result']}",
             threshold_type="used")
@@ -422,7 +422,7 @@ class QuotaAlarm(pulumi.CustomResource):
                 "key": "regionId",
                 "value": "cn-hangzhou",
             }],
-            threshold_percent=80,
+            threshold_percent=float(80),
             product_code="gws",
             quota_alarm_name=f"{name}-{default['result']}",
             threshold_type="used")

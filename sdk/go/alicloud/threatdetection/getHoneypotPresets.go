@@ -26,23 +26,25 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := threatdetection.GetHoneypotPresets(ctx, &threatdetection.GetHoneypotPresetsArgs{
-// Ids: interface{}{
-// defaultAlicloudThreatDetectionHoneypotPreset.Id,
-// },
-// HoneypotImageName: pulumi.StringRef("shiro"),
-// NodeId: pulumi.StringRef("example_value"),
-// PresetName: pulumi.StringRef("apiapec_test"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudThreatDetectionHoneypotPresetExampleId", _default.Presets[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := threatdetection.GetHoneypotPresets(ctx, &threatdetection.GetHoneypotPresetsArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudThreatDetectionHoneypotPreset.Id,
+//				},
+//				HoneypotImageName: pulumi.StringRef("shiro"),
+//				NodeId:            pulumi.StringRef("example_value"),
+//				PresetName:        pulumi.StringRef("apiapec_test"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudThreatDetectionHoneypotPresetExampleId", _default.Presets[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetHoneypotPresets(ctx *pulumi.Context, args *GetHoneypotPresetsArgs, opts ...pulumi.InvokeOption) (*GetHoneypotPresetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

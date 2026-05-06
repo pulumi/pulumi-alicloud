@@ -2956,7 +2956,7 @@ class NodePool(pulumi.CustomResource):
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
         cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             kubernetes_node_role="Worker",
             system_disk_category="cloud_efficiency")
         default_network = alicloud.vpc.Network("default",
@@ -3312,16 +3312,16 @@ class NodePool(pulumi.CustomResource):
                 zone_id=availability_zone[range["value"]]))
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             addons=[{
-                "name": std.lookup(map=entry["value"],
+                "name": output(std.lookup(map=entry["value"],
                     key="name",
-                    default=cluster_addons).result,
-                "config": std.lookup(map=entry["value"],
+                    default=cluster_addons).result).apply(lambda x: str(x)),
+                "config": output(std.lookup(map=entry["value"],
                     key="config",
-                    default=cluster_addons).result,
-                "disabled": std.lookup(map=entry["value"],
+                    default=cluster_addons).result).apply(lambda x: str(x)),
+                "disabled": output(std.lookup(map=entry["value"],
                     key="disabled",
-                    default=cluster_addons).result,
-            } for entry in [{"key": k, "value": v} for k, v in cluster_addons.items()]],
+                    default=cluster_addons).result).apply(lambda x: x == "true"),
+            } for entry in [{"key": k, "value": v} for k, v in sorted(cluster_addons.items())]],
             name=k8s_name_terway,
             cluster_spec=cluster_spec,
             vswitch_ids=std.join_output(separator=",",
@@ -3371,8 +3371,8 @@ class NodePool(pulumi.CustomResource):
             instance_patterns=[{
                 "min_cpu_cores": 4,
                 "max_cpu_cores": 16,
-                "min_memory_size": 8,
-                "max_memory_size": 32,
+                "min_memory_size": float(8),
+                "max_memory_size": float(32),
                 "instance_family_level": "EnterpriseLevel",
                 "instance_type_families": [
                     "ecs.u1",
@@ -3654,7 +3654,7 @@ class NodePool(pulumi.CustomResource):
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
         cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             kubernetes_node_role="Worker",
             system_disk_category="cloud_efficiency")
         default_network = alicloud.vpc.Network("default",
@@ -4010,16 +4010,16 @@ class NodePool(pulumi.CustomResource):
                 zone_id=availability_zone[range["value"]]))
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             addons=[{
-                "name": std.lookup(map=entry["value"],
+                "name": output(std.lookup(map=entry["value"],
                     key="name",
-                    default=cluster_addons).result,
-                "config": std.lookup(map=entry["value"],
+                    default=cluster_addons).result).apply(lambda x: str(x)),
+                "config": output(std.lookup(map=entry["value"],
                     key="config",
-                    default=cluster_addons).result,
-                "disabled": std.lookup(map=entry["value"],
+                    default=cluster_addons).result).apply(lambda x: str(x)),
+                "disabled": output(std.lookup(map=entry["value"],
                     key="disabled",
-                    default=cluster_addons).result,
-            } for entry in [{"key": k, "value": v} for k, v in cluster_addons.items()]],
+                    default=cluster_addons).result).apply(lambda x: x == "true"),
+            } for entry in [{"key": k, "value": v} for k, v in sorted(cluster_addons.items())]],
             name=k8s_name_terway,
             cluster_spec=cluster_spec,
             vswitch_ids=std.join_output(separator=",",
@@ -4069,8 +4069,8 @@ class NodePool(pulumi.CustomResource):
             instance_patterns=[{
                 "min_cpu_cores": 4,
                 "max_cpu_cores": 16,
-                "min_memory_size": 8,
-                "max_memory_size": 32,
+                "min_memory_size": float(8),
+                "max_memory_size": float(32),
                 "instance_family_level": "EnterpriseLevel",
                 "instance_type_families": [
                     "ecs.u1",

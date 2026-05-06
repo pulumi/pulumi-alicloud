@@ -415,7 +415,7 @@ class CycleTask(pulumi.CustomResource):
             target_start_time=0,
             source="console_batch",
             task_name="VIRUS_VUL_SCHEDULE_SCAN",
-            first_date_str=1650556800000,
+            first_date_str=int(1650556800000),
             period_unit="day",
             interval_period=7,
             param=json.dumps({
@@ -499,7 +499,7 @@ class CycleTask(pulumi.CustomResource):
             target_start_time=0,
             source="console_batch",
             task_name="VIRUS_VUL_SCHEDULE_SCAN",
-            first_date_str=1650556800000,
+            first_date_str=int(1650556800000),
             period_unit="day",
             interval_period=7,
             param=json.dumps({

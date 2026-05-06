@@ -320,9 +320,9 @@ class ExperimentPlan(pulumi.CustomResource):
             cluster_name=name,
             cluster_desc=name)
         default_experiment_plan = alicloud.eflo.ExperimentPlan("default",
-            resource_id=default_resource.resource_id,
+            resource_id=default_resource.resource_id.apply(lambda x: int(x)),
             plan_name=name,
-            template_id=defaultp_szn7t.id)
+            template_id=defaultp_szn7t.id.apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -418,9 +418,9 @@ class ExperimentPlan(pulumi.CustomResource):
             cluster_name=name,
             cluster_desc=name)
         default_experiment_plan = alicloud.eflo.ExperimentPlan("default",
-            resource_id=default_resource.resource_id,
+            resource_id=default_resource.resource_id.apply(lambda x: int(x)),
             plan_name=name,
-            template_id=defaultp_szn7t.id)
+            template_id=defaultp_szn7t.id.apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

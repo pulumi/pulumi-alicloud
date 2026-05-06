@@ -1235,7 +1235,7 @@ class OssStockTask(pulumi.CustomResource):
                 "Type": "suggestion",
                 "Value": "block",
             }),
-            callback_id=default_jn_w8_na.id,
+            callback_id=default_jn_w8_na.id.apply(lambda x: int(x)),
             image_ad_freeze_config=json.dumps({
                 "Type": "suggestion",
                 "Value": "block",
@@ -1406,7 +1406,7 @@ class OssStockTask(pulumi.CustomResource):
                 "Type": "suggestion",
                 "Value": "block",
             }),
-            callback_id=default_jn_w8_na.id,
+            callback_id=default_jn_w8_na.id.apply(lambda x: int(x)),
             image_ad_freeze_config=json.dumps({
                 "Type": "suggestion",
                 "Value": "block",

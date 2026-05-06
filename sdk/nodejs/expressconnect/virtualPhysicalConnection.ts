@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     orderMode: "PayByPhysicalConnectionOwner",
  *     parentPhysicalConnectionId: example.then(example => example.ids?.[0]),
  *     spec: "50M",
- *     vlanId: vlanId.id,
+ *     vlanId: Number(vlanId.id),
  *     vpconnAliUid: _default.then(_default => _default.id),
  * });
  * ```

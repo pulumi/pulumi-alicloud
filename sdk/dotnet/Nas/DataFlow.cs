@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Nas
     ///         VswitchId = exampleSwitch.Id,
     ///     });
     /// 
-    ///     var exampleInteger = new Random.Index.Integer("example", new()
+    ///     var exampleInteger = new Random.Integer("example", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Nas
     ///         Description = "terraform-example",
     ///         FileSystemId = exampleFileSystem.Id,
     ///         SourceSecurityType = "SSL",
-    ///         SourceStorage = Std.Index.Join.Invoke(new()
+    ///         SourceStorage = Std.Join.Invoke(new()
     ///         {
     ///             Separator = "",
     ///             Input = new[]

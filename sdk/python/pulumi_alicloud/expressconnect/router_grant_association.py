@@ -262,7 +262,7 @@ class RouterGrantAssociation(pulumi.CustomResource):
             ecr_id=ecr_id,
             instance_region_id=region,
             instance_id=vpc_id,
-            ecr_owner_ali_uid=ecr_owner_uid,
+            ecr_owner_ali_uid=int(ecr_owner_uid),
             instance_type="VPC")
         ```
 
@@ -330,7 +330,7 @@ class RouterGrantAssociation(pulumi.CustomResource):
             ecr_id=ecr_id,
             instance_region_id=region,
             instance_id=vpc_id,
-            ecr_owner_ali_uid=ecr_owner_uid,
+            ecr_owner_ali_uid=int(ecr_owner_uid),
             instance_type="VPC")
         ```
 

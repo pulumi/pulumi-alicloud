@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultTransportLayerApplication = new alicloud.esa.TransportLayerApplication("default", {
  *     recordName: "resource2.gositecdn.cn",
- *     siteId: _default.then(_default => _default.sites?.[0]?.siteId),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.siteId)).apply(x =>String(x)),
  *     ipAccessRule: "off",
  *     ipv6: "off",
  *     crossBorderOptimization: "off",

@@ -206,7 +206,7 @@ def get_instance_types(charge_type: Optional[_builtins.str] = None,
         version="2.0",
         instance_type="hbase.sn2.large",
         disk_type="cloud_ssd")
-    hbase = alicloud.hbase.Instance("hbase", core_instance_type=default.types[0].id)
+    hbase = alicloud.hbase.Instance("hbase", core_instance_type=output(default.types[0].id).apply(lambda x: str(x)))
     ```
 
 
@@ -272,7 +272,7 @@ def get_instance_types_output(charge_type: Optional[pulumi.Input[Optional[_built
         version="2.0",
         instance_type="hbase.sn2.large",
         disk_type="cloud_ssd")
-    hbase = alicloud.hbase.Instance("hbase", core_instance_type=default.types[0].id)
+    hbase = alicloud.hbase.Instance("hbase", core_instance_type=output(default.types[0].id).apply(lambda x: str(x)))
     ```
 
 

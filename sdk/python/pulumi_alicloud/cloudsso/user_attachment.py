@@ -175,14 +175,14 @@ class UserAttachment(pulumi.CustomResource):
             [""],
         ]).result[0])
         default_user = alicloud.cloudsso.User("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_group = alicloud.cloudsso.Group("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             group_name=name,
             description=name)
         default_user_attachment = alicloud.cloudsso.UserAttachment("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_id=default_user.user_id,
             group_id=default_group.group_id)
         ```
@@ -248,14 +248,14 @@ class UserAttachment(pulumi.CustomResource):
             [""],
         ]).result[0])
         default_user = alicloud.cloudsso.User("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_group = alicloud.cloudsso.Group("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             group_name=name,
             description=name)
         default_user_attachment = alicloud.cloudsso.UserAttachment("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_id=default_user.user_id,
             group_id=default_group.group_id)
         ```

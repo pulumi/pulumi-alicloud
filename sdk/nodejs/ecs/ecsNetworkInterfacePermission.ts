@@ -44,10 +44,10 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     securityGroupIds: [defaultSecurityGroup.id],
  *     description: "terraform-example",
- *     primaryIpAddress: defaultSwitch.cidrBlock.apply(cidrBlock => std.cidrhostOutput({
- *         input: cidrBlock,
+ *     primaryIpAddress: std.cidrhostOutput({
+ *         input: defaultSwitch.cidrBlock,
  *         host: 100,
- *     })).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  *     tags: {
  *         Created: "TF",
  *         For: "example",

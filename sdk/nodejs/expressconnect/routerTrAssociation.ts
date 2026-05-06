@@ -26,14 +26,14 @@ import * as utilities from "../utilities";
  * const allowprefix3 = config.get("allowprefix3") || "10.0.2.0/24";
  * const allowprefix4 = config.get("allowprefix4") || "10.0.3.0/24";
  * const asn = config.get("asn") || "4200001003";
- * const defaultpX0KlC = new alicloud.expressconnect.RouterExpressConnectRouter("defaultpX0KlC", {alibabaSideAsn: asn});
+ * const defaultpX0KlC = new alicloud.expressconnect.RouterExpressConnectRouter("defaultpX0KlC", {alibabaSideAsn: Number(asn)});
  * const default418DC9 = new alicloud.cen.Instance("default418DC9", {cenInstanceName: name});
  * const defaultRYcjsc = new alicloud.cen.TransitRouter("defaultRYcjsc", {cenId: default418DC9.id});
  * const current = alicloud.getAccount({});
  * const _default = new alicloud.expressconnect.RouterTrAssociation("default", {
  *     ecrId: defaultpX0KlC.id,
  *     cenId: default418DC9.id,
- *     transitRouterOwnerId: current.then(current => current.id),
+ *     transitRouterOwnerId: output(current.then(current => current.id)).apply(x =>Number(x)),
  *     allowedPrefixes: [
  *         alowprefix1,
  *         allowprefix3,

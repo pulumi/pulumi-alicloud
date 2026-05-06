@@ -51,8 +51,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -97,8 +97,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -143,8 +143,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -189,8 +189,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -235,8 +235,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -281,8 +281,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetAuditPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -326,8 +326,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetAuditPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -371,8 +371,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetAuditPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -416,8 +416,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetAuditPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -461,8 +461,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetAuditPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -514,8 +514,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -597,8 +597,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -680,8 +680,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -763,8 +763,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -846,8 +846,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -929,8 +929,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1012,8 +1012,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1087,8 +1087,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1144,8 +1144,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1201,8 +1201,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1258,8 +1258,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1315,8 +1315,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1372,8 +1372,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1429,8 +1429,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1486,8 +1486,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPrivateAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1533,8 +1533,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPrivateAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1580,8 +1580,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPrivateAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1627,8 +1627,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPrivateAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1674,8 +1674,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPrivateAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1721,8 +1721,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPublicAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1768,8 +1768,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPublicAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1815,8 +1815,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPublicAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1862,8 +1862,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPublicAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1909,8 +1909,8 @@ public final class MongodbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
      * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPublicAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1956,8 +1956,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2005,8 +2005,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2054,8 +2054,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2103,8 +2103,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2152,8 +2152,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2201,8 +2201,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2250,8 +2250,8 @@ public final class MongodbFunctions {
      * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -21,10 +21,10 @@ import * as utilities from "./utilities";
  *     email: "123@163.com",
  *     mobile: "153xxxxx906",
  * });
- * const _default = defaultMscSubContract.id.apply(id => alicloud.getMscSubContactVerificationMessageOutput({
- *     contactId: id,
+ * const _default = alicloud.getMscSubContactVerificationMessageOutput({
+ *     contactId: defaultMscSubContract.id,
  *     type: 1,
- * }));
+ * });
  * ```
  */
 export function getMscSubContactVerificationMessage(args: GetMscSubContactVerificationMessageArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubContactVerificationMessageResult> {
@@ -81,10 +81,10 @@ export interface GetMscSubContactVerificationMessageResult {
  *     email: "123@163.com",
  *     mobile: "153xxxxx906",
  * });
- * const _default = defaultMscSubContract.id.apply(id => alicloud.getMscSubContactVerificationMessageOutput({
- *     contactId: id,
+ * const _default = alicloud.getMscSubContactVerificationMessageOutput({
+ *     contactId: defaultMscSubContract.id,
  *     type: 1,
- * }));
+ * });
  * ```
  */
 export function getMscSubContactVerificationMessageOutput(args: GetMscSubContactVerificationMessageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMscSubContactVerificationMessageResult> {

@@ -53,8 +53,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cs.KubernetesPolicyInstanceArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var vpcCidr = config.get("vpcCidr").orElse("10.0.0.0/8");
- *         final var vswitchCidrs = config.get("vswitchCidrs").orElse(List.of(        
+ *         final var vswitchCidrs = config.get("vswitchCidrs").orElse(Arrays.asList(        
  *             "10.1.0.0/16",
  *             "10.2.0.0/16"));
  *         final var clusterName = config.get("clusterName").orElse("terraform-example-");

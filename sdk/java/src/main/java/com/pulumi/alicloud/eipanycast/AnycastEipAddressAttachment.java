@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.eipanycast.AnycastEipAddressAttachment;
  * import com.pulumi.alicloud.eipanycast.AnycastEipAddressAttachmentArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -139,8 +139,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.eipanycast.AnycastEipAddressArgs;
  * import com.pulumi.alicloud.eipanycast.AnycastEipAddressAttachment;
  * import com.pulumi.alicloud.eipanycast.AnycastEipAddressAttachmentArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -168,7 +168,7 @@ import javax.annotation.Nullable;
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .cpuCoreCount(1)
- *             .memorySize(2)
+ *             .memorySize(2.0)
  *             .build());
  * 
  *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
@@ -220,7 +220,7 @@ import javax.annotation.Nullable;
  *         final var default2GetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default2.zones()[0].id())
  *             .cpuCoreCount(1)
- *             .memorySize(2)
+ *             .memorySize(2.0)
  *             .build());
  * 
  *         var defaultdsVsw2 = new Switch("defaultdsVsw2", SwitchArgs.builder()

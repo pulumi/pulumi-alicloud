@@ -137,7 +137,7 @@ import (
 //			if param := cfg.GetObject("zone"); param != nil {
 //				zone = param
 //			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 //				VpcName:    pulumi.String(pulumi.String(name)),
 //				CidrBlock:  pulumi.String("10.2.0.0/16"),
 //				EnableIpv6: pulumi.Bool(true),
@@ -153,7 +153,7 @@ import (
 //					EnableIpv6:        pulumi.Bool(true),
 //					Ipv6CidrBlockMask: pulumi.Int(fmt.Sprintf("1%v", val0)),
 //					VswitchName:       pulumi.Sprintf("vsw-%v-for-nlb", val0),
-//					VpcId:             vpc.ID(),
+//					VpcId:             vpc2.ID(),
 //					CidrBlock:         pulumi.Sprintf("10.2.1%v.0/24", val0),
 //					ZoneId:            zone[val0],
 //				})
@@ -164,7 +164,7 @@ import (
 //			}
 //			_default, err := vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
 //				Ipv6GatewayName: pulumi.String(pulumi.String(name)),
-//				VpcId:           vpc.ID(),
+//				VpcId:           vpc2.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -175,7 +175,7 @@ import (
 //				AddressType:      pulumi.String("Intranet"),
 //				AddressIpVersion: pulumi.String("DualStack"),
 //				Ipv6AddressType:  pulumi.String("Internet"),
-//				VpcId:            vpc.ID(),
+//				VpcId:            vpc2.ID(),
 //				CrossZoneEnabled: pulumi.Bool(false),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),

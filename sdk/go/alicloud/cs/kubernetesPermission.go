@@ -25,6 +25,165 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+// Max: 99999,
+// Min: 10000,
+// })
+// if err != nil {
+// return err
+// }
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// // The cidr block used to launch a new vpc when 'vpc_id' is not specified.
+// vpcCidr := "10.0.0.0/8";
+// if param := cfg.Get("vpcCidr"); param != ""{
+// vpcCidr = param
+// }
+// // List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
+// vswitchCidrs := []string{
+// "10.1.0.0/16",
+// "10.2.0.0/16",
+// };
+// if param := cfg.GetObject("vswitchCidrs"); param != nil {
+// vswitchCidrs = param
+// }
+// // The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or service's and cannot be in them.
+// podCidr := "172.16.0.0/16";
+// if param := cfg.Get("podCidr"); param != ""{
+// podCidr = param
+// }
+// // The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or pod's and cannot be in them.
+// serviceCidr := "192.168.0.0/16";
+// if param := cfg.Get("serviceCidr"); param != ""{
+// serviceCidr = param
+// }
+// enhanced, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// _default, err := cs.GetKubernetesVersion(ctx, &cs.GetKubernetesVersionArgs{
+// ClusterType: "ManagedKubernetes",
+// }, nil);
+// if err != nil {
+// return err
+// }
+// vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+// CidrBlock: pulumi.String(pulumi.String(vpcCidr)),
+// })
+// if err != nil {
+// return err
+// }
+// // According to the vswitch cidr blocks to launch several vswitches
+// var defaultSwitch []*vpc.Switch
+//
+//	for index := 0; index < len(vswitchCidrs); index++ {
+//	    key0 := index
+//	    val0 := index
+//
+// __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
+// VpcId: vpc2.ID(),
+// CidrBlock: pulumi.String(vswitchCidrs[val0]),
+// ZoneId: pulumi.String(enhanced.Zones[val0].ZoneId),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch = append(defaultSwitch, __res)
+// }
+// invokeSplit, err := std.Split(ctx, &std.SplitArgs{
+// Separator: ",",
+// Text: invoke.Result,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// // Create a new RAM cluster.
+// defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
+// Name: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+// ClusterSpec: pulumi.String("ack.pro.small"),
+// Version: pulumi.String(pulumi.String(_default.Metadatas[0].Version)),
+// WorkerVswitchIds: pulumi.StringArray(std.JoinOutput(ctx, std.JoinOutputArgs{
+// Separator: pulumi.String(","),
+// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:63,19-38),
+// }, nil).ApplyT(func(invoke std.JoinResult) (std.SplitResult, error) {
+// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.SplitResultOutput).ApplyT(func(invoke std.SplitResult) ([]string, error) {
+// return invoke.Result, nil
+// }).(pulumi.StringArrayOutput)),
+// NewNatGateway: pulumi.Bool(false),
+// PodCidr: pulumi.String(pulumi.String(podCidr)),
+// ServiceCidr: pulumi.String(pulumi.String(serviceCidr)),
+// SlbInternetEnabled: pulumi.Bool(false),
+// })
+// if err != nil {
+// return err
+// }
+// // Create a new RAM user.
+// user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+// Name: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+// })
+// if err != nil {
+// return err
+// }
+// // Create a cluster permission for user.
+// _, err = cs.NewKubernetesPermission(ctx, "default", &cs.KubernetesPermissionArgs{
+// Uid: user.ID(),
+// Permissions: cs.KubernetesPermissionPermissionArray{
+// &cs.KubernetesPermissionPermissionArgs{
+// Cluster: defaultManagedKubernetes.ID(),
+// RoleType: pulumi.String("cluster"),
+// RoleName: pulumi.String("admin"),
+// Namespace: pulumi.String(""),
+// IsCustom: pulumi.Bool(false),
+// IsRamRole: pulumi.Bool(false),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = cs.NewKubernetesPermission(ctx, "attach", &cs.KubernetesPermissionArgs{
+// Uid: user.ID(),
+// Permissions: cs.KubernetesPermissionPermissionArray{
+// &cs.KubernetesPermissionPermissionArgs{
+// Cluster: defaultManagedKubernetes.ID(),
+// RoleType: pulumi.String("namespace"),
+// RoleName: pulumi.String("cs:dev"),
+// Namespace: pulumi.String("default"),
+// IsCustom: pulumi.Bool(true),
+// IsRamRole: pulumi.Bool(false),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 type KubernetesPermission struct {
 	pulumi.CustomResourceState

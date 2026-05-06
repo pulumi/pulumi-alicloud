@@ -309,21 +309,21 @@ class DiAlarmRule(pulumi.CustomResource):
             pai_task_enabled=True)
         default_uw8inp = alicloud.dataworks.DiJob("defaultUW8inp",
             description="xxxx",
-            project_id=defaulte_nv8bu.id,
+            project_id=defaulte_nv8bu.id.apply(lambda x: int(x)),
             job_name="xxx",
             migration_type="api_xxx",
             source_data_source_type="xxx",
             resource_settings={
                 "offline_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "xx",
                 },
                 "realtime_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "xx",
                 },
                 "schedule_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "xx",
                 },
             },
@@ -456,21 +456,21 @@ class DiAlarmRule(pulumi.CustomResource):
             pai_task_enabled=True)
         default_uw8inp = alicloud.dataworks.DiJob("defaultUW8inp",
             description="xxxx",
-            project_id=defaulte_nv8bu.id,
+            project_id=defaulte_nv8bu.id.apply(lambda x: int(x)),
             job_name="xxx",
             migration_type="api_xxx",
             source_data_source_type="xxx",
             resource_settings={
                 "offline_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "xx",
                 },
                 "realtime_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "xx",
                 },
                 "schedule_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "xx",
                 },
             },

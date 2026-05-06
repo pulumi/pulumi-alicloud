@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.servicemesh.ExtensionProvider;
  * import com.pulumi.alicloud.servicemesh.ExtensionProviderArgs;
  * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -108,13 +108,13 @@ import javax.annotation.Nullable;
  *                 .vpcId(Output.tuple(defaultGetNetworks.ids().length(), defaultNetwork[0].id()).applyValue(values -> {
  *                     var length = values.t1;
  *                     var id = values.t2;
- *                     return length.applyValue(___convert -> ___convert > 0) ? defaultGetNetworks.ids()[0] : id;
+ *                     return length > 0 ? defaultGetNetworks.ids()[0] : id;
  *                 }))
- *                 .vswitcheLists(List.of(Output.tuple(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()).length(), defaultGetSwitches, defaultSwitch[0].id()).applyValue(values -> {
+ *                 .vswitcheLists(Arrays.asList(Output.tuple(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()).length(), defaultGetSwitches, defaultSwitch[0].id()).applyValue(values -> {
  *                     var length = values.t1;
  *                     var defaultGetSwitches = values.t2;
  *                     var id = values.t3;
- *                     return length.applyValue(___convert -> ___convert > 0) ? defaultGetSwitches.ids()[0] : id;
+ *                     return length > 0 ? defaultGetSwitches.ids()[0] : id;
  *                 })))
  *                 .build())
  *             .build());

@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *     }),
  *     dataSourceType: "kafka",
  *     dataSourceDescription: "example",
- *     serviceId: default2dUszY.serviceId,
+ *     serviceId: default2dUszY.serviceId.apply(x =>Number(x)),
  * });
  * const _default = new alicloud.gpdb.StreamingJob("default", {
  *     account: "example_001",

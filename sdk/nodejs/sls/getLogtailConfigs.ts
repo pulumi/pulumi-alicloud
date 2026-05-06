@@ -73,13 +73,13 @@ import * as utilities from "../utilities";
  *     logtailConfigName: "tfaccsls62147",
  *     inputType: "file",
  * });
- * const _default = defaultLogtailConfig.logtailConfigName.apply(logtailConfigName => alicloud.sls.getLogtailConfigsOutput({
- *     logtailConfigName: logtailConfigName,
+ * const _default = alicloud.sls.getLogtailConfigsOutput({
+ *     logtailConfigName: defaultLogtailConfig.logtailConfigName,
  *     logstoreName: "example",
  *     projectName: projectName,
  *     offset: 0,
  *     size: 100,
- * }));
+ * });
  * export const alicloudSlsLogtailConfigExampleId = _default.apply(_default => _default.configs?.[0]?.id);
  * ```
  */
@@ -233,13 +233,13 @@ export interface GetLogtailConfigsResult {
  *     logtailConfigName: "tfaccsls62147",
  *     inputType: "file",
  * });
- * const _default = defaultLogtailConfig.logtailConfigName.apply(logtailConfigName => alicloud.sls.getLogtailConfigsOutput({
- *     logtailConfigName: logtailConfigName,
+ * const _default = alicloud.sls.getLogtailConfigsOutput({
+ *     logtailConfigName: defaultLogtailConfig.logtailConfigName,
  *     logstoreName: "example",
  *     projectName: projectName,
  *     offset: 0,
  *     size: 100,
- * }));
+ * });
  * export const alicloudSlsLogtailConfigExampleId = _default.apply(_default => _default.configs?.[0]?.id);
  * ```
  */

@@ -2134,17 +2134,17 @@ class Kubernetes(pulumi.CustomResource):
         default = alicloud.resourcemanager.get_resource_groups(status="OK")
         cloud_essd = [alicloud.ecs.get_instance_types_output(availability_zone=_arg0_.zone_id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             system_disk_category="cloud_essd") for __index in range(3)]
         default_kubernetes = alicloud.cs.Kubernetes("default",
             addons=[{
-                "name": std.lookup(map=entry["value"],
+                "name": output(std.lookup(map=entry["value"],
                     key="name",
-                    default=cluster_addons).result,
+                    default=cluster_addons).result).apply(lambda x: str(x)),
                 "config": json.dumps(std.lookup(map=entry["value"],
                     key="config",
                     default=cluster_addons).result),
-            } for entry in [{"key": k, "value": v} for k, v in cluster_addons.items()]],
+            } for entry in [{"key": k, "value": v} for k, v in sorted(cluster_addons.items())]],
             master_vswitch_ids=std.split(separator=",",
                 text=std.join(separator=",",
                     input=vswitch_ids).result).result if len(vswitch_ids) > 0 else [] if len(vswitch_cidrs) < 1 else std.join_output(separator=",",
@@ -2404,17 +2404,17 @@ class Kubernetes(pulumi.CustomResource):
         default = alicloud.resourcemanager.get_resource_groups(status="OK")
         cloud_essd = [alicloud.ecs.get_instance_types_output(availability_zone=_arg0_.zone_id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             system_disk_category="cloud_essd") for __index in range(3)]
         default_kubernetes = alicloud.cs.Kubernetes("default",
             addons=[{
-                "name": std.lookup(map=entry["value"],
+                "name": output(std.lookup(map=entry["value"],
                     key="name",
-                    default=cluster_addons).result,
+                    default=cluster_addons).result).apply(lambda x: str(x)),
                 "config": json.dumps(std.lookup(map=entry["value"],
                     key="config",
                     default=cluster_addons).result),
-            } for entry in [{"key": k, "value": v} for k, v in cluster_addons.items()]],
+            } for entry in [{"key": k, "value": v} for k, v in sorted(cluster_addons.items())]],
             master_vswitch_ids=std.split(separator=",",
                 text=std.join(separator=",",
                     input=vswitch_ids).result).result if len(vswitch_ids) > 0 else [] if len(vswitch_cidrs) < 1 else std.join_output(separator=",",

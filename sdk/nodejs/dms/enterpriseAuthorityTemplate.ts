@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     status: "ACTIVE",
  * });
  * const defaultEnterpriseAuthorityTemplate = new alicloud.dms.EnterpriseAuthorityTemplate("default", {
- *     tid: _default.then(_default => _default.ids?.[0]),
+ *     tid: output(_default.then(_default => _default.ids?.[0])).apply(x =>Number(x)),
  *     authorityTemplateName: name,
  *     description: name,
  * });

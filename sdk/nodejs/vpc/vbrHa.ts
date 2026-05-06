@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *             input: `${name}-%d`,
  *             args: [range.value + 1],
  *         }).then(invoke => invoke.result),
- *         vlanId: vlanId.id + range.value,
+ *         vlanId: Number(vlanId.id) + range.value,
  *         minRxInterval: 1000,
  *         minTxInterval: 1000,
  *         detectMultiplier: 10,

@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     nickname: "os_terrform_p",
  *     quota: {
  *         parameter: {
- *             elasticReservedCu: elasticReservedCu,
+ *             elasticReservedCu: Number(elasticReservedCu),
  *         },
  *         subQuotaInfoLists: [
  *             {
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *                 parameter: {
  *                     minCu: 0,
  *                     maxCu: 20,
- *                     elasticReservedCu: elasticReservedCu,
+ *                     elasticReservedCu: Number(elasticReservedCu),
  *                 },
  *             },
  *             {

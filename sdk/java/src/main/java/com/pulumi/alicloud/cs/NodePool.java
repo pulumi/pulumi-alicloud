@@ -111,8 +111,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
  * import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationArgs;
  * import com.pulumi.alicloud.cs.inputs.NodePoolRollingPolicyArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *         final var cloudEfficiency = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(enhanced.zones()[0].zoneId())
  *             .cpuCoreCount(4)
- *             .memorySize(8)
+ *             .memorySize(8.0)
  *             .kubernetesNodeRole("Worker")
  *             .systemDiskCategory("cloud_efficiency")
  *             .build());

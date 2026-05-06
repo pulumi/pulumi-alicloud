@@ -1122,8 +1122,8 @@ class ContainerGroup(pulumi.CustomResource):
             vpc_id=default_network.id)
         default_container_group = alicloud.eci.ContainerGroup("default",
             container_group_name=name,
-            cpu=8,
-            memory=16,
+            cpu=float(8),
+            memory=float(16),
             restart_policy="OnFailure",
             security_group_id=default_security_group.id,
             vswitch_id=default_switch.id,
@@ -1281,8 +1281,8 @@ class ContainerGroup(pulumi.CustomResource):
             vpc_id=default_network.id)
         default_container_group = alicloud.eci.ContainerGroup("default",
             container_group_name=name,
-            cpu=8,
-            memory=16,
+            cpu=float(8),
+            memory=float(16),
             restart_policy="OnFailure",
             security_group_id=default_security_group.id,
             vswitch_id=default_switch.id,

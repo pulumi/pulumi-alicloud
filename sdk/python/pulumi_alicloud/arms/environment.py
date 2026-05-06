@@ -410,9 +410,9 @@ class Environment(pulumi.CustomResource):
             vpc_id=vpc.id,
             vswitch_name=name,
             zone_id=enhanced.zones[0].zone_id,
-            cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result))
+                netnum=8).apply(lambda invoke: invoke.result))
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
             name=name,
             repeat_weekdays=[
@@ -426,11 +426,11 @@ class Environment(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.sn1ne"))
+            instance_type_family="ecs.sn1ne")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=f"terraform-example-{default_integer['result']}",
             cluster_spec="ack.pro.small",
@@ -527,9 +527,9 @@ class Environment(pulumi.CustomResource):
             vpc_id=vpc.id,
             vswitch_name=name,
             zone_id=enhanced.zones[0].zone_id,
-            cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result))
+                netnum=8).apply(lambda invoke: invoke.result))
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
             name=name,
             repeat_weekdays=[
@@ -543,11 +543,11 @@ class Environment(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.sn1ne"))
+            instance_type_family="ecs.sn1ne")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=f"terraform-example-{default_integer['result']}",
             cluster_spec="ack.pro.small",

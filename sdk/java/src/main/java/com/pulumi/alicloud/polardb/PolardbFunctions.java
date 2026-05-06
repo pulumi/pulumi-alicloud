@@ -63,8 +63,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Account;
      * import com.pulumi.alicloud.polardb.AccountArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -163,8 +163,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Account;
      * import com.pulumi.alicloud.polardb.AccountArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -263,8 +263,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Account;
      * import com.pulumi.alicloud.polardb.AccountArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -363,8 +363,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Account;
      * import com.pulumi.alicloud.polardb.AccountArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -463,8 +463,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Account;
      * import com.pulumi.alicloud.polardb.AccountArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -560,8 +560,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Cluster;
      * import com.pulumi.alicloud.polardb.ClusterArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -640,8 +640,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Cluster;
      * import com.pulumi.alicloud.polardb.ClusterArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -720,8 +720,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Cluster;
      * import com.pulumi.alicloud.polardb.ClusterArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -800,8 +800,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Cluster;
      * import com.pulumi.alicloud.polardb.ClusterArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -880,8 +880,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Cluster;
      * import com.pulumi.alicloud.polardb.ClusterArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -960,8 +960,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Cluster;
      * import com.pulumi.alicloud.polardb.ClusterArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1040,8 +1040,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Cluster;
      * import com.pulumi.alicloud.polardb.ClusterArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1123,8 +1123,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Database;
      * import com.pulumi.alicloud.polardb.DatabaseArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1221,8 +1221,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Database;
      * import com.pulumi.alicloud.polardb.DatabaseArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1319,8 +1319,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Database;
      * import com.pulumi.alicloud.polardb.DatabaseArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1417,8 +1417,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Database;
      * import com.pulumi.alicloud.polardb.DatabaseArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1515,8 +1515,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.Database;
      * import com.pulumi.alicloud.polardb.DatabaseArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1611,8 +1611,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.ClusterArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1696,8 +1696,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.ClusterArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1781,8 +1781,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.ClusterArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1866,8 +1866,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.ClusterArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1951,8 +1951,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.ClusterArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2038,8 +2038,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetwork;
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetworkArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2130,8 +2130,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetwork;
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetworkArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2222,8 +2222,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetwork;
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetworkArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2314,8 +2314,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetwork;
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetworkArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2406,8 +2406,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetwork;
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetworkArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2498,8 +2498,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetwork;
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetworkArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2590,8 +2590,8 @@ public final class PolardbFunctions {
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetwork;
      * import com.pulumi.alicloud.polardb.GlobalDatabaseNetworkArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2671,8 +2671,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2717,8 +2717,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2763,8 +2763,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2809,8 +2809,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2855,8 +2855,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2903,8 +2903,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2958,8 +2958,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3013,8 +3013,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3068,8 +3068,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3123,8 +3123,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3178,8 +3178,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3233,8 +3233,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3286,8 +3286,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3328,8 +3328,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3370,8 +3370,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3412,8 +3412,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3454,8 +3454,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3496,8 +3496,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3538,8 +3538,8 @@ public final class PolardbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

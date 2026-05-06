@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  *     domainNameLists: ["www.aliyun.com"],
  *     primaryVswitchIp: "172.16.3.1",
  *     standbyVswitchIp: "172.16.4.1",
- *     memberUid: current.then(current => current.id),
+ *     memberUid: output(current.then(current => current.id)).apply(x =>Number(x)),
  * });
  * ```
  *

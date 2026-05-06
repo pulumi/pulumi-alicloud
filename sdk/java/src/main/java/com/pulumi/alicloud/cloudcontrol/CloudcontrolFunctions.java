@@ -37,8 +37,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetPricesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -87,8 +87,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetPricesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -137,8 +137,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetPricesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -187,8 +187,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetPricesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -237,8 +237,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetPricesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -287,8 +287,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -331,8 +331,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -375,8 +375,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -419,8 +419,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -463,8 +463,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -507,8 +507,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -551,8 +551,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -595,8 +595,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetResourceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -640,8 +640,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetResourceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -685,8 +685,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetResourceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -730,8 +730,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetResourceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -775,8 +775,8 @@ public final class CloudcontrolFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
      * import com.pulumi.alicloud.cloudcontrol.inputs.GetResourceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

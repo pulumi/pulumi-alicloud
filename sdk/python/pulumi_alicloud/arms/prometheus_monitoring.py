@@ -214,9 +214,9 @@ class PrometheusMonitoring(pulumi.CustomResource):
             vpc_name=name)
         vswitch = alicloud.vpc.Switch("vswitch",
             vpc_id=default_network.id,
-            cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result),
+                netnum=8).apply(lambda invoke: invoke.result),
             zone_id=default.zones[0].id,
             vswitch_name=name)
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
@@ -232,11 +232,11 @@ class PrometheusMonitoring(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default_get_instance_types = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default_get_instance_types = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.sn1ne"))
+            instance_type_family="ecs.sn1ne")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=name,
             cluster_spec="ack.pro.small",
@@ -340,9 +340,9 @@ class PrometheusMonitoring(pulumi.CustomResource):
             vpc_name=name)
         vswitch = alicloud.vpc.Switch("vswitch",
             vpc_id=default_network.id,
-            cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result),
+                netnum=8).apply(lambda invoke: invoke.result),
             zone_id=default.zones[0].id,
             vswitch_name=name)
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
@@ -358,11 +358,11 @@ class PrometheusMonitoring(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default_get_instance_types = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default_get_instance_types = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.sn1ne"))
+            instance_type_family="ecs.sn1ne")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=name,
             cluster_spec="ack.pro.small",

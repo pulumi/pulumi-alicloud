@@ -72,9 +72,9 @@ import * as utilities from "../utilities";
  *     clusterDesc: name,
  * });
  * const defaultExperimentPlan = new alicloud.eflo.ExperimentPlan("default", {
- *     resourceId: defaultResource.resourceId,
+ *     resourceId: defaultResource.resourceId.apply(x =>Number(x)),
  *     planName: name,
- *     templateId: defaultpSZN7t.id,
+ *     templateId: defaultpSZN7t.id.apply(x =>Number(x)),
  * });
  * ```
  *

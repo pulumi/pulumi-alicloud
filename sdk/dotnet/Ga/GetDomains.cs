@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Ga
         ///     });
         /// 
         ///     var defaultAccelerator = new List&lt;AliCloud.Ga.Accelerator&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         defaultAccelerator.Add(new AliCloud.Ga.Accelerator($"default-{range.Value}", new()
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ga
         ///             Spec = "1",
         ///         }));
         ///     }
-        ///     var acceleratorId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length, @default, defaultAccelerator[0].Id).Apply(values =&gt;
+        ///     var acceleratorId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length(), @default, defaultAccelerator[0].Id).Apply(values =&gt;
         ///     {
         ///         var length = values.Item1;
         ///         var @default = values.Item2;
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Ga
         ///     });
         /// 
         ///     var defaultAccelerator = new List&lt;AliCloud.Ga.Accelerator&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         defaultAccelerator.Add(new AliCloud.Ga.Accelerator($"default-{range.Value}", new()
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Ga
         ///             Spec = "1",
         ///         }));
         ///     }
-        ///     var acceleratorId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length, @default, defaultAccelerator[0].Id).Apply(values =&gt;
+        ///     var acceleratorId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length(), @default, defaultAccelerator[0].Id).Apply(values =&gt;
         ///     {
         ///         var length = values.Item1;
         ///         var @default = values.Item2;
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Ga
         ///     });
         /// 
         ///     var defaultAccelerator = new List&lt;AliCloud.Ga.Accelerator&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         defaultAccelerator.Add(new AliCloud.Ga.Accelerator($"default-{range.Value}", new()
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Ga
         ///             Spec = "1",
         ///         }));
         ///     }
-        ///     var acceleratorId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length, @default, defaultAccelerator[0].Id).Apply(values =&gt;
+        ///     var acceleratorId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length(), @default, defaultAccelerator[0].Id).Apply(values =&gt;
         ///     {
         ///         var length = values.Item1;
         ///         var @default = values.Item2;

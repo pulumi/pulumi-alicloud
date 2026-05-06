@@ -56,8 +56,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.AlertScheduleArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetAlertsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -238,8 +238,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.AlertScheduleArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetAlertsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -420,8 +420,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.AlertScheduleArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetAlertsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -602,8 +602,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.AlertScheduleArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetAlertsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -784,8 +784,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.AlertScheduleArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetAlertsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -960,8 +960,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.EtlConfigurationArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetEtlsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1049,8 +1049,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.EtlConfigurationArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetEtlsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1138,8 +1138,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.EtlConfigurationArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetEtlsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1227,8 +1227,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.EtlConfigurationArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetEtlsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1316,8 +1316,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.EtlConfigurationArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetEtlsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1406,8 +1406,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetIndexsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1519,8 +1519,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetIndexsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1632,8 +1632,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetIndexsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1745,8 +1745,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetIndexsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1858,8 +1858,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetIndexsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1971,8 +1971,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2046,13 +2046,13 @@ public final class SlsFunctions {
      *             .inputType("file")
      *             .build());
      * 
-     *         final var default = defaultLogtailConfig.logtailConfigName().applyValue(_logtailConfigName -> SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
-     *             .logtailConfigName(_logtailConfigName)
+     *         final var default = SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
+     *             .logtailConfigName(defaultLogtailConfig.logtailConfigName())
      *             .logstoreName("example")
      *             .projectName(projectName)
      *             .offset(0)
      *             .size(100)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
      *     }
@@ -2088,8 +2088,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2163,13 +2163,13 @@ public final class SlsFunctions {
      *             .inputType("file")
      *             .build());
      * 
-     *         final var default = defaultLogtailConfig.logtailConfigName().applyValue(_logtailConfigName -> SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
-     *             .logtailConfigName(_logtailConfigName)
+     *         final var default = SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
+     *             .logtailConfigName(defaultLogtailConfig.logtailConfigName())
      *             .logstoreName("example")
      *             .projectName(projectName)
      *             .offset(0)
      *             .size(100)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
      *     }
@@ -2205,8 +2205,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2280,13 +2280,13 @@ public final class SlsFunctions {
      *             .inputType("file")
      *             .build());
      * 
-     *         final var default = defaultLogtailConfig.logtailConfigName().applyValue(_logtailConfigName -> SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
-     *             .logtailConfigName(_logtailConfigName)
+     *         final var default = SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
+     *             .logtailConfigName(defaultLogtailConfig.logtailConfigName())
      *             .logstoreName("example")
      *             .projectName(projectName)
      *             .offset(0)
      *             .size(100)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
      *     }
@@ -2322,8 +2322,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2397,13 +2397,13 @@ public final class SlsFunctions {
      *             .inputType("file")
      *             .build());
      * 
-     *         final var default = defaultLogtailConfig.logtailConfigName().applyValue(_logtailConfigName -> SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
-     *             .logtailConfigName(_logtailConfigName)
+     *         final var default = SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
+     *             .logtailConfigName(defaultLogtailConfig.logtailConfigName())
      *             .logstoreName("example")
      *             .projectName(projectName)
      *             .offset(0)
      *             .size(100)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
      *     }
@@ -2439,8 +2439,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2514,13 +2514,13 @@ public final class SlsFunctions {
      *             .inputType("file")
      *             .build());
      * 
-     *         final var default = defaultLogtailConfig.logtailConfigName().applyValue(_logtailConfigName -> SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
-     *             .logtailConfigName(_logtailConfigName)
+     *         final var default = SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
+     *             .logtailConfigName(defaultLogtailConfig.logtailConfigName())
      *             .logstoreName("example")
      *             .projectName(projectName)
      *             .offset(0)
      *             .size(100)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
      *     }
@@ -2553,8 +2553,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.MachineGroupGroupAttributeArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetMachineGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2622,8 +2622,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.MachineGroupGroupAttributeArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetMachineGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2691,8 +2691,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.MachineGroupGroupAttributeArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetMachineGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2760,8 +2760,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.MachineGroupGroupAttributeArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetMachineGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2829,8 +2829,8 @@ public final class SlsFunctions {
      * import com.pulumi.alicloud.sls.inputs.MachineGroupGroupAttributeArgs;
      * import com.pulumi.alicloud.sls.SlsFunctions;
      * import com.pulumi.alicloud.sls.inputs.GetMachineGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -831,7 +831,7 @@ class Gateway(pulumi.CustomResource):
             network_type="public",
             payment_type="Subscription",
             enable_ipsec=True,
-            bandwidth=spec)
+            bandwidth=int(spec))
         ```
 
         ### Deleting `vpn.Gateway` or removing it from your configuration
@@ -926,7 +926,7 @@ class Gateway(pulumi.CustomResource):
             network_type="public",
             payment_type="Subscription",
             enable_ipsec=True,
-            bandwidth=spec)
+            bandwidth=int(spec))
         ```
 
         ### Deleting `vpn.Gateway` or removing it from your configuration

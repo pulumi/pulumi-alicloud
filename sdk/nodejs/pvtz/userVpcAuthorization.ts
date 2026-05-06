@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const authorizedUserId = config.getNumber("authorizedUserId") || 123456789;
  * const example = new alicloud.pvtz.UserVpcAuthorization("example", {
- *     authorizedUserId: authorizedUserId,
+ *     authorizedUserId: String(authorizedUserId),
  *     authChannel: "RESOURCE_DIRECTORY",
  * });
  * ```

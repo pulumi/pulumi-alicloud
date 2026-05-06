@@ -31,9 +31,9 @@ namespace Pulumi.AliCloud.Pai
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform_example";
-    ///     var @default = AliCloud.Index.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,

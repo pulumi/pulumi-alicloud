@@ -27,8 +27,8 @@ import * as utilities from "../utilities";
  * });
  * const auth = k8s.then(k8s => std.toset({
  *     input: k8s.ids,
- * })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: alicloud.cs.getClusterCredential({
- *     clusterId: __key,
+ * })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: alicloud.cs.getClusterCredential({
+ *     clusterId: String(__key),
  *     temporaryDurationMinutes: 60,
  *     outputFile: "my-auth-json",
  * }) }), {}));
@@ -113,8 +113,8 @@ export interface GetClusterCredentialResult {
  * });
  * const auth = k8s.then(k8s => std.toset({
  *     input: k8s.ids,
- * })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: alicloud.cs.getClusterCredential({
- *     clusterId: __key,
+ * })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: alicloud.cs.getClusterCredential({
+ *     clusterId: String(__key),
  *     temporaryDurationMinutes: 60,
  *     outputFile: "my-auth-json",
  * }) }), {}));

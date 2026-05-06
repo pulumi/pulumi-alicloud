@@ -384,7 +384,7 @@ class DataSource(pulumi.CustomResource):
                 },
             }),
             connection_properties_mode="UrlMode",
-            project_id=defaultkguw4_r.id,
+            project_id=defaultkguw4_r.id.apply(lambda x: int(x)),
             description=name)
         ```
 
@@ -468,7 +468,7 @@ class DataSource(pulumi.CustomResource):
                 },
             }),
             connection_properties_mode="UrlMode",
-            project_id=defaultkguw4_r.id,
+            project_id=defaultkguw4_r.id.apply(lambda x: int(x)),
             description=name)
         ```
 

@@ -5708,27 +5708,27 @@ export namespace cs {
          * import * as alicloud from "@pulumi/alicloud";
          * import * as std from "@pulumi/std";
          *
-         * const k8s = new alicloud.cs.ManagedKubernetes("k8s", {addons: Object.entries(clusterAddons).map(([k, v]) => ({key: k, value: v})).map(entry => ({
-         *     name: std.lookup({
+         * const k8s = new alicloud.cs.ManagedKubernetes("k8s", {addons: Object.entries(clusterAddons).sort().map(([k, v]) => ({key: k, value: v})).map(entry => ({
+         *     name: output(std.lookup({
          *         map: entry.value,
          *         key: "name",
          *         "default": clusterAddons,
-         *     }).then(invoke => invoke.result),
-         *     config: std.lookup({
+         *     }).then(invoke => invoke.result)).apply(x =>String(x)),
+         *     config: output(std.lookup({
          *         map: entry.value,
          *         key: "config",
          *         "default": clusterAddons,
-         *     }).then(invoke => invoke.result),
-         *     version: std.lookup({
+         *     }).then(invoke => invoke.result)).apply(x =>String(x)),
+         *     version: output(std.lookup({
          *         map: entry.value,
          *         key: "version",
          *         "default": clusterAddons,
-         *     }).then(invoke => invoke.result),
-         *     disabled: std.lookup({
+         *     }).then(invoke => invoke.result)).apply(x =>String(x)),
+         *     disabled: output(std.lookup({
          *         map: entry.value,
          *         key: "disabled",
          *         "default": clusterAddons,
-         *     }).then(invoke => invoke.result),
+         *     }).then(invoke => invoke.result)).apply(x =>x === "true"),
          * }))});
          * ```
          *

@@ -301,7 +301,7 @@ class VbrHa(pulumi.CustomResource):
                 physical_connection_id=example.connections[range["value"]].id,
                 virtual_border_router_name=std.format(input=f"{name}-%d",
                     args=[range["value"] + 1]).result,
-                vlan_id=vlan_id["id"] + range["value"],
+                vlan_id=int(float(vlan_id["id"]) + float(range["value"])),
                 min_rx_interval=1000,
                 min_tx_interval=1000,
                 detect_multiplier=10))
@@ -388,7 +388,7 @@ class VbrHa(pulumi.CustomResource):
                 physical_connection_id=example.connections[range["value"]].id,
                 virtual_border_router_name=std.format(input=f"{name}-%d",
                     args=[range["value"] + 1]).result,
-                vlan_id=vlan_id["id"] + range["value"],
+                vlan_id=int(float(vlan_id["id"]) + float(range["value"])),
                 min_rx_interval=1000,
                 min_tx_interval=1000,
                 detect_multiplier=10))

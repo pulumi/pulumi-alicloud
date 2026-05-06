@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     instanceType: "hbase.sn2.large",
  *     diskType: "cloud_ssd",
  * });
- * const hbase = new alicloud.hbase.Instance("hbase", {coreInstanceType: _default.then(_default => _default.types?.[0]?.id)});
+ * const hbase = new alicloud.hbase.Instance("hbase", {coreInstanceType: output(_default.then(_default => _default.types?.[0]?.id)).apply(x =>String(x))});
  * ```
  */
 export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
@@ -144,7 +144,7 @@ export interface GetInstanceTypesResult {
  *     instanceType: "hbase.sn2.large",
  *     diskType: "cloud_ssd",
  * });
- * const hbase = new alicloud.hbase.Instance("hbase", {coreInstanceType: _default.then(_default => _default.types?.[0]?.id)});
+ * const hbase = new alicloud.hbase.Instance("hbase", {coreInstanceType: output(_default.then(_default => _default.types?.[0]?.id)).apply(x =>String(x))});
  * ```
  */
 export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceTypesResult> {

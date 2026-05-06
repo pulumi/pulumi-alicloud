@@ -26,22 +26,24 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := eflo.GetVpds(ctx, &eflo.GetVpdsArgs{
-// Ids: interface{}{
-// defaultAlicloudEfloVpd.Id,
-// },
-// NameRegex: pulumi.StringRef(defaultAlicloudEfloVpd.Name),
-// VpdName: pulumi.StringRef("RMC-Terraform-Test"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudEfloVpdExampleId", _default.Vpds[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := eflo.GetVpds(ctx, &eflo.GetVpdsArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudEfloVpd.Id,
+//				},
+//				NameRegex: pulumi.StringRef(defaultAlicloudEfloVpd.Name),
+//				VpdName:   pulumi.StringRef("RMC-Terraform-Test"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudEfloVpdExampleId", _default.Vpds[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetVpds(ctx *pulumi.Context, args *GetVpdsArgs, opts ...pulumi.InvokeOption) (*GetVpdsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

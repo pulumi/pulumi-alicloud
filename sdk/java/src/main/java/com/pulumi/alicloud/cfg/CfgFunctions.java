@@ -57,8 +57,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateCompliancePacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -104,8 +104,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateCompliancePacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -151,8 +151,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateCompliancePacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -198,8 +198,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateCompliancePacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -245,8 +245,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateCompliancePacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -292,8 +292,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateConfigRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -339,8 +339,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateConfigRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -386,8 +386,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateConfigRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -433,8 +433,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateConfigRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -480,8 +480,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateConfigRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -527,8 +527,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -575,8 +575,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -623,8 +623,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -671,8 +671,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -719,8 +719,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregateDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -767,8 +767,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -813,8 +813,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -859,8 +859,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -905,8 +905,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -951,8 +951,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -997,8 +997,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1043,8 +1043,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1089,8 +1089,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1135,8 +1135,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1181,8 +1181,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1227,8 +1227,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1273,8 +1273,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1319,8 +1319,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1365,8 +1365,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1409,8 +1409,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1451,8 +1451,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1493,8 +1493,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1535,8 +1535,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1577,8 +1577,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1619,8 +1619,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1661,8 +1661,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1705,8 +1705,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1750,8 +1750,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1795,8 +1795,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1840,8 +1840,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1885,8 +1885,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1930,8 +1930,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1975,8 +1975,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2021,8 +2021,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2068,8 +2068,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2115,8 +2115,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2162,8 +2162,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2209,8 +2209,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2256,8 +2256,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2303,8 +2303,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2347,8 +2347,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2391,8 +2391,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2435,8 +2435,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2479,8 +2479,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2523,8 +2523,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2567,8 +2567,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2611,8 +2611,8 @@ public final class CfgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
      * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

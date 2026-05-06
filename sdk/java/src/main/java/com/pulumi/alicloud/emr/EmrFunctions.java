@@ -59,8 +59,8 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.emr.ClusterArgs;
      * import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
      * import com.pulumi.alicloud.emr.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -156,10 +156,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("1")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("core_group")
@@ -167,10 +175,18 @@ public final class EmrFunctions {
      *                     .nodeCount("3")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("task_group")
@@ -178,10 +194,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build())
      *             .highAvailabilityEnable(true)
      *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
@@ -251,8 +275,8 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.emr.ClusterArgs;
      * import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
      * import com.pulumi.alicloud.emr.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -348,10 +372,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("1")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("core_group")
@@ -359,10 +391,18 @@ public final class EmrFunctions {
      *                     .nodeCount("3")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("task_group")
@@ -370,10 +410,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build())
      *             .highAvailabilityEnable(true)
      *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
@@ -443,8 +491,8 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.emr.ClusterArgs;
      * import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
      * import com.pulumi.alicloud.emr.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -540,10 +588,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("1")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("core_group")
@@ -551,10 +607,18 @@ public final class EmrFunctions {
      *                     .nodeCount("3")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("task_group")
@@ -562,10 +626,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build())
      *             .highAvailabilityEnable(true)
      *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
@@ -635,8 +707,8 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.emr.ClusterArgs;
      * import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
      * import com.pulumi.alicloud.emr.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -732,10 +804,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("1")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("core_group")
@@ -743,10 +823,18 @@ public final class EmrFunctions {
      *                     .nodeCount("3")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("task_group")
@@ -754,10 +842,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build())
      *             .highAvailabilityEnable(true)
      *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
@@ -827,8 +923,8 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.emr.ClusterArgs;
      * import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
      * import com.pulumi.alicloud.emr.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -924,10 +1020,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("1")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("core_group")
@@ -935,10 +1039,18 @@ public final class EmrFunctions {
      *                     .nodeCount("3")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("task_group")
@@ -946,10 +1058,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build())
      *             .highAvailabilityEnable(true)
      *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
@@ -1019,8 +1139,8 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.emr.ClusterArgs;
      * import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
      * import com.pulumi.alicloud.emr.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1116,10 +1236,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("1")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("core_group")
@@ -1127,10 +1255,18 @@ public final class EmrFunctions {
      *                     .nodeCount("3")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("task_group")
@@ -1138,10 +1274,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build())
      *             .highAvailabilityEnable(true)
      *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
@@ -1211,8 +1355,8 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.emr.ClusterArgs;
      * import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
      * import com.pulumi.alicloud.emr.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1308,10 +1452,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("1")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("core_group")
@@ -1319,10 +1471,18 @@ public final class EmrFunctions {
      *                     .nodeCount("3")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build(),
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName("task_group")
@@ -1330,10 +1490,18 @@ public final class EmrFunctions {
      *                     .nodeCount("2")
      *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
      *                     .diskType(dataDisk.types()[0].value())
-     *                     .diskCapacity(dataDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? dataDisk.types()[0].min() : "160")
+     *                     .diskCapacity(Output.tuple(dataDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? dataDisk.types()[0].min() : "160")
      *                     .diskCount("4")
      *                     .sysDiskType(systemDisk.types()[0].value())
-     *                     .sysDiskCapacity(systemDisk.types()[0].min().applyValue(___convert -> ___convert > 160) ? systemDisk.types()[0].min() : "160")
+     *                     .sysDiskCapacity(Output.tuple(systemDisk.types()[0].min(), 160).applyValue(values -> {
+     *                         var __convert = values.t1;
+     *                         var __convert1 = values.t2;
+     *                         return __convert > __convert1;
+     *                     }) ? systemDisk.types()[0].min() : "160")
      *                     .build())
      *             .highAvailabilityEnable(true)
      *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
@@ -1385,8 +1553,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1433,8 +1601,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1481,8 +1649,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1529,8 +1697,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1577,8 +1745,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1625,8 +1793,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1676,8 +1844,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1727,8 +1895,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1778,8 +1946,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1829,8 +1997,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1880,8 +2048,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1928,8 +2096,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1976,8 +2144,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2024,8 +2192,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2072,8 +2240,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2120,8 +2288,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2168,8 +2336,8 @@ public final class EmrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

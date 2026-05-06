@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.DataWorks
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var randint = new Random.Index.Integer("randint", new()
+    ///     var randint = new Random.Integer("randint", new()
     ///     {
     ///         Max = 999,
     ///         Min = 1,
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.DataWorks
     ///     var defaultasjsH5 = new AliCloud.DataWorks.Project("defaultasjsH5", new()
     ///     {
     ///         Description = "目标空间",
-    ///         ProjectName = Std.Index.Format.Invoke(new()
+    ///         ProjectName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s1",
     ///             Args = new[]
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.DataWorks
     ///     var defaultvzu0wG = new AliCloud.DataWorks.DataSource("defaultvzu0wG", new()
     ///     {
     ///         Type = "hive",
-    ///         DataSourceName = Std.Index.Format.Invoke(new()
+    ///         DataSourceName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s2",
     ///             Args = new[]

@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *         "172.16.2.0/24",
  *         "172.16.1.0/24",
  *     ],
- *     vpcOwnerId: current.then(current => current.id),
+ *     vpcOwnerId: output(current.then(current => current.id)).apply(x =>Number(x)),
  *     associationRegionId: "cn-hangzhou",
  *     vpcId: default8qAtD6.id,
  * });

@@ -56,8 +56,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.fc.inputs.V3ProvisionConfigTargetTrackingPolicyArgs;
  * import com.pulumi.alicloud.fc.inputs.V3ProvisionConfigScheduledActionArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *         var wait10Minutes = new Sleep("wait10Minutes", SleepArgs.builder()
  *             .createDuration("10m")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(defaultStore))
+ *                 .dependsOn(Arrays.asList(defaultStore))
  *                 .build());
  * 
  *         var function = new V3Function("function", V3FunctionArgs.builder()

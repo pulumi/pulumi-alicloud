@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     vsw.push(new alicloud.vpc.Switch(`vsw-${range.value}`, {
  *         enableIpv6: true,
- *         ipv6CidrBlockMask: `1${range.value}`,
+ *         ipv6CidrBlockMask: Number(`1${range.value}`),
  *         vswitchName: `vsw-${range.value}-for-nlb`,
  *         vpcId: vpc.id,
  *         cidrBlock: `10.2.1${range.value}.0/24`,

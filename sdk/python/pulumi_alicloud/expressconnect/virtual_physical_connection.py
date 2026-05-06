@@ -677,7 +677,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
             order_mode="PayByPhysicalConnectionOwner",
             parent_physical_connection_id=example.ids[0],
             spec="50M",
-            vlan_id=vlan_id["id"],
+            vlan_id=int(vlan_id["id"]),
             vpconn_ali_uid=default.id)
         ```
 
@@ -744,7 +744,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
             order_mode="PayByPhysicalConnectionOwner",
             parent_physical_connection_id=example.ids[0],
             spec="50M",
-            vlan_id=vlan_id["id"],
+            vlan_id=int(vlan_id["id"]),
             vpconn_ali_uid=default.id)
         ```
 

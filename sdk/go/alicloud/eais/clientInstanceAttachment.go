@@ -127,7 +127,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			eais, err := eais.NewInstance(ctx, "eais", &eais.InstanceArgs{
+//			eais2, err := eais.NewInstance(ctx, "eais", &eais.InstanceArgs{
 //				InstanceName:    pulumi.String(pulumi.String(name)),
 //				VswitchId:       exampleSwitch.ID(),
 //				SecurityGroupId: exampleSecurityGroup.ID(),
@@ -138,7 +138,7 @@ import (
 //				return err
 //			}
 //			_, err = eais.NewClientInstanceAttachment(ctx, "default", &eais.ClientInstanceAttachmentArgs{
-//				InstanceId:       eais.ID(),
+//				InstanceId:       eais2.ID(),
 //				ClientInstanceId: exampleInstance.ID(),
 //				Category:         pulumi.String("ei"),
 //				Status:           pulumi.String("Bound"),

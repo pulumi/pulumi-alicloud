@@ -33,8 +33,8 @@ public final class EipanycastFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eipanycast.EipanycastFunctions;
      * import com.pulumi.alicloud.eipanycast.inputs.GetAnycastEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -79,8 +79,8 @@ public final class EipanycastFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eipanycast.EipanycastFunctions;
      * import com.pulumi.alicloud.eipanycast.inputs.GetAnycastEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -125,8 +125,8 @@ public final class EipanycastFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eipanycast.EipanycastFunctions;
      * import com.pulumi.alicloud.eipanycast.inputs.GetAnycastEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -171,8 +171,8 @@ public final class EipanycastFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eipanycast.EipanycastFunctions;
      * import com.pulumi.alicloud.eipanycast.inputs.GetAnycastEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -217,8 +217,8 @@ public final class EipanycastFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eipanycast.EipanycastFunctions;
      * import com.pulumi.alicloud.eipanycast.inputs.GetAnycastEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -263,8 +263,8 @@ public final class EipanycastFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eipanycast.EipanycastFunctions;
      * import com.pulumi.alicloud.eipanycast.inputs.GetAnycastEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -309,8 +309,8 @@ public final class EipanycastFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eipanycast.EipanycastFunctions;
      * import com.pulumi.alicloud.eipanycast.inputs.GetAnycastEipAddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

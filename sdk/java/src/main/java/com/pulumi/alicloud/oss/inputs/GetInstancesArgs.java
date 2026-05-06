@@ -73,8 +73,8 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -113,8 +113,8 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -254,8 +254,8 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
          * import com.pulumi.core.Output;
          * import com.pulumi.alicloud.ots.OtsFunctions;
          * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
-         * import java.util.List;
          * import java.util.ArrayList;
+         * import java.util.Arrays;
          * import java.util.Map;
          * import java.io.File;
          * import java.nio.file.Files;
@@ -298,8 +298,8 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
          * import com.pulumi.core.Output;
          * import com.pulumi.alicloud.ots.OtsFunctions;
          * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
-         * import java.util.List;
          * import java.util.ArrayList;
+         * import java.util.Arrays;
          * import java.util.Map;
          * import java.io.File;
          * import java.nio.file.Files;

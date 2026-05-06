@@ -392,7 +392,7 @@ class TemplateQuota(pulumi.CustomResource):
                 "key": "regionId",
                 "value": "cn-hangzhou",
             }],
-            desire_value=1001,
+            desire_value=float(1001),
             env_language="zh",
             quota_category="CommonQuota")
         ```
@@ -460,7 +460,7 @@ class TemplateQuota(pulumi.CustomResource):
                 "key": "regionId",
                 "value": "cn-hangzhou",
             }],
-            desire_value=1001,
+            desire_value=float(1001),
             env_language="zh",
             quota_category="CommonQuota")
         ```

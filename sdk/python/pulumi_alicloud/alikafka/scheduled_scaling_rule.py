@@ -461,7 +461,7 @@ class ScheduledScalingRule(pulumi.CustomResource):
             reserved_pub_flow=200,
             time_zone="GMT+8",
             duration_minutes=100,
-            first_scheduled_time=1769578000000,
+            first_scheduled_time=int(1769578000000),
             enable=False,
             repeat_type="Weekly",
             weekly_types=[
@@ -559,7 +559,7 @@ class ScheduledScalingRule(pulumi.CustomResource):
             reserved_pub_flow=200,
             time_zone="GMT+8",
             duration_minutes=100,
-            first_scheduled_time=1769578000000,
+            first_scheduled_time=int(1769578000000),
             enable=False,
             repeat_type="Weekly",
             weekly_types=[

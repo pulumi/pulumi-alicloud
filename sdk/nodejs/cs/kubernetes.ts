@@ -151,11 +151,11 @@ import * as utilities from "../utilities";
  * })));
  * const defaultKubernetes = new alicloud.cs.Kubernetes("default", {
  *     addons: clusterAddons.map((v, k) => ({key: k, value: v})).map(entry => ({
- *         name: std.lookup({
+ *         name: output(std.lookup({
  *             map: entry.value,
  *             key: "name",
  *             "default": clusterAddons,
- *         }).then(invoke => invoke.result),
+ *         }).then(invoke => invoke.result)).apply(x =>String(x)),
  *         config: JSON.stringify(std.lookup({
  *             map: entry.value,
  *             key: "config",

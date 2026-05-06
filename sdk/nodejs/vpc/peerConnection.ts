@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * const defaultPeerConnection = new alicloud.vpc.PeerConnection("default", {
  *     peerConnectionName: "terraform-example",
  *     vpcId: localVpc.id,
- *     acceptingAliUid: _default.then(_default => _default.id),
+ *     acceptingAliUid: output(_default.then(_default => _default.id)).apply(x =>Number(x)),
  *     acceptingRegionId: acceptingRegion,
  *     acceptingVpcId: acceptingVpc.id,
  *     description: "terraform-example",

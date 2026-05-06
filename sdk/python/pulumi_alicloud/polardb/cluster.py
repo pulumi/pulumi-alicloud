@@ -2832,7 +2832,7 @@ class Cluster(pulumi.CustomResource):
                     principal_name=pulumi.Output.all(
                         length=len(roles.roles),
                         name=default[0].name
-        ).apply(lambda resolved_outputs: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if resolved_outputs['length'].apply(lambda __convert: __convert > 0) else f"{resolved_outputs['name']}@role.{current.id}.onaliyunservice.com")
+        ).apply(lambda resolved_outputs: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if resolved_outputs['length'] > 0 else f"{resolved_outputs['name']}@role.{current.id}.onaliyunservice.com")
         ,
                     principal_type="ServiceRole",
                     resource_group_id=current.id))
@@ -3068,7 +3068,7 @@ class Cluster(pulumi.CustomResource):
                     principal_name=pulumi.Output.all(
                         length=len(roles.roles),
                         name=default[0].name
-        ).apply(lambda resolved_outputs: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if resolved_outputs['length'].apply(lambda __convert: __convert > 0) else f"{resolved_outputs['name']}@role.{current.id}.onaliyunservice.com")
+        ).apply(lambda resolved_outputs: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if resolved_outputs['length'] > 0 else f"{resolved_outputs['name']}@role.{current.id}.onaliyunservice.com")
         ,
                     principal_type="ServiceRole",
                     resource_group_id=current.id))

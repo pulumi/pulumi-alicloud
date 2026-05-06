@@ -42,8 +42,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetBlockedRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -86,8 +86,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetBlockedRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -130,8 +130,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetBlockedRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -174,8 +174,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetBlockedRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -218,8 +218,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetBlockedRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -262,8 +262,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetIpInfoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -306,8 +306,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetIpInfoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -350,8 +350,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetIpInfoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -394,8 +394,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetIpInfoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -438,8 +438,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetIpInfoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -482,8 +482,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetRealTimeLogDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -527,8 +527,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetRealTimeLogDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -572,8 +572,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetRealTimeLogDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -617,8 +617,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetRealTimeLogDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -662,8 +662,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetRealTimeLogDeliveriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -707,8 +707,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -752,8 +752,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -797,8 +797,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -842,8 +842,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -887,8 +887,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -932,8 +932,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -977,8 +977,8 @@ public final class CdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
      * import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

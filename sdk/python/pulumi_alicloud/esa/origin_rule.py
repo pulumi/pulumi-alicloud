@@ -808,7 +808,7 @@ class OriginRule(pulumi.CustomResource):
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
         default_origin_rule = alicloud.esa.OriginRule("default",
             origin_sni="origin.example.com",
-            site_id=default.sites[0].id,
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)),
             origin_host="origin.example.com",
             dns_record="tf.example.com",
             site_version=0,
@@ -883,7 +883,7 @@ class OriginRule(pulumi.CustomResource):
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
         default_origin_rule = alicloud.esa.OriginRule("default",
             origin_sni="origin.example.com",
-            site_id=default.sites[0].id,
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)),
             origin_host="origin.example.com",
             dns_record="tf.example.com",
             site_version=0,

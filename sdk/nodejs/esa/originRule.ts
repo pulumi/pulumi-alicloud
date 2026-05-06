@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultOriginRule = new alicloud.esa.OriginRule("default", {
  *     originSni: "origin.example.com",
- *     siteId: _default.then(_default => _default.sites?.[0]?.id),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.id)).apply(x =>String(x)),
  *     originHost: "origin.example.com",
  *     dnsRecord: "tf.example.com",
  *     siteVersion: 0,

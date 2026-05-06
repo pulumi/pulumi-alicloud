@@ -4026,7 +4026,7 @@ class Instance(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=example_switch.id,
@@ -4067,7 +4067,7 @@ class Instance(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=example_switch.id,
@@ -4122,7 +4122,7 @@ class Instance(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=std.join_output(separator=",",
@@ -4179,7 +4179,7 @@ class Instance(pulumi.CustomResource):
             engine_version="8.0",
             category="HighAvailability",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name=name,
             vswitch_id=std.join_output(separator=",",
@@ -4277,7 +4277,7 @@ class Instance(pulumi.CustomResource):
         example_instance = alicloud.rds.Instance("example",
             engine="MySQL",
             engine_version="8.0",
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
             instance_charge_type="Serverless",
             instance_name=name,
@@ -4286,7 +4286,7 @@ class Instance(pulumi.CustomResource):
             db_instance_storage_type="cloud_essd",
             category="serverless_basic",
             serverless_configs=[{
-                "max_capacity": 8,
+                "max_capacity": float(8),
                 "min_capacity": 0.5,
                 "auto_pause": False,
                 "switch_force": False,
@@ -4321,7 +4321,7 @@ class Instance(pulumi.CustomResource):
         example_instance = alicloud.rds.Instance("example",
             engine="PostgreSQL",
             engine_version="14.0",
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
             instance_charge_type="Serverless",
             instance_name=name,
@@ -4330,7 +4330,7 @@ class Instance(pulumi.CustomResource):
             db_instance_storage_type="cloud_essd",
             category="serverless_basic",
             serverless_configs=[{
-                "max_capacity": 12,
+                "max_capacity": float(12),
                 "min_capacity": 0.5,
             }])
         ```
@@ -4369,7 +4369,7 @@ class Instance(pulumi.CustomResource):
         example_instance = alicloud.rds.Instance("example",
             engine="SQLServer",
             engine_version="2019_std_sl",
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
             instance_charge_type="Serverless",
             instance_name=name,
@@ -4383,8 +4383,8 @@ class Instance(pulumi.CustomResource):
             db_instance_storage_type="cloud_essd",
             category="serverless_ha",
             serverless_configs=[{
-                "max_capacity": 8,
-                "min_capacity": 2,
+                "max_capacity": float(8),
+                "min_capacity": float(2),
             }])
         ```
 
@@ -4748,7 +4748,7 @@ class Instance(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=example_switch.id,
@@ -4789,7 +4789,7 @@ class Instance(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=example_switch.id,
@@ -4844,7 +4844,7 @@ class Instance(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=std.join_output(separator=",",
@@ -4901,7 +4901,7 @@ class Instance(pulumi.CustomResource):
             engine_version="8.0",
             category="HighAvailability",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name=name,
             vswitch_id=std.join_output(separator=",",
@@ -4999,7 +4999,7 @@ class Instance(pulumi.CustomResource):
         example_instance = alicloud.rds.Instance("example",
             engine="MySQL",
             engine_version="8.0",
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
             instance_charge_type="Serverless",
             instance_name=name,
@@ -5008,7 +5008,7 @@ class Instance(pulumi.CustomResource):
             db_instance_storage_type="cloud_essd",
             category="serverless_basic",
             serverless_configs=[{
-                "max_capacity": 8,
+                "max_capacity": float(8),
                 "min_capacity": 0.5,
                 "auto_pause": False,
                 "switch_force": False,
@@ -5043,7 +5043,7 @@ class Instance(pulumi.CustomResource):
         example_instance = alicloud.rds.Instance("example",
             engine="PostgreSQL",
             engine_version="14.0",
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
             instance_charge_type="Serverless",
             instance_name=name,
@@ -5052,7 +5052,7 @@ class Instance(pulumi.CustomResource):
             db_instance_storage_type="cloud_essd",
             category="serverless_basic",
             serverless_configs=[{
-                "max_capacity": 12,
+                "max_capacity": float(12),
                 "min_capacity": 0.5,
             }])
         ```
@@ -5091,7 +5091,7 @@ class Instance(pulumi.CustomResource):
         example_instance = alicloud.rds.Instance("example",
             engine="SQLServer",
             engine_version="2019_std_sl",
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
             instance_charge_type="Serverless",
             instance_name=name,
@@ -5105,8 +5105,8 @@ class Instance(pulumi.CustomResource):
             db_instance_storage_type="cloud_essd",
             category="serverless_ha",
             serverless_configs=[{
-                "max_capacity": 8,
-                "min_capacity": 2,
+                "max_capacity": float(8),
+                "min_capacity": float(2),
             }])
         ```
 

@@ -26,20 +26,22 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := ebs.GetDiskReplicaPairs(ctx, &ebs.GetDiskReplicaPairsArgs{
-// Ids: interface{}{
-// defaultAlicloudEbsDiskReplicaPair.Id,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudEbsDiskReplicaPairExampleId", _default.Pairs[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := ebs.GetDiskReplicaPairs(ctx, &ebs.GetDiskReplicaPairsArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudEbsDiskReplicaPair.Id,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudEbsDiskReplicaPairExampleId", _default.Pairs[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetDiskReplicaPairs(ctx *pulumi.Context, args *GetDiskReplicaPairsArgs, opts ...pulumi.InvokeOption) (*GetDiskReplicaPairsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

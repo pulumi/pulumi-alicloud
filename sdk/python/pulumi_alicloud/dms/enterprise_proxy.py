@@ -219,7 +219,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             vswitch_id=default_switch.id,
             instance_name=name,
             security_ips=[
@@ -236,7 +236,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             account_password="Example12345",
             account_type="Normal")
         default_enterprise_instance = alicloud.dms.EnterpriseInstance("default",
-            tid=default_get_user_tenants.ids[0],
+            tid=output(default_get_user_tenants.ids[0]).apply(lambda x: int(x)),
             instance_type="mysql",
             instance_source="RDS",
             network_type="VPC",
@@ -246,7 +246,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             database_user=default_account.account_name,
             database_password=default_account.account_password,
             instance_name=name,
-            dba_uid=current.id,
+            dba_uid=output(current.id).apply(lambda x: int(x)),
             safe_rule="自由操作",
             query_timeout=60,
             export_timeout=600,
@@ -331,7 +331,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             vswitch_id=default_switch.id,
             instance_name=name,
             security_ips=[
@@ -348,7 +348,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             account_password="Example12345",
             account_type="Normal")
         default_enterprise_instance = alicloud.dms.EnterpriseInstance("default",
-            tid=default_get_user_tenants.ids[0],
+            tid=output(default_get_user_tenants.ids[0]).apply(lambda x: int(x)),
             instance_type="mysql",
             instance_source="RDS",
             network_type="VPC",
@@ -358,7 +358,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             database_user=default_account.account_name,
             database_password=default_account.account_password,
             instance_name=name,
-            dba_uid=current.id,
+            dba_uid=output(current.id).apply(lambda x: int(x)),
             safe_rule="自由操作",
             query_timeout=60,
             export_timeout=600,

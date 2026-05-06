@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     planSubscribeType: "enterpriseplan",
  * });
  * const defaultWafRuleset = new alicloud.esa.WafRuleset("default", {
- *     siteId: _default.then(_default => _default.sites?.[0]?.siteId),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.siteId)).apply(x =>String(x)),
  *     phase: "http_custom",
  *     siteVersion: 0,
  *     name: name,
@@ -141,7 +141,7 @@ export interface GetWafRulesetsResult {
  *     planSubscribeType: "enterpriseplan",
  * });
  * const defaultWafRuleset = new alicloud.esa.WafRuleset("default", {
- *     siteId: _default.then(_default => _default.sites?.[0]?.siteId),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.siteId)).apply(x =>String(x)),
  *     phase: "http_custom",
  *     siteVersion: 0,
  *     name: name,

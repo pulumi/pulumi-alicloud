@@ -51,8 +51,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.alicloud.clickhouse.Account;
      * import com.pulumi.alicloud.clickhouse.AccountArgs;
      * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -148,8 +148,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.alicloud.clickhouse.Account;
      * import com.pulumi.alicloud.clickhouse.AccountArgs;
      * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -245,8 +245,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.alicloud.clickhouse.Account;
      * import com.pulumi.alicloud.clickhouse.AccountArgs;
      * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -342,8 +342,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.alicloud.clickhouse.Account;
      * import com.pulumi.alicloud.clickhouse.AccountArgs;
      * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -439,8 +439,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.alicloud.clickhouse.Account;
      * import com.pulumi.alicloud.clickhouse.AccountArgs;
      * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -527,8 +527,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetBackupPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -572,8 +572,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetBackupPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -617,8 +617,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetBackupPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -662,8 +662,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetBackupPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -707,8 +707,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetBackupPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -754,8 +754,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -813,8 +813,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -872,8 +872,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -931,8 +931,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -990,8 +990,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1049,8 +1049,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1108,8 +1108,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1165,8 +1165,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1213,8 +1213,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1261,8 +1261,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1309,8 +1309,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1357,8 +1357,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1405,8 +1405,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1453,8 +1453,8 @@ public final class ClickhouseFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

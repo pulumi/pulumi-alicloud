@@ -1590,8 +1590,8 @@ class EciScalingConfiguration(pulumi.CustomResource):
             group_type="ECI")
         default_eci_scaling_configuration = alicloud.ess.EciScalingConfiguration("default",
             scaling_group_id=default_scaling_group.id,
-            cpu=2,
-            memory=4,
+            cpu=float(2),
+            memory=float(4),
             security_group_id=default_security_group.id,
             force_delete=True,
             active=True,
@@ -1734,8 +1734,8 @@ class EciScalingConfiguration(pulumi.CustomResource):
             group_type="ECI")
         default_eci_scaling_configuration = alicloud.ess.EciScalingConfiguration("default",
             scaling_group_id=default_scaling_group.id,
-            cpu=2,
-            memory=4,
+            cpu=float(2),
+            memory=float(4),
             security_group_id=default_security_group.id,
             force_delete=True,
             active=True,

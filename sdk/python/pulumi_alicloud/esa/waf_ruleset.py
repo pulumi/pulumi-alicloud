@@ -251,7 +251,7 @@ class WafRuleset(pulumi.CustomResource):
             name = "tf-example"
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
         default_waf_ruleset = alicloud.esa.WafRuleset("default",
-            site_id=default.sites[0].site_id,
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
             phase="http_custom",
             site_version=0,
             name=name)
@@ -307,7 +307,7 @@ class WafRuleset(pulumi.CustomResource):
             name = "tf-example"
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
         default_waf_ruleset = alicloud.esa.WafRuleset("default",
-            site_id=default.sites[0].site_id,
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
             phase="http_custom",
             site_version=0,
             name=name)

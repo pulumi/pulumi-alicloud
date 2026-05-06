@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///     var zone2 = config.Get("zone2") ?? "cn-hangzhou-i";
     ///     var @default = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
     /// 
-    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///         },
     ///     });
     /// 
-    ///     var wait10Minutes = new Time.Index.Sleep("wait_10_minutes", new()
+    ///     var wait10Minutes = new Time.Sleep("wait_10_minutes", new()
     ///     {
     ///         CreateDuration = "10m",
     ///     }, new CustomResourceOptions

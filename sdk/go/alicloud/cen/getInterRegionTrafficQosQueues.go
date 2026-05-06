@@ -26,22 +26,24 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := cen.GetInterRegionTrafficQosQueues(ctx, &cen.GetInterRegionTrafficQosQueuesArgs{
-// Ids: interface{}{
-// defaultAlicloudCenInterRegionTrafficQosQueue.Id,
-// },
-// NameRegex: pulumi.StringRef(defaultAlicloudCenInterRegionTrafficQosQueue.Name),
-// TrafficQosPolicyId: "qos-xxxxxxx",
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudCenInterRegionTrafficQosQueueExampleId", _default.Queues[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := cen.GetInterRegionTrafficQosQueues(ctx, &cen.GetInterRegionTrafficQosQueuesArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudCenInterRegionTrafficQosQueue.Id,
+//				},
+//				NameRegex:          pulumi.StringRef(defaultAlicloudCenInterRegionTrafficQosQueue.Name),
+//				TrafficQosPolicyId: "qos-xxxxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudCenInterRegionTrafficQosQueueExampleId", _default.Queues[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInterRegionTrafficQosQueues(ctx *pulumi.Context, args *GetInterRegionTrafficQosQueuesArgs, opts ...pulumi.InvokeOption) (*GetInterRegionTrafficQosQueuesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

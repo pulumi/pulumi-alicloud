@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * });
  * const _default = new alicloud.dataworks.DiJob("default", {
  *     description: name,
- *     projectId: defaultMMHL8U.id,
+ *     projectId: defaultMMHL8U.id.apply(x =>Number(x)),
  *     jobName: "zhenyuan_example_case",
  *     migrationType: "api_FullAndRealtimeIncremental",
  *     sourceDataSourceSettings: [{

@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Cen
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var vlanId = new Random.Index.Integer("vlan_id", new()
+    ///     var vlanId = new Random.Integer("vlan_id", new()
     ///     {
     ///         Max = 2999,
     ///         Min = 1,

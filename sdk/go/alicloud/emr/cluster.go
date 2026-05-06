@@ -77,13 +77,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			var tmp0 float64
+//			var tmp0 int
 //			if vpcId == "" {
 //				tmp0 = 1
 //			} else {
 //				tmp0 = 0
 //			}
-//			var vpc []*vpc.Network
+//			var vpc2 []*vpc.Network
 //			for index := 0; index < tmp0; index++ {
 //				key0 := index
 //				_ := index
@@ -94,15 +94,15 @@ import (
 //				if err != nil {
 //					return err
 //				}
-//				vpc = append(vpc, __res)
+//				vpc2 = append(vpc2, __res)
 //			}
 //			var tmp1 pulumi.String
 //			if vpcId == "" {
-//				tmp1 = vpc[0].ID()
+//				tmp1 = vpc2[0].ID()
 //			} else {
 //				tmp1 = pulumi.Any(vpcId)
 //			}
-//			var tmp2 float64
+//			var tmp2 int
 //			if securityGroupId == "" {
 //				tmp2 = 1
 //			} else {
@@ -129,12 +129,12 @@ import (
 //			}
 //			var tmp4 pulumi.String
 //			if vpcId == "" {
-//				tmp4 = vpc[0].ID()
+//				tmp4 = vpc2[0].ID()
 //			} else {
 //				tmp4 = pulumi.Any(vpcId)
 //			}
 //			// VSwitch Resource for Module
-//			var tmp5 float64
+//			var tmp5 int
 //			if vswitchId == "" {
 //				tmp5 = 1
 //			} else {
@@ -353,13 +353,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			var tmp0 float64
+//			var tmp0 int
 //			if vpcId == "" {
 //				tmp0 = 1
 //			} else {
 //				tmp0 = 0
 //			}
-//			var vpc []*vpc.Network
+//			var vpc2 []*vpc.Network
 //			for index := 0; index < tmp0; index++ {
 //				key0 := index
 //				_ := index
@@ -370,15 +370,15 @@ import (
 //				if err != nil {
 //					return err
 //				}
-//				vpc = append(vpc, __res)
+//				vpc2 = append(vpc2, __res)
 //			}
 //			var tmp1 pulumi.String
 //			if vpcId == "" {
-//				tmp1 = vpc[0].ID()
+//				tmp1 = vpc2[0].ID()
 //			} else {
 //				tmp1 = pulumi.Any(vpcId)
 //			}
-//			var tmp2 float64
+//			var tmp2 int
 //			if securityGroupId == "" {
 //				tmp2 = 1
 //			} else {
@@ -405,12 +405,12 @@ import (
 //			}
 //			var tmp4 pulumi.String
 //			if vpcId == "" {
-//				tmp4 = vpc[0].ID()
+//				tmp4 = vpc2[0].ID()
 //			} else {
 //				tmp4 = pulumi.Any(vpcId)
 //			}
 //			// VSwitch Resource for Module
-//			var tmp5 float64
+//			var tmp5 int
 //			if vswitchId == "" {
 //				tmp5 = 1
 //			} else {
@@ -627,13 +627,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			var tmp0 float64
+//			var tmp0 int
 //			if vpcId == "" {
 //				tmp0 = 1
 //			} else {
 //				tmp0 = 0
 //			}
-//			var vpc []*vpc.Network
+//			var vpc2 []*vpc.Network
 //			for index := 0; index < tmp0; index++ {
 //				key0 := index
 //				_ := index
@@ -644,15 +644,15 @@ import (
 //				if err != nil {
 //					return err
 //				}
-//				vpc = append(vpc, __res)
+//				vpc2 = append(vpc2, __res)
 //			}
 //			var tmp1 pulumi.String
 //			if vpcId == "" {
-//				tmp1 = vpc[0].ID()
+//				tmp1 = vpc2[0].ID()
 //			} else {
 //				tmp1 = pulumi.Any(vpcId)
 //			}
-//			var tmp2 float64
+//			var tmp2 int
 //			if securityGroupId == "" {
 //				tmp2 = 1
 //			} else {
@@ -679,12 +679,12 @@ import (
 //			}
 //			var tmp4 pulumi.String
 //			if vpcId == "" {
-//				tmp4 = vpc[0].ID()
+//				tmp4 = vpc2[0].ID()
 //			} else {
 //				tmp4 = pulumi.Any(vpcId)
 //			}
 //			// VSwitch Resource for Module
-//			var tmp5 float64
+//			var tmp5 int
 //			if vswitchId == "" {
 //				tmp5 = 1
 //			} else {
@@ -893,13 +893,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			var tmp0 float64
+//			var tmp0 int
 //			if vpcId == "" {
 //				tmp0 = 1
 //			} else {
 //				tmp0 = 0
 //			}
-//			var vpc []*vpc.Network
+//			var vpc2 []*vpc.Network
 //			for index := 0; index < tmp0; index++ {
 //				key0 := index
 //				_ := index
@@ -910,15 +910,15 @@ import (
 //				if err != nil {
 //					return err
 //				}
-//				vpc = append(vpc, __res)
+//				vpc2 = append(vpc2, __res)
 //			}
 //			var tmp1 pulumi.String
 //			if vpcId == "" {
-//				tmp1 = vpc[0].ID()
+//				tmp1 = vpc2[0].ID()
 //			} else {
 //				tmp1 = pulumi.Any(vpcId)
 //			}
-//			var tmp2 float64
+//			var tmp2 int
 //			if securityGroupId == "" {
 //				tmp2 = 1
 //			} else {
@@ -945,12 +945,12 @@ import (
 //			}
 //			var tmp4 pulumi.String
 //			if vpcId == "" {
-//				tmp4 = vpc[0].ID()
+//				tmp4 = vpc2[0].ID()
 //			} else {
 //				tmp4 = pulumi.Any(vpcId)
 //			}
 //			// VSwitch Resource for Module
-//			var tmp5 float64
+//			var tmp5 int
 //			if vswitchId == "" {
 //				tmp5 = 1
 //			} else {

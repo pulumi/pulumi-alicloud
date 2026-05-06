@@ -139,7 +139,7 @@ def get_route_entries(cidr_block: Optional[_builtins.str] = None,
     default = alicloud.get_zones(available_resource_creation="VSwitch")
     default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
         cpu_core_count=1,
-        memory_size=2)
+        memory_size=float(2))
     default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
         most_recent=True,
         owners="system")
@@ -231,7 +231,7 @@ def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[_builtin
     default = alicloud.get_zones(available_resource_creation="VSwitch")
     default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
         cpu_core_count=1,
-        memory_size=2)
+        memory_size=float(2))
     default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
         most_recent=True,
         owners="system")

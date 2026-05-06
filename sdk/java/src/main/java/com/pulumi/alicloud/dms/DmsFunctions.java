@@ -51,8 +51,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -97,8 +97,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -143,8 +143,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -189,8 +189,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -235,8 +235,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -279,8 +279,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -327,8 +327,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -375,8 +375,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -423,8 +423,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -471,8 +471,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -519,8 +519,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -567,8 +567,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -708,8 +708,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -752,8 +752,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -796,8 +796,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -840,8 +840,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -884,8 +884,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -928,8 +928,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -972,8 +972,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1016,8 +1016,8 @@ public final class DmsFunctions {
      * import com.pulumi.alicloud.dms.EnterpriseProxyAccessArgs;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxyAccessesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1069,8 +1069,8 @@ public final class DmsFunctions {
      * import com.pulumi.alicloud.dms.EnterpriseProxyAccessArgs;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxyAccessesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1122,8 +1122,8 @@ public final class DmsFunctions {
      * import com.pulumi.alicloud.dms.EnterpriseProxyAccessArgs;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxyAccessesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1175,8 +1175,8 @@ public final class DmsFunctions {
      * import com.pulumi.alicloud.dms.EnterpriseProxyAccessArgs;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxyAccessesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1228,8 +1228,8 @@ public final class DmsFunctions {
      * import com.pulumi.alicloud.dms.EnterpriseProxyAccessArgs;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxyAccessesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1279,8 +1279,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1325,8 +1325,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1371,8 +1371,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1417,8 +1417,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1463,8 +1463,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1509,8 +1509,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1555,8 +1555,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1601,8 +1601,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1645,8 +1645,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1689,8 +1689,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1733,8 +1733,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1777,8 +1777,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1821,8 +1821,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1865,8 +1865,8 @@ public final class DmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dms.DmsFunctions;
      * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

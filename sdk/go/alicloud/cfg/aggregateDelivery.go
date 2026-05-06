@@ -66,9 +66,7 @@ import (
 //				return err
 //			}
 //			last := len(_default.Accounts).ApplyT(func(length int) (float64, error) {
-//				return float64(length.ApplyT(func(__convert float64) (float64, error) {
-//					return __convert - 1, nil
-//				}).(pulumi.Float64Output)), nil
+//				return length - 1, nil
 //			}).(pulumi.Float64Output)
 //			defaultAggregator, err := cfg.NewAggregator(ctx, "default", &cfg.AggregatorArgs{
 //				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{

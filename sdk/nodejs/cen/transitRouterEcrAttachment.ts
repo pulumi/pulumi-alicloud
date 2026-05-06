@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "terraform-example";
  * const asn = config.get("asn") || "4200000667";
  * const defaultO8Hcfx = new alicloud.expressconnect.RouterExpressConnectRouter("defaultO8Hcfx", {
- *     alibabaSideAsn: asn,
+ *     alibabaSideAsn: Number(asn),
  *     ecrName: name,
  * });
  * const defaultQKBiay = new alicloud.cen.Instance("defaultQKBiay", {cenInstanceName: name});
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     ecrId: defaultO8Hcfx.id,
  *     cenId: defaultQKBiay.id,
  *     transitRouterId: defaultQa94Y1.transitRouterId,
- *     transitRouterOwnerId: current.then(current => current.id),
+ *     transitRouterOwnerId: output(current.then(current => current.id)).apply(x =>Number(x)),
  * });
  * const _default = new alicloud.cen.TransitRouterEcrAttachment("default", {
  *     ecrId: defaultO8Hcfx.id,
@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *     transitRouterEcrAttachmentName: name,
  *     transitRouterAttachmentDescription: name,
  *     transitRouterId: defaultQa94Y1.transitRouterId,
- *     ecrOwnerId: current.then(current => current.id),
+ *     ecrOwnerId: output(current.then(current => current.id)).apply(x =>Number(x)),
  * });
  * ```
  *

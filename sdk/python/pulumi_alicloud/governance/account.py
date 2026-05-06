@@ -402,7 +402,7 @@ class Account(pulumi.CustomResource):
             account_name_prefix=f"{name}-{default_integer['result']}",
             folder_id=default_get_folders.ids[0],
             baseline_id=default_get_baselines.ids[0],
-            payer_account_id=default.id,
+            payer_account_id=output(default.id).apply(lambda x: int(x)),
             display_name=f"{name}-{default_integer['result']}")
         ```
 
@@ -482,7 +482,7 @@ class Account(pulumi.CustomResource):
             account_name_prefix=f"{name}-{default_integer['result']}",
             folder_id=default_get_folders.ids[0],
             baseline_id=default_get_baselines.ids[0],
-            payer_account_id=default.id,
+            payer_account_id=output(default.id).apply(lambda x: int(x)),
             display_name=f"{name}-{default_integer['result']}")
         ```
 

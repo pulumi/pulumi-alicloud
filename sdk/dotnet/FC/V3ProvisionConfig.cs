@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.FC
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.FC
     ///         AppendMeta = true,
     ///     });
     /// 
-    ///     var wait10Minutes = new Time.Index.Sleep("wait_10_minutes", new()
+    ///     var wait10Minutes = new Time.Sleep("wait_10_minutes", new()
     ///     {
     ///         CreateDuration = "10m",
     ///     }, new CustomResourceOptions

@@ -278,7 +278,7 @@ class ClientCertificate(pulumi.CustomResource):
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan",
             site_name="gositecdn.cn")
         default_client_certificate = alicloud.esa.ClientCertificate("default",
-            site_id=default.sites[0].id,
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)),
             pkey_type="RSA",
             validity_days="365")
         ```
@@ -332,7 +332,7 @@ class ClientCertificate(pulumi.CustomResource):
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan",
             site_name="gositecdn.cn")
         default_client_certificate = alicloud.esa.ClientCertificate("default",
-            site_id=default.sites[0].id,
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)),
             pkey_type="RSA",
             validity_days="365")
         ```

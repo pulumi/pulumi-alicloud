@@ -112,8 +112,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -156,8 +156,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -200,8 +200,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -244,8 +244,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -288,8 +288,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -332,8 +332,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -376,8 +376,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -420,8 +420,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetNotificationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -463,8 +463,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetNotificationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -506,8 +506,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetNotificationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -549,8 +549,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetNotificationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -592,8 +592,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetNotificationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -654,8 +654,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -684,7 +684,7 @@ public final class EssFunctions {
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -792,8 +792,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -822,7 +822,7 @@ public final class EssFunctions {
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -930,8 +930,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -960,7 +960,7 @@ public final class EssFunctions {
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -1068,8 +1068,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1098,7 +1098,7 @@ public final class EssFunctions {
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -1206,8 +1206,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1236,7 +1236,7 @@ public final class EssFunctions {
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -1344,8 +1344,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1374,7 +1374,7 @@ public final class EssFunctions {
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -1482,8 +1482,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1512,7 +1512,7 @@ public final class EssFunctions {
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -1611,8 +1611,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingGroupArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1701,8 +1701,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingGroupArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1791,8 +1791,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingGroupArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1881,8 +1881,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingGroupArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1971,8 +1971,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingGroupArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2061,8 +2061,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingGroupArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2151,8 +2151,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingGroupArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2243,8 +2243,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingRuleArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2343,8 +2343,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingRuleArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2443,8 +2443,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingRuleArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2543,8 +2543,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingRuleArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2643,8 +2643,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingRuleArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2743,8 +2743,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingRuleArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2843,8 +2843,8 @@ public final class EssFunctions {
      * import com.pulumi.alicloud.ess.ScalingRuleArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2931,8 +2931,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2975,8 +2975,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3019,8 +3019,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3063,8 +3063,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3107,8 +3107,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3151,8 +3151,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3195,8 +3195,8 @@ public final class EssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

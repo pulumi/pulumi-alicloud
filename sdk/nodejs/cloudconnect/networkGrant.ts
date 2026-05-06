@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * const defaultNetworkGrant = new alicloud.cloudconnect.NetworkGrant("default", {
  *     ccnId: _default.id,
  *     cenId: cen.id,
- *     cenUid: anotherUid,
+ *     cenUid: String(anotherUid),
  * });
  * ```
  *

@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     ecrId: ecrId,
  *     instanceRegionId: region,
  *     instanceId: vpcId,
- *     ecrOwnerAliUid: ecrOwnerUid,
+ *     ecrOwnerAliUid: Number(ecrOwnerUid),
  *     instanceType: "VPC",
  * });
  * ```

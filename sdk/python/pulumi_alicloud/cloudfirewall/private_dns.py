@@ -611,7 +611,7 @@ class PrivateDns(pulumi.CustomResource):
             domain_name_lists=["www.aliyun.com"],
             primary_vswitch_ip="172.16.3.1",
             standby_vswitch_ip="172.16.4.1",
-            member_uid=current.id)
+            member_uid=output(current.id).apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -697,7 +697,7 @@ class PrivateDns(pulumi.CustomResource):
             domain_name_lists=["www.aliyun.com"],
             primary_vswitch_ip="172.16.3.1",
             standby_vswitch_ip="172.16.4.1",
-            member_uid=current.id)
+            member_uid=output(current.id).apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

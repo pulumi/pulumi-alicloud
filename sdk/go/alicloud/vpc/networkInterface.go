@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
 //			})
@@ -59,14 +59,14 @@ import (
 //				Name:      pulumi.String(pulumi.String(name)),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
 //				ZoneId:    pulumi.String(pulumi.String(_default.Zones[0].Id)),
-//				VpcId:     vpc.ID(),
+//				VpcId:     vpc2.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(pulumi.String(name)),
-//				VpcId: vpc.ID(),
+//				VpcId: vpc2.ID(),
 //			})
 //			if err != nil {
 //				return err

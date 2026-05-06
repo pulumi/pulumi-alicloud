@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     peeringSubnetMask: "255.255.255.252",
  *     physicalConnectionId: _default.then(_default => _default.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
- *     vlanId: defaultInteger.id,
+ *     vlanId: Number(defaultInteger.id),
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,

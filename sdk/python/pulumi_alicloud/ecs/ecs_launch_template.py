@@ -1984,7 +1984,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             ram_role_name="ram_role_name",
             network_type="vpc",
             security_enhancement_strategy="Active",
-            spot_price_limit=5,
+            spot_price_limit=float(5),
             spot_strategy="SpotWithPriceLimit",
             security_group_ids=[default_security_group.id],
             system_disk={
@@ -2164,7 +2164,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             ram_role_name="ram_role_name",
             network_type="vpc",
             security_enhancement_strategy="Active",
-            spot_price_limit=5,
+            spot_price_limit=float(5),
             spot_strategy="SpotWithPriceLimit",
             security_group_ids=[default_security_group.id],
             system_disk={

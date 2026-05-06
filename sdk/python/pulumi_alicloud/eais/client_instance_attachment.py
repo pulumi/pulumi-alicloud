@@ -275,7 +275,7 @@ class ClientInstanceAttachment(pulumi.CustomResource):
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         example = alicloud.ecs.get_instance_types(availability_zone="cn-hangzhou-i",
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         example_network = alicloud.vpc.Network("example",
@@ -385,7 +385,7 @@ class ClientInstanceAttachment(pulumi.CustomResource):
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         example = alicloud.ecs.get_instance_types(availability_zone="cn-hangzhou-i",
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         example_network = alicloud.vpc.Network("example",

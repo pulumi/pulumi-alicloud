@@ -128,7 +128,7 @@ def get_kubernetes_node_pools(cluster_id: Optional[_builtins.str] = None,
     enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
     cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
         cpu_core_count=4,
-        memory_size=8,
+        memory_size=float(8),
         kubernetes_node_role="Worker",
         system_disk_category="cloud_efficiency")
     default_network = alicloud.vpc.Network("default",
@@ -221,7 +221,7 @@ def get_kubernetes_node_pools_output(cluster_id: Optional[pulumi.Input[_builtins
     enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
     cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
         cpu_core_count=4,
-        memory_size=8,
+        memory_size=float(8),
         kubernetes_node_role="Worker",
         system_disk_category="cloud_efficiency")
     default_network = alicloud.vpc.Network("default",

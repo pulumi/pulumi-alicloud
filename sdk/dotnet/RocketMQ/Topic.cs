@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "onsInstanceName";
     ///     var topic = config.Get("topic") ?? "onsTopicName";
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,

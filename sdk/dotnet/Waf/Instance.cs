@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Waf
     ///     var @default = AliCloud.Waf.GetInstances.Invoke();
     /// 
     ///     var defaultInstance = new List&lt;AliCloud.Waf.Instance&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances)).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         defaultInstance.Add(new AliCloud.Waf.Instance($"default-{range.Value}", new()

@@ -47,6 +47,302 @@ import (
 //
 // # ACK cluster
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tf-example-";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// // Existing vpc id used to create several vswitches and other resources.
+// vpcId := "";
+// if param := cfg.Get("vpcId"); param != ""{
+// vpcId = param
+// }
+// // The cidr block used to launch a new vpc when 'vpc_id' is not specified.
+// vpcCidr := "10.0.0.0/8";
+// if param := cfg.Get("vpcCidr"); param != ""{
+// vpcCidr = param
+// }
+// // List of existing vswitch id.
+// vswitchIds := []interface{}{
+// };
+// if param := cfg.GetObject("vswitchIds"); param != nil {
+// vswitchIds = param
+// }
+// // List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
+// vswitchCidrs := []string{
+// "10.1.0.0/16",
+// "10.2.0.0/16",
+// };
+// if param := cfg.GetObject("vswitchCidrs"); param != nil {
+// vswitchCidrs = param
+// }
+// // Proxy mode is option of kube-proxy.
+// proxyMode := "ipvs";
+// if param := cfg.Get("proxyMode"); param != ""{
+// proxyMode = param
+// }
+// // The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or pod's and cannot be in them.
+// serviceCidr := "192.168.0.0/16";
+// if param := cfg.Get("serviceCidr"); param != ""{
+// serviceCidr = param
+// }
+// // List of existing vswitch ids for terway.
+// terwayVswitchIds := []interface{}{
+// };
+// if param := cfg.GetObject("terwayVswitchIds"); param != nil {
+// terwayVswitchIds = param
+// }
+// // List of cidr blocks used to create several new vswitches when 'terway_vswitch_cidrs' is not specified.
+// terwayVswitchCidrs := []string{
+// "10.4.0.0/16",
+// "10.5.0.0/16",
+// };
+// if param := cfg.GetObject("terwayVswitchCidrs"); param != nil {
+// terwayVswitchCidrs = param
+// }
+// enhanced, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// _default, err := kms.GetKeys(ctx, &kms.GetKeysArgs{
+// Filters: pulumi.StringRef("[{\"Key\":\"KeyState\",\"Values\":[\"Enabled\"]},{\"Key\":\"KeySpec\",\"Values\":[\"Aliyun_AES_256\"]},{\"Key\":\"KeyUsage\",\"Values\":[\"ENCRYPT/DECRYPT\"]},{\"Key\":\"CreatorType\",\"Values\":[\"User\"]}]"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// // If there is not specifying vpc_id, the module will launch a new vpc
+// var tmp0 int
+// if vpcId == "" {
+// tmp0 = 1
+// } else {
+// tmp0 = 0
+// }
+// var vpc2 []*vpc.Network
+//
+//	for index := 0; index < tmp0; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := vpc.NewNetwork(ctx, fmt.Sprintf("vpc-%v", key0), &vpc.NetworkArgs{
+// CidrBlock: pulumi.String(pulumi.String(vpcCidr)),
+// })
+// if err != nil {
+// return err
+// }
+// vpc2 = append(vpc2, __res)
+// }
+// var tmp1 pulumi.String
+// if vpcId == "" {
+// tmp1 = pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+// Separator: pulumi.String(""),
+// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:74,17-26),
+// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
+// val := invoke.Result
+// return &val, nil
+// }).(pulumi.StringPtrOutput))
+// } else {
+// tmp1 = pulumi.String(pulumi.String(vpcId))
+// }
+// // According to the vswitch cidr blocks to launch several vswitches
+// var tmp2 int
+// if len(vswitchIds) > 0 {
+// tmp2 = 0
+// } else {
+// tmp2 = len(vswitchCidrs)
+// }
+// var vswitches []*vpc.Switch
+//
+//	for index := 0; index < tmp2; index++ {
+//	    key0 := index
+//	    val0 := index
+//
+// __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitches-%v", key0), &vpc.SwitchArgs{
+// VpcId: pulumi.String(tmp1),
+// CidrBlock: pulumi.String(vswitchCidrs[val0]),
+// ZoneId: pulumi.String(enhanced.Zones[val0].ZoneId),
+// })
+// if err != nil {
+// return err
+// }
+// vswitches = append(vswitches, __res)
+// }
+// var tmp3 pulumi.String
+// if vpcId == "" {
+// tmp3 = pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+// Separator: pulumi.String(""),
+// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:89,17-26),
+// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
+// val := invoke.Result
+// return &val, nil
+// }).(pulumi.StringPtrOutput))
+// } else {
+// tmp3 = pulumi.String(pulumi.String(vpcId))
+// }
+// // According to the vswitch cidr blocks to launch several vswitches
+// var tmp4 int
+// if len(terwayVswitchIds) > 0 {
+// tmp4 = 0
+// } else {
+// tmp4 = len(terwayVswitchCidrs)
+// }
+// var terwayVswitches []*vpc.Switch
+//
+//	for index := 0; index < tmp4; index++ {
+//	    key0 := index
+//	    val0 := index
+//
+// __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("terway_vswitches-%v", key0), &vpc.SwitchArgs{
+// VpcId: pulumi.String(tmp3),
+// CidrBlock: pulumi.String(terwayVswitchCidrs[val0]),
+// ZoneId: pulumi.String(enhanced.Zones[val0].ZoneId),
+// })
+// if err != nil {
+// return err
+// }
+// terwayVswitches = append(terwayVswitches, __res)
+// }
+// var tmp5 pulumi.StringArray
+// if len(vswitchCidrs) < 1 {
+// tmp5 = pulumi.StringArray{
+// }
+// } else {
+// tmp5 = pulumi.StringArray(std.JoinOutput(ctx, std.JoinOutputArgs{
+// Separator: pulumi.String(","),
+// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:108,19-34),
+// }, nil).ApplyT(func(invoke std.JoinResult) (std.SplitResult, error) {
+// return std.SplitResult(interface{}(std.Split(ctx, &std.SplitArgs{
+// Separator: ",",
+// Text: invoke.Result,
+// }, nil))), nil
+// }).(std.SplitResultOutput).ApplyT(func(invoke std.SplitResult) ([]string, error) {
+// return invoke.Result, nil
+// }).(pulumi.StringArrayOutput))
+// }
+// var tmp6 pulumi.StringArray
+// if len(vswitchIds) > 0 {
+// tmp6 = pulumi.StringArray(std.Split(ctx, &std.SplitArgs{
+// Separator: ",",
+// Text: std.Join(ctx, &std.JoinArgs{
+// Separator: ",",
+// Input: vswitchIds,
+// }, nil).Result,
+// }, nil).Result)
+// } else {
+// tmp6 = tmp5
+// }
+// var tmp7 pulumi.StringArray
+// if len(terwayVswitchCidrs) < 1 {
+// tmp7 = pulumi.StringArray{
+// }
+// } else {
+// tmp7 = pulumi.StringArray(std.JoinOutput(ctx, std.JoinOutputArgs{
+// Separator: pulumi.String(","),
+// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:121,19-40),
+// }, nil).ApplyT(func(invoke std.JoinResult) (std.SplitResult, error) {
+// return std.SplitResult(interface{}(std.Split(ctx, &std.SplitArgs{
+// Separator: ",",
+// Text: invoke.Result,
+// }, nil))), nil
+// }).(std.SplitResultOutput).ApplyT(func(invoke std.SplitResult) ([]string, error) {
+// return invoke.Result, nil
+// }).(pulumi.StringArrayOutput))
+// }
+// var tmp8 pulumi.StringArray
+// if len(terwayVswitchIds) > 0 {
+// tmp8 = pulumi.StringArray(std.Split(ctx, &std.SplitArgs{
+// Separator: ",",
+// Text: std.Join(ctx, &std.JoinArgs{
+// Separator: ",",
+// Input: terwayVswitchIds,
+// }, nil).Result,
+// }, nil).Result)
+// } else {
+// tmp8 = tmp7
+// }
+// tmpJSON0, err := json.Marshal(map[string]interface{}{
+// "IngressDashboardEnabled": "true",
+// })
+// if err != nil {
+// return err
+// }
+// json0 := string(tmpJSON0)
+// tmpJSON1, err := json.Marshal(map[string]interface{}{
+// "IngressSlbNetworkType": "internet",
+// })
+// if err != nil {
+// return err
+// }
+// json1 := string(tmpJSON1)
+// tmpJSON2, err := json.Marshal(map[string]interface{}{
+// })
+// if err != nil {
+// return err
+// }
+// json2 := string(tmpJSON2)
+// _, err = cs.NewManagedKubernetes(ctx, "k8s", &cs.ManagedKubernetesArgs{
+// NamePrefix: pulumi.String(pulumi.String(name)),
+// ClusterSpec: pulumi.String("ack.pro.small"),
+// VswitchIds: tmp6,
+// PodVswitchIds: tmp8,
+// NewNatGateway: pulumi.Bool(true),
+// ProxyMode: pulumi.String(pulumi.String(proxyMode)),
+// ServiceCidr: pulumi.String(pulumi.String(serviceCidr)),
+// SkipSetCertificateAuthority: pulumi.Bool(true),
+// EncryptionProviderKey: pulumi.String(pulumi.String(_default.Keys[0].KeyId)),
+// Addons: cs.ManagedKubernetesAddonArray{
+// &cs.ManagedKubernetesAddonArgs{
+// Name: pulumi.String("terway-eniip"),
+// },
+// &cs.ManagedKubernetesAddonArgs{
+// Name: pulumi.String("csi-plugin"),
+// },
+// &cs.ManagedKubernetesAddonArgs{
+// Name: pulumi.String("csi-provisioner"),
+// },
+// &cs.ManagedKubernetesAddonArgs{
+// Name: pulumi.String("logtail-ds"),
+// Config: pulumi.String(pulumi.String(json0)),
+// },
+// &cs.ManagedKubernetesAddonArgs{
+// Name: pulumi.String("nginx-ingress-controller"),
+// Config: pulumi.String(pulumi.String(json1)),
+// },
+// &cs.ManagedKubernetesAddonArgs{
+// Name: pulumi.String("arms-prometheus"),
+// },
+// &cs.ManagedKubernetesAddonArgs{
+// Name: pulumi.String("ack-node-problem-detector"),
+// Config: pulumi.String(pulumi.String(json2)),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // # ACK Cluster with Auto Mode
 //
 // ```go

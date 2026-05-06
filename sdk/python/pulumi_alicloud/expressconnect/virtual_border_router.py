@@ -881,7 +881,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=default.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=default_integer["id"],
+            vlan_id=int(default_integer["id"]),
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
@@ -964,7 +964,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=default.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=default_integer["id"],
+            vlan_id=int(default_integer["id"]),
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)

@@ -405,7 +405,7 @@ class Job(pulumi.CustomResource):
             }],
             restore_strategy={
                 "kind": "NONE",
-                "job_start_time_in_ms": 1763694521254,
+                "job_start_time_in_ms": int(1763694521254),
             },
             namespace=default_vvp_instance.vvp_instance_name.apply(lambda vvp_instance_name: f"{vvp_instance_name}-default"),
             stop_strategy="NONE",
@@ -517,7 +517,7 @@ class Job(pulumi.CustomResource):
             }],
             restore_strategy={
                 "kind": "NONE",
-                "job_start_time_in_ms": 1763694521254,
+                "job_start_time_in_ms": int(1763694521254),
             },
             namespace=default_vvp_instance.vvp_instance_name.apply(lambda vvp_instance_name: f"{vvp_instance_name}-default"),
             stop_strategy="NONE",

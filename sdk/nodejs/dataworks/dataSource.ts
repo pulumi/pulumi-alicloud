@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *         },
  *     }),
  *     connectionPropertiesMode: "UrlMode",
- *     projectId: defaultkguw4R.id,
+ *     projectId: defaultkguw4R.id.apply(x =>Number(x)),
  *     description: name,
  * });
  * ```

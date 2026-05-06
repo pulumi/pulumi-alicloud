@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Sls
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Sls
     ///     var projectCreate01 = new AliCloud.Log.Project("project_create_01", new()
     ///     {
     ///         Description = name,
-    ///         ProjectName = Std.Index.Format.Invoke(new()
+    ///         ProjectName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s1%s",
     ///             Args = new[]
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Sls
     ///         RetentionPeriod = 30,
     ///         ShardCount = 2,
     ///         ProjectName = projectCreate01.ProjectName,
-    ///         LogstoreName = Std.Index.Format.Invoke(new()
+    ///         LogstoreName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s1%s",
     ///             Args = new[]
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Sls
     ///     var update01 = new AliCloud.Log.Project("update_01", new()
     ///     {
     ///         Description = name,
-    ///         ProjectName = Std.Index.Format.Invoke(new()
+    ///         ProjectName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s2%s",
     ///             Args = new[]
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Sls
     ///         RetentionPeriod = 30,
     ///         ShardCount = 2,
     ///         ProjectName = update01.ProjectName,
-    ///         LogstoreName = Std.Index.Format.Invoke(new()
+    ///         LogstoreName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s2%s",
     ///             Args = new[]
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Sls
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example-on-single-bucket";
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Sls
     ///     var projectCreate01 = new AliCloud.Log.Project("project_create_01", new()
     ///     {
     ///         Description = name,
-    ///         ProjectName = Std.Index.Format.Invoke(new()
+    ///         ProjectName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s1%s",
     ///             Args = new[]
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.Sls
     ///         RetentionPeriod = 30,
     ///         ShardCount = 2,
     ///         ProjectName = projectCreate01.ProjectName,
-    ///         LogstoreName = Std.Index.Format.Invoke(new()
+    ///         LogstoreName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s1%s",
     ///             Args = new[]
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Sls
     ///     var update01 = new AliCloud.Log.Project("update_01", new()
     ///     {
     ///         Description = name,
-    ///         ProjectName = Std.Index.Format.Invoke(new()
+    ///         ProjectName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s2%s",
     ///             Args = new[]
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Sls
     ///         RetentionPeriod = 30,
     ///         ShardCount = 2,
     ///         ProjectName = update01.ProjectName,
-    ///         LogstoreName = Std.Index.Format.Invoke(new()
+    ///         LogstoreName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s2%s",
     ///             Args = new[]
@@ -221,7 +221,7 @@ namespace Pulumi.AliCloud.Sls
     /// 
     ///     var bucket = new AliCloud.Oss.Bucket("bucket", new()
     ///     {
-    ///         BucketName = Std.Index.Format.Invoke(new()
+    ///         BucketName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s1%s",
     ///             Args = new[]

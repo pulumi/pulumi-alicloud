@@ -347,7 +347,7 @@ class BackupPolicy(pulumi.CustomResource):
             seg_node_num=4,
             storage_size=50,
             vpc_id=default_get_networks.ids[0],
-            vswitch_id=vswitch_id,
+            vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
             ip_whitelists=[{
                 "security_ip_list": "127.0.0.1",
             }],
@@ -463,7 +463,7 @@ class BackupPolicy(pulumi.CustomResource):
             seg_node_num=4,
             storage_size=50,
             vpc_id=default_get_networks.ids[0],
-            vswitch_id=vswitch_id,
+            vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
             ip_whitelists=[{
                 "security_ip_list": "127.0.0.1",
             }],

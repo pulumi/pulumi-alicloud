@@ -52,10 +52,10 @@ import * as utilities from "../utilities";
  *     url: "/image",
  *     serverGroupId: defaultServerGroup.id,
  * });
- * const sampleDs = defaultApplicationLoadBalancer.id.apply(id => alicloud.slb.getRulesOutput({
- *     loadBalancerId: id,
+ * const sampleDs = alicloud.slb.getRulesOutput({
+ *     loadBalancerId: defaultApplicationLoadBalancer.id,
  *     frontendPort: 22,
- * }));
+ * });
  * export const firstSlbRuleId = sampleDs.apply(sampleDs => sampleDs.slbRules?.[0]?.id);
  * ```
  */
@@ -167,10 +167,10 @@ export interface GetRulesResult {
  *     url: "/image",
  *     serverGroupId: defaultServerGroup.id,
  * });
- * const sampleDs = defaultApplicationLoadBalancer.id.apply(id => alicloud.slb.getRulesOutput({
- *     loadBalancerId: id,
+ * const sampleDs = alicloud.slb.getRulesOutput({
+ *     loadBalancerId: defaultApplicationLoadBalancer.id,
  *     frontendPort: 22,
- * }));
+ * });
  * export const firstSlbRuleId = sampleDs.apply(sampleDs => sampleDs.slbRules?.[0]?.id);
  * ```
  */

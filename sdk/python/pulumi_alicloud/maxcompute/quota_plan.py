@@ -203,7 +203,7 @@ class QuotaPlan(pulumi.CustomResource):
             nickname="os_terrform_p",
             quota={
                 "parameter": {
-                    "elastic_reserved_cu": elastic_reserved_cu,
+                    "elastic_reserved_cu": int(elastic_reserved_cu),
                 },
                 "sub_quota_info_lists": [
                     {
@@ -211,7 +211,7 @@ class QuotaPlan(pulumi.CustomResource):
                         "parameter": {
                             "min_cu": 0,
                             "max_cu": 20,
-                            "elastic_reserved_cu": elastic_reserved_cu,
+                            "elastic_reserved_cu": int(elastic_reserved_cu),
                         },
                     },
                     {
@@ -278,7 +278,7 @@ class QuotaPlan(pulumi.CustomResource):
             nickname="os_terrform_p",
             quota={
                 "parameter": {
-                    "elastic_reserved_cu": elastic_reserved_cu,
+                    "elastic_reserved_cu": int(elastic_reserved_cu),
                 },
                 "sub_quota_info_lists": [
                     {
@@ -286,7 +286,7 @@ class QuotaPlan(pulumi.CustomResource):
                         "parameter": {
                             "min_cu": 0,
                             "max_cu": 20,
-                            "elastic_reserved_cu": elastic_reserved_cu,
+                            "elastic_reserved_cu": int(elastic_reserved_cu),
                         },
                     },
                     {

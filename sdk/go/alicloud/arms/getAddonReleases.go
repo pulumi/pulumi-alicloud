@@ -34,163 +34,157 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-// Min: 10000,
-// Max: 99999,
-// })
-// if err != nil {
-// return err
-// }
-// enhanced, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// Description: pulumi.String("api-resource-test1-hz"),
-// CidrBlock: pulumi.String("192.168.0.0/16"),
-// VpcName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-// })
-// if err != nil {
-// return err
-// }
-// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
-// Input: cidrBlock,
-// Newbits: 8,
-// Netnum: 8,
-// }, nil)
-// if err != nil {
-// return err
-// }
-// vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-// Description: pulumi.String("api-resource-test1-hz"),
-// VpcId: vpc.ID(),
-// VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-// ZoneId: pulumi.String(pulumi.String(enhanced.Zones[0].ZoneId)),
-// CidrBlock: pulumi.String(vpc.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
-// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput)),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = ecs.NewSnapshotPolicy(ctx, "default", &ecs.SnapshotPolicyArgs{
-// Name: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-// RepeatWeekdays: pulumi.StringArray{
-// pulumi.String("1"),
-// pulumi.String("2"),
-// pulumi.String("3"),
-// },
-// RetentionDays: pulumi.Int(-1),
-// TimePoints: pulumi.StringArray{
-// pulumi.String("1"),
-// pulumi.String("22"),
-// pulumi.String("23"),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// _default := vswitch.ZoneId.ApplyT(func(zoneId string) (ecs.GetInstanceTypesResult, error) {
-// return ecs.GetInstanceTypesResult(interface{}(ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// AvailabilityZone: pulumi.StringRef(pulumi.StringRef(zoneId)),
-// CpuCoreCount: pulumi.IntRef(pulumi.IntRef(int(2))),
-// MemorySize: pulumi.Float64Ref(pulumi.Float64Ref(4)),
-// KubernetesNodeRole: pulumi.StringRef(pulumi.StringRef("Worker")),
-// InstanceTypeFamily: pulumi.StringRef(pulumi.StringRef("ecs.sn1ne")),
-// }, nil))), nil
-// }).(ecs.GetInstanceTypesResultOutput)
-// defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
-// Name: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-// ClusterSpec: pulumi.String("ack.pro.small"),
-// Version: pulumi.String("1.24.6-aliyun.1"),
-// NewNatGateway: pulumi.Bool(true),
-// NodeCidrMask: pulumi.Int(26),
-// ProxyMode: pulumi.String("ipvs"),
-// ServiceCidr: pulumi.String("172.23.0.0/16"),
-// PodCidr: pulumi.String("10.95.0.0/16"),
-// WorkerVswitchIds: pulumi.StringArray{
-// vswitch.ID(),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// defaultKeyPair, err := ecs.NewKeyPair(ctx, "default", &ecs.KeyPairArgs{
-// KeyPairName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-// })
-// if err != nil {
-// return err
-// }
-// defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-// Name: pulumi.String("desired_size"),
-// ClusterId: defaultManagedKubernetes.ID(),
-// VswitchIds: pulumi.StringArray{
-// vswitch.ID(),
-// },
-// InstanceTypes: pulumi.StringArray{
-// pulumi.String(_default.ApplyT(func(_default ecs.GetInstanceTypesResult) (*string, error) {
-// return &_default.InstanceTypes[0].Id, nil
-// }).(pulumi.StringPtrOutput)),
-// },
-// SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// SystemDiskSize: pulumi.Int(40),
-// KeyName: defaultKeyPair.KeyPairName,
-// DesiredSize: pulumi.String("2"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultEnvironment, err := arms.NewEnvironment(ctx, "default", &arms.EnvironmentArgs{
-// EnvironmentType: pulumi.String("CS"),
-// EnvironmentName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-// BindResourceId: defaultNodePool.ClusterId,
-// EnvironmentSubType: pulumi.String("ManagedKubernetes"),
-// })
-// if err != nil {
-// return err
-// }
-// tmpJSON0, err := json.Marshal(map[string]interface{}{
-// "host": "mysql-service.default",
-// "password": "roots",
-// "port": 3306,
-// "username": "root",
-// })
-// if err != nil {
-// return err
-// }
-// json0 := string(tmpJSON0)
-// defaultAddonRelease, err := arms.NewAddonRelease(ctx, "default", &arms.AddonReleaseArgs{
-// AliyunLang: pulumi.String("zh"),
-// AddonName: pulumi.String("mysql"),
-// EnvironmentId: defaultEnvironment.ID(),
-// AddonVersion: pulumi.String("0.0.2"),
-// Values: pulumi.String(pulumi.String(json0)),
-// })
-// if err != nil {
-// return err
-// }
-// ids := arms.GetAddonReleasesOutput(ctx, arms.GetAddonReleasesOutputArgs{
-// EnvironmentId: defaultAddonRelease.EnvironmentId,
-// Ids: pulumi.StringArray{
-// defaultAddonRelease.ID(),
-// },
-// }, nil);
-// ctx.Export("armsEnvServiceMonitorsId0", ids.ApplyT(func(ids arms.GetAddonReleasesResult) (*string, error) {
-// return &ids.Releases[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			enhanced, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				Description: pulumi.String("api-resource-test1-hz"),
+//				CidrBlock:   pulumi.String("192.168.0.0/16"),
+//				VpcName:     pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+//				Description: pulumi.String("api-resource-test1-hz"),
+//				VpcId:       vpc2.ID(),
+//				VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//				ZoneId:      pulumi.String(pulumi.String(enhanced.Zones[0].ZoneId)),
+//				CidrBlock: pulumi.String(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+//					Input:   vpc2.CidrBlock,
+//					Newbits: pulumi.Int(8),
+//					Netnum:  pulumi.Int(8),
+//				}, nil).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
+//					val := invoke.Result
+//					return &val, nil
+//				}).(pulumi.StringPtrOutput)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewSnapshotPolicy(ctx, "default", &ecs.SnapshotPolicyArgs{
+//				Name: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//				RepeatWeekdays: pulumi.StringArray{
+//					pulumi.String("1"),
+//					pulumi.String("2"),
+//					pulumi.String("3"),
+//				},
+//				RetentionDays: pulumi.Int(-1),
+//				TimePoints: pulumi.StringArray{
+//					pulumi.String("1"),
+//					pulumi.String("22"),
+//					pulumi.String("23"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default := ecs.GetInstanceTypesOutput(ctx, ecs.GetInstanceTypesOutputArgs{
+//				AvailabilityZone:   vswitch.ZoneId,
+//				CpuCoreCount:       pulumi.Int(2),
+//				MemorySize:         pulumi.Float64(4),
+//				KubernetesNodeRole: pulumi.String("Worker"),
+//				InstanceTypeFamily: pulumi.String("ecs.sn1ne"),
+//			}, nil)
+//			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
+//				Name:          pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//				ClusterSpec:   pulumi.String("ack.pro.small"),
+//				Version:       pulumi.String("1.24.6-aliyun.1"),
+//				NewNatGateway: pulumi.Bool(true),
+//				NodeCidrMask:  pulumi.Int(26),
+//				ProxyMode:     pulumi.String("ipvs"),
+//				ServiceCidr:   pulumi.String("172.23.0.0/16"),
+//				PodCidr:       pulumi.String("10.95.0.0/16"),
+//				WorkerVswitchIds: pulumi.StringArray{
+//					vswitch.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultKeyPair, err := ecs.NewKeyPair(ctx, "default", &ecs.KeyPairArgs{
+//				KeyPairName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				Name:      pulumi.String("desired_size"),
+//				ClusterId: defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					vswitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(_default.ApplyT(func(_default ecs.GetInstanceTypesResult) (*string, error) {
+//						return &_default.InstanceTypes[0].Id, nil
+//					}).(pulumi.StringPtrOutput)),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            defaultKeyPair.KeyPairName,
+//				DesiredSize:        pulumi.String("2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEnvironment, err := arms.NewEnvironment(ctx, "default", &arms.EnvironmentArgs{
+//				EnvironmentType:    pulumi.String("CS"),
+//				EnvironmentName:    pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//				BindResourceId:     defaultNodePool.ClusterId,
+//				EnvironmentSubType: pulumi.String("ManagedKubernetes"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"host":     "mysql-service.default",
+//				"password": "roots",
+//				"port":     3306,
+//				"username": "root",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			defaultAddonRelease, err := arms.NewAddonRelease(ctx, "default", &arms.AddonReleaseArgs{
+//				AliyunLang:    pulumi.String("zh"),
+//				AddonName:     pulumi.String("mysql"),
+//				EnvironmentId: defaultEnvironment.ID(),
+//				AddonVersion:  pulumi.String("0.0.2"),
+//				Values:        pulumi.String(pulumi.String(json0)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := arms.GetAddonReleasesOutput(ctx, arms.GetAddonReleasesOutputArgs{
+//				EnvironmentId: defaultAddonRelease.EnvironmentId,
+//				Ids: pulumi.StringArray{
+//					defaultAddonRelease.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("armsEnvServiceMonitorsId0", ids.ApplyT(func(ids arms.GetAddonReleasesResult) (*string, error) {
+//				return &ids.Releases[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAddonReleases(ctx *pulumi.Context, args *GetAddonReleasesArgs, opts ...pulumi.InvokeOption) (*GetAddonReleasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

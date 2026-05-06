@@ -305,7 +305,7 @@ class Attachment(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=8,
+            memory_size=float(8),
             instance_type_family="ecs.g9i")
         default_get_images = alicloud.ecs.get_images(instance_type=default_get_instance_types.instance_types[0].id,
             most_recent=True,
@@ -428,7 +428,7 @@ class Attachment(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=8,
+            memory_size=float(8),
             instance_type_family="ecs.g9i")
         default_get_images = alicloud.ecs.get_images(instance_type=default_get_instance_types.instance_types[0].id,
             most_recent=True,

@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  *         Type: "suggestion",
  *         Value: "block",
  *     }),
- *     callbackId: defaultJnW8Na.id,
+ *     callbackId: defaultJnW8Na.id.apply(x =>Number(x)),
  *     imageAdFreezeConfig: JSON.stringify({
  *         Type: "suggestion",
  *         Value: "block",

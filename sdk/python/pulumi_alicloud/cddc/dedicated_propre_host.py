@@ -1005,7 +1005,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         default_get_images = alicloud.ecs.get_images(name_regex="^aliyun_3_x64_20G_scc*",
             owners="system")
         essd = alicloud.ecs.get_instance_types(cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             system_disk_category="cloud_essd")
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
@@ -1074,10 +1074,10 @@ class DedicatedPropreHost(pulumi.CustomResource):
         default_dedicated_propre_host = alicloud.cddc.DedicatedPropreHost("default",
             vswitch_id=default_get_switches.ids[0],
             ecs_instance_name="exampleTf",
-            ecs_deployment_set_id=alicloud_ecs_deployment_set_id,
+            ecs_deployment_set_id=output(alicloud_ecs_deployment_set_id).apply(lambda x: str(x)),
             auto_renew="false",
-            security_group_id=alicloud_security_group_id,
-            dedicated_host_group_id=dedicated_host_group_id,
+            security_group_id=output(alicloud_security_group_id).apply(lambda x: str(x)),
+            dedicated_host_group_id=output(dedicated_host_group_id).apply(lambda x: str(x)),
             ecs_host_name="exampleTf",
             vpc_id=default_get_networks.ids[0],
             ecs_unique_suffix="false",
@@ -1195,7 +1195,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         default_get_images = alicloud.ecs.get_images(name_regex="^aliyun_3_x64_20G_scc*",
             owners="system")
         essd = alicloud.ecs.get_instance_types(cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             system_disk_category="cloud_essd")
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
@@ -1264,10 +1264,10 @@ class DedicatedPropreHost(pulumi.CustomResource):
         default_dedicated_propre_host = alicloud.cddc.DedicatedPropreHost("default",
             vswitch_id=default_get_switches.ids[0],
             ecs_instance_name="exampleTf",
-            ecs_deployment_set_id=alicloud_ecs_deployment_set_id,
+            ecs_deployment_set_id=output(alicloud_ecs_deployment_set_id).apply(lambda x: str(x)),
             auto_renew="false",
-            security_group_id=alicloud_security_group_id,
-            dedicated_host_group_id=dedicated_host_group_id,
+            security_group_id=output(alicloud_security_group_id).apply(lambda x: str(x)),
+            dedicated_host_group_id=output(dedicated_host_group_id).apply(lambda x: str(x)),
             ecs_host_name="exampleTf",
             vpc_id=default_get_networks.ids[0],
             ecs_unique_suffix="false",

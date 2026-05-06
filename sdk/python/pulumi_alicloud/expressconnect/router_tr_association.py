@@ -319,14 +319,14 @@ class RouterTrAssociation(pulumi.CustomResource):
         asn = config.get("asn")
         if asn is None:
             asn = "4200001003"
-        defaultp_x0_kl_c = alicloud.expressconnect.RouterExpressConnectRouter("defaultpX0KlC", alibaba_side_asn=asn)
+        defaultp_x0_kl_c = alicloud.expressconnect.RouterExpressConnectRouter("defaultpX0KlC", alibaba_side_asn=int(asn))
         default418_dc9 = alicloud.cen.Instance("default418DC9", cen_instance_name=name)
         default_r_ycjsc = alicloud.cen.TransitRouter("defaultRYcjsc", cen_id=default418_dc9.id)
         current = alicloud.get_account()
         default = alicloud.expressconnect.RouterTrAssociation("default",
             ecr_id=defaultp_x0_kl_c.id,
             cen_id=default418_dc9.id,
-            transit_router_owner_id=current.id,
+            transit_router_owner_id=output(current.id).apply(lambda x: int(x)),
             allowed_prefixes=[
                 alowprefix1,
                 allowprefix3,
@@ -396,14 +396,14 @@ class RouterTrAssociation(pulumi.CustomResource):
         asn = config.get("asn")
         if asn is None:
             asn = "4200001003"
-        defaultp_x0_kl_c = alicloud.expressconnect.RouterExpressConnectRouter("defaultpX0KlC", alibaba_side_asn=asn)
+        defaultp_x0_kl_c = alicloud.expressconnect.RouterExpressConnectRouter("defaultpX0KlC", alibaba_side_asn=int(asn))
         default418_dc9 = alicloud.cen.Instance("default418DC9", cen_instance_name=name)
         default_r_ycjsc = alicloud.cen.TransitRouter("defaultRYcjsc", cen_id=default418_dc9.id)
         current = alicloud.get_account()
         default = alicloud.expressconnect.RouterTrAssociation("default",
             ecr_id=defaultp_x0_kl_c.id,
             cen_id=default418_dc9.id,
-            transit_router_owner_id=current.id,
+            transit_router_owner_id=output(current.id).apply(lambda x: int(x)),
             allowed_prefixes=[
                 alowprefix1,
                 allowprefix3,

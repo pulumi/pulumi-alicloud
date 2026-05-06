@@ -60,8 +60,8 @@ public final class QuotasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaAlarmsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -106,8 +106,8 @@ public final class QuotasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaAlarmsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -152,8 +152,8 @@ public final class QuotasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaAlarmsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -198,8 +198,8 @@ public final class QuotasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaAlarmsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -244,8 +244,8 @@ public final class QuotasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaAlarmsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -290,8 +290,8 @@ public final class QuotasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaAlarmsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -336,8 +336,8 @@ public final class QuotasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaAlarmsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -384,8 +384,8 @@ public final class QuotasFunctions {
      * import com.pulumi.alicloud.quotas.QuotaApplicationArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -450,8 +450,8 @@ public final class QuotasFunctions {
      * import com.pulumi.alicloud.quotas.QuotaApplicationArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -516,8 +516,8 @@ public final class QuotasFunctions {
      * import com.pulumi.alicloud.quotas.QuotaApplicationArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -582,8 +582,8 @@ public final class QuotasFunctions {
      * import com.pulumi.alicloud.quotas.QuotaApplicationArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -648,8 +648,8 @@ public final class QuotasFunctions {
      * import com.pulumi.alicloud.quotas.QuotaApplicationArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -712,8 +712,8 @@ public final class QuotasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -758,8 +758,8 @@ public final class QuotasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -804,8 +804,8 @@ public final class QuotasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -850,8 +850,8 @@ public final class QuotasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -896,8 +896,8 @@ public final class QuotasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -945,8 +945,8 @@ public final class QuotasFunctions {
      * import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1024,8 +1024,8 @@ public final class QuotasFunctions {
      * import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1103,8 +1103,8 @@ public final class QuotasFunctions {
      * import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1182,8 +1182,8 @@ public final class QuotasFunctions {
      * import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1261,8 +1261,8 @@ public final class QuotasFunctions {
      * import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1340,8 +1340,8 @@ public final class QuotasFunctions {
      * import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1419,8 +1419,8 @@ public final class QuotasFunctions {
      * import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -177,7 +177,7 @@ class NetworkGrant(pulumi.CustomResource):
         default_network_grant = alicloud.cloudconnect.NetworkGrant("default",
             ccn_id=default.id,
             cen_id=cen.id,
-            cen_uid=another_uid)
+            cen_uid=str(another_uid))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -243,7 +243,7 @@ class NetworkGrant(pulumi.CustomResource):
         default_network_grant = alicloud.cloudconnect.NetworkGrant("default",
             ccn_id=default.id,
             cen_id=cen.id,
-            cen_uid=another_uid)
+            cen_uid=str(another_uid))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

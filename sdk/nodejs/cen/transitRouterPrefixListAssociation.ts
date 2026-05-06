@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *     transitRouterTableId: exampleTransitRouterRouteTable.transitRouterRouteTableId,
  *     nextHop: "BlackHole",
  *     nextHopType: "BlackHole",
- *     ownerUid: _default.then(_default => _default.id),
+ *     ownerUid: output(_default.then(_default => _default.id)).apply(x =>Number(x)),
  * });
  * ```
  *

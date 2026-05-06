@@ -49,8 +49,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -92,8 +92,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -135,8 +135,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -178,8 +178,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -221,8 +221,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -264,8 +264,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -307,8 +307,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -352,8 +352,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -405,8 +405,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -458,8 +458,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -511,8 +511,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -564,8 +564,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -617,8 +617,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -670,8 +670,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -721,8 +721,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -763,8 +763,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -805,8 +805,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -847,8 +847,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -889,8 +889,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -931,8 +931,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -973,8 +973,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1017,8 +1017,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1061,8 +1061,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1105,8 +1105,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1149,8 +1149,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1193,8 +1193,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1237,8 +1237,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1281,8 +1281,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1325,8 +1325,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1369,8 +1369,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1413,8 +1413,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1457,8 +1457,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1501,8 +1501,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1545,8 +1545,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1589,8 +1589,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1633,8 +1633,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1677,8 +1677,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1721,8 +1721,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1765,8 +1765,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1809,8 +1809,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1853,8 +1853,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1897,8 +1897,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1939,8 +1939,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1982,8 +1982,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2025,8 +2025,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2068,8 +2068,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2111,8 +2111,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2154,8 +2154,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2197,8 +2197,8 @@ public final class DcdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dcdn.DcdnFunctions;
      * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

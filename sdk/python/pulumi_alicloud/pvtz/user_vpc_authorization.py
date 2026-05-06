@@ -157,7 +157,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
         if authorized_user_id is None:
             authorized_user_id = 123456789
         example = alicloud.pvtz.UserVpcAuthorization("example",
-            authorized_user_id=authorized_user_id,
+            authorized_user_id=str(authorized_user_id),
             auth_channel="RESOURCE_DIRECTORY")
         ```
 
@@ -202,7 +202,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
         if authorized_user_id is None:
             authorized_user_id = 123456789
         example = alicloud.pvtz.UserVpcAuthorization("example",
-            authorized_user_id=authorized_user_id,
+            authorized_user_id=str(authorized_user_id),
             auth_channel="RESOURCE_DIRECTORY")
         ```
 

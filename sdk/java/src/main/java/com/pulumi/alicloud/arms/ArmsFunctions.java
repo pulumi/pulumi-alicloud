@@ -101,8 +101,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAddonReleasesArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -135,11 +135,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -155,13 +155,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -267,8 +267,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAddonReleasesArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -301,11 +301,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -321,13 +321,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -433,8 +433,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAddonReleasesArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -467,11 +467,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -487,13 +487,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -599,8 +599,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAddonReleasesArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -633,11 +633,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -653,13 +653,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -765,8 +765,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAddonReleasesArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -799,11 +799,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -819,13 +819,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -908,8 +908,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -953,8 +953,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -998,8 +998,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1043,8 +1043,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1088,8 +1088,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1133,8 +1133,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1178,8 +1178,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1223,8 +1223,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1272,8 +1272,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1321,8 +1321,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1370,8 +1370,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1419,8 +1419,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1468,8 +1468,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1517,8 +1517,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1568,8 +1568,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.AlertRobotArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1621,8 +1621,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.AlertRobotArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1674,8 +1674,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.AlertRobotArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1727,8 +1727,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.AlertRobotArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1780,8 +1780,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.AlertRobotArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1833,8 +1833,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.AlertRobotArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1886,8 +1886,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.AlertRobotArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1946,8 +1946,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2048,8 +2048,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2150,8 +2150,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2252,8 +2252,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2354,8 +2354,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2456,8 +2456,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2558,8 +2558,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2657,8 +2657,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvCustomJobArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvCustomJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2750,8 +2750,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvCustomJobArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvCustomJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2843,8 +2843,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvCustomJobArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvCustomJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2936,8 +2936,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvCustomJobArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvCustomJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3029,8 +3029,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvCustomJobArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvCustomJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3140,8 +3140,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvFeatureArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvFeaturesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3174,11 +3174,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -3194,13 +3194,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -3299,8 +3299,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvFeatureArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvFeaturesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3333,11 +3333,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -3353,13 +3353,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -3458,8 +3458,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvFeatureArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvFeaturesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3492,11 +3492,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -3512,13 +3512,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -3617,8 +3617,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvFeatureArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvFeaturesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3651,11 +3651,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -3671,13 +3671,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -3776,8 +3776,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvFeatureArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvFeaturesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3810,11 +3810,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -3830,13 +3830,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -3935,8 +3935,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvPodMonitorArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvPodMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3969,11 +3969,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -3989,13 +3989,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("terraform-example-%s", defaultInteger.result()))
@@ -4119,8 +4119,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvPodMonitorArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvPodMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4153,11 +4153,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -4173,13 +4173,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("terraform-example-%s", defaultInteger.result()))
@@ -4303,8 +4303,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvPodMonitorArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvPodMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4337,11 +4337,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -4357,13 +4357,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("terraform-example-%s", defaultInteger.result()))
@@ -4487,8 +4487,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvPodMonitorArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvPodMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4521,11 +4521,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -4541,13 +4541,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("terraform-example-%s", defaultInteger.result()))
@@ -4671,8 +4671,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvPodMonitorArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvPodMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4705,11 +4705,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -4725,13 +4725,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("terraform-example-%s", defaultInteger.result()))
@@ -4855,8 +4855,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvServiceMonitorArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvServiceMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4889,11 +4889,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -4909,13 +4909,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -5038,8 +5038,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvServiceMonitorArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvServiceMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5072,11 +5072,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -5092,13 +5092,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -5221,8 +5221,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvServiceMonitorArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvServiceMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5255,11 +5255,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -5275,13 +5275,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -5404,8 +5404,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvServiceMonitorArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvServiceMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5438,11 +5438,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -5458,13 +5458,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -5587,8 +5587,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvServiceMonitorArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvServiceMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5621,11 +5621,11 @@ public final class ArmsFunctions {
      *             .vpcId(vpc.id())
      *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
      *             .zoneId(enhanced.zones()[0].zoneId())
-     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-     *                 .input(_cidrBlock)
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(vpc.cidrBlock())
      *                 .newbits(8)
      *                 .netnum(8)
-     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -5641,13 +5641,13 @@ public final class ArmsFunctions {
      *                 "23")
      *             .build());
      * 
-     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(_zoneId)
+     *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(vswitch.zoneId())
      *             .cpuCoreCount(2)
-     *             .memorySize(4)
+     *             .memorySize(4.0)
      *             .kubernetesNodeRole("Worker")
      *             .instanceTypeFamily("ecs.sn1ne")
-     *             .build()));
+     *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
      *             .name(String.format("%s-%s", name,defaultInteger.result()))
@@ -5754,8 +5754,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvironmentArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5834,8 +5834,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvironmentArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5914,8 +5914,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvironmentArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5994,8 +5994,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvironmentArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6074,8 +6074,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvironmentArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6154,8 +6154,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvironmentArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6234,8 +6234,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.EnvironmentArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6306,8 +6306,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6353,8 +6353,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6400,8 +6400,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6447,8 +6447,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6494,8 +6494,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6552,8 +6552,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6639,8 +6639,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6726,8 +6726,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6813,8 +6813,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6900,8 +6900,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6987,8 +6987,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7074,8 +7074,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7157,8 +7157,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7236,8 +7236,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7315,8 +7315,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7394,8 +7394,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7473,8 +7473,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7552,8 +7552,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7631,8 +7631,8 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7703,8 +7703,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7757,8 +7757,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7811,8 +7811,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7865,8 +7865,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7919,8 +7919,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7973,8 +7973,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8025,8 +8025,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8077,8 +8077,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8129,8 +8129,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8181,8 +8181,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8235,8 +8235,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8289,8 +8289,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8343,8 +8343,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8397,8 +8397,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8451,8 +8451,8 @@ public final class ArmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

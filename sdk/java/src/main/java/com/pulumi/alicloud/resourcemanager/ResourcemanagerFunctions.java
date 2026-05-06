@@ -82,8 +82,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountDeletionCheckTaskArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -131,8 +131,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountDeletionCheckTaskArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -180,8 +180,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountDeletionCheckTaskArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -229,8 +229,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountDeletionCheckTaskArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -278,8 +278,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountDeletionCheckTaskArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -321,8 +321,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -363,8 +363,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -405,8 +405,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -447,8 +447,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -489,8 +489,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -531,8 +531,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -573,8 +573,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -617,8 +617,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -663,8 +663,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -709,8 +709,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -755,8 +755,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -801,8 +801,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -847,8 +847,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -893,8 +893,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -939,8 +939,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -984,8 +984,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1029,8 +1029,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1074,8 +1074,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1119,8 +1119,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1164,8 +1164,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1209,8 +1209,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1254,8 +1254,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1299,8 +1299,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1344,8 +1344,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1389,8 +1389,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1434,8 +1434,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1481,8 +1481,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.FolderArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1534,8 +1534,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.FolderArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1587,8 +1587,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.FolderArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1640,8 +1640,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.FolderArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1693,8 +1693,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.FolderArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1746,8 +1746,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.FolderArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1799,8 +1799,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.FolderArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1848,8 +1848,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1890,8 +1890,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1932,8 +1932,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1974,8 +1974,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2016,8 +2016,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2058,8 +2058,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2100,8 +2100,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2219,8 +2219,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2261,8 +2261,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2303,8 +2303,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2345,8 +2345,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2387,8 +2387,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2429,8 +2429,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2471,8 +2471,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2513,8 +2513,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2557,8 +2557,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2601,8 +2601,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2645,8 +2645,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2689,8 +2689,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2733,8 +2733,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2775,8 +2775,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2817,8 +2817,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2859,8 +2859,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2901,8 +2901,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2943,8 +2943,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2985,8 +2985,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3029,8 +3029,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3074,8 +3074,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3119,8 +3119,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3164,8 +3164,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3209,8 +3209,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3254,8 +3254,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3299,8 +3299,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3344,8 +3344,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3391,8 +3391,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3438,8 +3438,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3485,8 +3485,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3532,8 +3532,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3577,8 +3577,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3620,8 +3620,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3663,8 +3663,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3706,8 +3706,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3749,8 +3749,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3792,8 +3792,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3835,8 +3835,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3891,8 +3891,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.std.inputs.FormatArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3982,8 +3982,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.std.inputs.FormatArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4073,8 +4073,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.std.inputs.FormatArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4164,8 +4164,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.std.inputs.FormatArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4255,8 +4255,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.std.inputs.FormatArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4346,8 +4346,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.std.inputs.FormatArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4437,8 +4437,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.std.inputs.FormatArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4522,8 +4522,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.SharedTarget;
      * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4591,8 +4591,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.SharedTarget;
      * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4660,8 +4660,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.SharedTarget;
      * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4729,8 +4729,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.SharedTarget;
      * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4798,8 +4798,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.SharedTarget;
      * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4867,8 +4867,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.SharedTarget;
      * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4936,8 +4936,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.alicloud.resourcemanager.SharedTarget;
      * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

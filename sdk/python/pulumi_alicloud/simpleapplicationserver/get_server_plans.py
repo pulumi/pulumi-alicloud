@@ -153,7 +153,7 @@ def get_server_plans(bandwidth: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.simpleapplicationserver.get_server_plans(memory=1,
+    example = alicloud.simpleapplicationserver.get_server_plans(memory=float(1),
         bandwidth=3,
         disk_size=40,
         flow=6,
@@ -216,7 +216,7 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[_builtins.
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.simpleapplicationserver.get_server_plans(memory=1,
+    example = alicloud.simpleapplicationserver.get_server_plans(memory=float(1),
         bandwidth=3,
         disk_size=40,
         flow=6,

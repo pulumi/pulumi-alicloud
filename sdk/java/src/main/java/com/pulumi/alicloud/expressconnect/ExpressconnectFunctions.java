@@ -54,8 +54,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetAccessPointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -104,8 +104,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetAccessPointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -154,8 +154,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetAccessPointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -204,8 +204,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetAccessPointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -254,8 +254,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetAccessPointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -304,8 +304,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetAccessPointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -354,8 +354,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetAccessPointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -404,8 +404,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetGrantRuleToCensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -450,8 +450,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetGrantRuleToCensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -496,8 +496,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetGrantRuleToCensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -542,8 +542,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetGrantRuleToCensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -588,8 +588,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetGrantRuleToCensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -634,8 +634,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -678,8 +678,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -722,8 +722,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -766,8 +766,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -810,8 +810,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -854,8 +854,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -898,8 +898,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -942,8 +942,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -992,8 +992,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1042,8 +1042,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1092,8 +1092,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1142,8 +1142,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1192,8 +1192,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1242,8 +1242,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1290,8 +1290,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1334,8 +1334,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1378,8 +1378,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1422,8 +1422,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1466,8 +1466,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1510,8 +1510,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1554,8 +1554,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1598,8 +1598,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVbrPconnAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1642,8 +1642,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVbrPconnAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1686,8 +1686,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVbrPconnAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1730,8 +1730,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVbrPconnAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1774,8 +1774,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVbrPconnAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1818,8 +1818,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVbrPconnAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1862,8 +1862,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVbrPconnAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1908,8 +1908,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1972,8 +1972,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2036,8 +2036,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2100,8 +2100,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2164,8 +2164,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2228,8 +2228,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2292,8 +2292,8 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
